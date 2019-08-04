@@ -12,3 +12,4 @@
 */
 
 Route::get('/', 'homeController@index')->name('home.index');
+Route::get('/setup/{type}', 'homeController@setup')->name('setup');

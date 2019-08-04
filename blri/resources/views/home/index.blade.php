@@ -127,28 +127,29 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
             <ul class="sidebar-menu">
               <li class="header">MAIN NAVIGATION</li>
               <li class="treeview">
-                <a href="index.html">
+                <a href="{{route('home.index')}}">
                 <i class="fa fa-dashboard"></i> <span>Dashboard</span>
                 </a>
               </li>
+             
+
               <li class="treeview">
                 <a href="#">
                 <i class="fa fa-folder"></i>
-                <span>Components</span>
+                <span>Setup</span>
                 <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                  <li><a href="grids.html"><i class="fa fa-circle"></i> Grids</a></li>
-                  <li><a href="media.html"><i class="fa fa-circle"></i> Media Css</a></li>
+                 @foreach($setuptypes as $setuptype)
+                    {{-- {{$setuptype}} --}}
+                    <li><a href="{{route('setup', ['type' => $setuptype->SType])}}"><i class="fa fa-circle"></i> {{$setuptype->SType}}</a></li>
+                 @endforeach
+                  
                 </ul>
               </li>
-              <li class="treeview">
-                <a href="charts.html">
-                <i class="fa fa-pie-chart"></i>
-                <span>Charts</span>
-                <span class="label label-primary pull-right">new</span>
-                </a>
-              </li>
+
+             
+             
               <li class="treeview">
               <li class="treeview">
                 <a href="#">
@@ -426,10 +427,10 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
         </div>
         <!-- //header-ends -->
         <!-- main content start-->
-       
+                        <h1> THIS  IS DASHBOARD</h1>
     <!--footer-->
     <div class="footer">
-       <p>&copy; 2018 Glance Design Dashboard. All Rights Reserved | Design by <a href="https://w3layouts.com/" target="_blank">w3layouts</a></p>       
+       <p>&copy; 2019  All Rights Reserved | Design by <a href="https://deshisysltd.com/" target="_blank">Deshi Systems Ltd.</a></p>       
     </div>
     <!--//footer-->
     </div>
