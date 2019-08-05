@@ -18,7 +18,9 @@ class homeController extends Controller
        	    $setuptypes=setuptype::where('SType',$type)->first();
        	    //dd($setuptypes);
        	    if($type=='Division'){
-       	    return view('setup.division')->with('type',$setuptypes);
+              return redirect()->action('divisionController@index');
+
+       	    // return view('setup.division')->with('type',$setuptypes);
             }
         }
 }

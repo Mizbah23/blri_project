@@ -137,7 +137,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                 <ul class="treeview-menu">
                  @foreach($setuptypes as $setuptype)
                     
-                    <li><a href="{{route('setup.division', ['type' => $setuptype->SType])}}">
+                    <li><a href="{{route('setup.'.strtolower($setuptype->SType))}}">
                       <i class="fa fa-circle"></i> {{$setuptype->SType}}</a></li>
                  @endforeach
                   
