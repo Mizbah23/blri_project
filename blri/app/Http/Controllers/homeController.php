@@ -13,6 +13,13 @@ class homeController extends Controller
        }
 
        public function setup($type){
-         dd($type);
-         }
+       	    //dd($type);
+
+       	    $setuptypes=setuptype::where('SType',$type)->first();
+       	    //dd($setuptypes);
+       	    if($type=='Division'){
+       	    return view('setup.division')->with('type',$setuptypes);
+            }
+        }
 }
+//SignIn::where('user_name', $request->user_name)->first();

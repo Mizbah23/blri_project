@@ -2,7 +2,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title> Home</title>
+<title> Division</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="Glance Design Dashboard Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
@@ -116,7 +116,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             </button>
-            <h1><a class="navbar-brand" href="index.html"><span class="fa fa-area-chart"></span> BLRI<span class="dashboard_text">Design dashboard</span></a></h1>
+            <h1><a class="navbar-brand" href="index.html"><span class="fa fa-area-chart"></span> Glance<span class="dashboard_text">Design dashboard</span></a></h1>
           </div>
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="sidebar-menu">
@@ -154,10 +154,10 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                 <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                  <li><a href="#"><i class="fa fa-circle"></i> General</a></li>
-                  <li><a href="#"><i class="fa fa-circle"></i> Icons</a></li>
-                  <li><a href="#"><i class="fa fa-circle"></i> Buttons</a></li>
-                  <li><a href="#"><i class="fa fa-circle"></i> Typography</a></li>
+                  <li><a href="general.html"><i class="fa fa-circle"></i> General</a></li>
+                  <li><a href="icons.html"><i class="fa fa-circle"></i> Icons</a></li>
+                  <li><a href="buttons.html"><i class="fa fa-circle"></i> Buttons</a></li>
+                  <li><a href="typography.html"><i class="fa fa-circle"></i> Typography</a></li>
                 </ul>
               </li>
               <li>

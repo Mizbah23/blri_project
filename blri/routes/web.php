@@ -12,4 +12,5 @@
 */
 
 Route::get('/', 'homeController@index')->name('home.index');
-Route::get('/setup/{type}', 'homeController@setup')->name('setup');
+Route::get('/setup/{type}', 'homeController@setup')->name('setup.division');
+//Route::get('/setup/{type}', 'divisionController@index')->name('setup.division');
