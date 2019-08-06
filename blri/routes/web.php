@@ -14,7 +14,7 @@
 Route::get('/', 'homeController@index')->name('home.index');
 // Route::get('/setup/{type}', 'homeController@setup')->name('setup.division');
 Route::get('/setup/Division', 'divisionController@index')->name('setup.division');
-Route::get('/setup/section', 'divisionController@index')->name('setup.section');
+Route::get('/setup/section', 'sectionController@index')->name('setup.section');
 Route::get('/setup/designation', 'divisionController@index')->name('setup.designation');
 Route::get('/setup/brand', 'divisionController@index')->name('setup.brand');
 Route::get('/setup/category', 'divisionController@index')->name('setup.category');
