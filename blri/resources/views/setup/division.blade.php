@@ -434,21 +434,13 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                 <form class="form-horizontal"> <div class="form-group"> <label for="inputEmail3" class="col-sm-2 control-label">Division Name</label> <div class="col-sm-9"> <input type="email" class="form-control" id="inputEmail3" placeholder="Name Can not be empty"> </div> </div> 
                  <div class="form-group"> <div class="col-sm-offset-2 col-sm-10">  </div> </div> <div class="col-sm-offset-2"> <button type="submit" class="btn btn-info">Save</button> <button type="submit" class="btn btn-danger">Cancel</button></div> </form> 
               </div>
-            </div>
-          </div>
-      <div id="page-wrapper">
-      <div class="main-page">
-        <div class="form-grids row form-grids-right">
-          
-          <div class="panel-body widget-shadow">
-         
-            <table class="table table-hover">
-              <thead>
+               <table class="table table-hover">
+                <thead>
                 <tr>
                   <th>#</th>
-                  <th>First Name</th>
-                  <th>Last Name</th>
-                  <th>Username</th>
+                  <th>Edit</th>
+                  <th>Department</th>
+                 
                 </tr>
               </thead>
               <tbody>
@@ -456,28 +448,35 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                   <th scope="row">1</th>
                   <td>Mark</td>
                   <td>Otto</td>
-                  <td>@mdo</td>
+                 
                 </tr>
                 <tr>
                   <th scope="row">2</th>
                   <td>Jacob</td>
                   <td>Thornton</td>
-                  <td>@fat</td>
+               
                 </tr>
                 <tr>
                   <th scope="row">3</th>
                   <td>Larry</td>
                   <td>the Bird</td>
-                  <td>@twitter</td>
+                
                 </tr>
               </tbody>
             </table>
+              
+              
+            </table>
+            </div>
+          </div>
+      
+  
+         
+          
           </div>
         </div>
-      </div>
-    </div>
-  </div>
-</div>
+     
+   
     <!--footer-->
     <div class="footer">
        <p>&copy; 2019  All Rights Reserved | Design by <a href="https://deshisysltd.com/" target="_blank">Deshi Systems Ltd.</a></p>       
