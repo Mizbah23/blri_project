@@ -423,9 +423,9 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
         </div>
         <!-- //header-ends -->
         <!-- main content start-->
-<<<<<<< HEAD
+
                         
-=======
+
     <div id="page-wrapper">
       <div class="main-page">
         <div class=" form-grids row form-grids-right">
@@ -480,7 +480,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
         </div>
      
    
->>>>>>> 3fac061d9fd8a9727869909cc26441e9affadd61
+
     <!--footer-->
     <div class="footer">
        <p>&copy; 2019  All Rights Reserved | Design by <a href="https://deshisysltd.com/" target="_blank">Deshi Systems Ltd.</a></p>       
