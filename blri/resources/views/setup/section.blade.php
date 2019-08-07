@@ -451,12 +451,12 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
               <div class="row">
               <div class="col-sm-8"></div>
               <div class="col-sm-4"> <div class="search-container">
-    <form action="/action_page.php">
-      <b>Search  </b>
-      <input style="padding: 8px" type="text" placeholder="Search.." name="search">
-      <button style="padding: 8px" type="submit"><i class="fa fa-search"></i></button>
-    </form>
-  </div></div>
+                  <form action="/action_page.php">
+                      <b>Search  </b>
+                      <input style="padding: 8px" type="text" placeholder="Search.." name="search">
+                      <button style="padding: 8px" type="submit"><i class="fa fa-search"></i></button>
+                  </form>
+              </div></div>
               </div>
 
                <table class="table table-hover">

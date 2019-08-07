@@ -2,7 +2,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title> Division</title>
+<title> Category</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="Glance Design Dashboard Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
@@ -387,7 +387,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                         <input class="sb-search-input input__field--madoka" placeholder="Search..." type="search" id="input-31" />
                         <label class="input__label" for="input-31">
                             <svg class="graphic" width="100%" height="100%" viewBox="0 0 404 77" preserveAspectRatio="none">
-                                <path d="m0,0l404,0l0,77l-404,0l0,-77z"/>
+                                <path d="/m0,0l404,0l0,77l-404,0l0,-77z"/>
                             </svg>
                         </label>
                     </form>
@@ -398,7 +398,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                         <li class="dropdown profile_details_drop">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                                 <div class="profile_img">   
-                                    <span class="prfil-img"><img src="images/2.jpg" alt=""> </span> 
+                                    <span class="prfil-img"><img src="/images/2.jpg" alt=""> </span> 
                                     <div class="user-name">
                                         <p>Admin Name</p>
                                         <span>Administrator</span>
@@ -423,6 +423,9 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
         </div>
         <!-- //header-ends -->
         <!-- main content start-->
+
+                        
+
     <div id="page-wrapper">
       <div class="main-page">
         <div class=" form-grids row form-grids-right">
@@ -433,6 +436,16 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
               <div class="form-body">
                 <form class="form-horizontal"> <div class="form-group"> <label for="inputEmail3" class="col-sm-2 control-label">Category</label> <div class="col-sm-9"> <input type="email" class="form-control" id="inputEmail3" placeholder="Category can not be empty"> </div> </div> 
                  <div class="form-group"> <div class="col-sm-offset-2 col-sm-10">  </div> </div> <div class="col-sm-offset-2"> <button type="submit" class="btn btn-info">Save</button> <button type="submit" class="btn btn-danger">Cancel</button></div> </form> 
+              </div>
+              <div class="row">
+              <div class="col-sm-8"></div>
+              <div class="col-sm-4"> <div class="search-container">
+                  <form action="/action_page.php">
+                      <b>Search  </b>
+                      <input style="padding: 8px" type="text" placeholder="Search.." name="search">
+                      <button style="padding: 8px" type="submit"><i class="fa fa-search"></i></button>
+                  </form>
+              </div></div>
               </div>
                <table class="table table-hover">
                 <thead>
@@ -477,6 +490,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
         </div>
      
    
+
     <!--footer-->
     <div class="footer">
        <p>&copy; 2019  All Rights Reserved | Design by <a href="https://deshisysltd.com/" target="_blank">Deshi Systems Ltd.</a></p>       
