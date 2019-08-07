@@ -434,7 +434,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                 <form class="form-horizontal"> <div class="form-group"> <label for="inputEmail3" class="col-sm-2 control-label">Division Name</label> <div class="col-sm-9"> <input type="email" class="form-control" id="inputEmail3" placeholder="Name Can not be empty"> </div> </div> 
                  <div class="form-group"> <div class="col-sm-offset-2 col-sm-10">  </div> </div> <div class="col-sm-offset-2"> <button type="submit" class="btn btn-info">Save</button> <button type="submit" class="btn btn-danger">Cancel</button></div> </form> 
               </div>
-               <table class="table table-hover">
+               <table class="table table-hover table-striped">
                 <thead>
                 <tr>
                   <th>#</th>
