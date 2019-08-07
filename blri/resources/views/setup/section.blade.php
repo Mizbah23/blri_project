@@ -387,7 +387,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                         <input class="sb-search-input input__field--madoka" placeholder="Search..." type="search" id="input-31" />
                         <label class="input__label" for="input-31">
                             <svg class="graphic" width="100%" height="100%" viewBox="0 0 404 77" preserveAspectRatio="none">
-                                <path d="m0,0l404,0l0,77l-404,0l0,-77z"/>
+                                <path d="/m0,0l404,0l0,77l-404,0l0,-77z"/>
                             </svg>
                         </label>
                     </form>
@@ -398,7 +398,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                         <li class="dropdown profile_details_drop">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                                 <div class="profile_img">   
-                                    <span class="prfil-img"><img src="images/2.jpg" alt=""> </span> 
+                                    <span class="prfil-img"><img src="/images/2.jpg" alt=""> </span> 
                                     <div class="user-name">
                                         <p>Admin Name</p>
                                         <span>Administrator</span>
@@ -423,13 +423,91 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
         </div>
         <!-- //header-ends -->
         <!-- main content start-->
-                        <h1> THIS  IS DASHBOARD</h1>
+    <div id="page-wrapper">
+      <div class="main-page">
+        <div class=" form-grids row form-grids-right">
+            <div class="widget-shadow " data-example-id="basic-forms"> 
+              <div class="form-title">
+                <h4>Section Information</h4>
+              </div>
+              <div class="form-body">
+                <form class="form-horizontal"> <div class="form-group"> 
+                  <label for="inputEmail3" class="col-sm-2 control-label">Select Division</label>
+                  <div class="col-sm-9">
+                    <select class="form-control" name="Select Division">
+                      <option value="#">1</option>
+                      <option value="#">2</option>
+                      <option value="#">3</option>
+                      <option value="#">4</option>
+                    </select>
+                  </div>
+                  <br><br>
+
+                  <label for="inputEmail3" class="col-sm-2 control-label"> Section</label> 
+                  <div class="col-sm-9"> <input type="email" class="form-control" id="inputEmail3" placeholder="Section can not be empty"> </div>
+                   </div> 
+                 <div class="form-group"> <div class="col-sm-offset-2 col-sm-10">  </div> </div> <div class="col-sm-offset-2"> <button type="submit" class="btn btn-info">Save</button> <button type="submit" class="btn btn-danger">Cancel</button></div> </form> 
+              </div>
+              <div class="row">
+              <div class="col-sm-8"></div>
+              <div class="col-sm-4"> <div class="search-container">
+    <form action="/action_page.php">
+      <b>Search  </b>
+      <input style="padding: 8px" type="text" placeholder="Search.." name="search">
+      <button style="padding: 8px" type="submit"><i class="fa fa-search"></i></button>
+    </form>
+  </div></div>
+              </div>
+
+               <table class="table table-hover">
+                <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Edit</th>
+                  <th>Department</th>
+                 
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">1</th>
+                  <td>Mark</td>
+                  <td>Otto</td>
+                 
+                </tr>
+                <tr>
+                  <th scope="row">2</th>
+                  <td>Jacob</td>
+                  <td>Thornton</td>
+               
+                </tr>
+                <tr>
+                  <th scope="row">3</th>
+                  <td>Larry</td>
+                  <td>the Bird</td>
+                
+                </tr>
+              </tbody>
+            </table>
+              
+              
+            </table>
+            </div>
+          </div>
+      
+  
+         
+          
+          </div>
+        </div>
+     
+   
     <!--footer-->
     <div class="footer">
        <p>&copy; 2019  All Rights Reserved | Design by <a href="https://deshisysltd.com/" target="_blank">Deshi Systems Ltd.</a></p>       
     </div>
     <!--//footer-->
-    </div>
+
         
     <!-- new added graphs chart js-->
     
