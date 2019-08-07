@@ -430,19 +430,36 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
       <div class="main-page">
         <div class=" form-grids row form-grids-right">
             <div class="widget-shadow " data-example-id="basic-forms"> 
-              <div class="form-title">
+              <div class="form-title bg-primary">
                 <h4>Division Information</h4>
               </div>
               <div class="form-body">
-                <form class="form-horizontal"> <div class="form-group"> <label for="inputEmail3" class="col-sm-2 control-label">Division Name</label> <div class="col-sm-9"> <input type="email" class="form-control" id="inputEmail3" placeholder="Name Can not be empty"> </div> </div> 
-                 <div class="form-group"> <div class="col-sm-offset-2 col-sm-10">  </div> </div> <div class="col-sm-offset-2"> <button type="submit" class="btn btn-info">Save</button> <button type="submit" class="btn btn-danger">Cancel</button></div> </form> 
+                <form class="form-horizontal">
+
+                 <div class="form-group">
+
+                    <div class="row">
+                      <div class="col-lg-2">
+                        
+                      </div>
+                      <div class="col-lg-6"> <!--Category and brand-->
+
+                          <label for="brand" class="col-sm-2 control-label">Division</label>
+                       <div class="col-lg-9">
+                          <input type="text" class="form-control" id="brand" placeholder="Name Can not be empty"required>
+                          </div><br><br><br>
+                        <div class="text-center">
+                          <button type="submit" class="btn btn-info">Save</button> 
+                          <button type="submit" class="btn btn-danger">Cancel</button>
+                        </div>
+                  </form> <br><br>
               </div>
-               <table class="table table-hover">
-                <thead>
+               <table class="table table-responsive table-hover table-striped table-bordered table-condensed">
+                <thead class="bg-primary">
                 <tr>
                   <th>#</th>
                   <th>Department</th>
-                  <th>Action</th>
+                  <th>Edit</th>
                  
                 </tr>
               </thead>
@@ -451,19 +468,19 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                   <th scope="row">1</th>
                    <td>Otto</td>
                   <td>
-                    <a href="#" class="btn btn-success">Edit</a>
+                    <a href="#"><i class="fa fa-edit" style="font-size:24px"></i></a>
                   </td>
                 </tr>
                 <tr>
                   <th scope="row">2</th>
                   <td>Jacob</td>
-                  <td>Thornton</td>
+                  <td><a href="#"><i class="fa fa-edit" style="font-size:24px"></i></a></td>
                
                 </tr>
                 <tr>
                   <th scope="row">3</th>
                   <td>Larry</td>
-                  <td>the Bird</td>
+                  <td><a href="#"><i class="fa fa-edit" style="font-size:24px"></i></a></td>
                 
                 </tr>
               </tbody>
