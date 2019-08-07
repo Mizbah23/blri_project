@@ -437,12 +437,12 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                 <form class="form-horizontal"> <div class="form-group"> <label for="inputDivision" class="col-sm-2 control-label">Division Name</label> <div class="col-sm-9"> <input type="text" class="form-control" id="inputDivision" placeholder="Name Can not be empty"> </div> </div> 
                  <div class="form-group"> <div class="col-sm-offset-2 col-sm-10">  </div> </div> <div class="col-sm-offset-2"> <button type="submit" class="btn btn-info">Save</button> <button type="submit" class="btn btn-danger">Cancel</button></div> </form> 
               </div>
-               <table class="table table-hover table-striped">
-                <thead>
+               <table class="table table-hover table-striped table-condensed table-responsive table-bordered">
+                <thead class="bg-primary">
                 <tr>
-                  <th>#</th>
-                  <th>Department</th>
-                  <th>Action</th>
+                  <th class="text-center">#</th>
+                  <th class="text-center">Department</th>
+                  <th class="text-center">Edit</th>
                  
                 </tr>
               </thead>
@@ -451,19 +451,19 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                   <th scope="row">1</th>
                   <td>Otto</td>
                   <td>
-                    <a href="#" class="btn btn-success">Edit</a>
+                    <a href="#"><i class="fa fa-edit" style="font-size:24px"></i></a>
                   </td>
                 </tr>
                 <tr>
                   <th scope="row">2</th>
                   <td>Jacob</td>
-                  <td>Thornton</td>
+                  <td><a href="#"><i class="fa fa-edit" style="font-size:24px"></i></a></td>
                
                 </tr>
                 <tr>
                   <th scope="row">3</th>
                   <td>Larry</td>
-                  <td>the Bird</td>
+                  <td><a href="#"><i class="fa fa-edit" style="font-size:24px"></i></a></td>
                 
                 </tr>
               </tbody>

@@ -387,7 +387,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                         <input class="sb-search-input input__field--madoka" placeholder="Search..." type="search" id="input-31" />
                         <label class="input__label" for="input-31">
                             <svg class="graphic" width="100%" height="100%" viewBox="0 0 404 77" preserveAspectRatio="none">
-                                <path d="m0,0l404,0l0,77l-404,0l0,-77z"/>
+                                <path d="/m0,0l404,0l0,77l-404,0l0,-77z"/>
                             </svg>
                         </label>
                     </form>
@@ -398,7 +398,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                         <li class="dropdown profile_details_drop">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                                 <div class="profile_img">   
-                                    <span class="prfil-img"><img src="images/2.jpg" alt=""> </span> 
+                                    <span class="prfil-img"><img src="/images/2.jpg" alt=""> </span> 
                                     <div class="user-name">
                                         <p>Admin Name</p>
                                         <span>Administrator</span>
@@ -477,27 +477,27 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                   <table class="table table-responsive table-hover table-striped table-bordered table-condensed">
                       <tr class="row bg-primary">
                         <th class="col-lg-1 text-center">#</th>
-                        <th class="col-lg-1 text-center">Edit</th>
                         <th class="col-lg-2 text-center">Brand</th>
                         <th class="col-lg-8 text-center">Category</th>
+                        <th class="col-lg-1 text-center">Edit</th>
                       </tr>
                       <tr class="row">
                         <td>1</td>
-                        <td><i class="fa fa-edit" style="font-size:24px"></i></td>
+                        <td>fsfds</td>
                         <td>Asus</td>
-                        <td>Desktop</td>
+                        <td><a href="#"><i class="fa fa-edit" style="font-size:24px"></i></a></td>
                       </tr>
                       <tr class="row">
                         <td>2</td>
-                        <td><i class="fa fa-edit" style="font-size:24px"></i></td>
+                        <td>fsdfds</td>
                         <td>Dell</td>
-                        <td>Laptop</td>
+                        <td><a href="#"><i class="fa fa-edit" style="font-size:24px"></i></a></td>
                       </tr>
                       <tr class="row">
                         <td>3</td>
-                        <td><i class="fa fa-edit" style="font-size:24px"></i></td>
+                        <td>sfdsfsdf</td>
                         <td>HP</td>
-                        <td>Desktop</td>
+                        <td><a href="#"><i class="fa fa-edit" style="font-size:24px"></i></a></td>
                       </tr>
                   </table>
                </div>
