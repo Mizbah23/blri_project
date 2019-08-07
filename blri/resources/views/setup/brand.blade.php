@@ -10,35 +10,35 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 
 <!-- Bootstrap Core CSS -->
-<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+<link href="/css/bootstrap.css" rel='stylesheet' type='text/css' />
 
 <!-- Custom CSS -->
-<link href="css/style.css" rel='stylesheet' type='text/css' />
+<link href="/css/style.css" rel='stylesheet' type='text/css' />
 
 <!-- font-awesome icons CSS -->
-<link href="css/font-awesome.css" rel="stylesheet"> 
+<link href="/css/font-awesome.css" rel="stylesheet"> 
 <!-- //font-awesome icons CSS-->
 
 <!-- side nav css file -->
-<link href='css/SidebarNav.min.css' media='all' rel='stylesheet' type='text/css'/>
+<link href='/css/SidebarNav.min.css' media='all' rel='stylesheet' type='text/css'/>
 <!-- //side nav css file -->
  
  <!-- js-->
-<script src="js/jquery-1.11.1.min.js"></script>
-<script src="js/modernizr.custom.js"></script>
+<script src="/js/jquery-1.11.1.min.js"></script>
+<script src="/js/modernizr.custom.js"></script>
 
 <!--webfonts-->
 <link href="//fonts.googleapis.com/css?family=PT+Sans:400,400i,700,700i&amp;subset=cyrillic,cyrillic-ext,latin-ext" rel="stylesheet">
 <!--//webfonts--> 
 
 <!-- chart -->
-<script src="js/Chart.js"></script>
+<script src="/js/Chart.js"></script>
 <!-- //chart -->
 
 <!-- Metis Menu -->
-<script src="js/metisMenu.min.js"></script>
-<script src="js/custom.js"></script>
-<link href="css/custom.css" rel="stylesheet">
+<script src="/js/metisMenu.min.js"></script>
+<script src="/js/custom.js"></script>
+<link href="/css/custom.css" rel="stylesheet">
 <!--//Metis Menu -->
 <style>
 #chartdiv {
@@ -47,7 +47,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 }
 </style>
 <!--pie-chart --><!-- index page sales reviews visitors pie chart -->
-<script src="js/pie-chart.js" type="text/javascript"></script>
+<script src="/js/pie-chart.js" type="text/javascript"></script>
  <script type="text/javascript">
 
         $(document).ready(function () {
@@ -88,8 +88,8 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 <!-- //pie-chart --><!-- index page sales reviews visitors pie chart -->
 
     <!-- requried-jsfiles-for owl -->
-                    <link href="css/owl.carousel.css" rel="stylesheet">
-                    <script src="js/owl.carousel.js"></script>
+                    <link href="/css/owl.carousel.css" rel="stylesheet">
+                    <script src="/js/owl.carousel.js"></script>
                         <script>
                             $(document).ready(function() {
                                 $("#owl-demo").owlCarousel({
@@ -423,7 +423,92 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
         </div>
         <!-- //header-ends -->
         <!-- main content start-->
-                        <h1> THIS  IS DASHBOARD</h1>
+   
+ <!-- main content start-->
+    <div id="page-wrapper">
+      <div class="main-page">
+        <div class=" form-grids row form-grids-right">
+            <div class="widget-shadow " data-example-id="basic-forms"> 
+              <div class="form-title bg-primary text-white">
+                <h3 class="">Brand Information</h3>
+              </div>
+              <div class="form-body">
+                <form class="form-horizontal"> 
+                  @csrf
+                  <div class="form-group"> <!--Form-->
+
+                   <div class="row">
+                      <div class="col-lg-2">
+                        
+                      </div>
+                      <div class="col-lg-6"> <!--Category and brand-->
+                          <label for="category" class="col-sm-2 control-label">Category</label>
+                          <div class="col-lg-9">
+                              <select id="CategoryID" class="form-control required" required>
+                              <option value="">Select Category</option>
+                              </select>
+                          </div><br><br>
+
+                          <label for="brand" class="col-sm-2 control-label">Brand</label>
+                       <div class="col-lg-9">
+                          <input type="text" class="form-control" id="brand" placeholder="Name Can not be empty"required>
+                          </div><br><br><br>
+                        <div class="text-center">
+                          <button type="submit" class="btn btn-info">Save</button> 
+                          <button type="submit" class="btn btn-danger">Cancel</button>
+                        </div>
+                         </form><!--end form-->
+                      </div><!--Category and brand-->
+                      <div class="col-lg-4">
+
+                      </div>
+                   </div> 
+                     <div class="form-group" >
+                        <label for="searchoption" class="col-lg-9  control-label">Search</label>
+                        <div class="col-lg-3">
+                            <input type="text" class="form-control" placeholder="search...">
+                        </div>
+                     </div> 
+                  </div> 
+               </div> 
+
+                <div>
+  
+                  <table class="table table-responsive table-hover table-striped table-bordered table-condensed">
+                      <tr class="row bg-primary">
+                        <th class="col-lg-1 text-center">#</th>
+                        <th class="col-lg-1 text-center">Edit</th>
+                        <th class="col-lg-2 text-center">Brand</th>
+                        <th class="col-lg-8 text-center">Category</th>
+                      </tr>
+                      <tr class="row">
+                        <td>1</td>
+                        <td><i class="fa fa-edit" style="font-size:24px"></i></td>
+                        <td>Asus</td>
+                        <td>Desktop</td>
+                      </tr>
+                      <tr class="row">
+                        <td>2</td>
+                        <td><i class="fa fa-edit" style="font-size:24px"></i></td>
+                        <td>Dell</td>
+                        <td>Laptop</td>
+                      </tr>
+                      <tr class="row">
+                        <td>3</td>
+                        <td><i class="fa fa-edit" style="font-size:24px"></i></td>
+                        <td>HP</td>
+                        <td>Desktop</td>
+                      </tr>
+                  </table>
+               </div>
+              
+            </div>
+          </div>
+      
+          </div>
+        </div>
+     
+   
     <!--footer-->
     <div class="footer">
        <p>&copy; 2019  All Rights Reserved | Design by <a href="https://deshisysltd.com/" target="_blank">Deshi Systems Ltd.</a></p>       
@@ -433,8 +518,8 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
         
     <!-- new added graphs chart js-->
     
-    <script src="js/Chart.bundle.js"></script>
-    <script src="js/utils.js"></script>
+    <script src="/js/Chart.bundle.js"></script>
+    <script src="/js/utils.js"></script>
     
     <script>
         var MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
@@ -555,7 +640,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
     <!-- new added graphs chart js-->
     
     <!-- Classie --><!-- for toggle left push menu script -->
-        <script src="js/classie.js"></script>
+        <script src="/js/classie.js"></script>
         <script>
             var menuLeft = document.getElementById( 'cbp-spmenu-s1' ),
                 showLeftPush = document.getElementById( 'showLeftPush' ),
@@ -578,19 +663,19 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
     <!-- //Classie --><!-- //for toggle left push menu script -->
         
     <!--scrolling js-->
-    <script src="js/jquery.nicescroll.js"></script>
-    <script src="js/scripts.js"></script>
+    <script src="/js/jquery.nicescroll.js"></script>
+    <script src="/js/scripts.js"></script>
     <!--//scrolling js-->
     
     <!-- side nav js -->
-    <script src='js/SidebarNav.min.js' type='text/javascript'></script>
+    <script src='/js/SidebarNav.min.js' type='text/javascript'></script>
     <script>
       $('.sidebar-menu').SidebarNav()
     </script>
     <!-- //side nav js -->
     
     <!-- for index page weekly sales java script -->
-    <script src="js/SimpleChart.js"></script>
+    <script src="/js/SimpleChart.js"></script>
     <script>
         var graphdata1 = {
             linecolor: "#CCA300",
@@ -848,7 +933,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
     
     
     <!-- Bootstrap Core JavaScript -->
-   <script src="js/bootstrap.js"> </script>
+   <script src="/js/bootstrap.js"> </script>
     <!-- //Bootstrap Core JavaScript -->
     
 </body>

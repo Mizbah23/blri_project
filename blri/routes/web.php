@@ -17,5 +17,6 @@ Route::get('/setup/Division', 'divisionController@index')->name('setup.division'
 Route::get('/setup/section', 'sectionController@index')->name('setup.section');
 Route::get('/setup/designation', 'designationController@index')->name('setup.designation');
 Route::get('/setup/brand', 'brandController@index')->name('setup.brand');
+Route::get('/setup/brand', 'brandController@index')->name('setup.brand');
 Route::get('/setup/category', 'categoryController@index')->name('setup.category');
 
