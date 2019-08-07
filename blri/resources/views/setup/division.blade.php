@@ -423,13 +423,70 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
         </div>
         <!-- //header-ends -->
         <!-- main content start-->
+<<<<<<< HEAD
                         
+=======
+    <div id="page-wrapper">
+      <div class="main-page">
+        <div class=" form-grids row form-grids-right">
+            <div class="widget-shadow " data-example-id="basic-forms"> 
+              <div class="form-title">
+                <h4>Division Information</h4>
+              </div>
+              <div class="form-body">
+                <form class="form-horizontal"> <div class="form-group"> <label for="inputEmail3" class="col-sm-2 control-label">Division Name</label> <div class="col-sm-9"> <input type="email" class="form-control" id="inputEmail3" placeholder="Name Can not be empty"> </div> </div> 
+                 <div class="form-group"> <div class="col-sm-offset-2 col-sm-10">  </div> </div> <div class="col-sm-offset-2"> <button type="submit" class="btn btn-info">Save</button> <button type="submit" class="btn btn-danger">Cancel</button></div> </form> 
+              </div>
+               <table class="table table-hover">
+                <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Edit</th>
+                  <th>Department</th>
+                 
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">1</th>
+                  <td>Mark</td>
+                  <td>Otto</td>
+                 
+                </tr>
+                <tr>
+                  <th scope="row">2</th>
+                  <td>Jacob</td>
+                  <td>Thornton</td>
+               
+                </tr>
+                <tr>
+                  <th scope="row">3</th>
+                  <td>Larry</td>
+                  <td>the Bird</td>
+                
+                </tr>
+              </tbody>
+            </table>
+              
+              
+            </table>
+            </div>
+          </div>
+      
+  
+         
+          
+          </div>
+        </div>
+     
+   
+>>>>>>> 3fac061d9fd8a9727869909cc26441e9affadd61
     <!--footer-->
     <div class="footer">
        <p>&copy; 2019  All Rights Reserved | Design by <a href="https://deshisysltd.com/" target="_blank">Deshi Systems Ltd.</a></p>       
     </div>
     <!--//footer-->
-    </div>
+
         
     <!-- new added graphs chart js-->
     
