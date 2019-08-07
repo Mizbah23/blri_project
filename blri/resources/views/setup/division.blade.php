@@ -430,7 +430,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
       <div class="main-page">
         <div class=" form-grids row form-grids-right">
             <div class="widget-shadow " data-example-id="basic-forms"> 
-              <div class="form-title">
+              <div class="form-title bg-primary">
                 <h4>Division Information</h4>
               </div>
               <div class="form-body">
