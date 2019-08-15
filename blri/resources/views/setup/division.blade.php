@@ -423,7 +423,12 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
         </div>
         <!-- //header-ends -->
         <!-- main content start-->
-
+<div class="jumbotron">
+  @if(session('response'))
+      <div class="col-mid-8 alert alert-success">
+        {{@session('response')}}
+      </div>
+      @endif
                         
 
     <div id="page-wrapper">
@@ -434,8 +439,8 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                 <h4>Division Information</h4>
               </div>
               <div class="form-body">
-                <form class="form-horizontal">
-
+                <form class="form-horizontal" action="" method="post">
+                @csrf
                  <div class="form-group">
 
                     <div class="row">
@@ -444,9 +449,12 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                       </div>
                       <div class="col-lg-6"> <!--Category and brand-->
 
-                          <label for="brand" class="col-sm-2 control-label">Division</label>
+                          <label for="division" class="col-sm-2 control-label">Division</label>
                        <div class="col-lg-9">
-                          <input type="text" class="form-control" id="brand" placeholder="Name Can not be empty"required>
+                          <input type="text" class="form-control" id="divisionName" name="divisionName" placeholder="Name Can not be empty"required>
+                                   @foreach ($errors->get('divisionName') as $error)
+                                   <p style="color: red">{{ $error}}</p>
+                                   @endforeach
                           </div><br><br><br>
                         <div class="text-center">
                           <button type="submit" class="btn btn-info">Save</button> 
@@ -460,29 +468,20 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                   <th>#</th>
                   <th>Department</th>
                   <th>Edit</th>
-                 
-                </tr>
-              </thead>
+                 </tr>
+                </thead>
+               @foreach ($divisions as $division)
+               
               <tbody>
                 <tr>
-                  <th scope="row">1</th>
-                   <td>Otto</td>
+                  <th scope="row"></th>
+                   <td>{{$division->divisionName}}</td>
                   <td>
                     <a href="#"><i class="fa fa-edit" style="font-size:24px"></i></a>
                   </td>
                 </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Jacob</td>
-                  <td><a href="#"><i class="fa fa-edit" style="font-size:24px"></i></a></td>
-               
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td>Larry</td>
-                  <td><a href="#"><i class="fa fa-edit" style="font-size:24px"></i></a></td>
-                
-                </tr>
+             @endforeach
+             
               </tbody>
             </table>
               
