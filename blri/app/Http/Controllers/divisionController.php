@@ -21,18 +21,31 @@ class divisionController extends Controller
                 'divisionName'=>'required|unique:divisions',
               
                ]);
-    	         $setuptypes= setuptype::all();
+    	       $setuptypes= setuptype::all();
                $division=new division;
-               $division->divisionName=$request->divisionName;
-               $division->save();
+                $division->divisionName=$request->divisionName;
+                $division->save();
                $divisions=division::all();
                
 
               return view('setup.division')->with('setuptypes',$setuptypes)->with('divisions',$divisions);
+          }
+        public function divedit(Request $request,$id)
+    {
+    	$division=division::find($id);
+    	return view('setup.divedit')->with('division',$division);
+    }
 
+     public function divupdate(Request $request,$id)
+    {
+    	$division=division::find($id);
+    	$division->divisionName=$request->divisionName;
+    	
+    	$division->save();
 
-               
-       }
+    	return redirect()->route('setup.division');
+    }          
+       
     
                
     }

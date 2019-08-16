@@ -452,47 +452,18 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 
                           <label for="division" class="col-sm-2 control-label">Division</label>
                        <div class="col-lg-9">
-                          <input type="text" class="form-control" id="divisionName" name="divisionName" placeholder="Name Can not be empty"required>
+                          <input type="text" class="form-control" id="divisionName" name="divisionName"  value="{{$division->divisionName}}"placeholder="Name Can not be empty"required>
                                    @foreach ($errors->get('divisionName') as $error)
                                    <p style="color: red">{{ $error}}</p>
                                    @endforeach
                           </div><br><br><br>
                         <div class="text-center">
-                          <button type="submit" class="btn btn-info">Save</button> 
+                          <button type="submit" class="btn btn-info">Update</button> 
                           <button type="submit" class="btn btn-danger">Cancel</button>
                         </div>
                   </form> <br><br>
               </div>
-               <table class="table table-responsive table-hover table-striped table-bordered table-condensed">
-                <thead class="bg-primary">
-                <tr>
-                  <th>#</th>
-                  <th>Department</th>
-                  <th>Edit</th>
-                 </tr>
-                </thead>
-                @if(isset($divisions))
-                  @foreach ($divisions as $division)
-               
-              <tbody>
-                <tr>
-                  <th scope="row"></th>
-                   <td>{{$division->divisionName}}</td>
-                  <td>
-                    <a href="{{route('setup.divedit',[$division->id])}}"><i class="fa fa-edit" style="font-size:24px"></i></a>
-                  </td>
-                </tr>
-               
-             @endforeach
-                @endif
-
-             
-              </tbody>  
-            </table>
-              </div>
-          </div>
-           </div>
-        </div>
+              
      
    
 

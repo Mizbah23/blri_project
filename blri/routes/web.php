@@ -15,6 +15,8 @@ Route::get('/', 'homeController@index')->name('home.index');
 // Route::get('/setup/{type}', 'homeController@setup')->name('setup.division');
 Route::get('/setup/Division', 'divisionController@index')->name('setup.division');
 Route::post('/setup/Division', 'divisionController@divisionPost');
+Route::get('/setup/Division/{id}/edit', 'divisionController@divedit')->name('setup.divedit');
+Route::post('/setup/Division/{id}/update', 'divisionController@divupdate');
 
 //Section
 Route::get('/setup/section', 'sectionController@index')->name('setup.section');
