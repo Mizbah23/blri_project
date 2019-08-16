@@ -470,7 +470,8 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                   <th>Edit</th>
                  </tr>
                 </thead>
-               @foreach ($divisions as $division)
+                @if(isset($divisions))
+                  @foreach ($divisions as $division)
                
               <tbody>
                 <tr>
@@ -480,7 +481,10 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                     <a href="#"><i class="fa fa-edit" style="font-size:24px"></i></a>
                   </td>
                 </tr>
+               
              @endforeach
+                @endif
+
              
               </tbody>
             </table>

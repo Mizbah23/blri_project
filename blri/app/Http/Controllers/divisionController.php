@@ -19,9 +19,10 @@ class divisionController extends Controller
                $division=new division;
                $division->divisionName=$request->divisionName;
                $division->save();
-               $request->session()->put('division',$division);
-               return redirect()->route('setup.division');
-               //return view('setup.division')->with('division',$division);
+               
+               //$request->session()->put('division',$division);
+              // return redirect()->route('setup.division');
+               return view('setup.division')->with('divisions',$division);
                
        }
     
