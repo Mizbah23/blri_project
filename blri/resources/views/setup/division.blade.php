@@ -116,7 +116,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             </button>
-            <h1><a class="navbar-brand" href="index.html"><span class="fa fa-area-chart"></span> Glance<span class="dashboard_text">Design dashboard</span></a></h1>
+            <h1><a class="navbar-brand" href="index.html"><span class="fa fa-area-chart"></span> BLRI<span class="dashboard_text">Design dashboard</span></a></h1>
           </div>
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="sidebar-menu">
@@ -135,12 +135,13 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                 <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
+                   @if(isset($setuptypes))
                  @foreach($setuptypes as $setuptype)
                     
                     <li><a href="{{route('setup.'.strtolower($setuptype->SType))}}">
                       <i class="fa fa-circle"></i> {{$setuptype->SType}}</a></li>
                  @endforeach
-                  
+                 @endif 
                 </ul>
               </li>
 
@@ -488,16 +489,9 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
              
               </tbody>
             </table>
-              
-              
-            </table>
-            </div>
+              </div>
           </div>
-      
-  
-         
-          
-          </div>
+           </div>
         </div>
      
    
