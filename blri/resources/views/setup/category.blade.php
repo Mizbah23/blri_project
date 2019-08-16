@@ -225,174 +225,9 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                 <!--toggle button start-->
                 <button id="showLeftPush"><i class="fa fa-bars"></i></button>
                 <!--toggle button end-->
-                <div class="profile_details_left"><!--notifications of menu start -->
-                    <ul class="nofitications-dropdown">
-                        <li class="dropdown head-dpdn">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-envelope"></i><span class="badge">4</span></a>
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <div class="notification_header">
-                                        <h3>You have 3 new messages</h3>
-                                    </div>
-                                </li>
-                                <li><a href="#">
-                                   <div class="user_img"><img src="images/1.jpg" alt=""></div>
-                                   <div class="notification_desc">
-                                    <p>Lorem ipsum dolor amet</p>
-                                    <p><span>1 hour ago</span></p>
-                                    </div>
-                                   <div class="clearfix"></div> 
-                                </a></li>
-                                <li class="odd"><a href="#">
-                                    <div class="user_img"><img src="images/4.jpg" alt=""></div>
-                                   <div class="notification_desc">
-                                    <p>Lorem ipsum dolor amet </p>
-                                    <p><span>1 hour ago</span></p>
-                                    </div>
-                                  <div class="clearfix"></div>  
-                                </a></li>
-                                <li><a href="#">
-                                   <div class="user_img"><img src="images/3.jpg" alt=""></div>
-                                   <div class="notification_desc">
-                                    <p>Lorem ipsum dolor amet </p>
-                                    <p><span>1 hour ago</span></p>
-                                    </div>
-                                   <div class="clearfix"></div> 
-                                </a></li>
-                                <li><a href="#">
-                                   <div class="user_img"><img src="images/2.jpg" alt=""></div>
-                                   <div class="notification_desc">
-                                    <p>Lorem ipsum dolor amet </p>
-                                    <p><span>1 hour ago</span></p>
-                                    </div>
-                                   <div class="clearfix"></div> 
-                                </a></li>
-                                <li>
-                                    <div class="notification_bottom">
-                                        <a href="#">See all messages</a>
-                                    </div> 
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="dropdown head-dpdn">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-bell"></i><span class="badge blue">4</span></a>
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <div class="notification_header">
-                                        <h3>You have 3 new notification</h3>
-                                    </div>
-                                </li>
-                                <li><a href="#">
-                                    <div class="user_img"><img src="images/4.jpg" alt=""></div>
-                                   <div class="notification_desc">
-                                    <p>Lorem ipsum dolor amet</p>
-                                    <p><span>1 hour ago</span></p>
-                                    </div>
-                                  <div class="clearfix"></div>  
-                                 </a></li>
-                                 <li class="odd"><a href="#">
-                                    <div class="user_img"><img src="images/1.jpg" alt=""></div>
-                                   <div class="notification_desc">
-                                    <p>Lorem ipsum dolor amet </p>
-                                    <p><span>1 hour ago</span></p>
-                                    </div>
-                                   <div class="clearfix"></div> 
-                                 </a></li>
-                                 <li><a href="#">
-                                    <div class="user_img"><img src="images/3.jpg" alt=""></div>
-                                   <div class="notification_desc">
-                                    <p>Lorem ipsum dolor amet </p>
-                                    <p><span>1 hour ago</span></p>
-                                    </div>
-                                   <div class="clearfix"></div> 
-                                 </a></li>
-                                <li><a href="#">
-                                   <div class="user_img"><img src="images/2.jpg" alt=""></div>
-                                   <div class="notification_desc">
-                                    <p>Lorem ipsum dolor amet </p>
-                                    <p><span>1 hour ago</span></p>
-                                    </div>
-                                   <div class="clearfix"></div> 
-                                </a></li>
-                                 <li>
-                                    <div class="notification_bottom">
-                                        <a href="#">See all notifications</a>
-                                    </div> 
-                                </li>
-                            </ul>
-                        </li>   
-                        <li class="dropdown head-dpdn">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-tasks"></i><span class="badge blue1">8</span></a>
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <div class="notification_header">
-                                        <h3>You have 8 pending task</h3>
-                                    </div>
-                                </li>
-                                <li><a href="#">
-                                    <div class="task-info">
-                                        <span class="task-desc">Database update</span><span class="percentage">40%</span>
-                                        <div class="clearfix"></div>    
-                                    </div>
-                                    <div class="progress progress-striped active">
-                                        <div class="bar yellow" style="width:40%;"></div>
-                                    </div>
-                                </a></li>
-                                <li><a href="#">
-                                    <div class="task-info">
-                                        <span class="task-desc">Dashboard done</span><span class="percentage">90%</span>
-                                       <div class="clearfix"></div> 
-                                    </div>
-                                    <div class="progress progress-striped active">
-                                         <div class="bar green" style="width:90%;"></div>
-                                    </div>
-                                </a></li>
-                                <li><a href="#">
-                                    <div class="task-info">
-                                        <span class="task-desc">Mobile App</span><span class="percentage">33%</span>
-                                        <div class="clearfix"></div>    
-                                    </div>
-                                   <div class="progress progress-striped active">
-                                         <div class="bar red" style="width: 33%;"></div>
-                                    </div>
-                                </a></li>
-                                <li><a href="#">
-                                    <div class="task-info">
-                                        <span class="task-desc">Issues fixed</span><span class="percentage">80%</span>
-                                       <div class="clearfix"></div> 
-                                    </div>
-                                    <div class="progress progress-striped active">
-                                         <div class="bar  blue" style="width: 80%;"></div>
-                                    </div>
-                                </a></li>
-                                <li>
-                                    <div class="notification_bottom">
-                                        <a href="#">See all pending tasks</a>
-                                    </div> 
-                                </li>
-                            </ul>
-                        </li>   
-                    </ul>
-                    <div class="clearfix"> </div>
-                </div>
-                <!--notification menu end -->
                 <div class="clearfix"> </div>
             </div>
-            <div class="header-right">
-                
-                
-                <!--search-box-->
-                <div class="search-box">
-                    <form class="input">
-                        <input class="sb-search-input input__field--madoka" placeholder="Search..." type="search" id="input-31" />
-                        <label class="input__label" for="input-31">
-                            <svg class="graphic" width="100%" height="100%" viewBox="0 0 404 77" preserveAspectRatio="none">
-                                <path d="/m0,0l404,0l0,77l-404,0l0,-77z"/>
-                            </svg>
-                        </label>
-                    </form>
-                </div><!--//end-search-box-->
-                
+
                 <div class="profile_details">       
                     <ul>
                         <li class="dropdown profile_details_drop">
@@ -417,86 +252,91 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                         </li>
                     </ul>
                 </div>
+
+
                 <div class="clearfix"> </div>               
             </div>
             <div class="clearfix"> </div>   
         </div>
         <!-- //header-ends -->
-        <!-- main content start-->
-
-                        
-
+       
+      <!-- main content start-->
     <div id="page-wrapper">
       <div class="main-page">
         <div class=" form-grids row form-grids-right">
             <div class="widget-shadow " data-example-id="basic-forms"> 
-              <div class="form-title bg-primary">
-                <h4>Product Category</h4>
+              <div class="form-title bg-primary text-white">
+                <h3 class="">Product Category</h3>
               </div>
-              <div class="row">
-                <div class="col-sm-2"></div>
-                <div class="col-sm-6">
               <div class="form-body">
-                <form class="form-horizontal"> <div class="form-group"> <label for="inputEmail3" class="col-sm-4 control-label">Category</label> <div class="col-sm-8"> <input type="email" class="form-control" id="inputEmail3" placeholder="Category can not be empty"> </div> </div> 
-                 <div class="form-group"> <div class="col-sm-offset-6 col-sm-10">  </div> </div> <div class="col-sm-offset-6"> <button type="submit" class="btn btn-info">Save</button> <button type="submit" class="btn btn-danger">Cancel</button></div> </form> 
-              </div>
-                </div>
-                <div class="col-sm-4"></div>
-              </div>
+                <form class="form-horizontal"> 
+                  <div class="form-group"> <!--Form-->
 
-              <div class="row">
-              <div class="col-sm-8"></div>
-              <div class="col-sm-4"> <div class="search-container">
-                  <form action="/action_page.php">
-                      <b>Search  </b>
-                      <input style="padding: 8px" type="text" placeholder="Search.." name="search">
-                      <button style="padding: 8px" type="submit"><i class="fa fa-search"></i></button>
-                  </form>
-              </div></div>
-              </div>
-               <table class="table table-hover border-white ">
-                <thead>
-                <tr class="bg-primary">
-                  <th>#</th>
-                  <th>Edit</th>
-                  <th>Department</th>
-                 
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>Mark</td>
-                  <td>Otto</td>
-                 
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-               
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td>Larry</td>
-                  <td>the Bird</td>
-                
-                </tr>
-              </tbody>
-            </table>
+                   <div class="row">
+                      <div class="col-lg-2">
+                        
+                      </div>
+                      <div class="col-lg-6"> <!--Category and brand-->
+                          <label for="brand" class="col-sm-2 control-label"> Category</label>
+                       <div class="col-lg-9">
+                          <input type="text" class="form-control" id="brand" placeholder="Category Can not be empty"required>
+                          </div><br><br><br>
+                        <div class="text-center">
+                          <button type="submit" class="btn btn-info">Save</button> 
+                          <button type="submit" class="btn btn-danger">Cancel</button>
+                        </div>
+                         </form><!--end form-->
+                      </div><!--Category and brand-->
+                      <div class="col-lg-4">
+
+                      </div>
+                   </div> 
+                     <div class="form-group" >
+                        <label for="searchoption" class="col-lg-9  control-label">Search</label>
+                        <div class="col-lg-3">
+                            <input type="text" class="form-control" placeholder="search...">
+                        </div>
+                     </div> 
+                  </div> 
+               </div> 
+
+                <div>
+  
+                  <table class="table table-responsive table-hover table-striped table-bordered table-condensed">
+                      <tr class="row bg-primary">
+                        <th class="col-lg-1 text-center">#</th>
+                        <th class="col-lg-2 text-center">Category</th>
+                        <th class="col-lg-8 text-center">Department</th>
+                        <th class="col-lg-1 text-center">Edit</th>
+                      </tr>
+                      <tr class="row">
+                        <td>1</td>
+                        <td>fsfds</td>
+                        <td>Asus</td>
+                        <td><a href="#"><i class="fa fa-edit" style="font-size:24px"></i></a></td>
+                      </tr>
+                      <tr class="row">
+                        <td>2</td>
+                        <td>fsdfds</td>
+                        <td>Dell</td>
+                        <td><a href="#"><i class="fa fa-edit" style="font-size:24px"></i></a></td>
+                      </tr>
+                      <tr class="row">
+                        <td>3</td>
+                        <td>sfdsfsdf</td>
+                        <td>HP</td>
+                        <td><a href="#"><i class="fa fa-edit" style="font-size:24px"></i></a></td>
+                      </tr>
+                  </table>
+               </div>
               
-              
-            </table>
             </div>
           </div>
       
-  
-         
-          
           </div>
         </div>
-     
-   
+
+
 
     <!--footer-->
     <div class="footer">
