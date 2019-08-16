@@ -272,8 +272,14 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 
                 <form class="form-horizontal" method="post"> <div class="form-group"> 
                   @csrf
-                  <label for="divisions" class="col-sm-4 control-label">Select Division</label>
-                  <div class="col-sm-8">
+                  <div class="row">
+                      <div class="col-lg-2">
+                        
+                      </div>
+                      <div class="col-lg-6"> 
+
+                  <label for="divisions" class="col-sm-2 control-label">Division</label>
+                  <div class="col-sm-9">
 
                     <select class="form-control" id="divisions" name="divisions">
                       @foreach($divisions as $division)
@@ -283,10 +289,10 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                   </div>
                   <br><br>
 
-                  <label for="section" class="col-sm-4 control-label"> Section</label> 
-                  <div class="col-sm-8"> <input type="text" required class="form-control" id="section" name="sectionName" placeholder="Section can not be empty"> </div>
-                   </div> 
-                 <div class="form-group"> <div class="col-sm-offset-6 col-sm-10">  </div> </div> <div class="col-sm-offset-6"> <button type="submit" class="btn btn-info">Save</button> <button type="submit" class="btn btn-danger">Cancel</button></div> </form> 
+                  <label for="section" class="col-sm-2 control-label"> Section</label> 
+                  <div class="col-sm-9"> <input type="text" required class="form-control" id="section" name="sectionName" placeholder="Section can not be empty"> </div>
+                   </div>
+                 <div class="form-group"> <div class="col-sm-offset-4 col-sm-6">  </div> </div><br> <div class="col-sm-offset-4"> <button type="submit" class="btn btn-info">Save</button> <button type="submit" class="btn btn-danger">Cancel</button></div> </form> 
               </div>
           </div>
           <div class="col-sm-4"></div>
@@ -294,16 +300,16 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
         </div>
               <div class="row">
               <div class="col-sm-8"></div>
-              <div class="col-sm-4"> <div class="search-container">
-                  <form action="/action_page.php">
-                      <b>Search  </b>
-                      <input style="padding: 8px" type="text" placeholder="Search.." name="search">
-                      <button style="padding: 8px" type="submit"><i class="fa fa-search"></i></button>
-                  </form>
-              </div></div>
-              </div>
 
-               <table class="table table-hover">
+                    <div class="form-group" >
+                        <label for="searchoption" class="col-lg-9  control-label" style="text-align: right; ">Search</label>
+                        <div class="col-lg-3">
+                            <input type="text" class="form-control" placeholder="search...">
+                        </div>
+                     </div> 
+              </div><br><br>
+
+               <table class="table table-responsive table-hover table-striped table-bordered table-condensed">
                 <thead>
                 <tr class=" bg-primary">
                   <th>#</th>
