@@ -297,7 +297,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                           </div><br><br><br>
                         <div class="text-center">
                           <button type="submit" class="btn btn-info">Save</button> 
-                          <button type="submit" class="btn btn-danger">Cancel</button>
+                          <button type="reset" class="btn btn-danger">Cancel</button>
                         </div>
                   </form> <br><br>
               </div>

@@ -270,21 +270,25 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                 <h3 class="">Designation Information</h3>
               </div>
               <div class="form-body">
-                <form class="form-horizontal"> 
+                <form class="form-horizontal" method="post"> 
+                  @csrf
                   <div class="form-group"> <!--Form-->
 
                    <div class="row">
                       <div class="col-lg-2">
                         
                       </div>
-                      <div class="col-lg-6"> <!--Category and brand-->
-                          <label for="brand" class="col-sm-3 control-label">Designation</label>
+                      <div class="col-lg-6"> <!-- Designation-->
+                          <label for="designationName" class="col-sm-3 control-label">Designation</label>
                        <div class="col-lg-9">
-                          <input type="text" class="form-control" id="brand" placeholder="Designation name not be empty"required>
+                          <input type="text" class="form-control" id="designationName" name="designationName" placeholder="Designation name not be empty"required>
+                              @foreach ($errors->get('designationName') as $error)
+                                   <p style="color: red">{{ $error}}</p>
+                                   @endforeach
                           </div><br><br><br>
                         <div class="text-center">
                           <button type="submit" class="btn btn-info">Save</button> 
-                          <button type="submit" class="btn btn-danger">Cancel</button>
+                          <button type="reset" class="btn btn-danger">Cancel</button>
                         </div>
                          </form><!--end form-->
                       </div><!--Category and brand-->
@@ -311,16 +315,20 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                   <th>Edit</th>
                  </tr>
                 </thead>
+                  @if(isset($designations))
+                  @foreach ($designations as $designation)
               <tbody>
                 <tr>
                   <th scope="row"></th>
-                   <td></td>
+                   <td>{{$designation->designationName}}</td>
                   <td>
                     <a href=""><i class="fa fa-edit" style="font-size:24px"></i></a>
                   </td>
                 </tr>
 
-             
+                @endforeach
+                @endif
+
               </tbody>  
             </table>
                </div>
