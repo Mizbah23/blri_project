@@ -40,8 +40,9 @@ class sectionController extends Controller
         public function secedit(Request $request,$id)
      { 
              $setuptypes= setuptype::all();
+             $divisions=division::all();
              $section=Section::find($id);
-             return view('setup.secedit')->with('section',$section)->with('setuptypes',$setuptypes);
+             return view('setup.secedit')->with('section',$section)->with('setuptypes',$setuptypes)->with('divisions',$divisions);
      }
 
      public function update(Request $request,$id)
