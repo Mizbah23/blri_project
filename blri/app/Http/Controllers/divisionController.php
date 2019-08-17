@@ -25,16 +25,12 @@ class divisionController extends Controller
                $division=new division;
                $division->divisionName=$request->divisionName;
                $division->save();
-<<<<<<< HEAD
-              // dd($division);
                $divisions=division::all();
                
-               //$request->session()->put('division',$division);
-              // return redirect()->route('setup.division');
-               return view('setup.division')->with('divisions',$divisions)->with('setuptypes',$setuptypes);
-=======
-               return view('setup.division')->with('divisions',$division);
->>>>>>> 1e36648cb22b7ec41c7bf1d1108fd59a82e215d7
+
+              return view('setup.division')->with('setuptypes',$setuptypes)->with('divisions',$divisions);
+
+
                
        }
     

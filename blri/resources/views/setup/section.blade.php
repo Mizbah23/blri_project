@@ -269,7 +269,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                 <h3 class="">Section Information</h3>
               </div>
               <div class="form-body">
-<<<<<<< HEAD
+
                 <form class="form-horizontal" method="post"> <div class="form-group"> 
                   @csrf
                   <label for="divisions" class="col-sm-4 control-label">Select Division</label>
@@ -330,75 +330,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
               </tbody>
             </table>
               
-=======
-                <form class="form-horizontal"> 
-                  <div class="form-group"> <!--Form-->
 
-                   <div class="row">
-                      <div class="col-lg-2">
-                        
-                      </div>
-                      <div class="col-lg-6"> <!--Category and brand-->
-                          <label for="category" class="col-sm-2 control-label">Division</label>
-                          <div class="col-lg-9">
-                              <select id="CategoryID" class="form-control required" required>
-                              <option value="">Select Division</option>
-                              </select>
-                          </div><br><br>
-
-                          <label for="brand" class="col-sm-2 control-label"> Section</label>
-                       <div class="col-lg-9">
-                          <input type="text" class="form-control" id="brand" placeholder="Section Can not be empty"required>
-                          </div><br><br><br>
-                        <div class="text-center">
-                          <button type="submit" class="btn btn-info">Save</button> 
-                          <button type="submit" class="btn btn-danger">Cancel</button>
-                        </div>
-                         </form><!--end form-->
-                      </div><!--Category and brand-->
-                      <div class="col-lg-4">
-
-                      </div>
-                   </div> 
-                     <div class="form-group" >
-                        <label for="searchoption" class="col-lg-9  control-label">Search</label>
-                        <div class="col-lg-3">
-                            <input type="text" class="form-control" placeholder="search...">
-                        </div>
-                     </div> 
-                  </div> 
-               </div> 
-
-                <div>
-  
-                  <table class="table table-responsive table-hover table-striped table-bordered table-condensed">
-                      <tr class="row bg-primary">
-                        <th class="col-lg-1 text-center">#</th>
-                        <th class="col-lg-2 text-center">Brand</th>
-                        <th class="col-lg-8 text-center">Department</th>
-                        <th class="col-lg-1 text-center">Edit</th>
-                      </tr>
-                      <tr class="row">
-                        <td>1</td>
-                        <td>fsfds</td>
-                        <td>Asus</td>
-                        <td><a href="#"><i class="fa fa-edit" style="font-size:24px"></i></a></td>
-                      </tr>
-                      <tr class="row">
-                        <td>2</td>
-                        <td>fsdfds</td>
-                        <td>Dell</td>
-                        <td><a href="#"><i class="fa fa-edit" style="font-size:24px"></i></a></td>
-                      </tr>
-                      <tr class="row">
-                        <td>3</td>
-                        <td>sfdsfsdf</td>
-                        <td>HP</td>
-                        <td><a href="#"><i class="fa fa-edit" style="font-size:24px"></i></a></td>
-                      </tr>
-                  </table>
-               </div>
->>>>>>> 1e36648cb22b7ec41c7bf1d1108fd59a82e215d7
               
             </div>
           </div>
