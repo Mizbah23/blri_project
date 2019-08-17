@@ -117,8 +117,16 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             </button>
-            <h1><a class="navbar-brand" href="index.html"><span class="fa fa-area-chart"></span> BLRI<span class="dashboard_text">Design dashboard</span></a></h1>
-          </div>
+
+            <div style="margin-top: 10px">
+              <div class="col-lg-3 row mt-5">
+                <img style="height: 50px; width: 50px;" src="/images/logo.png" alt="">
+              </div>
+              <div class="col-lg-9">
+                 <h1 style="margin-left: -25px"><a class="navbar-brand" href="index.html">  BLRI<span class="dashboard_text" style="margin-left: -35px">Design dashboard</span></a></h1>
+              </div>
+             </div>
+            </div>
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="sidebar-menu">
               <li class="header">MAIN NAVIGATION</li>
