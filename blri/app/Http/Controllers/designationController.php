@@ -27,4 +27,10 @@ class designationController extends Controller
                $designations=Designation::all();
                return view('setup.designation')->with('setuptypes',$setuptypes)->with('designations',$designations);
           }
+                  public function desedit(Request $request,$id)
+				    {
+				             $setuptypes= setuptype::all();
+				    	       $designation=Designation::find($id);
+				    	       return view('setup.desedit')->with('designation',$designation)->with('setuptypes',$setuptypes);
+				    }
 }
