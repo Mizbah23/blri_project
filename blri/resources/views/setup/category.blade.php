@@ -304,31 +304,26 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                 <div>
   
                   <table class="table table-responsive table-hover table-striped table-bordered table-condensed">
-                      <tr class="row bg-primary">
-                        <th class="col-lg-1 text-center">#</th>
-                        <th class="col-lg-2 text-center">Category</th>
-                        <th class="col-lg-8 text-center">Department</th>
-                        <th class="col-lg-1 text-center">Edit</th>
-                      </tr>
-                      <tr class="row">
-                        <td>1</td>
-                        <td>fsfds</td>
-                        <td>Asus</td>
-                        <td><a href="#"><i class="fa fa-edit" style="font-size:24px"></i></a></td>
-                      </tr>
-                      <tr class="row">
-                        <td>2</td>
-                        <td>fsdfds</td>
-                        <td>Dell</td>
-                        <td><a href="#"><i class="fa fa-edit" style="font-size:24px"></i></a></td>
-                      </tr>
-                      <tr class="row">
-                        <td>3</td>
-                        <td>sfdsfsdf</td>
-                        <td>HP</td>
-                        <td><a href="#"><i class="fa fa-edit" style="font-size:24px"></i></a></td>
-                      </tr>
-                  </table>
+                <thead class="bg-primary">
+                <tr>
+                  <th>#</th>
+                  <th>Category</th>
+                  <th>Edit</th>
+                 </tr>
+                </thead>
+               
+              <tbody>
+                <tr>
+                  <th scope="row"></th>
+                   <td></td>
+                  <td>
+                    <a href=""><i class="fa fa-edit" style="font-size:24px"></i></a>
+                  </td>
+                </tr>
+               
+             
+              </tbody>  
+            </table>
                </div>
               
             </div>
