@@ -278,9 +278,9 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                         
                       </div>
                       <div class="col-lg-6"> <!--Category and brand-->
-                          <label for="brand" class="col-sm-2 control-label"> Category</label>
+                          <label for="category" class="col-sm-2 control-label"> Category</label>
                        <div class="col-lg-9">
-                          <input type="text" class="form-control" id="brand" placeholder="Category Can not be empty"required>
+                          <input type="text" class="form-control" id="category" name="categoryName" placeholder="Category Can not be empty"required>
                           </div><br><br><br>
                         <div class="text-center">
                           <button type="submit" class="btn btn-info">Save</button> 
