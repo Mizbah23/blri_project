@@ -3,6 +3,7 @@
 <html>
 <head>
 <title> Category</title>
+<link rel="icon" type="image/png" href="images/logo.png" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="Glance Design Dashboard Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
@@ -303,30 +304,25 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                 <div>
   
                   <table class="table table-responsive table-hover table-striped table-bordered table-condensed">
-                      <tr class="row bg-primary">
-                        <th class="col-lg-1 text-center">#</th>
-                        <th class="col-lg-8 text-center">Designation</th>
-                        <th class="col-lg-1 text-center">Edit</th>
-                      </tr>
-                      <tr class="row">
-                        <td>1</td>
-                        
-                        <td>Asus</td>
-                        <td><a href="#"><i class="fa fa-edit" style="font-size:24px"></i></a></td>
-                      </tr>
-                      <tr class="row">
-                        <td>2</td>
-                        
-                        <td>Dell</td>
-                        <td><a href="#"><i class="fa fa-edit" style="font-size:24px"></i></a></td>
-                      </tr>
-                      <tr class="row">
-                        <td>3</td>
-                       
-                        <td>HP</td>
-                        <td><a href="#"><i class="fa fa-edit" style="font-size:24px"></i></a></td>
-                      </tr>
-                  </table>
+                <thead class="bg-primary">
+                <tr>
+                  <th>#</th>
+                  <th>Designation</th>
+                  <th>Edit</th>
+                 </tr>
+                </thead>
+              <tbody>
+                <tr>
+                  <th scope="row"></th>
+                   <td></td>
+                  <td>
+                    <a href=""><i class="fa fa-edit" style="font-size:24px"></i></a>
+                  </td>
+                </tr>
+
+             
+              </tbody>  
+            </table>
                </div>
               
             </div>
