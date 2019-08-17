@@ -270,7 +270,8 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                 <h3 class="">Product Category</h3>
               </div>
               <div class="form-body">
-                <form class="form-horizontal"> 
+                <form class="form-horizontal" method="post"> 
+                  @csrf
                   <div class="form-group"> <!--Form-->
 
                    <div class="row">
@@ -280,6 +281,9 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                       <div class="col-lg-6"> <!--Category and brand-->
                           <label for="category" class="col-sm-2 control-label"> Category</label>
                        <div class="col-lg-9">
+                           @foreach ($errors->get('caName') as $error)
+                                   <p style="color: red">{{ $error}}</p>
+                                   @endforeach
                           <input type="text" class="form-control" id="category" name="categoryName" placeholder="Category Can not be empty"required>
                           </div><br><br><br>
                         <div class="text-center">
@@ -311,16 +315,18 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                   <th>Edit</th>
                  </tr>
                 </thead>
-               
+                @if(isset($categories))
+                  @foreach ($categories as $category)
               <tbody>
                 <tr>
                   <th scope="row"></th>
-                   <td></td>
+                   <td>{{$category->categoryName}}</td>
                   <td>
                     <a href=""><i class="fa fa-edit" style="font-size:24px"></i></a>
                   </td>
                 </tr>
-               
+               @endforeach
+               @endif
              
               </tbody>  
             </table>

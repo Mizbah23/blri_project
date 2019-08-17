@@ -32,4 +32,4 @@ Route::get('/setup/brand', 'brandController@index')->name('setup.brand');
 
 //Category
 Route::get('/setup/category', 'categoryController@index')->name('setup.category');
-
+Route::post('/setup/category', 'categoryController@categoryPost');
