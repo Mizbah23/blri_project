@@ -23,27 +23,33 @@ class divisionController extends Controller
                ]);
     	       $setuptypes= setuptype::all();
                $division=new division;
-                $division->divisionName=$request->divisionName;
-                $division->save();
+               $division->divisionName=$request->divisionName;
+               $division->save();
                $divisions=division::all();
                
 
               return view('setup.division')->with('setuptypes',$setuptypes)->with('divisions',$divisions);
           }
         public function divedit(Request $request,$id)
-    {
-    	$division=division::find($id);
-    	return view('setup.divedit')->with('division',$division);
-    }
+     {
+             $setuptypes= setuptype::all();
+    	       $division=division::find($id);
+    	       return view('setup.divedit')->with('division',$division)->with('setuptypes',$setuptypes);
+     }
 
-     public function divupdate(Request $request,$id)
+     public function update(Request $request,$id)
     {
+    	//dd('success');
+    	          $this->validate( $request,[
+                
+                'divisionName'=>'required|unique:divisions',
+              
+               ]);
     	$division=division::find($id);
     	$division->divisionName=$request->divisionName;
-    	
     	$division->save();
-
-    	return redirect()->route('setup.division');
+      return redirect()->route('setup.division');
+    	
     }          
        
     

@@ -327,7 +327,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                   <td>{{$section->division->divisionName}}</td>
                   <td>{{$section->sectionName}}</td>
                   <td>
-                    <a href="#"><i class="fa fa-edit" style="font-size:24px"></i></a>
+                    <a href="{{route('setup.secedit',[$section->id])}}"><i class="fa fa-edit" style="font-size:24px"></i></a>
                   </td>
                  
                 </tr>

@@ -37,6 +37,26 @@ class sectionController extends Controller
               
                
        }
+        public function secedit(Request $request,$id)
+     { 
+             $setuptypes= setuptype::all();
+             $section=Section::find($id);
+             return view('setup.secedit')->with('section',$section)->with('setuptypes',$setuptypes);
+     }
+
+     public function update(Request $request,$id)
+    {
+      //dd('success');
+                $this->validate( $request,[
+                
+                'sectionName'=>'required',
+              
+               ]);
+      $section=Section::find($id);
+      $section->sectionName=$request->sectionName;
+      $section->save();
+      return redirect()->route('setup.section');
+     }
 }
                
 
