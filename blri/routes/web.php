@@ -16,7 +16,9 @@ Route::get('/', 'homeController@index')->name('home.index');
 Route::get('/setup/Division', 'divisionController@index')->name('setup.division');
 Route::post('/setup/Division', 'divisionController@divisionPost');
 
-
+//Section
+Route::get('/setup/section', 'sectionController@index')->name('setup.section');
+Route::post('/setup/section', 'sectionController@sectionPost');
 
 Route::get('/setup/section', 'sectionController@index')->name('setup.section');
 Route::get('/setup/designation', 'designationController@index')->name('setup.designation');
