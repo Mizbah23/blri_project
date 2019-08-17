@@ -305,7 +305,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                 <thead class="bg-primary">
                 <tr>
                   <th>#</th>
-                  <th>Department</th>
+                  <th>Division</th>
                   <th>Edit</th>
                  </tr>
                 </thead>
