@@ -323,14 +323,16 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                   <th>Edit</th>
                  </tr>
                 </thead>
+                @php $i=0; @endphp
                 @if(isset($categories))
                   @foreach ($categories as $category)
+                  @php $i++ @endphp
               <tbody>
                 <tr>
-                  <th scope="row"></th>
+                  <th scope="row">{{$i}}</th>
                    <td>{{$category->categoryName}}</td>
                   <td>
-                    <a href=""><i class="fa fa-edit" style="font-size:24px"></i></a>
+                    <a href="{{route('setup.catedit',[$category->id])}}"><i class="fa fa-edit" style="font-size:24px"></i></a>
                   </td>
                 </tr>
                @endforeach

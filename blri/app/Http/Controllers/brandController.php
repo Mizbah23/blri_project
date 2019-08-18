@@ -31,8 +31,31 @@ class brandController extends Controller
                //$request->session()->put('division',$division);
               // return redirect()->route('setup.division');
 	    	       return view('setup.brand')->with('setuptypes',$setuptypes)->with('categories',$categories)->with('brands',$brands);
+              }
+               public function brandedit(Request $request,$id)
+             {
+
+             $setuptypes= setuptype::all();
+             $categories=Category::all();
+             $brand=Brand::find($id);
+             return view('setup.brandedit')->with('categories',$categories)->with('setuptypes',$setuptypes)->with('brand',$brand);
+             
+              }
+
+            public function update(Request $request,$id)
+    {
+                //dd('success');
+                $this->validate( $request,[
+                
+                'brandName'=>'required',
               
+               ]);
                
-       }
-    
+               $brand=Brand::find($id);
+               //$category->categoryName=$request->categoryName;
+               $brand->brandName=$request->brandName;
+               $brand->save();
+
+               return redirect()->route('setup.brand');
+     }
 }

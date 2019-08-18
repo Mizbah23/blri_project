@@ -323,11 +323,13 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                   <th>Edit</th>
                  </tr>
                 </thead>
+                 @php $i=0; @endphp
                   @if(isset($designations))
                   @foreach ($designations as $designation)
+                  @php $i++ @endphp
               <tbody>
                 <tr>
-                  <th scope="row"></th>
+                  <th scope="row">{{$i}}</th>
                    <td>{{$designation->designationName}}</td>
                   <td>
                     <a href="{{route('setup.desedit',[$designation->id])}}"><i class="fa fa-edit" style="font-size:24px"></i></a>

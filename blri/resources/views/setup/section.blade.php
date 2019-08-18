@@ -328,11 +328,13 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                  
                 </tr>
               </thead>
+              @php $i=0 @endphp
                @if(isset($sections))
                   @foreach ($sections as $section)
+                  @php $i++ @endphp
               <tbody>
                 <tr>
-                  <th scope="row"></th>
+                  <th scope="row">{{$i}}</th>
                   <td>{{$section->division->divisionName}}</td>
                   <td>{{$section->sectionName}}</td>
                   <td>
