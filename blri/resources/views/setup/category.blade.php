@@ -119,7 +119,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
             </button>
 
             <div style="margin-top: 10px">
-              <div class="col-lg-3 row mt-5">
+              <div class="col-lg-3">
                 <img style="height: 50px; width: 50px;" src="/images/logo.png" alt="">
               </div>
               <div class="col-lg-9">
