@@ -26,6 +26,7 @@ Route::post('/setup/section/{id}/edit', 'sectionController@update');
 
 //Designation
 Route::get('/setup/designation', 'designationController@index')->name('setup.designation');
+Route::post('/setup/designation', 'designationController@designationPost');
 
 //Brand
 Route::get('/setup/brand', 'brandController@index')->name('setup.brand');

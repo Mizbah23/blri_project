@@ -301,7 +301,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                   <label for="section" class="col-sm-2 control-label"> Section</label> 
                   <div class="col-sm-9"> <input type="text" required class="form-control" id="section" name="sectionName" placeholder="Section can not be empty"> </div>
                    </div>
-                 <div class="form-group"> <div class="col-sm-offset-4 col-sm-6">  </div> </div><br> <div class="col-sm-offset-4"> <button type="submit" class="btn btn-info">Save</button> <button type="submit" class="btn btn-danger">Cancel</button></div> </form> 
+                 <div class="form-group"> <div class="col-sm-offset-4 col-sm-6">  </div> </div><br> <div class="col-sm-offset-4"> <button type="submit" class="btn btn-info">Save</button> <button type="reset" class="btn btn-danger">Cancel</button></div> </form> 
               </div>
           </div>
           <div class="col-sm-4"></div>

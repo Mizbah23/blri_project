@@ -302,7 +302,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                           </div><br><br><br>
                         <div class="text-center">
                           <button type="submit" class="btn btn-info">Save</button> 
-                          <button onclick="handleCancel()" class="btn btn-danger">Cancel</button>
+                          <button type="reset" class="btn btn-danger">Cancel</button>
                         </div>
                          </form><!--end form-->
                       </div><!--Category and brand-->
@@ -774,13 +774,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
     
     <!-- Bootstrap Core JavaScript -->
    <script src="/js/bootstrap.js"> </script>
-    <!-- //Bootstrap Core JavaScript -->
-    <script type="text/javascript">
-      function handleCancel(){
-        console.log('submit');
-        document.getElementById('brand').value='';
-      }
-    </script>
+
     
 </body>
 </html>
