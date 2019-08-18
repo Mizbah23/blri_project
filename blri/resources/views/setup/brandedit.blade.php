@@ -283,7 +283,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
         <div class=" form-grids row form-grids-right">
             <div class="widget-shadow " data-example-id="basic-forms"> 
               <div class="form-title bg-primary">
-                <h4>Brand Edit</h4>
+                <h4>Brand Update</h4>
               </div>
               <div class="form-body">
                 <form class="form-horizontal" action="" method="post">
