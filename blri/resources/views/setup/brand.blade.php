@@ -270,7 +270,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                 <h3 class="">Brand Information</h3>
               </div>
               <div class="form-body">
-                <form class="form-horizontal"> 
+                <form class="form-horizontal" method="post"> 
                   @csrf
                   <div class="form-group"> <!--Form-->
 
@@ -281,18 +281,20 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                       <div class="col-lg-6"> <!--Category and brand-->
                           <label for="category" class="col-sm-2 control-label">Category</label>
                           <div class="col-lg-9">
-                              <select id="CategoryID" class="form-control required" required>
-                              <option value="">Select Category</option>
+                              <select id="category" name="categories" class="form-control required" required>
+                                                @foreach($categories as $category)
+                                               <option value="{{$category->id}}">{{$category->categoryName}}</option>
+                                               @endforeach
                               </select>
                           </div><br><br>
 
                           <label for="brand" class="col-sm-2 control-label">Brand</label>
                        <div class="col-lg-9">
-                          <input type="text" class="form-control" id="brand" placeholder="Name Can not be empty"required>
+                          <input type="text" class="form-control" id="brand" name="brandName" placeholder="Name Can not be empty"required>
                           </div><br><br><br>
                         <div class="text-center">
                           <button type="submit" class="btn btn-info">Save</button> 
-                          <button type="submit" class="btn btn-danger">Cancel</button>
+                          <button onclick="handleCancel()" class="btn btn-danger">Cancel</button>
                         </div>
                          </form><!--end form-->
                       </div><!--Category and brand-->
@@ -318,13 +320,17 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                         <th class="col-lg-8 text-center">Brand</th>
                         <th class="col-lg-1 text-center">Edit</th>
                       </tr>
+                   @if(isset($brands))
+                  @foreach ($brands as $brand)
                       <tr class="row">
-                        <td>1</td>
                         <td></td>
-                        <td></td>
+                        <td>{{$brand->category->categoryName}}</td>
+                        <td>{{$brand->brandName}}</td>
+                        
                         <td><a href="#"><i class="fa fa-edit" style="font-size:24px"></i></a></td>
                       </tr>
-                     
+                     @endforeach
+                     @endif
                   </table>
                </div>
               
@@ -761,6 +767,12 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
     <!-- Bootstrap Core JavaScript -->
    <script src="/js/bootstrap.js"> </script>
     <!-- //Bootstrap Core JavaScript -->
+    <script type="text/javascript">
+      function handleCancel(){
+        console.log('submit');
+        document.getElementById('brand').value='';
+      }
+    </script>
     
 </body>
 </html>

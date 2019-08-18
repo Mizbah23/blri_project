@@ -29,7 +29,7 @@ Route::get('/setup/designation', 'designationController@index')->name('setup.des
 
 //Brand
 Route::get('/setup/brand', 'brandController@index')->name('setup.brand');
-
+Route::post('/setup/brand', 'brandController@brandPost');
 //Category
 Route::get('/setup/category', 'categoryController@index')->name('setup.category');
 Route::post('/setup/category', 'categoryController@categoryPost');

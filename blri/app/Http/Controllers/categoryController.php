@@ -21,7 +21,7 @@ class categoryController extends Controller
                 'categoryName'=>'required|unique:categories',
               
                ]);
-    	       $setuptypes= setuptype::all();
+    	         $setuptypes= setuptype::all();
                $category=new Category;
                $category->categoryName=$request->categoryName;
                $category->save();
