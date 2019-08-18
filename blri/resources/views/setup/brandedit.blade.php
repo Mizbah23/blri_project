@@ -296,10 +296,20 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                       </div>
                       <div class="col-lg-6"> <!--Category and brand-->
 
-                          <label for="brand" class="col-sm-2 control-label">Brand</label>
+                               <label for="category" class="col-sm-2 control-label">Category</label>
+                  <div class="col-sm-9">
+
+                    <select class="form-control" id="category" name="categoryName" >
+                      @foreach($categories as $category)
+                        <option value="{{$category->id}}">{{$category->categoryName}}</option>
+                      @endforeach
+                    </select>
+                  </div>
+                  <br><br>
+                  <label for="brand" class="col-sm-2 control-label">Brand</label>
                        <div class="col-lg-9">
                           <input type="text" class="form-control" id="brand" name="brandName"  value="{{$brand->brandName}}"placeholder="Name Can not be empty"required>
-                                   @foreach ($errors->get('brandName') as $error)
+                                   @foreach ($errors->get('sectionName') as $error)
                                    <p style="color: red">{{ $error}}</p>
                                    @endforeach
                           </div><br><br><br>

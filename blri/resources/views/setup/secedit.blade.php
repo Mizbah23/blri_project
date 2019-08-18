@@ -294,7 +294,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                       <div class="col-lg-2">
                         
                       </div>
-                      <div class="col-lg-6"> <!--Category and brand-->
+                      <div class="col-lg-6"> <!--Division and Section-->
                         <label for="divisions" class="col-sm-2 control-label">Division</label>
                   <div class="col-sm-9">
 

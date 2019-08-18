@@ -317,12 +317,14 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                   <th>Edit</th>
                  </tr>
                 </thead>
+                @php $i=0 @endphp
                 @if(isset($divisions))
                   @foreach ($divisions as $division)
+                  @php $i++ @endphp
                
               <tbody>
                 <tr>
-                  <th scope="row"></th>
+                  <th scope="row">{{$i}}</th>
                    <td>{{$division->divisionName}}</td>
                   <td>
                     <a href="{{route('setup.divedit',[$division->id])}}"><i class="fa fa-edit" style="font-size:24px"></i></a>
