@@ -300,7 +300,9 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 
                     <select class="form-control" id="divisions" name="divisions">
                       @foreach($divisions as $division)
-                        <option value="{{$division->id}}">{{$division->divisionName}}</option>
+                        <option value="{{$division->id}}" @if ($section->division_id==$division->id)
+                            selected
+                        @endif>{{$division->divisionName}}</option>
                       @endforeach
                     </select>
                   </div>
