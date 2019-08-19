@@ -41,6 +41,12 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 <script src="/js/custom.js"></script>
 <link href="/css/custom.css" rel="stylesheet">
 <!--//Metis Menu -->
+// For autocomplete Search 
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.min.css">
+<link rel="stylesheet" href="https://jqueryui.com/resources/demos/style.css">
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+// For autocomplete Search 
 <style>
 #chartdiv {
   width: 100%;
@@ -311,16 +317,15 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                       </div>
                    </div> 
                      <div class="form-group" >
-                        <label for="searchoption" class="col-lg-9  control-label">Search</label>
+                        <label for="searchByBrandName" class="col-lg-9  control-label">Search</label>
                         <div class="col-lg-3">
-                            <input type="text" class="form-control" placeholder="search...">
+                            <input type="text" class="form-control" id="searchByBrandName" name="searchByBrandName" placeholder="Search by brand name">
                         </div>
                      </div> 
                   </div> 
                </div> 
 
-                <div>
-  
+                <div id="allBrands">
                   <table class="table table-responsive table-hover table-striped table-bordered table-condensed">
                       <tr class="row bg-primary">
                         <th class="col-lg-1 text-center">#</th>
@@ -328,20 +333,21 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                         <th class="col-lg-8 text-center">Brand</th>
                         <th class="col-lg-1 text-center">Edit</th>
                       </tr>
-                    @php $i=0; @endphp
-                   @if(isset($brands))
-                  @foreach ($brands as $brand)
-                   @php $i++; @endphp
-                      <tr class="row">
-                        <td>{{$i}}</td>
-                        <td>{{$brand->category->categoryName}}</td>
-                        <td>{{$brand->brandName}}</td>
-                        
-                        <td><a href="{{route('setup.brandedit',[$brand->id])}}"><i class="fa fa-edit" style="font-size:24px"></i></a></td>
-                      </tr>
-                     @endforeach
-                     @endif
+                        @if(isset($brands))
+                            @foreach ($brands as $key=>$brand)
+                                <tr class="row">
+                                    <td>{{++$key}}</td>
+                                    <td>{{$brand->category->categoryName}}</td>
+                                    <td>{{$brand->brandName}}</td>
+                                    
+                                    <td><a href="{{route('setup.brandedit',[$brand->id])}}"><i class="fa fa-edit" style="font-size:24px"></i></a></td>
+                                </tr>
+                            @endforeach
+                        @endif
                   </table>
+               </div>
+               <div id="searchedBrandValue">
+                   
                </div>
               
             </div>
@@ -776,7 +782,40 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
     
     <!-- Bootstrap Core JavaScript -->
    <script src="/js/bootstrap.js"> </script>
-
+   <script>
+       $( function() {
+           var brandNameTags={!!$brands->unique('brandName')->pluck('brandName')!!};
+           console.log(brandNameTags);
+           $( "#searchByBrandName" ).autocomplete({
+                source: brandNameTags
+            });
+       });
+       $( "#searchByBrandName" ).autocomplete({
+            select: function( event, ui ) {
+                $.ajax({
+                    type:'GET',
+                    url: "{{route('searchBrandByName')}}",
+                    data:{
+                        brandName: ui.item.value
+                    },
+                    success: function(data){
+                        $("#allBrands").hide();
+                        $("#searchedBrandValue").html(data);
+                        $("#searchedBrandValue").show();
+                    }
+                });
+                // console.log($("#searchByBrandName").val());
+            }
+        });
+        //This key up event handler is to only handle when the searchByBrandName field is empty
+        $("#searchByBrandName").keyup(function() {
+            //When the search value is empty then this function will work
+            if (!this.value) {
+                $("#allBrands").show();
+                $("#searchedBrandValue").hide();
+            }
+        });
+   </script>
     
 </body>
 </html>

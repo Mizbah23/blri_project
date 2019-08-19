@@ -36,6 +36,9 @@ Route::post('/setup/brand', 'brandController@brandPost');
 Route::get('/setup/brand/{id}/edit', 'brandController@brandedit')->name('setup.brandedit');
 Route::post('/setup/brand/{id}/edit', 'brandController@update');
 
+//Search
+Route::get('/search/brand','brandController@searchByBrandName')->name('searchBrandByName');
+
 //Category
 Route::get('/setup/category', 'categoryController@index')->name('setup.category');
 Route::post('/setup/category', 'categoryController@categoryPost');
