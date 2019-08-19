@@ -117,8 +117,16 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             </button>
-            <h1><a class="navbar-brand" href="{{route('home.index')}}"><span class="fa fa-area-chart"></span> BLRI<span class="dashboard_text"> dashboard</span></a></h1>
-          </div>
+
+            <div style="margin-top: 10px">
+              <div class="col-lg-3">
+                <img style="height: 50px; width: 50px;" src="/images/logo.png" alt="">
+              </div>
+              <div class="col-lg-9">
+                 <h1 style="margin-left: -25px"><a class="navbar-brand" href="index.html">  BLRI<span class="dashboard_text" style="margin-left: -35px">Design dashboard</span></a></h1>
+              </div>
+             </div>
+            </div>
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="sidebar-menu">
               <li class="header">MAIN NAVIGATION</li>
@@ -270,21 +278,25 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                 <h3 class="">Designation Information</h3>
               </div>
               <div class="form-body">
-                <form class="form-horizontal"> 
+                <form class="form-horizontal" method="post"> 
+                  @csrf
                   <div class="form-group"> <!--Form-->
 
                    <div class="row">
                       <div class="col-lg-2">
                         
                       </div>
-                      <div class="col-lg-6"> <!--Category and brand-->
-                          <label for="brand" class="col-sm-3 control-label">Designation</label>
+                      <div class="col-lg-6"> <!-- Designation-->
+                          <label for="designationName" class="col-sm-3 control-label">Designation</label>
                        <div class="col-lg-9">
-                          <input type="text" class="form-control" id="brand" placeholder="Designation name not be empty"required>
+                          <input type="text" class="form-control" id="designationName" name="designationName" placeholder="Designation name not be empty"required>
+                              @foreach ($errors->get('designationName') as $error)
+                                   <p style="color: red">{{ $error}}</p>
+                                   @endforeach
                           </div><br><br><br>
                         <div class="text-center">
                           <button type="submit" class="btn btn-info">Save</button> 
-                          <button type="submit" class="btn btn-danger">Cancel</button>
+                          <button type="reset" class="btn btn-danger">Cancel</button>
                         </div>
                          </form><!--end form-->
                       </div><!--Category and brand-->
@@ -311,16 +323,22 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                   <th>Edit</th>
                  </tr>
                 </thead>
+                 @php $i=0; @endphp
+                  @if(isset($designations))
+                  @foreach ($designations as $designation)
+                  @php $i++ @endphp
               <tbody>
                 <tr>
-                  <th scope="row"></th>
-                   <td></td>
+                  <th scope="row">{{$i}}</th>
+                   <td>{{$designation->designationName}}</td>
                   <td>
-                    <a href=""><i class="fa fa-edit" style="font-size:24px"></i></a>
+                    <a href="{{route('setup.desedit',[$designation->id])}}"><i class="fa fa-edit" style="font-size:24px"></i></a>
                   </td>
                 </tr>
 
-             
+                @endforeach
+                @endif
+
               </tbody>  
             </table>
                </div>

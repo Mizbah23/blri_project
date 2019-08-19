@@ -2,7 +2,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title> Brand</title>
+<title> Designation edit</title>
 <link rel="icon" type="image/png" href="/images/logo.png" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -144,12 +144,13 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                 <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
+                   @if(isset($setuptypes))
                  @foreach($setuptypes as $setuptype)
                     
                     <li><a href="{{route('setup.'.strtolower($setuptype->SType))}}">
                       <i class="fa fa-circle"></i> {{$setuptype->SType}}</a></li>
                  @endforeach
-                  
+                 @endif 
                 </ul>
               </li>
 
@@ -163,10 +164,10 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                 <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                  <li><a href="#"><i class="fa fa-circle"></i> General</a></li>
-                  <li><a href="#"><i class="fa fa-circle"></i> Icons</a></li>
-                  <li><a href="#"><i class="fa fa-circle"></i> Buttons</a></li>
-                  <li><a href="#"><i class="fa fa-circle"></i> Typography</a></li>
+                  <li><a href="general.html"><i class="fa fa-circle"></i> General</a></li>
+                  <li><a href="icons.html"><i class="fa fa-circle"></i> Icons</a></li>
+                  <li><a href="buttons.html"><i class="fa fa-circle"></i> Buttons</a></li>
+                  <li><a href="typography.html"><i class="fa fa-circle"></i> Typography</a></li>
                 </ul>
               </li>
               <li>
@@ -228,7 +229,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
     </div>
         <!--left-fixed -navigation-->
         
-               <!-- header-starts -->
+       <!-- header-starts -->
         <div class="sticky-header header-section ">
             <div class="header-left">
                 <!--toggle button start-->
@@ -268,95 +269,61 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
             <div class="clearfix"> </div>   
         </div>
         <!-- //header-ends -->
-   
- <!-- main content start-->
+        <!-- main content start-->
+<div class="jumbotron">
+  @if(session('response'))
+      <div class="col-mid-8 alert alert-success">
+        {{@session('response')}}
+      </div>
+      @endif
+                        
+
     <div id="page-wrapper">
       <div class="main-page">
         <div class=" form-grids row form-grids-right">
             <div class="widget-shadow " data-example-id="basic-forms"> 
-              <div class="form-title bg-primary text-white">
-                <h3 class="">Brand Information</h3>
+              <div class="form-title bg-primary">
+                <h4>Designation Update</h4>
               </div>
               <div class="form-body">
-                <form class="form-horizontal" method="post"> 
-                  @csrf
-                  <div class="form-group"> <!--Form-->
+                <form class="form-horizontal" action="" method="post">
+                @csrf
+                 <div class="form-group">
 
-                   <div class="row">
+                    <div class="row">
                       <div class="col-lg-2">
                         
                       </div>
                       <div class="col-lg-6"> <!--Category and brand-->
-                          <label for="category" class="col-sm-2 control-label">Category</label>
-                          <div class="col-lg-9">
-                              <select id="category" name="categories" class="form-control required" required>
-                                                @foreach($categories as $category)
-                                               <option value="{{$category->id}}">{{$category->categoryName}}</option>
-                                               @endforeach
-                              </select>
-                          </div><br><br>
 
-                          <label for="brand" class="col-sm-2 control-label">Brand</label>
+                          <label for="designation" class="col-sm-3 control-label">Designation</label>
                        <div class="col-lg-9">
-                          <input type="text" class="form-control" id="brand" name="brandName" placeholder="Name Can not be empty"required>
+                          <input type="text" class="form-control" id="designation" name="designationName"  value="{{$designation->designationName}}"placeholder="Name Can not be empty"required>
+                                   @foreach ($errors->get('designationName') as $error)
+                                   <p style="color: red">{{ $error}}</p>
+                                   @endforeach
                           </div><br><br><br>
                         <div class="text-center">
-                          <button type="submit" class="btn btn-info">Save</button> 
+                          <button type="submit" class="btn btn-info">Update</button> 
                           <button type="reset" class="btn btn-danger">Cancel</button>
                         </div>
-                         </form><!--end form-->
-                      </div><!--Category and brand-->
-                      <div class="col-lg-4">
-
-                      </div>
-                   </div> 
-                     <div class="form-group" >
-                        <label for="searchoption" class="col-lg-9  control-label">Search</label>
-                        <div class="col-lg-3">
-                            <input type="text" class="form-control" placeholder="search...">
-                        </div>
-                     </div> 
-                  </div> 
-               </div> 
-
-                <div>
-  
-                  <table class="table table-responsive table-hover table-striped table-bordered table-condensed">
-                      <tr class="row bg-primary">
-                        <th class="col-lg-1 text-center">#</th>
-                        <th class="col-lg-2 text-center">Category</th>
-                        <th class="col-lg-8 text-center">Brand</th>
-                        <th class="col-lg-1 text-center">Edit</th>
-                      </tr>
-                    @php $i=0; @endphp
-                   @if(isset($brands))
-                  @foreach ($brands as $brand)
-                   @php $i++; @endphp
-                      <tr class="row">
-                        <td>{{$i}}</td>
-                        <td>{{$brand->category->categoryName}}</td>
-                        <td>{{$brand->brandName}}</td>
-                        
-                        <td><a href="{{route('setup.brandedit',[$brand->id])}}"><i class="fa fa-edit" style="font-size:24px"></i></a></td>
-                      </tr>
-                     @endforeach
-                     @endif
-                  </table>
-               </div>
-              
+                  </form> <br><br>
+              </div>
             </div>
           </div>
-      
-          </div>
         </div>
+      </div>
+    </div><br><br><br><br>
+              
      
    
+
     <!--footer-->
     <div class="footer">
        <p>&copy; 2019  All Rights Reserved | Design by <a href="https://deshisysltd.com/" target="_blank">Deshi Systems Ltd.</a></p>       
     </div>
     <!--//footer-->
-    </div>
+
         
     <!-- new added graphs chart js-->
     
@@ -776,7 +743,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
     
     <!-- Bootstrap Core JavaScript -->
    <script src="/js/bootstrap.js"> </script>
-
+    <!-- //Bootstrap Core JavaScript -->
     
 </body>
 </html>

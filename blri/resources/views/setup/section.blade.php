@@ -3,7 +3,7 @@
 <html>
 <head>
 <title> Section</title>
-<link rel="icon" type="image/png" href="/images/logo.jpg"/>
+<link rel="icon" type="image/png" href="/images/logo.png"/>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="Glance Design Dashboard Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
@@ -117,8 +117,16 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             </button>
-            <h1><a class="navbar-brand" href="index.html"><span class="fa fa-area-chart"></span>  BLRI<span class="dashboard_text">Design dashboard</span></a></h1>
-          </div>
+
+            <div style="margin-top: 10px">
+              <div class="col-lg-3">
+                <img style="height: 50px; width: 50px;" src="/images/logo.png" alt="">
+              </div>
+              <div class="col-lg-9">
+                 <h1 style="margin-left: -25px"><a class="navbar-brand" href="index.html">  BLRI<span class="dashboard_text" style="margin-left: -35px">Design dashboard</span></a></h1>
+              </div>
+             </div>
+            </div>
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="sidebar-menu">
               <li class="header">MAIN NAVIGATION</li>
@@ -293,7 +301,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                   <label for="section" class="col-sm-2 control-label"> Section</label> 
                   <div class="col-sm-9"> <input type="text" required class="form-control" id="section" name="sectionName" placeholder="Section can not be empty"> </div>
                    </div>
-                 <div class="form-group"> <div class="col-sm-offset-4 col-sm-6">  </div> </div><br> <div class="col-sm-offset-4"> <button type="submit" class="btn btn-info">Save</button> <button type="submit" class="btn btn-danger">Cancel</button></div> </form> 
+                 <div class="form-group"> <div class="col-sm-offset-4 col-sm-6">  </div> </div><br> <div class="col-sm-offset-4"> <button type="submit" class="btn btn-info">Save</button> <button type="reset" class="btn btn-danger">Cancel</button></div> </form> 
               </div>
           </div>
           <div class="col-sm-4"></div>
@@ -314,17 +322,19 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                 <thead>
                 <tr class=" bg-primary">
                   <th>#</th>
-                  <th>Department</th>
+                  <th>Division</th>
                   <th>Section</th>
                   <th>Edit</th>
                  
                 </tr>
               </thead>
+              @php $i=0 @endphp
                @if(isset($sections))
                   @foreach ($sections as $section)
+                  @php $i++ @endphp
               <tbody>
                 <tr>
-                  <th scope="row"></th>
+                  <th scope="row">{{$i}}</th>
                   <td>{{$section->division->divisionName}}</td>
                   <td>{{$section->sectionName}}</td>
                   <td>

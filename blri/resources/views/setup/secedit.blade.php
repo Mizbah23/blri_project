@@ -2,7 +2,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title> Section</title>
+<title> Section edit</title>
 <link rel="icon" type="image/png" href="/images/logo.png" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -117,8 +117,16 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             </button>
-            <h1><a class="navbar-brand" href="index.html"><span class="fa fa-area-chart"></span> BLRI<span class="dashboard_text">Design dashboard</span></a></h1>
-          </div>
+
+            <div style="margin-top: 10px">
+              <div class="col-lg-3">
+                <img style="height: 50px; width: 50px;" src="/images/logo.png" alt="">
+              </div>
+              <div class="col-lg-9">
+                 <h1 style="margin-left: -25px"><a class="navbar-brand" href="index.html">  BLRI<span class="dashboard_text" style="margin-left: -35px">Design dashboard</span></a></h1>
+              </div>
+             </div>
+            </div>
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="sidebar-menu">
               <li class="header">MAIN NAVIGATION</li>
@@ -275,7 +283,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
         <div class=" form-grids row form-grids-right">
             <div class="widget-shadow " data-example-id="basic-forms"> 
               <div class="form-title bg-primary">
-                <h4>Section Information</h4>
+                <h4>Section Update</h4>
               </div>
               <div class="form-body">
                 <form class="form-horizontal" action="" method="post">
@@ -286,7 +294,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                       <div class="col-lg-2">
                         
                       </div>
-                      <div class="col-lg-6"> <!--Category and brand-->
+                      <div class="col-lg-6"> <!--Division and Section-->
                         <label for="divisions" class="col-sm-2 control-label">Division</label>
                   <div class="col-sm-9">
 

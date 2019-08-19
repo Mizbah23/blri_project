@@ -117,8 +117,16 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             </button>
-            <h1><a class="navbar-brand" href="index.html"><span class="fa fa-area-chart"></span> BLRI<span class="dashboard_text">Design dashboard</span></a></h1>
-          </div>
+
+            <div style="margin-top: 10px">
+              <div class="col-lg-3 ">
+                <img style="height: 50px; width: 50px;" src="/images/logo.png" alt="">
+              </div>
+              <div class="col-lg-9">
+                 <h1 style="margin-left: -25px"><a class="navbar-brand" href="index.html">  BLRI<span class="dashboard_text" style="margin-left: -35px">Design dashboard</span></a></h1>
+              </div>
+             </div>
+            </div>
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="sidebar-menu">
               <li class="header">MAIN NAVIGATION</li>
@@ -297,7 +305,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                           </div><br><br><br>
                         <div class="text-center">
                           <button type="submit" class="btn btn-info">Save</button> 
-                          <button type="submit" class="btn btn-danger">Cancel</button>
+                          <button type="reset" class="btn btn-danger">Cancel</button>
                         </div>
                   </form> <br><br>
               </div>
@@ -305,16 +313,18 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                 <thead class="bg-primary">
                 <tr>
                   <th>#</th>
-                  <th>Department</th>
+                  <th>Division</th>
                   <th>Edit</th>
                  </tr>
                 </thead>
+                @php $i=0 @endphp
                 @if(isset($divisions))
                   @foreach ($divisions as $division)
+                  @php $i++ @endphp
                
               <tbody>
                 <tr>
-                  <th scope="row"></th>
+                  <th scope="row">{{$i}}</th>
                    <td>{{$division->divisionName}}</td>
                   <td>
                     <a href="{{route('setup.divedit',[$division->id])}}"><i class="fa fa-edit" style="font-size:24px"></i></a>
