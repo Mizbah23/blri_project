@@ -10,8 +10,14 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/',function(){
 
-Route::get('/', 'homeController@index')->name('home.index');
+	return redirect()->route('home.index');
+});
+//login
+Route::get('/login','loginController@index')->name('login.index');
+
+Route::get('/home', 'homeController@index')->name('home.index');
 // Division
 Route::get('/setup/Division', 'divisionController@index')->name('setup.division');
 Route::post('/setup/Division', 'divisionController@divisionPost');
