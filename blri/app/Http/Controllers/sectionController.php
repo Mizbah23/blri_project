@@ -12,16 +12,12 @@ class sectionController extends Controller
 {
      public function index(){
     	 $setuptypes= setuptype::all();
-	     $divisions=division::all();
-	     $sections=Section::all();
-	     //dd($sections[0]->division);
-	     return view('setup.section')->with('setuptypes',$setuptypes)->with('divisions',$divisions)->with('sections',$sections);
-     
+        $divisions=division::all();
+        $sections=Section::all();
+        //dd($sections[0]->division);
+        return view('setup.section')->with('setuptypes',$setuptypes)->with('divisions',$divisions)->with('sections',$sections);
     }
     public function sectionPost(Request $request){
-              // dd($request->all());
-    	       $setuptypes= setuptype::all();
-    	       $divisions=division::all();
                $section=new Section;
                $section->sectionName=$request->sectionName;
                $section->division_id=$request->divisions;
@@ -30,12 +26,7 @@ class sectionController extends Controller
               // dd($division);
                $sections=Section::all();
 
-               
-               //$request->session()->put('division',$division);
-              // return redirect()->route('setup.division');
-	    	  return view('setup.section')->with('setuptypes',$setuptypes)->with('divisions',$divisions)->with('sections',$sections);
-              
-               
+               return redirect()->route('setup.section');
        }
         public function secedit(Request $request,$id)
      { 
@@ -47,16 +38,16 @@ class sectionController extends Controller
 
      public function update(Request $request,$id)
     {
-      //dd('success');
+//       dd($request->all());
                 $this->validate( $request,[
                 
                 'sectionName'=>'required',
               
                ]);
        $section=Section::find($id);
-    //$category->categoryName=$request->categoryName;
+       //$category->categoryName=$request->categoryName;
        $section->sectionName=$request->sectionName;
-       $section->division_id=$request->divisionName;
+       $section->division_id=$request->divisions;
        $section->save();
 
       return redirect()->route('setup.section');

@@ -16,6 +16,8 @@ Route::get('/',function(){
 });
 //login
 Route::get('/login','loginController@index')->name('login.index');
+Route::post('/login','loginController@verify');
+
 
 Route::get('/home', 'homeController@index')->name('home.index');
 // Division
@@ -41,6 +43,9 @@ Route::get('/setup/brand', 'brandController@index')->name('setup.brand');
 Route::post('/setup/brand', 'brandController@brandPost');
 Route::get('/setup/brand/{id}/edit', 'brandController@brandedit')->name('setup.brandedit');
 Route::post('/setup/brand/{id}/edit', 'brandController@update');
+
+//Search
+Route::get('/search/brand','brandController@searchByBrandName')->name('searchBrandByName');
 
 //Category
 Route::get('/setup/category', 'categoryController@index')->name('setup.category');

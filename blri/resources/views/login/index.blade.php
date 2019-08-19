@@ -57,11 +57,11 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 				<h2 class="title1 bg-dark"><img style="height: 50px; width: 50px" src="/images/logo.png" alt=""><p> Bangladesh Livestock Research Institute</p>Login</h2>
 				<div class="widget-shadow">
 					<div class="login-body">
-						<form action="#" method="post">
+						<form action="" method="post">
 							<input type="email" class="user" name="email" placeholder="Enter Your Email" required="">
 							<input type="password" name="password" class="lock" placeholder="Password" required="">
 							<div class="forgot-grid">
-								<label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i></i>Remember me</label>
+								<!--<label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i></i>Remember me</label>-->
 								<div class="forgot">
 									<a href="#">forgot password?</a>
 								</div>
