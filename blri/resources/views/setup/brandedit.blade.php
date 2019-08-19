@@ -295,13 +295,14 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                         
                       </div>
                       <div class="col-lg-6"> <!--Category and brand-->
-
                                <label for="category" class="col-sm-2 control-label">Category</label>
                   <div class="col-sm-9">
 
                     <select class="form-control" id="category" name="categoryName" >
                       @foreach($categories as $category)
-                        <option value="{{$category->id}}">{{$category->categoryName}}</option>
+                        <option value="{{$category->id}}" @if ($category->id==$brand->category_id)
+                            selected
+                        @endif>{{$category->categoryName}}</option>
                       @endforeach
                     </select>
                   </div>
@@ -315,7 +316,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                           </div><br><br><br>
                         <div class="text-center">
                           <button type="submit" class="btn btn-info">Update</button> 
-                          <button type="reset" class="btn btn-danger">Cancel</button>
+                          <button  onclick="cancelUpdate()" class="btn btn-danger">Cancel</button>
                         </div>
                   </form> <br><br>
               </div>
@@ -754,6 +755,12 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
     <!-- Bootstrap Core JavaScript -->
    <script src="/js/bootstrap.js"> </script>
     <!-- //Bootstrap Core JavaScript -->
+
+  <script>
+    function cancelUpdate() {
+      document.location.href="{!! route('setup.brand'); !!}";
+    }
+  </script>
     
 </body>
 </html>
