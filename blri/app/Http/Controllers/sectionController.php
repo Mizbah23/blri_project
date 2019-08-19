@@ -45,7 +45,7 @@ class sectionController extends Controller
               
                ]);
        $section=Section::find($id);
-    //$category->categoryName=$request->categoryName;
+       //$category->categoryName=$request->categoryName;
        $section->sectionName=$request->sectionName;
        $section->division_id=$request->divisions;
        $section->save();

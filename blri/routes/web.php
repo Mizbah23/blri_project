@@ -16,6 +16,8 @@ Route::get('/',function(){
 });
 //login
 Route::get('/login','loginController@index')->name('login.index');
+Route::post('/login','loginController@verify');
+
 
 Route::get('/home', 'homeController@index')->name('home.index');
 // Division
