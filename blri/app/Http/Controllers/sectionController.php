@@ -11,7 +11,7 @@ use App\Section;
 class sectionController extends Controller
 {
      public function index(){
-    	 $setuptypes= setuptype::all();
+    	$setuptypes= setuptype::all();
         $divisions=division::all();
         $sections=Section::all();
         //dd($sections[0]->division);
