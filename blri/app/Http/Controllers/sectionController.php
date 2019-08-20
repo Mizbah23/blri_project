@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\setuptype;
 use App\division;
 use App\Section;
+use App\SecurityType;
 
 
 class sectionController extends Controller
@@ -14,8 +15,10 @@ class sectionController extends Controller
     	$setuptypes= setuptype::all();
         $divisions=division::all();
         $sections=Section::all();
+        $securitytypes=SecurityType::all();
+
         //dd($sections[0]->division);
-        return view('setup.section')->with('setuptypes',$setuptypes)->with('divisions',$divisions)->with('sections',$sections);
+        return view('setup.section')->with('setuptypes',$setuptypes)->with('divisions',$divisions)->with('sections',$sections)->with('securitytypes',$securitytypes);
     }
     public function sectionPost(Request $request){
                $section=new Section;
@@ -31,9 +34,10 @@ class sectionController extends Controller
         public function secedit(Request $request,$id)
      { 
              $setuptypes= setuptype::all();
+             $securitytypes=SecurityType::all();
              $divisions=division::all();
              $section=Section::find($id);
-             return view('setup.secedit')->with('section',$section)->with('setuptypes',$setuptypes)->with('divisions',$divisions);
+             return view('setup.secedit')->with('section',$section)->with('setuptypes',$setuptypes)->with('divisions',$divisions)->with('securitytypes',$securitytypes);
      }
 
      public function update(Request $request,$id)
