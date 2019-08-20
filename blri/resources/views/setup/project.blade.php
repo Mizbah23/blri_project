@@ -117,8 +117,38 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                     <!-- //requried-jsfiles-for owl -->
 <!--date picker-->
   <script>
-  $( function() {
-    $( "#datepicker" ).datepicker();
+$( function() {
+    var dateFormat = "dd/mm/yy",
+      from = $( "#from" )
+        .datepicker({
+          defaultDate: "+1w",
+          changeMonth: true,
+          changeYear: true,
+          numberOfMonths: 1
+        })
+        .on( "change", function() {
+          to.datepicker( "option", "minDate", getDate( this ) );
+        }),
+      to = $( "#to" ).datepicker({
+        defaultDate: "+1w",
+        changeMonth: true,
+        changeYear: true,
+        numberOfMonths: 1
+      })
+      .on( "change", function() {
+        from.datepicker( "option", "maxDate", getDate( this ) );
+      });
+ 
+    function getDate( element ) {
+      var date;
+      try {
+        date = $.datepicker.parseDate( dateFormat, element.value );
+      } catch( error ) {
+        date = null;
+      }
+ 
+      return date;
+    }
   } );
   </script>
   
@@ -329,13 +359,13 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 
                         <label class="col-md-5 control-label" >Start Date</label>
                           <div class="col-md-7">
-                            <input class="form-control" type="text" id="datepicker"></p>
+                            <input class="form-control" type="text" id="from"></p>
                           </div><br><br>
 
                           <label class="col-md-5 control-label" >End Date</label>
                           <div class="col-md-7">
                             
-                          <input class="form-control" type="text" id="datepicker"></p>
+                          <input class="form-control" type="text" id="to"></p>
                           </div><br><br>
 
 
