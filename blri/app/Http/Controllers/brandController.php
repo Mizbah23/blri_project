@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\setuptype;
 use App\Category;
 use App\Brand;
+use App\SecurityType;
 
 class brandController extends Controller
 {
@@ -13,9 +14,10 @@ class brandController extends Controller
     $setuptypes= setuptype::all();
     $categories= Category::all();
     $brands= Brand::all();
+    $securitytypes=SecurityType::all();
     // $brandNames=$brands->unique('brandName')->pluck('brandName');//Get unique brandName
     // dd($brandNames);
-    return view('setup.brand')->with('setuptypes',$setuptypes)->with('categories',$categories)->with('brands',$brands);
+    return view('setup.brand')->with('setuptypes',$setuptypes)->with('categories',$categories)->with('brands',$brands)->with('securitytypes',$securitytypes);
   }
   public function brandPost(Request $request){
       $brand=new Brand;
