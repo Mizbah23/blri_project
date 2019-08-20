@@ -66,7 +66,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 								</div>
 								<div class="clearfix"> </div>
 							</div>
-							<input type="submit" name="Sign In" value="Login">
+							<input type="submit" name="login" value="Login">
 							
 						</form>
 					</div>

@@ -10,7 +10,7 @@ class repairerController extends Controller
     	$setuptypes= setuptype::all();
        
         //dd($sections[0]->division);
-        return view('setup.repairerinfo')->with('setuptypes',$setuptypes);
+        return view('setup.repairer info')->with('setuptypes',$setuptypes);
     
       }
 }

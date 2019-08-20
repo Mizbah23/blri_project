@@ -5,23 +5,15 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\setuptype;
 
+
 class homeController extends Controller
 {
-    public function index(){
-      $setuptypes= setuptype::all();
-      return view('home.index')->with('setuptypes',$setuptypes);
-       }
-
-       public function setup($type){
-       	    //dd($type);
-
-       	    $setuptypes=setuptype::where('SType',$type)->first();
-       	    //dd($setuptypes);
-       	    if($type=='Division'){
-              return redirect()->action('divisionController@index');
-
-       	    // return view('setup.division')->with('type',$setuptypes);
-            }
-        }
+  
+    public function index()
+    {
+        $setuptypes= setuptype::all();
+       
+        //dd($sections[0]->division);
+        return view('home.index')->with('setuptypes',$setuptypes);
+    }
 }
-//SignIn::where('user_name', $request->user_name)->first();

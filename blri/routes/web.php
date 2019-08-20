@@ -14,9 +14,7 @@ Route::get('/',function(){
 
 	return redirect()->route('home.index');
 });
-//login
-Route::get('/login','loginController@index')->name('login.index');
-Route::post('/login','loginController@verify');
+
 
 
 Route::get('/home', 'homeController@index')->name('home.index');
@@ -64,7 +62,10 @@ Route::get('/setup/supplier', 'supplierController@index')->name('setup.supplier'
 Route::get('/setup/product', 'productController@index')->name('setup.product');
 
 //Employee Assign
-Route::get('/setup/assignemployee', 'empAssignController@index')->name('setup.employeeassign');
+Route::get('/setup/assignemployee', 'empAssignController@index')->name('setup.employee assign');
 
 //Repirer
-Route::get('/setup/repairer_information', 'repairerController@index')->name('setup.repairerinfo');
+Route::get('/setup/repairer_information', 'repairerController@index')->name('setup.repairer info');
+
+
+// Route::get('/home', 'HomeController@index')->name('home');

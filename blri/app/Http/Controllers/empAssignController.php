@@ -11,7 +11,7 @@ class empAssignController extends Controller
     	$setuptypes= setuptype::all();
        
         //dd($sections[0]->division);
-        return view('setup.employeeassign')->with('setuptypes',$setuptypes);
+        return view('setup.employee assign')->with('setuptypes',$setuptypes);
     
       }
 }

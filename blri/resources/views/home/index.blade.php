@@ -135,6 +135,16 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                 <i class="fa fa-dashboard"></i> <span>Dashboard</span>
                 </a>
               </li>
+              <li class="treeview">
+                <a href="#">
+                <i class="fa fa-shield"></i> <span>Security</span>
+                <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                  <li><a href="forms.html"><i class="fa fa-circle"></i> General Forms</a></li>
+                  <li><a href="validation.html"><i class="fa fa-circle"></i> Form Validations</a></li>
+                </ul>
+              </li>
              
 
               <li class="treeview">
@@ -152,8 +162,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                   
                 </ul>
               </li>
-
-             
+           
              
               <li class="treeview">
               <li class="treeview">
