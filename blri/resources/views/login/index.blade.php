@@ -8,6 +8,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <html>
 <head>
 <title>Login::BLRI</title>
+<link rel="icon" type="image/png" href="/images/logo.png" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="Glance Design Dashboard Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
@@ -51,9 +52,9 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 			
 		<!-- //header-ends -->
 		<!-- main content start-->
-		<div id="page-wrapper">
+		<div id="page-wrapper" style="margin-top: -50px">
 			<div class="main-page login-page ">
-				<h2 class="title1">Login</h2>
+				<h2 class="title1 bg-dark"><img style="height: 50px; width: 50px" src="/images/logo.png" alt=""><p> Bangladesh Livestock Research Institute</p>Login</h2>
 				<div class="widget-shadow">
 					<div class="login-body">
 						<form action="" method="post">
