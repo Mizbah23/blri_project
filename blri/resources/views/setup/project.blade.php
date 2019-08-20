@@ -2,7 +2,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title> Brand</title>
+<title>Project</title>
 <link rel="icon" type="image/png" href="/images/logo.png" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -23,11 +23,17 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 <!-- side nav css file -->
 <link href='/css/SidebarNav.min.css' media='all' rel='stylesheet' type='text/css'/>
 <!-- //side nav css file -->
+
+  <link rel="stylesheet" href="/css/jquery-ui.css" type='text/css'/>
+
  
  <!-- js-->
 <script src="/js/jquery-1.11.1.min.js"></script>
 <script src="/js/modernizr.custom.js"></script>
 
+
+<script src="/js/jquery-1.12.4.js"></script>
+<script src="/js/jquery-ui.js"></script>
 <!--webfonts-->
 <link href="//fonts.googleapis.com/css?family=PT+Sans:400,400i,700,700i&amp;subset=cyrillic,cyrillic-ext,latin-ext" rel="stylesheet">
 <!--//webfonts--> 
@@ -109,6 +115,13 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                             });
                         </script>
                     <!-- //requried-jsfiles-for owl -->
+<!--date picker-->
+  <script>
+  $( function() {
+    $( "#datepicker" ).datepicker();
+  } );
+  </script>
+  
 </head> 
 <body class="cbp-spmenu-push">
     <div class="main-content">
@@ -285,15 +298,62 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
               </div>
               <div class="form-body">
                 <form class="form-horizontal" method="post"> 
-                  @csrf
                   <div class="form-group"> <!--Form-->
 
-                   <div class="row">
-                      <div class="col-lg-2">
-                        
+                    <div class="row">
+                       <!--left side starts-->
+                      <div class="col-md-6">
+
+                        <label for="brand" class="col-sm-5 control-label">Project Name</label>
+                       <div class="col-lg-7">
+                          <input type="text" class="form-control" id="" name="" placeholder="Project name can not be empty"required>
+                          </div><br><br>
+
+                          <label for="brand" class="col-sm-5 control-label">Address</label>
+                       <div class="col-lg-7">
+                        <textarea name=" "class="form-control" placeholder="Address can not be empty"required></textarea>
+                          </div><br><br><br>
+
+                        <label for="category" class="col-sm-5 control-label">Project Director</label>
+                          <div class="col-lg-7">
+                              <select id="category" name="categories" class="form-control required" required>
+                                 <option value=""></option>
+                              </select>
+                          </div><br><br>
                       </div>
-                      <div class="col-lg-6"> <!--Category and brand-->
-                          <label for="category" class="col-sm-2 control-label">Category</label>
+                      <!--End left side-->
+
+
+                      <!--right side starts-->
+                      <div class="col-md-6">
+
+                        <label class="col-md-5 control-label" >Start Date</label>
+                          <div class="col-md-7">
+                            <input class="form-control" type="text" id="datepicker"></p>
+                          </div><br><br>
+
+                          <label class="col-md-5 control-label" >End Date</label>
+                          <div class="col-md-7">
+                            
+                          <input class="form-control" type="text" id="datepicker"></p>
+                          </div><br><br>
+
+
+                        <label for="brand" class="col-sm-5 control-label">Description</label>
+                       <div class="col-lg-7">
+                        <textarea name=" "class="form-control" placeholder="Description can not be empty"required></textarea>
+                          </div><br><br>
+                          
+                      </div>
+                      <!--right side starts-->
+
+                    </div>
+
+                  </div>
+
+<!--                   <div class="row">
+                   <div class="col-lg-6"> Category and brand-->
+                       <!--   <label for="category" class="col-sm-2 control-label">Category</label>
                           <div class="col-lg-9">
                               <select id="category" name="categories" class="form-control required" required>
                                                
@@ -306,16 +366,29 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                        <div class="col-lg-9">
                           <input type="text" class="form-control" id="brand" name="brandName" placeholder="Name Can not be empty"required>
                           </div><br><br><br>
+
+                          <div class="col-lg-6">
+                            <label for="category" class="col-sm-2 control-label">Category</label>
+                          <div class="col-lg-9">
+                              <select id="category" name="categories" class="form-control required" required>
+                                               
+                                               <option value=""></option>
+                                              
+                              </select>
+                          </div><br><br>
+
+                          <label for="brand" class="col-sm-2 control-label">Brand</label>
+                       <div class="col-lg-9">
+                          <input type="text" class="form-control" id="brand" name="brandName" placeholder="Name Can not be empty"required>
+                          </div><br><br><br>
+                          </div>
+
                         <div class="text-center">
                           <button type="submit" class="btn btn-info">Save</button> 
                           <button type="reset" class="btn btn-danger">Cancel</button>
                         </div>
-                         </form><!--end form-->
-                      </div><!--Category and brand-->
-                      <div class="col-lg-4">
-
-                      </div>
-                   </div> 
+                         </form>end form-->
+                      <!--Category and brand-->
                      <div class="form-group" >
                         <label for="searchByBrandName" class="col-lg-9  control-label">Search</label>
                         <div class="col-lg-3">
