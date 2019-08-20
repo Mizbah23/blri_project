@@ -47,12 +47,12 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 <script src="/js/custom.js"></script>
 <link href="/css/custom.css" rel="stylesheet">
 <!--//Metis Menu -->
-// For autocomplete Search 
+ <!--For autocomplete Search -->
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.min.css">
 <link rel="stylesheet" href="https://jqueryui.com/resources/demos/style.css">
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
-// For autocomplete Search 
+<!--// For autocomplete Search -->
 <style>
 #chartdiv {
   width: 100%;
@@ -121,7 +121,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
     $( "#datepicker" ).datepicker();
   } );
   </script>
-  
+
 </head> 
 <body class="cbp-spmenu-push">
     <div class="main-content">
@@ -294,7 +294,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
         <div class=" form-grids row form-grids-right">
             <div class="widget-shadow " data-example-id="basic-forms"> 
               <div class="form-title bg-primary text-white">
-                <h3 class="">Brand Information</h3>
+                <h3 class="">Project Information</h3>
               </div>
               <div class="form-body">
                 <form class="form-horizontal" method="post"> 
@@ -341,16 +341,35 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 
                         <label for="brand" class="col-sm-5 control-label">Description</label>
                        <div class="col-lg-7">
-                        <textarea name=" "class="form-control" placeholder="Description can not be empty"required></textarea>
+                        <textarea name=" "class="form-control" placeholder="Description can not be empty"required></textarea><br><br>
                           </div><br><br>
                           
                       </div>
-                      <!--right side starts-->
+                      <!--right side end-->
 
+                      <!--buttons starts-->
+                      <div class="row">
+                        <div class="col-md-3">
+                          
+                        </div>
+                        <br><br>
+                        <div class="col-md-5">
+                          <div class="text-center">
+                          <button type="submit" class="btn btn-info">Save</button> 
+                          <button type="reset" class="btn btn-danger">Cancel</button>
+                          </div>
+
+                        </div>
+                        <div class="col-md-4">
+                          
+                        </div>
+                        
+                      </div>
+                      <!--button ends-->
                     </div>
 
                   </div>
-
+              </form>
 <!--                   <div class="row">
                    <div class="col-lg-6"> Category and brand-->
                        <!--   <label for="category" class="col-sm-2 control-label">Category</label>
@@ -389,12 +408,26 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                         </div>
                          </form>end form-->
                       <!--Category and brand-->
-                     <div class="form-group" >
-                        <label for="searchByBrandName" class="col-lg-9  control-label">Search</label>
-                        <div class="col-lg-3">
-                            <input type="text" class="form-control" id="searchByBrandName" name="searchByBrandName" placeholder="Search by brand name">
+                      <!--Search option starts-->
+                      <div class="row">
+                        <div class="col-md-8"></div>
+
+
+                        <div class="col-md-1">
+                          <label for="searchByBrandName"  class="col-md-4  control-label">Search</label>
+                          
                         </div>
-                     </div> 
+
+                        <div class="col-md-3">
+                          <input type="text" class="form-control" id="searchByBrandName" name="searchByBrandName" placeholder="Search by brand name">
+                        </div>
+
+
+                      </div>
+
+                      <!--Search option stops-->
+
+                     
                   </div> 
                </div> 
 

@@ -304,13 +304,27 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 
                       </div>
                    </div> 
-                     <div class="form-group" >
-                        <label for="searchoption" class="col-lg-9  control-label">Search</label>
-                        <div class="col-lg-3">
-                            <input type="text" class="form-control" placeholder="search...">
-                        </div>
-                     </div> 
+                  
                   </div> 
+
+                  <!--Search option starts-->
+                      <div class="row">
+                        <div class="col-md-8"></div>
+
+
+                        <div class="col-md-1">
+                          <label for="searchByBrandName"  class="col-md-4  control-label">Search</label>
+                          
+                        </div>
+
+                        <div class="col-md-3">
+                          <input type="text" class="form-control" id="searchByBrandName" name="searchByBrandName" placeholder="Search by brand name">
+                        </div>
+
+
+                      </div>
+
+                      <!--Search option stops-->
                </div> 
 
                 <div>
