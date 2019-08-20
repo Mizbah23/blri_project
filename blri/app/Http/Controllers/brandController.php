@@ -28,10 +28,11 @@ class brandController extends Controller
       return redirect()->route('setup.brand');
   }
   public function brandedit(Request $request,$id){
+    $securitytypes=SecurityType::all();
     $setuptypes= setuptype::all();
     $categories=Category::all();
     $brand=Brand::find($id);
-    return view('setup.brandedit')->with('categories',$categories)->with('setuptypes',$setuptypes)->with('brand',$brand);
+    return view('setup.brandedit')->with('categories',$categories)->with('setuptypes',$setuptypes)->with('brand',$brand)->with('securitytypes',$securitytypes);
   }
 
   public function update(Request $request,$id){

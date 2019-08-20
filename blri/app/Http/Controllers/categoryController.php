@@ -30,14 +30,15 @@ class categoryController extends Controller
                $categories=Category::all();
                
 
-              return view('setup.category')->with('setuptypes',$setuptypes)->with('categories',$categories);
+               return redirect()->route('setup.category');
           }
            public function catedit(Request $request,$id)
-     {
-     	     
-             $setuptypes= setuptype::all();
+     {  
+
+     	     $securitytypes=SecurityType::all();     
+           $setuptypes= setuptype::all();
     	     $category=Category::find($id);
-    	       return view('setup.catedit')->with('category',$category)->with('setuptypes',$setuptypes);
+    	       return view('setup.catedit')->with('category',$category)->with('setuptypes',$setuptypes)->with('securitytypes',$securitytypes);
      }
 
      public function update(Request $request,$id)
