@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\setuptype;
 use App\Category;
+use App\SecurityType;
 
 class categoryController extends Controller
 {
@@ -12,7 +13,8 @@ class categoryController extends Controller
    public function index(){
    $setuptypes= setuptype::all();
    $categories= Category::all();
-   return view('setup.category')->with('setuptypes',$setuptypes)->with('categories',$categories);
+   $securitytypes=SecurityType::all();
+   return view('setup.category')->with('setuptypes',$setuptypes)->with('categories',$categories)->with('securitytypes',$securitytypes);
    }
       public function categoryPost(Request $request){
       	       //dd('success');

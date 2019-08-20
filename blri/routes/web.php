@@ -18,6 +18,14 @@ Route::get('/',function(){
 
 
 Route::get('/home', 'homeController@index')->name('home.index');
+
+//Security-> 
+//Create User
+Route::get('/security/user_create', 'createuserController@index')->name('security.create user');
+
+//User Permission
+Route::get('/security/user_permission', 'userpermController@index')->name('security.user permission');
+
 // Division
 Route::get('/setup/Division', 'divisionController@index')->name('setup.division');
 Route::post('/setup/Division', 'divisionController@divisionPost');

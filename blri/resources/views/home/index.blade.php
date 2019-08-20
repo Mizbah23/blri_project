@@ -141,8 +141,11 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                 <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                  <li><a href="forms.html"><i class="fa fa-circle"></i> General Forms</a></li>
-                  <li><a href="validation.html"><i class="fa fa-circle"></i> Form Validations</a></li>
+                @foreach($securitytypes as $securitytype)
+                   
+                      <li><a href="{{route('security.'.strtolower($securitytype->SecType))}}">
+                      <i class="fa fa-circle"></i> {{$securitytype->SecType}}</a></li>
+                 @endforeach
                 </ul>
               </li>
              
