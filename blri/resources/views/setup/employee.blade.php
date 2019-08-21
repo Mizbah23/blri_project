@@ -25,6 +25,8 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 <!-- //side nav css file -->
 
   <link rel="stylesheet" href="/css/jquery-ui.css" type='text/css'/>
+ <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
 
  
  <!-- js-->
@@ -118,7 +120,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 <!--date picker-->
   <script>
   $( function() {
-    $( "#datepicker" ).datepicker();
+    $( ".datepicker" ).datepicker({  maxDate: "+1D" });
   } );
   </script>
   
@@ -356,13 +358,13 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 
                         <label class="col-md-6 control-label" >Joinig Date</label>
                           <div class="col-md-6">
-                            <input class="form-control" type="text" id="datepicker"></p>
+                            <input class="form-control datepicker" type="text">
                           </div><br><br>
 
                           <label class="col-md-6 control-label" >Birth Date</label>
                           <div class="col-md-6">
                             
-                          <input class="form-control" type="date" id="datepicker"></p>
+                          <input type="text" class="form-control datepicker">
                           </div><br><br>
 
                            <label  class="col-sm-6 control-label">Working Place</label>
