@@ -359,7 +359,7 @@ $( function() {
                               <select id="category" name="categories" class="form-control required" required>
                                  <option value="">Select Menu</option>
                               </select>
-                          </div><br><br>
+                          </div><br><br><br>
 
                       </div>
                       <!--End left side-->
