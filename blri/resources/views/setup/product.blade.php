@@ -323,20 +323,21 @@ $( function() {
               </div>
               <div class="form-body">
                 <form class="form-horizontal" method="post"> 
+                  @csrf
                   <div class="form-group"> <!--Form-->
 
                     <div class="row">
                        <!--left side starts-->
                       <div class="col-md-6">
 
-                        <label  class="col-sm-6 control-label">Product Code</label>
+                        <label for="productCode"  class="col-sm-6 control-label">Product Code</label>
                        <div class="col-lg-6">
-                          <input type="text" class="form-control" id="" name="" placeholder="Product code can not be empty"required>
+                          <input type="text" class="form-control" id="productCode" name="PCode" placeholder="Product code can not be empty"required>
                           </div><br><br>
 
-                          <label  class="col-sm-6 control-label">Product </label>
+                          <label for="product" class="col-sm-6 control-label">Product </label>
                        <div class="col-lg-6">
-                          <input type="text" class="form-control" id="" name="" placeholder="Product name can not be empty"required>
+                          <input type="text" class="form-control" id="product" name="ProductName" placeholder="Product name can not be empty"required>
                           </div><br><br>
 
 
@@ -347,17 +348,21 @@ $( function() {
                       <!--right side starts-->
                       <div class="col-md-6">
 
-                        <label for="category" class="col-sm-5 control-label">Brand</label>
+                        <label for="brand" class="col-sm-5 control-label">Brand</label>
                           <div class="col-lg-7">
-                              <select id="category" name="categories" class="form-control required" required>
-                                 <option value="">Select Brand</option>
+                              <select id="brand" name="brandName" class="form-control required" required>
+                                 @foreach($brands as $brand)
+                                 <option value="{{$brand->id}}">{{$brand->brandName}}</option>
+                                 @endforeach
                               </select>
                           </div><br><br>
 
                           <label for="category" class="col-sm-5 control-label">Category</label>
                           <div class="col-lg-7">
-                              <select id="category" name="categories" class="form-control required" required>
-                                 <option value="">Select Category</option>
+                              <select id="category" name="categoryName" class="form-control required" required>
+                                @foreach($categories as $category)
+                                 <option value="{{$category->id}}">{{$category->categoryName}}</option>
+                                 @endforeach
                               </select>
                           </div><br><br><br><br>
                         
@@ -449,23 +454,42 @@ $( function() {
                </div> 
 
                 <div id="allBrands">
-                  <table class="table table-responsive table-hover table-striped table-bordered table-condensed">
-                      <tr class="row bg-primary">
-                        <th class="col-lg-1 text-center">#</th>
-                        <th class="col-lg-2 text-center">Category</th>
-                        <th class="col-lg-8 text-center">Brand</th>
-                        <th class="col-lg-1 text-center">Edit</th>
-                      </tr>
-                      
-                                <tr class="row">
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    
-                                    <td><a href=""><i class="fa fa-edit" style="font-size:24px"></i></a></td>
-                                </tr>
-                           
-                  </table>
+                <table class="table table-responsive table-hover table-striped table-bordered table-condensed">
+                <thead class="bg-primary">
+                <tr>
+                  <th>#</th>
+                  <th>Product Code</th>
+                  <th>Product</th>
+                  <th>Category</th>
+                  <th>Brand</th>
+                  <th>Edit</th>
+                 </tr>
+                </thead>
+                @php $i=0 @endphp
+                  @if(isset($productinfos))
+                  @foreach ($productinfos as $productinfo)
+                  @foreach ($categories as $category)
+                  @foreach ($brands as $brand)
+                  @php $i++ @endphp
+               
+              <tbody>
+                <tr>
+                  <th scope="row">{{$i}}</th>
+                   <td>{{$productinfo->PCode}}</td>
+                   <td>{{$productinfo->ProductName}}</td>
+                   <td>{{$category->categoryName}}</td>
+                   <td>{{$brand->brandName}}</td>
+                   
+                  <td>
+                    <a href=""><i class="fa fa-edit" style="font-size:24px"></i></a>
+                  </td>
+                </tr>
+                 @endforeach
+                 @endforeach
+                 @endforeach
+                 @endif
+              </tbody>  
+            </table>
                </div>
                <div id="searchedBrandValue">
                    
