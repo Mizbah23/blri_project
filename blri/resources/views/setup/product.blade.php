@@ -323,7 +323,7 @@ $( function() {
               </div>
               <div class="form-body">
                 <form class="form-horizontal" method="post"> 
-                  @csrf
+                	@csrf
                   <div class="form-group"> <!--Form-->
 
                     <div class="row">
@@ -351,7 +351,7 @@ $( function() {
                         <label for="brand" class="col-sm-5 control-label">Brand</label>
                           <div class="col-lg-7">
                               <select id="brand" name="brandName" class="form-control required" required>
-                                 @foreach($brands as $brand)
+                              	 @foreach($brands as $brand)
                                  <option value="{{$brand->id}}">{{$brand->brandName}}</option>
                                  @endforeach
                               </select>
@@ -360,7 +360,7 @@ $( function() {
                           <label for="category" class="col-sm-5 control-label">Category</label>
                           <div class="col-lg-7">
                               <select id="category" name="categoryName" class="form-control required" required>
-                                @foreach($categories as $category)
+                              	@foreach($categories as $category)
                                  <option value="{{$category->id}}">{{$category->categoryName}}</option>
                                  @endforeach
                               </select>
