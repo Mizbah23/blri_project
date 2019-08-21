@@ -367,7 +367,7 @@ $( function() {
                         <br><br>
                         <div class="col-md-5">
                           <div class="text-center">
-                          <button type="submit" class="btn btn-info">Save</button> 
+                          <button style="margin-left: -200px" type="submit" class="btn btn-info">Save</button> 
                           <button type="reset" class="btn btn-danger">Cancel</button>
                           </div>
 
