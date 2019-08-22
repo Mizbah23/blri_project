@@ -58,6 +58,10 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
   width: 100%;
   height: 295px;
 }
+.error{
+  font-size: 0.9em;
+  color: red;
+}
 </style>
 <!--pie-chart --><!-- index page sales reviews visitors pie chart -->
 <script src="/js/pie-chart.js" type="text/javascript"></script>
@@ -322,7 +326,7 @@ $( function() {
                 <h3 class="">Product Information</h3>
               </div>
               <div class="form-body">
-                <form class="form-horizontal" method="post"> 
+                <form class="form-horizontal" method="post" > 
                 	@csrf
                   <div class="form-group"> <!--Form-->
 
@@ -332,13 +336,15 @@ $( function() {
 
                         <label for="productCode"  class="col-sm-6 control-label">Product Code</label>
                        <div class="col-lg-6">
-                          <input type="text" class="form-control" id="productCode" name="PCode" placeholder="Product code can not be empty"required>
-                          </div><br><br>
+                          <input type="text" class="form-control" id="productCode" name="productCode"  value="{{ old('productCode') }}"  placeholder="Product code can not be empty"required>
+                          <div class="error">{{$errors->first('productCode')}}</div>  
+                        </div><br><br>
 
-                          <label for="product" class="col-sm-6 control-label">Product </label>
+                          <label for="productName" class="col-sm-6 control-label">Product </label>
                        <div class="col-lg-6">
-                          <input type="text" class="form-control" id="product" name="ProductName" placeholder="Product name can not be empty"required>
-                          </div><br><br>
+                          <input type="text" class="form-control" id="productName" name="productName"  value="{{ old('productName') }}" placeholder="Product name can not be empty"required>
+                          <div class="error">{{$errors->first('productName')}}</div>
+                        </div><br><br>
 
 
                       </div>
@@ -347,25 +353,31 @@ $( function() {
 
                       <!--right side starts-->
                       <div class="col-md-6">
-
-                        <label for="brand" class="col-sm-5 control-label">Brand</label>
+                          <label for="categoryName" class="col-sm-5 control-label">Category</label>
                           <div class="col-lg-7">
-                              <select id="brand" name="brandName" class="form-control required" required>
-                              	 @foreach($brands as $brand)
-                                 <option value="{{$brand->id}}">{{$brand->brandName}}</option>
-                                 @endforeach
-                              </select>
-                          </div><br><br>
-
-                          <label for="category" class="col-sm-5 control-label">Category</label>
-                          <div class="col-lg-7">
-                              <select id="category" name="categoryName" class="form-control required" required>
+                              <select id="categoryName" name="categoryName" onchange="showBrand()" class="form-control required" required>
+                                <option value="" >Select a Category</option>
                               	@foreach($categories as $category)
                                  <option value="{{$category->id}}">{{$category->categoryName}}</option>
                                  @endforeach
                               </select>
-                          </div><br><br><br><br>
+                              <div class="error">{{$errors->first('categoryName')}}</div>
+                          </div><br><br>
                         
+                          <label for="brandName" class="col-sm-5 control-label">Brand</label>
+                          <div class="col-lg-7">
+                              <select id="brandName" name="brandName" class="form-control required" required>
+                                <option value="">Select a Brand</option>
+                              	 {{-- @foreach($brands as $brand)
+                                  <option value="{{$brand->brandName}}">{{$brand->brandName}}</option>
+                                 @endforeach --}}
+                              </select>
+                              <div class="error">{{$errors->first('brandName')}}</div>
+
+                          </div>
+                          <br><br><br><br>
+
+                          
                       </div>
                       <!--right side end-->
 
@@ -465,28 +477,21 @@ $( function() {
                   <th>Edit</th>
                  </tr>
                 </thead>
-                @php $i=0 @endphp
                   @if(isset($productinfos))
-                  @foreach ($productinfos as $productinfo)
-                  @foreach ($categories as $category)
-                  @foreach ($brands as $brand)
-                  @php $i++ @endphp
-               
-              <tbody>
-                <tr>
-                  <th scope="row">{{$i}}</th>
-                   <td>{{$productinfo->PCode}}</td>
-                   <td>{{$productinfo->ProductName}}</td>
-                   <td>{{$category->categoryName}}</td>
-                   <td>{{$brand->brandName}}</td>
-                   
-                  <td>
-                    <a href=""><i class="fa fa-edit" style="font-size:24px"></i></a>
-                  </td>
-                </tr>
-                 @endforeach
-                 @endforeach
-                 @endforeach
+                  <tbody>
+                    @foreach ($productinfos as $key=>$productinfo)
+                      <tr>
+                        <td>{{++$key}}</th>
+                        <td>{{$productinfo->productCode}}</td>
+                        <td>{{$productinfo->productName}}</td>
+                        <td>{{$productinfo->brand->brandName}}</td>
+                        <td>{{$productinfo->brand->category->categoryName}}</td>
+                        
+                        <td>
+                          <a href=""><i class="fa fa-edit" style="font-size:24px"></i></a>
+                        </td>
+                      </tr>
+                    @endforeach
                  @endif
               </tbody>  
             </table>
@@ -502,12 +507,12 @@ $( function() {
         </div>
      
    
-    <!--footer-->
+        <!--footer-->
+      </div>
     <div class="footer">
        <p>&copy; 2019  All Rights Reserved | Design by <a href="https://deshisysltd.com/" target="_blank">Deshi Systems Ltd.</a></p>       
     </div>
     <!--//footer-->
-    </div>
         
     <!-- new added graphs chart js-->
     
@@ -927,6 +932,24 @@ $( function() {
     
     <!-- Bootstrap Core JavaScript -->
    <script src="/js/bootstrap.js"> </script>
+   <script>
+     var brands;
+     $(function() {
+       brands={!! $brands !!};
+     })
+    function showBrand() {
+      var selectedCategory=$("#categoryName").val();
+      // console.log(brands);
+      
+      if(brands!=undefined){
+        brands.forEach(brand => {
+          if(brand.category_id==selectedCategory)
+            $('#brandName').append(`<option value="${brand.brandName}">${brand.brandName}</option>`); 
+        });
+      }
+      
+    } 
+   </script>
 
     
 </body>
