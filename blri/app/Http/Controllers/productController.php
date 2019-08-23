@@ -22,23 +22,9 @@ class productController extends Controller
     
       }
       public function productPost(Request $request){
-<<<<<<< HEAD
-      $productinfo=new ProductInfo;
-      $productinfo->PCode=$request->PCode;
-      $productinfo->ProductName=$request->ProductName;
-      $productinfo->save();
-      $productinfos=ProductInfo::all();
-      return redirect()->route('setup.product');
-      }
-              public function productedit(Request $request,$id)
-     { 
-             $setuptypes= setuptype::all();
-             $securitytypes=SecurityType::all();
-            
-             $productinfo=ProductInfo::find($id);
-             return view('setup.productedit')->with('productinfo',$productinfo)->with('setuptypes',$setuptypes)->with                                                                   ('securitytypes',$securitytypes);
-     }
-=======
+
+   
+
         // dd($request->all());
         $this->validate($request,[
           'productCode'=>'required | unique:product_infos',
@@ -59,5 +45,13 @@ class productController extends Controller
         return redirect()->route('setup.product');
        
   }
->>>>>>> 6c6bc301f1fca43fe85327e13fa75baa2d2f6871
+   public function productedit(Request $request,$id)
+     { 
+             $setuptypes= setuptype::all();
+             $securitytypes=SecurityType::all();
+            
+             $productinfo=ProductInfo::find($id);
+             return view('setup.productedit')->with('productinfo',$productinfo)->with('setuptypes',$setuptypes)->with                                                                   ('securitytypes',$securitytypes);
+     }
+
 }

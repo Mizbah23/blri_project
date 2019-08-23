@@ -478,28 +478,7 @@ $( function() {
                  </tr>
                 </thead>
                   @if(isset($productinfos))
-<<<<<<< HEAD
-                  @foreach ($productinfos as $productinfo)
-                  @foreach ($categories as $category)
-                  @foreach ($brands as $brand)
-                  @php $i++ @endphp
-               
-              <tbody>
-                <tr>
-                  <th scope="row">{{$i}}</th>
-                   <td>{{$productinfo->PCode}}</td>
-                   <td>{{$productinfo->ProductName}}</td>
-                   <td>{{$category->categoryName}}</td>
-                   <td>{{$brand->brandName}}</td>
-                   
-                  <td>
-                    <a href="{{route('setup.productedit',[$productinfo->id])}}"><i class="fa fa-edit" style="font-size:24px"></i></a>
-                  </td>
-                </tr>
-                 @endforeach
-                 @endforeach
-                 @endforeach
-=======
+
                   <tbody>
                     @foreach ($productinfos as $key=>$productinfo)
                       <tr>
@@ -510,11 +489,11 @@ $( function() {
                         <td>{{$productinfo->brand->category->categoryName}}</td>
                         
                         <td>
-                          <a href=""><i class="fa fa-edit" style="font-size:24px"></i></a>
+                         <a href="{{route('setup.productedit',[$productinfo->id])}}"><i class="fa fa-edit" style="font-size:24px"></i></a>
                         </td>
                       </tr>
                     @endforeach
->>>>>>> 6c6bc301f1fca43fe85327e13fa75baa2d2f6871
+
                  @endif
               </tbody>  
             </table>
