@@ -15,8 +15,12 @@ class CreateProductInfosTable extends Migration
     {
         Schema::create('product_infos', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('PCode');
-            $table->string('ProductName');
+            $table->string('productCode');
+            $table->string('productName');
+            $table->unsignedBigInteger('brand_id');
+
+            $table->foreign('brand_id')->references('id')->on('brands')->onDelete('cascade');//Foreign key
+
             $table->timestamps();
         });
     }

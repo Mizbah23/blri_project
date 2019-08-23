@@ -69,6 +69,7 @@ Route::get('/setup/supplier', 'supplierController@index')->name('setup.supplier'
 //product
 Route::get('/setup/product', 'productController@index')->name('setup.product');
 Route::post('/setup/product', 'productController@productPost');
+Route::get('/setup/product/{id}/edit', 'productController@productedit')->name('setup.productedit');
 
 //Employee Assign
 Route::get('/setup/assignemployee', 'empAssignController@index')->name('setup.employee assign');
