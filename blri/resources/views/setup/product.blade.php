@@ -326,7 +326,7 @@ $( function() {
                 <h3 class="">Product Information</h3>
               </div>
               <div class="form-body">
-                <form class="form-horizontal" method="post" > 
+                <form class="form-horizontal" method="post" autocomplete="off"> 
                 	@csrf
                   <div class="form-group"> <!--Form-->
 
@@ -336,8 +336,8 @@ $( function() {
 
                         <label for="productCode"  class="col-sm-6 control-label">Product Code</label>
                        <div class="col-lg-6">
-                          <input type="text" class="form-control" id="productCode" name="productCode"  value="{{ old('productCode') }}"  placeholder="Product code can not be empty"required>
-                          <div class="error">{{$errors->first('productCode')}}</div>  
+                          <input type="text" class="form-control" id="productCode" name="productCode"  value="{{ old('productCode') }}" onkeyup="productCheck()"  placeholder="Product code can not be empty"required>
+                          <div class="error" id="productCodeError">{{$errors->first('productCode')}}</div>  
                         </div><br><br>
 
                           <label for="productName" class="col-sm-6 control-label">Product </label>
@@ -942,7 +942,7 @@ $( function() {
     function showBrand() {
       var selectedCategory=$("#categoryName").val();
       // console.log(brands);
-      
+      $('#brandName').html('<option value="">Select a Brand</option>');
       if(brands!=undefined){
         brands.forEach(brand => {
           if(brand.category_id==selectedCategory)
@@ -950,6 +950,21 @@ $( function() {
         });
       }
       
+    }
+    function productCheck() {
+      $('#productCodeError').html('');
+      $.ajax({
+        url: "{{route("check.product.exist")}}",
+        type:"post",
+        data: { productCode: $("#productCode").val(), _token: '{{csrf_token()}}'},
+        success: function (data) {
+          if(data!='success'){
+            console.log(data);
+            
+            $('#productCodeError').html(data.productCode[0]);
+          }
+        }
+      });
     } 
    </script>
 
