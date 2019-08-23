@@ -76,6 +76,7 @@ Route::get('/setup/assignemployee', 'empAssignController@index')->name('setup.em
 
 //Repirer
 Route::get('/setup/repairer_information', 'repairerController@index')->name('setup.repairer info');
+Route::post('/setup/repairer_information', 'repairerController@repairerPost');
 
 
 // Route::get('/home', 'HomeController@index')->name('home');

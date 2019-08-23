@@ -34,12 +34,12 @@ class divisionController extends Controller
               return view('setup.division')->with('setuptypes',$setuptypes)->with('divisions',$divisions);
           }
         public function divedit(Request $request,$id)
-     {
+        {
              $setuptypes= setuptype::all();
-             $securitytypes=SecurityType::all();
-             $division=division::find($id);
-    	       return view('setup.divedit')->with('division',$division)->with('setuptypes',$setuptypes)->with('securitytypes',$securitytypes);
-     }
+              $securitytypes=SecurityType::all();
+              $division=division::find($id);
+    	        return view('setup.divedit')->with('division',$division)->with('setuptypes',$setuptypes)->with('securitytypes',$securitytypes);
+         }
 
      public function update(Request $request,$id)
     {

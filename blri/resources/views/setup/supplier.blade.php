@@ -324,34 +324,37 @@ $( function() {
                 <h3 class="">Supplier Information</h3>
               </div>
               <div class="form-body">
-                <form class="form-horizontal" method="post"> 
+                <form class="form-horizontal" method="post">
+                @csrf 
                   <div class="form-group"> <!--Form-->
 
                     <div class="row">
                        <!--left side starts-->
                       <div class="col-md-6">
 
-                        <label for="brand" class="col-sm-5 control-label">Supplier Name</label>
+                        <label for="supplierName" class="col-sm-5 control-label">Supplier Name</label>
                        <div class="col-lg-7">
-                          <input type="text" class="form-control" id="" name="" placeholder="Supplier name can not be empty"required>
+                          <input type="text" class="form-control" id="supplierName" name="supplierName" placeholder="Supplier name can not be empty"required>
                           </div><br><br>
 
-                          <label for="category" class="col-sm-5 control-label">Supplier Type</label>
+                          <label for="supplierType" class="col-sm-5 control-label">Supplier Type</label>
                           <div class="col-lg-7">
-                              <select id="category" name="categories" class="form-control required" required>
+                              <select id="supplierType" name="supplierType" class="form-control required" required>
                                  <option value="">Select type</option>
+                                 <option value="Local">Local</option>
+                                 <option value="Foreign">Foreign</option>
                               </select>
                           </div><br><br>
 
-                          <label for="brand" class="col-sm-5 control-label">Contact Person</label>
+                          <label for="contactName" class="col-sm-5 control-label">Contact Person</label>
                        <div class="col-lg-7">
-                          <input type="text" class="form-control" id="" name="" placeholder="Contact name can not be empty"required>
+                          <input type="text" class="form-control" id="contactName" name="contactName" placeholder="Contact name can not be empty"required>
                           </div><br><br>
 
 
-                          <label for="brand" class="col-sm-5 control-label">Address</label>
+                          <label for="address" class="col-sm-5 control-label">Address</label>
                        <div class="col-lg-7">
-                        <textarea name=" "class="form-control" placeholder="Address can not be empty"required></textarea>
+                        <textarea name="address"class="form-control" placeholder="Address can not be empty"required></textarea>
                           </div><br><br><br>
 
                         
@@ -362,31 +365,30 @@ $( function() {
                       <!--right side starts-->
                       <div class="col-md-6">
 
-                       <label for="brand" class="col-sm-5 control-label">Phone</label>
+                       <label for="phone" class="col-sm-5 control-label">Phone</label>
                        <div class="col-lg-7">
-                          <input type="text" class="form-control" id="" name="" placeholder="Phone no can not be empty"required>
+                          <input type="text" class="form-control" id="phone" name="phone" placeholder="Phone no can not be empty"required>
                           </div><br><br>
 
-                          <label for="brand" class="col-sm-5 control-label">Mobile</label>
+                          <label for="mobile" class="col-sm-5 control-label">Mobile</label>
                        <div class="col-lg-7">
-                          <input type="text" class="form-control" id="" name="" placeholder="Mobile no can not be empty"required>
+                          <input type="text" class="form-control" id="mobile" name="mobile" placeholder="Mobile no can not be empty"required>
                           </div><br><br>
 
-                          <label for="brand" class="col-sm-5 control-label">Email</label>
+                          <label for="email" class="col-sm-5 control-label">Email</label>
                        <div class="col-lg-7">
-                          <input type="text" class="form-control" id="" name="" placeholder="Email can not be empty"required>
+                          <input type="email" class="form-control" id="email" name="email" placeholder="Email can not be empty"required>
                           </div><br><br>
 
-                          <label for="category" class="col-sm-5 control-label">Country</label>
-                          <div class="col-lg-7">
-                              <select id="category" name="categories" class="form-control required" required>
-                                 <option value="">Select country</option>
-                              </select>
-                          </div><br><br>
+                        <label for="country" class="col-sm-5 control-label">Country</label>
+                        <div class="col-lg-7">
+                        <input type="text" class="form-control" id="country" name="country" placeholder="Country can not be empty"required>
+                        </div><br><br>
 
-                          <label for="brand" class="col-sm-5 control-label">VAT Reg. no</label>
+
+                          <label for="vatReg" class="col-sm-5 control-label">VAT Reg. no</label>
                        <div class="col-lg-7">
-                          <input type="text" class="form-control" id="" name="" placeholder="VAT Reg. no can not be empty"required>
+                          <input type="text" class="form-control" id="vatReg" name="vatReg" placeholder="VAT Reg. no can not be empty"required>
                           </div><br><br>
                           
                       </div>
