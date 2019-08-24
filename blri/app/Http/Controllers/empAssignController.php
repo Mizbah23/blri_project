@@ -1,10 +1,9 @@
-	<?php
+<?php
 
 	namespace App\Http\Controllers;
 
 	use Illuminate\Http\Request;
-
-	use App\setuptype;
+    use App\setuptype;
 	use App\SecurityType;
 
 	class empAssignController extends Controller
