@@ -489,22 +489,34 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 
                 <div id="allBrands">
                   <table class="table table-responsive table-hover table-striped table-bordered table-condensed">
-                      <tr class="row bg-primary">
-                        <th class="col-lg-1 text-center">#</th>
-                        <th class="col-lg-2 text-center">Category</th>
-                        <th class="col-lg-8 text-center">Brand</th>
-                        <th class="col-lg-1 text-center">Edit</th>
-                      </tr>
-                      
-                                <tr class="row">
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    
-                                    <td><a href=""><i class="fa fa-edit" style="font-size:24px"></i></a></td>
-                                </tr>
-                           
-                  </table>
+                    <tr class="row bg-primary">
+                      <th class="col-lg-1 text-center">#</th>
+                      <th class="col-lg-2 text-center">Employee Name</th>
+                      <th class="col-lg-2 text-center">Designation</th>
+                      <th class="col-lg-1 text-center">Department</th>
+                      <th class="col-lg-1 text-center">Address</th>
+                      <th class="col-lg-1 text-center">Contact No.</th>
+                      <th class="col-lg-1 text-center">Joining Date</th>
+                      <th class="col-lg-1 text-center">Birth Date</th>
+                      <th class="col-lg-1 text-center">Note</th>
+                    </tr>
+                    @foreach ($employeeInformations as $key=>$employeeInformation)
+                    <tr class="row">
+                      <td class="col-lg-1 text-center">{{++$key}}</td>
+                      <td class="col-lg-2 text-center">{{$employeeInformation->name}}</td>
+                      <td class="col-lg-2 text-center">{{$employeeInformation->designation->designationName}}</td>
+                      <td class="col-lg-1 text-center">{{$employeeInformation->section->division->divisionName}}</td>
+                      <td class="col-lg-1 text-center">{{$employeeInformation->address}}</td>
+                      <td class="col-lg-1 text-center">{{$employeeInformation->contactNo}}</td>
+                      <td class="col-lg-1 text-center">{{date("d/m/Y", strtotime($employeeInformation->joiningDate))}}</td>
+                      <td class="col-lg-1 text-center">{{date("d/m/Y", strtotime($employeeInformation->birthDate))}}</td>
+                      <td class="col-lg-1 text-center">{{$employeeInformation->remarks}}</td>
+                      <td><a href=""><i class="fa fa-edit" style="font-size:24px"></i></a></td>
+                    </tr>
+                    @endforeach
+                    
+                         
+                </table>
                </div>
                <div id="searchedBrandValue">
                    
