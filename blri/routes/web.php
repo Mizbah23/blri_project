@@ -62,10 +62,9 @@ Route::get('/setup/project', 'projectController@index')->name('setup.project');
 
 //employee
 Route::get('/setup/employee', 'employeeController@index')->name('setup.employee');
-Route::post('/setup/employee', 'employeeController@employeeStore');
+
 //supplier
 Route::get('/setup/supplier', 'supplierController@index')->name('setup.supplier');
-Route::post('/setup/supplier', 'supplierController@supplierPost');
 
 //product
 Route::get('/setup/product', 'productController@index')->name('setup.product');
@@ -76,10 +75,20 @@ Route::post('/check/product','productController@checkIfProductExist')->name('che
 //Employee Assign
 Route::get('/setup/assignemployee', 'empAssignController@index')->name('setup.employee assign');
 
-
 //Repirer
 Route::get('/setup/repairer_information', 'repairerController@index')->name('setup.repairer info');
 Route::post('/setup/repairer_information', 'repairerController@repairerPost');
 
 
 // Route::get('/home', 'HomeController@index')->name('home');
+//Product Receive->
+//Product Receive
+Route::get('/product_receive/product_receive', 'productreceiveController@index')->name('product receive.product receive');
+Route::get('/product_receive/product_requisition', 'requisitioninfoController@index')->name('product receive.requisition info');
+Route::get('/product_receive/product_serial_info', 'productserialinfoController@index')->name('product receive.product serial info');
+
+//product distribution
+Route::get('/product_distribution/product_release', 'productreleaseController@index')->name('product distribution.product release');
+Route::get('/product_distribution/product_distribution', 'productdistributiontypeController@index')->name('product distribution.product distribution');
+Route::get('/product_distribution/product_repair', 'productrepairController@index')->name('product distribution.product repair');
+Route::get('/product_distribution/repair_receive', 'repairreceiveController@index')->name('product distribution.repair receive');

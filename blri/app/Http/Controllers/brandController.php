@@ -7,6 +7,7 @@ use App\setuptype;
 use App\Category;
 use App\Brand;
 use App\SecurityType;
+use App\ProductReceiveType;
 
 class brandController extends Controller
 {
@@ -15,9 +16,10 @@ class brandController extends Controller
     $categories= Category::all();
     $brands= Brand::all();
     $securitytypes=SecurityType::all();
+    $productreceivetypes=ProductReceiveType::all();
     // $brandNames=$brands->unique('brandName')->pluck('brandName');//Get unique brandName
     // dd($brandNames);
-    return view('setup.brand')->with('setuptypes',$setuptypes)->with('categories',$categories)->with('brands',$brands)->with('securitytypes',$securitytypes);
+    return view('setup.brand')->with('setuptypes',$setuptypes)->with('categories',$categories)->with('brands',$brands)->with('securitytypes',$securitytypes)->with('productreceivetypes',$productreceivetypes);
   }
   public function brandPost(Request $request){
       $brand=new Brand;
@@ -53,4 +55,6 @@ class brandController extends Controller
     $searchedBrandItems=Brand::where('brandName',$request->brandName)->get();
     return view('setup.ajaxBrandSearchedValue')->with('brands',$searchedBrandItems);
   }
+
+
 }

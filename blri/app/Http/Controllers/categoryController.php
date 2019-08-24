@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\setuptype;
 use App\Category;
 use App\SecurityType;
+use App\ProductReceiveType;
+
 
 class categoryController extends Controller
 {
@@ -14,7 +16,9 @@ class categoryController extends Controller
    $setuptypes= setuptype::all();
    $categories= Category::all();
    $securitytypes=SecurityType::all();
-   return view('setup.category')->with('setuptypes',$setuptypes)->with('categories',$categories)->with('securitytypes',$securitytypes);
+   $productreceivetypes=ProductReceiveType::all();
+
+   return view('setup.category')->with('setuptypes',$setuptypes)->with('categories',$categories)->with('securitytypes',$securitytypes)->with('productreceivetypes',$productreceivetypes);
    }
       public function categoryPost(Request $request){
       	       //dd('success');

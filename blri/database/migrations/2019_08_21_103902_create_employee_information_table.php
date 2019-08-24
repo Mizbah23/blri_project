@@ -16,8 +16,9 @@ class CreateEmployeeInformationTable extends Migration
         Schema::create('employee_information', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->unsignedBigInteger('section_id');
-            $table->unsignedBigInteger('designation_id');
+            $table->string('divisionName');
+            $table->string('sectionName');
+            $table->string('designationName');
             $table->string('districtName');
             $table->string('address');
             $table->string('contactNo');
@@ -25,13 +26,9 @@ class CreateEmployeeInformationTable extends Migration
             $table->date('joiningDate');
             $table->date('birthDate');
             $table->string('workingPlace');
-            // $table->integer('position')->default(0);
+            $table->integer('position')->default(0);
             $table->boolean('isRevenue')->default(0);
             $table->string('remarks');
-            $table->string('profileImage');
-
-            $table->foreign('section_id')->references('id')->on('sections')->onDelete('cascade');
-            $table->foreign('designation_id')->references('id')->on('designations')->onDelete('cascade');
 
             $table->timestamps();
         });

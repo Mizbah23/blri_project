@@ -7,6 +7,7 @@ use App\setuptype;
 use App\division;
 use App\Section;
 use App\SecurityType;
+use App\ProductReceiveType;
 
 
 class sectionController extends Controller
@@ -16,9 +17,10 @@ class sectionController extends Controller
         $divisions=division::all();
         $sections=Section::all();
         $securitytypes=SecurityType::all();
+        $productreceivetypes=ProductReceiveType::all();
 
         //dd($sections[0]->division);
-        return view('setup.section')->with('setuptypes',$setuptypes)->with('divisions',$divisions)->with('sections',$sections)->with('securitytypes',$securitytypes);
+        return view('setup.section')->with('setuptypes',$setuptypes)->with('divisions',$divisions)->with('sections',$sections)->with('securitytypes',$securitytypes)->with('productreceivetypes',$productreceivetypes);
     }
     public function sectionPost(Request $request){
                $section=new Section;

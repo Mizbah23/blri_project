@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use App\setuptype;
 use App\Designation;
 use App\SecurityType;
+use App\ProductReceiveType;
 
 use Illuminate\Support\Facades\DB;
 
@@ -14,7 +15,9 @@ class designationController extends Controller
    $setuptypes= setuptype::all();
    $designations=Designation::all();
    $securitytypes= SecurityType::all();
-   return view('setup.designation')->with('setuptypes',$setuptypes)->with('designations',$designations)->with('securitytypes',$securitytypes);
+   $productreceivetypes=ProductReceiveType::all();
+
+   return view('setup.designation')->with('setuptypes',$setuptypes)->with('designations',$designations)->with('securitytypes',$securitytypes)->with('productreceivetypes',$productreceivetypes);
   }
 
     public function designationPost(Request $request){
