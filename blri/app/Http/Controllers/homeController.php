@@ -14,7 +14,7 @@ class homeController extends Controller
     {
         $setuptypes= setuptype::all();
         $securitytypes=SecurityType::all();
-       
+        
         //dd($sections[0]->division);
         return view('home.index')->with('setuptypes',$setuptypes)->with('securitytypes',$securitytypes);
     }

@@ -333,12 +333,12 @@ $( function() {
 
                         <label for="supplierName" class="col-sm-5 control-label">Supplier Name</label>
                        <div class="col-lg-7">
-                          <input type="text" class="form-control" id="supplierName" name="supplierName" placeholder="Supplier name can not be empty"required>
+                          <input type="text" class="form-control" value="{{ old('supplierName') }}" id="supplierName" name="supplierName" placeholder="Supplier name can not be empty"required>
                           </div><br><br>
 
                           <label for="supplierType" class="col-sm-5 control-label">Supplier Type</label>
                           <div class="col-lg-7">
-                              <select id="supplierType" name="supplierType" class="form-control required" required>
+                              <select id="supplierType" name="supplierType" value="{{ old('supplierType') }}" class="form-control required" required>
                                  <option value="">Select type</option>
                                  <option value="Local">Local</option>
                                  <option value="Foreign">Foreign</option>
@@ -347,21 +347,18 @@ $( function() {
 
                           <label for="contactName" class="col-sm-5 control-label">Contact Person</label>
                        <div class="col-lg-7">
-                          <input type="text" class="form-control" id="contactName" name="contactName" placeholder="Contact name can not be empty"required>
+                          <input type="text" class="form-control" id="contactName" name="contactName" placeholder="Contact name can not be empty" value="{{ old('contactName')}}" required>
                           </div><br><br>
 
 
-                          <label for="address" class="col-sm-5 control-label">Address</label>
+                      <label for="address" class="col-sm-5 control-label">Address</label>
                        <div class="col-lg-7">
-                        <textarea name="address"class="form-control" placeholder="Address can not be empty"required></textarea>
+                        <textarea name="address" id="address" class="form-control" placeholder="Address can not be empty"value="{{ old('address')}}"required></textarea>
                           </div><br><br><br>
 
                         
                       </div>
-                      <!--End left side-->
-
-
-                      <!--right side starts-->
+                    
                       <div class="col-md-6">
 
                        <label for="phone" class="col-sm-5 control-label">Phone</label>
@@ -371,25 +368,35 @@ $( function() {
 
                           <label for="mobile" class="col-sm-5 control-label">Mobile</label>
                        <div class="col-lg-7">
-                          <input type="text" class="form-control" id="mobile" name="mobile" placeholder="Mobile no can not be empty"required>
+                          <input type="text" class="form-control" id="mobile" name="mobile" value="{{ old('mobile')}}" placeholder="Mobile no can not be empty"required>
                           </div><br><br>
 
                           <label for="email" class="col-sm-5 control-label">Email</label>
                        <div class="col-lg-7">
-                          <input type="email" class="form-control" id="email" name="email" placeholder="Email can not be empty"required>
+                          <input type="email" class="form-control" id="email" name="email" placeholder="Email can not be empty" value="{{ old('email')}}"required>
                           </div><br><br>
 
                         <label for="country" class="col-sm-5 control-label">Country</label>
                         <div class="col-lg-7">
-                        <input type="text" class="form-control" id="country" name="country" placeholder="Country can not be empty"required>
+                        <input type="text" class="form-control" id="country" name="country" placeholder="Country can not be empty" value="{{ old('country')}}" required>
                         </div><br><br>
 
 
                           <label for="vatReg" class="col-sm-5 control-label">VAT Reg. no</label>
                        <div class="col-lg-7">
-                          <input type="text" class="form-control" id="vatReg" name="vatReg" placeholder="VAT Reg. no can not be empty"required>
+                          <input type="text" class="form-control" id="vatReg" name="vatReg" placeholder="VAT Reg. no can not be empty" value="{{ old('vatReg')}}" required>
                           </div><br><br>
                           
+                          @if ($errors->any())
+                          <div class="alert alert-danger">
+                          <ul>
+                         @foreach ($errors->all() as $error)
+                         <li>{{ $error }}</li>
+                         @endforeach
+                          </ul>
+                          </div>
+                          @endif
+                       
                       </div>
                       <!--right side end-->
 
@@ -479,21 +486,43 @@ $( function() {
 
                 <div id="allBrands">
                   <table class="table table-responsive table-hover table-striped table-bordered table-condensed">
+                    <thead>
                       <tr class="row bg-primary">
                         <th class="col-lg-1 text-center">#</th>
-                        <th class="col-lg-2 text-center">Category</th>
-                        <th class="col-lg-8 text-center">Brand</th>
+                        <th class="col-lg-2 text-center">Supplier Name</th>
+                        <th class="col-lg-2 text-center">Contact Person</th>
+                        <th class="col-lg-3 text-center">Address</th>
+                        <th class="col-lg-2 text-center">Supplier Type</th>
+                        <th class="col-lg-2 text-center">Country</th>
+                        <th class="col-lg-2 text-center">Phone</th>
+                        <th class="col-lg-2 text-center">Mobile</th>
+                        <th class="col-lg-2 text-center">Email</th>
+                        <th class="col-lg-1 text-center">VAT Reg. No</th>
                         <th class="col-lg-1 text-center">Edit</th>
                       </tr>
-                      
+                    </thead>
+                     @if(isset($suppliers))
+                    <tbody>  
+                       @foreach ($suppliers as $key=>$supplier)
+
                                 <tr class="row">
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td>{{++$key}}</td>
+                                    <td>{{$supplier->supplierName}}</td>
+                                    <td>{{$supplier->contactName}}</td>
+                                    <td>{{$supplier->address}}</td>
+                                    <td>{{$supplier->supplierType}}</td>
+                                    <td>{{$supplier->country}}</td>
+                                    <td>{{$supplier->phone}}</td>
+                                    <td>{{$supplier->mobile}}</td>
+                                    <td>{{$supplier->email}}</td>
+                                    <td>{{$supplier->vatReg}}</td>
                                     
                                     <td><a href=""><i class="fa fa-edit" style="font-size:24px"></i></a></td>
                                 </tr>
-                           
+                                 @endforeach
+                                 @endif
+             
+                     </tbody>      
                   </table>
                </div>
                <div id="searchedBrandValue">
