@@ -200,8 +200,7 @@ $( function() {
                 </ul>
               </li>
              
-
-              <li class="treeview">
+                <li class="treeview">
                 <a href="#">
                 <i class="fa fa-folder"></i>
                 <span>Setup</span>
