@@ -7,6 +7,7 @@ use App\setuptype;
 use App\division;
 use App\SecurityType;
 use Illuminate\Support\Facades\DB;
+use App\ProductReceiveType;
 
 class divisionController extends Controller
 {
@@ -14,8 +15,10 @@ class divisionController extends Controller
       $setuptypes= setuptype::all();
       $divisions=division::all();
       $securitytypes=SecurityType::all();
+      $productreceivetypes=ProductReceiveType::all();
 
-      return view('setup.division')->with('setuptypes',$setuptypes)->with('divisions',$divisions)->with('securitytypes',$securitytypes);
+
+      return view('setup.division')->with('setuptypes',$setuptypes)->with('divisions',$divisions)->with('securitytypes',$securitytypes)->with('productreceivetypes',$productreceivetypes);
        }
       
       public function divisionPost(Request $request){

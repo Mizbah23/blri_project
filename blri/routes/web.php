@@ -81,3 +81,14 @@ Route::post('/setup/repairer_information', 'repairerController@repairerPost');
 
 
 // Route::get('/home', 'HomeController@index')->name('home');
+//Product Receive->
+//Product Receive
+Route::get('/product_receive/product_receive', 'productreceiveController@index')->name('product receive.product receive');
+Route::get('/product_receive/product_requisition', 'requisitioninfoController@index')->name('product receive.requisition info');
+Route::get('/product_receive/product_serial_info', 'productserialinfoController@index')->name('product receive.product serial info');
+
+//product distribution
+Route::get('/product_distribution/product_release', 'productreleaseController@index')->name('product distribution.product release');
+Route::get('/product_distribution/product_distribution', 'productdistributiontypeController@index')->name('product distribution.product distribution');
+Route::get('/product_distribution/product_repair', 'productrepairController@index')->name('product distribution.product repair');
+Route::get('/product_distribution/repair_receive', 'repairreceiveController@index')->name('product distribution.repair receive');

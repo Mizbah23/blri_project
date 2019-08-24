@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\setuptype;
 use App\SecurityType;
+use App\ProductReceiveType;
+use App\ProductDistribution;
 
 
 class homeController extends Controller
@@ -14,8 +16,9 @@ class homeController extends Controller
     {
         $setuptypes= setuptype::all();
         $securitytypes=SecurityType::all();
-       
+        $productreceivetypes=ProductReceiveType::all();
+        $productdistributions=ProductDistribution::all();
         //dd($sections[0]->division);
-        return view('home.index')->with('setuptypes',$setuptypes)->with('securitytypes',$securitytypes);
+        return view('home.index')->with('setuptypes',$setuptypes)->with('securitytypes',$securitytypes)->with('productreceivetypes',$productreceivetypes)->with('productdistributions',$productdistributions);
     }
 }

@@ -9,6 +9,7 @@ use App\Category;
 use App\Brand;
 use App\ProductInfo;
 use Validator;
+use App\ProductReceiveType;
 class productController extends Controller
 {
   public function index(){
@@ -17,9 +18,10 @@ class productController extends Controller
     $categories=Category::all();
     $brands=Brand::all();
     $productinfos=ProductInfo::all();
+    $productreceivetypes=ProductReceiveType::all();
     // dd($productinfos[0]->brand);
     //dd($sections[0]->division);
-    return view('setup.product')->with('setuptypes',$setuptypes)->with('securitytypes',$securitytypes)->with('categories',$categories)->with('brands',$brands)->with('productinfos',$productinfos);
+    return view('setup.product')->with('setuptypes',$setuptypes)->with('securitytypes',$securitytypes)->with('categories',$categories)->with('brands',$brands)->with('productinfos',$productinfos)->with('productreceivetypes',$productreceivetypes);
   }
 
   public function productPost(Request $request){

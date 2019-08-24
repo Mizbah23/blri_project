@@ -196,10 +196,11 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                 <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                  <li><a href="#"><i class="fa fa-circle"></i> General</a></li>
-                  <li><a href="#"><i class="fa fa-circle"></i> Icons</a></li>
-                  <li><a href="#"><i class="fa fa-circle"></i> Buttons</a></li>
-                  <li><a href="#"><i class="fa fa-circle"></i> Typography</a></li>
+                   @foreach($productreceivetypes as $productreceivetype)
+                   
+                    <li><a href="{{route('product receive.'.strtolower($productreceivetype->prType))}}">
+                      <i class="fa fa-circle"></i> {{$productreceivetype->prType}}</a></li>
+                 @endforeach
                 </ul>
               </li>
               

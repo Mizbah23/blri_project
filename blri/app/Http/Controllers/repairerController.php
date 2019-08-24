@@ -6,15 +6,17 @@ use Illuminate\Http\Request;
 use App\setuptype;
 use App\SecurityType;
 use App\Repairer;
+use App\ProductReceiveType;
 class repairerController extends Controller
 {
       public function index(){
     	$setuptypes= setuptype::all();
     	$securitytypes=SecurityType::all();
     	$repairers=Repairer::all();
+      $productreceivetypes=ProductReceiveType::all();
        
         //dd($sections[0]->division);
-        return view('setup.repairer info')->with('setuptypes',$setuptypes)->with('securitytypes',$securitytypes)->with('repairers',$repairers);
+        return view('setup.repairer info')->with('setuptypes',$setuptypes)->with('securitytypes',$securitytypes)->with('repairers',$repairers)->with('productreceivetypes',$productreceivetypes);
     
       }
       public function repairerPost(Request $request){
