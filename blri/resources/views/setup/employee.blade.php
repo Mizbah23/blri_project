@@ -120,7 +120,10 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 <!--date picker-->
   <script>
   $( function() {
-    $( ".datepicker" ).datepicker({  maxDate: "+1D" });
+    $( ".datepicker" ).datepicker({
+      dateFormat: "dd/mm/yy",
+      maxDate: "+1D" 
+    });
   } );
   </script>
   
@@ -294,7 +297,8 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                 <h3 class="">Employee Information</h3>
               </div>
               <div class="form-body">
-                <form class="form-horizontal" method="post"> 
+                <form class="form-horizontal" method="post" enctype="multipart/form-data"  autocomplete="off"> 
+                  @csrf
                   <div class="form-group"> <!--Form-->
 
                     <div class="row">
@@ -303,45 +307,55 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 
                         <label  class="col-sm-6 control-label">Employee Name</label>
                        <div class="col-lg-6">
-                          <input type="text" class="form-control" id="" name="" placeholder="Employee name can not be empty"required>
+                          <input type="text" class="form-control" id="empName" name="empName" placeholder="Employee name can not be empty"required>
                           </div><br><br>
 
                           <label  class="col-sm-6 control-label">Division</label>
                           <div class="col-lg-6">
-                              <select id="category" name="" class="form-control required" required>
+                              <select id="divisionName" name="divisionName" onchange="showSection()" class="form-control required" required>
                                  <option value="">Select Division</option>
+                                 @foreach ($divisions  as $division)
+                                  <option value="{{$division->id}}">{{$division->divisionName}}</option>
+                                 @endforeach
                               </select>
                           </div><br><br>
 
                           <label  class="col-sm-6 control-label">Section</label>
                           <div class="col-lg-6">
-                              <select  name="" class="form-control required" required>
+                              <select id="sectionName"  name="sectionName" class="form-control required" required>
                                  <option value="">Select Section</option>
+                                 {{-- @foreach ($sections  as $section)
+                                  <option value="{{$section->sectionName}}">{{$section->sectionName}}</option>
+                                 @endforeach --}}
                               </select>
                           </div><br><br>
 
                           <label  class="col-sm-6 control-label">Designation</label>
                           <div class="col-lg-6">
-                              <select id="category" name="" class="form-control required" required>
+                              <select id="designationName" name="designationName" class="form-control required" required>
                                  <option value="">Select Designation</option>
+                                 @foreach ($designations  as $designation)
+                                  <option value="{{$designation->id}}">{{$designation->designationName}}</option>
+                                 @endforeach
                               </select>
                           </div><br><br>
 
                           <label  class="col-sm-6 control-label">Home District</label>
                           <div class="col-lg-6">
-                              <select id="category" name="" class="form-control required" required>
+                            <input type="text" name="districtName" id="districtName">
+                              {{-- <select id="category" name="" class="form-control required" required>
                                  <option value="">Select Home District</option>
-                              </select>
+                              </select> --}}
                           </div><br><br>
 
                           <label  class="col-sm-6 control-label">Address</label>
                        <div class="col-lg-6">
-                        <textarea name=" "class="form-control" placeholder="Address can not be empty"required></textarea>
+                        <textarea name="address"class="form-control" placeholder="Address can not be empty"required></textarea>
                           </div><br><br><br>
 
                         <label  class="col-sm-6 control-label">Contact</label>
                        <div class="col-lg-6">
-                          <input type="text" class="form-control" id="" name="" placeholder="Contact no can not be empty"required>
+                          <input type="tel" class="form-control" id="contactNo" name="contactNo" placeholder="Contact no can not be empty" required minlength='11' maxlength='11' pattern="(01)[0-9]{9}" >
                           </div><br><br>
 
                       </div>
@@ -353,51 +367,50 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 
                         <label  class="col-sm-6 control-label">NID</label>
                        <div class="col-lg-6">
-                          <input type="text" class="form-control" id="" name="" placeholder="NID no can not be empty"required>
+                          <input type="text" class="form-control" id="nidNo" name="nidNo" placeholder="NID no can not be empty" required minlength="10">
                           </div><br><br>
 
                         <label class="col-md-6 control-label" >Joinig Date</label>
                           <div class="col-md-6">
-                            <input class="form-control datepicker" type="text">
+                            <input class="form-control datepicker" type="text" name="joiningDate" readonly="readonly">
                           </div><br><br>
 
                           <label class="col-md-6 control-label" >Birth Date</label>
                           <div class="col-md-6">
                             
-                          <input type="text" class="form-control datepicker">
+                          <input type="text" class="form-control datepicker" name="birthDate" readonly="readonly">
                           </div><br><br>
 
                            <label  class="col-sm-6 control-label">Working Place</label>
                           <div class="col-lg-6">
-                          <input type="text" class="form-control" id="" name="" placeholder="Working place can not be empty"required>
+                          <input type="text" class="form-control" id="workingPlace" name="workingPlace" placeholder="Working place can not be empty"required>
                           </div><br><br>
 
-                          <label  class="col-sm-6 control-label">Positon</label>
+                          {{-- <label  class="col-sm-6 control-label">Positon</label>
                           <div class="col-lg-6">
                               <select id="category" name="" class="form-control required" required>
                                  <option value="">Select Position</option>
                               </select>
-                          </div><br><br>
+                          </div><br><br> --}}
 
                           <label  class="col-sm-6 control-label"></label>
                           <div class="col-lg-6">
-                              <input  type="checkbox" name="" value=""> Is Revenue?
+                              <input  type="checkbox" name="isRevenue" > Is Revenue?
                           </div><br><br>
 
                           
 
                         <label  class="col-sm-6 control-label">Remarks</label>
                        <div class="col-lg-6">
-                        <textarea name=" "class="form-control" placeholder="Remarks can not be empty"required></textarea>
+                        <textarea name="remarks"class="form-control" placeholder="Remarks can not be empty" required></textarea>
                           </div><br><br><br><br>
-                          
                       </div>
                       <!--mid side end-->
                       <!--right side starts-->
                       <div class="col-md-2">
-                        <img style="height: 100px; width: 100px; margin-left: 8px" src="/images/profile.png"><br>
+                        <img id="profileImageTag" style="height: 100px; width: 100px; margin-left: 8px; border:solid;" src="/images/profile.png"><br><br>
                        
-                        <input class="form-control" type="file" name="fileToUpload" id="fileToUpload">
+                        <input class="form-control" type="file" name="profileImage" id="profileImage" accept="image/*" required>
                       </div><br><br><br>
                       <!--right side end-->
 
@@ -425,46 +438,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 
                   </div>
                 </form>
-<!--                   <div class="row">
-                   <div class="col-lg-6"> Category and brand-->
-                       <!--   <label for="category" class="col-sm-2 control-label">Category</label>
-                          <div class="col-lg-9">
-                              <select id="category" name="categories" class="form-control required" required>
-                                               
-                                               <option value=""></option>
-                                              
-                              </select>
-                          </div><br><br>
 
-                          <label for="brand" class="col-sm-2 control-label">Brand</label>
-                       <div class="col-lg-9">
-                          <input type="text" class="form-control" id="brand" name="brandName" placeholder="Name Can not be empty"required>
-                          </div><br><br><br>
-
-                          <div class="col-lg-6">
-                            <label for="category" class="col-sm-2 control-label">Category</label>
-                          <div class="col-lg-9">
-                              <select id="category" name="categories" class="form-control required" required>
-                                               
-                                               <option value=""></option>
-                                              
-                              </select>
-                          </div><br><br>
-
-                          <label for="brand" class="col-sm-2 control-label">Brand</label>
-                       <div class="col-lg-9">
-                          <input type="text" class="form-control" id="brand" name="brandName" placeholder="Name Can not be empty"required>
-                          </div><br><br><br>
-                          </div>
-
-                        <div class="text-center">
-                          <button type="submit" class="btn btn-info">Save</button> 
-                          <button type="reset" class="btn btn-danger">Cancel</button>
-                        </div>
-                         </form>end form-->
-                      <!--Category and brand-->
- 
-                     <!--Search option starts-->
                       <div class="row">
                         <div class="col-md-8"></div>
 
@@ -683,265 +657,43 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
     
     <!-- for index page weekly sales java script -->
     <script src="/js/SimpleChart.js"></script>
-    <script>
-        var graphdata1 = {
-            linecolor: "#CCA300",
-            title: "Monday",
-            values: [
-            { X: "6:00", Y: 10.00 },
-            { X: "7:00", Y: 20.00 },
-            { X: "8:00", Y: 40.00 },
-            { X: "9:00", Y: 34.00 },
-            { X: "10:00", Y: 40.25 },
-            { X: "11:00", Y: 28.56 },
-            { X: "12:00", Y: 18.57 },
-            { X: "13:00", Y: 34.00 },
-            { X: "14:00", Y: 40.89 },
-            { X: "15:00", Y: 12.57 },
-            { X: "16:00", Y: 28.24 },
-            { X: "17:00", Y: 18.00 },
-            { X: "18:00", Y: 34.24 },
-            { X: "19:00", Y: 40.58 },
-            { X: "20:00", Y: 12.54 },
-            { X: "21:00", Y: 28.00 },
-            { X: "22:00", Y: 18.00 },
-            { X: "23:00", Y: 34.89 },
-            { X: "0:00", Y: 40.26 },
-            { X: "1:00", Y: 28.89 },
-            { X: "2:00", Y: 18.87 },
-            { X: "3:00", Y: 34.00 },
-            { X: "4:00", Y: 40.00 }
-            ]
-        };
-        var graphdata2 = {
-            linecolor: "#00CC66",
-            title: "Tuesday",
-            values: [
-              { X: "6:00", Y: 100.00 },
-            { X: "7:00", Y: 120.00 },
-            { X: "8:00", Y: 140.00 },
-            { X: "9:00", Y: 134.00 },
-            { X: "10:00", Y: 140.25 },
-            { X: "11:00", Y: 128.56 },
-            { X: "12:00", Y: 118.57 },
-            { X: "13:00", Y: 134.00 },
-            { X: "14:00", Y: 140.89 },
-            { X: "15:00", Y: 112.57 },
-            { X: "16:00", Y: 128.24 },
-            { X: "17:00", Y: 118.00 },
-            { X: "18:00", Y: 134.24 },
-            { X: "19:00", Y: 140.58 },
-            { X: "20:00", Y: 112.54 },
-            { X: "21:00", Y: 128.00 },
-            { X: "22:00", Y: 118.00 },
-            { X: "23:00", Y: 134.89 },
-            { X: "0:00", Y: 140.26 },
-            { X: "1:00", Y: 128.89 },
-            { X: "2:00", Y: 118.87 },
-            { X: "3:00", Y: 134.00 },
-            { X: "4:00", Y: 180.00 }
-            ]
-        };
-        var graphdata3 = {
-            linecolor: "#FF99CC",
-            title: "Wednesday",
-            values: [
-              { X: "6:00", Y: 230.00 },
-            { X: "7:00", Y: 210.00 },
-            { X: "8:00", Y: 214.00 },
-            { X: "9:00", Y: 234.00 },
-            { X: "10:00", Y: 247.25 },
-            { X: "11:00", Y: 218.56 },
-            { X: "12:00", Y: 268.57 },
-            { X: "13:00", Y: 274.00 },
-            { X: "14:00", Y: 280.89 },
-            { X: "15:00", Y: 242.57 },
-            { X: "16:00", Y: 298.24 },
-            { X: "17:00", Y: 208.00 },
-            { X: "18:00", Y: 214.24 },
-            { X: "19:00", Y: 214.58 },
-            { X: "20:00", Y: 211.54 },
-            { X: "21:00", Y: 248.00 },
-            { X: "22:00", Y: 258.00 },
-            { X: "23:00", Y: 234.89 },
-            { X: "0:00", Y: 210.26 },
-            { X: "1:00", Y: 248.89 },
-            { X: "2:00", Y: 238.87 },
-            { X: "3:00", Y: 264.00 },
-            { X: "4:00", Y: 270.00 }
-            ]
-        };
-        var graphdata4 = {
-            linecolor: "Random",
-            title: "Thursday",
-            values: [
-              { X: "6:00", Y: 300.00 },
-            { X: "7:00", Y: 410.98 },
-            { X: "8:00", Y: 310.00 },
-            { X: "9:00", Y: 314.00 },
-            { X: "10:00", Y: 310.25 },
-            { X: "11:00", Y: 318.56 },
-            { X: "12:00", Y: 318.57 },
-            { X: "13:00", Y: 314.00 },
-            { X: "14:00", Y: 310.89 },
-            { X: "15:00", Y: 512.57 },
-            { X: "16:00", Y: 318.24 },
-            { X: "17:00", Y: 318.00 },
-            { X: "18:00", Y: 314.24 },
-            { X: "19:00", Y: 310.58 },
-            { X: "20:00", Y: 312.54 },
-            { X: "21:00", Y: 318.00 },
-            { X: "22:00", Y: 318.00 },
-            { X: "23:00", Y: 314.89 },
-            { X: "0:00", Y: 310.26 },
-            { X: "1:00", Y: 318.89 },
-            { X: "2:00", Y: 518.87 },
-            { X: "3:00", Y: 314.00 },
-            { X: "4:00", Y: 310.00 }
-            ]
-        };
-        var Piedata = {
-            linecolor: "Random",
-            title: "Profit",
-            values: [
-              { X: "Monday", Y: 50.00 },
-            { X: "Tuesday", Y: 110.98 },
-            { X: "Wednesday", Y: 70.00 },
-            { X: "Thursday", Y: 204.00 },
-            { X: "Friday", Y: 80.25 },
-            { X: "Saturday", Y: 38.56 },
-            { X: "Sunday", Y: 98.57 }
-            ]
-        };
-        $(function () {
-            $("#Bargraph").SimpleChart({
-                ChartType: "Bar",
-                toolwidth: "50",
-                toolheight: "25",
-                axiscolor: "#E6E6E6",
-                textcolor: "#6E6E6E",
-                showlegends: true,
-                data: [graphdata4, graphdata3, graphdata2, graphdata1],
-                legendsize: "140",
-                legendposition: 'bottom',
-                xaxislabel: 'Hours',
-                title: 'Weekly Profit',
-                yaxislabel: 'Profit in $'
-            });
-            $("#sltchartype").on('change', function () {
-                $("#Bargraph").SimpleChart('ChartType', $(this).val());
-                $("#Bargraph").SimpleChart('reload', 'true');
-            });
-            $("#Hybridgraph").SimpleChart({
-                ChartType: "Hybrid",
-                toolwidth: "50",
-                toolheight: "25",
-                axiscolor: "#E6E6E6",
-                textcolor: "#6E6E6E",
-                showlegends: true,
-                data: [graphdata4],
-                legendsize: "140",
-                legendposition: 'bottom',
-                xaxislabel: 'Hours',
-                title: 'Weekly Profit',
-                yaxislabel: 'Profit in $'
-            });
-            $("#Linegraph").SimpleChart({
-                ChartType: "Line",
-                toolwidth: "50",
-                toolheight: "25",
-                axiscolor: "#E6E6E6",
-                textcolor: "#6E6E6E",
-                showlegends: false,
-                data: [graphdata4, graphdata3, graphdata2, graphdata1],
-                legendsize: "140",
-                legendposition: 'bottom',
-                xaxislabel: 'Hours',
-                title: 'Weekly Profit',
-                yaxislabel: 'Profit in $'
-            });
-            $("#Areagraph").SimpleChart({
-                ChartType: "Area",
-                toolwidth: "50",
-                toolheight: "25",
-                axiscolor: "#E6E6E6",
-                textcolor: "#6E6E6E",
-                showlegends: true,
-                data: [graphdata4, graphdata3, graphdata2, graphdata1],
-                legendsize: "140",
-                legendposition: 'bottom',
-                xaxislabel: 'Hours',
-                title: 'Weekly Profit',
-                yaxislabel: 'Profit in $'
-            });
-            $("#Scatterredgraph").SimpleChart({
-                ChartType: "Scattered",
-                toolwidth: "50",
-                toolheight: "25",
-                axiscolor: "#E6E6E6",
-                textcolor: "#6E6E6E",
-                showlegends: true,
-                data: [graphdata4, graphdata3, graphdata2, graphdata1],
-                legendsize: "140",
-                legendposition: 'bottom',
-                xaxislabel: 'Hours',
-                title: 'Weekly Profit',
-                yaxislabel: 'Profit in $'
-            });
-            $("#Piegraph").SimpleChart({
-                ChartType: "Pie",
-                toolwidth: "50",
-                toolheight: "25",
-                axiscolor: "#E6E6E6",
-                textcolor: "#6E6E6E",
-                showlegends: true,
-                showpielables: true,
-                data: [Piedata],
-                legendsize: "250",
-                legendposition: 'right',
-                xaxislabel: 'Hours',
-                title: 'Weekly Profit',
-                yaxislabel: 'Profit in $'
-            });
-
-            $("#Stackedbargraph").SimpleChart({
-                ChartType: "Stacked",
-                toolwidth: "50",
-                toolheight: "25",
-                axiscolor: "#E6E6E6",
-                textcolor: "#6E6E6E",
-                showlegends: true,
-                data: [graphdata3, graphdata2, graphdata1],
-                legendsize: "140",
-                legendposition: 'bottom',
-                xaxislabel: 'Hours',
-                title: 'Weekly Profit',
-                yaxislabel: 'Profit in $'
-            });
-
-            $("#StackedHybridbargraph").SimpleChart({
-                ChartType: "StackedHybrid",
-                toolwidth: "50",
-                toolheight: "25",
-                axiscolor: "#E6E6E6",
-                textcolor: "#6E6E6E",
-                showlegends: true,
-                data: [graphdata3, graphdata2, graphdata1],
-                legendsize: "140",
-                legendposition: 'bottom',
-                xaxislabel: 'Hours',
-                title: 'Weekly Profit',
-                yaxislabel: 'Profit in $'
-            });
-        });
-
-    </script>
     <!-- //for index page weekly sales java script -->
     
     
     <!-- Bootstrap Core JavaScript -->
    <script src="/js/bootstrap.js"> </script>
-
+   <script type="text/javascript">
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            
+            reader.onload = function (e) {
+                $('#profileImageTag').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    $("#profileImage").change(function(){
+        readURL(this);
+    });
+  </script>
+  <script>
+    var sections;
+     $(function() {
+       sections={!! $sections !!};
+     })
+    function showSection() {
+      var selectedDivision=$("#divisionName").val();
+      // console.log(sections);
+      $('#sectionName').html('<option value="">Select a section</option>');
+      if(sections!=undefined){
+        sections.forEach(section => {
+          if(section.division_id==selectedDivision)
+            $('#sectionName').append(`<option value="${section.sectionName}">${section.sectionName}</option>`); 
+        });
+      }
+    }
+  </script>
     
 </body>
 </html>

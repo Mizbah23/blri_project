@@ -45,13 +45,15 @@ class productController extends Controller
 
   public function checkIfProductExist(Request $request)
   {
-    $validator=Validator::make($request->all(),[
-      'productCode'=>'required | unique:product_infos'
-    ]);
-    if($validator->fails()){
-      return  $validator->errors();
+    if($request->ajax()){
+      $validator=Validator::make($request->all(),[
+        'productCode'=>'required | unique:product_infos'
+      ]);
+      if($validator->fails()){
+        return  $validator->errors();
+      }
+      return "success";
     }
-    return "success";
   }
   public function productedit(Request $request,$id)
   { 
