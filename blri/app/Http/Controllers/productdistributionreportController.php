@@ -9,12 +9,9 @@ use App\ProductReceiveType;
 use App\ProductDistribution;
 use App\Reporting;//model name;
 
-
-
-class homeController extends Controller
+class productdistributionreportController extends Controller
 {
-  
-    public function index()
+   public function index()
     {
         $setuptypes= setuptype::all();
         $securitytypes=SecurityType::all();
@@ -23,6 +20,6 @@ class homeController extends Controller
         $reportings=Reporting::all();
 
         //dd($sections[0]->division);
-        return view('home.index')->with('setuptypes',$setuptypes)->with('securitytypes',$securitytypes)->with('productreceivetypes',$productreceivetypes)->with('productdistributions',$productdistributions)->with('reportings',$reportings);
+        return view('reporting.product distribution report')->with('setuptypes',$setuptypes)->with('securitytypes',$securitytypes)->with('productreceivetypes',$productreceivetypes)->with('productdistributions',$productdistributions)->with('reportings',$reportings);
     }
 }

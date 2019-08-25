@@ -93,3 +93,11 @@ Route::get('/product_distribution/product_release', 'productreleaseController@in
 Route::get('/product_distribution/product_distribution', 'productdistributiontypeController@index')->name('product distribution.product distribution');
 Route::get('/product_distribution/product_repair', 'productrepairController@index')->name('product distribution.product repair');
 Route::get('/product_distribution/repair_receive', 'repairreceiveController@index')->name('product distribution.repair receive');
+
+//reportings
+Route::get('/reporting/product_receive_report', 'productreceivereportController@index')->name('reporting.product receive report');//->name('folder name.blade name')
+Route::get('/reporting/product_distribution_report', 'productdistributionreportController@index')->name('reporting.product distribution report');
+Route::get('/reporting/adjustment_report', 'adjustmentreportController@index')->name('reporting.adjustment report');
+Route::get('/reporting/stock_report', 'stockreportController@index')->name('reporting.stock report');
+Route::get('/reporting/project_summary_report', 'projectsummaryreportController@index')->name('reporting.project summary report');
+Route::get('/reporting/attendance_report', 'attendancereportController@index')->name('reporting.attendance report');
