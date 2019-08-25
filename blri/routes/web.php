@@ -63,6 +63,8 @@ Route::get('/setup/project', 'projectController@index')->name('setup.project');
 //employee
 Route::get('/setup/employee', 'employeeController@index')->name('setup.employee');
 Route::post('/setup/employee', 'employeeController@employeeStore');
+Route::get('/setup/employee/{id}/edit', 'employeeController@employeeEdit')->name('setup.employee.edit');
+Route::post('/setup/employee/{id}/edit', 'employeeController@employeeUpdate');
 
 //supplier
 Route::get('/setup/supplier', 'supplierController@index')->name('setup.supplier');

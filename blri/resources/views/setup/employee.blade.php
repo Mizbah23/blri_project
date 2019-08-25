@@ -511,7 +511,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                       <td class="col-lg-1 text-center">{{date("d/m/Y", strtotime($employeeInformation->joiningDate))}}</td>
                       <td class="col-lg-1 text-center">{{date("d/m/Y", strtotime($employeeInformation->birthDate))}}</td>
                       <td class="col-lg-1 text-center">{{$employeeInformation->remarks}}</td>
-                      <td><a href=""><i class="fa fa-edit" style="font-size:24px"></i></a></td>
+                      <td><a href="{{route('setup.employee.edit',['id'=>$employeeInformation->id])}}"><i class="fa fa-edit" style="font-size:24px"></i></a></td>
                     </tr>
                     @endforeach
                     
