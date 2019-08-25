@@ -60,6 +60,10 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
   width: 100%;
   height: 295px;
 }
+.error{
+  color: red;
+  font-size: 0.8em;
+}
 </style>
 <!--pie-chart --><!-- index page sales reviews visitors pie chart -->
 <script src="/js/pie-chart.js" type="text/javascript"></script>
@@ -121,8 +125,9 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 <script>
   $(function() {
     $( ".datepicker" ).datepicker({
-      dateFormat: "dd/mm/yy",
-      maxDate: "+0D" 
+      format: 'MM/DD/YYYY',
+      maxDate: "+0D",
+      ignoreReadonly: true
     });
   });
   </script>
@@ -298,7 +303,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                 <h3 class="">Employee Information</h3>
               </div>
               <div class="form-body">
-                <form class="form-horizontal" method="post" enctype="multipart/form-data"  autocomplete="off"> 
+                <form class="form-horizontal" method="post" enctype="multipart/form-data"  autocomplete="off" > 
                   @csrf
                   <div class="form-group"> <!--Form-->
 
@@ -307,57 +312,73 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                       <div class="col-md-5">
 
                         <label  class="col-sm-6 control-label">Employee Name</label>
-                       <div class="col-lg-6">
-                          <input type="text" class="form-control" id="empName" name="empName" placeholder="Employee name can not be empty"required>
-                          </div><br><br>
+                        <div class="col-lg-6">
+                          <input type="text" class="form-control" id="name" name="name" value="{{old('name')}}" placeholder="Employee name can not be empty"required>
+                          <div class="error">{{$errors->first('name')}}</div>
+                        </div><br><br>
 
-                          <label  class="col-sm-6 control-label">Division</label>
-                          <div class="col-lg-6">
-                              <select id="divisionName" name="divisionName" onchange="showSection()" class="form-control required" required>
-                                 <option value="">Select Division</option>
-                                 @foreach ($divisions  as $division)
-                                  <option value="{{$division->id}}">{{$division->divisionName}}</option>
-                                 @endforeach
-                              </select>
-                          </div><br><br>
+                        <label  class="col-sm-6 control-label">Division</label>
+                        <div class="col-lg-6">
+                            <select id="divisionName" name="divisionName" onchange="showSection()"  class="form-control required" required>
+                                <option value="">Select Division</option>
+                                @foreach ($divisions  as $division)
+                                <option value="{{$division->id}}" {{ old('divisionName') == $division->id ? "selected" : "" }}>{{$division->divisionName}}</option>
+                                @endforeach
+                            </select>
+                            <div class="error">{{$errors->first('divisionName')}}</div>
+                        </div><br><br>
 
-                          <label  class="col-sm-6 control-label">Section</label>
-                          <div class="col-lg-6">
-                              <select id="sectionName"  name="sectionName" class="form-control required" required>
-                                 <option value="">Select Section</option>
-                                 {{-- @foreach ($sections  as $section)
-                                  <option value="{{$section->sectionName}}">{{$section->sectionName}}</option>
-                                 @endforeach --}}
-                              </select>
-                          </div><br><br>
+                        <label  class="col-sm-6 control-label">Section</label>
+                        <div class="col-lg-6">
+                          <select id="sectionName"  name="sectionName" class="form-control required" required>
+                              <option value="">Select Section</option>
+                              @if (old('divisionName'))
+                                @foreach ($sections  as $section)
+                                  @if (old('divisionName') == $section->division_id){
+                                    <option value="{{$section->sectionName}}" {{old('sectionName')==$section->sectionName ? "selected":""}}>{{$section->sectionName}}</option>
+                                  }
+                                  @endif
+                                @endforeach
+                              @endif
+                             
+                          </select>
+                          <div class="error">{{$errors->first('sectionName')}}</div>
+                        </div><br><br>
 
-                          <label  class="col-sm-6 control-label">Designation</label>
-                          <div class="col-lg-6">
-                              <select id="designationName" name="designationName" class="form-control required" required>
-                                 <option value="">Select Designation</option>
-                                 @foreach ($designations  as $designation)
-                                  <option value="{{$designation->id}}">{{$designation->designationName}}</option>
-                                 @endforeach
-                              </select>
-                          </div><br><br>
+                        <label  class="col-sm-6 control-label">Designation</label>
+                        <div class="col-lg-6">
+                          <select id="designationName" name="designationName"  value="{{old('designationName')}}" class="form-control required" required>
+                              <option value="">Select Designation</option>
+                              @foreach ($designations  as $designation)
+                              <option value="{{$designation->id}}" @if (old('designationName'))
+                                 {{ "selected"}}
+                              @endif>{{$designation->designationName}}</option>
+                              @endforeach
+                          </select>
+                          <div class="error">{{$errors->first('designationName')}}</div>
+                        </div><br><br>
 
-                          <label  class="col-sm-6 control-label">Home District</label>
-                          <div class="col-lg-6">
-                            <input type="text" name="districtName" id="districtName">
-                              {{-- <select id="category" name="" class="form-control required" required>
-                                 <option value="">Select Home District</option>
-                              </select> --}}
-                          </div><br><br>
+                        <label  class="col-sm-6 control-label">Home District</label>
+                        <div class="col-lg-6">
+                          <input type="text" name="districtName" id="districtName"  value="{{old('districtName')}}" required>
+                          <div class="error">{{$errors->first('districtName')}}&nbsp;</div>
 
-                          <label  class="col-sm-6 control-label">Address</label>
-                       <div class="col-lg-6">
-                        <textarea name="address"class="form-control" placeholder="Address can not be empty"required></textarea>
-                          </div><br><br><br>
+                            {{-- <select id="category" name="" class="form-control required" required>
+                                <option value="">Select Home District</option>
+                            </select> --}}
+                        </div><br><br>
+
+                        <label  class="col-sm-6 control-label">Address</label>
+                        <div class="col-lg-6">
+                          <input type="text" name="address"class="form-control" placeholder="Address can not be empty"  value="{{old('address')}}" required>
+                          <div class="error">{{$errors->first('address')}}</div>
+                        </div><br><br><br>
 
                         <label  class="col-sm-6 control-label">Contact</label>
-                       <div class="col-lg-6">
-                          <input type="tel" class="form-control" id="contactNo" name="contactNo" placeholder="Contact no can not be empty" required minlength='11' maxlength='11' pattern="(01)[0-9]{9}" >
-                          </div><br><br>
+                        <div class="col-lg-6">
+                          <input type="tel" class="form-control" id="contactNo" name="contactNo"  value="{{old('contactNo')}}" placeholder="Contact no can not be empty" required minlength='11' maxlength='11' pattern="(01)[0-9]{9}" >
+                          <div class="error">{{$errors->first('contactNo')}}</div>
+                        </div><br><br>
 
                       </div>
                       <!--End left side-->
@@ -365,53 +386,59 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 
                       <!--right side starts-->
                       <div class="col-md-5">
-
                         <label  class="col-sm-6 control-label">NID</label>
-                       <div class="col-lg-6">
-                          <input type="text" class="form-control" id="nidNo" name="nidNo" placeholder="NID no can not be empty" required minlength="10">
-                          </div><br><br>
+                        <div class="col-lg-6">
+                          <input type="text" class="form-control" id="nidNo" name="nidNo"  value="{{old('nidNo')}}" placeholder="NID no can not be empty" required minlength="10">
+                          <div class="error">{{$errors->first('nidNo')}}</div>
+                        </div><br><br>
 
                         <label class="col-md-6 control-label" >Joinig Date</label>
-                          <div class="col-md-6">
-                            <input class="form-control datepicker" type="text" name="joiningDate" readonly="readonly">
-                          </div><br><br>
+                        <div class="col-md-6">
+                          <input class="form-control datepicker" type="text" name="joiningDate" placeholder="mm/dd/yyyy"  value="{{old('joiningDate')}}"  required>
+                          <div class="error">{{$errors->first('joiningDate')}}</div>
+                        </div><br><br>
 
-                          <label class="col-md-6 control-label" >Birth Date</label>
-                          <div class="col-md-6">
-                            
-                          <input type="text" class="form-control datepicker" name="birthDate" readonly="readonly">
-                          </div><br><br>
+                        <label class="col-md-6 control-label" >Birth Date</label>
+                        <div class="col-md-6">
+                          <input type="text" class="form-control datepicker" name="birthDate" placeholder="mm/dd/yyyy"  value="{{old('birthDate')}}" required>
+                          <div class="error">{{$errors->first('birthDate')}}</div>
+                        </div><br><br>
 
-                           <label  class="col-sm-6 control-label">Working Place</label>
-                          <div class="col-lg-6">
-                          <input type="text" class="form-control" id="workingPlace" name="workingPlace" placeholder="Working place can not be empty"required>
-                          </div><br><br>
+                        <label  class="col-sm-6 control-label">Working Place</label>
+                        <div class="col-lg-6">
+                          <input type="text" class="form-control" id="workingPlace" name="workingPlace"  value="{{old('workingPlace')}}" placeholder="Working place can not be empty"required>
+                          <div class="error">{{$errors->first('workingPlace')}}</div>
+                        </div><br><br>
 
-                          {{-- <label  class="col-sm-6 control-label">Positon</label>
-                          <div class="col-lg-6">
-                              <select id="category" name="" class="form-control required" required>
-                                 <option value="">Select Position</option>
-                              </select>
-                          </div><br><br> --}}
+                        {{-- <label  class="col-sm-6 control-label">Positon</label>
+                        <div class="col-lg-6">
+                            <select id="category" name="" class="form-control required" required>
+                                <option value="">Select Position</option>
+                            </select>
+                        </div><br><br> --}}
 
-                          <label  class="col-sm-6 control-label"></label>
-                          <div class="col-lg-6">
-                              <input  type="checkbox" name="isRevenue" > Is Revenue?
-                          </div><br><br>
+                        <label  class="col-sm-6 control-label"></label>
+                        <div class="col-lg-6">
+                            <input  type="checkbox" name="isRevenue" @if (old('isRevenue'))
+                                checked
+                            @endif> Is Revenue?
+                        </div><br><br>
 
                           
 
                         <label  class="col-sm-6 control-label">Remarks</label>
-                       <div class="col-lg-6">
-                        <textarea name="remarks"class="form-control" placeholder="Remarks can not be empty" required></textarea>
-                          </div><br><br><br><br>
+                        <div class="col-lg-6">
+                          <textarea name="remarks"class="form-control" placeholder="Remarks can not be empty" required>{{old('remarks')}}</textarea>
+                          <div class="error">{{$errors->first('remarks')}}</div>
+                        </div><br><br><br><br>
                       </div>
-                      <!--mid side end-->
-                      <!--right side starts-->
+                        <!--mid side end-->
+                        <!--right side starts-->
                       <div class="col-md-2">
                         <img id="profileImageTag" style="height: 100px; width: 100px; margin-left: 8px; border:solid;" src="/images/profile.png"><br><br>
-                       
+                      
                         <input class="form-control" type="file" name="profileImage" id="profileImage" accept="image/*" required>
+                        <div class="error">{{$errors->first('profileImage')}}</div>
                       </div><br><br><br>
                       <!--right side end-->
 
@@ -484,7 +511,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                       <td class="col-lg-1 text-center">{{date("d/m/Y", strtotime($employeeInformation->joiningDate))}}</td>
                       <td class="col-lg-1 text-center">{{date("d/m/Y", strtotime($employeeInformation->birthDate))}}</td>
                       <td class="col-lg-1 text-center">{{$employeeInformation->remarks}}</td>
-                      <td><a href=""><i class="fa fa-edit" style="font-size:24px"></i></a></td>
+                      <td><a href="{{route('setup.employee.edit',['id'=>$employeeInformation->id])}}"><i class="fa fa-edit" style="font-size:24px"></i></a></td>
                     </tr>
                     @endforeach
                     
