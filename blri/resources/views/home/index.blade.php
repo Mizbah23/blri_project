@@ -202,7 +202,11 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                 <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                  <li><a href="tables.html"><i class="fa fa-circle"></i> Simple tables</a></li>
+                  @foreach($adjustments as $adjustment)
+                   
+                    <li><a href="{{route('adjustment.'.strtolower($adjustment->adjustmentType))}}">
+                      <i class="fa fa-circle"></i> {{$adjustment->adjustmentType}}</a></li>
+                 @endforeach
                 </ul>
               </li>
             

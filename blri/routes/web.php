@@ -93,3 +93,6 @@ Route::get('/product_distribution/product_release', 'productreleaseController@in
 Route::get('/product_distribution/product_distribution', 'productdistributiontypeController@index')->name('product distribution.product distribution');
 Route::get('/product_distribution/product_repair', 'productrepairController@index')->name('product distribution.product repair');
 Route::get('/product_distribution/repair_receive', 'repairreceiveController@index')->name('product distribution.repair receive');
+
+//adjustment
+Route::get('/adjustment/adjustment_information', 'adjustmentinformationController@index')->name('adjustment.adjustment information');
