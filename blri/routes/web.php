@@ -76,6 +76,7 @@ Route::post('/setup/supplier/{id}/edit', 'supplierController@update');
 Route::get('/setup/product', 'productController@index')->name('setup.product');
 Route::post('/setup/product', 'productController@productPost');
 Route::get('/setup/product/{id}/edit', 'productController@productedit')->name('setup.productedit');
+Route::post('/setup/product/{id}/edit', 'productController@productUpdate');
 Route::post('/check/product','productController@checkIfProductExist')->name('check.product.exist');
 
 //Employee Assign

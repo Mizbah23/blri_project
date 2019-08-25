@@ -47,6 +47,19 @@ class productController extends Controller
 
   public function checkIfProductExist(Request $request)
   {
+    $isExistenceProduct=ProductInfo::find($request->productId);
+    if($isExistenceProduct){
+      if($isExistenceProduct->productCode!=$request->productCode){
+        $validator=Validator::make($request->all(),[
+          'productCode'=>'required | unique:product_infos'
+        ]);
+        if($validator->fails()){
+          return  $validator->errors();
+        }
+      }
+      return "success";
+    }
+    
     $validator=Validator::make($request->all(),[
       'productCode'=>'required | unique:product_infos'
     ]);
@@ -59,9 +72,51 @@ class productController extends Controller
   { 
     $setuptypes= setuptype::all();
     $securitytypes=SecurityType::all();
-  
+    $categories=Category::all();
+    $productreceivetypes=ProductReceiveType::all();
+    $brands=Brand::all();
     $productinfo=ProductInfo::find($id);
-    return view('setup.productedit')->with('productinfo',$productinfo)->with('setuptypes',$setuptypes)->with('securitytypes',$securitytypes);
+
+    return view('setup.productEdit')
+          ->with('productinfo',$productinfo)
+          ->with('categories',$categories)
+          ->with('brands',$brands)
+          ->with('setuptypes',$setuptypes)
+          ->with('securitytypes',$securitytypes)
+          ->with('productinfo',$productinfo)
+          ->with('productreceivetypes',$productreceivetypes);
+  }
+  public function productUpdate(Request $request){
+    // dd($request->all());
+    $productinfo=ProductInfo::find($request->productId);
+    if($productinfo){
+      if($productinfo->productCode!=$request->productCode){
+        $this->validate($request,[
+          'productCode'=>'required | unique:product_infos',
+          'productName'=>'required',
+          'categoryName'=>'required',
+          'brandName' =>'required'
+        ]);
+      }
+      else{
+        $this->validate($request,[
+          'productName'=>'required',
+          'categoryName'=>'required',
+          'brandName' =>'required'
+        ]);
+      }
+    
+      $brandAvailable=Brand::where('brandName',$request->brandName)->where('category_id',$request->categoryName)->first();
+      // dd($brandAvailable);
+      if($brandAvailable){
+        $productinfo->productCode=$request->productCode;
+        $productinfo->productName=$request->productName;
+        $productinfo->brand_id=$brandAvailable->id;
+        $productinfo->save();
+        $productinfos=ProductInfo::all();
+      }
+    }
+    return redirect()->route('setup.product');
   }
 
 }
