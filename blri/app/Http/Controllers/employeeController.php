@@ -34,6 +34,27 @@ class employeeController extends Controller
     }
 
     public function employeeStore(Request $request){
+      $this->validate($request,[
+        'name'=>'required',
+        'divisionName'=>'required',
+        'sectionName'=>'required',
+        'designationName'=>'required',
+        'address'=>'required',
+        'districtName'=>'required',
+        'contactNo'=>'required | regex:/(01)[0-9]{9}/|size:11',
+        'nidNo'=>'required',
+        'joiningDate'=>'required | date | before_or_equal: today',
+        'birthDate'=>'required | date| before_or_equal: today',
+        'workingPlace'=>'required',
+        'remarks'=>'required',
+        'profileImage'=>'required | image | mimes:jpeg,jpg,png' ,
+      ]
+      ,
+      [
+          'contactNo.size' => 'The contact number has to be 11 character long',
+          'contactNo.required' => 'The Contact number is required.',
+          'contactNo.regex' => 'The Contact number is invalid.',
+      ]);
       // dd(date('Y-m-d', strtotime(str_replace('/', '-', $request['birthDate']))));
       $sectionIsAvailable=Section::where('sectionName',$request->sectionName)->where('division_id',$request->divisionName)->first();
       $designationId=$request->designationName;
@@ -44,7 +65,7 @@ class employeeController extends Controller
         {
             $image=$request->file('profileImage');
             $extension = $image->getClientOriginalExtension();
-            $filenametostore = $request->empName.Str::random(16).$maxEmployeeId.".".$extension;
+            $filenametostore = $request->name.Str::random(16).$maxEmployeeId.".".$extension;
             $destinationPath = public_path('/images/user');
             $img = Image::make($image->getRealPath());
             $img->resize(480, 480, function ($constraint) {
@@ -52,7 +73,7 @@ class employeeController extends Controller
             })->save($destinationPath.'/'.$filenametostore);
         }
         $newEmployee=new EmployeeInformation;
-        $newEmployee->name=$request->empName;
+        $newEmployee->name=$request->name;
         $newEmployee->section_id=$sectionIsAvailable->id;
         $newEmployee->designation_id=$request->designationName;
         $newEmployee->districtName=$designationId;
