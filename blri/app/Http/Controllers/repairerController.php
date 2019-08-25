@@ -34,4 +34,30 @@ class repairerController extends Controller
       $repairer->save();
       return redirect()->route('setup.repairer info');
   }
+   public function repaireredit(Request $request,$id){
+                
+              $setuptypes= setuptype::all();
+              $securitytypes=SecurityType::all();
+              $productreceivetypes=ProductReceiveType::all();
+              $repairer=Repairer::find($id);
+              return view('setup.repaireredit')->with('repairer',$repairer)
+                                               ->with('productreceivetypes',$productreceivetypes)
+                                               ->with('setuptypes',$setuptypes)
+                                               ->with('securitytypes',$securitytypes);
+                 }
+    public function update(Request $request,$id){
+          $this->validate($request,[
+          'repairerName'=>'required',
+          'mobile'=>'required|size:11',
+          'email' =>'required',
+        ]);
+      $repairer=Repairer::find($id);
+      $repairer->repairerName=$request->repairerName;
+      $repairer->address=$request->address;
+      $repairer->mobile=$request->mobile;
+      $repairer->email=$request->email;
+    
+      $repairer->save();
+      return redirect()->route('setup.repairer info');
+  }
 }

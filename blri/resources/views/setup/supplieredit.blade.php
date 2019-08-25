@@ -2,7 +2,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>Repair information</title>
+<title>Supplier information</title>
 <link rel="icon" type="image/png" href="/images/logo.png" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -24,14 +24,16 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 <link href='/css/SidebarNav.min.css' media='all' rel='stylesheet' type='text/css'/>
 <!-- //side nav css file -->
 
-  <link rel="stylesheet" href="/css/jquery-ui.css" type='text/css'/>
-
+<link rel="stylesheet" href="/css/jquery-ui.css" type='text/css'/>
+<!--datepicker-->
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
  
  <!-- js-->
 <script src="/js/jquery-1.11.1.min.js"></script>
 <script src="/js/modernizr.custom.js"></script>
 
-
+<!--datepicker-->
 <script src="/js/jquery-1.12.4.js"></script>
 <script src="/js/jquery-ui.js"></script>
 <!--webfonts-->
@@ -224,11 +226,10 @@ $( function() {
                 <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                   @foreach($productreceivetypes as $productreceivetype)
-                   
-                    <li><a href="{{route('product receive.'.strtolower($productreceivetype->prType))}}">
-                      <i class="fa fa-circle"></i> {{$productreceivetype->prType}}</a></li>
-                 @endforeach
+                  <li><a href="#"><i class="fa fa-circle"></i> General</a></li>
+                  <li><a href="#"><i class="fa fa-circle"></i> Icons</a></li>
+                  <li><a href="#"><i class="fa fa-circle"></i> Buttons</a></li>
+                  <li><a href="#"><i class="fa fa-circle"></i> Typography</a></li>
                 </ul>
               </li>
               
@@ -320,73 +321,102 @@ $( function() {
         <div class=" form-grids row form-grids-right">
             <div class="widget-shadow " data-example-id="basic-forms"> 
               <div class="form-title bg-primary text-white">
-                <h3 class="">Repairer Information</h3>
+                <h3 class="">Supplier Information</h3>
               </div>
               <div class="form-body">
-                <form class="form-horizontal" method="post"> 
-                  @csrf
+                <form class="form-horizontal" method="post">
+                @csrf 
                   <div class="form-group"> <!--Form-->
 
                     <div class="row">
-                      <div class="col-md-2">
-
-                      </div>
-
                        <!--left side starts-->
-                      <div class="col-md-7">
+                      <div class="col-md-6">
 
-                        <label for="repairerName" class="col-sm-6 control-label">Repairer Name</label>
-                       <div class="col-lg-6">
-                          <input type="text" class="form-control" id="repairerName" name="repairerName" placeholder="Please Enter name here"required>
+                        <label for="supplierName" class="col-sm-5 control-label">Supplier Name</label>
+                       <div class="col-lg-7">
+                          <input type="text" class="form-control" id="supplierName" name="supplierName" value="{{$supplier->supplierName}}" placeholder="Supplier name can not be empty"required>
                           </div><br><br>
-                        <label for="address" class="col-sm-6 control-label">Address</label>
-                       <div class="col-lg-6">
-                        <textarea name="address" id="address" class="form-control" placeholder="Write Address here"required></textarea>
+
+                          <label for="supplierType" class="col-sm-5 control-label">Supplier Type</label>
+                          <div class="col-lg-7">
+                                   
+                              <select id="supplierType" name="supplierType" value=" {{$supplier->supplierType}}" class="form-control required" required>
+                                 <option value="">Select type</option>
+                                 <option value="Local">Local</option>
+                                 <option value="Foreign">Foreign</option>
+                              </select>
+                          </div><br><br>
+
+                          <label for="contactName" class="col-sm-5 control-label">Contact Person</label>
+                       <div class="col-lg-7">
+                          <input type="text" class="form-control" id="contactName" name="contactName" value="{{$supplier->contactName}}" placeholder="Contact name can not be empty"required>
+                          </div><br><br>
+
+
+                          <label for="address" class="col-sm-5 control-label">Address</label>
+                       <div class="col-lg-7">
+                        <textarea name="address"class="form-control" placeholder="Address can not be empty" value="{{$supplier->address}}" required></textarea>
                           </div><br><br><br>
 
-                          <label  for="mobile" class="col-sm-6 control-label">Mobile </label>
-                       <div class="col-lg-6">
-                          <input type="text" class="form-control" id="mobile" name="mobile" placeholder="Please Enter Mobile Number"required >
-                          </div><br><br><br>
-
-                          <label for="email" class="col-sm-6 control-label">Email</label>
-                       <div class="col-lg-6">
-                          <input type="email" class="form-control" id="email" name="email" placeholder="Email address here"required>
-                          </div><br><br><br>
-                          @if ($errors->any())
-                          <div class="alert alert-danger">
-                          <ul>
-                         @foreach ($errors->all() as $error)
-                         <li>{{ $error }}</li>
-                         @endforeach
-                          </ul>
-                          </div>
-                          @endif
-                      
+                        
                       </div>
                       <!--End left side-->
 
 
                       <!--right side starts-->
-                      <div class="col-md-3">
+                      <div class="col-md-6">
 
+                       <label for="phone" class="col-sm-5 control-label">Phone</label>
+                       <div class="col-lg-7">
+                          <input type="text" class="form-control" id="phone" name="phone" placeholder="Phone no can not be empty" value="{{$supplier->phone}}" required>
+                          </div><br><br>
+
+                          <label for="mobile" class="col-sm-5 control-label">Mobile</label>
+                       <div class="col-lg-7">
+                          <input type="text" class="form-control" id="mobile" name="mobile" placeholder="Mobile no can not be empty" value="{{$supplier->moblie}}" required>
+                          </div><br><br>
+
+                          <label for="email" class="col-sm-5 control-label">Email</label>
+                       <div class="col-lg-7">
+                          <input type="email" class="form-control" id="email" name="email" placeholder="Email can not be empty" value="{{$supplier->email}}" required>
+                          </div><br><br>
+
+                        <label for="country" class="col-sm-5 control-label">Country</label>
+                        <div class="col-lg-7">
+                        <input type="text" class="form-control" id="country" name="country" placeholder="Country can not be empty"value="{{$supplier->country}}" required>
+                        </div><br><br>
+
+
+                          <label for="vatReg" class="col-sm-5 control-label">VAT Reg. no</label>
+                       <div class="col-lg-7">
+                          <input type="text" class="form-control" id="vatReg" name="vatReg" placeholder="VAT Reg. no can not be empty" value="{{$supplier->vatReg}}" required>
+                          </div><br><br>
+                           @if ($errors->any())
+                            <div class="alert alert-danger">
+                            <ul>
+                           @foreach ($errors->all() as $error)
+                           <li>{{ $error }}</li>
+                           @endforeach
+                            </ul>
+                            </div>
+                           @endif 
                       </div>
                       <!--right side end-->
 
                       <!--buttons starts-->
                       <div class="row">
-                        <div class="col-md-5">
+                        <div class="col-md-3">
                           
                         </div>
                         <br><br>
                         <div class="col-md-5">
                           <div class="text-center">
-                          <button style="margin-left: -200px" type="submit" class="btn btn-info">Save</button> 
+                          <button type="submit" class="btn btn-info">Save</button> 
                           <button type="reset" class="btn btn-danger">Cancel</button>
                           </div>
 
                         </div>
-                        <div class="col-md-2">
+                        <div class="col-md-4">
                           
                         </div>
                         
@@ -396,25 +426,46 @@ $( function() {
 
                   </div>
               </form>
-                 
+<!--                   <div class="row">
+                   <div class="col-lg-6"> Category and brand-->
+                       <!--   <label for="category" class="col-sm-2 control-label">Category</label>
+                          <div class="col-lg-9">
+                              <select id="category" name="categories" class="form-control required" required>
+                                               
+                                               <option value=""></option>
+                                              
+                              </select>
+                          </div><br><br>
+
+                          <label for="brand" class="col-sm-2 control-label">Brand</label>
+                       <div class="col-lg-9">
+                          <input type="text" class="form-control" id="brand" name="brandName" placeholder="Name Can not be empty"required>
+                          </div><br><br><br>
+
+                          <div class="col-lg-6">
+                            <label for="category" class="col-sm-2 control-label">Category</label>
+                          <div class="col-lg-9">
+                              <select id="category" name="categories" class="form-control required" required>
+                                               
+                                               <option value=""></option>
+                                              
+                              </select>
+                          </div><br><br>
+
+                          <label for="brand" class="col-sm-2 control-label">Brand</label>
+                       <div class="col-lg-9">
+                          <input type="text" class="form-control" id="brand" name="brandName" placeholder="Name Can not be empty"required>
+                          </div><br><br><br>
+                          </div>
+
+                        <div class="text-center">
+                          <button type="submit" class="btn btn-info">Save</button> 
+                          <button type="reset" class="btn btn-danger">Cancel</button>
+                        </div>
+                         </form>end form-->
                       <!--Category and brand-->
                       <!--Search option starts-->
-                      <div class="row">
-                        <div class="col-md-8"></div>
-
-
-                        <div class="col-md-1">
-                          <label for="searchByBrandName"  class="col-md-4  control-label">Search</label>
-                          
-                        </div>
-
-                        <div class="col-md-3">
-                          <input type="text" class="form-control" id="searchByBrandName" name="searchByBrandName" placeholder="Search by brand name">
-                        </div>
-
-
-                      </div>
-
+                
                       <!--Search option stops-->
 
                      
@@ -422,37 +473,7 @@ $( function() {
                </div> 
 
                 <div id="allBrands">
-                  <table class="table table-responsive table-hover table-striped table-bordered table-condensed">
-                <thead class="bg-primary">
-                <tr>
-                  <th>#</th>
-                  <th>Name</th>
-                  <th>Address</th>
-                  <th>Mobile</th>
-                  <th>Email</th>
-                  <th>Edit</th>
-                 </tr>
-                </thead>
-              
-                @if(isset($repairers))
                   
-              <tbody>
-                 @foreach ($repairers as $key=>$repairer)
-                <tr>
-                  <th scope="row">{{++$key}}</th>
-                   <td>{{$repairer->repairerName}}</td>
-                   <td>{{$repairer->address}}</td>
-                   <td>{{$repairer->mobile}}</td>
-                   <td>{{$repairer->email}}</td>
-                  <td>
-                    <a href="{{route('setup.repaireredit',[$repairer->id])}}"><i class="fa fa-edit" style="font-size:24px"></i></a>
-                  </td>
-                </tr>
-               @endforeach
-               @endif
-             
-              </tbody>  
-            </table>
                </div>
                <div id="searchedBrandValue">
                    

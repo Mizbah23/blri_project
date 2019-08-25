@@ -390,7 +390,15 @@ $( function() {
                        <div class="col-lg-7">
                           <input type="text" class="form-control" id="vatReg" name="vatReg" placeholder="VAT Reg. no can not be empty"required>
                           </div><br><br>
-                          
+                           @if ($errors->any())
+                            <div class="alert alert-danger">
+                            <ul>
+                           @foreach ($errors->all() as $error)
+                           <li>{{ $error }}</li>
+                           @endforeach
+                            </ul>
+                            </div>
+                           @endif 
                       </div>
                       <!--right side end-->
 
@@ -480,21 +488,40 @@ $( function() {
 
                 <div id="allBrands">
                   <table class="table table-responsive table-hover table-striped table-bordered table-condensed">
+                   <thead class="bg-primary">
                       <tr class="row bg-primary">
                         <th class="col-lg-1 text-center">#</th>
-                        <th class="col-lg-2 text-center">Category</th>
-                        <th class="col-lg-8 text-center">Brand</th>
+                        <th class="col-lg-1 text-center">Supplier Name</th>
+                        <th class="col-lg-1 text-center">Contact Person</th>
+                        <th class="col-lg-3 text-center">Address</th>
+                        <th class="col-lg-1 text-center">Phone</th>
+                        <th class="col-lg-1 text-center">Mobile</th>
+                        <th class="col-lg-1 text-center">Email</th>
+                        <th class="col-lg-1 text-center">Country</th>
+                        <th class="col-lg-1 text-center">Supplier Type</th>
+                        <th class="col-lg-1 text-center">VAT Reg No.</th>
                         <th class="col-lg-1 text-center">Edit</th>
                       </tr>
-                      
+                      </thead>
+                      @if(isset($suppliers))
+                      <tbody>
+                        @foreach ($suppliers as $key=>$supplier)
                                 <tr class="row">
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    
-                                    <td><a href=""><i class="fa fa-edit" style="font-size:24px"></i></a></td>
+                                    <td>{{++$key}}</td>
+                                    <td>{{$supplier->supplierName}}</td>
+                                    <td>{{$supplier->contactName}}</td>
+                                    <td>{{$supplier->address}}</td>
+                                    <td>{{$supplier->phone}}</td>
+                                    <td>{{$supplier->mobile}}</td>
+                                    <td>{{$supplier->email}}</td>
+                                    <td>{{$supplier->country}}</td>
+                                    <td>{{$supplier->supplierType}}</td>
+                                    <td>{{$supplier->vatReg}}</td>
+                                    <td><a href="{{route('setup.supplieredit',[$supplier->id])}}"><i class="fa fa-edit" style="font-size:24px"></i></a></td>
                                 </tr>
-                           
+                          @endforeach
+                          @endif
+                       </tbody>    
                   </table>
                </div>
                <div id="searchedBrandValue">

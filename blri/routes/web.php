@@ -66,6 +66,9 @@ Route::post('/setup/employee', 'employeeController@employeeStore');
 
 //supplier
 Route::get('/setup/supplier', 'supplierController@index')->name('setup.supplier');
+Route::post('/setup/supplier', 'supplierController@supplierPost');
+Route::get('/setup/supplier/{id}/edit', 'supplierController@supledit')->name('setup.supplieredit');
+Route::post('/setup/supplier/{id}/edit', 'supplierController@update');
 
 //product
 Route::get('/setup/product', 'productController@index')->name('setup.product');
@@ -79,6 +82,8 @@ Route::get('/setup/assignemployee', 'empAssignController@index')->name('setup.em
 //Repirer
 Route::get('/setup/repairer_information', 'repairerController@index')->name('setup.repairer info');
 Route::post('/setup/repairer_information', 'repairerController@repairerPost');
+Route::get('/setup/repairer/{id}/edit', 'repairerController@repaireredit')->name('setup.repaireredit');
+Route::post('/setup/repairer/{id}/edit', 'repairerController@update');
 
 
 // Route::get('/home', 'HomeController@index')->name('home');

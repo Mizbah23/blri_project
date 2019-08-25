@@ -337,21 +337,21 @@ $( function() {
 
                         <label for="repairerName" class="col-sm-6 control-label">Repairer Name</label>
                        <div class="col-lg-6">
-                          <input type="text" class="form-control" id="repairerName" name="repairerName" placeholder="Please Enter name here"required>
+                          <input type="text" class="form-control" id="repairerName" name="repairerName" value="{{$repairer->repairerName}}" placeholder="Please Enter name here"required>
                           </div><br><br>
                         <label for="address" class="col-sm-6 control-label">Address</label>
                        <div class="col-lg-6">
-                        <textarea name="address" id="address" class="form-control" placeholder="Write Address here"required></textarea>
+                        <textarea name="address" id="address" class="form-control" placeholder="Write Address here" value="{{$repairer->address}}" required></textarea>
                           </div><br><br><br>
 
                           <label  for="mobile" class="col-sm-6 control-label">Mobile </label>
                        <div class="col-lg-6">
-                          <input type="text" class="form-control" id="mobile" name="mobile" placeholder="Please Enter Mobile Number"required >
+                          <input type="text" class="form-control" id="mobile" name="mobile" placeholder="Please Enter Mobile Number" value="{{$repairer->mobile}}" required >
                           </div><br><br><br>
 
                           <label for="email" class="col-sm-6 control-label">Email</label>
                        <div class="col-lg-6">
-                          <input type="email" class="form-control" id="email" name="email" placeholder="Email address here"required>
+                          <input type="email" class="form-control" id="email" name="email" placeholder="Email address here" value="{{$repairer->email}}" required>
                           </div><br><br><br>
                           @if ($errors->any())
                           <div class="alert alert-danger">
@@ -381,7 +381,7 @@ $( function() {
                         <br><br>
                         <div class="col-md-5">
                           <div class="text-center">
-                          <button style="margin-left: -200px" type="submit" class="btn btn-info">Save</button> 
+                          <button style="margin-left: -200px" type="submit" class="btn btn-info">Update</button> 
                           <button type="reset" class="btn btn-danger">Cancel</button>
                           </div>
 
@@ -422,37 +422,7 @@ $( function() {
                </div> 
 
                 <div id="allBrands">
-                  <table class="table table-responsive table-hover table-striped table-bordered table-condensed">
-                <thead class="bg-primary">
-                <tr>
-                  <th>#</th>
-                  <th>Name</th>
-                  <th>Address</th>
-                  <th>Mobile</th>
-                  <th>Email</th>
-                  <th>Edit</th>
-                 </tr>
-                </thead>
-              
-                @if(isset($repairers))
-                  
-              <tbody>
-                 @foreach ($repairers as $key=>$repairer)
-                <tr>
-                  <th scope="row">{{++$key}}</th>
-                   <td>{{$repairer->repairerName}}</td>
-                   <td>{{$repairer->address}}</td>
-                   <td>{{$repairer->mobile}}</td>
-                   <td>{{$repairer->email}}</td>
-                  <td>
-                    <a href="{{route('setup.repaireredit',[$repairer->id])}}"><i class="fa fa-edit" style="font-size:24px"></i></a>
-                  </td>
-                </tr>
-               @endforeach
-               @endif
-             
-              </tbody>  
-            </table>
+
                </div>
                <div id="searchedBrandValue">
                    
