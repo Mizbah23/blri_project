@@ -397,7 +397,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                           <div class="text-center">
                           <input type="hidden" value="{{$employeeInformation->id}}" name="employeeId">
                           <button type="submit" class="btn btn-info">Save</button> 
-                          <button type="reset" class="btn btn-danger">Cancel</button>
+                          <button onclick="cancelUpdate" class="btn btn-danger">Cancel</button>
                           </div>
 
                         </div>
@@ -502,6 +502,11 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
             $('#sectionName').append(`<option value="${section.sectionName}">${section.sectionName}</option>`); 
         });
       }
+    }
+  </script>
+  <script>
+    function cancelUpdate() {
+      document.location.href="{!! route('setup.employee'); !!}";
     }
   </script>
     
