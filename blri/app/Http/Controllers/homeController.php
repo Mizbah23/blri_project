@@ -8,6 +8,8 @@ use App\SecurityType;
 use App\ProductReceiveType;
 use App\ProductDistribution;
 use App\Adjustment;
+use App\Reporting;//model name;
+
 
 
 class homeController extends Controller
@@ -23,5 +25,9 @@ class homeController extends Controller
 
         //dd($sections[0]->division);
         return view('home.index')->with('setuptypes',$setuptypes)->with('securitytypes',$securitytypes)->with('productreceivetypes',$productreceivetypes)->with('productdistributions',$productdistributions)->with('adjustments',$adjustments);
+        $reportings=Reporting::all();
+
+        //dd($sections[0]->division);
+        return view('home.index')->with('setuptypes',$setuptypes)->with('securitytypes',$securitytypes)->with('productreceivetypes',$productreceivetypes)->with('productdistributions',$productdistributions)->with('reportings',$reportings);
     }
 }
