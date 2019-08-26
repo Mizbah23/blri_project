@@ -182,14 +182,14 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
               <li class="treeview">
                 <a href="#">
                 <i class="fa fa-folder"></i>
-                <span>Setup</span>
+                <span>সেটআপ</span>
                 <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
                  @foreach($setuptypes as $setuptype)
                    
                     <li><a href="{{route('setup.'.strtolower($setuptype->SType))}}">
-                      <i class="fa fa-circle"></i> {{$setuptype->SType}}</a></li>
+                      <i class="fa fa-circle"></i> {{$setuptype->name}}</a></li>
                  @endforeach
                   
                 </ul>
@@ -311,9 +311,9 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                        <!--left side starts-->
                       <div class="col-md-5">
 
-                        <label  class="col-sm-6 control-label">Employee Name</label>
+                        <label  class="col-sm-6 control-label">কর্মকর্তার নাম</label>
                         <div class="col-lg-6">
-                          <input type="text" class="form-control" id="name" name="name" value="{{old('name')}}" placeholder="Employee name can not be empty"required>
+                          <input type="text" class="form-control" id="name" name="name" value="{{old('name')}}" placeholder="অবশ্যই পূরণ করুন"required>
                           <div class="error">{{$errors->first('name')}}</div>
                         </div><br><br>
 
@@ -388,7 +388,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                       <div class="col-md-5">
                         <label  class="col-sm-6 control-label">NID</label>
                         <div class="col-lg-6">
-                          <input type="text" class="form-control" id="nidNo" name="nidNo"  value="{{old('nidNo')}}" placeholder="NID no can not be empty" required minlength="10">
+                          <input type="text" class="form-control" id="nidNo" name="nidNo"  value="{{old('nidNo')}}" placeholder="অবশ্যই পূরণ করুন" required minlength="10">
                           <div class="error">{{$errors->first('nidNo')}}</div>
                         </div><br><br>
 
@@ -491,7 +491,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                   <table class="table table-responsive table-hover table-striped table-bordered table-condensed">
                     <tr class="row bg-primary">
                       <th class="col-lg-1 text-center">#</th>
-                      <th class="col-lg-2 text-center">Employee Name</th>
+                      <th class="col-lg-2 text-center">কর্মকর্তার নাম</th>
                       <th class="col-lg-2 text-center">Designation</th>
                       <th class="col-lg-1 text-center">Department</th>
                       <th class="col-lg-1 text-center">Address</th>

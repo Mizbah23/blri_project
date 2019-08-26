@@ -2,7 +2,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title> Division</title>
+<title> Department</title>
 <link rel="icon" type="image/png" href="/images/logo.png" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -153,14 +153,14 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
               <li class="treeview">
                 <a href="#">
                 <i class="fa fa-folder"></i>
-                <span>Setup</span>
+                <span>সেটআপ</span>
                 <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
                  @foreach($setuptypes as $setuptype)
                    
                     <li><a href="{{route('setup.'.strtolower($setuptype->SType))}}">
-                      <i class="fa fa-circle"></i> {{$setuptype->SType}}</a></li>
+                      <i class="fa fa-circle"></i> {{$setuptype->name}}</a></li>
                  @endforeach
                   
                 </ul>

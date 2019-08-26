@@ -15,6 +15,9 @@ class createuserController extends Controller
     $securitytypes= SecurityType::all();
     $productreceivetypes=ProductReceiveType::all();
    
-    return view('security.create user')->with('setuptypes',$setuptypes)->with('securitytypes',$securitytypes)->with('productreceivetypes',$productreceivetypes);
+    return view('security.create user')
+                 ->with('setuptypes',$setuptypes)
+                 ->with('securitytypes',$securitytypes)
+                 ->with('productreceivetypes',$productreceivetypes);
   }
 }
