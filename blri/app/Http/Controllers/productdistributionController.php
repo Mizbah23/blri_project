@@ -7,6 +7,10 @@ use App\setuptype;
 use App\SecurityType;
 use App\ProductReceiveType;
 use App\ProductDistribution;
+use App\Adjustment;
+use App\Reporting;
+
+
 
 
 class productdistributionController extends Controller
@@ -17,8 +21,12 @@ class productdistributionController extends Controller
     $securitytypes= SecurityType::all();
     $productreceivetypes=ProductReceiveType::all();
     $productdistributions=ProductDistribution::all();
+    $adjustments=Adjustment::all();
+    $reportings=Reporting::all();
 
 
-    return view('product distribution.product distribution')->with('setuptypes',$setuptypes)->with('securitytypes',$securitytypes)->with('productreceivetypes',$productreceivetypes)->with('productdistributions',$productdistributions);
+
+
+    return view('product distribution.product distribution')->with('setuptypes',$setuptypes)->with('securitytypes',$securitytypes)->with('productreceivetypes',$productreceivetypes)->with('productdistributions',$productdistributions)->with('adjustments',$adjustments)->with('reportings',$reportings);
 	}
 }
