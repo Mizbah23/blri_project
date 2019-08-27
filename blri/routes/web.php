@@ -59,6 +59,7 @@ Route::post('/setup/category/{id}/edit', 'categoryController@update');
 
 //project
 Route::get('/setup/project', 'projectController@index')->name('setup.project');
+Route::post('/setup/project', 'projectController@projectPost');
 
 //employee
 Route::get('/setup/employee', 'employeeController@index')->name('setup.employee');
