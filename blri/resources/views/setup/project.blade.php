@@ -484,7 +484,9 @@ $( function() {
                                     <td>{{++$key}}</td>
                                     <td>{{$project->projectName}}</td>
                                     <td>{{$project->address}}</td>
-                                    <td>{{$project->employeeInformation->employee_information}}</td>
+
+                                    <td>{{$project->employeeinfo->name}}</td>
+
                                     <td>{{date("d/m/Y", strtotime($project->startDate))}}</td>
                                     <td>{{date("d/m/Y", strtotime($project->endDate))}}</td>
                                     <td>{{ $project->description }}</td>
