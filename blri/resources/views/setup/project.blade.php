@@ -123,7 +123,7 @@ $( function() {
     var dateFormat = "dd/mm/yy",
       from = $( "#from" )
         .datepicker({
-          defaultDate: "+1w",
+          defaultDate: "",
           changeMonth: true,
           changeYear: true,
           numberOfMonths: 1

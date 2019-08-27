@@ -22,7 +22,7 @@ class repairerController extends Controller
       public function repairerPost(Request $request){
           $this->validate($request,[
           'repairerName'=>'required',
-          'mobile'=>'required|size:11',
+          'mobile'=>'required|regex:/(01)[0-9]{9}/|size:11',
           'email' =>'required',
         ]);
       $repairer=new Repairer;

@@ -338,30 +338,30 @@ $( function() {
                         <label for="repairerName" class="col-sm-6 control-label">Repairer Name</label>
                        <div class="col-lg-6">
                           <input type="text" class="form-control" id="repairerName" name="repairerName" value="{{$repairer->repairerName}}" placeholder="Please Enter name here"required>
+                          <div class="error">{{$errors->first('repairerName')}}</div>
+
                           </div><br><br>
                         <label for="address" class="col-sm-6 control-label">Address</label>
                        <div class="col-lg-6">
                         <textarea name="address" id="address" class="form-control" placeholder="Write Address here" value="{{$repairer->address}}" required></textarea>
+                          <div class="error">{{$errors->first('address')}}</div>
+
                           </div><br><br><br>
 
                           <label  for="mobile" class="col-sm-6 control-label">Mobile </label>
                        <div class="col-lg-6">
                           <input type="text" class="form-control" id="mobile" name="mobile" placeholder="Please Enter Mobile Number" value="{{$repairer->mobile}}" required >
+                          <div class="error">{{$errors->first('mobile')}}</div>
+
                           </div><br><br><br>
 
                           <label for="email" class="col-sm-6 control-label">Email</label>
                        <div class="col-lg-6">
                           <input type="email" class="form-control" id="email" name="email" placeholder="Email address here" value="{{$repairer->email}}" required>
+                          <div class="error">{{$errors->first('email')}}</div>
+
                           </div><br><br><br>
-                          @if ($errors->any())
-                          <div class="alert alert-danger">
-                          <ul>
-                         @foreach ($errors->all() as $error)
-                         <li>{{ $error }}</li>
-                         @endforeach
-                          </ul>
-                          </div>
-                          @endif
+                         
                       
                       </div>
                       <!--End left side-->
