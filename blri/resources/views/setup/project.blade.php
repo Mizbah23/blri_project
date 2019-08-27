@@ -123,7 +123,7 @@ $( function() {
     var dateFormat = "dd/mm/yy",
       from = $( "#from" )
         .datepicker({
-          defaultDate: "",
+          defaultDate: "+1w",
           changeMonth: true,
           changeYear: true,
           numberOfMonths: 1
@@ -326,26 +326,30 @@ $( function() {
               </div>
               <div class="form-body">
                 <form class="form-horizontal" method="post"> 
+                  @csrf
                   <div class="form-group"> <!--Form-->
 
                     <div class="row">
                        <!--left side starts-->
                       <div class="col-md-6">
 
-                        <label for="brand" class="col-sm-5 control-label">Project Name</label>
+                        <label for="projectName" class="col-sm-5 control-label">Project Name</label>
                        <div class="col-lg-7">
-                          <input type="text" class="form-control" id="" name="" placeholder="Project name can not be empty"required>
+                          <input type="text" class="form-control" id="projectName" name="projectName" placeholder="Project name can not be empty"required>
                           </div><br><br>
 
-                          <label for="brand" class="col-sm-5 control-label">Address</label>
+                          <label for="address" class="col-sm-5 control-label">Address</label>
                        <div class="col-lg-7">
-                        <textarea name=" "class="form-control" placeholder="Address can not be empty"required></textarea>
+                        <textarea name="address" id="address" class="form-control" placeholder="Address can not be empty"required></textarea>
                           </div><br><br><br>
 
-                        <label for="category" class="col-sm-5 control-label">Project Director</label>
+                        <label for="name" class="col-sm-5 control-label">Project Director</label>
                           <div class="col-lg-7">
-                              <select id="category" name="categories" class="form-control required" required>
-                                 <option value=""></option>
+                              <select id="name" name="name" class="form-control required" required>
+                                 <option value="">Select Director</option>
+                                 @foreach ($employeeInformations  as $employeeInformation)
+                                 <option value="{{$employeeInformation->id}}">{{$employeeInformation->name}}</option>
+                                 @endforeach
                               </select>
                           </div><br><br>
                       </div>
@@ -357,19 +361,19 @@ $( function() {
 
                         <label class="col-md-5 control-label" >Start Date</label>
                           <div class="col-md-7">
-                            <input class="form-control" type="text" id="from"></p>
+                            <input class="form-control" type="text" id="from" name="startDate"></p>
                           </div><br><br>
 
                           <label class="col-md-5 control-label" >End Date</label>
                           <div class="col-md-7">
                             
-                          <input class="form-control" type="text" id="to"></p>
+                          <input class="form-control" type="text" id="to" name="endDate"></p>
                           </div><br><br>
 
 
                         <label for="brand" class="col-sm-5 control-label">Description</label>
                        <div class="col-lg-7">
-                        <textarea name=" "class="form-control" placeholder="Description can not be empty"required></textarea><br><br>
+                        <textarea name="description"class="form-control" placeholder="Description can not be empty"required></textarea><br><br>
                           </div><br><br>
                           
                       </div>
@@ -461,21 +465,35 @@ $( function() {
 
                 <div id="allBrands">
                   <table class="table table-responsive table-hover table-striped table-bordered table-condensed">
+                    <thead>
                       <tr class="row bg-primary">
                         <th class="col-lg-1 text-center">#</th>
-                        <th class="col-lg-2 text-center">Category</th>
-                        <th class="col-lg-8 text-center">Brand</th>
-                        <th class="col-lg-1 text-center">Edit</th>
+                        <th class="col-lg-1 text-center">Project</th>
+                        <th class="col-lg-4 text-center">Address</th>
+                        <th class="col-lg-1 text-center">Project Director</th>
+                        <th class="col-lg-1 text-center">Starting Date</th>
+                        <th class="col-lg-1 text-center">Ending Date</th>
+                        <th class="col-lg-3 text-center">Description</th>
+                        <th class="col-lg-3 text-center">Edit</th>
                       </tr>
-                      
+                      </thead>
+                             @if(isset($projects))
+                             @foreach ($projects as $key=>$project)
+                            <tbody>
                                 <tr class="row">
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td>{{++$key}}</td>
+                                    <td>{{$project->projectName}}</td>
+                                    <td>{{$project->address}}</td>
+                                    <td>{{$project->employee_information->name}}</td>
+                                    <td>{{date("d/m/Y", strtotime($project->startDate))}}</td>
+                                    <td>{{date("d/m/Y", strtotime($project->endDate))}}</td>
+                                    <td>{{ $project->description }}</td>
                                     
                                     <td><a href=""><i class="fa fa-edit" style="font-size:24px"></i></a></td>
                                 </tr>
-                           
+                              @endforeach
+                              @endif
+                           </tbody>
                   </table>
                </div>
                <div id="searchedBrandValue">

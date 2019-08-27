@@ -16,4 +16,8 @@ class EmployeeInformation extends Model
     public function district(){
         return $this->belongsTo('App\District');// This employee belongs to this district
     }
+        public function project()
+    {
+        return $this->hasOne('App\Project');
+    }
 }
