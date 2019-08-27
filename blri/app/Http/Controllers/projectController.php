@@ -26,7 +26,7 @@ class projectController extends Controller
     
       }
           public function projectPost(Request $request){
-          	   //dd('success');
+          	   dd('success');
                $project=new Project;
                $project->projectName=$request->projectName;
                $project->employee_information_id=$request->name;
@@ -34,10 +34,7 @@ class projectController extends Controller
                $project->startDate=date('Y-m-d', strtotime(str_replace('-', '/', $request['startDate'])));
                $project->endDate=date('Y-m-d', strtotime(str_replace('-', '/', $request['endDate'])));
                $project->description=$request->description;
-               
-              
                $project->save();
-              // dd($division);
                $projects=Project::all();
 
                return redirect()->route('setup.project');

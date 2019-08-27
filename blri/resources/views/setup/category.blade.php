@@ -2,7 +2,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title> কেটাগড়ি বিবরণী</title>
+<title> ক্যাটাগরি বিবরণী</title>
 <link rel="icon" type="image/png" href="/images/logo.png" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -270,7 +270,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
         <div class=" form-grids row form-grids-right">
             <div class="widget-shadow " data-example-id="basic-forms"> 
               <div class="form-title bg-primary text-white">
-                <h3 class="">পণ্য কেটাগড়ি বিবরণী</h3>
+                <h3 class="">পণ্য ক্যাটাগরি বিবরণী</h3>
               </div>
               <div class="form-body">
                 <form class="form-horizontal" method="post"> 
@@ -282,12 +282,13 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                         
                       </div>
                       <div class="col-lg-6"> <!--Category and brand-->
-                          <label for="category" class="col-sm-2 control-label"> কেটাগড়ি</label>
+                          <label for="category" class="col-sm-2 control-label"> ক্যাটাগরি</label>
                        <div class="col-lg-9">
-                           @foreach ($errors->get('caName') as $error)
+                        <input type="text" class="form-control" id="category" name="categoryName" placeholder="অবশ্যই পুরণ করুণ"required>
+                           @foreach ($errors->get('categoryName') as $error)
                                    <p style="color: red">{{ $error}}</p>
                                    @endforeach
-                          <input type="text" class="form-control" id="category" name="categoryName" placeholder="অবশ্যই পুরণ করুণ"required>
+                          
                           </div><br><br><br>
                         <div class="text-center">
                           <button type="submit" class="btn btn-info">সংরক্ষণ করুণ</button> 
@@ -327,7 +328,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                 <thead class="bg-primary">
                 <tr>
                   <th>#</th>
-                  <th>কেটাগড়ি</th>
+                  <th>ক্যাটাগরি</th>
                   <th>সম্পাদনা</th>
                  </tr>
                 </thead>

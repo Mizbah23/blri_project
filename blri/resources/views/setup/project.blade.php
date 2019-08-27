@@ -325,8 +325,8 @@ $( function() {
                 <h3 class="">Project Information</h3>
               </div>
               <div class="form-body">
-                <form class="form-horizontal" method="post"> 
-                  @csrf
+                <form class="form-horizontal" method="post">
+                @csrf 
                   <div class="form-group"> <!--Form-->
 
                     <div class="row">
@@ -346,9 +346,9 @@ $( function() {
                         <label for="name" class="col-sm-5 control-label">Project Director</label>
                           <div class="col-lg-7">
                               <select id="name" name="name" class="form-control required" required>
-                                 <option value="">Select Director</option>
-                                 @foreach ($employeeInformations  as $employeeInformation)
-                                 <option value="{{$employeeInformation->id}}">{{$employeeInformation->name}}</option>
+                               <option value="">Select Director</option>
+                                @foreach ($employeeInformations  as $employeeInformation)
+                                <option value="{{$employeeInformation->id}}">{{$employeeInformation->name}}</option>
                                  @endforeach
                               </select>
                           </div><br><br>
@@ -484,7 +484,7 @@ $( function() {
                                     <td>{{++$key}}</td>
                                     <td>{{$project->projectName}}</td>
                                     <td>{{$project->address}}</td>
-                                    <td>{{$project->employee_information->name}}</td>
+                                    <td>{{$project->employeeInformation->employee_information}}</td>
                                     <td>{{date("d/m/Y", strtotime($project->startDate))}}</td>
                                     <td>{{date("d/m/Y", strtotime($project->endDate))}}</td>
                                     <td>{{ $project->description }}</td>
