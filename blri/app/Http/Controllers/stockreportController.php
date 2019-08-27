@@ -22,4 +22,5 @@ public function index()
         //dd($sections[0]->division);
         return view('reporting.stock report')->with('setuptypes',$setuptypes)->with('securitytypes',$securitytypes)->with('productreceivetypes',$productreceivetypes)->with('productdistributions',$productdistributions)->with('reportings',$reportings);
     }
+    
 }

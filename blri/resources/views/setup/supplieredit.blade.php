@@ -204,14 +204,14 @@ $( function() {
               <li class="treeview">
                 <a href="#">
                 <i class="fa fa-folder"></i>
-                <span>Setup</span>
+                <span>সেটআপ</span>
                 <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
                  @foreach($setuptypes as $setuptype)
                    
                     <li><a href="{{route('setup.'.strtolower($setuptype->SType))}}">
-                      <i class="fa fa-circle"></i> {{$setuptype->SType}}</a></li>
+                      <i class="fa fa-circle"></i> {{$setuptype->name}}</a></li>
                  @endforeach
                   
                 </ul>
@@ -335,6 +335,7 @@ $( function() {
                         <label for="supplierName" class="col-sm-5 control-label">Supplier Name</label>
                        <div class="col-lg-7">
                           <input type="text" class="form-control" id="supplierName" name="supplierName" value="{{$supplier->supplierName}}" placeholder="Supplier name can not be empty"required>
+                          <div class="error">{{$errors->first('supplierName')}}</div>
                           </div><br><br>
 
                           <label for="supplierType" class="col-sm-5 control-label">Supplier Type</label>
@@ -345,17 +346,23 @@ $( function() {
                                  <option value="Local">Local</option>
                                  <option value="Foreign">Foreign</option>
                               </select>
+                          <div class="error">{{$errors->first('supplierType')}}</div>
+
                           </div><br><br>
 
                           <label for="contactName" class="col-sm-5 control-label">Contact Person</label>
                        <div class="col-lg-7">
                           <input type="text" class="form-control" id="contactName" name="contactName" value="{{$supplier->contactName}}" placeholder="Contact name can not be empty"required>
+                          <div class="error">{{$errors->first('contactName')}}</div>
+
                           </div><br><br>
 
 
                           <label for="address" class="col-sm-5 control-label">Address</label>
                        <div class="col-lg-7">
                         <textarea name="address"class="form-control" placeholder="Address can not be empty" value="{{$supplier->address}}" required></textarea>
+                          <div class="error">{{$errors->first('address')}}</div>
+
                           </div><br><br><br>
 
                         
@@ -369,37 +376,39 @@ $( function() {
                        <label for="phone" class="col-sm-5 control-label">Phone</label>
                        <div class="col-lg-7">
                           <input type="text" class="form-control" id="phone" name="phone" placeholder="Phone no can not be empty" value="{{$supplier->phone}}" required>
+                          <div class="error">{{$errors->first('phone')}}</div>
+
                           </div><br><br>
 
                           <label for="mobile" class="col-sm-5 control-label">Mobile</label>
                        <div class="col-lg-7">
                           <input type="text" class="form-control" id="mobile" name="mobile" placeholder="Mobile no can not be empty" value="{{$supplier->moblie}}" required>
+                          <div class="error">{{$errors->first('mobile')}}</div>
+
                           </div><br><br>
 
                           <label for="email" class="col-sm-5 control-label">Email</label>
                        <div class="col-lg-7">
                           <input type="email" class="form-control" id="email" name="email" placeholder="Email can not be empty" value="{{$supplier->email}}" required>
+                          <div class="error">{{$errors->first('email')}}</div>
+
                           </div><br><br>
 
                         <label for="country" class="col-sm-5 control-label">Country</label>
                         <div class="col-lg-7">
                         <input type="text" class="form-control" id="country" name="country" placeholder="Country can not be empty"value="{{$supplier->country}}" required>
+                          <div class="error">{{$errors->first('country')}}</div>
+
                         </div><br><br>
 
 
                           <label for="vatReg" class="col-sm-5 control-label">VAT Reg. no</label>
                        <div class="col-lg-7">
                           <input type="text" class="form-control" id="vatReg" name="vatReg" placeholder="VAT Reg. no can not be empty" value="{{$supplier->vatReg}}" required>
+                          <div class="error">{{$errors->first('vatReg')}}</div>
+
                           </div><br><br>
-                           @if ($errors->any())
-                            <div class="alert alert-danger">
-                            <ul>
-                           @foreach ($errors->all() as $error)
-                           <li>{{ $error }}</li>
-                           @endforeach
-                            </ul>
-                            </div>
-                           @endif 
+                  
                       </div>
                       <!--right side end-->
 

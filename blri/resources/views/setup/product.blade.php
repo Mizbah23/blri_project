@@ -206,7 +206,7 @@ $( function() {
               <li class="treeview">
                 <a href="#">
                 <i class="fa fa-folder"></i>
-                <span>Setup</span>
+                <span>সেটআপ</span>
                 <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">

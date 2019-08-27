@@ -7,11 +7,11 @@ use App\SecurityType;
 use App\division;
 use App\Section;
 use App\Designation;
+use App\District;
 use App\EmployeeInformation;
 use App\ProductReceiveType;
 use illuminate\Support\Str;
 use Image;
-use File;
 
 class employeeController extends Controller
 {
@@ -21,15 +21,17 @@ class employeeController extends Controller
       $divisions= division::all();
       $sections= Section::all();
       $designations= Designation::all();
+      $districts= District::all();
       $employeeInformations= EmployeeInformation::all();
       $productreceivetypes=ProductReceiveType::all();
-        //dd($sections[0]->division);
+        //dd($divisions);
       return view('setup.employee')
               ->with('setuptypes',$setuptypes)
               ->with('securitytypes',$securitytypes)
               ->with('divisions',$divisions)
               ->with('sections',$sections)
               ->with('designations',$designations)
+              ->with('districts',$districts)
               ->with('productreceivetypes',$productreceivetypes)
               ->with('employeeInformations',$employeeInformations);
     }
@@ -76,8 +78,8 @@ class employeeController extends Controller
         $newEmployee=new EmployeeInformation;
         $newEmployee->name=$request->name;
         $newEmployee->section_id=$sectionIsAvailable->id;
-        $newEmployee->designation_id=$request->designationName;
-        $newEmployee->districtName=$designationId;
+        $newEmployee->designation_id=$designationId;
+        $newEmployee->district_id=$request->districtName;
         $newEmployee->address=$request->address;
         $newEmployee->contactNo=$request->contactNo;
         $newEmployee->nidNo=$request->nidNo;
@@ -90,10 +92,8 @@ class employeeController extends Controller
         $newEmployee->save();
       }
       
-
       return redirect()->route('setup.employee');
     }
-
     public function employeeEdit($id){
       $securitytypes=SecurityType::all();
       $setuptypes= setuptype::all();
@@ -101,6 +101,7 @@ class employeeController extends Controller
       $sections= Section::all();
       $designations= Designation::all();
       $employeeInformation= EmployeeInformation::find($id);
+      $districts= District::all();
       $productreceivetypes=ProductReceiveType::all();
         //dd($sections[0]->division);
       return view('setup.employeeEdit')
@@ -108,6 +109,7 @@ class employeeController extends Controller
               ->with('securitytypes',$securitytypes)
               ->with('divisions',$divisions)
               ->with('sections',$sections)
+              ->with('districts',$districts)
               ->with('designations',$designations)
               ->with('productreceivetypes',$productreceivetypes)
               ->with('employeeInformation',$employeeInformation);
@@ -127,8 +129,8 @@ class employeeController extends Controller
         'workingPlace'=>'required',
         'remarks'=>'required',
         'profileImage'=>'image | mimes:jpeg,jpg,png' ,
-      ]
-      ,
+      ],
+      
       [
           'contactNo.size' => 'The contact number has to be 11 character long',
           'contactNo.required' => 'The Contact number is required.',
@@ -160,8 +162,8 @@ class employeeController extends Controller
           }
           $employee->name=$request->name;
           $employee->section_id=$sectionIsAvailable->id;
-          $employee->designation_id=$request->designationName;
-          $employee->districtName=$designationId;
+          $employee->designation_id=$designationId;
+          $employee->district_id=$request->districtName;
           $employee->address=$request->address;
           $employee->contactNo=$request->contactNo;
           $employee->nidNo=$request->nidNo;

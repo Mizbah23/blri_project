@@ -2,8 +2,8 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title> Section edit</title>
-<link rel="icon" type="image/png" href="/images/logo.png" />
+<title> জেলা</title>
+<link rel="icon" type="image/png" href="/images/logo.png"/>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="Glance Design Dashboard Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
@@ -175,16 +175,17 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                 <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                  <li><a href="#"><i class="fa fa-circle"></i> General</a></li>
-                  <li><a href="#"><i class="fa fa-circle"></i> Icons</a></li>
-                  <li><a href="#"><i class="fa fa-circle"></i> Buttons</a></li>
-                  <li><a href="#"><i class="fa fa-circle"></i> Typography</a></li>
+                   @foreach($productreceivetypes as $productreceivetype)
+                   
+                    <li><a href="{{route('product receive.'.strtolower($productreceivetype->prType))}}">
+                      <i class="fa fa-circle"></i> {{$productreceivetype->prType}}</a></li>
+                 @endforeach
                 </ul>
               </li>
               
               <li class="treeview">
                 <a href="#">
-                <i class="fa fa-edit"></i> <span>Product Distribution</span>
+                <i class="fa fa-users"></i> <span>Product Distribution</span>
                 <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
@@ -223,7 +224,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
     </div>
         <!--left-fixed -navigation-->
         
-       <!-- header-starts -->
+               <!-- header-starts -->
         <div class="sticky-header header-section ">
             <div class="header-left">
                 <!--toggle button start-->
@@ -263,67 +264,96 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
             <div class="clearfix"> </div>   
         </div>
         <!-- //header-ends -->
-        <!-- main content start-->
-<div class="jumbotron">
-  @if(session('response'))
-      <div class="col-mid-8 alert alert-success">
-        {{@session('response')}}
-      </div>
-      @endif
-                        
-
+ 
+    <!-- main content start-->
     <div id="page-wrapper">
       <div class="main-page">
         <div class=" form-grids row form-grids-right">
             <div class="widget-shadow " data-example-id="basic-forms"> 
-              <div class="form-title bg-primary">
-                <h4>Section Update</h4>
+              <div class="form-title bg-primary text-white">
+                <h3 class="">জেলা বিবরণী</h3>
               </div>
               <div class="form-body">
-                <form class="form-horizontal" action="" method="post">
-                @csrf
-                 <div class="form-group">
 
-                    <div class="row">
+                <form class="form-horizontal" method="post"> <div class="form-group"> 
+                  @csrf
+                  <div class="row">
                       <div class="col-lg-2">
                         
                       </div>
-                      <div class="col-lg-6"> <!--Division and Section-->
-                        <label for="divisions" class="col-sm-2 control-label">Division</label>
-                  <div class="col-sm-9">
+                      <div class="col-lg-6"> 
+               
+                     <label for="division" class="col-sm-2 control-label">বিভাগ</label>
+                     <div class="col-sm-9">
+                              <select id="division" name="division" class="form-control required" required>
+                                 <option value=""> বিভাগসমূহ</option>
+                                 <option value="ঢাকা">ঢাকা</option>
+                                 <option value="চট্টগ্রাম">চট্টগ্রাম</option>
+                                 <option value="সিলেট">সিলেট</option>
+                                 <option value="রাজশাহী">রাজশাহী</option>
+                                 <option value="খুলনা">খুলনা</option>
+                                 <option value="বরিশাল">বরিশাল</option>
+                                 <option value="রংপুর">রংপুর</option>
+                              </select>
+                          </div><br><br>
 
-                    <select class="form-control" id="divisions" name="divisions">
-                      @foreach($divisions as $division)
-                        <option value="{{$division->id}}" @if ($section->division_id==$division->id)
-                            selected
-                        @endif>{{$division->divisionName}}</option>
-                      @endforeach
-                    </select>
-                  </div>
-                  <br><br>
-
-
-                          <label for="section" class="col-sm-2 control-label">Section</label>
-                       <div class="col-lg-9">
-                          <input type="text" class="form-control" id="section" name="sectionName"  value="{{$section->sectionName}}"placeholder="Name Can not be empty"required>
-                                   @foreach ($errors->get('sectionName') as $error)
-                                   <p style="color: red">{{ $error}}</p>
-                                   @endforeach
-                          </div><br><br><br>
-                        <div class="text-center">
-                          <button type="submit" class="btn btn-info">Update</button> 
-                          <button type="submit" class="btn btn-danger">Cancel</button>
-                        </div>
-                  </form> <br><br>
+                  <label for="district" class="col-sm-2 control-label">জেলা</label> 
+                  <div class="col-sm-9"> <input type="text" required class="form-control" id="district" name="district" placeholder="can not be empty"> </div>
+                   </div>
+                 <div class="form-group"> <div class="col-sm-offset-4 col-sm-6">  </div> </div><br> <div class="col-sm-offset-4"> <button type="submit" class="btn btn-info">সেভ</button> <button type="reset" class="btn btn-danger">বাতিল</button></div> </form> 
               </div>
+          </div>
+          <div class="col-sm-4"></div>
+          
+        </div>
+              <div class="row">
+              <div class="col-sm-8"></div>
+
+                    <div class="form-group" >
+                        <label for="searchoption" class="col-lg-9  control-label" style="text-align: right; ">Search</label>
+                        <div class="col-lg-3">
+                            <input type="text" class="form-control" placeholder="search...">
+                        </div>
+                     </div> 
+              </div><br><br>
+
+               <table class="table table-responsive table-hover table-striped table-bordered table-condensed">
+                <thead>
+                <tr class=" bg-primary">
+                  <th>#</th>
+                  <th>Division</th>
+                  <th>Section</th>
+                  <th>Edit</th>
+                 
+                </tr>
+              </thead>
+              @php $i=0 @endphp
+               @if(isset($districts))
+                  @foreach ($districts as $district)
+                  @php $i++ @endphp
+              <tbody>
+                <tr>
+                  <th scope="row">{{$i}}</th>
+                  <td>{{$district->division}}</td>
+                  <td>{{$district->district}}</td>
+                  <td>
+                    <a href=""><i class="fa fa-edit" style="font-size:24px"></i></a>
+                  </td>
+                 
+                </tr>
+                @endforeach
+                @endif
+              </tbody>
+            </table>
+              
+
+              
             </div>
           </div>
+      
+          </div>
         </div>
-      </div>
-    </div><br><br><br><br>
-              
-     
-   
+
 
     <!--footer-->
     <div class="footer">
