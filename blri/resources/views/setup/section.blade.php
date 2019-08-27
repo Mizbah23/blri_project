@@ -2,7 +2,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title> Section</title>
+<title> শাখা বিবরণী</title>
 <link rel="icon" type="image/png" href="/images/logo.png"/>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -271,7 +271,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
         <div class=" form-grids row form-grids-right">
             <div class="widget-shadow " data-example-id="basic-forms"> 
               <div class="form-title bg-primary text-white">
-                <h3 class="">Section Information</h3>
+                <h3 class="">শাখা বিবরণী</h3>
               </div>
               <div class="form-body">
 
@@ -283,7 +283,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                       </div>
                       <div class="col-lg-6"> 
 
-                  <label for="divisions" class="col-sm-2 control-label">Division</label>
+                  <label for="divisions" class="col-sm-2 control-label">অনুষদ</label>
                   <div class="col-sm-9">
 
                     <select class="form-control" id="divisions" name="divisions">
@@ -294,10 +294,12 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                   </div>
                   <br><br>
 
-                  <label for="section" class="col-sm-2 control-label"> Section</label> 
-                  <div class="col-sm-9"> <input type="text" required class="form-control" id="section" name="sectionName" placeholder="Section can not be empty"> </div>
+                  <label for="section" class="col-sm-2 control-label"> শাখা</label> 
+                  <div class="col-sm-9"> <input type="text" required class="form-control" id="section" name="sectionName" placeholder="অবশ্যই পুরণ করুণ"> </div>
                    </div>
-                 <div class="form-group"> <div class="col-sm-offset-4 col-sm-6">  </div> </div><br> <div class="col-sm-offset-4"> <button type="submit" class="btn btn-info">Save</button> <button type="reset" class="btn btn-danger">Cancel</button></div> </form> 
+                 <div class="form-group"> <div class="col-sm-offset-4 col-sm-6">  </div> </div><br> <div class="col-sm-offset-4"> 
+                  <button type="submit" class="btn btn-info">সংরক্ষণ করুণ</button>
+                  <button type="reset" class="btn btn-danger">বাতিল করুণ</button></div> </form> 
               </div>
           </div>
           <div class="col-sm-4"></div>
@@ -307,9 +309,9 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
               <div class="col-sm-8"></div>
 
                     <div class="form-group" >
-                        <label for="searchoption" class="col-lg-9  control-label" style="text-align: right; ">Search</label>
+                        <label for="searchoption" class="col-lg-9  control-label" style="text-align: right; ">খুঁজুন</label>
                         <div class="col-lg-3">
-                            <input type="text" class="form-control" placeholder="search...">
+                            <input type="text" class="form-control" placeholder="খুঁজুন...">
                         </div>
                      </div> 
               </div><br><br>
@@ -318,9 +320,9 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                 <thead>
                 <tr class=" bg-primary">
                   <th>#</th>
-                  <th>Division</th>
-                  <th>Section</th>
-                  <th>Edit</th>
+                  <th>অনুষদ</th>
+                  <th>শাখা</th>
+                  <th>সম্পাদনা</th>
                  
                 </tr>
               </thead>

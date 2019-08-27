@@ -2,7 +2,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title> Brand</title>
+<title> ব্রান্ড বিবরণী</title>
 <link rel="icon" type="image/png" href="/images/logo.png" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -276,7 +276,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
         <div class=" form-grids row form-grids-right">
             <div class="widget-shadow " data-example-id="basic-forms"> 
               <div class="form-title bg-primary text-white">
-                <h3 class="">Brand Information</h3>
+                <h3 class=""> ব্রান্ড বিবরণী</h3>
               </div>
               <div class="form-body">
                 <form class="form-horizontal" method="post"> 
@@ -288,7 +288,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                         
                       </div>
                       <div class="col-lg-6"> <!--Category and brand-->
-                          <label for="category" class="col-sm-2 control-label">Category</label>
+                          <label for="category" class="col-sm-2 control-label">কেটাগড়ি</label>
                           <div class="col-lg-9">
                               <select id="category" name="categories" class="form-control required" required>
                                                 @foreach($categories as $category)
@@ -297,13 +297,13 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                               </select>
                           </div><br><br>
 
-                          <label for="brand" class="col-sm-2 control-label">Brand</label>
+                          <label for="brand" class="col-sm-2 control-label">ব্রান্ড</label>
                        <div class="col-lg-9">
-                          <input type="text" class="form-control" id="brand" name="brandName" placeholder="Name Can not be empty"required>
+                          <input type="text" class="form-control" id="brand" name="brandName" placeholder="অবশ্যই পুরণ করুণ"required>
                           </div><br><br><br>
                         <div class="text-center">
-                          <button type="submit" class="btn btn-info">Save</button> 
-                          <button type="reset" class="btn btn-danger">Cancel</button>
+                          <button type="submit" class="btn btn-info">সংরক্ষণ করুণ</button> 
+                          <button type="reset" class="btn btn-danger">বাতিল করুণ</button>
                         </div>
                          </form><!--end form-->
                       </div><!--Category and brand-->
@@ -319,12 +319,12 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 
 
                         <div class="col-md-1">
-                          <label for="searchByBrandName"  class="col-md-4  control-label">Search</label>
+                          <label for="searchByBrandName"  class="col-md-4  control-label">খুঁজুন</label>
                           
                         </div>
 
                         <div class="col-md-3">
-                          <input type="text" class="form-control" id="searchByBrandName" name="searchByBrandName" placeholder="Search by brand name">
+                          <input type="text" class="form-control" id="searchByBrandName" name="searchByBrandName" placeholder="ব্রান্ডএর নামে খুঁজুন">
                         </div>
 
 
@@ -338,9 +338,9 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                   <table class="table table-responsive table-hover table-striped table-bordered table-condensed">
                       <tr class="row bg-primary">
                         <th class="col-lg-1 text-center">#</th>
-                        <th class="col-lg-2 text-center">Category</th>
-                        <th class="col-lg-8 text-center">Brand</th>
-                        <th class="col-lg-1 text-center">Edit</th>
+                        <th class="col-lg-2 text-center">কেটাগড়ি</th>
+                        <th class="col-lg-8 text-center">ব্রান্ড</th>
+                        <th class="col-lg-1 text-center">সম্পাদনা</th>
                       </tr>
                         @if(isset($brands))
                             @foreach ($brands as $key=>$brand)

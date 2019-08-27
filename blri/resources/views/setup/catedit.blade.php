@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>Category|Edit</title>
+<title>কেটাগড়ি হালনাগাদ</title>
 <link rel="icon" type="image/png" href="/images/logo.png" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -276,7 +276,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
         <div class=" form-grids row form-grids-right">
             <div class="widget-shadow " data-example-id="basic-forms"> 
               <div class="form-title bg-primary">
-                <h4>Category Information</h4>
+                <h4>কেটাগড়ি হালনাগাদ</h4>
               </div>
               <div class="form-body">
                 <form class="form-horizontal" action="" method="post">
@@ -289,16 +289,16 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                       </div>
                       <div class="col-lg-6"> <!--Category and brand-->
 
-                          <label for="categoryName" class="col-sm-2 control-label">Category</label>
+                          <label for="categoryName" class="col-sm-2 control-label">কেটাগড়ি</label>
                        <div class="col-lg-9">
-                          <input type="text" class="form-control" id="categoryName" name="categoryName"  value="{{$category->categoryName}}"placeholder="Name Can not be empty"required>
+                          <input type="text" class="form-control" id="categoryName" name="categoryName"  value="{{$category->categoryName}}"placeholder="অবশ্যই পুরণ করুণ"required>
                                    @foreach ($errors->get('categoryName') as $error)
                                    <p style="color: red">{{ $error}}</p>
                                    @endforeach
                           </div><br><br><br>
                         <div class="text-center">
-                          <button type="submit" class="btn btn-info">Update</button> 
-                          <button type="reset" class="btn btn-danger">Cancel</button>
+                          <button type="submit" class="btn btn-info">হালনাগাদ করুণ</button> 
+                          <button type="reset" class="btn btn-danger">বাতিল করুণ</button>
                         </div>
                   </form> <br><br>
               </div>

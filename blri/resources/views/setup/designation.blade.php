@@ -2,7 +2,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title> Designation</title>
+<title> পদবি বিবরণী</title>
 <link rel="icon" type="image/png" href="/images/logo.png" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -271,7 +271,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
         <div class=" form-grids row form-grids-right">
             <div class="widget-shadow " data-example-id="basic-forms"> 
               <div class="form-title bg-primary text-white">
-                <h3 class="">Designation Information</h3>
+                <h3 class=""> পদবি বিবরণী</h3>
               </div>
               <div class="form-body">
                 <form class="form-horizontal" method="post"> 
@@ -283,7 +283,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                         
                       </div>
                       <div class="col-lg-6"> <!-- Designation-->
-                          <label for="designationName" class="col-sm-3 control-label">Designation</label>
+                          <label for="designationName" class="col-sm-3 control-label">পদবি</label>
                        <div class="col-lg-9">
                           <input type="text" class="form-control" id="designationName" name="designationName" placeholder="Designation name not be empty"required>
                               @foreach ($errors->get('designationName') as $error)
@@ -291,8 +291,8 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                    @endforeach
                           </div><br><br><br>
                         <div class="text-center">
-                          <button type="submit" class="btn btn-info">Save</button> 
-                          <button type="reset" class="btn btn-danger">Cancel</button>
+                          <button type="submit" class="btn btn-info">হালনাগাদ করুণ</button> 
+                          <button type="reset" class="btn btn-danger">বাতিল করুণ</button>
                         </div>
                          </form><!--end form-->
                       </div><!--Category and brand-->
@@ -309,12 +309,12 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 
 
                         <div class="col-md-1">
-                          <label for="searchByBrandName"  class="col-md-4  control-label">Search</label>
+                          <label for="searchByBrandName"  class="col-md-4  control-label">খুঁজুন</label>
                           
                         </div>
 
                         <div class="col-md-3">
-                          <input type="text" class="form-control" id="searchByBrandName" name="searchByBrandName" placeholder="Search by brand name">
+                          <input type="text" class="form-control" id="searchByBrandName" name="searchByBrandName" placeholder="খুঁজুন">
                         </div>
 
 
@@ -329,8 +329,8 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                 <thead class="bg-primary">
                 <tr>
                   <th>#</th>
-                  <th>Designation</th>
-                  <th>Edit</th>
+                  <th>পদবি</th>
+                  <th>সম্পাদনা</th>
                  </tr>
                 </thead>
                  @php $i=0; @endphp

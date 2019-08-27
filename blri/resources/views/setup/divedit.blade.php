@@ -2,7 +2,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title> Division edit</title>
+<title>অনুষদ হালনাগাদ</title>
 <link rel="icon" type="image/png" href="/images/logo.png" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -277,7 +277,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
         <div class=" form-grids row form-grids-right">
             <div class="widget-shadow " data-example-id="basic-forms"> 
               <div class="form-title bg-primary">
-                <h4>Division Update</h4>
+                <h4>অনুষদ হালনাগাদ</h4>
               </div>
               <div class="form-body">
                 <form class="form-horizontal" action="" method="post">
@@ -290,7 +290,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                       </div>
                       <div class="col-lg-6"> <!--Category and brand-->
 
-                          <label for="division" class="col-sm-2 control-label">Division</label>
+                          <label for="division" class="col-sm-2 control-label">অনুষদ</label>
                        <div class="col-lg-9">
                           <input type="text" class="form-control" id="divisionName" name="divisionName"  value="{{$division->divisionName}}"placeholder="Name Can not be empty"required>
                                    @foreach ($errors->get('divisionName') as $error)
@@ -298,8 +298,8 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                    @endforeach
                           </div><br><br><br>
                         <div class="text-center">
-                          <button type="submit" class="btn btn-info">Update</button> 
-                          <button type="reset" class="btn btn-danger">Cancel</button>
+                          <button type="submit" class="btn btn-info">হালনাগাদ করুণ</button> 
+                          <button type="reset" class="btn btn-danger">বাতিল করুণ</button>
                         </div>
                   </form> <br><br>
               </div>
