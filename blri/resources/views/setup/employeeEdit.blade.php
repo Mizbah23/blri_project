@@ -290,7 +290,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                           <select id="designationName" name="designationName"  value="{{old('designationName',$employeeInformation->designation->designationName)}}" class="form-control required" required>
                               <option value="">Select Designation</option>
                               @foreach ($designations  as $designation)
-                              <option value="{{$designation->id}}" @if (old('designationName',$employeeInformation->designation->id))
+                              <option value="{{$designation->id}}" @if (old('designationName',$employeeInformation->designation->id)==$designation->id)
                                  {{ "selected"}}
                               @endif>{{$designation->designationName}}</option>
                               @endforeach
@@ -300,12 +300,15 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 
                         <label  class="col-sm-6 control-label">Home District</label>
                         <div class="col-lg-6">
-                          <input type="text" name="districtName" id="districtName"  value="{{old('districtName',$employeeInformation->districtName)}}" required>
+                          <select name="districtName" id="districtName" class="form-control required" required>
+                            <option value="">Select Home District</option>
+                            @foreach ($districts as $district)
+                            <option value="{{$district->id}}" @if (old('districtName',$employeeInformation->district->id)==$district->id)
+                                {{"selected"}}
+                            @endif>{{$district->district}}</option>
+                            @endforeach
+                          </select>
                           <div class="error">{{$errors->first('districtName')}}&nbsp;</div>
-
-                            {{-- <select id="category" name="" class="form-control required" required>
-                                <option value="">Select Home District</option>
-                            </select> --}}
                         </div><br><br>
 
                         <label  class="col-sm-6 control-label">Address</label>

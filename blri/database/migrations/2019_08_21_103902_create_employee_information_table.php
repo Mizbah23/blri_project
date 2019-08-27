@@ -18,7 +18,7 @@ class CreateEmployeeInformationTable extends Migration
             $table->string('name');
             $table->unsignedBigInteger('section_id');
             $table->unsignedBigInteger('designation_id');
-            $table->string('districtName');
+            $table->unsignedBigInteger('district_id');
             $table->string('address');
             $table->string('contactNo');
             $table->string('nidNo');
@@ -30,8 +30,9 @@ class CreateEmployeeInformationTable extends Migration
             $table->string('remarks');
             $table->string('profileImage');
 
-            $table->foreign('section_id')->references('id')->on('sections')->onDelete('cascade');
-            $table->foreign('designation_id')->references('id')->on('designations')->onDelete('cascade');
+            $table->foreign('section_id')->references('id')->on('sections');
+            $table->foreign('district_id')->references('id')->on('districts');
+            $table->foreign('designation_id')->references('id')->on('designations');
 
             $table->timestamps();
         });

@@ -13,4 +13,7 @@ class EmployeeInformation extends Model
     public function designation(){
         return $this->belongsTo('App\Designation');// This employee has one designation
     }
+    public function district(){
+        return $this->belongsTo('App\District');// This employee belongs to this district
+    }
 }
