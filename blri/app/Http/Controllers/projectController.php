@@ -26,7 +26,7 @@ class projectController extends Controller
     
       }
           public function projectPost(Request $request){
-          	   dd('success');
+          	   
                $project=new Project;
                $project->projectName=$request->projectName;
                $project->employee_information_id=$request->name;
