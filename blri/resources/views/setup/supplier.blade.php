@@ -321,7 +321,7 @@ $( function() {
         <div class=" form-grids row form-grids-right">
             <div class="widget-shadow " data-example-id="basic-forms"> 
               <div class="form-title bg-primary text-white">
-                <h3 class="">Supplier Information</h3>
+                <h3 class="">সরবরাহকারীর তথ্য</h3>
               </div>
               <div class="form-body">
                 <form class="form-horizontal" method="post">
@@ -332,16 +332,17 @@ $( function() {
                        <!--left side starts-->
                       <div class="col-md-6">
 
-                        <label for="supplierName" class="col-sm-5 control-label">Supplier Name</label>
+                        <label for="supplierName" class="col-sm-5 control-label">সরবরাহকারীর নাম</label>
                        <div class="col-lg-7">
-                          <input type="text" class="form-control" id="supplierName" name="supplierName" placeholder="Supplier name can not be empty"required>
+                          <input type="text" class="form-control" id="supplierName" name="supplierName" placeholder="অবশ্যই পুরণ করুণ"
+                          required>
                           <div class="error">{{$errors->first('supplierName')}}</div>
                         </div><br><br>
 
-                          <label for="supplierType" class="col-sm-5 control-label">Supplier Type</label>
+                          <label for="supplierType" class="col-sm-5 control-label">সরবরাহকারীর ধরণ</label>
                           <div class="col-lg-7">
                               <select id="supplierType" name="supplierType" class="form-control required" required>
-                                 <option value="">Select type</option>
+                                 <option value="">নির্বাচন করুন</option>
                                  <option value="Local">Local</option>
                                  <option value="Foreign">Foreign</option>
                               </select>
@@ -349,17 +350,17 @@ $( function() {
 
                           </div><br><br>
 
-                          <label for="contactName" class="col-sm-5 control-label">Contact Person</label>
+                          <label for="contactName" class="col-sm-5 control-label">যোগাযোগের ব্যক্তি</label>
                        <div class="col-lg-7">
-                          <input type="text" class="form-control" id="contactName" name="contactName" placeholder="Contact name can not be empty"required>
+                          <input type="text" class="form-control" id="contactName" name="contactName" placeholder="অবশ্যই পুরণ করুণ"required>
                           <div class="error">{{$errors->first('contactName')}}</div>
 
                           </div><br><br>
 
 
-                          <label for="address" class="col-sm-5 control-label">Address</label>
+                          <label for="address" class="col-sm-5 control-label">ঠিকানা</label>
                        <div class="col-lg-7">
-                        <textarea name="address"class="form-control" placeholder="Address can not be empty"required></textarea>
+                        <textarea name="address"class="form-control" placeholder="অবশ্যই পুরণ করুণ"required></textarea>
                           <div class="error">{{$errors->first('address')}}</div>
 
                           </div><br><br><br>
@@ -372,38 +373,38 @@ $( function() {
                       <!--right side starts-->
                       <div class="col-md-6">
 
-                       <label for="phone" class="col-sm-5 control-label">Phone</label>
+                       <label for="phone" class="col-sm-5 control-label">ফোন</label>
                        <div class="col-lg-7">
-                          <input type="text" class="form-control" id="phone" name="phone" placeholder="Phone no can not be empty"required>
+                          <input type="text" class="form-control" id="phone" name="phone" placeholder="অবশ্যই পুরণ করুণ"required>
                           <div class="error">{{$errors->first('phone')}}</div>
 
                           </div><br><br>
 
-                          <label for="mobile" class="col-sm-5 control-label">Mobile</label>
+                          <label for="mobile" class="col-sm-5 control-label">মোবাইল</label>
                        <div class="col-lg-7">
-                          <input type="text" class="form-control" id="mobile" name="mobile" placeholder="Mobile no can not be empty"required>
+                          <input type="text" class="form-control" id="mobile" name="mobile" placeholder="অবশ্যই পুরণ করুণ"required>
                           <div class="error">{{$errors->first('mobile')}}</div>
 
                           </div><br><br>
 
-                          <label for="email" class="col-sm-5 control-label">Email</label>
+                          <label for="email" class="col-sm-5 control-label">ইমেইল</label>
                        <div class="col-lg-7">
-                          <input type="email" class="form-control" id="email" name="email" placeholder="Email can not be empty"required>
+                          <input type="email" class="form-control" id="email" name="email" placeholder="অবশ্যই পুরণ করুণ"required>
                           <div class="error">{{$errors->first('email')}}</div>
 
                           </div><br><br>
 
-                        <label for="country" class="col-sm-5 control-label">Country</label>
+                        <label for="country" class="col-sm-5 control-label">দেশ</label>
                         <div class="col-lg-7">
-                        <input type="text" class="form-control" id="country" name="country" placeholder="Country can not be empty"required>
+                        <input type="text" class="form-control" id="country" name="country" placeholder="অবশ্যই পুরণ করুণ"required>
                           <div class="error">{{$errors->first('country')}}</div>
 
                         </div><br><br>
 
 
-                          <label for="vatReg" class="col-sm-5 control-label">VAT Reg. no</label>
+                          <label for="vatReg" class="col-sm-5 control-label">ভ্যাট নিবন্ধন নং.</label>
                        <div class="col-lg-7">
-                          <input type="text" class="form-control" id="vatReg" name="vatReg" placeholder="VAT Reg. no can not be empty"required>
+                          <input type="text" class="form-control" id="vatReg" name="vatReg" placeholder="অবশ্যই পুরণ করুণ"required>
                           <div class="error">{{$errors->first('vatReg')}}</div>
 
                           </div><br><br>
@@ -427,8 +428,8 @@ $( function() {
                         <br><br>
                         <div class="col-md-5">
                           <div class="text-center">
-                          <button type="submit" class="btn btn-info">Save</button> 
-                          <button type="reset" class="btn btn-danger">Cancel</button>
+                          <button type="submit" class="btn btn-info">সংরক্ষণ করুণ</button> 
+                          <button type="reset" class="btn btn-danger">বাতিল করুণ</button>
                           </div>
 
                         </div>
@@ -442,56 +443,18 @@ $( function() {
 
                   </div>
               </form>
-<!--                   <div class="row">
-                   <div class="col-lg-6"> Category and brand-->
-                       <!--   <label for="category" class="col-sm-2 control-label">Category</label>
-                          <div class="col-lg-9">
-                              <select id="category" name="categories" class="form-control required" required>
-                                               
-                                               <option value=""></option>
-                                              
-                              </select>
-                          </div><br><br>
 
-                          <label for="brand" class="col-sm-2 control-label">Brand</label>
-                       <div class="col-lg-9">
-                          <input type="text" class="form-control" id="brand" name="brandName" placeholder="Name Can not be empty"required>
-                          </div><br><br><br>
-
-                          <div class="col-lg-6">
-                            <label for="category" class="col-sm-2 control-label">Category</label>
-                          <div class="col-lg-9">
-                              <select id="category" name="categories" class="form-control required" required>
-                                               
-                                               <option value=""></option>
-                                              
-                              </select>
-                          </div><br><br>
-
-                          <label for="brand" class="col-sm-2 control-label">Brand</label>
-                       <div class="col-lg-9">
-                          <input type="text" class="form-control" id="brand" name="brandName" placeholder="Name Can not be empty"required>
-                          </div><br><br><br>
-                          </div>
-
-                        <div class="text-center">
-                          <button type="submit" class="btn btn-info">Save</button> 
-                          <button type="reset" class="btn btn-danger">Cancel</button>
-                        </div>
-                         </form>end form-->
-                      <!--Category and brand-->
-                      <!--Search option starts-->
                       <div class="row">
                         <div class="col-md-8"></div>
 
 
                         <div class="col-md-1">
-                          <label for="searchByBrandName"  class="col-md-4  control-label">Search</label>
+                          <label for="searchByBrandName"  class="col-md-4  control-label">খুঁজুন</label>
                           
                         </div>
 
                         <div class="col-md-3">
-                          <input type="text" class="form-control" id="searchByBrandName" name="searchByBrandName" placeholder="Search by brand name">
+                          <input type="text" class="form-control" id="searchByBrandName" name="searchByBrandName" placeholder="খুঁজুন...">
                         </div>
 
 
@@ -508,16 +471,16 @@ $( function() {
                    <thead class="bg-primary">
                       <tr class="row bg-primary">
                         <th class="col-lg-1 text-center">#</th>
-                        <th class="col-lg-1 text-center">Supplier Name</th>
-                        <th class="col-lg-1 text-center">Contact Person</th>
-                        <th class="col-lg-3 text-center">Address</th>
-                        <th class="col-lg-1 text-center">Phone</th>
-                        <th class="col-lg-1 text-center">Mobile</th>
-                        <th class="col-lg-1 text-center">Email</th>
-                        <th class="col-lg-1 text-center">Country</th>
-                        <th class="col-lg-1 text-center">Supplier Type</th>
-                        <th class="col-lg-1 text-center">VAT Reg No.</th>
-                        <th class="col-lg-1 text-center">Edit</th>
+                        <th class="col-lg-1 text-center">সরবরাহকারীর নাম</th>
+                        <th class="col-lg-1 text-center">যোগাযোগের ব্যক্তি</th>
+                        <th class="col-lg-3 text-center">ঠিকানা</th>
+                        <th class="col-lg-1 text-center">ফোন</th>
+                        <th class="col-lg-1 text-center">মোবাইল</th>
+                        <th class="col-lg-1 text-center">ইমেইল</th>
+                        <th class="col-lg-1 text-center">দেশ</th>
+                        <th class="col-lg-1 text-center">সরবরাহকারীর ধরণ</th>
+                        <th class="col-lg-1 text-center">ভ্যাট নিবন্ধন নং.</th>
+                        <th class="col-lg-1 text-center">সম্পাদনা</th>
                       </tr>
                       </thead>
                       @if(isset($suppliers))
