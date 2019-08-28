@@ -15,6 +15,13 @@ class CreateEmpAssignsTable extends Migration
     {
         Schema::create('emp_assigns', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedBigInteger('project_id');
+            $table->unsignedBigInteger('employee_information_id');
+            $table->date('date');
+            $table->string('remarks');
+            $table->boolean('isActive')->default(0);
+            
+             $table->foreign('project_id')->references('id')->on('employee_information');
             $table->timestamps();
         });
     }
