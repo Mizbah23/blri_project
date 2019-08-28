@@ -60,6 +60,8 @@ Route::post('/setup/category/{id}/edit', 'categoryController@update');
 //project
 Route::get('/setup/project', 'projectController@index')->name('setup.project');
 Route::post('/setup/project', 'projectController@projectPost');
+Route::get('/setup/project/{id}/edit', 'projectController@projectedit')->name('setup.projectEdit');
+Route::post('/setup/project/{id}/edit', 'projectController@update');
 
 //employee
 Route::get('/setup/employee', 'employeeController@index')->name('setup.employee');
@@ -82,6 +84,7 @@ Route::post('/check/product','productController@checkIfProductExist')->name('che
 
 //Employee Assign
 Route::get('/setup/assignemployee', 'empAssignController@index')->name('setup.employee assign');
+Route::post('/setup/assignemployee', 'empAssignController@assignEmployeeStore');
 
 //Repirer
 Route::get('/setup/repairer_information', 'repairerController@index')->name('setup.repairer info');

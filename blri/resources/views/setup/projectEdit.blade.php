@@ -1,7 +1,8 @@
+
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>ক্যটাগরি হালনাগাদ</title>
+<title>Project</title>
 <link rel="icon" type="image/png" href="/images/logo.png" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -22,11 +23,19 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 <!-- side nav css file -->
 <link href='/css/SidebarNav.min.css' media='all' rel='stylesheet' type='text/css'/>
 <!-- //side nav css file -->
+
+<link rel="stylesheet" href="/css/jquery-ui.css" type='text/css'/>
+<!--datepicker-->
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
  
  <!-- js-->
 <script src="/js/jquery-1.11.1.min.js"></script>
 <script src="/js/modernizr.custom.js"></script>
 
+<!--datepicker-->
+<script src="/js/jquery-1.12.4.js"></script>
+<script src="/js/jquery-ui.js"></script>
 <!--webfonts-->
 <link href="//fonts.googleapis.com/css?family=PT+Sans:400,400i,700,700i&amp;subset=cyrillic,cyrillic-ext,latin-ext" rel="stylesheet">
 <!--//webfonts--> 
@@ -40,6 +49,12 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 <script src="/js/custom.js"></script>
 <link href="/css/custom.css" rel="stylesheet">
 <!--//Metis Menu -->
+ <!--For autocomplete Search -->
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.min.css">
+<link rel="stylesheet" href="https://jqueryui.com/resources/demos/style.css">
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+<!--// For autocomplete Search -->
 <style>
 #chartdiv {
   width: 100%;
@@ -102,6 +117,43 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                             });
                         </script>
                     <!-- //requried-jsfiles-for owl -->
+<!--date picker-->
+  <script>
+$( function() {
+    var dateFormat = "dd/mm/yy",
+      from = $( "#from" )
+        .datepicker({
+          defaultDate: "+1w",
+          changeMonth: true,
+          changeYear: true,
+          numberOfMonths: 1
+        })
+        .on( "change", function() {
+          to.datepicker( "option", "minDate", getDate( this ) );
+        }),
+      to = $( "#to" ).datepicker({
+        defaultDate: "+1w",
+        changeMonth: true,
+        changeYear: true,
+        numberOfMonths: 1
+      })
+      .on( "change", function() {
+        from.datepicker( "option", "maxDate", getDate( this ) );
+      });
+ 
+    function getDate( element ) {
+      var date;
+      try {
+        date = $.datepicker.parseDate( dateFormat, element.value );
+      } catch( error ) {
+        date = null;
+      }
+ 
+      return date;
+    }
+  } );
+  </script>
+
 </head> 
 <body class="cbp-spmenu-push">
     <div class="main-content">
@@ -174,10 +226,11 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                 <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                  <li><a href="#"><i class="fa fa-circle"></i> General</a></li>
-                  <li><a href="#"><i class="fa fa-circle"></i> Icons</a></li>
-                  <li><a href="#"><i class="fa fa-circle"></i> Buttons</a></li>
-                  <li><a href="#"><i class="fa fa-circle"></i> Typography</a></li>
+                   @foreach($productreceivetypes as $productreceivetype)
+                   
+                    <li><a href="{{route('product receive.'.strtolower($productreceivetype->prType))}}">
+                      <i class="fa fa-circle"></i> {{$productreceivetype->prType}}</a></li>
+                 @endforeach
                 </ul>
               </li>
               
@@ -222,7 +275,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
     </div>
         <!--left-fixed -navigation-->
         
-       <!-- header-starts -->
+               <!-- header-starts -->
         <div class="sticky-header header-section ">
             <div class="header-left">
                 <!--toggle button start-->
@@ -262,61 +315,155 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
             <div class="clearfix"> </div>   
         </div>
         <!-- //header-ends -->
-        <!-- main content start-->
-<div class="jumbotron">
-  @if(session('response'))
-      <div class="col-mid-8 alert alert-success">
-        {{@session('response')}}
-      </div>
-      @endif
-                        
-
+   
+ <!-- main content start-->
     <div id="page-wrapper">
       <div class="main-page">
         <div class=" form-grids row form-grids-right">
             <div class="widget-shadow " data-example-id="basic-forms"> 
-              <div class="form-title bg-primary">
-                <h4>কেটাগড়ি হালনাগাদ</h4>
+              <div class="form-title bg-primary text-white">
+                <h3 class="">Project Information</h3>
               </div>
               <div class="form-body">
-                <form class="form-horizontal" action="" method="post">
-                @csrf
-                 <div class="form-group">
+                <form class="form-horizontal" method="post">
+                @csrf 
+                  <div class="form-group"> <!--Form-->
 
                     <div class="row">
-                      <div class="col-lg-2">
+                       <!--left side starts-->
+                      <div class="col-md-6">
+
+                        <label for="projectName" class="col-sm-5 control-label">Project Name</label>
+                       <div class="col-lg-7">
+                          <input type="text" class="form-control" id="projectName" name="projectName" value="{{$project->projectName}}" placeholder="Project name can not be empty"required>
+                          </div><br><br>
+
+                          <label for="address" class="col-sm-5 control-label">Address</label>
+                       <div class="col-lg-7">
+                        <textarea name="address" value="{{$project->address}}" id="address" class="form-control" placeholder="Address can not be empty"required></textarea>
+                          </div><br><br><br>
+
+                        <label for="name" class="col-sm-5 control-label">Project Director</label>
+                          <div class="col-lg-7">
+                              <select id="name" name="name"  class="form-control required" required>
+                               <option value="">Select Director</option>
+                                @foreach ($employeeInformations  as $employeeInformation)
+                                <option value="{{$employeeInformation->id}}">{{$employeeInformation->name}}</option>
+                                 @endforeach
+                              </select>
+                          </div><br><br>
+                      </div>
+                      <!--End left side-->
+
+
+                      <!--right side starts-->
+                      <div class="col-md-6">
+
+                        <label class="col-md-5 control-label" >Start Date</label>
+                          <div class="col-md-7">
+                            <input class="form-control" type="text" id="from" value="" name="startDate"></p>
+                          </div><br><br>
+
+                          <label class="col-md-5 control-label" >End Date</label>
+                          <div class="col-md-7">
+                            
+                          <input class="form-control" name="endDate" type="text" id="to" value=""></p>
+                          </div><br><br>
+
+
+                        <label for="brand" class="col-sm-5 control-label">Description</label>
+                       <div class="col-lg-7">
+                        <textarea name="description"class="form-control" value="{{ $project->description }}" placeholder="Description can not be empty"required></textarea><br><br>
+                          </div><br><br>
+                          
+                      </div>
+                      <!--right side end-->
+
+                      <!--buttons starts-->
+                      <div class="row">
+                        <div class="col-md-3">
+                          
+                        </div>
+                        <br><br>
+                        <div class="col-md-5">
+                          <div class="text-center">
+                          <button type="submit" class="btn btn-info">Save</button> 
+                          <button type="reset" class="btn btn-danger">Cancel</button>
+                          </div>
+
+                        </div>
+                        <div class="col-md-4">
+                          
+                        </div>
                         
                       </div>
-                      <div class="col-lg-6"> <!--Category and brand-->
+                      <!--button ends-->
+                    </div>
 
-                          <label for="categoryName" class="col-sm-2 control-label">ক্যাটাগরি</label>
+                  </div>
+              </form>
+<!--                   <div class="row">
+                   <div class="col-lg-6"> Category and brand-->
+                       <!--   <label for="category" class="col-sm-2 control-label">Category</label>
+                          <div class="col-lg-9">
+                              <select id="category" name="categories" class="form-control required" required>
+                                               
+                                               <option value=""></option>
+                                              
+                              </select>
+                          </div><br><br>
+
+                          <label for="brand" class="col-sm-2 control-label">Brand</label>
                        <div class="col-lg-9">
-                          <input type="text" class="form-control" id="categoryName" name="categoryName"  value="{{$category->categoryName}}"placeholder="অবশ্যই পুরণ করুণ"required>
-                                   @foreach ($errors->get('categoryName') as $error)
-                                   <p style="color: red">{{ $error}}</p>
-                                   @endforeach
+                          <input type="text" class="form-control" id="brand" name="brandName" placeholder="Name Can not be empty"required>
                           </div><br><br><br>
+
+                          <div class="col-lg-6">
+                            <label for="category" class="col-sm-2 control-label">Category</label>
+                          <div class="col-lg-9">
+                              <select id="category" name="categories" class="form-control required" required>
+                                               
+                                               <option value=""></option>
+                                              
+                              </select>
+                          </div><br><br>
+
+                          <label for="brand" class="col-sm-2 control-label">Brand</label>
+                       <div class="col-lg-9">
+                          <input type="text" class="form-control" id="brand" name="brandName" placeholder="Name Can not be empty"required>
+                          </div><br><br><br>
+                          </div>
+
                         <div class="text-center">
-                          <button type="submit" class="btn btn-info">হালনাগাদ করুণ</button> 
-                          <button type="reset" class="btn btn-danger">বাতিল করুণ</button>
+                          <button type="submit" class="btn btn-info">Save</button> 
+                          <button type="reset" class="btn btn-danger">Cancel</button>
                         </div>
-                  </form> <br><br>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div><br><br><br><br>
-              
-     
+                         </form>end form-->
+                      <!--Category and brand-->
+                      <!--Search option starts-->
    
 
+                      <!--Search option stops-->
+
+                     
+                  </div> 
+               </div> 
+
+ 
+              
+            </div>
+          </div>
+      
+          </div>
+        </div>
+     
+   
     <!--footer-->
     <div class="footer">
        <p>&copy; 2019  All Rights Reserved | Design by <a href="https://deshisysltd.com/" target="_blank">Deshi Systems Ltd.</a></p>       
     </div>
     <!--//footer-->
-
+    </div>
         
     <!-- new added graphs chart js-->
     
@@ -736,7 +883,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
     
     <!-- Bootstrap Core JavaScript -->
    <script src="/js/bootstrap.js"> </script>
-    <!-- //Bootstrap Core JavaScript -->
+
     
 </body>
 </html>

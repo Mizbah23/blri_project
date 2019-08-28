@@ -404,6 +404,8 @@ $( function() {
                   </div>
               </form>
 
+              
+                      <!--Search option starts-->
                       <div class="row">
                         <div class="col-md-8"></div>
 
@@ -454,7 +456,7 @@ $( function() {
                                     <td>{{date("d/m/Y", strtotime($project->endDate))}}</td>
                                     <td>{{ $project->description }}</td>
                                     
-                                    <td><a href=""><i class="fa fa-edit" style="font-size:24px"></i></a></td>
+                                    <td><a href="{{route('setup.projectEdit',[$project->id])}}"><i class="fa fa-edit" style="font-size:24px"></i></a></td>
                                 </tr>
                               @endforeach
                               @endif

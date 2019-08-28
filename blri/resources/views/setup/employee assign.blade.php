@@ -331,29 +331,36 @@ $( function() {
               </div>
               <div class="form-body">
                 <form class="form-horizontal" method="post"> 
+                  @csrf
                   <div class="form-group"> <!--Form-->
 
                     <div class="row">
                        <!--left side starts-->
                       <div class="col-md-6">
 
-                        <label for="category" class="col-sm-5 control-label">Project</label>
+                        <label for="projectName" class="col-sm-5 control-label">Project</label>
                           <div class="col-lg-7">
-                              <select id="category" name="categories" class="form-control required" required>
+                              <select id="projectName" name="projectName" onchange="showEmployee()" class="form-control required" required>
                                  <option value="">Select Project</option>
+                                 @foreach ($projects  as $project)
+                                <option value="{{$project->id}}">{{$project->projectName}}</option>
+                                 @endforeach
                               </select>
                           </div><br><br>
 
-                          <label for="category" class="col-sm-5 control-label">Employee</label>
+                          <label for="employeeName" class="col-sm-5 control-label">Employee</label>
                           <div class="col-lg-7">
-                              <select id="category" name="categories" class="form-control required" required>
+                              <select id="employeeName" name="employeeName" class="form-control required" required>
                                  <option value="">Select employee</option>
+                                 @foreach ($employeeInformations  as $employeeInformation)
+                                  <option value="{{$employeeInformation->id}}">{{$employeeInformation->name}}</option>
+                                 @endforeach
                               </select>
                           </div><br><br>
 
                           <label class="col-md-5 control-label" >Assign Date</label>
                           <div class="col-md-7">
-                            <input class="form-control datepicker" type="text">
+                            <input class="form-control datepicker" type="text" name="date">
                           </div><br><br>
                       </div>
                       <!--End left side-->
@@ -363,14 +370,14 @@ $( function() {
                       <div class="col-md-6">
 
 
-                        <label for="brand" class="col-sm-5 control-label">Remarks</label>
+                        <label for="remarks" class="col-sm-5 control-label">Remarks</label>
                        <div class="col-lg-7">
-                        <textarea name=" "class="form-control" placeholder="Remarks can not be empty"required></textarea><br>
+                        <textarea name="remarks"class="form-control" placeholder="Remarks can not be empty"required></textarea><br>
                           </div><br><br>
 
                           <label  class="col-sm-6 control-label"></label>
                           <div class="col-lg-6">
-                              <input  type="checkbox" name="" value=""> Is Active?
+                              <input  type="checkbox" name="isActive"> Is Active?
                           </div><br><br><br><br><br>
                           
                       </div>
@@ -399,44 +406,6 @@ $( function() {
 
                   </div>
               </form>
-<!--                   <div class="row">
-                   <div class="col-lg-6"> Category and brand-->
-                       <!--   <label for="category" class="col-sm-2 control-label">Category</label>
-                          <div class="col-lg-9">
-                              <select id="category" name="categories" class="form-control required" required>
-                                               
-                                               <option value=""></option>
-                                              
-                              </select>
-                          </div><br><br>
-
-                          <label for="brand" class="col-sm-2 control-label">Brand</label>
-                       <div class="col-lg-9">
-                          <input type="text" class="form-control" id="brand" name="brandName" placeholder="Name Can not be empty"required>
-                          </div><br><br><br>
-
-                          <div class="col-lg-6">
-                            <label for="category" class="col-sm-2 control-label">Category</label>
-                          <div class="col-lg-9">
-                              <select id="category" name="categories" class="form-control required" required>
-                                               
-                                               <option value=""></option>
-                                              
-                              </select>
-                          </div><br><br>
-
-                          <label for="brand" class="col-sm-2 control-label">Brand</label>
-                       <div class="col-lg-9">
-                          <input type="text" class="form-control" id="brand" name="brandName" placeholder="Name Can not be empty"required>
-                          </div><br><br><br>
-                          </div>
-
-                        <div class="text-center">
-                          <button type="submit" class="btn btn-info">Save</button> 
-                          <button type="reset" class="btn btn-danger">Cancel</button>
-                        </div>
-                         </form>end form-->
-                      <!--Category and brand-->
                       <!--Search option starts-->
                       <div class="row">
                         <div class="col-md-8"></div>
@@ -464,18 +433,27 @@ $( function() {
                   <table class="table table-responsive table-hover table-striped table-bordered table-condensed">
                       <tr class="row bg-primary">
                         <th class="col-lg-1 text-center">#</th>
-                        <th class="col-lg-2 text-center">Category</th>
-                        <th class="col-lg-8 text-center">Brand</th>
+                        <th class="col-lg-2 text-center">Project Name</th>
+                        <th class="col-lg-2 text-center">Employee Name</th>
+                        <th class="col-lg-2 text-center">Project Director</th>
+                        <th class="col-lg-2 text-center">Assign Date</th>
+                        <th class="col-lg-2 text-center">Remarks</th>
                         <th class="col-lg-1 text-center">Edit</th>
                       </tr>
-                      
-                                <tr class="row">
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    
-                                    <td><a href=""><i class="fa fa-edit" style="font-size:24px"></i></a></td>
-                                </tr>
+
+                      @foreach ($assignedEmployees as $key=>$assignEmployee)
+                    
+                      <tr class="row">
+                        <td>{{++$key}}</td>
+                        <td>{{$assignEmployee->project->projectName}}</td>
+                        <td>{{$assignEmployee->employeeinfo->name}}</td>
+                        <td>{{$assignEmployee->project->employeeinfo->name}}</td>
+                        <td>{{date("d/m/Y", strtotime($assignEmployee->date))}}</td>
+                        <td>{{$assignEmployee->remarks}}</td>
+                        <td><a href=""><i class="fa fa-edit" style="font-size:24px"></i></a></td>
+                      </tr>
+                      @endforeach
+                   
                            
                   </table>
                </div>
@@ -915,6 +893,24 @@ $( function() {
     
     <!-- Bootstrap Core JavaScript -->
    <script src="/js/bootstrap.js"> </script>
+   <script>
+    // var employeeInformations;
+    // $(function() {
+    //   employeeInformations={!! $employeeInformations !!};
+    // })
+    // function showEmployee() {
+    //   var selectedProject=$("#projectName").val();
+    //   // console.log(employeeInformations);
+    //   $('#employeeName').html('<option value="">Select employee</option>');
+    //   if(employeeInformations!=undefined){
+    //     employeeInformations.forEach(employeeInformation => {
+    //       if(employeeInformation.id==selectedProject)
+    //         $('#employeeName').append(`<option value="${employeeInformation.employeeInformationName}">${employeeInformation.brandName}</option>`); 
+    //     });
+    //   }
+      
+    // }
+   </script>
 
     
 </body>
