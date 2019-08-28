@@ -21,7 +21,8 @@ class CreateEmpAssignsTable extends Migration
             $table->string('remarks');
             $table->boolean('isActive')->default(0);
             
-             $table->foreign('project_id')->references('id')->on('employee_information');
+            $table->foreign('project_id')->references('id')->on('projects');
+            $table->foreign('employee_information_id')->references('id')->on('employee_information');
             $table->timestamps();
         });
     }

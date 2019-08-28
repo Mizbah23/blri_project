@@ -82,6 +82,7 @@ Route::post('/check/product','productController@checkIfProductExist')->name('che
 
 //Employee Assign
 Route::get('/setup/assignemployee', 'empAssignController@index')->name('setup.employee assign');
+Route::post('/setup/assignemployee', 'empAssignController@assignEmployeeStore');
 
 //Repirer
 Route::get('/setup/repairer_information', 'repairerController@index')->name('setup.repairer info');
