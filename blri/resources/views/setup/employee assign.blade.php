@@ -60,6 +60,10 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
   width: 100%;
   height: 295px;
 }
+.error{
+  color: red;
+  font-size: 0.8em;
+}
 </style>
 <!--pie-chart --><!-- index page sales reviews visitors pie chart -->
 <script src="/js/pie-chart.js" type="text/javascript"></script>
@@ -156,8 +160,10 @@ $( function() {
 <!--date picker-->
   <script>
   $( function() {
-    $( ".datepicker" ).datepicker({  maxDate: "+1D" });
-  } );
+    $( ".datepicker" ).datepicker({
+      minDate: "+0D"
+      });
+  });
   </script>
 </head> 
 <body class="cbp-spmenu-push">
@@ -330,7 +336,7 @@ $( function() {
                 <h3 class="">Employee Assign Information</h3>
               </div>
               <div class="form-body">
-                <form class="form-horizontal" method="post"> 
+                <form class="form-horizontal" method="post" novalidate autocomplete="off"> 
                   @csrf
                   <div class="form-group"> <!--Form-->
 
@@ -343,25 +349,41 @@ $( function() {
                               <select id="projectName" name="projectName" onchange="showEmployee()" class="form-control required" required>
                                  <option value="">Select Project</option>
                                  @foreach ($projects  as $project)
-                                <option value="{{$project->id}}">{{$project->projectName}}</option>
+                                <option value="{{$project->id}}" data-empName="{{$project->employee_information_id}}" @if (old('projectName')==$project->id)
+                                    {{"selected"}}
+                                @endif >{{$project->projectName}}</option>
                                  @endforeach
                               </select>
+                              <div class="error">{{$errors->first('projectName')}}</div>
                           </div><br><br>
 
                           <label for="employeeName" class="col-sm-5 control-label">Employee</label>
                           <div class="col-lg-7">
                               <select id="employeeName" name="employeeName" class="form-control required" required>
                                  <option value="">Select employee</option>
-                                 @foreach ($employeeInformations  as $employeeInformation)
-                                  <option value="{{$employeeInformation->id}}">{{$employeeInformation->name}}</option>
-                                 @endforeach
+                                 @if (old('projectName'))
+                                  @foreach ($employeeInformations  as $employeeInformation)
+                                    @if (old('projectDirector')!=$employeeInformation->id)
+                                    <option value="{{$employeeInformation->id}}" @if (old('employeeName')==$employeeInformation->id)
+                                      {{"selected"}} 
+                                      @endif>{{$employeeInformation->name}}
+                                    </option>
+                                    @endif
+                                    
+                                  @endforeach
+                                 @endif
+                                 
                               </select>
+                              <div class="error">{{$errors->first('employee_information_id')}}</div>
+                              
                           </div><br><br>
 
                           <label class="col-md-5 control-label" >Assign Date</label>
                           <div class="col-md-7">
-                            <input class="form-control datepicker" type="text" name="date">
-                          </div><br><br>
+                            <input class="form-control datepicker" type="text" name="date" value="{{old('date')}}" placeholder="mm/dd/yyyy" required>
+                            <div class="error">{{$errors->first('assignDate')}}</div>
+                          </div>
+                          <br><br>
                       </div>
                       <!--End left side-->
 
@@ -372,8 +394,10 @@ $( function() {
 
                         <label for="remarks" class="col-sm-5 control-label">Remarks</label>
                        <div class="col-lg-7">
-                        <textarea name="remarks"class="form-control" placeholder="Remarks can not be empty"required></textarea><br>
-                          </div><br><br>
+                        <textarea name="remarks"class="form-control" placeholder="Remarks can not be empty"required></textarea>
+                        <div class="error">{{$errors->first('remarks')}}</div><br>
+                          </div>
+                          <br><br>
 
                           <label  class="col-sm-6 control-label"></label>
                           <div class="col-lg-6">
@@ -893,23 +917,27 @@ $( function() {
     
     <!-- Bootstrap Core JavaScript -->
    <script src="/js/bootstrap.js"> </script>
+  
    <script>
-    // var employeeInformations;
-    // $(function() {
-    //   employeeInformations={!! $employeeInformations !!};
-    // })
-    // function showEmployee() {
-    //   var selectedProject=$("#projectName").val();
-    //   // console.log(employeeInformations);
-    //   $('#employeeName').html('<option value="">Select employee</option>');
-    //   if(employeeInformations!=undefined){
-    //     employeeInformations.forEach(employeeInformation => {
-    //       if(employeeInformation.id==selectedProject)
-    //         $('#employeeName').append(`<option value="${employeeInformation.employeeInformationName}">${employeeInformation.brandName}</option>`); 
-    //     });
-    //   }
+    var employeeInformations;
+    $(function() {
+      employeeInformations={!! $employeeInformations !!};
+    })
+    function showEmployee() {
+      var selectedProjectEmpName=$("#projectName").find('option:selected').attr('data-empName');
       
-    // }
+      // var selectedProject=$("#projectName").val();
+      // // console.log(employeeInformations);
+      $('#employeeName').html('<option value="">Select employee</option>');
+      if(employeeInformations!=undefined ){
+        employeeInformations.forEach(employeeInformation => {
+          if(employeeInformation.id!=selectedProjectEmpName)
+            $('#employeeName').append(`<option value="${employeeInformation.id}">${employeeInformation.name}</option>`); 
+        });
+      }
+      
+    }
+    
    </script>
 
     
