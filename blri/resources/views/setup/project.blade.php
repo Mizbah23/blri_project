@@ -322,7 +322,7 @@ $( function() {
         <div class=" form-grids row form-grids-right">
             <div class="widget-shadow " data-example-id="basic-forms"> 
               <div class="form-title bg-primary text-white">
-                <h3 class="">Project Information</h3>
+                <h3 class="">প্রকল্প সম্পর্কিত তথ্য</h3>
               </div>
               <div class="form-body">
                 <form class="form-horizontal" method="post">
@@ -333,20 +333,21 @@ $( function() {
                        <!--left side starts-->
                       <div class="col-md-6">
 
-                        <label for="projectName" class="col-sm-5 control-label">Project Name</label>
+                        <label for="projectName" class="col-sm-5 control-label">
+                        প্রকল্পের নাম</label>
                        <div class="col-lg-7">
-                          <input type="text" class="form-control" id="projectName" name="projectName" placeholder="Project name can not be empty"required>
+                          <input type="text" class="form-control" id="projectName" name="projectName" placeholder="অবশ্যই পুরণ করুণ"required>
                           </div><br><br>
 
-                          <label for="address" class="col-sm-5 control-label">Address</label>
+                          <label for="address" class="col-sm-5 control-label">ঠিকানা</label>
                        <div class="col-lg-7">
-                        <textarea name="address" id="address" class="form-control" placeholder="Address can not be empty"required></textarea>
+                        <textarea name="address" id="address" class="form-control" placeholder="অবশ্যই পুরণ করুণ"required></textarea>
                           </div><br><br><br>
 
-                        <label for="name" class="col-sm-5 control-label">Project Director</label>
+                        <label for="name" class="col-sm-5 control-label">প্রকল্পের পরিচালক </label>
                           <div class="col-lg-7">
                               <select id="name" name="name" class="form-control required" required>
-                               <option value="">Select Director</option>
+                               <option value="">নির্বাচন করুন</option>
                                 @foreach ($employeeInformations  as $employeeInformation)
                                 <option value="{{$employeeInformation->id}}">{{$employeeInformation->name}}</option>
                                  @endforeach
@@ -359,21 +360,21 @@ $( function() {
                       <!--right side starts-->
                       <div class="col-md-6">
 
-                        <label class="col-md-5 control-label" >Start Date</label>
+                        <label class="col-md-5 control-label" >শুরুর তারিখ</label>
                           <div class="col-md-7">
                             <input class="form-control" type="text" id="from" name="startDate"></p>
                           </div><br><br>
 
-                          <label class="col-md-5 control-label" >End Date</label>
+                          <label class="col-md-5 control-label" >শেষ তারিখ</label>
                           <div class="col-md-7">
                             
                           <input class="form-control" type="text" id="to" name="endDate"></p>
                           </div><br><br>
 
 
-                        <label for="brand" class="col-sm-5 control-label">Description</label>
+                        <label for="brand" class="col-sm-5 control-label">বিবরণ</label>
                        <div class="col-lg-7">
-                        <textarea name="description"class="form-control" placeholder="Description can not be empty"required></textarea><br><br>
+                        <textarea name="description"class="form-control" placeholder="অবশ্যই পুরণ করুণ"required></textarea><br><br>
                           </div><br><br>
                           
                       </div>
@@ -387,8 +388,8 @@ $( function() {
                         <br><br>
                         <div class="col-md-5">
                           <div class="text-center">
-                          <button type="submit" class="btn btn-info">Save</button> 
-                          <button type="reset" class="btn btn-danger">Cancel</button>
+                          <button type="submit" class="btn btn-info">সংরক্ষণ করুণ</button> 
+                          <button type="reset" class="btn btn-danger">বাতিল করুণ</button>
                           </div>
 
                         </div>
@@ -402,56 +403,18 @@ $( function() {
 
                   </div>
               </form>
-<!--                   <div class="row">
-                   <div class="col-lg-6"> Category and brand-->
-                       <!--   <label for="category" class="col-sm-2 control-label">Category</label>
-                          <div class="col-lg-9">
-                              <select id="category" name="categories" class="form-control required" required>
-                                               
-                                               <option value=""></option>
-                                              
-                              </select>
-                          </div><br><br>
 
-                          <label for="brand" class="col-sm-2 control-label">Brand</label>
-                       <div class="col-lg-9">
-                          <input type="text" class="form-control" id="brand" name="brandName" placeholder="Name Can not be empty"required>
-                          </div><br><br><br>
-
-                          <div class="col-lg-6">
-                            <label for="category" class="col-sm-2 control-label">Category</label>
-                          <div class="col-lg-9">
-                              <select id="category" name="categories" class="form-control required" required>
-                                               
-                                               <option value=""></option>
-                                              
-                              </select>
-                          </div><br><br>
-
-                          <label for="brand" class="col-sm-2 control-label">Brand</label>
-                       <div class="col-lg-9">
-                          <input type="text" class="form-control" id="brand" name="brandName" placeholder="Name Can not be empty"required>
-                          </div><br><br><br>
-                          </div>
-
-                        <div class="text-center">
-                          <button type="submit" class="btn btn-info">Save</button> 
-                          <button type="reset" class="btn btn-danger">Cancel</button>
-                        </div>
-                         </form>end form-->
-                      <!--Category and brand-->
-                      <!--Search option starts-->
                       <div class="row">
                         <div class="col-md-8"></div>
 
 
                         <div class="col-md-1">
-                          <label for="searchByBrandName"  class="col-md-4  control-label">Search</label>
+                          <label for="searchByBrandName"  class="col-md-4  control-label">খুঁজুন</label>
                           
                         </div>
 
                         <div class="col-md-3">
-                          <input type="text" class="form-control" id="searchByBrandName" name="searchByBrandName" placeholder="Search by brand name">
+                          <input type="text" class="form-control" id="searchByBrandName" name="searchByBrandName" placeholder="খুঁজুন...">
                         </div>
 
 
@@ -468,13 +431,13 @@ $( function() {
                     <thead>
                       <tr class="row bg-primary">
                         <th class="col-lg-1 text-center">#</th>
-                        <th class="col-lg-1 text-center">Project</th>
-                        <th class="col-lg-4 text-center">Address</th>
-                        <th class="col-lg-1 text-center">Project Director</th>
-                        <th class="col-lg-1 text-center">Starting Date</th>
-                        <th class="col-lg-1 text-center">Ending Date</th>
-                        <th class="col-lg-3 text-center">Description</th>
-                        <th class="col-lg-3 text-center">Edit</th>
+                        <th class="col-lg-1 text-center">প্রকল্প</th>
+                        <th class="col-lg-4 text-center">ঠিকানা</th>
+                        <th class="col-lg-1 text-center">প্রকল্পের পরিচালক</th>
+                        <th class="col-lg-1 text-center">শুরুর তারিখ</th>
+                        <th class="col-lg-1 text-center">শেষ তারিখ</th>
+                        <th class="col-lg-3 text-center">বিবরণ</th>
+                        <th class="col-lg-3 text-center">সম্পাদনা</th>
                       </tr>
                       </thead>
                              @if(isset($projects))
