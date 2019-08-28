@@ -336,7 +336,7 @@ $( function() {
                 <h3 class="">Employee Assign Information</h3>
               </div>
               <div class="form-body">
-                <form class="form-horizontal" method="post" novalidate autocomplete="off"> 
+                <form class="form-horizontal" method="post"  autocomplete="off" id="empAssignForm"> 
                   @csrf
                   <div class="form-group"> <!--Form-->
 
@@ -394,14 +394,16 @@ $( function() {
 
                         <label for="remarks" class="col-sm-5 control-label">Remarks</label>
                        <div class="col-lg-7">
-                        <textarea name="remarks"class="form-control" placeholder="Remarks can not be empty"required></textarea>
+                        <textarea name="remarks"class="form-control" placeholder="Remarks can not be empty" required> {{old('remarks')}}</textarea>
                         <div class="error">{{$errors->first('remarks')}}</div><br>
                           </div>
                           <br><br>
 
                           <label  class="col-sm-6 control-label"></label>
                           <div class="col-lg-6">
-                              <input  type="checkbox" name="isActive"> Is Active?
+                              <input  type="checkbox" name="isActive" @if (old('isActive'))
+                                  {{"checked"}}
+                              @endif> Is Active?
                           </div><br><br><br><br><br>
                           
                       </div>
@@ -416,7 +418,7 @@ $( function() {
                         <div class="col-md-5">
                           <div class="text-center">
                           <button type="submit" class="btn btn-info">Save</button> 
-                          <button type="reset" class="btn btn-danger">Cancel</button>
+                          <button type="button" onclick="resetAll()" value="Reset form" class="btn btn-danger">Cancel</button>
                           </div>
 
                         </div>
@@ -937,7 +939,16 @@ $( function() {
       }
       
     }
-    
+    function resetAll() {
+      // $('#empAssignForm')[0].reset();
+      $(".error").html('');
+      $('#empAssignForm').find("input[type='text'],textarea").val("");
+      $("#projectName option:selected").removeAttr("selected");
+      $("#projectName option[value='']").attr('selected', 'selected');
+      $('#employeeName').html('<option value="">Select employee</option>');
+      $("input:checkbox").prop("checked", false);
+      
+    }
    </script>
 
     

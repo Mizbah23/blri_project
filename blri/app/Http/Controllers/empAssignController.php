@@ -64,8 +64,10 @@ class empAssignController extends Controller
 		]
 		);
 		if($validator->fails()){
-			$previousProject= Project::find($projectId);
-			$request["projectDirector"]=$previousProject->employee_information_id;
+			if($projectId){
+				$previousProject= Project::find($projectId);
+				$request["projectDirector"]=$previousProject->employee_information_id;
+			}
 			return redirect()
 					->route('setup.employee assign')
 					->withErrors($validator)
@@ -78,7 +80,7 @@ class empAssignController extends Controller
 		$newEmployeeAssign->date=date('Y-m-d', strtotime(str_replace('-', '/', $request['date'])));
 		$newEmployeeAssign->remarks=$request->remarks;
 		if($request->isActive){
-			$newEmployeeAssign->remarks=1;
+			$newEmployeeAssign->isActive=1;
 		}
 		$newEmployeeAssign->save();
 		
