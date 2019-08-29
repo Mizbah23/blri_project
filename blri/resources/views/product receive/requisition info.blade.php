@@ -380,10 +380,10 @@ $( function() {
 
                       <div class="col-lg-6">
                         <div class="col-lg-4">
-                          <label for="">ফরমাশ পত্রের তারিখ</label>
+                          <label for="date">তারিখ</label>
                         </div>
                         <div class="col-lg-8">
-                           <input type="text" class="form-control datepicker" name="releasedate" placeholder="মাস/দিন/বছর" required>
+                           <input type="text" class="form-control datepicker" id="date" name="date" placeholder="মাস/দিন/বছর" required>
                         </div><br><br>
                       
                         <div class="col-lg-4">
@@ -399,7 +399,7 @@ $( function() {
                           <label for="">পরিমাণ</label>
                         </div>
                         <div class="col-lg-8">
-                           <input class="form-control" type="text" name="quantity" placeholder="পরিমান খালি থাকতে পারবে না" required>
+                           <input class="form-control" type="text" name="quantity" placeholder="অবশ্যই পূরণ করুন" required>
                         </div><br><br>
 
                     
