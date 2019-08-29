@@ -19,10 +19,13 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 <!-- font-awesome icons CSS -->
 <link href="/css/font-awesome.css" rel="stylesheet"> 
 <!-- //font-awesome icons CSS-->
+<link href="/css/jquery.dataTables.min.css">
 
 <!-- side nav css file -->
 <link href='/css/SidebarNav.min.css' media='all' rel='stylesheet' type='text/css'/>
 <!-- //side nav css file -->
+<!--datatable-->
+<script src="/js/jquery.dataTables.min.js"></script>
  
  <!-- js-->
 <script src="/js/jquery-1.11.1.min.js"></script>
@@ -47,62 +50,15 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
   height: 295px;
 }
 </style>
-<!--pie-chart --><!-- index page sales reviews visitors pie chart -->
-<script src="/js/pie-chart.js" type="text/javascript"></script>
- <script type="text/javascript">
 
-        $(document).ready(function () {
-            $('#demo-pie-1').pieChart({
-                barColor: '#2dde98',
-                trackColor: '#eee',
-                lineCap: 'round',
-                lineWidth: 8,
-                onStep: function (from, to, percent) {
-                    $(this.element).find('.pie-value').text(Math.round(percent) + '%');
-                }
-            });
+<!-- Datatable script -->
+<script type="text/javascript">
+  $(document).ready( function () {
+    $('#myTable').DataTable();
+} );
+</script>
 
-            $('#demo-pie-2').pieChart({
-                barColor: '#8e43e7',
-                trackColor: '#eee',
-                lineCap: 'butt',
-                lineWidth: 8,
-                onStep: function (from, to, percent) {
-                    $(this.element).find('.pie-value').text(Math.round(percent) + '%');
-                }
-            });
 
-            $('#demo-pie-3').pieChart({
-                barColor: '#ffc168',
-                trackColor: '#eee',
-                lineCap: 'square',
-                lineWidth: 8,
-                onStep: function (from, to, percent) {
-                    $(this.element).find('.pie-value').text(Math.round(percent) + '%');
-                }
-            });
-
-           
-        });
-
-    </script>
-<!-- //pie-chart --><!-- index page sales reviews visitors pie chart -->
-
-    <!-- requried-jsfiles-for owl -->
-                    <link href="/css/owl.carousel.css" rel="stylesheet">
-                    <script src="/js/owl.carousel.js"></script>
-                        <script>
-                            $(document).ready(function() {
-                                $("#owl-demo").owlCarousel({
-                                    items : 3,
-                                    lazyLoad : true,
-                                    autoPlay : true,
-                                    pagination : true,
-                                    nav:true,
-                                });
-                            });
-                        </script>
-                    <!-- //requried-jsfiles-for owl -->
 </head> 
 <body class="cbp-spmenu-push">
     <div class="main-content">
@@ -324,7 +280,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 
                 <div>
   
-                  <table class="table table-responsive table-hover table-striped table-bordered table-condensed">
+                  <table class="table table-responsive table-hover table-striped table-bordered table-condensed" id="myTable">
                 <thead class="bg-primary">
                 <tr>
                   <th>#</th>

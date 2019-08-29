@@ -10,6 +10,7 @@ use App\Brand;
 use App\ProductInfo;
 use Validator;
 use App\ProductReceiveType;
+
 class productController extends Controller
 {
   public function index(){

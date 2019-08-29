@@ -2,7 +2,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>Employee assign</title>
+<title>Project</title>
 <link rel="icon" type="image/png" href="/images/logo.png" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -59,10 +59,6 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 #chartdiv {
   width: 100%;
   height: 295px;
-}
-.error{
-  color: red;
-  font-size: 0.8em;
 }
 </style>
 <!--pie-chart --><!-- index page sales reviews visitors pie chart -->
@@ -157,14 +153,7 @@ $( function() {
     }
   } );
   </script>
-<!--date picker-->
-  <script>
-  $( function() {
-    $( ".datepicker" ).datepicker({
-      minDate: "+0D"
-      });
-  });
-  </script>
+
 </head> 
 <body class="cbp-spmenu-push">
     <div class="main-content">
@@ -333,57 +322,36 @@ $( function() {
         <div class=" form-grids row form-grids-right">
             <div class="widget-shadow " data-example-id="basic-forms"> 
               <div class="form-title bg-primary text-white">
-                <h3 class="">Employee Assign Information</h3>
+                <h3 class="">Project Information</h3>
               </div>
               <div class="form-body">
-                <form class="form-horizontal" method="post"  autocomplete="off" id="empAssignForm"> 
-                  @csrf
+                <form class="form-horizontal" method="post">
+                @csrf 
                   <div class="form-group"> <!--Form-->
 
                     <div class="row">
                        <!--left side starts-->
                       <div class="col-md-6">
 
-                        <label for="projectName" class="col-sm-5 control-label">Project</label>
+                        <label for="projectName" class="col-sm-5 control-label">Project Name</label>
+                       <div class="col-lg-7">
+                          <input type="text" class="form-control" id="projectName" name="projectName" value="{{$project->projectName}}" placeholder="Project name can not be empty"required>
+                          </div><br><br>
+
+                          <label for="address" class="col-sm-5 control-label">Address</label>
+                       <div class="col-lg-7">
+                        <textarea name="address" value="{{$project->address}}" id="address" class="form-control" placeholder="Address can not be empty"required></textarea>
+                          </div><br><br><br>
+
+                        <label for="name" class="col-sm-5 control-label">Project Director</label>
                           <div class="col-lg-7">
-                              <select id="projectName" name="projectName" onchange="showEmployee()" class="form-control required" required>
-                                 <option value="">Select Project</option>
-                                 @foreach ($projects  as $project)
-                                <option value="{{$project->id}}" data-empName="{{$project->employee_information_id}}" @if (old('projectName')==$project->id)
-                                    {{"selected"}}
-                                @endif >{{$project->projectName}}</option>
+                              <select id="name" name="name"  class="form-control required" required>
+                               <option value="">Select Director</option>
+                                @foreach ($employeeInformations  as $employeeInformation)
+                                <option value="{{$employeeInformation->id}}">{{$employeeInformation->name}}</option>
                                  @endforeach
                               </select>
-                              <div class="error">{{$errors->first('projectName')}}</div>
                           </div><br><br>
-
-                          <label for="employeeName" class="col-sm-5 control-label">Employee</label>
-                          <div class="col-lg-7">
-                              <select id="employeeName" name="employeeName" class="form-control required" required>
-                                 <option value="">Select employee</option>
-                                 @if (old('projectName'))
-                                  @foreach ($employeeInformations  as $employeeInformation)
-                                    @if (old('projectDirector')!=$employeeInformation->id)
-                                    <option value="{{$employeeInformation->id}}" @if (old('employeeName')==$employeeInformation->id)
-                                      {{"selected"}} 
-                                      @endif>{{$employeeInformation->name}}
-                                    </option>
-                                    @endif
-                                    
-                                  @endforeach
-                                 @endif
-                                 
-                              </select>
-                              <div class="error">{{$errors->first('employee_information_id')}}</div>
-                              
-                          </div><br><br>
-
-                          <label class="col-md-5 control-label" >Assign Date</label>
-                          <div class="col-md-7">
-                            <input class="form-control datepicker" type="text" name="date" value="{{old('date')}}" placeholder="mm/dd/yyyy" required>
-                            <div class="error">{{$errors->first('assignDate')}}</div>
-                          </div>
-                          <br><br>
                       </div>
                       <!--End left side-->
 
@@ -391,20 +359,22 @@ $( function() {
                       <!--right side starts-->
                       <div class="col-md-6">
 
+                        <label class="col-md-5 control-label" >Start Date</label>
+                          <div class="col-md-7">
+                            <input class="form-control" type="text" id="from" value="" name="startDate"></p>
+                          </div><br><br>
 
-                        <label for="remarks" class="col-sm-5 control-label">Remarks</label>
+                          <label class="col-md-5 control-label" >End Date</label>
+                          <div class="col-md-7">
+                            
+                          <input class="form-control" name="endDate" type="text" id="to" value=""></p>
+                          </div><br><br>
+
+
+                        <label for="brand" class="col-sm-5 control-label">Description</label>
                        <div class="col-lg-7">
-                        <textarea name="remarks"class="form-control" placeholder="Remarks can not be empty" required> {{old('remarks')}}</textarea>
-                        <div class="error">{{$errors->first('remarks')}}</div><br>
-                          </div>
-                          <br><br>
-
-                          <label  class="col-sm-6 control-label"></label>
-                          <div class="col-lg-6">
-                              <input  type="checkbox" name="isActive" @if (old('isActive'))
-                                  {{"checked"}}
-                              @endif> Is Active?
-                          </div><br><br><br><br><br>
+                        <textarea name="description"class="form-control" value="{{ $project->description }}" placeholder="Description can not be empty"required></textarea><br><br>
+                          </div><br><br>
                           
                       </div>
                       <!--right side end-->
@@ -418,7 +388,7 @@ $( function() {
                         <div class="col-md-5">
                           <div class="text-center">
                           <button type="submit" class="btn btn-info">Save</button> 
-                          <button type="button" onclick="resetAll()" value="Reset form" class="btn btn-danger">Cancel</button>
+                          <button type="reset" class="btn btn-danger">Cancel</button>
                           </div>
 
                         </div>
@@ -432,22 +402,46 @@ $( function() {
 
                   </div>
               </form>
+<!--                   <div class="row">
+                   <div class="col-lg-6"> Category and brand-->
+                       <!--   <label for="category" class="col-sm-2 control-label">Category</label>
+                          <div class="col-lg-9">
+                              <select id="category" name="categories" class="form-control required" required>
+                                               
+                                               <option value=""></option>
+                                              
+                              </select>
+                          </div><br><br>
+
+                          <label for="brand" class="col-sm-2 control-label">Brand</label>
+                       <div class="col-lg-9">
+                          <input type="text" class="form-control" id="brand" name="brandName" placeholder="Name Can not be empty"required>
+                          </div><br><br><br>
+
+                          <div class="col-lg-6">
+                            <label for="category" class="col-sm-2 control-label">Category</label>
+                          <div class="col-lg-9">
+                              <select id="category" name="categories" class="form-control required" required>
+                                               
+                                               <option value=""></option>
+                                              
+                              </select>
+                          </div><br><br>
+
+                          <label for="brand" class="col-sm-2 control-label">Brand</label>
+                       <div class="col-lg-9">
+                          <input type="text" class="form-control" id="brand" name="brandName" placeholder="Name Can not be empty"required>
+                          </div><br><br><br>
+                          </div>
+
+                        <div class="text-center">
+                          <button type="submit" class="btn btn-info">Save</button> 
+                          <button type="reset" class="btn btn-danger">Cancel</button>
+                        </div>
+                         </form>end form-->
+                      <!--Category and brand-->
                       <!--Search option starts-->
-                      <div class="row">
-                        <div class="col-md-8"></div>
-
-
-                        <div class="col-md-1">
-                          <label for="searchByBrandName"  class="col-md-4  control-label">Search</label>
-                          
-                        </div>
-
-                        <div class="col-md-3">
-                          <input type="text" class="form-control" id="searchByBrandName" name="searchByBrandName" placeholder="Search by brand name">
-                        </div>
-
-
-                      </div>
+   
 
                       <!--Search option stops-->
 
@@ -455,37 +449,7 @@ $( function() {
                   </div> 
                </div> 
 
-                <div id="allBrands">
-                  <table class="table table-responsive table-hover table-striped table-bordered table-condensed">
-                      <tr class="row bg-primary">
-                        <th class="col-lg-1 text-center">#</th>
-                        <th class="col-lg-2 text-center">Project Name</th>
-                        <th class="col-lg-2 text-center">Employee Name</th>
-                        <th class="col-lg-2 text-center">Project Director</th>
-                        <th class="col-lg-2 text-center">Assign Date</th>
-                        <th class="col-lg-2 text-center">Remarks</th>
-                        <th class="col-lg-1 text-center">Edit</th>
-                      </tr>
-
-                      @foreach ($assignedEmployees as $key=>$assignEmployee)
-                    
-                      <tr class="row">
-                        <td>{{++$key}}</td>
-                        <td>{{$assignEmployee->project->projectName}}</td>
-                        <td>{{$assignEmployee->employeeinfo->name}}</td>
-                        <td>{{$assignEmployee->project->employeeinfo->name}}</td>
-                        <td>{{date("d/m/Y", strtotime($assignEmployee->date))}}</td>
-                        <td>{{$assignEmployee->remarks}}</td>
-                        <td><a href=""><i class="fa fa-edit" style="font-size:24px"></i></a></td>
-                      </tr>
-                      @endforeach
-                   
-                           
-                  </table>
-               </div>
-               <div id="searchedBrandValue">
-                   
-               </div>
+ 
               
             </div>
           </div>
@@ -919,37 +883,6 @@ $( function() {
     
     <!-- Bootstrap Core JavaScript -->
    <script src="/js/bootstrap.js"> </script>
-  
-   <script>
-    var employeeInformations;
-    $(function() {
-      employeeInformations={!! $employeeInformations !!};
-    })
-    function showEmployee() {
-      var selectedProjectEmpName=$("#projectName").find('option:selected').attr('data-empName');
-      
-      // var selectedProject=$("#projectName").val();
-      // // console.log(employeeInformations);
-      $('#employeeName').html('<option value="">Select employee</option>');
-      if(employeeInformations!=undefined ){
-        employeeInformations.forEach(employeeInformation => {
-          if(employeeInformation.id!=selectedProjectEmpName)
-            $('#employeeName').append(`<option value="${employeeInformation.id}">${employeeInformation.name}</option>`); 
-        });
-      }
-      
-    }
-    function resetAll() {
-      // $('#empAssignForm')[0].reset();
-      $(".error").html('');
-      $('#empAssignForm').find("input[type='text'],textarea").val("");
-      $("#projectName option:selected").removeAttr("selected");
-      $("#projectName option[value='']").attr('selected', 'selected');
-      $('#employeeName').html('<option value="">Select employee</option>');
-      $("input:checkbox").prop("checked", false);
-      
-    }
-   </script>
 
     
 </body>
