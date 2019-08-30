@@ -300,7 +300,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                   <label for="district" class="col-sm-2 control-label">জেলা</label> 
                   <div class="col-sm-9"> <input type="text" required class="form-control" id="district" name="district" placeholder="অবশ্যই পুরণ করুণ"> </div>
                    </div>
-                 <div class="form-group"> <div class="col-sm-offset-4 col-sm-6">  </div> </div><br> <div class="col-sm-offset-4"> <button type="submit" class="btn btn-info">সেভ</button> <button type="reset" class="btn btn-danger">বাতিল</button></div> </form> 
+                 <div class="form-group"> <div class="col-sm-offset-4 col-sm-6">  </div> </div><br> <div class="col-sm-offset-4"> <button type="submit" class="btn btn-info">সংরক্ষন করুণ</button> <button type="reset" class="btn btn-danger">বাতিল করুণ</button></div> </form> 
               </div>
           </div>
           <div class="col-sm-4"></div>
