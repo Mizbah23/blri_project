@@ -238,7 +238,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                         
                       </div>
                       <div class="col-lg-6"> <!--Category and brand-->
-                          <label for="category" class="col-sm-2 control-label"> ক্যাটাগরি</label>
+                          <label for="category" class="col-sm-2 control-label"> ক্যাটাগরি    </label>
                        <div class="col-lg-9">
                         <input type="text" class="form-control" id="category" name="categoryName" placeholder="অবশ্যই পুরণ করুণ"required>
                            @foreach ($errors->get('categoryName') as $error)

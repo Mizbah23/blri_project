@@ -288,7 +288,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                         
                       </div>
                       <div class="col-lg-6"> <!--Category and brand-->
-                          <label for="category" class="col-sm-2 control-label">কেটাগড়ি</label>
+                          <label for="category" class="col-sm-2 control-label">ক্যাটাগরি</label>
                           <div class="col-lg-9">
                               <select id="category" name="categories" class="form-control required" required>
                                                 @foreach($categories as $category)
@@ -338,7 +338,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                   <table class="table table-responsive table-hover table-striped table-bordered table-condensed">
                       <tr class="row bg-primary">
                         <th class="col-lg-1 text-center">#</th>
-                        <th class="col-lg-2 text-center">কেটাগড়ি</th>
+                        <th class="col-lg-2 text-center">ক্যাটাগরি</th>
                         <th class="col-lg-8 text-center">ব্রান্ড</th>
                         <th class="col-lg-1 text-center">সম্পাদনা</th>
                       </tr>
