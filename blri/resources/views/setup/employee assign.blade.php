@@ -347,7 +347,7 @@ $( function() {
                         <label for="projectName" class="col-sm-5 control-label">প্রকল্প</label>
                           <div class="col-lg-7">
                               <select id="projectName" name="projectName" onchange="showEmployee()" class="form-control required" required>
-                                 <option value="">প্রকল্প সনাক্ত করুণ</option>
+                                 <option value="">নির্বাচন করুণ</option>
                                  @foreach ($projects  as $project)
                                 <option value="{{$project->id}}" data-empName="{{$project->employee_information_id}}" @if (old('projectName')==$project->id)
                                     {{"selected"}}
@@ -360,7 +360,7 @@ $( function() {
                           <label for="employeeName" class="col-sm-5 control-label">কর্মচারী</label>
                           <div class="col-lg-7">
                               <select id="employeeName" name="employeeName" class="form-control required" required>
-                                 <option value="">কর্মচারী সনাক্ত করুণ</option>
+                                 <option value="">নির্বাচন করুণ</option>
                                  @if (old('projectName'))
                                   @foreach ($employeeInformations  as $employeeInformation)
                                     @if (old('projectDirector')!=$employeeInformation->id)
@@ -394,7 +394,7 @@ $( function() {
 
                         <label for="remarks" class="col-sm-5 control-label">মন্তব্য</label>
                        <div class="col-lg-7">
-                        <textarea name="remarks"class="form-control" placeholder="অবশ্যই পুরণ করুণ" required> {{old('remarks')}}</textarea>
+                        <textarea name="remarks"class="form-control"> {{old('remarks')}}</textarea>
                         <div class="error">{{$errors->first('remarks')}}</div><br>
                           </div>
                           <br><br>
