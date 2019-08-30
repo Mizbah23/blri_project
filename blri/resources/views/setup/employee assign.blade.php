@@ -418,7 +418,7 @@ $( function() {
                         <div class="col-md-5">
                           <div class="text-center">
                           <button type="submit" class="btn btn-info">সংরক্ষন করুণ</button> 
-                          <button type="button" onclick="resetAll()" value="Reset form" class="btn btn-danger">বাতিল করুণ</button>
+                          <button type="button" onclick="resetAll()" class="btn btn-danger">বাতিল করুণ</button>
                           </div>
 
                         </div>
@@ -476,7 +476,7 @@ $( function() {
                         <td>{{$assignEmployee->project->employeeinfo->name}}</td>
                         <td>{{date("d/m/Y", strtotime($assignEmployee->date))}}</td>
                         <td>{{$assignEmployee->remarks}}</td>
-                        <td><a href=""><i class="fa fa-edit" style="font-size:24px"></i></a></td>
+                        <td><a href="{{route('setup.employee assign.edit',$assignEmployee->id)}}"><i class="fa fa-edit" style="font-size:24px"></i></a></td>
                       </tr>
                       @endforeach
                    
@@ -945,7 +945,7 @@ $( function() {
       $('#empAssignForm').find("input[type='text'],textarea").val("");
       $("#projectName option:selected").removeAttr("selected");
       $("#projectName option[value='']").attr('selected', 'selected');
-      $('#employeeName').html('<option value="">Select employee</option>');
+      $('#employeeName').html('<option value="">নির্বাচন করুণ</option>');
       $("input:checkbox").prop("checked", false);
       
     }
