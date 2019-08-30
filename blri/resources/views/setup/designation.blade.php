@@ -285,7 +285,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                       <div class="col-lg-6"> <!-- Designation-->
                           <label for="designationName" class="col-sm-3 control-label">পদবি</label>
                        <div class="col-lg-9">
-                          <input type="text" class="form-control" id="designationName" name="designationName" placeholder="Designation name not be empty"required>
+                          <input type="text" class="form-control" id="designationName" name="designationName" placeholder="অবশ্যই পুরণ করুণ"required>
                               @foreach ($errors->get('designationName') as $error)
                                    <p style="color: red">{{ $error}}</p>
                                    @endforeach
