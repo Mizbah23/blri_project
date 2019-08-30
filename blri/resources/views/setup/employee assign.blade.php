@@ -2,7 +2,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>Employee assign</title>
+<title>কর্মচারী নিয়োগ</title>
 <link rel="icon" type="image/png" href="/images/logo.png" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -59,6 +59,10 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 #chartdiv {
   width: 100%;
   height: 295px;
+}
+.error{
+  color: red;
+  font-size: 0.8em;
 }
 </style>
 <!--pie-chart --><!-- index page sales reviews visitors pie chart -->
@@ -156,8 +160,10 @@ $( function() {
 <!--date picker-->
   <script>
   $( function() {
-    $( ".datepicker" ).datepicker({  maxDate: "+1D" });
-  } );
+    $( ".datepicker" ).datepicker({
+      minDate: "+0D"
+      });
+  });
   </script>
 </head> 
 <body class="cbp-spmenu-push">
@@ -327,10 +333,10 @@ $( function() {
         <div class=" form-grids row form-grids-right">
             <div class="widget-shadow " data-example-id="basic-forms"> 
               <div class="form-title bg-primary text-white">
-                <h3 class="">Employee Assign Information</h3>
+                <h3 class="">কর্মচারী নিয়োগ বিবরণী</h3>
               </div>
               <div class="form-body">
-                <form class="form-horizontal" method="post"> 
+                <form class="form-horizontal" method="post"  autocomplete="off" id="empAssignForm"> 
                   @csrf
                   <div class="form-group"> <!--Form-->
 
@@ -338,30 +344,46 @@ $( function() {
                        <!--left side starts-->
                       <div class="col-md-6">
 
-                        <label for="projectName" class="col-sm-5 control-label">Project</label>
+                        <label for="projectName" class="col-sm-5 control-label">প্রকল্প</label>
                           <div class="col-lg-7">
                               <select id="projectName" name="projectName" onchange="showEmployee()" class="form-control required" required>
-                                 <option value="">Select Project</option>
+                                 <option value="">প্রকল্প সনাক্ত করুণ</option>
                                  @foreach ($projects  as $project)
-                                <option value="{{$project->id}}">{{$project->projectName}}</option>
+                                <option value="{{$project->id}}" data-empName="{{$project->employee_information_id}}" @if (old('projectName')==$project->id)
+                                    {{"selected"}}
+                                @endif >{{$project->projectName}}</option>
                                  @endforeach
                               </select>
+                              <div class="error">{{$errors->first('projectName')}}</div>
                           </div><br><br>
 
-                          <label for="employeeName" class="col-sm-5 control-label">Employee</label>
+                          <label for="employeeName" class="col-sm-5 control-label">কর্মচারী</label>
                           <div class="col-lg-7">
                               <select id="employeeName" name="employeeName" class="form-control required" required>
-                                 <option value="">Select employee</option>
-                                 @foreach ($employeeInformations  as $employeeInformation)
-                                  <option value="{{$employeeInformation->id}}">{{$employeeInformation->name}}</option>
-                                 @endforeach
+                                 <option value="">কর্মচারী সনাক্ত করুণ</option>
+                                 @if (old('projectName'))
+                                  @foreach ($employeeInformations  as $employeeInformation)
+                                    @if (old('projectDirector')!=$employeeInformation->id)
+                                    <option value="{{$employeeInformation->id}}" @if (old('employeeName')==$employeeInformation->id)
+                                      {{"selected"}} 
+                                      @endif>{{$employeeInformation->name}}
+                                    </option>
+                                    @endif
+                                    
+                                  @endforeach
+                                 @endif
+                                 
                               </select>
+                              <div class="error">{{$errors->first('employee_information_id')}}</div>
+                              
                           </div><br><br>
 
-                          <label class="col-md-5 control-label" >Assign Date</label>
+                          <label class="col-md-5 control-label" >নিয়োগের তারিখ</label>
                           <div class="col-md-7">
-                            <input class="form-control datepicker" type="text" name="date">
-                          </div><br><br>
+                            <input class="form-control datepicker" type="text" name="date" value="{{old('date')}}" placeholder="মাস/দিন/বছর" required>
+                            <div class="error">{{$errors->first('assignDate')}}</div>
+                          </div>
+                          <br><br>
                       </div>
                       <!--End left side-->
 
@@ -370,14 +392,18 @@ $( function() {
                       <div class="col-md-6">
 
 
-                        <label for="remarks" class="col-sm-5 control-label">Remarks</label>
+                        <label for="remarks" class="col-sm-5 control-label">মন্তব্য</label>
                        <div class="col-lg-7">
-                        <textarea name="remarks"class="form-control" placeholder="Remarks can not be empty"required></textarea><br>
-                          </div><br><br>
+                        <textarea name="remarks"class="form-control" placeholder="অবশ্যই পুরণ করুণ" required> {{old('remarks')}}</textarea>
+                        <div class="error">{{$errors->first('remarks')}}</div><br>
+                          </div>
+                          <br><br>
 
                           <label  class="col-sm-6 control-label"></label>
                           <div class="col-lg-6">
-                              <input  type="checkbox" name="isActive"> Is Active?
+                              <input  type="checkbox" name="isActive" @if (old('isActive'))
+                                  {{"checked"}}
+                              @endif> সক্রিয়?
                           </div><br><br><br><br><br>
                           
                       </div>
@@ -391,8 +417,8 @@ $( function() {
                         <br><br>
                         <div class="col-md-5">
                           <div class="text-center">
-                          <button type="submit" class="btn btn-info">Save</button> 
-                          <button type="reset" class="btn btn-danger">Cancel</button>
+                          <button type="submit" class="btn btn-info">সংরক্ষন করুণ</button> 
+                          <button type="button" onclick="resetAll()" value="Reset form" class="btn btn-danger">বাতিল করুণ</button>
                           </div>
 
                         </div>
@@ -412,12 +438,12 @@ $( function() {
 
 
                         <div class="col-md-1">
-                          <label for="searchByBrandName"  class="col-md-4  control-label">Search</label>
+                          <label for="searchByBrandName"  class="col-md-4  control-label">খুঁজুন</label>
                           
                         </div>
 
                         <div class="col-md-3">
-                          <input type="text" class="form-control" id="searchByBrandName" name="searchByBrandName" placeholder="Search by brand name">
+                          <input type="text" class="form-control" id="searchByBrandName" name="searchByBrandName" placeholder="খুঁজুন...">
                         </div>
 
 
@@ -433,12 +459,12 @@ $( function() {
                   <table class="table table-responsive table-hover table-striped table-bordered table-condensed">
                       <tr class="row bg-primary">
                         <th class="col-lg-1 text-center">#</th>
-                        <th class="col-lg-2 text-center">Project Name</th>
-                        <th class="col-lg-2 text-center">Employee Name</th>
-                        <th class="col-lg-2 text-center">Project Director</th>
-                        <th class="col-lg-2 text-center">Assign Date</th>
-                        <th class="col-lg-2 text-center">Remarks</th>
-                        <th class="col-lg-1 text-center">Edit</th>
+                        <th class="col-lg-2 text-center">প্রকল্পের নাম </th>
+                        <th class="col-lg-2 text-center">কর্মচারীর নাম</th>
+                        <th class="col-lg-2 text-center">প্রকল্প পরিচালক</th>
+                        <th class="col-lg-2 text-center">নিয়োগের তারিখ</th>
+                        <th class="col-lg-2 text-center">মন্তব্য</th>
+                        <th class="col-lg-1 text-center">সম্পাদনা</th>
                       </tr>
 
                       @foreach ($assignedEmployees as $key=>$assignEmployee)
@@ -893,23 +919,36 @@ $( function() {
     
     <!-- Bootstrap Core JavaScript -->
    <script src="/js/bootstrap.js"> </script>
+  
    <script>
-    // var employeeInformations;
-    // $(function() {
-    //   employeeInformations={!! $employeeInformations !!};
-    // })
-    // function showEmployee() {
-    //   var selectedProject=$("#projectName").val();
-    //   // console.log(employeeInformations);
-    //   $('#employeeName').html('<option value="">Select employee</option>');
-    //   if(employeeInformations!=undefined){
-    //     employeeInformations.forEach(employeeInformation => {
-    //       if(employeeInformation.id==selectedProject)
-    //         $('#employeeName').append(`<option value="${employeeInformation.employeeInformationName}">${employeeInformation.brandName}</option>`); 
-    //     });
-    //   }
+    var employeeInformations;
+    $(function() {
+      employeeInformations={!! $employeeInformations !!};
+    })
+    function showEmployee() {
+      var selectedProjectEmpName=$("#projectName").find('option:selected').attr('data-empName');
       
-    // }
+      // var selectedProject=$("#projectName").val();
+      // // console.log(employeeInformations);
+      $('#employeeName').html('<option value="">Select employee</option>');
+      if(employeeInformations!=undefined ){
+        employeeInformations.forEach(employeeInformation => {
+          if(employeeInformation.id!=selectedProjectEmpName)
+            $('#employeeName').append(`<option value="${employeeInformation.id}">${employeeInformation.name}</option>`); 
+        });
+      }
+      
+    }
+    function resetAll() {
+      // $('#empAssignForm')[0].reset();
+      $(".error").html('');
+      $('#empAssignForm').find("input[type='text'],textarea").val("");
+      $("#projectName option:selected").removeAttr("selected");
+      $("#projectName option[value='']").attr('selected', 'selected');
+      $('#employeeName').html('<option value="">Select employee</option>');
+      $("input:checkbox").prop("checked", false);
+      
+    }
    </script>
 
     

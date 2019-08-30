@@ -9,6 +9,8 @@ use App\ProductReceiveType;
 use App\EmployeeInformation;
 use App\Project;
 use App\Emp_assign;
+use Validator;
+use Illuminate\Validation\Rule;
 
 class empAssignController extends Controller
 {
@@ -34,13 +36,52 @@ class empAssignController extends Controller
 
 	public function assignEmployeeStore(Request $request)	
 	{
+		// dd($request->all());
+		$projectId = $request->projectName;
+		$employeeId = $request->employeeName;
+		$data = [
+			'projectName' => $request->projectName, 
+			'employee_information_id' => $request->employeeName,
+			'assignDate'=>$request->date,
+			'remarks'=>$request->remarks
+		];
 
+		// dd($data);
+		$validator=Validator::make($data, [
+			'employee_information_id' => [
+				'required',
+				Rule::unique('emp_assigns')->where(function ($query) use($projectId,$employeeId) {
+					return $query->where('employee_information_id', $employeeId)
+					->where('project_id', $projectId);
+				}),
+			],
+			'projectName'=>'required',
+			'assignDate'=>'required | date | after_or_equal: today',
+			'remarks'=>'required'
+		],[
+			'employee_information_id.required'=>'Employee name is required',
+			'employee_information_id.unique'=>'This employee is already assign to this project'
+		]
+		);
+		if($validator->fails()){
+			if($projectId){
+				$previousProject= Project::find($projectId);
+				$request["projectDirector"]=$previousProject->employee_information_id;
+			}
+			return redirect()
+					->route('setup.employee assign')
+					->withErrors($validator)
+					->withInput($request->all());
+		}
 		// dd($request->all());
 		$newEmployeeAssign=new Emp_assign;
 		$newEmployeeAssign->project_id=$request->projectName;
 		$newEmployeeAssign->employee_information_id=$request->employeeName;
 		$newEmployeeAssign->date=date('Y-m-d', strtotime(str_replace('-', '/', $request['date'])));
 		$newEmployeeAssign->remarks=$request->remarks;
+		if($request->isActive){
+			$newEmployeeAssign->isActive=1;
+		}
 		$newEmployeeAssign->save();
 		
 		return redirect()->route("setup.employee assign");
