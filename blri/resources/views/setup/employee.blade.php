@@ -300,7 +300,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
         <div class=" form-grids row form-grids-right">
             <div class="widget-shadow " data-example-id="basic-forms"> 
               <div class="form-title bg-primary text-white">
-                <h3 class="">Employee Information</h3>
+                <h3 class="">কর্মচারীদের তথ্য</h3>
               </div>
               <div class="form-body">
                 <form class="form-horizontal" method="post" enctype="multipart/form-data"  autocomplete="off" > 
@@ -317,10 +317,10 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                           <div class="error">{{$errors->first('name')}}</div>
                         </div><br><br>
 
-                        <label  class="col-sm-6 control-label">Division</label>
+                        <label  class="col-sm-6 control-label">অনুষদ</label>
                         <div class="col-lg-6">
                             <select id="divisionName" name="divisionName" onchange="showSection()"  class="form-control required" required>
-                                <option value="">Select Division</option>
+                                <option value="">নির্বাচন করুন</option>
                                 @foreach ($divisions  as $division)
                                 <option value="{{$division->id}}" {{ old('divisionName') == $division->id ? "selected" : "" }}>{{$division->divisionName}}</option>
                                 @endforeach
@@ -328,10 +328,10 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                             <div class="error">{{$errors->first('divisionName')}}</div>
                         </div><br><br>
 
-                        <label  class="col-sm-6 control-label">Section</label>
+                        <label  class="col-sm-6 control-label">শাখা</label>
                         <div class="col-lg-6">
                           <select id="sectionName"  name="sectionName" class="form-control required" required>
-                              <option value="">Select Section</option>
+                              <option value="">নির্বাচন করুন</option>
                               @if (old('divisionName'))
                                 @foreach ($sections  as $section)
                                   @if (old('divisionName') == $section->division_id){
@@ -345,10 +345,10 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                           <div class="error">{{$errors->first('sectionName')}}</div>
                         </div><br><br>
 
-                        <label  class="col-sm-6 control-label">Designation</label>
+                        <label  class="col-sm-6 control-label">পদবি</label>
                         <div class="col-lg-6">
                           <select id="designationName" name="designationName" class="form-control required" required>
-                              <option value="">Select Designation</option>
+                              <option value="">নির্বাচন করুন</option>
                               @foreach ($designations  as $designation)
                               <option value="{{$designation->id}}" @if (old('designationName')==$designation->id)
                                  {{ "selected"}}
@@ -358,10 +358,10 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                           <div class="error">{{$errors->first('designationName')}}</div>
                         </div><br><br>
 
-                        <label  class="col-sm-6 control-label">Home District</label>
+                        <label  class="col-sm-6 control-label">স্থায়ী জেলা</label>
                         <div class="col-lg-6">
                           <select name="districtName" id="districtName" class="form-control required" required>
-                            <option value="">Select Home District</option>
+                            <option value="">নির্বাচন করুন</option>
                             @foreach ($districts as $district)
                             <option value="{{$district->id}}" @if (old('districtName')==$district->id)
                                 {{"selected"}}
@@ -371,15 +371,15 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                           <div class="error">{{$errors->first('districtName')}}&nbsp;</div>
                         </div><br><br>
 
-                        <label  class="col-sm-6 control-label">Address</label>
+                        <label  class="col-sm-6 control-label">ঠিকানা</label>
                         <div class="col-lg-6">
-                          <input type="text" name="address"class="form-control" placeholder="Address can not be empty"  value="{{old('address')}}" required>
+                          <input type="text" name="address"class="form-control" placeholder="অবশ্যই পূরণ করুন"  value="{{old('address')}}" required>
                           <div class="error">{{$errors->first('address')}}</div>
                         </div><br><br><br>
 
-                        <label  class="col-sm-6 control-label">Contact</label>
+                        <label  class="col-sm-6 control-label">যোগাযোগ</label>
                         <div class="col-lg-6">
-                          <input type="tel" class="form-control" id="contactNo" name="contactNo"  value="{{old('contactNo')}}" placeholder="Contact no can not be empty" required minlength='11' maxlength='11' pattern="(01)[0-9]{9}" >
+                          <input type="tel" class="form-control" id="contactNo" name="contactNo"  value="{{old('contactNo')}}" placeholder="অবশ্যই পূরণ করুন" required minlength='11' maxlength='11' pattern="(01)[0-9]{9}" >
                           <div class="error">{{$errors->first('contactNo')}}</div>
                         </div><br><br>
 
@@ -389,27 +389,27 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 
                       <!--right side starts-->
                       <div class="col-md-5">
-                        <label  class="col-sm-6 control-label">NID</label>
+                        <label  class="col-sm-6 control-label">জাতীয় পরিচয়পত্র</label>
                         <div class="col-lg-6">
                           <input type="text" class="form-control" id="nidNo" name="nidNo"  value="{{old('nidNo')}}" placeholder="অবশ্যই পূরণ করুন" required minlength="10">
                           <div class="error">{{$errors->first('nidNo')}}</div>
                         </div><br><br>
 
-                        <label class="col-md-6 control-label" >Joinig Date</label>
+                        <label class="col-md-6 control-label" >যোগদানের তারিখ</label>
                         <div class="col-md-6">
-                          <input class="form-control datepicker" type="text" name="joiningDate" placeholder="mm/dd/yyyy"  value="{{old('joiningDate')}}"  required>
+                          <input class="form-control datepicker" type="text" name="joiningDate" placeholder="মাস/দিন/বছর"  value="{{old('joiningDate')}}"  required>
                           <div class="error">{{$errors->first('joiningDate')}}</div>
                         </div><br><br>
 
-                        <label class="col-md-6 control-label" >Birth Date</label>
+                        <label class="col-md-6 control-label" >জন্ম তারিখ</label>
                         <div class="col-md-6">
-                          <input type="text" class="form-control datepicker" name="birthDate" placeholder="mm/dd/yyyy"  value="{{old('birthDate')}}" required>
+                          <input type="text" class="form-control datepicker" name="birthDate" placeholder="মাস/দিন/বছর"  value="{{old('birthDate')}}" required>
                           <div class="error">{{$errors->first('birthDate')}}</div>
                         </div><br><br>
 
-                        <label  class="col-sm-6 control-label">Working Place</label>
+                        <label  class="col-sm-6 control-label">কাজের স্থান</label>
                         <div class="col-lg-6">
-                          <input type="text" class="form-control" id="workingPlace" name="workingPlace"  value="{{old('workingPlace')}}" placeholder="Working place can not be empty"required>
+                          <input type="text" class="form-control" id="workingPlace" name="workingPlace"  value="{{old('workingPlace')}}" placeholder="অবশ্যই পূরণ করুন"required>
                           <div class="error">{{$errors->first('workingPlace')}}</div>
                         </div><br><br>
 
@@ -424,14 +424,14 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                         <div class="col-lg-6">
                             <input  type="checkbox" name="isRevenue" @if (old('isRevenue'))
                                 checked
-                            @endif> Is Revenue?
+                            @endif> রাজস্ব?
                         </div><br><br>
 
                           
 
-                        <label  class="col-sm-6 control-label">Remarks</label>
+                        <label  class="col-sm-6 control-label">মন্তব্য</label>
                         <div class="col-lg-6">
-                          <textarea name="remarks"class="form-control" placeholder="Remarks can not be empty" required>{{old('remarks')}}</textarea>
+                          <textarea name="remarks"class="form-control">{{old('remarks')}}</textarea>
                           <div class="error">{{$errors->first('remarks')}}</div>
                         </div><br><br><br><br>
                       </div>
@@ -453,8 +453,8 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                         <br><br>
                         <div class="col-md-5">
                           <div class="text-center">
-                          <button type="submit" class="btn btn-info">Save</button> 
-                          <button type="reset" class="btn btn-danger">Cancel</button>
+                          <button type="submit" class="btn btn-info">সংরক্ষণ করুণ</button> 
+                          <button type="reset" class="btn btn-danger">বাতিল করুণs</button>
                           </div>
 
                         </div>
@@ -474,12 +474,12 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 
 
                         <div class="col-md-1">
-                          <label for="searchByBrandName"  class="col-md-4  control-label">Search</label>
+                          <label for="searchByBrandName"  class="col-md-4  control-label">খুঁজুন</label>
                           
                         </div>
 
                         <div class="col-md-3">
-                          <input type="text" class="form-control" id="searchByBrandName" name="searchByBrandName" placeholder="Search by brand name">
+                          <input type="text" class="form-control" id="searchByBrandName" name="searchByBrandName" placeholder="খুঁজুন...">
                         </div>
 
 
@@ -495,13 +495,13 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                     <tr class="row bg-primary">
                       <th class="col-lg-1 text-center">#</th>
                       <th class="col-lg-2 text-center">কর্মকর্তার নাম</th>
-                      <th class="col-lg-2 text-center">Designation</th>
-                      <th class="col-lg-1 text-center">Department</th>
-                      <th class="col-lg-1 text-center">Address</th>
-                      <th class="col-lg-1 text-center">Contact No.</th>
-                      <th class="col-lg-1 text-center">Joining Date</th>
-                      <th class="col-lg-1 text-center">Birth Date</th>
-                      <th class="col-lg-1 text-center">Note</th>
+                      <th class="col-lg-2 text-center">পদবি</th>
+                      <th class="col-lg-1 text-center">অনুষদ</th>
+                      <th class="col-lg-1 text-center">ঠিকানা</th>
+                      <th class="col-lg-1 text-center">যোগাযোগ</th>
+                      <th class="col-lg-1 text-center">যোগদানের তারিখ</th>
+                      <th class="col-lg-1 text-center">জন্ম তারিখ</th>
+                      <th class="col-lg-1 text-center">মন্তব্য</th>
                     </tr>
                     @foreach ($employeeInformations as $key=>$employeeInformation)
                     <tr class="row">
