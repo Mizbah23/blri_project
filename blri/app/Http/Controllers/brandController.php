@@ -53,6 +53,7 @@ class brandController extends Controller
 
   public function searchByBrandName(Request $request){
     $searchedBrandItems=Brand::where('brandName',$request->brandName)->get();
+    
     return view('setup.ajaxBrandSearchedValue')->with('brands',$searchedBrandItems);
   }
 

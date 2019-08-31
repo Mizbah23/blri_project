@@ -31,6 +31,8 @@ Route::get('/setup/Division', 'divisionController@index')->name('setup.division'
 Route::post('/setup/Division', 'divisionController@divisionPost');
 Route::get('/setup/Division/{id}/edit', 'divisionController@divedit')->name('setup.divedit');
 Route::post('/setup/Division/{id}/edit', 'divisionController@update');
+Route::get('/search/division','divisionController@searchByDivisionName')->name('searchByDivisionName');
+
 
 //Section
 Route::get('/setup/section', 'sectionController@index')->name('setup.section');
