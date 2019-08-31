@@ -56,6 +56,7 @@ Route::get('/setup/category', 'categoryController@index')->name('setup.category'
 Route::post('/setup/category', 'categoryController@categoryPost');
 Route::get('/setup/category/{id}/edit', 'categoryController@catedit')->name('setup.catedit');
 Route::post('/setup/category/{id}/edit', 'categoryController@update');
+Route::get('/search/category','categoryController@searchByCategoryName')->name('searchCategoryByName');
 
 //project
 Route::get('/setup/project', 'projectController@index')->name('setup.project');
