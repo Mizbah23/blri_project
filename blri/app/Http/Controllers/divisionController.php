@@ -34,7 +34,7 @@ class divisionController extends Controller
                $divisions=division::all();
                
 
-              return view('setup.division')->with('setuptypes',$setuptypes)->with('divisions',$divisions);
+              return redirect()->route('setup.division');
           }
         public function divedit(Request $request,$id)
         {
@@ -59,7 +59,10 @@ class divisionController extends Controller
     	
     }          
        
-    
+      public function searchByDivisionName(Request $request){
+    $searchedDivisionItem=division::where('divisionName',$request->searchByDivisionName)->get();
+    return view('setup.ajaxDivisionSearchedValue')->with('divisions',$searchedDivisionItem);
+  }
                
     }
 

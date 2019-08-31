@@ -31,6 +31,8 @@ Route::get('/setup/Division', 'divisionController@index')->name('setup.division'
 Route::post('/setup/Division', 'divisionController@divisionPost');
 Route::get('/setup/Division/{id}/edit', 'divisionController@divedit')->name('setup.divedit');
 Route::post('/setup/Division/{id}/edit', 'divisionController@update');
+Route::get('/search/division','divisionController@searchByDivisionName')->name('searchByDivisionName');
+
 
 //Section
 Route::get('/setup/section', 'sectionController@index')->name('setup.section');
@@ -56,6 +58,7 @@ Route::get('/setup/category', 'categoryController@index')->name('setup.category'
 Route::post('/setup/category', 'categoryController@categoryPost');
 Route::get('/setup/category/{id}/edit', 'categoryController@catedit')->name('setup.catedit');
 Route::post('/setup/category/{id}/edit', 'categoryController@update');
+Route::get('/search/category','categoryController@searchByCategoryName')->name('searchCategoryByName');
 
 //project
 Route::get('/setup/project', 'projectController@index')->name('setup.project');
