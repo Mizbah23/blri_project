@@ -307,7 +307,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                
               <tbody>
                 <tr>
-                  <th scope="row">{{$i}}</th>
+                  <td scope="row">{{$i}}</td>
                    <td>{{$division->divisionName}}</td>
                   <td>
                     <a href="{{route('setup.divedit',[$division->id])}}"><i class="fa fa-edit" style="font-size:24px"></i></a>
@@ -773,6 +773,8 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                         divisionName: ui.item.value
                     },
                     success: function(data){
+                        // console.log(data);
+                        
                         $("#alldivision").hide();
                         $("#searchedDivisionValue").html(data);
                         $("#searchedDivisionValue").show();

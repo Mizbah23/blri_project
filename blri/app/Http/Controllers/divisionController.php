@@ -60,10 +60,10 @@ class divisionController extends Controller
     }          
        
       public function searchByDivisionName(Request $request){
-    $searchedDivisionItem=division::where('divisionName',$request->searchByDivisionName)->get();
+    $searchedDivisionItem=division::where('divisionName',$request->divisionName)->get();
     return view('setup.ajaxDivisionSearchedValue')->with('divisions',$searchedDivisionItem);
   }
                
-    }
+}
 
 
