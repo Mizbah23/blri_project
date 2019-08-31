@@ -41,12 +41,12 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 <script src="/js/custom.js"></script>
 <link href="/css/custom.css" rel="stylesheet">
 <!--//Metis Menu -->
-// For autocomplete Search 
+<!-- For autocomplete Search--> 
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.min.css">
 <link rel="stylesheet" href="https://jqueryui.com/resources/demos/style.css">
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
-// For autocomplete Search 
+<!--For autocomplete Search -->
 <style>
 #chartdiv {
   width: 100%;

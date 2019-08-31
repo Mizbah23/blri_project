@@ -382,7 +382,7 @@ $( function() {
                         <div class="col-md-5">
                           <div class="text-center">
                           <button style="margin-left: -200px" type="submit" class="btn btn-info">হালনাগাদ করুণ</button> 
-                          <button type="reset" class="btn btn-danger">বাতিল করুণ</button>
+                          <input type="button" onclick="cancelUpdate()" class="btn btn-danger" value="বাতিল করুণ"/>
                           </div>
 
                         </div>
@@ -860,7 +860,11 @@ $( function() {
     
     <!-- Bootstrap Core JavaScript -->
    <script src="/js/bootstrap.js"> </script>
-
+  <script>
+    function cancelUpdate() {
+      document.location.href="{!! route('setup.repairer info'); !!}";
+    }
+  </script>
     
 </body>
 </html>

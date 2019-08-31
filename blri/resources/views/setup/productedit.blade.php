@@ -305,7 +305,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                           <div class="text-center">
                           <input type="hidden" id="productId" name="productId" value="{{$productinfo->id}}">
                           <button type="submit" class="btn btn-info">সংরক্ষণ করুণ</button> 
-                          <button type="reset" class="btn btn-danger">বাতিল করুণ</button>
+                           <input type="button" onclick="cancelUpdate()" class="btn btn-danger" value="বাতিল করুণ"/>
                           </div>
 
                         </div>
@@ -414,7 +414,11 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
       });
     } 
    </script>
-
+  <script>
+    function cancelUpdate() {
+      document.location.href="{!! route('setup.product'); !!}";
+    }
+  </script>
     
 </body>
 </html>

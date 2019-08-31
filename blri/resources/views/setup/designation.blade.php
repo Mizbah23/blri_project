@@ -291,7 +291,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                    @endforeach
                           </div><br><br><br>
                         <div class="text-center">
-                          <button type="submit" class="btn btn-info">হালনাগাদ করুণ</button> 
+                          <button type="submit" class="btn btn-info">সেভ করুণ</button> 
                           <button type="reset" class="btn btn-danger">বাতিল করুণ</button>
                         </div>
                          </form><!--end form-->

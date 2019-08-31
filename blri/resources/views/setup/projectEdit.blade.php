@@ -325,7 +325,7 @@ $( function() {
                 <h3 class="">Project Information</h3>
               </div>
               <div class="form-body">
-                <form class="form-horizontal" method="post">
+                <form class="form-horizontal" method="post" autocomplete="off">
                 @csrf 
                   <div class="form-group"> <!--Form-->
 
@@ -387,8 +387,8 @@ $( function() {
                         <br><br>
                         <div class="col-md-5">
                           <div class="text-center">
-                          <button type="submit" class="btn btn-info">Save</button> 
-                          <button type="reset" class="btn btn-danger">Cancel</button>
+                          <button type="submit" class="btn btn-info">Update</button> 
+                          <input type="button" onclick="cancelUpdate()" class="btn btn-danger" value="বাতিল করুণ"/>
                           </div>
 
                         </div>
@@ -883,7 +883,11 @@ $( function() {
     
     <!-- Bootstrap Core JavaScript -->
    <script src="/js/bootstrap.js"> </script>
-
+  <script>
+    function cancelUpdate() {
+      document.location.href="{!! route('setup.project'); !!}";
+    }
+  </script>
     
 </body>
 </html>
