@@ -56,7 +56,7 @@ class empAssignController extends Controller
 				}),
 			],
 			'projectName'=>'required',
-			'assignDate'=>'required | date | after_or_equal: today',
+			'assignDate'=>'required | date',
 			'remarks'=>'required'
 		],[
 			'employee_information_id.required'=>'Employee name is required',
@@ -83,6 +83,83 @@ class empAssignController extends Controller
 			$newEmployeeAssign->isActive=1;
 		}
 		$newEmployeeAssign->save();
+		
+		return redirect()->route("setup.employee assign");
+	}
+	public function assignEmployeeEdit($id){
+
+		$setuptypes= setuptype::all();
+		$securitytypes = SecurityType::all();
+		$productreceivetypes=ProductReceiveType::all();
+		$employeeInformations= EmployeeInformation::all();
+		$projects= Project::all();
+		$assignedEmployee=Emp_assign::find($id);
+		if($assignedEmployee){
+			return view('setup.employeeAssignEdit')
+					->with('securitytypes',$securitytypes)
+					->with('setuptypes',$setuptypes)
+					->with('productreceivetypes',$productreceivetypes)
+					->with('assignedEmployee',$assignedEmployee)
+					->with('projects',$projects)
+					->with('employeeInformations',$employeeInformations);
+		}
+		else{
+			return redirect()->route("setup.employee assign");
+		}
+	}
+	public function assignEmployeeUpdate(Request $request)	
+	{
+		// dd($request->all());
+		$isEmployeeExistInAssignTable=Emp_assign::find($request->emp_assign_id);
+		if($isEmployeeExistInAssignTable){
+			$projectId = $request->projectName;
+			$employeeId = $request->employeeName;
+			$isExistenceEmployee=$isEmployeeExistInAssignTable->employee_information_id;
+			$data = [
+				'projectName' => $request->projectName, 
+				'employee_information_id' => $request->employeeName,
+				'assignDate'=>$request->date,
+				'remarks'=>$request->remarks
+			];
+
+			// dd($data);
+			$validator=Validator::make($data, [
+				'employee_information_id' => [
+					'required',
+					Rule::unique('emp_assigns')->where(function ($query) use($projectId,$employeeId,$isEmployeeExistInAssignTable) {
+						return $query->where('employee_information_id', $employeeId)
+						->where('project_id', $projectId)->where('id','<>',$isEmployeeExistInAssignTable->id);
+					}),
+				],
+				'projectName'=>'required',
+				'assignDate'=>'required | date',
+				'remarks'=>'required'
+			],[
+				'employee_information_id.required'=>'Employee name is required',
+				'employee_information_id.unique'=>'This employee is already assign to this project'
+			]
+			);
+			if($validator->fails()){
+				if($projectId){
+					$previousProject= Project::find($projectId);
+					$request["projectDirector"]=$previousProject->employee_information_id;
+				}
+				return redirect()
+						->route('setup.employee assign.edit',$request->emp_assign_id)
+						->withErrors($validator)
+						->withInput($request->all());
+			}
+			// dd($request->all());
+			$isEmployeeExistInAssignTable->project_id=$request->projectName;
+			$isEmployeeExistInAssignTable->employee_information_id=$request->employeeName;
+			$isEmployeeExistInAssignTable->date=date('Y-m-d', strtotime(str_replace('-', '/', $request['date'])));
+			$isEmployeeExistInAssignTable->remarks=$request->remarks;
+			if($request->isActive){
+				$isEmployeeExistInAssignTable->isActive=1;
+			}
+			$isEmployeeExistInAssignTable->save();
+		}
+		
 		
 		return redirect()->route("setup.employee assign");
 	}

@@ -299,7 +299,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                           </div><br><br><br>
                         <div class="text-center">
                           <button type="submit" class="btn btn-info">হালনাগাদ করুণ</button> 
-                          <button type="reset" class="btn btn-danger">বাতিল করুণ</button>
+                         <input type="button" onclick="cancelUpdate()" class="btn btn-danger" value="বাতিল করুণ"/>
                         </div>
                   </form> <br><br>
               </div>
@@ -738,6 +738,10 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
     <!-- Bootstrap Core JavaScript -->
    <script src="/js/bootstrap.js"> </script>
     <!-- //Bootstrap Core JavaScript -->
-    
+          <script>
+    function cancelUpdate() {
+      document.location.href="{!! route('setup.designation'); !!}";
+    }
+  </script>
 </body>
 </html>

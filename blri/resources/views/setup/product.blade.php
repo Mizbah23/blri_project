@@ -324,7 +324,7 @@ $( function() {
         <div class=" form-grids row form-grids-right">
             <div class="widget-shadow " data-example-id="basic-forms"> 
               <div class="form-title bg-primary text-white">
-                <h3 class="">Product Information</h3>
+                <h3 class="">পণ্যের তথ্য</h3>
               </div>
               <div class="form-body">
                 <form class="form-horizontal" method="post" autocomplete="off"> 
@@ -335,15 +335,15 @@ $( function() {
                        <!--left side starts-->
                       <div class="col-md-6">
 
-                        <label for="productCode"  class="col-sm-6 control-label">Product Code</label>
+                        <label for="productCode"  class="col-sm-6 control-label">পণ্যের কোড</label>
                        <div class="col-lg-6">
-                          <input type="text" class="form-control" id="productCode" name="productCode"  value="{{ old('productCode') }}" onkeyup="productCheck()"  placeholder="Product code can not be empty"required>
+                          <input type="text" class="form-control" id="productCode" name="productCode"  value="{{ old('productCode') }}" onkeyup="productCheck()"  placeholder="অবশ্যই পুরণ করুণ"required>
                           <div class="error" id="productCodeError">{{$errors->first('productCode')}}</div>  
                         </div><br><br>
 
-                          <label for="productName" class="col-sm-6 control-label">Product </label>
+                          <label for="productName" class="col-sm-6 control-label">পণ্য</label>
                        <div class="col-lg-6">
-                          <input type="text" class="form-control" id="productName" name="productName"  value="{{ old('productName') }}" placeholder="Product name can not be empty"required>
+                          <input type="text" class="form-control" id="productName" name="productName"  value="{{ old('productName') }}" placeholder="অবশ্যই পুরণ করুণ"required>
                           <div class="error">{{$errors->first('productName')}}</div>
                         </div><br><br>
 
@@ -354,10 +354,10 @@ $( function() {
 
                       <!--right side starts-->
                       <div class="col-md-6">
-                          <label for="categoryName" class="col-sm-5 control-label">Category</label>
+                          <label for="categoryName" class="col-sm-5 control-label">ক্যাটাগরি</label>
                           <div class="col-lg-7">
                               <select id="categoryName" name="categoryName" onchange="showBrand()" class="form-control required" required>
-                                <option value="" >Select a Category</option>
+                                <option value="" >নির্বাচন করুন</option>
                               	@foreach($categories as $category)
                                  <option value="{{$category->id}}"{{old('categoryName')==$category->id ?"selected":""}}>{{$category->categoryName}}</option>
                                  @endforeach
@@ -365,10 +365,10 @@ $( function() {
                               <div class="error">{{$errors->first('categoryName')}}</div>
                           </div><br><br>
                         
-                          <label for="brandName" class="col-sm-5 control-label">Brand</label>
+                          <label for="brandName" class="col-sm-5 control-label">ব্র্যান্ড</label>
                           <div class="col-lg-7">
                               <select id="brandName" name="brandName" class="form-control required" required>
-                                <option value="">Select a Brand</option>
+                                <option value="">নির্বাচন করুন</option>
                                 @if(old('categoryName'))
                                   @foreach($brands as $brand)
                                     @if (old('categoryName') == $brand->category->id)
@@ -395,8 +395,8 @@ $( function() {
                         <br><br>
                         <div class="col-md-5">
                           <div class="text-center">
-                          <button type="submit" class="btn btn-info">Save</button> 
-                          <button type="reset" class="btn btn-danger">Cancel</button>
+                          <button type="submit" class="btn btn-info">সংরক্ষণ করুণ</button> 
+                          <button type="reset" class="btn btn-danger">বাতিল করুণ</button>
                           </div>
 
                         </div>
@@ -415,12 +415,12 @@ $( function() {
 
 
                         <div class="col-md-1">
-                          <label for="searchByBrandName"  class="col-md-4  control-label">Search</label>
+                          <label for="searchByBrandName"  class="col-md-4  control-label">খুঁজুন</label>
                           
                         </div>
 
                         <div class="col-md-3">
-                          <input type="text" class="form-control" id="searchByBrandName" name="searchByBrandName" placeholder="Search by brand name">
+                          <input type="text" class="form-control" id="searchByBrandName" name="searchByBrandName" placeholder="খুঁজুন...">
                         </div>
 
 
@@ -437,11 +437,11 @@ $( function() {
                 <thead class="bg-primary">
                 <tr>
                   <th>#</th>
-                  <th>Product Code</th>
-                  <th>Product</th>
-                  <th>Category</th>
-                  <th>Brand</th>
-                  <th>Edit</th>
+                  <th>পণ্যের কোড</th>
+                  <th>পণ্য</th>
+                  <th>ক্যাটাগরি</th>
+                  <th>ব্র্যান্ড</th>
+                  <th>সম্পাদনা</th>
                  </tr>
                 </thead>
                   @if(isset($productinfos))

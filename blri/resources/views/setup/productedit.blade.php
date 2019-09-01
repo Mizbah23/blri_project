@@ -232,7 +232,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
         <div class=" form-grids row form-grids-right">
             <div class="widget-shadow " data-example-id="basic-forms"> 
               <div class="form-title bg-primary text-white">
-                <h3 class="">Product Information</h3>
+                <h3 class="">পণ্যের তথ্য</h3>
               </div>
               <div class="form-body">
                 <form class="form-horizontal" method="post" autocomplete="off" novalidate> 
@@ -243,15 +243,15 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                        <!--left side starts-->
                       <div class="col-md-6">
 
-                        <label for="productCode"  class="col-sm-6 control-label">Product Code</label>
+                        <label for="productCode"  class="col-sm-6 control-label">পণ্যের কোড </label>
                        <div class="col-lg-6">
-                          <input type="text" class="form-control" id="productCode" name="productCode"  value="{{ old('productCode',$productinfo->productCode) }}" onkeyup="productCheck()"  placeholder="Product code can not be empty"required>
+                          <input type="text" class="form-control" id="productCode" name="productCode"  value="{{ old('productCode',$productinfo->productCode) }}" onkeyup="productCheck()"  placeholder="অবশ্যই পুরণ করুণ"required>
                           <div class="error" id="productCodeError">{{$errors->first('productCode')}}</div>  
                         </div><br><br>
 
-                          <label for="productName" class="col-sm-6 control-label">Product </label>
+                          <label for="productName" class="col-sm-6 control-label">পণ্য </label>
                        <div class="col-lg-6">
-                          <input type="text" class="form-control" id="productName" name="productName"  value="{{ old('productName',$productinfo->productName) }}" placeholder="Product name can not be empty"required>
+                          <input type="text" class="form-control" id="productName" name="productName"  value="{{ old('productName',$productinfo->productName) }}" placeholder="অবশ্যই পুরণ করুণ"required>
                           <div class="error">{{$errors->first('productName')}}</div>
                         </div><br><br>
 
@@ -262,10 +262,10 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 
                       <!--right side starts-->
                       <div class="col-md-6">
-                          <label for="categoryName" class="col-sm-5 control-label">Category</label>
+                          <label for="categoryName" class="col-sm-5 control-label">ক্যাটাগরি</label>
                           <div class="col-lg-7">
                               <select id="categoryName" name="categoryName" onchange="showBrand()" class="form-control required" required>
-                                <option value="" >Select a Category</option>
+                                <option value="" >নির্বাচন করুন</option>
                               	@foreach($categories as $category)
                                  <option value="{{$category->id}}"{{old('categoryName',$productinfo->brand->category->id)==$category->id ?"selected":""}}>{{$category->categoryName}}</option>
                                  @endforeach
@@ -273,10 +273,10 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                               <div class="error">{{$errors->first('categoryName')}}</div>
                           </div><br><br>
                         
-                          <label for="brandName" class="col-sm-5 control-label">Brand</label>
+                          <label for="brandName" class="col-sm-5 control-label">ব্র্যান্ড</label>
                           <div class="col-lg-7">
                               <select id="brandName" name="brandName" class="form-control required" required>
-                                <option value="">Select a Brand</option>
+                                <option value="">নির্বাচন করুন</option>
                                 @if(old('categoryName',$productinfo->brand->category->id))
                                   @foreach($brands as $brand)
                                     @if (old('categoryName',$productinfo->brand->category->id) == $brand->category->id)
@@ -304,8 +304,8 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                         <div class="col-md-5">
                           <div class="text-center">
                           <input type="hidden" id="productId" name="productId" value="{{$productinfo->id}}">
-                          <button type="submit" class="btn btn-info">Save</button> 
-                          <button type="reset" class="btn btn-danger">Cancel</button>
+                          <button type="submit" class="btn btn-info">সংরক্ষণ করুণ</button> 
+                           <input type="button" onclick="cancelUpdate()" class="btn btn-danger" value="বাতিল করুণ"/>
                           </div>
 
                         </div>
@@ -414,7 +414,11 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
       });
     } 
    </script>
-
+  <script>
+    function cancelUpdate() {
+      document.location.href="{!! route('setup.product'); !!}";
+    }
+  </script>
     
 </body>
 </html>

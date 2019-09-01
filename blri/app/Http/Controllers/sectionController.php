@@ -8,6 +8,9 @@ use App\division;
 use App\Section;
 use App\SecurityType;
 use App\ProductReceiveType;
+use App\ProductDistribution;
+use App\Adjustment;
+use App\Reporting;
 
 
 class sectionController extends Controller
@@ -18,9 +21,12 @@ class sectionController extends Controller
         $sections=Section::all();
         $securitytypes=SecurityType::all();
         $productreceivetypes=ProductReceiveType::all();
-
+        $productdistributions=ProductDistribution::all();
+        $adjustments=Adjustment::all();
+        $reportings=Reporting::all();
+        
         //dd($sections[0]->division);
-        return view('setup.section')->with('setuptypes',$setuptypes)->with('divisions',$divisions)->with('sections',$sections)->with('securitytypes',$securitytypes)->with('productreceivetypes',$productreceivetypes);
+        return view('setup.section')->with('setuptypes',$setuptypes)->with('divisions',$divisions)->with('sections',$sections)->with('securitytypes',$securitytypes)->with('productreceivetypes',$productreceivetypes)->with('adjustments',$adjustments)->with('reportings',$reportings)->with('productdistributions',$productdistributions);
     }
     public function sectionPost(Request $request){
                $section=new Section;
@@ -38,8 +44,13 @@ class sectionController extends Controller
              $setuptypes= setuptype::all();
              $securitytypes=SecurityType::all();
              $divisions=division::all();
+             $productreceivetypes=ProductReceiveType::all();
+             $productdistributions=ProductDistribution::all();
+             $adjustments=Adjustment::all();
+             $reportings=Reporting::all();
+
              $section=Section::find($id);
-             return view('setup.secedit')->with('section',$section)->with('setuptypes',$setuptypes)->with('divisions',$divisions)->with('securitytypes',$securitytypes);
+             return view('setup.secedit')->with('section',$section)->with('setuptypes',$setuptypes)->with('divisions',$divisions)->with('securitytypes',$securitytypes)->with('productreceivetypes',$productreceivetypes)->with('adjustments',$adjustments)->with('reportings',$reportings)->with('productdistributions',$productdistributions);
      }
 
      public function update(Request $request,$id)

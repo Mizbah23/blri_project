@@ -329,7 +329,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                         
                       </div>
                       <div class="col-lg-6"> <!--Category and brand-->
-                               <label for="category" class="col-sm-2 control-label">কেটাগড়ি</label>
+                               <label for="category" class="col-sm-2 control-label">ক্যাটাগরি</label>
                   <div class="col-sm-9">
 
                     <select class="form-control" id="category" name="categoryName" >

@@ -41,12 +41,16 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 <script src="/js/custom.js"></script>
 <link href="/css/custom.css" rel="stylesheet">
 <!--//Metis Menu -->
-// For autocomplete Search 
+
+
+{{-- // For autocomplete Search  --}}
+
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.min.css">
 <link rel="stylesheet" href="https://jqueryui.com/resources/demos/style.css">
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
-// For autocomplete Search 
+
+{{-- // For autocomplete Search  --}}
 <style>
 #chartdiv {
   width: 100%;
@@ -288,7 +292,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                         
                       </div>
                       <div class="col-lg-6"> <!--Category and brand-->
-                          <label for="category" class="col-sm-2 control-label">কেটাগড়ি</label>
+                          <label for="category" class="col-sm-2 control-label">ক্যাটাগরি</label>
                           <div class="col-lg-9">
                               <select id="category" name="categories" class="form-control required" required>
                                                 @foreach($categories as $category)
@@ -338,7 +342,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                   <table class="table table-responsive table-hover table-striped table-bordered table-condensed">
                       <tr class="row bg-primary">
                         <th class="col-lg-1 text-center">#</th>
-                        <th class="col-lg-2 text-center">কেটাগড়ি</th>
+                        <th class="col-lg-2 text-center">ক্যাটাগরি</th>
                         <th class="col-lg-8 text-center">ব্রান্ড</th>
                         <th class="col-lg-1 text-center">সম্পাদনা</th>
                       </tr>
@@ -791,6 +795,8 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
     
     <!-- Bootstrap Core JavaScript -->
    <script src="/js/bootstrap.js"> </script>
+
+   {{-- for search --}}
    <script>
        $( function() {
            var brandNameTags={!!$brands->unique('brandName')->pluck('brandName')!!};

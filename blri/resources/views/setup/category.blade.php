@@ -44,6 +44,13 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 <script src="/js/custom.js"></script>
 <link href="/css/custom.css" rel="stylesheet">
 <!--//Metis Menu -->
+
+{{-- // For autocomplete Search  --}}
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.min.css">
+<link rel="stylesheet" href="https://jqueryui.com/resources/demos/style.css">
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+{{-- // For autocomplete Search  --}}
 <style>
 #chartdiv {
   width: 100%;
@@ -238,7 +245,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                         
                       </div>
                       <div class="col-lg-6"> <!--Category and brand-->
-                          <label for="category" class="col-sm-2 control-label"> ক্যাটাগরি</label>
+                          <label for="category" class="col-sm-2 control-label"> ক্যাটাগরি    </label>
                        <div class="col-lg-9">
                         <input type="text" class="form-control" id="category" name="categoryName" placeholder="অবশ্যই পুরণ করুণ"required>
                            @foreach ($errors->get('categoryName') as $error)
@@ -269,7 +276,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                         </div>
 
                         <div class="col-md-3">
-                          <input type="text" class="form-control" id="searchByBrandName" name="searchByBrandName" placeholder="ব্রান্ডের নামে খুঁজুন">
+                          <input type="text" class="form-control" id="searchByCategoryName" name="searchByCategoryName" placeholder=" খুঁজুন....">
                         </div>
 
 
@@ -278,7 +285,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                       <!--Search option stops-->
                </div> 
 
-                <div>
+                <div id="allCategories">
   
                   <table class="table table-responsive table-hover table-striped table-bordered table-condensed" id="myTable">
                 <thead class="bg-primary">
@@ -305,6 +312,9 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
              
               </tbody>  
             </table>
+               </div>
+               <div id="searchedCategoryValue">
+                 
                </div>
               
             </div>
@@ -741,6 +751,42 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
     <!-- Bootstrap Core JavaScript -->
    <script src="/js/bootstrap.js"> </script>
     <!-- //Bootstrap Core JavaScript -->
+
+    {{-- for search --}}
+   <script>
+       $( function() {
+           var categoryNameTags={!!$categories->unique('categoryName')->pluck('categoryName')!!};
+           console.log(categoryNameTags);
+           $( "#searchByCategoryName" ).autocomplete({
+                source: categoryNameTags
+            });
+       });
+       $( "#searchByCategoryName" ).autocomplete({
+            select: function( event, ui ) {
+                $.ajax({
+                    type:'GET',
+                    url: "{{route('searchCategoryByName')}}",
+                    data:{
+                        categoryName: ui.item.value
+                    },
+                    success: function(data){
+                        $("#allCategories").hide();
+                        $("#searchedCategoryValue").html(data);
+                        $("#searchedCategoryValue").show();
+                    }
+                });
+                // console.log($("#searchByBrandName").val());
+            }
+        });
+        //This key up event handler is to only handle when the searchByBrandName field is empty
+        $("#searchByCategoryName").keyup(function() {
+            //When the search value is empty then this function will work
+            if (!this.value) {
+                $("#allCategories").show();
+                $("#searchedCategoryValue").hide();
+            }
+        });
+   </script>
     
 </body>
 </html>

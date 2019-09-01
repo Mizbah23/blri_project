@@ -298,9 +298,9 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                           </div><br><br>
 
                   <label for="district" class="col-sm-2 control-label">জেলা</label> 
-                  <div class="col-sm-9"> <input type="text" required class="form-control" id="district" name="district" placeholder="can not be empty"> </div>
+                  <div class="col-sm-9"> <input type="text" required class="form-control" id="district" name="district" placeholder="অবশ্যই পুরণ করুণ"> </div>
                    </div>
-                 <div class="form-group"> <div class="col-sm-offset-4 col-sm-6">  </div> </div><br> <div class="col-sm-offset-4"> <button type="submit" class="btn btn-info">সেভ</button> <button type="reset" class="btn btn-danger">বাতিল</button></div> </form> 
+                 <div class="form-group"> <div class="col-sm-offset-4 col-sm-6">  </div> </div><br> <div class="col-sm-offset-4"> <button type="submit" class="btn btn-info">সংরক্ষন করুণ</button> <button type="reset" class="btn btn-danger">বাতিল করুণ</button></div> </form> 
               </div>
           </div>
           <div class="col-sm-4"></div>
@@ -310,9 +310,10 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
               <div class="col-sm-8"></div>
 
                     <div class="form-group" >
-                        <label for="searchoption" class="col-lg-9  control-label" style="text-align: right; ">Search</label>
+                        <label for="searchoption" class="col-lg-9  control-label" style="text-align: right; ">খুঁজুন
+                        </label>
                         <div class="col-lg-3">
-                            <input type="text" class="form-control" placeholder="search...">
+                            <input type="text" class="form-control" placeholder="খুঁজুন...">
                         </div>
                      </div> 
               </div><br><br>
@@ -321,9 +322,9 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                 <thead>
                 <tr class=" bg-primary">
                   <th>#</th>
-                  <th>Division</th>
-                  <th>Section</th>
-                  <th>Edit</th>
+                  <th>বিভাগ</th>
+                  <th>শাখা</th>
+                  <th>সম্পাদনা</th>
                  
                 </tr>
               </thead>

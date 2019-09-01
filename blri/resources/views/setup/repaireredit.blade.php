@@ -2,7 +2,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>Repair information</title>
+<title>মেরামত বিবরণী</title>
 <link rel="icon" type="image/png" href="/images/logo.png" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -320,7 +320,7 @@ $( function() {
         <div class=" form-grids row form-grids-right">
             <div class="widget-shadow " data-example-id="basic-forms"> 
               <div class="form-title bg-primary text-white">
-                <h3 class="">Repairer Information</h3>
+                <h3 class="">মেরামত বিবরণী</h3>
               </div>
               <div class="form-body">
                 <form class="form-horizontal" method="post"> 
@@ -335,29 +335,29 @@ $( function() {
                        <!--left side starts-->
                       <div class="col-md-7">
 
-                        <label for="repairerName" class="col-sm-6 control-label">Repairer Name</label>
+                        <label for="repairerName" class="col-sm-6 control-label">মেরামতকারীর নাম</label>
                        <div class="col-lg-6">
-                          <input type="text" class="form-control" id="repairerName" name="repairerName" value="{{$repairer->repairerName}}" placeholder="Please Enter name here"required>
+                          <input type="text" class="form-control" id="repairerName" name="repairerName" value="{{$repairer->repairerName}}" placeholder="অবশ্যই পুরণ করুণ"required>
                           <div class="error">{{$errors->first('repairerName')}}</div>
 
                           </div><br><br>
-                        <label for="address" class="col-sm-6 control-label">Address</label>
+                        <label for="address" class="col-sm-6 control-label">ঠিকানা</label>
                        <div class="col-lg-6">
-                        <textarea name="address" id="address" class="form-control" placeholder="Write Address here" value="{{$repairer->address}}" required></textarea>
+                        <textarea name="address" id="address" class="form-control" placeholder="অবশ্যই পুরণ করুণ" value="{{$repairer->address}}" required></textarea>
                           <div class="error">{{$errors->first('address')}}</div>
 
                           </div><br><br><br>
 
-                          <label  for="mobile" class="col-sm-6 control-label">Mobile </label>
+                          <label  for="mobile" class="col-sm-6 control-label">মোবাইল </label>
                        <div class="col-lg-6">
-                          <input type="text" class="form-control" id="mobile" name="mobile" placeholder="Please Enter Mobile Number" value="{{$repairer->mobile}}" required >
+                          <input type="text" class="form-control" id="mobile" name="mobile" placeholder="অবশ্যই পুরণ করুণ" value="{{$repairer->mobile}}" required >
                           <div class="error">{{$errors->first('mobile')}}</div>
 
                           </div><br><br><br>
 
-                          <label for="email" class="col-sm-6 control-label">Email</label>
+                          <label for="email" class="col-sm-6 control-label">ই-মেইল</label>
                        <div class="col-lg-6">
-                          <input type="email" class="form-control" id="email" name="email" placeholder="Email address here" value="{{$repairer->email}}" required>
+                          <input type="email" class="form-control" id="email" name="email" placeholder="অবশ্যই পুরণ করুণ" value="{{$repairer->email}}" required>
                           <div class="error">{{$errors->first('email')}}</div>
 
                           </div><br><br><br>
@@ -381,8 +381,8 @@ $( function() {
                         <br><br>
                         <div class="col-md-5">
                           <div class="text-center">
-                          <button style="margin-left: -200px" type="submit" class="btn btn-info">Update</button> 
-                          <button type="reset" class="btn btn-danger">Cancel</button>
+                          <button style="margin-left: -200px" type="submit" class="btn btn-info">হালনাগাদ করুণ</button> 
+                          <input type="button" onclick="cancelUpdate()" class="btn btn-danger" value="বাতিল করুণ"/>
                           </div>
 
                         </div>
@@ -404,12 +404,12 @@ $( function() {
 
 
                         <div class="col-md-1">
-                          <label for="searchByBrandName"  class="col-md-4  control-label">Search</label>
+                          <label for="searchByBrandName"  class="col-md-4  control-label">খুঁজুন</label>
                           
                         </div>
 
                         <div class="col-md-3">
-                          <input type="text" class="form-control" id="searchByBrandName" name="searchByBrandName" placeholder="Search by brand name">
+                          <input type="text" class="form-control" id="searchByBrandName" name="searchByBrandName" placeholder="খুঁজুন...">
                         </div>
 
 
@@ -860,7 +860,11 @@ $( function() {
     
     <!-- Bootstrap Core JavaScript -->
    <script src="/js/bootstrap.js"> </script>
-
+  <script>
+    function cancelUpdate() {
+      document.location.href="{!! route('setup.repairer info'); !!}";
+    }
+  </script>
     
 </body>
 </html>

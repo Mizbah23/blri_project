@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>ক্যটাগরি হালনাগাদ</title>
+<title>ক্যাটাগরি হালনাগাদ</title>
 <link rel="icon" type="image/png" href="/images/logo.png" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -276,7 +276,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
         <div class=" form-grids row form-grids-right">
             <div class="widget-shadow " data-example-id="basic-forms"> 
               <div class="form-title bg-primary">
-                <h4>কেটাগড়ি হালনাগাদ</h4>
+                <h4>ক্যাটাগরি হালনাগাদ</h4>
               </div>
               <div class="form-body">
                 <form class="form-horizontal" action="" method="post">
@@ -298,7 +298,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                           </div><br><br><br>
                         <div class="text-center">
                           <button type="submit" class="btn btn-info">হালনাগাদ করুণ</button> 
-                          <button type="reset" class="btn btn-danger">বাতিল করুণ</button>
+                          <input type="button" onclick="cancelUpdate()" class="btn btn-danger" value="বাতিল করুণ"/>
                         </div>
                   </form> <br><br>
               </div>
@@ -737,6 +737,11 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
     <!-- Bootstrap Core JavaScript -->
    <script src="/js/bootstrap.js"> </script>
     <!-- //Bootstrap Core JavaScript -->
+      <script>
+    function cancelUpdate() {
+      document.location.href="{!! route('setup.category'); !!}";
+    }
+  </script>
     
 </body>
 </html>

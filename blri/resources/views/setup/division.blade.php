@@ -41,6 +41,12 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 <script src="/js/custom.js"></script>
 <link href="/css/custom.css" rel="stylesheet">
 <!--//Metis Menu -->
+ <!--For autocomplete Search-->
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.min.css">
+<link rel="stylesheet" href="https://jqueryui.com/resources/demos/style.css">
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+ <!-- For autocomplete Search-->
 <style>
 #chartdiv {
   width: 100%;
@@ -273,18 +279,19 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 
 
                         <div class="col-md-1 ">
-                          <label for="searchByBrandName"  class="col-md-4  control-label">খুঁজুন</label>
+                          <label for="searchByDivisionName"  class="col-md-4  control-label">খুঁজুন</label>
                           
                         </div>
 
                         <div class="col-md-3">
-                          <input type="text" class="form-control" id="searchByBrandName" name="searchByBrandName" placeholder="ব্রান্ডএর নামে খুঁজুন">
+                          <input type="text" class="form-control" id="searchByDivisionName" name="searchByDivisionName" placeholder=" অনুষদের নামে খুঁজুন">
                         </div>
 
 
                       </div>
 
                       <!--Search option stops-->
+                <div id="alldivision">                
                <table class="table table-responsive table-hover table-striped table-bordered table-condensed">
                 <thead class="bg-primary">
                 <tr>
@@ -300,7 +307,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                
               <tbody>
                 <tr>
-                  <th scope="row">{{$i}}</th>
+                  <td scope="row">{{$i}}</td>
                    <td>{{$division->divisionName}}</td>
                   <td>
                     <a href="{{route('setup.divedit',[$division->id])}}"><i class="fa fa-edit" style="font-size:24px"></i></a>
@@ -312,8 +319,11 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 
              
               </tbody>  
-            </table>
-              </div>
+            </table> 
+          </div> 
+          <div id="searchedDivisionValue"></div>
+            
+          </div>
           </div>
            </div>
         </div>
@@ -746,6 +756,42 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
     <!-- Bootstrap Core JavaScript -->
    <script src="/js/bootstrap.js"> </script>
     <!-- //Bootstrap Core JavaScript -->
+       <script>
+       $( function() {
+           var divisionNameTags={!!$divisions->unique('divisionName')->pluck('divisionName')!!};
+           console.log(divisionNameTags);
+           $( "#searchByDivisionName" ).autocomplete({
+                source: divisionNameTags
+            });
+       });
+       $( "#searchByDivisionName" ).autocomplete({
+            select: function( event, ui ) {
+                $.ajax({
+                    type:'GET',
+                    url: "{{route('searchByDivisionName')}}",
+                    data:{
+                        divisionName: ui.item.value
+                    },
+                    success: function(data){
+                        // console.log(data);
+                        
+                        $("#alldivision").hide();
+                        $("#searchedDivisionValue").html(data);
+                        $("#searchedDivisionValue").show();
+                    }
+                });
+                // console.log($("#searchByBrandName").val());
+            }
+        });
+        //This key up event handler is to only handle when the searchByBrandName field is empty
+        $("#searchByDivisionName").keyup(function() {
+            //When the search value is empty then this function will work
+            if (!this.value) {
+                $("#alldivision").show();
+                $("#searchedDivisionValue").hide();
+            }
+        });
+   </script>
     
 </body>
 </html>
