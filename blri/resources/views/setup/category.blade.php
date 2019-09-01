@@ -271,7 +271,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 
 
                         <div class="col-md-1">
-                          <label for="searchByBrandName"  class="col-md-4  control-label">খুঁজুন</label>
+                          <label for="searchByCategoryName"  class="col-md-4  control-label">খুঁজুন</label>
                           
                         </div>
 
@@ -286,7 +286,6 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                </div> 
 
                 <div id="allCategories">
-  
                   <table class="table table-responsive table-hover table-striped table-bordered table-condensed" id="myTable">
                 <thead class="bg-primary">
                 <tr>
@@ -313,9 +312,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
               </tbody>  
             </table>
                </div>
-               <div id="searchedCategoryValue">
-                 
-               </div>
+               <div id="searchedCategoryValue"></div>
               
             </div>
           </div>
@@ -765,7 +762,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
             select: function( event, ui ) {
                 $.ajax({
                     type:'GET',
-                    url: "{{route('searchCategoryByName')}}",
+                    url: "{{route('searchByCategoryName')}}",
                     data:{
                         categoryName: ui.item.value
                     },

@@ -8,7 +8,7 @@
         @foreach ($categories as $key=>$category)
             <tr class="row">
                 <td>{{++$key}}</td>
-                <td>{{$category->category->categoryName}}</td>
+                <td>{{$category->categoryName}}</td>
                 
                 <td><a href="{{route('setup.catedit',[$category->id])}}"><i class="fa fa-edit" style="font-size:24px"></i></a></td>
             </tr>

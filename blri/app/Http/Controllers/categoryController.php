@@ -60,16 +60,9 @@ class categoryController extends Controller
     	
     }       
 
-  //    public function searchByCategoryName(Request $request){
-  //   $searchedCategoryItem=Category::where('categoryName',$request->categoryName)->get();
-  //   return view('setup.ajaxCategorySearchedValue')->with('categories',$searchedCategoryItem);
-  // }   
-     public function autocomplete(Request $request)
-    {
-        $data = category::select("category")
-                ->where("category","LIKE","%{$request->categoryName}%")
-                ->get();
-   
-        // return response()->json($data);
-                return view('setup.ajaxCategorySearchedValue')->with('categories',$searchedCategoryItem);
+     public function searchByCategoryName(Request $request){
+    $searchedCategoryItem=Category::where('categoryName',$request->categoryName)->get();
+    return view('setup.ajaxCategorySearchedValue')->with('categories',$searchedCategoryItem);
+  }   
+    
  }
