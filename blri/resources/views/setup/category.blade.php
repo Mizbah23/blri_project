@@ -286,7 +286,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                </div> 
 
                 <div id="allCategories">
-                  <table class="table table-responsive table-hover table-striped table-bordered table-condensed" id="myTable">
+                  <table class="table table-responsive table-hover table-striped table-bordered table-condensed">
                 <thead class="bg-primary">
                 <tr>
                   <th>#</th>
