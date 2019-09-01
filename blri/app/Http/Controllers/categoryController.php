@@ -60,9 +60,9 @@ class categoryController extends Controller
     	
     }       
 
-     public function searchByCategoryName(Request $request){
-    $searchedCategoryItem=Category::where('categoryName',$request->categoryName)->get();
-    return view('setup.ajaxCategorySearchedValue')->with('categories',$searchedCategoryItem);
+  public function searchByCategoryName(Request $request){
+  $searchedCategoryItem=Category::where('categoryName',$request->categoryName)->get();
+  return view('setup.ajaxCategorySearchedValue')->with('categories',$searchedCategoryItem);
   }   
     
  }

@@ -40,7 +40,8 @@ class designationController extends Controller
 				    	       $designation=Designation::find($id);
 				    	       return view('setup.desedit')->with('designation',$designation)->with('setuptypes',$setuptypes)->with('securitytypes',$securitytypes);
 				    }
-              public function update(Request $request,$id){
+              public function update(Request $request,$id)
+                {
 
                   $this->validate( $request,[
                     'designationName'=>'required',
@@ -52,5 +53,15 @@ class designationController extends Controller
                   //$brand->category_id=$request->categoryName;
                   $designation->save();
                   return redirect()->route('setup.designation');
-  }
+                 }
+
+             public function searchBydesignation(Request $request)
+                {
+                  //dd('fgbfx');
+                  $searchBydesignationTypes=Designation::where('designationName',$request->designationName)->get();
+                  //dd($searchBydesignationType);
+                 return view('setup.ajaxDesignationSearchedValue')->with('designations',$searchBydesignationTypes);
+
+                }
+
 }

@@ -45,6 +45,8 @@ Route::get('/setup/designation', 'designationController@index')->name('setup.des
 Route::post('/setup/designation', 'designationController@designationPost');
 Route::get('/setup/designation/{id}/edit', 'designationController@desedit')->name('setup.desedit');
 Route::post('/setup/designation/{id}/edit', 'designationController@update');
+Route::get('/search/designation','designationController@searchBydesignation')->name('searchBydesignationType');
+
 
 //Brand
 Route::get('/setup/brand', 'brandController@index')->name('setup.brand');
