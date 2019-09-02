@@ -59,7 +59,7 @@ class designationController extends Controller
                 {
                   //dd('fgbfx');
                   $searchBydesignationTypes=Designation::where('designationName',$request->designationName)->get();
-                  //dd($searchBydesignationType);
+                  // return($searchBydesignationTypes);
                  return view('setup.ajaxDesignationSearchedValue')->with('designations',$searchBydesignationTypes);
 
                 }

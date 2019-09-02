@@ -18,7 +18,11 @@ class categoryController extends Controller
    $securitytypes=SecurityType::all();
    $productreceivetypes=ProductReceiveType::all();
 
-   return view('setup.category')->with('setuptypes',$setuptypes)->with('categories',$categories)->with('securitytypes',$securitytypes)->with('productreceivetypes',$productreceivetypes);
+   return view('setup.category')
+          ->with('setuptypes',$setuptypes)
+          ->with('categories',$categories)
+          ->with('securitytypes',$securitytypes)
+          ->with('productreceivetypes',$productreceivetypes);
    }
       public function categoryPost(Request $request){
       	       //dd('success');
@@ -61,7 +65,8 @@ class categoryController extends Controller
     }       
 
   public function searchByCategoryName(Request $request){
-  $searchedCategoryItem=Category::where('categoryName',$request->categoryName)->get();
+    $searchedCategoryItem=Category::where('categoryName',$request->categoryName)->get();
+    // return $searchedCategoryItem;
   return view('setup.ajaxCategorySearchedValue')->with('categories',$searchedCategoryItem);
   }   
     
