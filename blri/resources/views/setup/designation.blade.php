@@ -349,7 +349,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                   @php $i++ @endphp
               <tbody>
                 <tr>
-                  <th scope="row">{{$i}}</th>
+                  <td>{{$i}}</td>
                    <td>{{$designation->designationName}}</td>
                   <td>
                     <a href="{{route('setup.desedit',[$designation->id])}}"><i class="fa fa-edit" style="font-size:24px"></i></a>
