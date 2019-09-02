@@ -324,26 +324,26 @@ $( function() {
               </div>
               <div class="form-body">
                 <form class="form-horizontal" method="post"> 
+                  @csrf
                   <div class="form-group"> <!--Form-->
 
                     <div class="row">
                        <!--left side starts-->
                       <div class="col-md-6">
 
-                        <label for="brand" class="col-sm-5 control-label">Employee</label>
+                        <label for="name" class="col-sm-5 control-label">Employee</label>
                        <div class="col-lg-7">
-                          <input type="text" class="form-control" id="" name="" placeholder="Employee name can not be empty"required>
+                          <input type="text" class="form-control" id="name" name="name" placeholder="Employee name can not be empty"required>
                           </div><br><br>
 
-                          <label for="brand" class="col-sm-5 control-label">User Name</label>
-                       <div class="col-lg-7">
-                        <textarea name=" "class="form-control" placeholder="Address can not be empty"required></textarea>
-                          </div><br><br><br>
-
-                        <label for="category" class="col-sm-5 control-label">User Type</label>
+                 
+                        <label for="userType" class="col-sm-5 control-label">User Type</label>
                           <div class="col-lg-7">
-                              <select id="category" name="categories" class="form-control required" required>
+                              <select id="userType" name="userType" class="form-control required" required>
                                  <option value="">Select Type</option>
+                                 <option value="super">Super Admin</option>
+                                 <option value="admin">Admin</option>
+                                 <option value="user">User</option>
                               </select>
                           </div><br><br>
                       </div>
@@ -353,20 +353,20 @@ $( function() {
                       <!--right side starts-->
                       <div class="col-md-6">
 
-                        <label  class="col-sm-5 control-label">Email</label>
+                        <label for="email" class="col-sm-5 control-label">Email</label>
                        <div class="col-lg-7">
-                          <input type="text" class="form-control" id="" name="" placeholder="Email not be empty"required>
+                          <input type="text" class="form-control" id="email" name="email" placeholder="Email not be empty">
                           </div><br><br>
 
-                           <label  class="col-sm-5 control-label">Password</label>
+                           <label for="password" class="col-sm-5 control-label">Password</label>
                        <div class="col-lg-7">
-                          <input type="password" class="form-control" id="" name="" placeholder="********"required>
+                          <input type="password" class="form-control" id="password" name="password" required>
                           </div><br><br>
                             
 
                         <label  class="col-sm-6 control-label"><br><br></label>
                           <div class="col-lg-6">
-                              <input  type="checkbox" name="" value=""> Active<br><br><br><br>
+                              <input  type="checkbox" name="isActive" value=""> Active<br><br><br><br>
                           </div><br><br>
                           
                       </div>
@@ -395,45 +395,7 @@ $( function() {
 
                   </div>
               </form>
-<!--                   <div class="row">
-                   <div class="col-lg-6"> Category and brand-->
-                       <!--   <label for="category" class="col-sm-2 control-label">Category</label>
-                          <div class="col-lg-9">
-                              <select id="category" name="categories" class="form-control required" required>
-                                               
-                                               <option value=""></option>
-                                              
-                              </select>
-                          </div><br><br>
 
-                          <label for="brand" class="col-sm-2 control-label">Brand</label>
-                       <div class="col-lg-9">
-                          <input type="text" class="form-control" id="brand" name="brandName" placeholder="Name Can not be empty"required>
-                          </div><br><br><br>
-
-                          <div class="col-lg-6">
-                            <label for="category" class="col-sm-2 control-label">Category</label>
-                          <div class="col-lg-9">
-                              <select id="category" name="categories" class="form-control required" required>
-                                               
-                                               <option value=""></option>
-                                              
-                              </select>
-                          </div><br><br>
-
-                          <label for="brand" class="col-sm-2 control-label">Brand</label>
-                       <div class="col-lg-9">
-                          <input type="text" class="form-control" id="brand" name="brandName" placeholder="Name Can not be empty"required>
-                          </div><br><br><br>
-                          </div>
-
-                        <div class="text-center">
-                          <button type="submit" class="btn btn-info">Save</button> 
-                          <button type="reset" class="btn btn-danger">Cancel</button>
-                        </div>
-                         </form>end form-->
-                      <!--Category and brand-->
-                      <!--Search option starts-->
                       <div class="row">
                         <div class="col-md-8"></div>
 
@@ -460,12 +422,14 @@ $( function() {
                   <table class="table table-responsive table-hover table-striped table-bordered table-condensed">
                       <tr class="row bg-primary">
                         <th class="col-lg-1 text-center">#</th>
-                        <th class="col-lg-2 text-center">Category</th>
-                        <th class="col-lg-8 text-center">Brand</th>
-                        <th class="col-lg-1 text-center">Edit</th>
+                        <th class="col-lg-3 text-center">Employee</th>
+                        <th class="col-lg-2 text-center">User Type</th>
+                        <th class="col-lg-3 text-center">Email</th>
+                        <th class="col-lg-3 text-center">Edit</th>
                       </tr>
                       
                                 <tr class="row">
+                                    <td></td>
                                     <td></td>
                                     <td></td>
                                     <td></td>

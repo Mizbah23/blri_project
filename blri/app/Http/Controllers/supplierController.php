@@ -26,7 +26,7 @@ class supplierController extends Controller
     	$this->validate($request,[
           'supplierName'=>'required',
           'contactName'=>'required',
-          'phone'=>'required|regex:/(01)[0-9]{9}/|size:07',
+          'phone'=>'required|regex:/(01)[0-9]{9}/|max:11',
           'mobile'=>'required|regex:/(01)[0-9]{9}/|size:11',
           'country'=>'required',
           'vatReg' =>'required|regex:/(01)[0-9]{9}/|size:09',

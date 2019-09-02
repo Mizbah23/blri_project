@@ -20,4 +20,8 @@ class EmployeeInformation extends Model
     {
         return $this->hasOne('App\Project');
     }
+            public function user()
+    {
+        return $this->hasOne('App\EmployeeInformation');
+    }
 }
