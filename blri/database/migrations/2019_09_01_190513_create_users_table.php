@@ -15,8 +15,12 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigIncrements('id');
-            $table->bigIncrements('id');
+            $table->unsignedBigInteger('employee_information_id');
+            $table->string('userType');
+            $table->string('email');
+            $table->string('password');
+            $table->boolean('isActive')->default(0);
+            $table->foreign('employee_information_id')->references('id')->on('employee_information');
             $table->timestamps();
         });
     }

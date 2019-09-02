@@ -58,8 +58,14 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 				<div class="widget-shadow">
 					<div class="login-body">
 						<form action="" method="post">
+							@csrf
 							<input type="email" class="user" name="email" placeholder="Enter Your Email" required="">
 							<input type="password" name="password" class="lock" placeholder="Password" required="">
+							      @if(!empty($error))
+                                 <div class="form-group has-feedback">
+                                 <span style="color:red">*{{$error}}</span>
+                                 </div>
+                                 @endif
 							<div class="forgot-grid">
 								<!--<label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i></i>Remember me</label>-->
 								<div class="forgot">

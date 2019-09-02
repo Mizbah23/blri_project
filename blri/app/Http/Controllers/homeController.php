@@ -9,6 +9,7 @@ use App\ProductReceiveType;
 use App\ProductDistribution;
 use App\Adjustment;
 use App\Reporting;//model name;
+use App\User;
 
 
 
@@ -23,9 +24,14 @@ class homeController extends Controller
         $productdistributions=ProductDistribution::all();
         $adjustments=Adjustment::all();
         $reportings=Reporting::all();
-
+        $users=User::all();
         //dd($sections[0]->division);
-        return view('home.index')->with('setuptypes',$setuptypes)->with('securitytypes',$securitytypes)->with('productreceivetypes',$productreceivetypes)->with('productdistributions',$productdistributions)->with('adjustments',$adjustments)->with('reportings',$reportings);
+        return view('home.index')->with('setuptypes',$setuptypes)
+        ->with('securitytypes',$securitytypes)
+        ->with('productreceivetypes',$productreceivetypes)
+        ->with('productdistributions',$productdistributions)
+        ->with('users',$users)
+        ->with('adjustments',$adjustments)->with('reportings',$reportings);
         
 
         //dd($sections[0]->division);

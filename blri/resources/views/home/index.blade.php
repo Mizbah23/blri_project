@@ -247,7 +247,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                 <div class="profile_img">   
                                     <span class="prfil-img"><img src="/images/2.jpg" alt=""> </span> 
                                     <div class="user-name">
-                                        <p>Admin Name</p>
+                                        <p>{{(Session::get('user')->employeeinfo->name)}}</p>
                                         <span>Administrator</span>
                                     </div>
                                     <i class="fa fa-angle-down lnr"></i>

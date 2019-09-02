@@ -12,9 +12,12 @@
 */
 Route::get('/',function(){
 
-	return redirect()->route('home.index');
+	return redirect()->route('login.index');
 });
 
+//Login
+Route::get('/login','loginController@index')->name('login.index');
+Route::post('/login','loginController@loginPost');
 
 
 Route::get('/home', 'homeController@index')->name('home.index');
@@ -22,6 +25,7 @@ Route::get('/home', 'homeController@index')->name('home.index');
 //Security-> 
 //Create User
 Route::get('/security/user_create', 'createuserController@index')->name('security.create user');
+Route::post('/security/user_create', 'createuserController@userPost');
 
 //User Permission
 Route::get('/security/user_permission', 'userpermController@index')->name('security.user permission');

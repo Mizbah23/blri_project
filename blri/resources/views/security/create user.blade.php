@@ -331,11 +331,14 @@ $( function() {
                        <!--left side starts-->
                       <div class="col-md-6">
 
-                        <label for="name" class="col-sm-5 control-label">Employee</label>
-                       <div class="col-lg-7">
-                          <input type="text" class="form-control" id="name" name="name" placeholder="Employee name can not be empty"required>
+                           <label for="name" class="col-sm-2 control-label">ক্যাটাগরি</label>
+                          <div class="col-lg-7">
+                              <select id="name" name="name" class="form-control required" required>
+                                                @foreach ($employeeInformations  as $employeeInformation)
+                                               <option value="{{$employeeInformation->id}}">{{$employeeInformation->name}}</option>
+                                               @endforeach
+                              </select>
                           </div><br><br>
-
                  
                         <label for="userType" class="col-sm-5 control-label">User Type</label>
                           <div class="col-lg-7">
@@ -355,7 +358,7 @@ $( function() {
 
                         <label for="email" class="col-sm-5 control-label">Email</label>
                        <div class="col-lg-7">
-                          <input type="text" class="form-control" id="email" name="email" placeholder="Email not be empty">
+                          <input type="email" class="form-control" id="email" name="email" placeholder="Email not be empty">
                           </div><br><br>
 
                            <label for="password" class="col-sm-5 control-label">Password</label>
@@ -427,16 +430,18 @@ $( function() {
                         <th class="col-lg-3 text-center">Email</th>
                         <th class="col-lg-3 text-center">Edit</th>
                       </tr>
+                      @if(isset($users))
+                        @foreach ($users as $key=>$user)
                       
                                 <tr class="row">
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    
-                                    <td><a href=""><i class="fa fa-edit" style="font-size:24px"></i></a></td>
+                                    <td>{{++$key}}</td>
+                                    <td>{{$user->employeeinfo->name}}</td>
+                                    <td>{{$user->userType}}</td>
+                                    <td>{{$user->email}}</td>
+                            <td><a href=""><i class="fa fa-edit" style="font-size:24px"></i></a></td>
                                 </tr>
-                           
+                            @endforeach
+                        @endif    
                   </table>
                </div>
                <div id="searchedBrandValue">

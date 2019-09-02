@@ -20,8 +20,8 @@ class EmployeeInformation extends Model
     {
         return $this->hasOne('App\Project');
     }
-            public function user()
-    {
-        return $this->hasOne('App\EmployeeInformation');
+     public function user(){
+        return $this->hasOne('App\User');// This employee has one User
     }
+
 }
