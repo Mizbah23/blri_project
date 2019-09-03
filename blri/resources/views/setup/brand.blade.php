@@ -168,9 +168,8 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                 </a>
                 <ul class="treeview-menu">
                  @foreach($setuptypes as $setuptype)
-                   
                     <li><a href="{{route('setup.'.strtolower($setuptype->SType))}}">
-                      <i class="fa fa-circle"></i> {{$setuptype->name}}</a></li>
+                    <i class="fa fa-circle"></i> {{$setuptype->name}}</a></li>
                  @endforeach
                   
                 </ul>
@@ -186,9 +185,8 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                 </a>
                 <ul class="treeview-menu">
                   @foreach($productreceivetypes as $productreceivetype)
-                   
                     <li><a href="{{route('product receive.'.strtolower($productreceivetype->prType))}}">
-                      <i class="fa fa-circle"></i> {{$productreceivetype->prType}}</a></li>
+                    <i class="fa fa-circle"></i> {{$productreceivetype->prType}}</a></li>
                  @endforeach
                 </ul>
               </li>
@@ -352,7 +350,6 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                     <td>{{++$key}}</td>
                                     <td>{{$brand->category->categoryName}}</td>
                                     <td>{{$brand->brandName}}</td>
-                                    
                                     <td><a href="{{route('setup.brandedit',[$brand->id])}}"><i class="fa fa-edit" style="font-size:24px"></i></a></td>
                                 </tr>
                             @endforeach
