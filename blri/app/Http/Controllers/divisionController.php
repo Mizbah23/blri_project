@@ -6,8 +6,12 @@ use Illuminate\Http\Request;
 use App\setuptype;
 use App\division;
 use App\SecurityType;
-use Illuminate\Support\Facades\DB;
 use App\ProductReceiveType;
+use App\ProductDistribution;
+use App\Reporting;
+use App\Adjustment;
+use Illuminate\Support\Facades\DB;
+
 
 class divisionController extends Controller
 {
@@ -16,9 +20,19 @@ class divisionController extends Controller
       $divisions=division::all();
       $securitytypes=SecurityType::all();
       $productreceivetypes=ProductReceiveType::all();
+      $productdistributions=ProductDistribution::all();
+      $reportings=Reporting::all();
+      $adjustments=Adjustment::all();
 
 
-      return view('setup.division')->with('setuptypes',$setuptypes)->with('divisions',$divisions)->with('securitytypes',$securitytypes)->with('productreceivetypes',$productreceivetypes);
+      return view('setup.division')
+      ->with('setuptypes',$setuptypes)
+      ->with('divisions',$divisions)
+      ->with('securitytypes',$securitytypes)
+      ->with('productdistributions',$productdistributions)
+      ->with('adjustments',$adjustments)
+      ->with('reportings',$reportings)
+      ->with('productreceivetypes',$productreceivetypes);
        }
       
       public function divisionPost(Request $request){
@@ -38,10 +52,21 @@ class divisionController extends Controller
           }
         public function divedit(Request $request,$id)
         {
-             $setuptypes= setuptype::all();
+              $setuptypes= setuptype::all();
               $securitytypes=SecurityType::all();
+              $productreceivetypes=ProductReceiveType::all();
+              $productdistributions=ProductDistribution::all();
+              $reportings=Reporting::all();
+              $adjustments=Adjustment::all();
               $division=division::find($id);
-    	        return view('setup.divedit')->with('division',$division)->with('setuptypes',$setuptypes)->with('securitytypes',$securitytypes);
+    	        return view('setup.divedit')
+              ->with('setuptypes',$setuptypes)
+              ->with('division',$division)
+              ->with('securitytypes',$securitytypes)
+              ->with('productdistributions',$productdistributions)
+              ->with('adjustments',$adjustments)
+              ->with('reportings',$reportings)
+              ->with('productreceivetypes',$productreceivetypes);
          }
 
      public function update(Request $request,$id)

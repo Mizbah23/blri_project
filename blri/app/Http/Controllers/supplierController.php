@@ -6,8 +6,10 @@ use Illuminate\Http\Request;
 use App\setuptype;
 use App\SecurityType;
 use App\Supplier;
-
-
+use App\ProductReceiveType;
+use App\ProductDistribution;
+use App\Adjustment;
+use App\Reporting;
 
 class supplierController extends Controller
 {
@@ -15,21 +17,29 @@ class supplierController extends Controller
     	$setuptypes= setuptype::all();
         $securitytypes=SecurityType::all();
         $suppliers=Supplier::all();
+        $productreceivetypes=ProductReceiveType::all();
+        $productdistributions=ProductDistribution::all();
+        $adjustments=Adjustment::all();
+        $reportings=Reporting::all();
         //dd($sections[0]->division);
         return view('setup.supplier')->with('setuptypes',$setuptypes)
                                      ->with('securitytypes',$securitytypes)
-                                     ->with('suppliers',$suppliers);
-    
+                                     ->with('suppliers',$suppliers)
+                                     ->with('productdistributions',$productdistributions)
+                                     ->with('adjustments',$adjustments)
+                                     ->with('reportings',$reportings)
+                                     ->with('productreceivetypes',$productreceivetypes);
+                                     
       }
       public function supplierPost(Request $request){
       	//dd('success');
     	$this->validate($request,[
           'supplierName'=>'required',
           'contactName'=>'required',
-          'phone'=>'required|regex:/(01)[0-9]{9}/|max:11',
+          'phone'=>'required|max:11',
           'mobile'=>'required|regex:/(01)[0-9]{9}/|size:11',
           'country'=>'required',
-          'vatReg' =>'required|regex:/(01)[0-9]{9}/|size:09',
+          'vatReg' =>'required|size:09',
         ]);
       $supplier=new Supplier;
       $supplier->supplierName=$request->supplierName;
@@ -50,11 +60,20 @@ class supplierController extends Controller
                 
               $setuptypes= setuptype::all();
               $securitytypes=SecurityType::all();
+              $suppliers=Supplier::all();
+              $productreceivetypes=ProductReceiveType::all();
+              $productdistributions=ProductDistribution::all();
+              $adjustments=Adjustment::all();
+              $reportings=Reporting::all();
               //$productreceivetypes=ProductReceiveType::all();
               $supplier=Supplier::find($id);
               return view('setup.supplieredit')->with('supplier',$supplier)
                                                ->with('setuptypes',$setuptypes)
-                                               ->with('securitytypes',$securitytypes);
+                                               ->with('securitytypes',$securitytypes)
+                                               ->with('productdistributions',$productdistributions)
+                                               ->with('adjustments',$adjustments)
+                                                ->with('reportings',$reportings)
+                                                ->with('productreceivetypes',$productreceivetypes);
               }
        public function update(Request $request,$id){
        	//dd('success');

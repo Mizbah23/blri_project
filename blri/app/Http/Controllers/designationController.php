@@ -6,6 +6,9 @@ use App\setuptype;
 use App\Designation;
 use App\SecurityType;
 use App\ProductReceiveType;
+use App\ProductDistribution;
+use App\Reporting;
+use App\Adjustment;
 
 use Illuminate\Support\Facades\DB;
 
@@ -16,8 +19,18 @@ class designationController extends Controller
    $designations=Designation::all();
    $securitytypes= SecurityType::all();
    $productreceivetypes=ProductReceiveType::all();
+   $productdistributions=ProductDistribution::all();
+   $reportings=Reporting::all();
+   $adjustments=Adjustment::all();
 
-   return view('setup.designation')->with('setuptypes',$setuptypes)->with('designations',$designations)->with('securitytypes',$securitytypes)->with('productreceivetypes',$productreceivetypes);
+   return view('setup.designation')
+   ->with('setuptypes',$setuptypes)
+   ->with('designations',$designations)
+   ->with('securitytypes',$securitytypes)
+   ->with('productdistributions',$productdistributions)
+   ->with('adjustments',$adjustments)
+   ->with('reportings',$reportings)
+   ->with('productreceivetypes',$productreceivetypes);
   }
 
     public function designationPost(Request $request){
@@ -35,10 +48,22 @@ class designationController extends Controller
           }
                   public function desedit(Request $request,$id)
 				    {
-				             $setuptypes= setuptype::all();
-                     $securitytypes= SecurityType::all();
-				    	       $designation=Designation::find($id);
-				    	       return view('setup.desedit')->with('designation',$designation)->with('setuptypes',$setuptypes)->with('securitytypes',$securitytypes);
+  				             $setuptypes= setuptype::all();
+                       $designations=Designation::all();
+                       $securitytypes= SecurityType::all();
+                       $productreceivetypes=ProductReceiveType::all();
+                       $productdistributions=ProductDistribution::all();
+                       $reportings=Reporting::all();
+                       $adjustments=Adjustment::all();
+				    	         $designation=Designation::find($id);
+				    	       return view('setup.desedit')
+                     ->with('designation',$designation)
+                     ->with('setuptypes',$setuptypes)
+                     ->with('securitytypes',$securitytypes)
+                     ->with('productdistributions',$productdistributions)
+                     ->with('adjustments',$adjustments)
+                     ->with('reportings',$reportings)
+                     ->with('productreceivetypes',$productreceivetypes);
 				    }
               public function update(Request $request,$id)
                 {

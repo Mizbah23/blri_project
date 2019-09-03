@@ -7,6 +7,7 @@ use App\setuptype;
 use App\SecurityType;
 use App\ProductReceiveType;
 use App\ProductDistribution;
+use App\Adjustment;
 use App\Reporting;
 use App\User;
 use App\EmployeeInformation;
@@ -19,6 +20,7 @@ class createuserController extends Controller
     $securitytypes= SecurityType::all();
     $productreceivetypes=ProductReceiveType::all();
     $productdistributions=ProductDistribution::all();
+    $adjustments=Adjustment::all();
     $reportings=Reporting::all();
     $users=User::all();
     $employeeInformations= EmployeeInformation::all();
@@ -29,6 +31,7 @@ class createuserController extends Controller
                  ->with('productdistributions',$productdistributions)
                  ->with('reportings',$reportings)
                  ->with('users',$users)
+                 ->with('adjustments',$adjustments)
                  ->with('employeeInformations',$employeeInformations);
   }
 

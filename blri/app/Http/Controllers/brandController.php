@@ -8,6 +8,9 @@ use App\Category;
 use App\Brand;
 use App\SecurityType;
 use App\ProductReceiveType;
+use App\ProductDistribution;
+use App\Reporting;
+use App\Adjustment;
 
 class brandController extends Controller
 {
@@ -17,9 +20,20 @@ class brandController extends Controller
     $brands= Brand::all();
     $securitytypes=SecurityType::all();
     $productreceivetypes=ProductReceiveType::all();
+    $productdistributions=ProductDistribution::all();
+    $adjustments=Adjustment::all();
+    $reportings=Reporting::all();
+
     // $brandNames=$brands->unique('brandName')->pluck('brandName');//Get unique brandName
     // dd($brandNames);
-    return view('setup.brand')->with('setuptypes',$setuptypes)->with('categories',$categories)->with('brands',$brands)->with('securitytypes',$securitytypes)->with('productreceivetypes',$productreceivetypes);
+    return view('setup.brand')->with('setuptypes',$setuptypes)
+    ->with('categories',$categories)
+    ->with('brands',$brands)
+    ->with('securitytypes',$securitytypes)
+    ->with('productreceivetypes',$productreceivetypes)
+    ->with('productdistributions',$productdistributions)
+    ->with('adjustments',$adjustments)
+    ->with('reportings',$reportings);
   }
   public function brandPost(Request $request){
       $brand=new Brand;
@@ -33,8 +47,12 @@ class brandController extends Controller
     $securitytypes=SecurityType::all();
     $setuptypes= setuptype::all();
     $categories=Category::all();
+    $productreceivetypes=ProductReceiveType::all();
+    $productdistributions=ProductDistribution::all();
+    $adjustments=Adjustment::all();
+    $reportings=Reporting::all();
     $brand=Brand::find($id);
-    return view('setup.brandedit')->with('categories',$categories)->with('setuptypes',$setuptypes)->with('brand',$brand)->with('securitytypes',$securitytypes);
+    return view('setup.brandedit')->with('categories',$categories)->with('setuptypes',$setuptypes)->with('brand',$brand)->with('securitytypes',$securitytypes)->with('productreceivetypes',$productreceivetypes)->with('productdistributions',$productdistributions)->with('adjustments',$adjustments)->with('reportings',$reportings);
   }
 
   public function update(Request $request,$id){

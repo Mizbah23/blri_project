@@ -10,7 +10,7 @@ use App\ProductDistribution;
 use App\Adjustment;
 use App\Reporting;//model name;
 use App\User;
-
+use App\EmployeeInformation;
 
 
 class homeController extends Controller
@@ -25,12 +25,14 @@ class homeController extends Controller
         $adjustments=Adjustment::all();
         $reportings=Reporting::all();
         $users=User::all();
+        //$employeeinfo=EmployeeInformation::all();
         //dd($sections[0]->division);
         return view('home.index')->with('setuptypes',$setuptypes)
         ->with('securitytypes',$securitytypes)
         ->with('productreceivetypes',$productreceivetypes)
         ->with('productdistributions',$productdistributions)
         ->with('users',$users)
+    
         ->with('adjustments',$adjustments)->with('reportings',$reportings);
         
 

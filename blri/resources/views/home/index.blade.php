@@ -152,7 +152,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 
               <li class="treeview">
                 <a href="#">
-                <i class="fa fa-folder"></i>
+                <i class="fa fa-wrench"></i>
                 <span>Setup</span>
                 <i class="fa fa-angle-left pull-right"></i>
                 </a>
@@ -185,7 +185,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
               
               <li class="treeview">
                 <a href="#">
-                <i class="fa fa-edit"></i> <span>Product Distribution</span>
+                <i class="fa fa-users"></i> <span>Product Distribution</span>
                 <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
@@ -248,7 +248,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                     <span class="prfil-img"><img src="/images/2.jpg" alt=""> </span> 
                                     <div class="user-name">
                                         <p>{{(Session::get('user')->employeeinfo->name)}}</p>
-                                        <span>Administrator</span>
+                                        <span>{{ (Session::get('user')->userType)}}</span>
                                     </div>
                                     <i class="fa fa-angle-down lnr"></i>
                                     <i class="fa fa-angle-up lnr"></i>

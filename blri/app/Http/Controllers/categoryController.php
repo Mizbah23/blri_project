@@ -7,6 +7,9 @@ use App\setuptype;
 use App\Category;
 use App\SecurityType;
 use App\ProductReceiveType;
+use App\ProductDistribution;
+use App\Adjustment;
+use App\Reporting;
 
 
 class categoryController extends Controller
@@ -16,13 +19,19 @@ class categoryController extends Controller
    $setuptypes= setuptype::all();
    $categories= Category::all();
    $securitytypes=SecurityType::all();
+   $productdistributions=ProductDistribution::all();
    $productreceivetypes=ProductReceiveType::all();
+   $adjustments=Adjustment::all();
+   $reportings=Reporting::all();
 
    return view('setup.category')
           ->with('setuptypes',$setuptypes)
           ->with('categories',$categories)
           ->with('securitytypes',$securitytypes)
-          ->with('productreceivetypes',$productreceivetypes);
+          ->with('productreceivetypes',$productreceivetypes)
+          ->with('productdistributions',$productdistributions)
+          ->with('adjustments',$adjustments)
+          ->with('reportings',$reportings);
    }
       public function categoryPost(Request $request){
       	       //dd('success');
@@ -45,8 +54,19 @@ class categoryController extends Controller
 
      	     $securitytypes=SecurityType::all();     
            $setuptypes= setuptype::all();
+           $productdistributions=ProductDistribution::all();
+           $productreceivetypes=ProductReceiveType::all();
+           $adjustments=Adjustment::all();
+           $reportings=Reporting::all();
     	     $category=Category::find($id);
-    	       return view('setup.catedit')->with('category',$category)->with('setuptypes',$setuptypes)->with('securitytypes',$securitytypes);
+    	       return view('setup.catedit')
+             ->with('category',$category)
+             ->with('setuptypes',$setuptypes)
+             ->with('securitytypes',$securitytypes)
+             ->with('productreceivetypes',$productreceivetypes)
+             ->with('productdistributions',$productdistributions)
+             ->with('adjustments',$adjustments)
+             ->with('reportings',$reportings);
      }
 
      public function update(Request $request,$id)
