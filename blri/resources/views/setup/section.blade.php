@@ -36,6 +36,15 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 <script src="/js/Chart.js"></script>
 <!-- //chart -->
 
+{{-- // For autocomplete Search  --}}
+
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.min.css">
+<link rel="stylesheet" href="https://jqueryui.com/resources/demos/style.css">
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+
+{{-- // For autocomplete Search  --}}
+
 <!-- Metis Menu -->
 <script src="/js/metisMenu.min.js"></script>
 <script src="/js/custom.js"></script>
@@ -315,41 +324,44 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
               <div class="col-sm-8"></div>
 
                     <div class="form-group" >
-                        <label for="searchoption" class="col-lg-9  control-label" style="text-align: right; ">খুঁজুন</label>
+                        <label for="searchBySectionName" class="col-lg-9  control-label" style="text-align: right; ">খুঁজুন</label>
                         <div class="col-lg-3">
-                            <input type="text" class="form-control" placeholder="খুঁজুন...">
+                            <input type="text" class="form-control" name="searchBySectionName" id="searchBySectionName" placeholder="শাখা খুঁজুন...">
                         </div>
                      </div> 
               </div><br><br>
 
-               <table class="table table-responsive table-hover table-striped table-bordered table-condensed">
-                <thead>
-                <tr class=" bg-primary">
-                  <th>#</th>
-                  <th>অনুষদ</th>
-                  <th>শাখা</th>
-                  <th>সম্পাদনা</th>
-                 
-                </tr>
-              </thead>
-              @php $i=0 @endphp
-               @if(isset($sections))
-                  @foreach ($sections as $section)
-                  @php $i++ @endphp
-              <tbody>
-                <tr>
-                  <th scope="row">{{$i}}</th>
-                  <td>{{$section->division->divisionName}}</td>
-                  <td>{{$section->sectionName}}</td>
-                  <td>
-                    <a href="{{route('setup.secedit',[$section->id])}}"><i class="fa fa-edit" style="font-size:24px"></i></a>
-                  </td>
-                 
-                </tr>
-                @endforeach
-                @endif
-              </tbody>
-            </table>
+               <div id="allSections">
+                <table class="table table-responsive table-hover table-striped table-bordered table-condensed">
+                    <thead>
+                        <tr class=" bg-primary">
+                        <th>#</th>
+                        <th>অনুষদ</th>
+                        <th>শাখা</th>
+                        <th>সম্পাদনা</th>
+                        
+                        </tr>
+                    </thead>
+                    @if(isset($sections))
+                    <tbody>
+                        @foreach ($sections as $key=>$section)
+                            <tr>
+                            <td scope="row">{{++$key}}</td>
+                            <td>{{$section->division->divisionName}}</td>
+                            <td>{{$section->sectionName}}</td>
+                            <td>
+                                <a href="{{route('setup.secedit',[$section->id])}}"><i class="fa fa-edit" style="font-size:24px"></i></a>
+                            </td>
+                            
+                            </tr>
+                        @endforeach
+                    </tbody>
+                    @endif
+                </table>
+               </div>
+
+               <div id="searchedSectionValue">
+               </div>
               
 
               
@@ -786,6 +798,43 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
     <!-- Bootstrap Core JavaScript -->
    <script src="/js/bootstrap.js"> </script>
     <!-- //Bootstrap Core JavaScript -->
+
+    {{-- for search --}}
+   <script>
+       $( function() {
+           var sectionNameTags={!!$sections->unique('sectionName')->pluck('sectionName')!!};
+           console.log(sectionNameTags);
+           $( "#searchBySectionName" ).autocomplete({
+                source: sectionNameTags
+            });
+       });
+       $( "#searchBySectionName" ).autocomplete({
+            select: function( event, ui ) {
+                $.ajax({
+                    type:'GET',
+                    url: "{{route('searchSectionByName')}}",
+                    data:{
+                        sectionName: ui.item.value
+                    },
+                    success: function(data){
+                        
+                        $("#allSections").hide();
+                        $("#searchedSectionValue").html(data);
+                        $("#searchedSectionValue").show();
+                    }
+                });
+                // console.log($("#searchBySectionName").val());
+            }
+        });
+        //This key up event handler is to only handle when the searchBySectionName field is empty
+        $("#searchBySectionName").keyup(function() {
+            //When the search value is empty then this function will work
+            if (!this.value) {
+                $("#allSections").show();
+                $("#searchedSectionValue").hide();
+            }
+        });
+   </script>
     
 </body>
 </html>
