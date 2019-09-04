@@ -245,15 +245,15 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                         <li class="dropdown profile_details_drop">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                                 <div class="profile_img">   
-                                    <span class="prfil-img"><img src="/images/2.jpg" alt=""> </span> 
+                                    <span class="prfil-img"><img src="/images/{{(Session::get('user')->employeeinfo->profileImage)}}" alt="" style="height: 50px; width:50px"> </span> 
                                     <div class="user-name">
-                                        <p>Admin Name</p>
-                                        <span>Administrator</span>
+                                        <p>{{(Session::get('user')->employeeinfo->name)}}</p>
+                                        <span>{{ (Session::get('user')->userType)}}</span>
                                     </div>
                                     <i class="fa fa-angle-down lnr"></i>
                                     <i class="fa fa-angle-up lnr"></i>
                                     <div class="clearfix"></div>    
-                                </div>  
+                                </div> 
                             </a>
                             <ul class="dropdown-menu drp-mnu">
                                 <li> <a href="#"><i class="fa fa-cog"></i> Settings</a> </li> 
@@ -357,8 +357,8 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                    @endforeach
                           </div><br><br><br>
                         <div class="text-center">
-                          <button type="submit" class="btn btn-info">হালনাগাদ করুণ</button> 
-                          <button  onclick="cancelUpdate()" class="btn btn-danger">বাতিল করুণ</button>
+                          <button type="submit" class="btn btn-info">হালনাগাদ করুন</button> 
+                          <button  onclick="cancelUpdate()" class="btn btn-danger">বাতিল করুন</button>
                         </div>
                   </form> <br><br>
               </div>
