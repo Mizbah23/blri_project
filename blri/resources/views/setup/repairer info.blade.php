@@ -287,10 +287,10 @@ $( function() {
                         <li class="dropdown profile_details_drop">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                                 <div class="profile_img">   
-                                    <span class="prfil-img"><img src="/images/2.jpg" alt=""> </span> 
+                                    <span class="prfil-img"><img src="/images/{{(Session::get('user')->employeeinfo->profileImage)}}" alt="" style="height: 50px; width:50px"> </span> 
                                     <div class="user-name">
-                                        <p>Admin Name</p>
-                                        <span>Administrator</span>
+                                        <p>{{(Session::get('user')->employeeinfo->name)}}</p>
+                                        <span>{{ (Session::get('user')->userType)}}</span>
                                     </div>
                                     <i class="fa fa-angle-down lnr"></i>
                                     <i class="fa fa-angle-up lnr"></i>
@@ -301,7 +301,7 @@ $( function() {
                                 <li> <a href="#"><i class="fa fa-cog"></i> Settings</a> </li> 
                                 <li> <a href="#"><i class="fa fa-user"></i> My Account</a> </li> 
                                 <li> <a href="#"><i class="fa fa-suitcase"></i> Profile</a> </li> 
-                                <li> <a href="#"><i class="fa fa-sign-out"></i> Logout</a> </li>
+                                <li> <a href="{{route('login.index')}}"><i class="fa fa-sign-out"></i> Logout</a> </li>
                             </ul>
                         </li>
                     </ul>
@@ -338,27 +338,27 @@ $( function() {
                         <label for="repairerName" class="col-sm-6 control-label">মেরামতকারীর নাম</label>
                        <div class="col-lg-6">
                           <input type="text" class="form-control" id="repairerName" name="repairerName" placeholder="অবশ্যই পুরণ করুণ"required>
-                          <div class="error">{{$errors->first('repairerName')}}</div>
+                          <div class="error" style="color: red"><span>*</span>{{$errors->first('repairerName')}}</div>
 
                           </div><br><br>
                         <label for="address" class="col-sm-6 control-label">ঠিকানা</label>
                        <div class="col-lg-6">
                         <textarea name="address" id="address" class="form-control" placeholder="অবশ্যই পুরণ করুণ"required></textarea>
-                          <div class="error">{{$errors->first('address')}}</div>
+                          <div class="error"  style="color: red"><span>*</span>{{$errors->first('address')}}</div>
 
                           </div><br><br><br>
 
                           <label  for="mobile" class="col-sm-6 control-label">মোবাইল </label>
                        <div class="col-lg-6">
                           <input type="text" class="form-control" id="mobile" name="mobile" placeholder="অবশ্যই পুরণ করুণ"required >
-                          <div class="error">{{$errors->first('mobile')}}</div>
+                          <div class="error"style="color: red"><span>*</span>{{$errors->first('mobile')}}</div>
 
                           </div><br><br><br>
 
                           <label for="email" class="col-sm-6 control-label">ই-মেইল</label>
                        <div class="col-lg-6">
                           <input type="email" class="form-control" id="email" name="email" placeholder="অবশ্যই পুরণ করুণ"required>
-                          <div class="error">{{$errors->first('email')}}
+                          <div class="error"><span>*{{$errors->first('email')}}</span>
                            
                           </div>
 
@@ -383,8 +383,8 @@ $( function() {
                         <br><br>
                         <div class="col-md-5">
                           <div class="text-center">
-                          <button style="margin-left: -200px" type="submit" class="btn btn-info">সংরক্ষন করুণ</button> 
-                          <button type="reset" class="btn btn-danger">বাতিল করুণ</button>
+                          <button style="margin-left: -200px" type="submit" class="btn btn-info">সংরক্ষন করুন</button> 
+                          <button type="reset" class="btn btn-danger">বাতিল করুন</button>
                           </div>
 
                         </div>
