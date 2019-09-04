@@ -453,32 +453,30 @@ $( function() {
                   </div>
 
                   <div class="row">
-                    <div class="col-md-5"></div>
-                    <div class="col-md-7">
-                      <table class="table table-responsive table-hover table-striped table-bordered table-condensed">
-                                    <tr class="row bg-primary">
-                                        <th class="col-lg-1 text-center">Edit</th>
-                                        <th class="col-lg-1 text-center">Delete</th>
-                                        <th class="col-lg-4 text-center">Product</th>
-                                        <th class="col-lg-2 text-center">Code</th>
-                                        <th class="col-lg-2 text-center">Price</th>
-                                        <th class="col-lg-2 text-center">Quantity</th>
-                                    </tr>
-                      
-                                    <tr class="row">
-                                        
-                                        <td><a href=""><i class="fa fa-edit" style="font-size:24px"></i></a></td>
-                                        <td> <a href=""class="glyphicon glyphicon-trash" style="font-size:24px"></i></a></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                      
-
-                                    </tr>
-                           
-                                </table>
-                    </div>
+                      <div class="col-md-5"></div>
+                      <div class="col-md-7">
+                          <table class="table table-responsive table-hover table-striped table-bordered table-condensed">
+                              <tr class="row bg-primary">
+                                  <th class="col-lg-1 text-center">Edit</th>
+                                  <th class="col-lg-1 text-center">Delete</th>
+                                  <th class="col-lg-4 text-center">Product</th>
+                                  <th class="col-lg-2 text-center">Code</th>
+                                  <th class="col-lg-2 text-center">Quantity</th>
+                                  <th class="col-lg-2 text-center">OrderNo</th>
+                              </tr>
+                              @foreach ($productReceiveLists as $item)
+                                <tr class="row"  align="center">
+                                    <td ><a href=""><i class="fa fa-edit" style="font-size:24px"></i></a></td>
+                                    <td> <a href="" class="glyphicon glyphicon-trash" style="font-size:24px"></i></a></td>
+                                    <td>{{$item->productInfo->productName}}</td>
+                                    <td>{{$item->productInfo->productCode}}</td>
+                                    <td>{{$item->quantity}}</td>
+                                    <td>{{$item->orderNo}}</td>
+                                </tr>
+                              @endforeach
+                  
+                          </table>
+                      </div>
                   </div>
 
                   <div class="text-center">
