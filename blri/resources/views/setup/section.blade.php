@@ -36,6 +36,15 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 <script src="/js/Chart.js"></script>
 <!-- //chart -->
 
+{{-- // For autocomplete Search  --}}
+
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.min.css">
+<link rel="stylesheet" href="https://jqueryui.com/resources/demos/style.css">
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+
+{{-- // For autocomplete Search  --}}
+
 <!-- Metis Menu -->
 <script src="/js/metisMenu.min.js"></script>
 <script src="/js/custom.js"></script>
@@ -152,7 +161,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 
               <li class="treeview">
                 <a href="#">
-                <i class="fa fa-folder"></i>
+                <i class="fa fa-wrench"></i>
                 <span>সেটআপ</span>
                 <i class="fa fa-angle-left pull-right"></i>
                 </a>
@@ -175,7 +184,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                 <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                   @foreach($productreceivetypes as $productreceivetype)
+                  @foreach($productreceivetypes as $productreceivetype)
                    
                     <li><a href="{{route('product receive.'.strtolower($productreceivetype->prType))}}">
                       <i class="fa fa-circle"></i> {{$productreceivetype->prType}}</a></li>
@@ -189,8 +198,11 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                 <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                  <li><a href="forms.html"><i class="fa fa-circle"></i> General Forms</a></li>
-                  <li><a href="validation.html"><i class="fa fa-circle"></i> Form Validations</a></li>
+                 @foreach($productdistributions as $productdistribution)
+                   
+                    <li><a href="{{route('product distribution.'.strtolower($productdistribution->pdType))}}">
+                      <i class="fa fa-circle"></i> {{$productdistribution->pdType}}</a></li>
+                 @endforeach
                 </ul>
               </li>
               <li class="treeview">
@@ -199,24 +211,27 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                 <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                  <li><a href="tables.html"><i class="fa fa-circle"></i> Simple tables</a></li>
-                </ul>
+                    @foreach($adjustments as $adjustment)
+                   
+                    <li><a href="{{route('adjustment.'.strtolower($adjustment->adjustmentType))}}">
+                      <i class="fa fa-circle"></i> {{$adjustment->adjustmentType}}</a></li>
+                 @endforeach
+               </ul>
               </li>
             
-              <li class="treeview">
+               <li class="treeview">
                 <a href="#">
-                <i class="fa fa-table"></i> <span>Report</span>
+                <i class="fa fa-table"></i> <span>Reporting</span>
                 <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                  <li><a href="login.html"><i class="fa fa-circle"></i> Login</a></li>
-                  <li><a href="signup.html"><i class="fa fa-circle"></i> Register</a></li>
-                  <li><a href="404.html"><i class="fa fa-circle"></i> 404 Error</a></li>
-                  <li><a href="500.html"><i class="fa fa-circle"></i> 500 Error</a></li>
-                  <li><a href="blank-page.html"><i class="fa fa-circle"></i> Blank Page</a></li>
+                 @foreach($reportings as $reporting)
+                   
+                    <li><a href="{{route('reporting.'.strtolower($reporting->crType))}}"><!-- route('Folder(from view) Name') &&strtolowere('database table name')-->
+                      <i class="fa fa-circle"></i> {{$reporting->crType}}</a></li>
+                 @endforeach
                 </ul>
               </li>
-            
           </div>
           <!-- /.navbar-collapse -->
       </nav>
@@ -309,41 +324,44 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
               <div class="col-sm-8"></div>
 
                     <div class="form-group" >
-                        <label for="searchoption" class="col-lg-9  control-label" style="text-align: right; ">খুঁজুন</label>
+                        <label for="searchBySectionName" class="col-lg-9  control-label" style="text-align: right; ">খুঁজুন</label>
                         <div class="col-lg-3">
-                            <input type="text" class="form-control" placeholder="খুঁজুন...">
+                            <input type="text" class="form-control" name="searchBySectionName" id="searchBySectionName" placeholder="শাখা খুঁজুন...">
                         </div>
                      </div> 
               </div><br><br>
 
-               <table class="table table-responsive table-hover table-striped table-bordered table-condensed">
-                <thead>
-                <tr class=" bg-primary">
-                  <th>#</th>
-                  <th>অনুষদ</th>
-                  <th>শাখা</th>
-                  <th>সম্পাদনা</th>
-                 
-                </tr>
-              </thead>
-              @php $i=0 @endphp
-               @if(isset($sections))
-                  @foreach ($sections as $section)
-                  @php $i++ @endphp
-              <tbody>
-                <tr>
-                  <th scope="row">{{$i}}</th>
-                  <td>{{$section->division->divisionName}}</td>
-                  <td>{{$section->sectionName}}</td>
-                  <td>
-                    <a href="{{route('setup.secedit',[$section->id])}}"><i class="fa fa-edit" style="font-size:24px"></i></a>
-                  </td>
-                 
-                </tr>
-                @endforeach
-                @endif
-              </tbody>
-            </table>
+               <div id="allSections">
+                <table class="table table-responsive table-hover table-striped table-bordered table-condensed">
+                    <thead>
+                        <tr class=" bg-primary">
+                        <th>#</th>
+                        <th>অনুষদ</th>
+                        <th>শাখা</th>
+                        <th>সম্পাদনা</th>
+                        
+                        </tr>
+                    </thead>
+                    @if(isset($sections))
+                    <tbody>
+                        @foreach ($sections as $key=>$section)
+                            <tr>
+                            <td scope="row">{{++$key}}</td>
+                            <td>{{$section->division->divisionName}}</td>
+                            <td>{{$section->sectionName}}</td>
+                            <td>
+                                <a href="{{route('setup.secedit',[$section->id])}}"><i class="fa fa-edit" style="font-size:24px"></i></a>
+                            </td>
+                            
+                            </tr>
+                        @endforeach
+                    </tbody>
+                    @endif
+                </table>
+               </div>
+
+               <div id="searchedSectionValue">
+               </div>
               
 
               
@@ -780,6 +798,43 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
     <!-- Bootstrap Core JavaScript -->
    <script src="/js/bootstrap.js"> </script>
     <!-- //Bootstrap Core JavaScript -->
+
+    {{-- for search --}}
+   <script>
+       $( function() {
+           var sectionNameTags={!!$sections->unique('sectionName')->pluck('sectionName')!!};
+           console.log(sectionNameTags);
+           $( "#searchBySectionName" ).autocomplete({
+                source: sectionNameTags
+            });
+       });
+       $( "#searchBySectionName" ).autocomplete({
+            select: function( event, ui ) {
+                $.ajax({
+                    type:'GET',
+                    url: "{{route('searchSectionByName')}}",
+                    data:{
+                        sectionName: ui.item.value
+                    },
+                    success: function(data){
+                        
+                        $("#allSections").hide();
+                        $("#searchedSectionValue").html(data);
+                        $("#searchedSectionValue").show();
+                    }
+                });
+                // console.log($("#searchBySectionName").val());
+            }
+        });
+        //This key up event handler is to only handle when the searchBySectionName field is empty
+        $("#searchBySectionName").keyup(function() {
+            //When the search value is empty then this function will work
+            if (!this.value) {
+                $("#allSections").show();
+                $("#searchedSectionValue").hide();
+            }
+        });
+   </script>
     
 </body>
 </html>

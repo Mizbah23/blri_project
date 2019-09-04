@@ -43,6 +43,8 @@ Route::get('/setup/section', 'sectionController@index')->name('setup.section');
 Route::post('/setup/section', 'sectionController@sectionPost');
 Route::get('/setup/section/{id}/edit', 'sectionController@secedit')->name('setup.secedit');
 Route::post('/setup/section/{id}/edit', 'sectionController@update');
+Route::get('/search/section','sectionController@searchBySectionName')->name('searchSectionByName');
+
 
 //Designation
 Route::get('/setup/designation', 'designationController@index')->name('setup.designation');

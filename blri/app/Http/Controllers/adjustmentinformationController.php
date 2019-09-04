@@ -18,7 +18,11 @@ class adjustmentinformationController extends Controller
 
        
         //dd($sections[0]->division);
-        return view('adjustment.adjustment information')->with('setuptypes',$setuptypes)->with('securitytypes',$securitytypes)->with('productreceivetypes',$productreceivetypes)->with('adjustments',$adjustments);
+        return view('adjustment.adjustment information')
+        ->with('setuptypes',$setuptypes)
+        ->with('securitytypes',$securitytypes)
+        ->with('productreceivetypes',$productreceivetypes)
+        ->with('adjustments',$adjustments);
     
       }
 }

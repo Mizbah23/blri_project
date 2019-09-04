@@ -8,6 +8,10 @@ use App\SecurityType;
 use App\ProductReceiveType;
 use App\Project;
 use App\EmployeeInformation;
+use App\ProductDistribution;
+use App\Adjustment;
+use App\Reporting;
+
 
 
 
@@ -17,12 +21,23 @@ class projectController extends Controller
      public function index(){
      	$securitytypes=SecurityType::all();
     	$setuptypes= setuptype::all();
-    	$productreceivetypes=ProductReceiveType::all();
+      $productreceivetypes=ProductReceiveType::all();
+      $productdistributions=ProductDistribution::all();
+      $adjustments=Adjustment::all();
+      $reportings=Reporting::all();
     	$projects=Project::all();
     	$employeeInformations=EmployeeInformation::all();
         
         //dd($sections[0]->division);
-        return view('setup.project')->with('setuptypes',$setuptypes)->with('securitytypes',$securitytypes)->with('productreceivetypes',$productreceivetypes)->with('projects',$projects)->with('employeeInformations',$employeeInformations);
+        return view('setup.project')
+        ->with('setuptypes',$setuptypes)
+        ->with('securitytypes',$securitytypes)
+        ->with('productreceivetypes',$productreceivetypes)
+        ->with('productdistributions',$productdistributions)
+        ->with('adjustments',$adjustments)
+        ->with('reportings',$reportings)
+        ->with('projects',$projects)
+        ->with('employeeInformations',$employeeInformations);
     
       }
           public function projectPost(Request $request){
@@ -53,12 +68,18 @@ class projectController extends Controller
               $securitytypes=SecurityType::all();
               $productreceivetypes=ProductReceiveType::all();
               $employeeInformations=EmployeeInformation::all();
+              $productdistributions=ProductDistribution::all();
+              $adjustments=Adjustment::all();
+              $reportings=Reporting::all();
               $project=Project::find($id);
               return view('setup.projectEdit')->with('project',$project)
                                                ->with('productreceivetypes',$productreceivetypes)
                                                ->with('setuptypes',$setuptypes)
                                                ->with('employeeInformations',$employeeInformations)
-                                               ->with('securitytypes',$securitytypes);
+                                               ->with('securitytypes',$securitytypes)
+                                               ->with('productdistributions',$productdistributions)
+                                               ->with('adjustments',$adjustments)
+                                               ->with('reportings',$reportings);
                }
      public function update(Request $request,$id){
         //dd('success');

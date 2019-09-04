@@ -213,7 +213,7 @@ $( function() {
 
               <li class="treeview">
                 <a href="#">
-                <i class="fa fa-folder"></i>
+                <i class="fa fa-wrench"></i>
                 <span>Setup</span>
                 <i class="fa fa-angle-left pull-right"></i>
                 </a>
@@ -246,7 +246,7 @@ $( function() {
               
               <li class="treeview">
                 <a href="#">
-                <i class="fa fa-edit"></i> <span>Product Distribution</span>
+                <i class="fa fa-users"></i> <span>Product Distribution</span>
                 <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">

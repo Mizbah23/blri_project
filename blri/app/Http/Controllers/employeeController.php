@@ -10,6 +10,10 @@ use App\Designation;
 use App\District;
 use App\EmployeeInformation;
 use App\ProductReceiveType;
+use App\ProductDistribution;
+use App\Adjustment;
+use App\Reporting;
+
 use illuminate\Support\Str;
 use Image;
 
@@ -24,6 +28,10 @@ class employeeController extends Controller
       $districts= District::all();
       $employeeInformations= EmployeeInformation::all();
       $productreceivetypes=ProductReceiveType::all();
+      $productdistributions=ProductDistribution::all();
+      $adjustments=Adjustment::all();
+      $reportings=Reporting::all();
+
         //dd($divisions);
       return view('setup.employee')
               ->with('setuptypes',$setuptypes)
@@ -33,7 +41,10 @@ class employeeController extends Controller
               ->with('designations',$designations)
               ->with('districts',$districts)
               ->with('productreceivetypes',$productreceivetypes)
-              ->with('employeeInformations',$employeeInformations);
+              ->with('employeeInformations',$employeeInformations)
+              ->with('productdistributions',$productdistributions)
+              ->with('adjustments',$adjustments)
+              ->with('reportings',$reportings);
     }
 
     public function employeeStore(Request $request){
@@ -103,6 +114,9 @@ class employeeController extends Controller
       $employeeInformation= EmployeeInformation::find($id);
       $districts= District::all();
       $productreceivetypes=ProductReceiveType::all();
+      $productdistributions=ProductDistribution::all();
+      $adjustments=Adjustment::all();
+      $reportings=Reporting::all();
         //dd($sections[0]->division);
       return view('setup.employeeEdit')
               ->with('setuptypes',$setuptypes)
@@ -112,7 +126,10 @@ class employeeController extends Controller
               ->with('districts',$districts)
               ->with('designations',$designations)
               ->with('productreceivetypes',$productreceivetypes)
-              ->with('employeeInformation',$employeeInformation);
+              ->with('employeeInformation',$employeeInformation)
+              ->with('productdistributions',$productdistributions)
+              ->with('adjustments',$adjustments)
+              ->with('reportings',$reportings);
     }
     public function employeeUpdate(Request $request){
       $this->validate($request,[
