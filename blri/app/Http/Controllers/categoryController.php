@@ -34,7 +34,7 @@ class categoryController extends Controller
           ->with('reportings',$reportings);
    }
       public function categoryPost(Request $request){
-      	       //dd('success');
+      	       //dd($request->all());
                $this->validate( $request,[
                 
                 'categoryName'=>'required|unique:categories',

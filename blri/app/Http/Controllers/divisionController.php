@@ -41,12 +41,11 @@ class divisionController extends Controller
                 'divisionName'=>'required|unique:divisions',
               
                ]);
-    	       $setuptypes= setuptype::all();
+               dd($request->all());
+    	         $setuptypes= setuptype::all();
                $division=new division;
                $division->divisionName=$request->divisionName;
-               $division->save();
-               $divisions=division::all();
-               
+               $division->save();  
 
               return redirect()->route('setup.division');
           }
