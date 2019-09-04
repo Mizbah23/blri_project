@@ -338,7 +338,7 @@ $( function() {
                        <!--left side starts-->
                       <div class="col-md-6">
 
-                           <label for="name" class="col-sm-2 control-label">ক্যাটাগরি</label>
+                           <label for="name" class="col-sm-5 control-label">কর্মকর্তার নাম</label>
                           <div class="col-lg-7">
                               <select id="name" name="name" class="form-control required" required>
                                                 @foreach ($employeeInformations  as $employeeInformation)
@@ -347,28 +347,28 @@ $( function() {
                               </select>
                           </div><br><br>
                  
-                        <label for="userType" class="col-sm-5 control-label">User Type</label>
+                        <label for="userType" class="col-sm-5 control-label">কর্মকর্তার ভুমিকা</label>
                           <div class="col-lg-7">
                               <select id="userType" name="userType" class="form-control required" required>
-                                 <option value="">Select Type</option>
+                                 <option value="">নির্বাচন করুন</option>
                                  <option value="Super admin">Super Admin</option>
                                  <option value="Admin">Admin</option>
                                  <option value="User">User</option>
                               </select>
                           </div><br><br>
                       </div>
-                      <!--End left side-->
+                      <!--End left side--ন
 
 
                       <!--right side starts-->
                       <div class="col-md-6">
 
-                        <label for="email" class="col-sm-5 control-label">Email</label>
+                        <label for="email" class="col-sm-5 control-label">ই-মেইল</label>
                        <div class="col-lg-7">
-                          <input type="email" class="form-control" id="email" name="email" placeholder="Email not be empty">
+                          <input type="email" class="form-control" id="email" name="email" placeholder="অবশ্যই পূরণ করুন">
                           </div><br><br>
 
-                           <label for="password" class="col-sm-5 control-label">Password</label>
+                           <label for="password" class="col-sm-5 control-label">পাসওয়ার্ড</label>
                        <div class="col-lg-7">
                           <input type="password" class="form-control" id="password" name="password" required>
                           </div><br><br>
@@ -376,7 +376,7 @@ $( function() {
 
                         <label  class="col-sm-6 control-label"><br><br></label>
                           <div class="col-lg-6">
-                              <input  type="checkbox" name="isActive" value=""> Active<br><br><br><br>
+                              <input  type="checkbox" name="isActive" value=""> সক্রিয়?<br><br><br><br>
                           </div><br><br>
                           
                       </div>
@@ -390,8 +390,8 @@ $( function() {
                         <br><br>
                         <div class="col-md-5">
                           <div class="text-center">
-                          <button type="submit" class="btn btn-info">Save</button> 
-                          <button type="reset" class="btn btn-danger">Cancel</button>
+                          <button type="submit" class="btn btn-info">সংরক্ষন করুন</button> 
+                          <button type="reset" class="btn btn-danger">বাতিল করুন</button>
                           </div>
 
                         </div>
@@ -411,12 +411,12 @@ $( function() {
 
 
                         <div class="col-md-1">
-                          <label for="searchByBrandName"  class="col-md-4  control-label">Search</label>
+                          <label for="searchByBrandName"  class="col-md-4  control-label">খুঁজুন</label>
                           
                         </div>
 
                         <div class="col-md-3">
-                          <input type="text" class="form-control" id="searchByBrandName" name="searchByBrandName" placeholder="Search by brand name">
+                          <input type="text" class="form-control" id="searchByBrandName" name="searchByBrandName" placeholder="খুঁজুন...">
                         </div>
 
 
@@ -432,10 +432,10 @@ $( function() {
                   <table class="table table-responsive table-hover table-striped table-bordered table-condensed">
                       <tr class="row bg-primary">
                         <th class="col-lg-1 text-center">#</th>
-                        <th class="col-lg-3 text-center">Employee</th>
-                        <th class="col-lg-2 text-center">User Type</th>
-                        <th class="col-lg-3 text-center">Email</th>
-                        <th class="col-lg-3 text-center">Edit</th>
+                        <th class="col-lg-3 text-center">কর্মকর্তার নাম</th>
+                        <th class="col-lg-2 text-center">কর্মকর্তার ভুমিকা</th>
+                        <th class="col-lg-3 text-center">ই-মেইল</th>
+                        <th class="col-lg-3 text-center">সম্পাদনা</th>
                       </tr>
                       @if(isset($users))
                         @foreach ($users as $key=>$user)
