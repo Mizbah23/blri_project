@@ -314,10 +314,11 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                           <label for="section" class="col-sm-2 control-label">শাখা</label>
                        <div class="col-lg-9">
                           <input type="text" class="form-control" id="section" name="sectionName"  value="{{$section->sectionName}}"placeholder="Name Can not be empty"required>
-                                   @foreach ($errors->get('sectionName') as $error)
-                                   <p style="color: red">{{ $error}}</p>
+                                  @foreach ($errors->get('sectionName') as $error)
+                                   <p style="color: red"><span>*</span>{{ $error}}</p>
                                    @endforeach
-                          </div><br><br><br>
+                          </div><br><br><br> </div>
+
                         <div class="text-center">
                           <button type="submit" class="btn btn-info">হালনাগাদ করুন</button> 
                           <input type="button" onclick="cancelUpdate()" class="btn btn-danger" value="বাতিল করুন"/>

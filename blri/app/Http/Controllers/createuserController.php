@@ -40,7 +40,7 @@ class createuserController extends Controller
     	$this->validate($request,[
           'name'=>'required',
           'userType'=>'required',
-          'email'=>'required',
+          'email'=>'required|unique:users',
           'password' =>'required',
         ]);
       $user=new User;
@@ -82,7 +82,7 @@ class createuserController extends Controller
           $this->validate($request,[
           'name'=>'required',
           'userType'=>'required',
-          'email'=>'required',
+          'email'=>'required|unique:users',
           'password' =>'required',
         ]);
       

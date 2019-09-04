@@ -338,27 +338,27 @@ $( function() {
                         <label for="repairerName" class="col-sm-6 control-label">মেরামতকারীর নাম</label>
                        <div class="col-lg-6">
                           <input type="text" class="form-control" id="repairerName" name="repairerName" placeholder="অবশ্যই পুরণ করুণ"required>
-                          <div class="error">{{$errors->first('repairerName')}}</div>
+                          <div class="error" style="color: red"><span>*</span>{{$errors->first('repairerName')}}</div>
 
                           </div><br><br>
                         <label for="address" class="col-sm-6 control-label">ঠিকানা</label>
                        <div class="col-lg-6">
                         <textarea name="address" id="address" class="form-control" placeholder="অবশ্যই পুরণ করুণ"required></textarea>
-                          <div class="error">{{$errors->first('address')}}</div>
+                          <div class="error"  style="color: red"><span>*</span>{{$errors->first('address')}}</div>
 
                           </div><br><br><br>
 
                           <label  for="mobile" class="col-sm-6 control-label">মোবাইল </label>
                        <div class="col-lg-6">
                           <input type="text" class="form-control" id="mobile" name="mobile" placeholder="অবশ্যই পুরণ করুণ"required >
-                          <div class="error">{{$errors->first('mobile')}}</div>
+                          <div class="error"style="color: red"><span>*</span>{{$errors->first('mobile')}}</div>
 
                           </div><br><br><br>
 
                           <label for="email" class="col-sm-6 control-label">ই-মেইল</label>
                        <div class="col-lg-6">
                           <input type="email" class="form-control" id="email" name="email" placeholder="অবশ্যই পুরণ করুণ"required>
-                          <div class="error">{{$errors->first('email')}}
+                          <div class="error"><span>*{{$errors->first('email')}}</span>
                            
                           </div>
 

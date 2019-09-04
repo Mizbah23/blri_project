@@ -304,7 +304,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                        <div class="col-lg-9">
                           <input type="text" class="form-control" id="divisionName" name="divisionName" placeholder="অবশ্যই পুরণ করুণ"required>
                                    @foreach ($errors->get('divisionName') as $error)
-                                   <p style="color: red">{{ $error}}</p>
+                                   <p style="color: red"><span>*</span>{{ $error}}</p>
                                    @endforeach
                           </div><br><br><br>
                         <div class="text-center">

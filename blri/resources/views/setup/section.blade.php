@@ -310,7 +310,11 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                   <br><br>
 
                   <label for="section" class="col-sm-2 control-label"> শাখা</label> 
-                  <div class="col-sm-9"> <input type="text" required class="form-control" id="section" name="sectionName" placeholder="অবশ্যই পুরণ করুণ"> </div>
+                  <div class="col-sm-9"> <input type="text" required class="form-control" id="section" name="sectionName" placeholder="অবশ্যই পুরণ করুণ">
+                       @foreach ($errors->get('sectionName') as $error)
+                                   <p style="color: red"><span>*</span>{{ $error}}</p>
+                                   @endforeach
+                          </div><br><br><br> </div>
                    </div>
                  <div class="form-group"> <div class="col-sm-offset-4 col-sm-6">  </div> </div><br> <div class="col-sm-offset-4"> 
                   <button type="submit" class="btn btn-info">সংরক্ষণ করুন</button>
