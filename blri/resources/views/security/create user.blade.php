@@ -445,7 +445,7 @@ $( function() {
                                     <td>{{$user->employeeinfo->name}}</td>
                                     <td>{{$user->userType}}</td>
                                     <td>{{$user->email}}</td>
-                            <td><a href=""><i class="fa fa-edit" style="font-size:24px"></i></a></td>
+                            <td><a href="{{route('security.useredit',[$user->id])}}"><i class="fa fa-edit" style="font-size:24px"></i></a></td>
                                 </tr>
                             @endforeach
                         @endif    

@@ -26,6 +26,8 @@ Route::get('/home', 'homeController@index')->name('home.index');
 //Create User
 Route::get('/security/user_create', 'createuserController@index')->name('security.create user');
 Route::post('/security/user_create', 'createuserController@userPost');
+Route::get('/security/user_create/{id}/edit', 'createuserController@userEdit')->name('security.useredit');
+Route::post('/security/user_create/{id}/edit', 'createuserController@update');
 
 //User Permission
 Route::get('/security/user_permission', 'userpermController@index')->name('security.user permission');
