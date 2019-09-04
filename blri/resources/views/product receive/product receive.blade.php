@@ -60,6 +60,10 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
   width: 100%;
   height: 295px;
 }
+.error{
+  font-size: 0.9em;
+  color: red;
+}
 </style>
 <!--pie-chart --><!-- index page sales reviews visitors pie chart -->
 <script src="/js/pie-chart.js" type="text/javascript"></script>
@@ -161,6 +165,7 @@ $( function() {
       maxDate: "+0D",
       ignoreReadonly: true
     });
+    $("#receiveDate").datepicker( "setDate" , new Date());
   });
   </script>
 
@@ -335,32 +340,46 @@ $( function() {
                 <h3 class="">Product Receive Info</h3>
               </div>
               <div class="form-body">
-                <form class="form-horizontal" method="post"> 
+                <form class="form-horizontal" method="post" novalidate> 
+                  @csrf
                   <div class="form-group"> <!--Form-->
 
                     <div class="row">
                         <div class="col-md-4" >
                             <div class="col-md-3">
-                                 <label for="" class=" control-label">Supplier</label>
+                                 <label for="supplierName" class=" control-label">Supplier</label>
                             </div>
                             <div class="col-md-9">
-                                <select id="" name="" class="form-control required" required>
+                                <select id="supplierName" name="supplierName" class="form-control required" required onchange="showSupplierOtherInfo()">
                                  <option value="">Select Supplier</option>
+                                 @foreach ($suppliers as $supplier)
+                                  <option value="{{$supplier->id}}" @if (old('supplierName')==$supplier->id)
+                                      {{"selected"}}
+                                  @endif>{{$supplier->supplierName}}</option>
+                                 @endforeach
                               </select>
+                              <div class="error">{{$errors->first('supplierName')}}</div>
                             </div><br><br>
                             <div class="col-md-3">
-                                 <label for="" class=" control-label">Product</label>
+                                 <label for="productName" class=" control-label">Product</label>
                             </div>
                             <div class="col-md-9">
-                                <select id="" name="" class="form-control required" required>
+                                <select id="productName" name="productName" class="form-control required" required>
                                  <option value="">Select Product</option>
+                                 @foreach ($products as $product)
+                                 <option value="{{$product->id}}" @if (old('productName')==$product->id)
+                                    {{"selected"}}
+                                @endif>{{$product->productName}}</option>
+                                @endforeach
                               </select>
+                              <div class="error">{{$errors->first('productName')}}</div>
                             </div><br><br>
                             <div class="col-md-3">
-                                 <label for="" class=" control-label">Order</label>
+                                 <label for="orderNo" class=" control-label">Order No.</label>
                             </div>
                             <div class="col-md-9">
-                               <input type="text" class="form-control" id="" name="" placeholder="Order no can not be empty"required>
+                              <input type="text" class="form-control" id="orderNo" name="orderNo" value="{{old('orderNo')}}" placeholder="Order no can not be empty"required>
+                              <div class="error">{{$errors->first('orderNo')}}</div>
                             </div><br><br>
 
                        </div>
@@ -368,50 +387,61 @@ $( function() {
                         <div class="col-md-4" >
                             
                         <div class="col-md-3">
-                            <label for="" class=" control-label">Address</label>
+                            <label for="address" class=" control-label">Address</label>
                             </div>
                             <div class="col-md-9">
-                               <input type="text" class="form-control" id="" name="" placeholder="Address can not be empty"required>
+                               <input type="text" class="form-control" id="address" name="address" value="{{old('address')}}" placeholder="Address can not be empty" required readonly>
+                               <div class="error">{{$errors->first('address')}}</div>
                             </div><br><br>
 
                             <div class="col-md-3">
-                            <label for="" class=" control-label">Project</label>
+                            <label for="projectName" class=" control-label">Project</label>
                             </div>
                             <div class="col-md-9">
-                                <select id="" name="" class="form-control required" required>
+                                <select id="projectName" name="projectName" class="form-control required" required>
                                  <option value="">Select Project</option>
+                                 @foreach ($projects as $project)
+                                 <option value="{{$project->id}}" @if (old('projectName')==$project->id)
+                                    {{"selected"}}
+                                @endif>{{$project->projectName}}</option>
+                                @endforeach
                               </select>
+                              <div class="error">{{$errors->first('projectName')}}</div>
                             </div><br><br>
 
                             <div class="col-md-3">
                             
                             </div>
-                            <div class="col-md-9">
+                            {{-- <div class="col-md-9">
                                 <input type="checkbox" value="">  Other Objects</label>
-                            </div><br><br><label>
+                            </div><br><br><label> --}}
 
                         </div>
 
                         <div class="col-md-4" >
                             <div class="col-md-3">
-                             <label for="" class=" control-label">Mobile</label>
+                             <label for="contactNo" class=" control-label">Mobile</label>
                             </div>
                             <div class="col-md-9">
-                               <input type="text" class="form-control" id="" name="" placeholder="Mobile no can not be empty"required>
+                               <input type="text" class="form-control" id="contactNo" name="contactNo" value="{{old('contactNo')}}" placeholder="Mobile no can not be empty" required readonly>
+                              <div class="error">{{$errors->first('contactNo')}}</div>
                             </div><br><br>
 
                             <div class="col-md-3">
-                            <label for="" class=" control-label">Quantity</label>
+                            <label for="quantity" class=" control-label">Quantity</label>
                             </div>
                             <div class="col-md-9">
-                               <input type="text" class="form-control" id="" name="" placeholder="Quantity can not be empty"required>
-                            </div><br><br>
+                               <input type="number" class="form-control" id="quantity" name="quantity" value="{{old('quantity')}}" placeholder="Quantity can not be empty" required>
+                               <div class="error">{{$errors->first('quantity')}}</div>
+                            </div>
+                            <br><br>
 
                             <div class="col-md-3">
                             <label for="" class=" control-label">Date</label>
                             </div>
                             <div class="col-md-9">
-                               <input class="form-control datepicker" type="text" name="" placeholder="mm/dd/yyyy"  value=""  required><br>
+                              <input class="form-control datepicker" type="text" id="receiveDate" name="receiveDate" placeholder="mm/dd/yyyy"  value="{{old('receiveDate')}}"  required><br>
+                              <div class="error">{{$errors->first('receiveDate')}}</div>
                             </div><br><br>
                         
                         </div>
@@ -459,44 +489,6 @@ $( function() {
                   </div>
                 </div>
               </form>
-<!--                   <div class="row">
-                   <div class="col-lg-6"> Category and brand-->
-                       <!--   <label for="category" class="col-sm-2 control-label">Category</label>
-                          <div class="col-lg-9">
-                              <select id="category" name="categories" class="form-control required" required>
-                                               
-                                               <option value=""></option>
-                                              
-                              </select>
-                          </div><br><br>
-
-                          <label for="brand" class="col-sm-2 control-label">Brand</label>
-                       <div class="col-lg-9">
-                          <input type="text" class="form-control" id="brand" name="brandName" placeholder="Name Can not be empty"required>
-                          </div><br><br><br>
-
-                          <div class="col-lg-6">
-                            <label for="category" class="col-sm-2 control-label">Category</label>
-                          <div class="col-lg-9">
-                              <select id="category" name="categories" class="form-control required" required>
-                                               
-                                               <option value=""></option>
-                                              
-                              </select>
-                          </div><br><br>
-
-                          <label for="brand" class="col-sm-2 control-label">Brand</label>
-                       <div class="col-lg-9">
-                          <input type="text" class="form-control" id="brand" name="brandName" placeholder="Name Can not be empty"required>
-                          </div><br><br><br>
-                          </div>
-
-                        <div class="text-center">
-                          <button type="submit" class="btn btn-info">Save</button> 
-                          <button type="reset" class="btn btn-danger">Cancel</button>
-                        </div>
-                         </form>end form-->
-                      <!--Category and brand-->
                       <!--Search option starts-->
                       <div class="row">
                         <div class="col-md-8"></div>
@@ -957,6 +949,19 @@ $( function() {
     
     <!-- Bootstrap Core JavaScript -->
    <script src="/js/bootstrap.js"> </script>
+   <script>
+     var suppliers;
+     $(function () {
+      suppliers={!! $suppliers !!};
+     });
+     function showSupplierOtherInfo() {
+      var indexOfSelectedSupplier=suppliers.findIndex(k=>k.id==$("#supplierName").val());
+      if (indexOfSelectedSupplier>=0) {
+        $("#address").val(suppliers[indexOfSelectedSupplier].address);
+        $("#contactNo").val(suppliers[indexOfSelectedSupplier].mobile);
+      }
+     }
+   </script>
 
     
 </body>
