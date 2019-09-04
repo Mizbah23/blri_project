@@ -263,7 +263,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                 <li> <a href="#"><i class="fa fa-cog"></i> Settings</a> </li> 
                                 <li> <a href="#"><i class="fa fa-user"></i> My Account</a> </li> 
                                 <li> <a href="#"><i class="fa fa-suitcase"></i> Profile</a> </li> 
-                                <li> <a href="#"><i class="fa fa-sign-out"></i> Logout</a> </li>
+                                <li> <a href="{{route('login.index')}}"><i class="fa fa-sign-out"></i> Logout</a> </li>
                             </ul>
                         </li>
                     </ul>
@@ -274,12 +274,12 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
             </div>
             <div class="clearfix"> </div> 
         <!-- main content start-->
-<div class="jumbotron">
+{{-- <div class="jumbotron">
   @if(session('response'))
       <div class="col-mid-8 alert alert-success">
         {{@session('response')}}
       </div>
-      @endif
+      @endif --}}
                         
 
     <div id="page-wrapper">
