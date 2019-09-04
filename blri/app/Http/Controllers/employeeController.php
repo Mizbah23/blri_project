@@ -16,6 +16,7 @@ use App\Reporting;
 
 use illuminate\Support\Str;
 use Image;
+use File;
 
 class employeeController extends Controller
 {

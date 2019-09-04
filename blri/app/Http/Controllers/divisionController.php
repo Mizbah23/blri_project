@@ -41,7 +41,9 @@ class divisionController extends Controller
                 'divisionName'=>'required|unique:divisions',
               
                ]);
-               dd($request->all());
+
+               //dd($request->all());
+
     	         $setuptypes= setuptype::all();
                $division=new division;
                $division->divisionName=$request->divisionName;

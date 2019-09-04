@@ -2,7 +2,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>Product information</title>
+<title>Create user</title>
 <link rel="icon" type="image/png" href="/images/logo.png" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -57,10 +57,6 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 #chartdiv {
   width: 100%;
   height: 295px;
-}
-.error{
-  font-size: 0.9em;
-  color: red;
 }
 </style>
 <!--pie-chart --><!-- index page sales reviews visitors pie chart -->
@@ -206,14 +202,14 @@ $( function() {
               <li class="treeview">
                 <a href="#">
                 <i class="fa fa-wrench"></i>
-                <span>সেটআপ</span>
+                <span>Setup</span>
                 <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
                  @foreach($setuptypes as $setuptype)
                    
                     <li><a href="{{route('setup.'.strtolower($setuptype->SType))}}">
-                      <i class="fa fa-circle"></i> {{$setuptype->SType}}</a></li>
+                      <i class="fa fa-circle"></i> {{$setuptype->name}}</a></li>
                  @endforeach
                   
                 </ul>
@@ -241,9 +237,12 @@ $( function() {
                 <i class="fa fa-users"></i> <span>Product Distribution</span>
                 <i class="fa fa-angle-left pull-right"></i>
                 </a>
-                <ul class="treeview-menu">
-                  <li><a href="forms.html"><i class="fa fa-circle"></i> General Forms</a></li>
-                  <li><a href="validation.html"><i class="fa fa-circle"></i> Form Validations</a></li>
+               <ul class="treeview-menu">
+                  @foreach($productdistributions as $productdistribution)
+                   
+                    <li><a href="{{route('product distribution.'.strtolower($productdistribution->pdType))}}">
+                      <i class="fa fa-circle"></i> {{$productdistribution->pdType}}</a></li>
+                 @endforeach
                 </ul>
               </li>
               <li class="treeview">
@@ -252,7 +251,11 @@ $( function() {
                 <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                  <li><a href="tables.html"><i class="fa fa-circle"></i> Simple tables</a></li>
+                   @foreach($adjustments as $adjustment)
+                   
+                    <li><a href="{{route('adjustment.'.strtolower($adjustment->adjustmentType))}}">
+                      <i class="fa fa-circle"></i> {{$adjustment->adjustmentType}}</a></li>
+                 @endforeach
                 </ul>
               </li>
             
@@ -262,11 +265,11 @@ $( function() {
                 <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                  <li><a href="login.html"><i class="fa fa-circle"></i> Login</a></li>
-                  <li><a href="signup.html"><i class="fa fa-circle"></i> Register</a></li>
-                  <li><a href="404.html"><i class="fa fa-circle"></i> 404 Error</a></li>
-                  <li><a href="500.html"><i class="fa fa-circle"></i> 500 Error</a></li>
-                  <li><a href="blank-page.html"><i class="fa fa-circle"></i> Blank Page</a></li>
+                @foreach($reportings as $reporting)
+                   
+                    <li><a href="{{route('reporting.'.strtolower($reporting->crType))}}"><!-- route('Folder(from view) Name') &&strtolowere('database table name')-->
+                      <i class="fa fa-circle"></i> {{$reporting->crType}}</a></li>
+                 @endforeach
                 </ul>
               </li>
             
@@ -285,16 +288,16 @@ $( function() {
                 <!--toggle button end-->
                 <div class="clearfix"> </div>
             </div>
-                                                     
+            
                 <div class="profile_details">       
                     <ul>
                         <li class="dropdown profile_details_drop">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                                 <div class="profile_img">   
-                                    <span class="prfil-img"><img src="/images/{{(Session::get('user')->employeeinfo->profileImage)}}" alt="" style="height: 50px; width:50px"> </span> 
+                                    <span class="prfil-img"><img src="/images/2.jpg" alt=""> </span> 
                                     <div class="user-name">
-                                        <p>{{(Session::get('user')->employeeinfo->name)}}</p>
-                                        <span>{{ (Session::get('user')->userType)}}</span>
+                                        <p>Admin Name</p>
+                                        <span>Administrator</span>
                                     </div>
                                     <i class="fa fa-angle-down lnr"></i>
                                     <i class="fa fa-angle-up lnr"></i>
@@ -305,7 +308,7 @@ $( function() {
                                 <li> <a href="#"><i class="fa fa-cog"></i> Settings</a> </li> 
                                 <li> <a href="#"><i class="fa fa-user"></i> My Account</a> </li> 
                                 <li> <a href="#"><i class="fa fa-suitcase"></i> Profile</a> </li> 
-                                <li> <a href="{{route('login.index')}}"><i class="fa fa-sign-out"></i> Logout</a> </li>
+                                <li> <a href="#"><i class="fa fa-sign-out"></i> Logout</a> </li>
                             </ul>
                         </li>
                     </ul>
@@ -324,65 +327,57 @@ $( function() {
         <div class=" form-grids row form-grids-right">
             <div class="widget-shadow " data-example-id="basic-forms"> 
               <div class="form-title bg-primary text-white">
-                <h3 class="">পণ্যের তথ্য</h3>
+                <h3 class="">Create User</h3>
               </div>
               <div class="form-body">
-                <form class="form-horizontal" method="post" autocomplete="off"> 
-                	@csrf
+                <form class="form-horizontal" method="post"> 
+                  @csrf
                   <div class="form-group"> <!--Form-->
 
                     <div class="row">
                        <!--left side starts-->
                       <div class="col-md-6">
 
-                        <label for="productCode"  class="col-sm-6 control-label">পণ্যের কোড</label>
-                       <div class="col-lg-6">
-                          <input type="text" class="form-control" id="productCode" name="productCode"  value="{{ old('productCode') }}" onkeyup="productCheck()"  placeholder="অবশ্যই পুরণ করুণ"required>
-                          <div class="error" id="productCodeError">{{$errors->first('productCode')}}</div>  
-                        </div><br><br>
-
-                          <label for="productName" class="col-sm-6 control-label">পণ্য</label>
-                       <div class="col-lg-6">
-                          <input type="text" class="form-control" id="productName" name="productName"  value="{{ old('productName') }}" placeholder="অবশ্যই পুরণ করুণ"required>
-                          <div class="error">{{$errors->first('productName')}}</div>
-                        </div><br><br>
-
-
+                           <label for="name" class="col-sm-5 control-label">কর্মকর্তার নাম</label>
+                          <div class="col-lg-7">
+                              <select id="name" name="name" class="form-control required" required value="{{$user->employeeinfo->name}}">
+                                                @foreach ($employeeInformations  as $employeeInformation)
+                                               <option value="{{$employeeInformation->id}}">{{$employeeInformation->name}}</option>
+                                               @endforeach
+                              </select>
+                          </div><br><br>
+                 
+                        <label for="userType" class="col-sm-5 control-label">কর্মকর্তার ভুমিকা</label>
+                          <div class="col-lg-7">
+                              <select id="userType" name="userType" class="form-control required" required value="{{$user->userType}}">
+                                 <option value="">নির্বাচন করুন</option>
+                                 <option value="Super admin">Super Admin</option>
+                                 <option value="Admin">Admin</option>
+                                 <option value="User">User</option>
+                              </select>
+                          </div><br><br>
                       </div>
                       <!--End left side-->
 
 
                       <!--right side starts-->
                       <div class="col-md-6">
-                          <label for="categoryName" class="col-sm-5 control-label">ক্যাটাগরি</label>
-                          <div class="col-lg-7">
-                              <select id="categoryName" name="categoryName" onchange="showBrand()" class="form-control required" required>
-                                <option value="" >নির্বাচন করুন</option>
-                              	@foreach($categories as $category)
-                                 <option value="{{$category->id}}"{{old('categoryName')==$category->id ?"selected":""}}>{{$category->categoryName}}</option>
-                                 @endforeach
-                              </select>
-                              <div class="error">{{$errors->first('categoryName')}}</div>
+
+                        <label for="email" class="col-sm-5 control-label">ই-মেইল</label>
+                       <div class="col-lg-7">
+                          <input type="email" class="form-control" id="email" name="email" placeholder="অবশ্যই পূরণ করুন" value="{{$user->email}}" >
                           </div><br><br>
-                        
-                          <label for="brandName" class="col-sm-5 control-label">ব্র্যান্ড</label>
-                          <div class="col-lg-7">
-                              <select id="brandName" name="brandName" class="form-control required" required>
-                                <option value="">নির্বাচন করুন</option>
-                                @if(old('categoryName'))
-                                  @foreach($brands as $brand)
-                                    @if (old('categoryName') == $brand->category->id)
-                                      <option value="{{$brand->brandName}}" {{old('brandName')==$brand->brandName?"selected":""}}>{{$brand->brandName}}</option>
-                                    @endif
-                                  @endforeach
-                                @endif
-                              	
-                              </select>
-                              <div class="error">{{$errors->first('brandName')}}</div>
 
-                          </div>
-                          <br><br><br><br>
+                           <label for="password" class="col-sm-5 control-label">পাসওয়ার্ড</label>
+                       <div class="col-lg-7">
+                          <input type="password" class="form-control" id="password" name="password" required>
+                          </div><br><br>
+                            
 
+                        <label  class="col-sm-6 control-label"><br><br></label>
+                          <div class="col-lg-6">
+                              <input  type="checkbox" name="isActive" value=""> সক্রিয়?<br><br><br><br>
+                          </div><br><br>
                           
                       </div>
                       <!--right side end-->
@@ -395,7 +390,7 @@ $( function() {
                         <br><br>
                         <div class="col-md-5">
                           <div class="text-center">
-                          <button type="submit" class="btn btn-info">সংরক্ষণ করুন</button> 
+                          <button type="submit" class="btn btn-info">সংরক্ষন করুন</button> 
                           <button type="reset" class="btn btn-danger">বাতিল করুন</button>
                           </div>
 
@@ -410,6 +405,7 @@ $( function() {
 
                   </div>
               </form>
+
                       <div class="row">
                         <div class="col-md-8"></div>
 
@@ -432,39 +428,7 @@ $( function() {
                   </div> 
                </div> 
 
-                <div id="allBrands">
-                <table class="table table-responsive table-hover table-striped table-bordered table-condensed">
-                <thead class="bg-primary">
-                <tr>
-                  <th>#</th>
-                  <th>পণ্যের কোড</th>
-                  <th>পণ্য</th>
-                  <th>ক্যাটাগরি</th>
-                  <th>ব্র্যান্ড</th>
-                  <th>সম্পাদনা</th>
-                 </tr>
-                </thead>
-                  @if(isset($productinfos))
-
-                  <tbody>
-                    @foreach ($productinfos as $key=>$productinfo)
-                      <tr>
-                        <td>{{++$key}}</th>
-                        <td>{{$productinfo->productCode}}</td>
-                        <td>{{$productinfo->productName}}</td>
-                        <td>{{$productinfo->brand->brandName}}</td>
-                        <td>{{$productinfo->brand->category->categoryName}}</td>
-                        
-                        <td>
-                         <a href="{{route('setup.productedit',[$productinfo->id])}}"><i class="fa fa-edit" style="font-size:24px"></i></a>
-                        </td>
-                      </tr>
-                    @endforeach
-
-                 @endif
-              </tbody>  
-            </table>
-               </div>
+        
                <div id="searchedBrandValue">
                    
                </div>
@@ -476,12 +440,12 @@ $( function() {
         </div>
      
    
-        <!--footer-->
-      </div>
+    <!--footer-->
     <div class="footer">
        <p>&copy; 2019  All Rights Reserved | Design by <a href="https://deshisysltd.com/" target="_blank">Deshi Systems Ltd.</a></p>       
     </div>
     <!--//footer-->
+    </div>
         
     <!-- new added graphs chart js-->
     
@@ -901,39 +865,6 @@ $( function() {
     
     <!-- Bootstrap Core JavaScript -->
    <script src="/js/bootstrap.js"> </script>
-   <script>
-     var brands;
-     $(function() {
-       brands={!! $brands !!};
-     })
-    function showBrand() {
-      var selectedCategory=$("#categoryName").val();
-      // console.log(brands);
-      $('#brandName').html('<option value="">Select a Brand</option>');
-      if(brands!=undefined){
-        brands.forEach(brand => {
-          if(brand.category_id==selectedCategory)
-            $('#brandName').append(`<option value="${brand.brandName}">${brand.brandName}</option>`); 
-        });
-      }
-      
-    }
-    function productCheck() {
-      $('#productCodeError').html('');
-      $.ajax({
-        url: "{{route("check.product.exist")}}",
-        type:"post",
-        data: { productCode: $("#productCode").val(), _token: '{{csrf_token()}}'},
-        success: function (data) {
-          if(data!='success'){
-            console.log(data);
-            
-            $('#productCodeError').html(data.productCode[0]);
-          }
-        }
-      });
-    } 
-   </script>
 
     
 </body>

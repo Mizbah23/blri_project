@@ -18,7 +18,8 @@ class CreateProductInfosTable extends Migration
             $table->string('productCode');
             $table->string('productName');
             $table->unsignedBigInteger('brand_id');
-
+            $table->integer('stock')->default(0);
+            
             $table->foreign('brand_id')->references('id')->on('brands')->onDelete('cascade');//Foreign key
 
             $table->timestamps();
