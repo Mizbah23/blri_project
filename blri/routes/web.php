@@ -117,6 +117,8 @@ Route::post('/setup/district', 'districtController@districtPost');
 //Product Receive
 Route::get('/product_receive/product_receive', 'productreceiveController@index')->name('product receive.product receive');
 Route::post('/product_receive/product_receive', 'productreceiveController@store');
+Route::get('/product_receive/product_receive/delete/item', 'productreceiveController@deleteItemFromReceiveList')->name('delete.product.from.ReceiveList');
+
 Route::get('/product_receive/product_requisition', 'requisitioninfoController@index')->name('product receive.requisition info');
 Route::get('/product_receive/product_serial_info', 'productserialinfoController@index')->name('product receive.product serial info');
 
