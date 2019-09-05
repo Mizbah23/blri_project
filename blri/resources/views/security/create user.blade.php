@@ -355,6 +355,7 @@ $( function() {
                                  <option value="Admin">Admin</option>
                                  <option value="User">User</option>
                               </select>
+                               <div class="error" style="color: red">{{$errors->first('userType')}}</div>
                           </div><br><br>
                       </div>
                       <!--End left side--ন
@@ -366,6 +367,7 @@ $( function() {
                         <label for="email" class="col-sm-5 control-label">ই-মেইল</label>
                        <div class="col-lg-7">
                           <input type="email" class="form-control" id="email" name="email" placeholder="অবশ্যই পূরণ করুন">
+                            <div class="error" style="color: red">{{$errors->first('email')}}</div>
                           </div><br><br>
 
                            <label for="password" class="col-sm-5 control-label">পাসওয়ার্ড</label>
