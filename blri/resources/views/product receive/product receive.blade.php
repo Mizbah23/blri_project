@@ -340,7 +340,7 @@ $( function() {
                 <h3 class="">Product Receive Info</h3>
               </div>
               <div class="form-body">
-                <form class="form-horizontal" method="post" novalidate> 
+                <form class="form-horizontal" method="post" autocomplete="off"> 
                   @csrf
                   <div class="form-group"> <!--Form-->
 
@@ -360,28 +360,42 @@ $( function() {
                               </select>
                               <div class="error">{{$errors->first('supplierName')}}</div>
                             </div><br><br>
+
                             <div class="col-md-3">
                                  <label for="productName" class=" control-label">Product</label>
                             </div>
                             <div class="col-md-9">
-                                <select id="productName" name="productName" class="form-control required" required>
+                                <select id="productName" name="productName" class="form-control required" required onchange="showProductCode()">
                                  <option value="">Select Product</option>
-                                 @foreach ($products as $product)
-                                 <option value="{{$product->id}}" @if (old('productName')==$product->id)
+                                 @foreach ($products->unique('productName')->pluck('productName') as $productName)
+                                 <option value="{{$productName}}" @if (old('productName')==$productName)
                                     {{"selected"}}
-                                @endif>{{$product->productName}}</option>
+                                @endif>{{$productName}}</option>
                                 @endforeach
                               </select>
                               <div class="error">{{$errors->first('productName')}}</div>
                             </div><br><br>
+
                             <div class="col-md-3">
-                                 <label for="orderNo" class=" control-label">Order No.</label>
+                              <label for="productCode" class=" control-label">Product Code</label>
                             </div>
                             <div class="col-md-9">
-                              <input type="text" class="form-control" id="orderNo" name="orderNo" value="{{old('orderNo')}}" placeholder="Order no can not be empty"required>
-                              <div class="error">{{$errors->first('orderNo')}}</div>
-                            </div><br><br>
+                              <select id="productCode" name="productCode" class="form-control required" required>
+                               <option value="">Select Product Code</option>
+                               @if(old('productName'))
+                                @foreach ($products as $product)
+                                @if(old('productName')==$product->productName)
+                                  <option value="{{$product->id}}" @if (old('productCode')==$product->id)
+                                      {{"selected"}}
+                                  @endif>{{$product->productCode}}</option>
+                                @endif
+                                @endforeach
+                              @endif
+                            </select>
+                            <div class="error">{{$errors->first('productCode')}}</div>
+                          </div><br><br>
 
+                            
                        </div>
 
                         <div class="col-md-4" >
@@ -393,6 +407,15 @@ $( function() {
                                <input type="text" class="form-control" id="address" name="address" value="{{old('address')}}" placeholder="Address can not be empty" required readonly>
                                <div class="error">{{$errors->first('address')}}</div>
                             </div><br><br>
+
+                            <div class="col-md-3">
+                              <label for="orderNo" class=" control-label">OrderNo.</label>
+                            </div>
+                            <div class="col-md-9">
+                              <input type="text" class="form-control" id="orderNo" name="orderNo" value="{{old('orderNo')}}" placeholder="Order no can not be empty"required>
+                              <div class="error">{{$errors->first('orderNo')}}</div>
+                            </div><br><br>
+
 
                             <div class="col-md-3">
                             <label for="projectName" class=" control-label">Project</label>
@@ -466,8 +489,8 @@ $( function() {
                               </tr>
                               @foreach ($productReceiveLists as $item)
                                 <tr class="row"  align="center">
-                                    <td ><a href=""><i class="fa fa-edit" style="font-size:24px"></i></a></td>
-                                    <td> <a href="" class="glyphicon glyphicon-trash" style="font-size:24px"></i></a></td>
+                                    <td ><a ><i class="fa fa-edit" style="font-size:24px"></i></a></td>
+                                    <td> <a onclick="deleteItem({{$item->id}})" class="glyphicon glyphicon-trash" style="font-size:24px"></i></a></td>
                                     <td>{{$item->productInfo->productName}}</td>
                                     <td>{{$item->productInfo->productCode}}</td>
                                     <td>{{$item->quantity}}</td>
@@ -481,9 +504,9 @@ $( function() {
 
                   <div class="text-center">
                     <br><br><br>
-                      <button type="submit" class=" btn btn-info"> Save</button> 
+                      <button type="button" class=" btn btn-info"> Save</button> 
                           <button type="reset" class="btn btn-danger">Cancel</button>
-                          <button type="" class="btn btn-success">Print Invoice</button>
+                          <button type="button" class="btn btn-success">Print Invoice</button>
                   </div>
                 </div>
               </form>
@@ -949,14 +972,57 @@ $( function() {
    <script src="/js/bootstrap.js"> </script>
    <script>
      var suppliers;
+     var products;
      $(function () {
       suppliers={!! $suppliers !!};
+      products={!! $products !!};
      });
      function showSupplierOtherInfo() {
       var indexOfSelectedSupplier=suppliers.findIndex(k=>k.id==$("#supplierName").val());
       if (indexOfSelectedSupplier>=0) {
         $("#address").val(suppliers[indexOfSelectedSupplier].address);
         $("#contactNo").val(suppliers[indexOfSelectedSupplier].mobile);
+      }
+     }
+
+     function showProductCode() {
+       var selectedProduct=$("#productName").val();
+       $("#productCode").html('<option value="">Select Product Code</option>');
+       if(products!=undefined){
+        var i=0;
+        var productId;
+        products.forEach(product => {
+          if(product.productName==selectedProduct){
+            $('#productCode').append(`<option value="${product.id}">${product.productCode}</option>`);
+            i++;
+            productId=product.id;
+          }
+        });
+        if(i==1){
+          console.log(i);
+          $('#productCode option[value=' +productId + ']').attr('selected','selected');
+
+          // $("#productCode select").val(productId);
+        }
+      }
+     }
+     function deleteItem(id) {
+      if (confirm('Are you sure you want to save this thing into the database?')) {
+        $.ajax({
+        url: "{{route("delete.product.from.ReceiveList")}}",
+        type:"get",
+        data: { id: id},
+        success: function (data) {
+          console.log(data);
+          if(data=='deleted'){
+            location.reload();
+          }else{
+            alert("Something went wrong! Please Reload the page.");
+          }
+        }
+      });
+      } else {
+
       }
      }
    </script>

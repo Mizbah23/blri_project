@@ -42,7 +42,8 @@ class productreceiveController extends Controller
     {
         $this->validate($request, [
             'supplierName'=>'required',
-            'productName'=>'required | unique:product_receive_lists,product_info_id',
+            'productCode'=>'required | unique:product_receive_lists,product_info_id',
+            'productName'=>'required',
             'projectName'=>'required',
             'orderNo'=>'required',
             'address'=>'required',
@@ -51,14 +52,14 @@ class productreceiveController extends Controller
             'quantity'=>'required|numeric|gt:0'
         ]);
         $supplier=Supplier::find($request->supplierName);
-        $product=ProductInfo::find($request->productName);
+        $product=ProductInfo::find($request->productCode);
         $project=Project::find($request->projectName);
 
         if ($supplier && $product && $project) {
             $newProductAddedToList=new ProductReceiveList;
             $newProductAddedToList->supplier_id=$request->supplierName;
             $newProductAddedToList->project_id=$request->projectName;
-            $newProductAddedToList->product_info_id=$request->productName;
+            $newProductAddedToList->product_info_id=$request->productCode;
             $newProductAddedToList->orderNo=$request->orderNo;
             $newProductAddedToList->quantity=$request->quantity;
             $newProductAddedToList->user_id=$request->session()->get('user')->id;
@@ -67,5 +68,17 @@ class productreceiveController extends Controller
         }
 
         return redirect()->route('product receive.product receive');
+    }
+
+    public function deleteItemFromReceiveList(Request $request)
+    {
+        if ($request->ajax()) {
+            $isAvailable= ProductReceiveList::find($request->id);
+            $isDelete=false;
+            if ($isAvailable) {
+                $isDelete= $isAvailable->delete();
+            }
+            return $isDelete ? 'deleted' : 'error';
+        }
     }
 }
