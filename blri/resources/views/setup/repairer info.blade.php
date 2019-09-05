@@ -224,7 +224,7 @@ $( function() {
                 <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                   @foreach($productreceivetypes as $productreceivetype)
+                  @foreach($productreceivetypes as $productreceivetype)
                    
                     <li><a href="{{route('product receive.'.strtolower($productreceivetype->prType))}}">
                       <i class="fa fa-circle"></i> {{$productreceivetype->prType}}</a></li>
@@ -238,8 +238,11 @@ $( function() {
                 <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                  <li><a href="forms.html"><i class="fa fa-circle"></i> General Forms</a></li>
-                  <li><a href="validation.html"><i class="fa fa-circle"></i> Form Validations</a></li>
+                 @foreach($productdistributions as $productdistribution)
+                   
+                    <li><a href="{{route('product distribution.'.strtolower($productdistribution->pdType))}}">
+                      <i class="fa fa-circle"></i> {{$productdistribution->pdType}}</a></li>
+                 @endforeach
                 </ul>
               </li>
               <li class="treeview">
@@ -248,24 +251,27 @@ $( function() {
                 <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                  <li><a href="tables.html"><i class="fa fa-circle"></i> Simple tables</a></li>
-                </ul>
+                    @foreach($adjustments as $adjustment)
+                   
+                    <li><a href="{{route('adjustment.'.strtolower($adjustment->adjustmentType))}}">
+                      <i class="fa fa-circle"></i> {{$adjustment->adjustmentType}}</a></li>
+                 @endforeach
+               </ul>
               </li>
             
-              <li class="treeview">
+               <li class="treeview">
                 <a href="#">
-                <i class="fa fa-table"></i> <span>Report</span>
+                <i class="fa fa-table"></i> <span>Reporting</span>
                 <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                  <li><a href="login.html"><i class="fa fa-circle"></i> Login</a></li>
-                  <li><a href="signup.html"><i class="fa fa-circle"></i> Register</a></li>
-                  <li><a href="404.html"><i class="fa fa-circle"></i> 404 Error</a></li>
-                  <li><a href="500.html"><i class="fa fa-circle"></i> 500 Error</a></li>
-                  <li><a href="blank-page.html"><i class="fa fa-circle"></i> Blank Page</a></li>
+                 @foreach($reportings as $reporting)
+                   
+                    <li><a href="{{route('reporting.'.strtolower($reporting->crType))}}"><!-- route('Folder(from view) Name') &&strtolowere('database table name')-->
+                      <i class="fa fa-circle"></i> {{$reporting->crType}}</a></li>
+                 @endforeach
                 </ul>
               </li>
-            
           </div>
           <!-- /.navbar-collapse -->
       </nav>
@@ -338,27 +344,27 @@ $( function() {
                         <label for="repairerName" class="col-sm-6 control-label">মেরামতকারীর নাম</label>
                        <div class="col-lg-6">
                           <input type="text" class="form-control" id="repairerName" name="repairerName" placeholder="অবশ্যই পুরণ করুণ"required>
-                          <div class="error" style="color: red"><span>*</span>{{$errors->first('repairerName')}}</div>
+                          <div class="error" style="color: red">{{$errors->first('repairerName')}}</div>
 
                           </div><br><br>
                         <label for="address" class="col-sm-6 control-label">ঠিকানা</label>
                        <div class="col-lg-6">
                         <textarea name="address" id="address" class="form-control" placeholder="অবশ্যই পুরণ করুণ"required></textarea>
-                          <div class="error"  style="color: red"><span>*</span>{{$errors->first('address')}}</div>
+                          <div class="error"  style="color: red">{{$errors->first('address')}}</div>
 
                           </div><br><br><br>
 
                           <label  for="mobile" class="col-sm-6 control-label">মোবাইল </label>
                        <div class="col-lg-6">
                           <input type="text" class="form-control" id="mobile" name="mobile" placeholder="অবশ্যই পুরণ করুণ"required >
-                          <div class="error"style="color: red"><span>*</span>{{$errors->first('mobile')}}</div>
+                          <div class="error"style="color: red">{{$errors->first('mobile')}}</div>
 
                           </div><br><br><br>
 
                           <label for="email" class="col-sm-6 control-label">ই-মেইল</label>
                        <div class="col-lg-6">
                           <input type="email" class="form-control" id="email" name="email" placeholder="অবশ্যই পুরণ করুণ"required>
-                          <div class="error"><span>*{{$errors->first('email')}}</span>
+                          <div class="error">{{$errors->first('email')}}
                            
                           </div>
 

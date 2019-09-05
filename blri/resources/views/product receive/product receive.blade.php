@@ -304,10 +304,12 @@ $( function() {
                         <li class="dropdown profile_details_drop">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                                 <div class="profile_img">   
-                                    <span class="prfil-img"><img src="/images/2.jpg" alt=""> </span> 
+
+                                    <span class="prfil-img"><img src="/images/{{(Session::get('user')->employeeinfo->profileImage)}}" alt="" style="height: 50px; width:50px"> </span> 
+
                                     <div class="user-name">
-                                        <p>Admin Name</p>
-                                        <span>Administrator</span>
+                                        <p>{{(Session::get('user')->employeeinfo->name)}}</p>
+                                        <span>{{ (Session::get('user')->userType)}}</span>
                                     </div>
                                     <i class="fa fa-angle-down lnr"></i>
                                     <i class="fa fa-angle-up lnr"></i>
@@ -1007,7 +1009,7 @@ $( function() {
       }
      }
      function deleteItem(id) {
-      if (confirm('Are you sure you want to save this thing into the database?')) {
+      if (confirm('Do you really want to delete this item?')) {
         $.ajax({
         url: "{{route("delete.product.from.ReceiveList")}}",
         type:"get",
