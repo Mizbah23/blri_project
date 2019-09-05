@@ -12,6 +12,6 @@ class ProductReceiveList extends Model
     // }
     public function productInfo()
     {
-        return $this->belongsTo('App\ProductInfo','productName');
+        return $this->belongsTo('App\ProductInfo');
     }
 }

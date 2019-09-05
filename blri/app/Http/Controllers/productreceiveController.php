@@ -42,7 +42,8 @@ class productreceiveController extends Controller
     {
         $this->validate($request, [
             'supplierName'=>'required',
-            'productName'=>'required | unique:product_receive_lists',
+            'productName'=>'required | unique:product_receive_lists,product_info_id',
+            'projectName'=>'required',
             'orderNo'=>'required',
             'address'=>'required',
             'contactNo'=>'required',
@@ -57,7 +58,7 @@ class productreceiveController extends Controller
             $newProductAddedToList=new ProductReceiveList;
             $newProductAddedToList->supplier_id=$request->supplierName;
             $newProductAddedToList->project_id=$request->projectName;
-            $newProductAddedToList->productName=$request->productName;
+            $newProductAddedToList->product_info_id=$request->productName;
             $newProductAddedToList->orderNo=$request->orderNo;
             $newProductAddedToList->quantity=$request->quantity;
             $newProductAddedToList->user_id=$request->session()->get('user')->id;
