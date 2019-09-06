@@ -166,7 +166,7 @@ $( function() {
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             </button>
-              <h1><a class="navbar-brand" href="index.html"><span> <img style="height: 50px; width: 50px;" src="/images/logo.png" alt=""></span> BLRI</a></h1>
+              <h1 style="margin-top: 5px"><a class="text-white" style="margin-left: 10px;" href="index.html"><span> <img style="height: 50px; width: 50px;" src="/images/logo.png" alt=""></span> BLRI<span class="dashboard_text" style="margin-left: 30px">Design dashboard</span></a></h1>
            <!-- <div style="margin-top: 10px">
               <div class="col-lg-3">
                 <img style="height: 50px; width: 50px;" src="/images/logo.png" alt="">
