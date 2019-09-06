@@ -54,5 +54,38 @@ class districtController extends Controller
 
               return redirect()->route('setup.district');
           }
+
+                public function districtedit(Request $request,$id)
+        {
+              $setuptypes= setuptype::all();
+              $securitytypes=SecurityType::all();
+              $productreceivetypes=ProductReceiveType::all();
+              $productdistributions=ProductDistribution::all();
+              $adjustments=Adjustment::all();
+              $reportings=Reporting::all();
+
+              $district=District::find($id);
+              return view('setup.disedit')->with('setuptypes',$setuptypes)
+                                           ->with('district',$district)
+                                           ->with('securitytypes',$securitytypes)
+                                           ->with('productreceivetypes',$productreceivetypes)
+                                           ->with('productdistributions',$productdistributions)
+                                           ->with('adjustments',$adjustments)
+                                           ->with('reportings',$reportings);
+         }
+             public function update(Request $request,$id){
+                      $this->validate($request,[
+                      'division'=>'required',
+                      'district'=>'required',
+                    ]);
+      
+              $district=District::find($id);
+              $district->division=$request->division;
+              $district->district=$request->district;
+                 
+              $district->save();
+              return redirect()->route('setup.district');
+    
+      }
       
 }

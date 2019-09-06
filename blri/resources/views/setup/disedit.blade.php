@@ -2,8 +2,8 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>Requisition</title>
-<link rel="icon" type="image/png" href="/images/logo.png" />
+<title> জেলা</title>
+<link rel="icon" type="image/png" href="/images/logo.png"/>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="Glance Design Dashboard Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
@@ -23,19 +23,11 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 <!-- side nav css file -->
 <link href='/css/SidebarNav.min.css' media='all' rel='stylesheet' type='text/css'/>
 <!-- //side nav css file -->
-
-<link rel="stylesheet" href="/css/jquery-ui.css" type='text/css'/>
-<!--datepicker-->
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<link rel="stylesheet" href="/resources/demos/style.css">
  
  <!-- js-->
 <script src="/js/jquery-1.11.1.min.js"></script>
 <script src="/js/modernizr.custom.js"></script>
 
-<!--datepicker-->
-<script src="/js/jquery-1.12.4.js"></script>
-<script src="/js/jquery-ui.js"></script>
 <!--webfonts-->
 <link href="//fonts.googleapis.com/css?family=PT+Sans:400,400i,700,700i&amp;subset=cyrillic,cyrillic-ext,latin-ext" rel="stylesheet">
 <!--//webfonts--> 
@@ -49,12 +41,6 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 <script src="/js/custom.js"></script>
 <link href="/css/custom.css" rel="stylesheet">
 <!--//Metis Menu -->
- <!--For autocomplete Search -->
-<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.min.css">
-<link rel="stylesheet" href="https://jqueryui.com/resources/demos/style.css">
-<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
-<!--// For autocomplete Search -->
 <style>
 #chartdiv {
   width: 100%;
@@ -117,54 +103,6 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                             });
                         </script>
                     <!-- //requried-jsfiles-for owl -->
-<!--date picker-->
-  <script>
-$( function() {
-    var dateFormat = "dd/mm/yy",
-      from = $( "#from" )
-        .datepicker({
-          defaultDate: "+1w",
-          changeMonth: true,
-          changeYear: true,
-          numberOfMonths: 1
-        })
-        .on( "change", function() {
-          to.datepicker( "option", "minDate", getDate( this ) );
-        }),
-      to = $( "#to" ).datepicker({
-        defaultDate: "+1w",
-        changeMonth: true,
-        changeYear: true,
-        numberOfMonths: 1
-      })
-      .on( "change", function() {
-        from.datepicker( "option", "maxDate", getDate( this ) );
-      });
- 
-    function getDate( element ) {
-      var date;
-      try {
-        date = $.datepicker.parseDate( dateFormat, element.value );
-      } catch( error ) {
-        date = null;
-      }
- 
-      return date;
-    }
-  } );
-  </script>
-
-  <!--date picker-->
-<script>
-  $(function() {
-    $( ".datepicker" ).datepicker({
-      format: 'MM/DD/YYYY',
-      maxDate: "+0D",
-      ignoreReadonly: true
-    });
-  });
-  </script>
-
 </head> 
 <body class="cbp-spmenu-push">
     <div class="main-content">
@@ -215,14 +153,14 @@ $( function() {
               <li class="treeview">
                 <a href="#">
                 <i class="fa fa-wrench"></i>
-                <span>Setup</span>
+                <span>সেটআপ</span>
                 <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
                  @foreach($setuptypes as $setuptype)
                    
                     <li><a href="{{route('setup.'.strtolower($setuptype->SType))}}">
-                      <i class="fa fa-circle"></i> {{$setuptype->SType}}</a></li>
+                      <i class="fa fa-circle"></i> {{$setuptype->name}}</a></li>
                  @endforeach
                   
                 </ul>
@@ -237,7 +175,7 @@ $( function() {
                 <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                   @foreach($productreceivetypes as $productreceivetype)
+                  @foreach($productreceivetypes as $productreceivetype)
                    
                     <li><a href="{{route('product receive.'.strtolower($productreceivetype->prType))}}">
                       <i class="fa fa-circle"></i> {{$productreceivetype->prType}}</a></li>
@@ -251,8 +189,11 @@ $( function() {
                 <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                  <li><a href="forms.html"><i class="fa fa-circle"></i> General Forms</a></li>
-                  <li><a href="validation.html"><i class="fa fa-circle"></i> Form Validations</a></li>
+                 @foreach($productdistributions as $productdistribution)
+                   
+                    <li><a href="{{route('product distribution.'.strtolower($productdistribution->pdType))}}">
+                      <i class="fa fa-circle"></i> {{$productdistribution->pdType}}</a></li>
+                 @endforeach
                 </ul>
               </li>
               <li class="treeview">
@@ -261,24 +202,27 @@ $( function() {
                 <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                  <li><a href="tables.html"><i class="fa fa-circle"></i> Simple tables</a></li>
-                </ul>
+                    @foreach($adjustments as $adjustment)
+                   
+                    <li><a href="{{route('adjustment.'.strtolower($adjustment->adjustmentType))}}">
+                      <i class="fa fa-circle"></i> {{$adjustment->adjustmentType}}</a></li>
+                 @endforeach
+               </ul>
               </li>
             
-              <li class="treeview">
+               <li class="treeview">
                 <a href="#">
-                <i class="fa fa-table"></i> <span>Report</span>
+                <i class="fa fa-table"></i> <span>Reporting</span>
                 <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                  <li><a href="login.html"><i class="fa fa-circle"></i> Login</a></li>
-                  <li><a href="signup.html"><i class="fa fa-circle"></i> Register</a></li>
-                  <li><a href="404.html"><i class="fa fa-circle"></i> 404 Error</a></li>
-                  <li><a href="500.html"><i class="fa fa-circle"></i> 500 Error</a></li>
-                  <li><a href="blank-page.html"><i class="fa fa-circle"></i> Blank Page</a></li>
+                 @foreach($reportings as $reporting)
+                   
+                    <li><a href="{{route('reporting.'.strtolower($reporting->crType))}}"><!-- route('Folder(from view) Name') &&strtolowere('database table name')-->
+                      <i class="fa fa-circle"></i> {{$reporting->crType}}</a></li>
+                 @endforeach
                 </ul>
               </li>
-            
           </div>
           <!-- /.navbar-collapse -->
       </nav>
@@ -300,9 +244,7 @@ $( function() {
                         <li class="dropdown profile_details_drop">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                                 <div class="profile_img">   
-
                                     <span class="prfil-img"><img src="/images/{{(Session::get('user')->employeeinfo->profileImage)}}" alt="" style="height: 50px; width:50px"> </span> 
-
                                     <div class="user-name">
                                         <p>{{(Session::get('user')->employeeinfo->name)}}</p>
                                         <span>{{ (Session::get('user')->userType)}}</span>
@@ -310,13 +252,13 @@ $( function() {
                                     <i class="fa fa-angle-down lnr"></i>
                                     <i class="fa fa-angle-up lnr"></i>
                                     <div class="clearfix"></div>    
-                                </div>   
+                                </div>  
                             </a>
                             <ul class="dropdown-menu drp-mnu">
                                 <li> <a href="#"><i class="fa fa-cog"></i> Settings</a> </li> 
                                 <li> <a href="#"><i class="fa fa-user"></i> My Account</a> </li> 
                                 <li> <a href="#"><i class="fa fa-suitcase"></i> Profile</a> </li> 
-                                <li> <a href="#"><i class="fa fa-sign-out"></i> Logout</a> </li>
+                                <li> <a href="{{route('login.index')}}"><i class="fa fa-sign-out"></i> Logout</a> </li>
                             </ul>
                         </li>
                     </ul>
@@ -328,172 +270,67 @@ $( function() {
             <div class="clearfix"> </div>   
         </div>
         <!-- //header-ends -->
-   
- <!-- main content start-->
+ 
+    <!-- main content start-->
     <div id="page-wrapper">
       <div class="main-page">
         <div class=" form-grids row form-grids-right">
             <div class="widget-shadow " data-example-id="basic-forms"> 
               <div class="form-title bg-primary text-white">
-                <h3 class="">ফরমাশ-পত্র</h3>
+                <h3 class="">জেলা বিবরণী</h3>
               </div>
               <div class="form-body">
-                <form class="form-horizontal" method="post"> <!--Form for grideview-->
-                  <div class="form-group">
-                      <div class="row">
 
-                      <div class="col-lg-6">
-
-
-                         <div class="col-lg-4">
-                            <label for="">কর্মচারীর নাম</label><br>
-                         </div>
-                         <div class="col-lg-8">
-                            <select class="form-control" name="" required>
-                              <option value="">কর্মচারী সনাক্তকরণ</option>
-                            </select>
-                         </div><br><br>
-
-                           <div class="col-lg-4">
-                            <label for="">শ্রেণী</label>
-                         </div>
-                         <div class="col-lg-8">
-                            <select class="form-control" name="" required>
-                              <option value="">শ্রেণী সনাক্তকরণ</option>
-                            </select>
-                         </div><br><br>
-
-                         <div class="col-lg-4">
-                            <label for="">ব্র্যান্ড</label>
-                         </div>
-                         <div class="col-lg-8">
-                            <select class="form-control" name="" required>
-                              <option value="">ব্র্যান্ড সনাক্তকরণ</option>
-                            </select>
-                         </div><br><br>
-               
-
-                     
-
-                      <div class="col-lg-6">
-                        <div class="col-lg-4">
-                          <label for="date">তারিখ</label>
-                        </div>
-                        <div class="col-lg-8">
-                           <input type="text" class="form-control datepicker" id="date" name="date" placeholder="মাস/দিন/বছর" required>
-                        </div><br><br>
-                      
-                        <div class="col-lg-4">
-                          <label for="">পণ্য</label>
-                        </div>
-                        <div class="col-lg-8">
-                           <select class="form-control" name="" required>
-                              <option value="">পণ্য সনাক্তকরণ</option>
-                            </select>
-                        </div><br><br>
-
-                        <div class="col-lg-4">
-                          <label for="">পরিমাণ</label>
-                        </div>
-                        <div class="col-lg-8">
-                           <input class="form-control" type="text" name="quantity" placeholder="অবশ্যই পূরণ করুন" required>
-                        </div><br><br>
-                       
-                         <center>
-                           <button type="submit" name="gridsave" class="btn btn-info">
-                            <i class="glyphicon glyphicon-plus"
-                            style="color:white"></i>সংযুক্তকরণ</button>
-                           <button type="reset" name="gridreset" class="btn">পুনরায় বসান</button>
-                         </center>
+                <form class="form-horizontal" method="post"> <div class="form-group"> 
+                  @csrf
+                  <div class="row">
+                      <div class="col-lg-2">
                         
-                 
-                
-                   
-                </form><!--End Form for grideview-->
-                     <div class="col-lg-12">
-                       <table class="table table-responsive table-hover table-striped table-bordered table-condensed">
-                         <tr class="row bg-primary">
-                           <th class="col-lg-1 text-center">সম্পাদনা</th>
-                           <th class="col-lg-3 text-center">মুছে দিন</th>
-                           <th class="col-lg-6 text-center">পণ্যের নাম</th>
-                           <th class="col-lg-2 text-center">পরিমাণ</th>
-                         </tr>
-                       </table>
-                     </div>
-                   </div> 
-                </div>
-                <div class="row">
-                  <div class="col-lg-12">
-                     <center>
-                          <button class="btn btn-info" type="submit" name="tablesave">
-                           <i class="fa fa-folder"style="color:white;"></i>সংরক্ষণ করুন</button>
-                           <button type="reset" name="tablereset" class="btn">পুনরায় বসান</button>
-                       </center>
-                  </div>
-                </div>
-
-
-                    <!--<div class="row">
-                   <div class="col-lg-6"> Category and brand-->
-                       <!--   <label for="category" class="col-sm-2 control-label">Category</label>
-                          <div class="col-lg-9">
-                              <select id="category" name="categories" class="form-control required" required>
-                              <option value=""></option>
-                                              
+                      </div>
+                      <div class="col-lg-6"> 
+               
+                     <label for="division" class="col-sm-2 control-label">বিভাগ</label>
+                     <div class="col-sm-9">
+                              <select id="division" name="division" class="form-control required" required>
+                                 <option value=""> বিভাগসমূহ</option>
+                                 <option value="ঢাকা">ঢাকা</option>
+                                 <option value="চট্টগ্রাম">চট্টগ্রাম</option>
+                                 <option value="সিলেট">সিলেট</option>
+                                 <option value="রাজশাহী">রাজশাহী</option>
+                                 <option value="খুলনা">খুলনা</option>
+                                 <option value="বরিশাল">বরিশাল</option>
+                                 <option value="রংপুর">রংপুর</option>
                               </select>
                           </div><br><br>
 
-                          <label for="brand" class="col-sm-2 control-label">Brand</label>
-                       <div class="col-lg-9">
-                          <input type="text" class="form-control" id="brand" name="brandName" placeholder="Name Can not be empty"required>
-                          </div><br><br><br>
-
-                          <div class="col-lg-6">
-                            <label for="category" class="col-sm-2 control-label">Category</label>
-                          <div class="col-lg-9">
-                              <select id="category" name="categories" class="form-control required" required>
-                              <option value=""></option>
-                              </select>
-                          </div><br><br>
-
-                          <label for="brand" class="col-sm-2 control-label">Brand</label>
-                       <div class="col-lg-9">
-                          <input type="text" class="form-control" id="brand" name="brandName" placeholder="Name Can not be empty"required>
-                          </div><br><br><br>
-                          </div>
-
-                        <div class="text-center">
-                          <button type="submit" class="btn btn-info">Save</button> 
-                          <button type="reset" class="btn btn-danger">Cancel</button>
-                        </div>
-                         </form>end form-->
-                      <!--Category and brand-->
-                      <!--Search option starts-->
-                    
-
-                      <!--Search option stops-->
-
+                  <label for="district" class="col-sm-2 control-label">জেলা</label> 
+                  <div class="col-sm-9"> <input type="text" required class="form-control" id="district" name="district" placeholder="অবশ্যই পুরণ করুণ" value="{{$district->district}}"> </div>
+                   </div>
+                 <div class="form-group"> <div class="col-sm-offset-4 col-sm-6">  </div> </div><br> <div class="col-sm-offset-4"> <button type="submit" class="btn btn-info">সংরক্ষন করুন</button> <button type="reset" class="btn btn-danger">বাতিল করুন</button></div> </form> 
+              </div>
+          </div>
+          <div class="col-sm-4"></div>
           
-                <div id="allBrands">
+        </div>
             
-               </div>
-               <div id="searchedBrandValue">
-                   
-               </div>
+
+           
+              
+
               
             </div>
           </div>
       
           </div>
         </div>
-     
-   
+
+
     <!--footer-->
     <div class="footer">
        <p>&copy; 2019  All Rights Reserved | Design by <a href="https://deshisysltd.com/" target="_blank">Deshi Systems Ltd.</a></p>       
     </div>
     <!--//footer-->
-    </div>
+
         
     <!-- new added graphs chart js-->
     
@@ -913,7 +750,7 @@ $( function() {
     
     <!-- Bootstrap Core JavaScript -->
    <script src="/js/bootstrap.js"> </script>
-
+    <!-- //Bootstrap Core JavaScript -->
     
 </body>
 </html>

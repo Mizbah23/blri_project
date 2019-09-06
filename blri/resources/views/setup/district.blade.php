@@ -344,7 +344,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                   <td>{{$district->division}}</td>
                   <td>{{$district->district}}</td>
                   <td>
-                    <a href=""><i class="fa fa-edit" style="font-size:24px"></i></a>
+                    <a href="{{route('setup.disedit',[$district->id])}}"><i class="fa fa-edit" style="font-size:24px"></i></a>
                   </td>
                  
                 </tr>

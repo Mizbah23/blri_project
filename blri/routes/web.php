@@ -110,6 +110,8 @@ Route::post('/setup/repairer/{id}/edit', 'repairerController@update');
 // District
 Route::get('/setup/district', 'districtController@index')->name('setup.district');
 Route::post('/setup/district', 'districtController@districtPost');
+Route::get('/setup/district/{id}/edit', 'districtController@districtedit')->name('setup.disedit');
+Route::post('/setup/district/{id}/edit', 'districtController@update');
 
 
 // Route::get('/home', 'HomeController@index')->name('home');
