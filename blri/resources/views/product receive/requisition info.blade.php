@@ -373,7 +373,7 @@ $( function() {
                          </div><br><br>
                
 
-                     
+                     </div>
 
                       <div class="col-lg-6">
                         <div class="col-lg-4">
@@ -397,14 +397,14 @@ $( function() {
                         </div>
                         <div class="col-lg-8">
                            <input class="form-control" type="text" name="quantity" placeholder="অবশ্যই পূরণ করুন" required>
-                        </div><br><br>
+                        </div><br><br><br>
                        
                          <center>
                            <button type="submit" name="gridsave" class="btn btn-info">
                             <i class="glyphicon glyphicon-plus"
                             style="color:white"></i>সংযুক্তকরণ</button>
                            <button type="reset" name="gridreset" class="btn">পুনরায় বসান</button>
-                         </center>
+                         </center><br>
                         
                  
                 
