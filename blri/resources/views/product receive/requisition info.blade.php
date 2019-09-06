@@ -180,15 +180,7 @@ $( function() {
             <span class="icon-bar"></span>
             </button>
 
-            <div style="margin-top: 10px">
-              <div class="col-lg-3">
-                <img style="height: 50px; width: 50px;" src="/images/logo.png" alt="">
-              </div>
-              <div class="col-lg-9">
-                 <h1 style="margin-left: -25px"><a class="navbar-brand" href="index.html">  BLRI<span class="dashboard_text" style="margin-left: -35px">Design dashboard</span></a></h1>
-              </div>
-             </div>
-            </div>
+            <h1 style="margin-top: 5px"><a class="text-white" style="margin-left: 10px;" href="index.html"><span> <img style="height: 50px; width: 50px;" src="/images/logo.png" alt=""></span> BLRI<span class="dashboard_text" style="margin-left: 30px">Design dashboard</span></a></h1>
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="sidebar-menu">
               <li class="header">MAIN NAVIGATION</li>
@@ -222,7 +214,7 @@ $( function() {
                  @foreach($setuptypes as $setuptype)
                    
                     <li><a href="{{route('setup.'.strtolower($setuptype->SType))}}">
-                      <i class="fa fa-circle"></i> {{$setuptype->SType}}</a></li>
+                      <i class="fa fa-circle"></i> {{$setuptype->name}}</a></li>
                  @endforeach
                   
                 </ul>
@@ -233,11 +225,11 @@ $( function() {
               <li class="treeview">
                 <a href="#">
                 <i class="fa fa-laptop"></i>
-                <span>Product Recieve</span>
+                <span>Product Receive</span>
                 <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                   @foreach($productreceivetypes as $productreceivetype)
+                  @foreach($productreceivetypes as $productreceivetype)
                    
                     <li><a href="{{route('product receive.'.strtolower($productreceivetype->prType))}}">
                       <i class="fa fa-circle"></i> {{$productreceivetype->prType}}</a></li>
@@ -251,8 +243,11 @@ $( function() {
                 <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                  <li><a href="forms.html"><i class="fa fa-circle"></i> General Forms</a></li>
-                  <li><a href="validation.html"><i class="fa fa-circle"></i> Form Validations</a></li>
+                  @foreach($productdistributions as $productdistribution)
+                   
+                    <li><a href="{{route('product distribution.'.strtolower($productdistribution->pdType))}}">
+                      <i class="fa fa-circle"></i> {{$productdistribution->pdType}}</a></li>
+                 @endforeach
                 </ul>
               </li>
               <li class="treeview">
@@ -261,21 +256,25 @@ $( function() {
                 <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                  <li><a href="tables.html"><i class="fa fa-circle"></i> Simple tables</a></li>
+                  @foreach($adjustments as $adjustment)
+                   
+                    <li><a href="{{route('adjustment.'.strtolower($adjustment->adjustmentType))}}">
+                      <i class="fa fa-circle"></i> {{$adjustment->adjustmentType}}</a></li>
+                 @endforeach
                 </ul>
               </li>
             
               <li class="treeview">
                 <a href="#">
-                <i class="fa fa-table"></i> <span>Report</span>
+                <i class="fa fa-table"></i> <span>Reporting</span>
                 <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                  <li><a href="login.html"><i class="fa fa-circle"></i> Login</a></li>
-                  <li><a href="signup.html"><i class="fa fa-circle"></i> Register</a></li>
-                  <li><a href="404.html"><i class="fa fa-circle"></i> 404 Error</a></li>
-                  <li><a href="500.html"><i class="fa fa-circle"></i> 500 Error</a></li>
-                  <li><a href="blank-page.html"><i class="fa fa-circle"></i> Blank Page</a></li>
+                 @foreach($reportings as $reporting)
+                   
+                    <li><a href="{{route('reporting.'.strtolower($reporting->crType))}}"><!-- route('Folder(from view) Name') &&strtolowere('database table name')-->
+                      <i class="fa fa-circle"></i> {{$reporting->crType}}</a></li>
+                 @endforeach
                 </ul>
               </li>
             
@@ -346,20 +345,29 @@ $( function() {
 
 
                          <div class="col-lg-4">
-                            <label for="">কর্মচারীর নাম</label><br>
+                            <label for="name">কর্মচারীর নাম</label><br>
                          </div>
                          <div class="col-lg-8">
-                            <select class="form-control" name="" required>
-                              <option value="">কর্মচারী সনাক্তকরণ</option>
-                            </select>
+                                <select id="neme" name="name" class="form-control required" required>
+                                 <option value="">নির্বাচন করুণ</option>
+                                   @foreach ($employeeinformations  as $employeeinformation)
+                                               <option value="{{$employeeinformation->id}}">{{$employeeinformation->name}}</option>
+                                               @endforeach
+                                 
+                              </select>
                          </div><br><br>
 
                            <div class="col-lg-4">
-                            <label for="">শ্রেণী</label>
+                            <label for="categoryName">ক্যাটাগরি</label>
                          </div>
                          <div class="col-lg-8">
-                            <select class="form-control" name="" required>
-                              <option value="">শ্রেণী সনাক্তকরণ</option>
+                            <select id="categoryName" name="categoryName" onchange="showBrand()" class="form-control required" required>
+                                <option value="" >নির্বাচন করুন</option>
+                                @foreach($products as $product)
+                                 <option value="{{$product->id}}"{{old('categoryName')==$category->id ?"selected":""}}>{{$product->categoryName}}</option>
+                                 @endforeach
+                              </select>
+                              <option value="">ক্যাটাগরি সনাক্তকরণ</option>
                             </select>
                          </div><br><br>
 
@@ -377,19 +385,45 @@ $( function() {
 
                       <div class="col-lg-6">
                         <div class="col-lg-4">
-                          <label for="date">তারিখ</label>
+                          <label for="requisitionDate">তারিখ</label>
                         </div>
                         <div class="col-lg-8">
-                           <input type="text" class="form-control datepicker" id="date" name="date" placeholder="মাস/দিন/বছর" required>
+                           <input type="text" class="form-control datepicker" id="requisitionDate" name="requisitionDate" placeholder="মাস/দিন/বছর" required>
+                        </div><br><br>
+                        <div class="col-lg-4">
+                          <label for="productName">পণ্য</label>
+                        </div>
+                        <div class="col-lg-8">
+                           <select class="form-control" id="productName" name="productName" required>
+                              <option value="">পণ্য সনাক্তকরণ</option>
+                               @foreach ($products->unique('productName')->pluck('productName') as $productName)
+                                 <option value="{{$productName}}" @if (old('productName')==$productName)
+                                    {{"selected"}}
+                                @endif>{{$productName}}</option>
+                                @endforeach
+                            </select>
+                             <div class="error">{{$errors->first('productName')}}</div>
                         </div><br><br>
                       
                         <div class="col-lg-4">
-                          <label for="">পণ্য</label>
+                          <label for="productCode" class=" control-label">Product Code</label>
                         </div>
                         <div class="col-lg-8">
-                           <select class="form-control" name="" required>
-                              <option value="">পণ্য সনাক্তকরণ</option>
+                        
+                             <select id="productCode" name="productCode" class="form-control required" required>
+                               <option value="">Select Product Code</option>
+                               @if(old('productName'))
+                                @foreach ($products as $product)
+                                @if(old('productName')==$product->productName)
+                                  <option value="{{$product->id}}" @if (old('productCode')==$product->id)
+                                      {{"selected"}}
+                                  @endif>{{$product->productCode}}</option>
+                                @endif
+                                @endforeach
+                              @endif
                             </select>
+                            <div class="error">{{$errors->first('productCode')}}</div>
+
                         </div><br><br>
 
                         <div class="col-lg-4">
@@ -913,7 +947,39 @@ $( function() {
     
     <!-- Bootstrap Core JavaScript -->
    <script src="/js/bootstrap.js"> </script>
-
+   <script>
+     var brands;
+     $(function() {
+       brands={!! $brands !!};
+     })
+    function showBrand() {
+      var selectedCategory=$("#categoryName").val();
+      // console.log(brands);
+      $('#brandName').html('<option value="">Select a Brand</option>');
+      if(brands!=undefined){
+        brands.forEach(brand => {
+          if(brand.category_id==selectedCategory)
+            $('#brandName').append(`<option value="${brand.brandName}">${brand.brandName}</option>`); 
+        });
+      }
+      
+    }
+    function productCheck() {
+      $('#productCodeError').html('');
+      $.ajax({
+        url: "{{route("check.product.exist")}}",
+        type:"post",
+        data: { productCode: $("#productCode").val(), _token: '{{csrf_token()}}'},
+        success: function (data) {
+          if(data!='success'){
+            console.log(data);
+            
+            $('#productCodeError').html(data.productCode[0]);
+          }
+        }
+      });
+    } 
+   </script>
     
 </body>
 </html>
