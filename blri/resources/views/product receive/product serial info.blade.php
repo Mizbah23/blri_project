@@ -2,7 +2,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>Product serial info</title>
+<title>পণ্য সিরিয়াল তথ্য</title>
 <link rel="icon" type="image/png" href="/images/logo.png" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -334,7 +334,7 @@ $( function() {
         <div class=" form-grids row form-grids-right">
             <div class="widget-shadow " data-example-id="basic-forms"> 
               <div class="form-title bg-primary text-white">
-                <h3 class="">Product Serial Info</h3>
+                <h3 class="">পণ্য সিরিয়াল তথ্য</h3>
               </div>
               <div class="form-body">
                 <form class="form-horizontal" method="post"> 
@@ -343,20 +343,20 @@ $( function() {
                     <div class="row">
                         <div class="col-md-4" >
                             <div class="col-md-5">
-                                 <label for="" class=" control-label">Category</label>
+                                 <label for="" class=" control-label">ক্যাটাগরি</label>
                             </div>
                             <div class="col-md-7">
                                 <select id="" name="" class="form-control required" required>
-                                 <option value="">Select Category</option>
+                                 <option value="">নির্বাচন করুন</option>
                               </select>
                             </div><br><br>
 
 
                             <div class="col-md-5">
-                                 <label for="" class=" control-label">SL no</label>
+                                 <label for="" class=" control-label">সিরিয়াল নং</label>
                             </div>
                             <div class="col-md-7">
-                               <input type="text" class="form-control" id="" name="" placeholder="Serial no can not be empty"required>
+                               <input type="text" class="form-control" id="" name="" placeholder="অবশ্যই পূরণ করুন"required>
                             </div><br><br>
 
                        </div>
@@ -365,30 +365,30 @@ $( function() {
                             
 
                             <div class="col-md-5">
-                            <label for="" class=" control-label">Brand</label>
+                            <label for="" class=" control-label">ব্রান্ড</label>
                             </div>
                             <div class="col-md-7">
                                 <select id="" name="" class="form-control required" required>
-                                 <option value="">Select Brand</option>
+                                 <option value="">নির্বাচন করুন</option>
                               </select>
                             </div><br><br>
 
                             <div class="col-md-5">
-                            <label for="" class=" control-label">Warrinty</label>
+                            <label for="" class=" control-label">ওয়ারেন্টি</label>
                             </div>
                             <div class="col-md-7">
-                               <input type="text" class="form-control" id="" name="" placeholder="Warrinty Period can not be empty"required>
+                               <input type="text" class="form-control" id="" name="" placeholder="অবশ্যই পূরণ করুন"required>
                             </div><br><br>
 
                         </div>
 
                         <div class="col-md-4" >
                             <div class="col-md-5">
-                            <label for="" class=" -label">Product</label>
+                            <label for="" class=" -label">পণ্য</label>
                             </div>
                             <div class="col-md-7">
                                 <select id="" name="" class="form-control required" required>
-                                 <option value="">Select Product</option>
+                                 <option value="">নির্বাচন করুন</option>
                               </select>
                             </div><br><br>
                         
@@ -399,8 +399,8 @@ $( function() {
                  
                   <div class="text-center">
                     <br><br><br>
-                      <button type="submit" class=" btn btn-info"> Save</button> 
-                          <button type="reset" class="btn btn-danger">Cancel</button>
+                      <button type="submit" class=" btn btn-info"> সংরক্ষণ করুন</button> 
+                          <button type="reset" class="btn btn-danger">বাতিল করুন</button>
                   </div>
                 </div>
               </form>
@@ -448,12 +448,12 @@ $( function() {
 
 
                         <div class="col-md-1">
-                          <label for="searchByBrandName"  class="col-md-4  control-label">Search</label>
+                          <label for="searchByBrandName"  class="col-md-4  control-label">খুঁজুন</label>
                           
                         </div>
 
                         <div class="col-md-3">
-                          <input type="text" class="form-control" id="searchByBrandName" name="searchByBrandName" placeholder="Search by brand name">
+                          <input type="text" class="form-control" id="searchByBrandName" name="searchByBrandName" placeholder="খুঁজুন...">
                         </div>
 
 
