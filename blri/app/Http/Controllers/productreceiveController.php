@@ -65,6 +65,7 @@ class productreceiveController extends Controller
             $newProductAddedToList->user_id=$request->session()->get('user')->id;
             $newProductAddedToList->receiveDate=date('Y-m-d', strtotime($request->receiveDate));
             $newProductAddedToList->save();
+            
         }
 
         return redirect()->route('product receive.product receive');

@@ -43,4 +43,41 @@ class requisitioninfoController extends Controller
      }
 
     }
+
+        public function requisitionListStore(Request $request)
+
+    {
+        // dd($request->all());
+        $this->validate($request, [
+            'name'=>'required',
+            'categoryName'=>'required',
+            'productCode'=>'required | unique:requisition_lists,product_info_id',
+            'productName'=>'required',
+            'brandName'=>'required',
+            'requisitionDate'=>'required | date| before_or_equal:today',
+            'quantity'=>'required|numeric|gt:0'
+        ]);
+        $employeeinformations=EmployeeInformation::find($request->name);
+        $product=ProductInfo::find($request->id);
+        
+
+       
+         
+            $requisitionList=new RequisitionList;
+            $requisitionList->employee_information_id=$request->name;
+            $requisitionList->product_info_id=$request->categoryName;
+            $requisitionList->product_info_id=$request->brandName;
+            $requisitionList->product_info_id=$request->productCode;
+            $requisitionList->product_info_id=$request->productName;
+            $requisitionList->quantity=$request->quantity;
+            $requisitionList->user_id=$request->session()->get('user')->id;
+            $requisitionList->requisitionDate=date('Y-m-d', strtotime($request->requisitionDate));
+            //dd($requisitionList);
+            $requisitionList->save();
+
+        
+           //dd($requisitionList);
+
+        return redirect()->route('product receive.requisition info');
+    }
 }

@@ -338,6 +338,7 @@ $( function() {
               </div>
               <div class="form-body">
                 <form class="form-horizontal" method="post"> <!--Form for grideview-->
+                  @csrf
                   <div class="form-group">
                       <div class="row">
 
@@ -348,7 +349,7 @@ $( function() {
                             <label for="name">কর্মচারীর নাম</label><br>
                          </div>
                          <div class="col-lg-8">
-                                <select id="neme" name="name" class="form-control required" required>
+                                <select id="name" name="name" class="form-control required" required>
                                  <option value="">নির্বাচন করুণ</option>
                                    @foreach ($employeeinformations  as $employeeinformation)
                                                <option value="{{$employeeinformation->id}}">{{$employeeinformation->name}}</option>
@@ -364,19 +365,24 @@ $( function() {
                             <select id="categoryName" name="categoryName" onchange="showBrand()" class="form-control required" required>
                                 <option value="" >নির্বাচন করুন</option>
                                 @foreach($products as $product)
-                                 <option value="{{$product->id}}"{{old('categoryName')==$category->id ?"selected":""}}>{{$product->categoryName}}</option>
+                                 <option value="{{$product->brand->category->id}}"{{old('categoryName')==$product->brand->category->id ?"selected":""}}>{{$product->brand->category->categoryName}}</option>
                                  @endforeach
                               </select>
-                              <option value="">ক্যাটাগরি সনাক্তকরণ</option>
-                            </select>
-                         </div><br><br>
+                             </div><br><br>
 
                          <div class="col-lg-4">
-                            <label for="">ব্র্যান্ড</label>
+                            <label for="brandName">ব্র্যান্ড</label>
                          </div>
                          <div class="col-lg-8">
-                            <select class="form-control" name="" required>
+                            <select class="form-control" id="brandName" name="brandName" required>
                               <option value="">ব্র্যান্ড সনাক্তকরণ</option>
+                                 
+                                  @foreach($products as $product)
+                                   
+                                      <option value="{{$product->brand->brandName}}" {{old('brandName')==$product->brand->brandName?"selected":""}}>{{$product->brand->brandName}}</option>
+                                   
+                                  @endforeach
+                               
                             </select>
                          </div><br><br>
                
@@ -412,15 +418,13 @@ $( function() {
                         
                              <select id="productCode" name="productCode" class="form-control required" required>
                                <option value="">Select Product Code</option>
-                               @if(old('productName'))
+                              
                                 @foreach ($products as $product)
-                                @if(old('productName')==$product->productName)
-                                  <option value="{{$product->id}}" @if (old('productCode')==$product->id)
-                                      {{"selected"}}
-                                  @endif>{{$product->productCode}}</option>
-                                @endif
+                               
+                                  <option value="{{$product->id}}" >{{$product->productCode}}</option>
+                                
                                 @endforeach
-                              @endif
+                              
                             </select>
                             <div class="error">{{$errors->first('productCode')}}</div>
 
@@ -452,6 +456,16 @@ $( function() {
                            <th class="col-lg-6 text-center">পণ্যের নাম</th>
                            <th class="col-lg-2 text-center">পরিমাণ</th>
                          </tr>
+                            @foreach ($requisitionlists as $item)
+                              <tr class="row"  align="center">
+                                 <td ><a ><i class="fa fa-edit" style="font-size:24px"></i></a></td>
+                                  <td> <a onclick="deleteItem({{$item->id}})" class="glyphicon glyphicon-trash" style="font-size:24px"></i></a></td>
+                                  <td>{{$item->productInfo->productName}}</td>
+                                  <!--<td>{{$item->productInfo->productCode}}</td>-->
+                                  <td>{{$item->quantity}}</td>
+                                
+                              </tr>
+                              @endforeach
                        </table>
                      </div>
                    </div> 
@@ -950,7 +964,7 @@ $( function() {
    <script>
      var brands;
      $(function() {
-       brands={!! $brands !!};
+       brands={!! $product->brandName !!};
      })
     function showBrand() {
       var selectedCategory=$("#categoryName").val();
@@ -959,7 +973,7 @@ $( function() {
       if(brands!=undefined){
         brands.forEach(brand => {
           if(brand.category_id==selectedCategory)
-            $('#brandName').append(`<option value="${brand.brandName}">${brand.brandName}</option>`); 
+            $('#brandName').append(`<option value="${product.brand.brandName}">${product.brand.brandName}</option>`); 
         });
       }
       

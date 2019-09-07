@@ -113,18 +113,21 @@ Route::post('/setup/district', 'districtController@districtPost');
 Route::get('/setup/district/{id}/edit', 'districtController@districtedit')->name('setup.disedit');
 Route::post('/setup/district/{id}/edit', 'districtController@update');
 
-
-// Route::get('/home', 'HomeController@index')->name('home');
 //Product Receive->
 //Product Receive
 Route::get('/product_receive/product_receive', 'productreceiveController@index')->name('product receive.product receive');
 Route::post('/product_receive/product_receive', 'productreceiveController@store');
 Route::get('/product_receive/product_receive/delete/item', 'productreceiveController@deleteItemFromReceiveList')->name('delete.product.from.ReceiveList');
 
+//Rquisition
 Route::get('/product_receive/product_requisition', 'requisitioninfoController@index')->name('product receive.requisition info');
+Route::post('/product_receive/product_requisition', 'requisitioninfoController@requisitionListStore');
+
+//Serial Info
 Route::get('/product_receive/product_serial_info', 'productserialinfoController@index')->name('product receive.product serial info');
 
-//product distribution
+//Product distribution->
+//
 Route::get('/product_distribution/product_release', 'productreleaseController@index')->name('product distribution.product release');
 Route::get('/product_distribution/product_distribution', 'productdistributiontypeController@index')->name('product distribution.product distribution');
 Route::get('/product_distribution/product_repair', 'productrepairController@index')->name('product distribution.product repair');
