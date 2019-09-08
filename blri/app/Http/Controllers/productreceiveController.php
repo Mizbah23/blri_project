@@ -82,4 +82,18 @@ class productreceiveController extends Controller
             return $isDelete ? 'deleted' : 'error';
         }
     }
+    public function editItemFromReceiveList(Request $request)
+    {
+        // if ($request->ajax()) {
+            $isAvailable= ProductReceiveList::find($request->id);
+            $suppliers=Supplier::all('id', 'address', 'mobile', 'supplierName');
+            $products=ProductInfo::all();
+            $projects=Project::all();
+            return view('product receive.ajaxEditProductReceive')
+                   ->with('suppliers', $suppliers)
+                   ->with('projects', $projects)
+                   ->with('products', $products)
+                   ->with('productReceiveList', $isAvailable);
+        }
+    // }
 }

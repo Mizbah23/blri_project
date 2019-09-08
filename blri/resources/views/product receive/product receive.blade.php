@@ -341,177 +341,181 @@ $( function() {
               <div class="form-title bg-primary text-white">
                 <h3 class="">Product Receive Info</h3>
               </div>
-              <div class="form-body">
-                <form class="form-horizontal" method="post" autocomplete="off"> 
-                  @csrf
-                  <div class="form-group"> <!--Form-->
+              <div class="form-body" >
+                <div id="createFormDiv">
+                  <form class="form-horizontal" method="post" autocomplete="off"> 
+                    @csrf
+                    <div class="form-group"> <!--Form-->
 
-                    <div class="row">
-                        <div class="col-md-4" >
-                            <div class="col-md-3">
-                                 <label for="supplierName" class=" control-label">Supplier</label>
-                            </div>
-                            <div class="col-md-9">
-                                <select id="supplierName" name="supplierName" class="form-control required" required onchange="showSupplierOtherInfo()">
-                                 <option value="">Select Supplier</option>
-                                 @foreach ($suppliers as $supplier)
-                                  <option value="{{$supplier->id}}" @if (old('supplierName')==$supplier->id)
+                      <div class="row">
+                          <div class="col-md-4" >
+                              <div class="col-md-3">
+                                  <label for="supplierName" class=" control-label">Supplier</label>
+                              </div>
+                              <div class="col-md-9">
+                                  <select id="supplierName" name="supplierName" class="form-control required" required onchange="showSupplierOtherInfo()">
+                                  <option value="">Select Supplier</option>
+                                  @foreach ($suppliers as $supplier)
+                                    <option value="{{$supplier->id}}" @if (old('supplierName')==$supplier->id)
+                                        {{"selected"}}
+                                    @endif>{{$supplier->supplierName}}</option>
+                                  @endforeach
+                                </select>
+                                <div class="error">{{$errors->first('supplierName')}}</div>
+                              </div><br><br>
+
+                              <div class="col-md-3">
+                                  <label for="productName" class=" control-label">Product</label>
+                              </div>
+                              <div class="col-md-9">
+                                  <select id="productName" name="productName" class="form-control required" required onchange="showProductCode()">
+                                  <option value="">Select Product</option>
+                                  @foreach ($products->unique('productName')->pluck('productName') as $productName)
+                                  <option value="{{$productName}}" @if (old('productName')==$productName)
                                       {{"selected"}}
-                                  @endif>{{$supplier->supplierName}}</option>
-                                 @endforeach
-                              </select>
-                              <div class="error">{{$errors->first('supplierName')}}</div>
-                            </div><br><br>
+                                  @endif>{{$productName}}</option>
+                                  @endforeach
+                                </select>
+                                <div class="error">{{$errors->first('productName')}}</div>
+                              </div><br><br>
 
-                            <div class="col-md-3">
-                                 <label for="productName" class=" control-label">Product</label>
-                            </div>
-                            <div class="col-md-9">
-                                <select id="productName" name="productName" class="form-control required" required onchange="showProductCode()">
-                                 <option value="">Select Product</option>
-                                 @foreach ($products->unique('productName')->pluck('productName') as $productName)
-                                 <option value="{{$productName}}" @if (old('productName')==$productName)
-                                    {{"selected"}}
-                                @endif>{{$productName}}</option>
-                                @endforeach
-                              </select>
-                              <div class="error">{{$errors->first('productName')}}</div>
-                            </div><br><br>
-
-                            <div class="col-md-3">
-                              <label for="productCode" class=" control-label">Product Code</label>
-                            </div>
-                            <div class="col-md-9">
-                              <select id="productCode" name="productCode" class="form-control required" required>
-                               <option value="">Select Product Code</option>
-                               @if(old('productName'))
-                                @foreach ($products as $product)
-                                @if(old('productName')==$product->productName)
-                                  <option value="{{$product->id}}" @if (old('productCode')==$product->id)
-                                      {{"selected"}}
-                                  @endif>{{$product->productCode}}</option>
+                              <div class="col-md-3">
+                                <label for="productCode" class=" control-label">Product Code</label>
+                              </div>
+                              <div class="col-md-9">
+                                <select id="productCode" name="productCode" class="form-control required" required>
+                                <option value="">Select Product Code</option>
+                                @if(old('productName'))
+                                  @foreach ($products as $product)
+                                  @if(old('productName')==$product->productName)
+                                    <option value="{{$product->id}}" @if (old('productCode')==$product->id)
+                                        {{"selected"}}
+                                    @endif>{{$product->productCode}}</option>
+                                  @endif
+                                  @endforeach
                                 @endif
-                                @endforeach
-                              @endif
-                            </select>
-                            <div class="error">{{$errors->first('productCode')}}</div>
-                          </div><br><br>
-
-                            
-                       </div>
-
-                        <div class="col-md-4" >
-                            
-                        <div class="col-md-3">
-                            <label for="address" class=" control-label">Address</label>
-                            </div>
-                            <div class="col-md-9">
-                               <input type="text" class="form-control" id="address" name="address" value="{{old('address')}}" placeholder="Address can not be empty" required readonly>
-                               <div class="error">{{$errors->first('address')}}</div>
-                            </div><br><br>
-
-                            <div class="col-md-3">
-                              <label for="orderNo" class=" control-label">OrderNo.</label>
-                            </div>
-                            <div class="col-md-9">
-                              <input type="text" class="form-control" id="orderNo" name="orderNo" value="{{old('orderNo')}}" placeholder="Order no can not be empty"required>
-                              <div class="error">{{$errors->first('orderNo')}}</div>
-                            </div><br><br>
-
-
-                            <div class="col-md-3">
-                            <label for="projectName" class=" control-label">Project</label>
-                            </div>
-                            <div class="col-md-9">
-                                <select id="projectName" name="projectName" class="form-control required" required>
-                                 <option value="">Select Project</option>
-                                 @foreach ($projects as $project)
-                                 <option value="{{$project->id}}" @if (old('projectName')==$project->id)
-                                    {{"selected"}}
-                                @endif>{{$project->projectName}}</option>
-                                @endforeach
                               </select>
-                              <div class="error">{{$errors->first('projectName')}}</div>
+                              <div class="error">{{$errors->first('productCode')}}</div>
                             </div><br><br>
 
-                            <div class="col-md-3">
-                            
-                            </div>
-                            {{-- <div class="col-md-9">
-                                <input type="checkbox" value="">  Other Objects</label>
-                            </div><br><br><label> --}}
-
+                              
                         </div>
 
-                        <div class="col-md-4" >
-                            <div class="col-md-3">
-                             <label for="contactNo" class=" control-label">Mobile</label>
-                            </div>
-                            <div class="col-md-9">
-                               <input type="text" class="form-control" id="contactNo" name="contactNo" value="{{old('contactNo')}}" placeholder="Mobile no can not be empty" required readonly>
-                              <div class="error">{{$errors->first('contactNo')}}</div>
-                            </div><br><br>
+                          <div class="col-md-4" >
+                              
+                          <div class="col-md-3">
+                              <label for="address" class=" control-label">Address</label>
+                              </div>
+                              <div class="col-md-9">
+                                <input type="text" class="form-control" id="address" name="address" value="{{old('address')}}" placeholder="Address can not be empty" required readonly>
+                                <div class="error">{{$errors->first('address')}}</div>
+                              </div><br><br>
 
-                            <div class="col-md-3">
-                            <label for="quantity" class=" control-label">Quantity</label>
-                            </div>
-                            <div class="col-md-9">
-                               <input type="number" class="form-control" id="quantity" name="quantity" value="{{old('quantity')}}" placeholder="Quantity can not be empty" required>
-                               <div class="error">{{$errors->first('quantity')}}</div>
-                            </div>
-                            <br><br>
+                              <div class="col-md-3">
+                                <label for="orderNo" class=" control-label">OrderNo.</label>
+                              </div>
+                              <div class="col-md-9">
+                                <input type="text" class="form-control" id="orderNo" name="orderNo" value="{{old('orderNo')}}" placeholder="Order no can not be empty"required>
+                                <div class="error">{{$errors->first('orderNo')}}</div>
+                              </div><br><br>
 
-                            <div class="col-md-3">
-                            <label for="" class=" control-label">Date</label>
-                            </div>
-                            <div class="col-md-9">
-                              <input class="form-control datepicker" type="text" id="receiveDate" name="receiveDate" placeholder="mm/dd/yyyy"  value="{{old('receiveDate')}}"  required><br>
-                              <div class="error">{{$errors->first('receiveDate')}}</div>
-                            </div><br><br>
-                        
-                        </div>
-                        <div class="text-center">
-                          <button type="submit" class="btn btn-info"><i class="glyphicon glyphicon-plus" style="color: white"></i>Add to lsit</button> 
-                          <button type="reset" class="btn btn-danger">Reset</button><br><br>
-                        </div>
 
-                  </div>
+                              <div class="col-md-3">
+                              <label for="projectName" class=" control-label">Project</label>
+                              </div>
+                              <div class="col-md-9">
+                                  <select id="projectName" name="projectName" class="form-control required" required>
+                                  <option value="">Select Project</option>
+                                  @foreach ($projects as $project)
+                                  <option value="{{$project->id}}" @if (old('projectName')==$project->id)
+                                      {{"selected"}}
+                                  @endif>{{$project->projectName}}</option>
+                                  @endforeach
+                                </select>
+                                <div class="error">{{$errors->first('projectName')}}</div>
+                              </div><br><br>
 
-                  <div class="row">
-                      <div class="col-md-5"></div>
-                      <div class="col-md-7">
-                          <table class="table table-responsive table-hover table-striped table-bordered table-condensed">
-                              <tr class="row bg-primary">
-                                  <th class="col-lg-1 text-center">Edit</th>
-                                  <th class="col-lg-1 text-center">Delete</th>
-                                  <th class="col-lg-4 text-center">Product</th>
-                                  <th class="col-lg-2 text-center">Code</th>
-                                  <th class="col-lg-2 text-center">Quantity</th>
-                                  <th class="col-lg-2 text-center">OrderNo</th>
-                              </tr>
-                              @foreach ($productReceiveLists as $item)
-                                <tr class="row"  align="center">
-                                    <td ><a ><i class="fa fa-edit" style="font-size:24px"></i></a></td>
-                                    <td> <a onclick="deleteItem({{$item->id}})" class="glyphicon glyphicon-trash" style="font-size:24px"></i></a></td>
-                                    <td>{{$item->productInfo->productName}}</td>
-                                    <td>{{$item->productInfo->productCode}}</td>
-                                    <td>{{$item->quantity}}</td>
-                                    <td>{{$item->orderNo}}</td>
-                                </tr>
-                              @endforeach
-                  
-                          </table>
-                      </div>
-                  </div>
+                              <div class="col-md-3">
+                              
+                              </div>
+                              {{-- <div class="col-md-9">
+                                  <input type="checkbox" value="">  Other Objects</label>
+                              </div><br><br><label> --}}
 
-                  <div class="text-center">
-                    <br><br><br>
-                      <button type="button" class=" btn btn-info"> Save</button> 
-                          <button type="reset" class="btn btn-danger">Cancel</button>
-                          <button type="button" class="btn btn-success">Print Invoice</button>
-                  </div>
+                          </div>
+
+                          <div class="col-md-4" >
+                              <div class="col-md-3">
+                              <label for="contactNo" class=" control-label">Mobile</label>
+                              </div>
+                              <div class="col-md-9">
+                                <input type="text" class="form-control" id="contactNo" name="contactNo" value="{{old('contactNo')}}" placeholder="Mobile no can not be empty" required readonly>
+                                <div class="error">{{$errors->first('contactNo')}}</div>
+                              </div><br><br>
+
+                              <div class="col-md-3">
+                              <label for="quantity" class=" control-label">Quantity</label>
+                              </div>
+                              <div class="col-md-9">
+                                <input type="number" class="form-control" id="quantity" name="quantity" value="{{old('quantity')}}" placeholder="Quantity can not be empty" required>
+                                <div class="error">{{$errors->first('quantity')}}</div>
+                              </div>
+                              <br><br>
+
+                              <div class="col-md-3">
+                              <label for="" class=" control-label">Date</label>
+                              </div>
+                              <div class="col-md-9">
+                                <input class="form-control datepicker" type="text" id="receiveDate" name="receiveDate" placeholder="mm/dd/yyyy"  value="{{old('receiveDate')}}"  required><br>
+                                <div class="error">{{$errors->first('receiveDate')}}</div>
+                              </div><br><br>
+                          
+                          </div>
+                          <div class="text-center">
+                            <button type="submit" class="btn btn-info"><i class="glyphicon glyphicon-plus" style="color: white"></i>Add to lsit</button> 
+                            <button type="reset" class="btn btn-danger">Reset</button><br><br>
+                          </div>
+
+                    </div>
+
+                    
+                    </div>
+                  </form>
                 </div>
-              </form>
+                <div id="updateFormDiv"></div>
+                <div class="row">
+                    <div class="col-md-5"></div>
+                    <div class="col-md-7">
+                        <table class="table table-responsive table-hover table-striped table-bordered table-condensed">
+                            <tr class="row bg-primary">
+                                <th class="col-lg-1 text-center">Edit</th>
+                                <th class="col-lg-1 text-center">Delete</th>
+                                <th class="col-lg-4 text-center">Product</th>
+                                <th class="col-lg-2 text-center">Code</th>
+                                <th class="col-lg-2 text-center">Quantity</th>
+                                <th class="col-lg-2 text-center">OrderNo</th>
+                            </tr>
+                            @foreach ($productReceiveLists as $item)
+                              <tr class="row"  align="center">
+                                  <td ><a href="#" onclick="handleEdit({{$item->id}})"><i class="fa fa-edit" style="font-size:24px" ></i></a></td>
+                                  <td> <a href="#" onclick="deleteItem({{$item->id}})" class="glyphicon glyphicon-trash" style="font-size:24px"></i></a></td>
+                                  <td>{{$item->productInfo->productName}}</td>
+                                  <td>{{$item->productInfo->productCode}}</td>
+                                  <td>{{$item->quantity}}</td>
+                                  <td>{{$item->orderNo}}</td>
+                              </tr>
+                            @endforeach
+                
+                        </table>
+                    </div>
+                </div>
+
+                <div class="text-center">
+                  <br><br><br>
+                    <button type="button" class=" btn btn-info"> Save</button> 
+                        <button type="reset" class="btn btn-danger">Cancel</button>
+                        <button type="button" class="btn btn-success">Print Invoice</button>
+                </div>
                       <!--Search option starts-->
                       <div class="row">
                         <div class="col-md-8"></div>
@@ -1023,10 +1027,25 @@ $( function() {
           }
         }
       });
-      } else {
-
       }
      }
+
+    function handleEdit(id) {
+       $.ajax({
+        url: "{{route("edit.product.from.ReceiveList")}}",
+        type:"get",
+        data: { id: id},
+        success: function (data) {
+          $("#createFormDiv").html(data);
+          $("#receiveDate").datepicker();
+          // $("#createFormDiv").hide();
+          // console.log(data);
+        }
+      });
+    }
+    
+    
+     
    </script>
 
     
