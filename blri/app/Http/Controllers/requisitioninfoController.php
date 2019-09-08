@@ -39,7 +39,8 @@ class requisitioninfoController extends Controller
                                      ->with('reportings',$reportings)
                                      ->with('products', $products)
                                      ->with('employeeinformations',$employeeinformations)
-                                     ->with('requisitionlists',$requisitionlists);
+                                     ->with('requisitionlists',$requisitionlists)
+                                     ->with('brands',$brands);
      }
      else{
      	 return "<h2>The route you are looking for is not available.</h2>";
