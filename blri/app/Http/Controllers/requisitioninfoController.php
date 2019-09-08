@@ -12,6 +12,7 @@ use App\Reporting;
 use App\EmployeeInformation;
 use App\RequisitionList;
 use App\ProductInfo;
+use App\Brand;
 
 class requisitioninfoController extends Controller
 {
@@ -27,6 +28,8 @@ class requisitioninfoController extends Controller
         $employeeinformations=EmployeeInformation::all();
         $requisitionlists=RequisitionList::all();
         $products=ProductInfo::all();
+        $brands=Brand::all();
+        // dd($products->unique('productName'));
         //dd($sections[0]->division);
         return view('product receive.requisition info')->with('setuptypes',$setuptypes)
                                      ->with('securitytypes',$securitytypes)
@@ -65,10 +68,7 @@ class requisitioninfoController extends Controller
          
             $requisitionList=new RequisitionList;
             $requisitionList->employee_information_id=$request->name;
-            $requisitionList->product_info_id=$request->categoryName;
-            $requisitionList->product_info_id=$request->brandName;
             $requisitionList->product_info_id=$request->productCode;
-            $requisitionList->product_info_id=$request->productName;
             $requisitionList->quantity=$request->quantity;
             $requisitionList->user_id=$request->session()->get('user')->id;
             $requisitionList->requisitionDate=date('Y-m-d', strtotime($request->requisitionDate));

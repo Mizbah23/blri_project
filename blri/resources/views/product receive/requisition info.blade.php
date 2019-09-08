@@ -374,14 +374,14 @@ $( function() {
                             <label for="brandName">ব্র্যান্ড</label>
                          </div>
                          <div class="col-lg-8">
-                            <select class="form-control" id="brandName" name="brandName" required>
+                            <select class="form-control" id="brandName" name="brandName" required onchange="showProductName()">
                               <option value="">ব্র্যান্ড সনাক্তকরণ</option>
                                  
-                                  @foreach($products as $product)
+                            {{--       @foreach($brands as $bra)
                                    
                                       <option value="{{$product->brand->brandName}}" {{old('brandName')==$product->brand->brandName?"selected":""}}>{{$product->brand->brandName}}</option>
                                    
-                                  @endforeach
+                                  @endforeach --}}
                                
                             </select>
                          </div><br><br>
@@ -964,36 +964,26 @@ $( function() {
    <script>
      var brands;
      $(function() {
-       brands={!! $product->brandName !!};
+       brands={!! $brands !!};
+       products={!! $products !!};
      })
     function showBrand() {
       var selectedCategory=$("#categoryName").val();
-      // console.log(brands);
+      console.log(selectedCategory);
       $('#brandName').html('<option value="">Select a Brand</option>');
       if(brands!=undefined){
         brands.forEach(brand => {
           if(brand.category_id==selectedCategory)
-            $('#brandName').append(`<option value="${product.brand.brandName}">${product.brand.brandName}</option>`); 
+            $('#brandName').append(`<option value="${brand.brandName}">${brand.brandName}</option>`); 
         });
       }
       
     }
-    function productCheck() {
-      $('#productCodeError').html('');
-      $.ajax({
-        url: "{{route("check.product.exist")}}",
-        type:"post",
-        data: { productCode: $("#productCode").val(), _token: '{{csrf_token()}}'},
-        success: function (data) {
-          if(data!='success'){
-            console.log(data);
-            
-            $('#productCodeError').html(data.productCode[0]);
-          }
-        }
-      });
-    } 
-   </script>
+    function showProductName(){
+
+    }
+  </script>
+    
     
 </body>
 </html>
