@@ -66,7 +66,6 @@ class requisitioninfoController extends Controller
         
 
        
-         
             $requisitionList=new RequisitionList;
             $requisitionList->employee_information_id=$request->name;
             $requisitionList->product_info_id=$request->productCode;
