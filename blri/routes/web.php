@@ -121,6 +121,7 @@ Route::put('/product_receive/product_receive', 'productreceiveController@updateI
 Route::get('/product_receive/product_receive/delete/item', 'productreceiveController@deleteItemFromReceiveList')->name('delete.product.from.ReceiveList');
 Route::get('/product_receive/product_receive/edit/item', 'productreceiveController@editItemFromReceiveList')->name('edit.product.from.ReceiveList');
 Route::get('/product_receive/product_receive/saveAll/item', 'productreceiveController@saveAllItemFromReceiveList')->name('saveAll.product.from.ReceiveList');
+Route::get('/product_receive/product_receive/clearList/item', 'productreceiveController@clearListItemFromReceiveList')->name('clearList.product.from.ReceiveList');
 
 
 //Rquisition

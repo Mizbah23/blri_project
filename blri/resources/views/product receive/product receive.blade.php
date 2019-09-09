@@ -517,7 +517,7 @@ $( function() {
                 <div class="text-center">
                   <br><br><br>
                     <button type="button" class=" btn btn-info" onclick="savedata()"> Save</button> 
-                        <button type="reset" class="btn btn-danger">Cancel</button>
+                        <button type="reset" class="btn btn-danger" onclick="clearList()">Cancel</button>
                         <button type="button" class="btn btn-success">Print Invoice</button>
                 </div>
                 @endif
@@ -1098,6 +1098,27 @@ $( function() {
         }
       });
      }
+
+     function clearList() {
+       if (confirm('Do you really want to delete all the item from List?')) {
+          $.ajax({
+            url: "{{route("clearList.product.from.ReceiveList")}}",
+            type:"get",
+            success: function (data) {
+              console.log(data);
+              
+              if(data=="success"){
+                alert("Data deleted successfully");
+                location.reload();
+              }else{
+                alert("Something Went Wrong");
+              }
+            }
+          });
+        }
+      }
+      
+     
    </script>
 
     
