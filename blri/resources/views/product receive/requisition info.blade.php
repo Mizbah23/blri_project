@@ -337,6 +337,7 @@ $( function() {
                 <h3 class="">ফরমাশ-পত্র</h3>
               </div>
               <div class="form-body">
+                <div id="createFormDiv">
                 <form class="form-horizontal" method="post"> <!--Form for grideview-->
                   @csrf
                   <div class="form-group">
@@ -349,7 +350,7 @@ $( function() {
                             <label for="name">কর্মচারীর নাম</label><br>
                          </div>
                          <div class="col-lg-8">
-                                <select id="name" name="name" class="form-control required" required>
+                                <select id="name" name="name" class="form-control required" required value="{{ old('name') }}">
                                  <option value="">নির্বাচন করুণ</option>
                                    @foreach ($employeeinformations  as $employeeinformation)
                                                <option value="{{$employeeinformation->id}}">{{$employeeinformation->name}}</option>
@@ -364,7 +365,7 @@ $( function() {
                             <label for="categoryName">ক্যাটাগরি</label>
                          </div>
                          <div class="col-lg-8">
-                            <select id="categoryName" name="categoryName" onchange="showBrand()" class="form-control required" required>
+                            <select id="categoryName" name="categoryName" onchange="showBrand()" class="form-control required" required value="{{old('categoryName')}}">
                                 <option value="" >নির্বাচন করুন</option>
                                 @foreach($products as $product)
                                  <option value="{{$product->brand->category->id}}"{{old('categoryName')==$product->brand->category->id ?"selected":""}}>{{$product->brand->category->categoryName}}</option>
@@ -377,7 +378,7 @@ $( function() {
                             <label for="brandName">ব্র্যান্ড</label>
                          </div>
                          <div class="col-lg-8">
-                            <select class="form-control" id="brandName" name="brandName" required onchange="showProductName()">
+                            <select class="form-control" id="brandName" name="brandName" required onchange="showProductName()" value="{{old('brandName') }}">
                               <option value="">ব্র্যান্ড সনাক্তকরণ</option>
                                  
                                @foreach($products as $product)
@@ -403,7 +404,7 @@ $( function() {
                           <label for="productName">পণ্য</label>
                         </div>
                         <div class="col-lg-8">
-                           <select class="form-control" id="productName" name="productName" required onchange="showProductCode()">
+                           <select class="form-control" id="productName" name="productName" required onchange="showProductCode()" value="{{ old('productName') }}">
                               <option value="">পণ্য সনাক্তকরণ</option>
                                @foreach ($products->unique('productName')->pluck('productName') as $productName)
                                  <option value="{{$productName}}" @if (old('productName')==$productName)
@@ -419,7 +420,7 @@ $( function() {
                         </div>
                         <div class="col-lg-8">
                         
-                             <select id="productCode" name="productCode" class="form-control required" required readonly>
+                             <select id="productCode" name="productCode" class="form-control required" value="{{old('productCode')}}" required readonly>
                                <option value="">Select Product Code</option>
                               
                               @if(old('productName'))
@@ -441,7 +442,7 @@ $( function() {
                           <label for="">পরিমাণ</label>
                         </div>
                         <div class="col-lg-8">
-                           <input class="form-control" type="text" name="quantity" placeholder="অবশ্যই পূরণ করুন" required>
+                           <input class="form-control" type="number" name="quantity" placeholder="অবশ্যই পূরণ করুন" value="{{old('quantity')}}" required>
                               <div class="error" style="color: red">{{$errors->first('quantity')}}</div>
                         </div><br><br><br>
                        
@@ -452,10 +453,11 @@ $( function() {
                            <button type="reset" name="gridreset" class="btn">পুনরায় বসান</button>
                          </center><br>
                         
-                 
+                      </div>
                 
-                   
+                   </div>
                 </form><!--End Form for grideview-->
+              </div>
                      <div class="col-lg-12">
                        <table class="table table-responsive table-hover table-striped table-bordered table-condensed">
                          <tr class="row bg-primary">
@@ -468,7 +470,7 @@ $( function() {
                          </tr>
                             @foreach ($requisitionlists as $item)
                               <tr class="row"  align="center">
-                                 <td ><a ><i class="fa fa-edit" style="font-size:24px"></i></a></td>
+                                 <td ><a onclick="handleEdit({{$item->id}})"><i class="fa fa-edit" style="font-size:24px" ></i></a></td>
                                   <td> <a onclick="deleteItem({{$item->id}})" class="glyphicon glyphicon-trash" style="font-size:24px"></i></a></td>
                                     <td>{{ $item->employeeinfo->name }}</td>
                                     <td>{{$item->productInfo->productName}}</td>
@@ -490,6 +492,7 @@ $( function() {
                        </center>
                   </div>
                 </div>
+
 
 
                     <!--<div class="row">
@@ -1024,6 +1027,68 @@ $( function() {
         }
       }
      }
+
+          function deleteItem(id) {
+      if (confirm('Do you really want to delete this item?')) {
+        $.ajax({
+        url: "{{route("delete.product.from.RequisitionList")}}",
+        type:"get",
+        data: { id: id},
+        success: function (data) {
+          console.log(data);
+          if(data=='deleted'){
+            location.reload();
+          }else{
+            alert("Something went wrong! Please Reload the page.");
+          }
+        }
+      });
+      }
+     }
+
+      function handleEdit(id) {
+       $.ajax({
+        url: "{{route("edit.product.from.RequisitionList")}}",
+        type:"get",
+        data: { id: id},
+        success: function (data) {
+          $("#createFormDiv").html(data);
+          $( ".datepicker" ).datepicker({
+            format: 'MM/DD/YYYY',
+            maxDate: "+0D",
+            ignoreReadonly: true
+          });
+          $("#requisitionDate").datepicker();
+          // $("#createFormDiv").hide();
+          // console.log(data);
+        }
+      });
+    }
+
+       function updateContent() {
+      var form=$("#editForm");
+      // console.log(form.serialize());
+      $.ajax({
+        url: "{{route("update.product.from.RequisitionList")}}",
+        type:"put",
+        data: form.serialize(),
+        success: function (data) {
+          console.log(data);
+          if(data[0]=="success"){
+            alert("Successfuly Updated");
+            
+            location.reload();
+          }else{
+           for (const key in data[1]) {
+             alert(data[1][key][0]);
+           }
+          }
+        }
+      });
+    }
+    function cancelUpdate() {
+      location.reload();
+    }
   </script>
     
     

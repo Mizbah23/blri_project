@@ -484,8 +484,8 @@ $( function() {
                 </div>
                 <div id="updateFormDiv"></div>
                 <div class="row">
-                    <div class="col-md-5"></div>
-                    <div class="col-md-7">
+                    
+                    <div class="col-md-12">
                         <table class="table table-responsive table-hover table-striped table-bordered table-condensed">
                             <tr class="row bg-primary">
                                 <th class="col-lg-1 text-center">Edit</th>
@@ -520,16 +520,7 @@ $( function() {
                       <div class="row">
                         <div class="col-md-8"></div>
 
-
-                        <div class="col-md-1">
-                          <label for="searchByBrandName"  class="col-md-4  control-label">Search</label>
-                          
-                        </div>
-
-                        <div class="col-md-3">
-                          <input type="text" class="form-control" id="searchByBrandName" name="searchByBrandName" placeholder="Search by brand name">
-                        </div>
-
+               
 
                       </div>
 

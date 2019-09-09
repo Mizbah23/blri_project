@@ -124,6 +124,10 @@ Route::get('/product_receive/product_receive/edit/item', 'productreceiveControll
 //Rquisition
 Route::get('/product_receive/product_requisition', 'requisitioninfoController@index')->name('product receive.requisition info');
 Route::post('/product_receive/product_requisition', 'requisitioninfoController@requisitionListStore');
+Route::get('/product_requisition/delete/item', 'requisitioninfoController@deleteItemFromRequisitionList')->name('delete.product.from.RequisitionList');
+Route::get('/product_requisition/edit/item', 'requisitioninfoController@editItemFromRequisitionList')->name('edit.product.from.RequisitionList');
+Route::put('/product_receive/product_requisition', 'requisitioninfoController@updateItemFromRequisitionList')->name('update.product.from.RequisitionList');
+
 
 //Serial Info
 Route::get('/product_receive/product_serial_info', 'productserialinfoController@index')->name('product receive.product serial info');

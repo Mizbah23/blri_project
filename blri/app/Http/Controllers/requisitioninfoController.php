@@ -79,5 +79,61 @@ class requisitioninfoController extends Controller
            //dd($requisitionList);
 
         return redirect()->route('product receive.requisition info');
+    } 
+       public function deleteItemFromRequisitionList(Request $request)
+    {
+        if ($request->ajax()) {
+            $isAvailable= RequisitionList::find($request->id);
+            $isDelete=false;
+            if ($isAvailable) {
+                $isDelete= $isAvailable->delete();
+            }
+            return $isDelete ? 'deleted' : 'error';
+        }
     }
+
+     public function editItemFromRequisitionList(Request $request)
+    {
+        if ($request->ajax()) {
+            $isAvailable= RequisitionList::find($request->id);
+            $employeeinformations=EmployeeInformation::all();
+            $products=ProductInfo::all();
+            
+            return view('product receive.ajaxEditRequisition')
+                   ->with('employeeinformations', $employeeinformations)
+                   ->with('products', $products)
+                   ->with('requisitionList', $isAvailable);
+        }
+    }
+
+        public function updateItemFromRequisitionList(Request $request)
+    {
+          $this->validate($request, [
+            'name'=>'required',
+            'categoryName'=>'required',
+            'productCode'=>'required | unique:requisition_lists,product_info_id',
+            'productName'=>'required',
+            'brandName'=>'required',
+            'requisitionDate'=>'required | date| before_or_equal:today',
+            'quantity'=>'required|numeric|gt:0'
+        ]);
+       $employeeinformations=EmployeeInformation::find($request->name);
+       $product=ProductInfo::find($request->productCode);
+        
+
+       
+              $requisitionList=RequisitionList::find($request->id);
+            $requisitionList->employee_information_id=$request->name;
+            $requisitionList->product_info_id=$request->productCode;
+            $requisitionList->quantity=$request->quantity;
+            $requisitionList->user_id=$request->session()->get('user')->id;
+            $requisitionList->requisitionDate=date('Y-m-d', strtotime($request->requisitionDate));
+            //dd($requisitionList);
+            $requisitionList->save();
+     }
+ 
+
+  
+
+
 }
