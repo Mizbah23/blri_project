@@ -407,15 +407,7 @@ $( function() {
                           <div class="error">{{$errors->first('vatReg')}}</div>
 
                           </div><br><br>
-                           @if ($errors->any())
-                            <div class="alert alert-danger">
-                            <ul>
-                           @foreach ($errors->all() as $error)
-                           <li>{{ $error }}</li>
-                           @endforeach
-                            </ul>
-                            </div>
-                           @endif 
+                      
                       </div>
                       <!--right side end-->
 

@@ -120,6 +120,9 @@ Route::post('/product_receive/product_receive', 'productreceiveController@store'
 Route::put('/product_receive/product_receive', 'productreceiveController@updateItemFromReceiveList')->name('update.product.from.ReceiveList');
 Route::get('/product_receive/product_receive/delete/item', 'productreceiveController@deleteItemFromReceiveList')->name('delete.product.from.ReceiveList');
 Route::get('/product_receive/product_receive/edit/item', 'productreceiveController@editItemFromReceiveList')->name('edit.product.from.ReceiveList');
+Route::get('/product_receive/product_receive/saveAll/item', 'productreceiveController@saveAllItemFromReceiveList')->name('saveAll.product.from.ReceiveList');
+Route::get('/product_receive/product_receive/clearList/item', 'productreceiveController@clearListItemFromReceiveList')->name('clearList.product.from.ReceiveList');
+
 
 //Rquisition
 Route::get('/product_receive/product_requisition', 'requisitioninfoController@index')->name('product receive.requisition info');

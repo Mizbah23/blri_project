@@ -24,16 +24,16 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 <link href='/css/SidebarNav.min.css' media='all' rel='stylesheet' type='text/css'/>
 <!-- //side nav css file -->
 
-<link rel="stylesheet" href="/css/jquery-ui.css" type='text/css'/>
-<!--datepicker-->
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/css/jquery-ui.css" type='text/css'/>
+ <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <link rel="stylesheet" href="/resources/demos/style.css">
+
  
  <!-- js-->
 <script src="/js/jquery-1.11.1.min.js"></script>
 <script src="/js/modernizr.custom.js"></script>
 
-<!--datepicker-->
+
 <script src="/js/jquery-1.12.4.js"></script>
 <script src="/js/jquery-ui.js"></script>
 <!--webfonts-->
@@ -49,16 +49,20 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 <script src="/js/custom.js"></script>
 <link href="/css/custom.css" rel="stylesheet">
 <!--//Metis Menu -->
- <!--For autocomplete Search -->
+<!-- For autocomplete Search -->
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.min.css">
 <link rel="stylesheet" href="https://jqueryui.com/resources/demos/style.css">
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
-<!--// For autocomplete Search -->
+<!-- For autocomplete Search -->
 <style>
 #chartdiv {
   width: 100%;
   height: 295px;
+}
+.error{
+  color: red;
+  font-size: 0.8em;
 }
 </style>
 <!--pie-chart --><!-- index page sales reviews visitors pie chart -->
@@ -118,41 +122,33 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                         </script>
                     <!-- //requried-jsfiles-for owl -->
 <!--date picker-->
-  <script>
-$( function() {
-    var dateFormat = "dd/mm/yy",
-      from = $( "#from" )
-        .datepicker({
-          defaultDate: "+1w",
-          changeMonth: true,
-          changeYear: true,
-          numberOfMonths: 1
-        })
-        .on( "change", function() {
-          to.datepicker( "option", "minDate", getDate( this ) );
-        }),
-      to = $( "#to" ).datepicker({
-        defaultDate: "+1w",
-        changeMonth: true,
-        changeYear: true,
-        numberOfMonths: 1
-      })
-      .on( "change", function() {
-        from.datepicker( "option", "maxDate", getDate( this ) );
-      });
- 
-    function getDate( element ) {
-      var date;
-      try {
-        date = $.datepicker.parseDate( dateFormat, element.value );
-      } catch( error ) {
-        date = null;
-      }
- 
-      return date;
-    }
-  } );
+<script>
+  $(function() {
+    $( ".datepicker" ).datepicker({
+      format: 'MM/DD/YYYY',
+      maxDate: "+0D",
+      ignoreReadonly: true
+    });
+  });
   </script>
+  
+
+<script>
+$(document).ready(function(){
+ $("#dor").hide();
+    $("#por").hide();
+  $("#hide").click(function(){
+    $("#dor").hide();
+    $("#por").show();
+   
+  });
+  $("#show").click(function(){
+    $("#por").hide();
+    $("#dor").show();
+     
+  });
+});
+</script>
 
 </head> 
 <body class="cbp-spmenu-push">
@@ -333,18 +329,75 @@ $( function() {
 
 
                         <div class="col-md-4">
-                            <input type="radio" name="p" value=""> Distribute to Department
+                            <input type="radio" id="show" name="p" value=""> Distribute to Department
                         </div>
 
 
                         <div class="col-md-4">
-                            <input type="radio" name="p" value=""> Distribute to Employee
+                            <input type="radio" id="hide" name="p" value=""> Distribute to Employee
                         </div>
+
 
 
                         <div class="col-md-2"></div>
 
                     </div><br>
+{{-- id show --}}
+                    <div class="row" id="por" style="border: solid 1px #eee; padding: 20px">
+                        <div class="col-md-4">
+                          <div class="col-md-4">
+                                 <label for="" class=" control-label">Project</label>
+                            </div>
+                            <div class="col-md-8">
+                                <select id="" name="" class="form-control required" required>
+                                 <option value="">Select Project</option>
+                              </select>
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-4">
+                            <div class="col-md-4">
+                                 <label for="" class=" control-label">Employee</label>
+                            </div>
+                            <div class="col-md-8">
+                                <select id="" name="" class="form-control required" required>
+                                 <option value="">Select Employee</option>
+                              </select>
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-4">
+                          <div class="col-md-4">
+                                 <label for="" class=" control-label">Assign Date</label>
+                            </div>
+                            <div class="col-md-8">
+                                <input class="form-control datepicker" type="text" name="date" value="" placeholder="মাস/দিন/বছর" required>
+                            </div>
+                           
+                        </div>
+
+                    </div><br>
+{{-- id hide --}}
+<div class="row" id="dor" style="border: solid 1px #eee; padding: 20px">
+                        <div class="col-md-3"></div>
+
+
+                        <div class="col-md-6">
+                            <div class="col-md-3">
+                                 <label for="" class=" control-label">Department Name</label>
+                            </div>
+                            <div class="col-md-9">
+                                <select id="" name="" class="form-control required" required>
+                                 <option value="">Select Department</option>
+                              </select>
+                            </div><br><br>
+                        </div>
+                        <div class="col-md-3"></div>
+
+                    </div><br>
+
 
                     <div class="row">
                         <div class="col-md-4"  style="border: solid 2px #eee; padding: 20px">
@@ -400,11 +453,12 @@ $( function() {
                                  <table class="table table-responsive table-hover table-striped table-bordered table-condensed">
                                     <tr class="row bg-primary">
                                         <th class="col-lg-1 text-center">ID</th>
-                                        <th class="col-lg-3 text-center">Product ID</th>
+                                        <th class="col-lg-2 text-center">Product ID</th>
                                         <th class="col-lg-3 text-center">Product</th>
                                         <th class="col-lg-2 text-center">Code</th>
                                         <th class="col-lg-1 text-center">Stock</th>
                                         <th class="col-lg-1 text-center">Sales</th>
+                                        <th class="col-lg-1 text-center">Edit</th>
                                         <th class="col-lg-1 text-center">Delete</th>
                                     </tr>
                       
@@ -415,29 +469,13 @@ $( function() {
                                         <td></td>
                                         <td></td>
                                         <td></td>
-                                        <td> <a href=""class="glyphicon glyphicon-trash" style="font-size:24px"></i></a></td>
+                                        <td class="text-center"> <a href=""class="glyphicon glyphicon-edit  " style="font-size:24px; color: #1bc9f5"></i></a></td>
+                                        <td class="text-center"> <a href=""class="glyphicon glyphicon-trash  " style="font-size:24px; color: red"></i></a></td>
 
                                     </tr>
                            
                                 </table>
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <label for="" class="">Total Item:</label>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <label for="" class="col-md-7">Page size:</label>
-                                        <select class="col-md-5" name="">
-                                            <option value=""></option>
-                                            <option value="250">250</option>
-                                            <option value="500">500</option>
-                                            <option value="1000">1000</option>
-                                        </select>
-
-                                    </div>
-                                    <div class="col-md-4">
-                                        <label for="" class="">Total Item:</label>
-                                    </div>
-                                    </div>
+                                
                             </div>
                         </div>
                         

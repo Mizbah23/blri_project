@@ -35,7 +35,7 @@ class loginController extends Controller
 	    
         else
         {
-            return view("login.index")->with('error','Email or Password incorrect');
+         return view("login.index")->with('error','Email or Password incorrect');
         }
 
     }
