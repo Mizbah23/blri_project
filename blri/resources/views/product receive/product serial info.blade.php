@@ -404,45 +404,7 @@ $( function() {
                   </div>
                 </div>
               </form>
-<!--                   <div class="row">
-                   <div class="col-lg-6"> Category and brand-->
-                       <!--   <label for="category" class="col-sm-2 control-label">Category</label>
-                          <div class="col-lg-9">
-                              <select id="category" name="categories" class="form-control required" required>
-                                               
-                                               <option value=""></option>
-                                              
-                              </select>
-                          </div><br><br>
 
-                          <label for="brand" class="col-sm-2 control-label">Brand</label>
-                       <div class="col-lg-9">
-                          <input type="text" class="form-control" id="brand" name="brandName" placeholder="Name Can not be empty"required>
-                          </div><br><br><br>
-
-                          <div class="col-lg-6">
-                            <label for="category" class="col-sm-2 control-label">Category</label>
-                          <div class="col-lg-9">
-                              <select id="category" name="categories" class="form-control required" required>
-                                               
-                                               <option value=""></option>
-                                              
-                              </select>
-                          </div><br><br>
-
-                          <label for="brand" class="col-sm-2 control-label">Brand</label>
-                       <div class="col-lg-9">
-                          <input type="text" class="form-control" id="brand" name="brandName" placeholder="Name Can not be empty"required>
-                          </div><br><br><br>
-                          </div>
-
-                        <div class="text-center">
-                          <button type="submit" class="btn btn-info">Save</button> 
-                          <button type="reset" class="btn btn-danger">Cancel</button>
-                        </div>
-                         </form>end form-->
-                      <!--Category and brand-->
-                      <!--Search option starts-->
                       <div class="row">
                         <div class="col-md-8"></div>
 
@@ -459,9 +421,8 @@ $( function() {
 
                       </div>
 
-                      <!--Search option stops-->
-
                      
+                                         
                   </div> 
                </div> 
 
@@ -469,10 +430,23 @@ $( function() {
                <div id="searchedBrandValue">
                    
                </div>
+
+             <div class="row">
+                        <table class="table table-responsive table-striped table-condenced table-bordered">
+                          <tr class="bg-primary">
+                            <th class="col-lg-1 text-center">#</th>
+                            <th class="col-lg-2 text-center">Product</th>
+                            <th class="col-lg-2 text-center">Serial No.</th>
+                            <th class="col-lg-2 text-center">Warranty Period</th>
+                            <th class="col-lg-3 text-center">Creator</th>
+                            <th class="col-lg-1 text-center">Edit</th>
+                          </tr>
+                        </table>
+                    </div>
               
             </div>
           </div>
-      
+           
           </div>
         </div>
      
