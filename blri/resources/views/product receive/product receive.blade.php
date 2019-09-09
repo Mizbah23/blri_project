@@ -1037,6 +1037,11 @@ $( function() {
         data: { id: id},
         success: function (data) {
           $("#createFormDiv").html(data);
+          $( ".datepicker" ).datepicker({
+            format: 'MM/DD/YYYY',
+            maxDate: "+0D",
+            ignoreReadonly: true
+          });
           $("#receiveDate").datepicker();
           // $("#createFormDiv").hide();
           // console.log(data);
@@ -1044,7 +1049,30 @@ $( function() {
       });
     }
     
-    
+    function updateContent() {
+      var form=$("#editForm");
+      // console.log(form.serialize());
+      $.ajax({
+        url: "{{route("update.product.from.ReceiveList")}}",
+        type:"put",
+        data: form.serialize(),
+        success: function (data) {
+          console.log(data);
+          if(data[0]=="success"){
+            alert("Successfuly Updated");
+            
+            location.reload();
+          }else{
+           for (const key in data[1]) {
+             alert(data[1][key][0]);
+           }
+          }
+        }
+      });
+    }
+    function cancelUpdate() {
+      location.reload();
+    }
      
    </script>
 

@@ -10,6 +10,9 @@ use App\Project;
 use App\ProductInfo;
 use App\Supplier;
 use App\ProductReceiveList;
+use Validator;
+use Illuminate\Validation\Rule;
+
 
 class productreceiveController extends Controller
 {
@@ -84,7 +87,7 @@ class productreceiveController extends Controller
     }
     public function editItemFromReceiveList(Request $request)
     {
-        // if ($request->ajax()) {
+        if ($request->ajax()) {
             $isAvailable= ProductReceiveList::find($request->id);
             $suppliers=Supplier::all('id', 'address', 'mobile', 'supplierName');
             $products=ProductInfo::all();
@@ -95,5 +98,41 @@ class productreceiveController extends Controller
                    ->with('products', $products)
                    ->with('productReceiveList', $isAvailable);
         }
-    // }
+    }
+    public function updateItemFromReceiveList(Request $request)
+    {
+        $productCode=$request->productCode;
+        $validator = Validator::make($request->all(),[
+            'supplierName'=>'required',
+            'productCode'=>['required', Rule::unique('product_receive_lists','product_info_id')->ignore($request->productReceiveListId)],
+            'productName'=>'required',
+            'projectName'=>'required',
+            'orderNo'=>'required',
+            'address'=>'required',
+            'contactNo'=>'required',
+            'receiveDate'=>'required | date| before_or_equal:today',
+            'quantity'=>'required|numeric|gt:0'
+        ]);
+        if ($validator->fails()) {      
+            return ["error",$validator->errors()];
+        } else {
+            $isProductInProductReceiveList=ProductReceiveList::find($request->productReceiveListId);
+            $supplier=Supplier::find($request->supplierName);
+            $product=ProductInfo::find($request->productCode);
+            $project=Project::find($request->projectName);
+    
+            if ($isProductInProductReceiveList && $supplier && $product && $project) {
+                $isProductInProductReceiveList->supplier_id=$request->supplierName;
+                $isProductInProductReceiveList->project_id=$request->projectName;
+                $isProductInProductReceiveList->product_info_id=$request->productCode;
+                $isProductInProductReceiveList->orderNo=$request->orderNo;
+                $isProductInProductReceiveList->quantity=$request->quantity;
+                $isProductInProductReceiveList->user_id=$request->session()->get('user')->id;
+                $isProductInProductReceiveList->receiveDate=date('Y-m-d', strtotime($request->receiveDate));
+                $isProductInProductReceiveList->save();
+            }
+            return ["success"];
+        }
+        
+    }
 }

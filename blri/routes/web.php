@@ -117,6 +117,7 @@ Route::post('/setup/district/{id}/edit', 'districtController@update');
 //Product Receive
 Route::get('/product_receive/product_receive', 'productreceiveController@index')->name('product receive.product receive');
 Route::post('/product_receive/product_receive', 'productreceiveController@store');
+Route::put('/product_receive/product_receive', 'productreceiveController@updateItemFromReceiveList')->name('update.product.from.ReceiveList');
 Route::get('/product_receive/product_receive/delete/item', 'productreceiveController@deleteItemFromReceiveList')->name('delete.product.from.ReceiveList');
 Route::get('/product_receive/product_receive/edit/item', 'productreceiveController@editItemFromReceiveList')->name('edit.product.from.ReceiveList');
 

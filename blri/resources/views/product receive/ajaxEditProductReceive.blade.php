@@ -1,4 +1,4 @@
-<form class="form-horizontal" method="post" autocomplete="off" id="updateContent"> 
+<form class="form-horizontal" method="post" autocomplete="off" id="editForm"> 
     @csrf
     @method('put')
     <div class="form-group"> <!--Form-->
@@ -125,8 +125,9 @@
           
           </div>
           <div class="text-center">
-            <button type="submit" class="btn btn-success"><i class="glyphicon glyphicon-edit" style="color: white"></i> Update</button> 
-            <button type="button" class="btn btn-danger">Cancel</button><br><br>
+            <input type="hidden" name="productReceiveListId" value="{{$productReceiveList->id}}">
+            <button type="button" onclick="updateContent()" class="btn btn-success"><i class="glyphicon glyphicon-edit" style="color: white"></i> Update</button> 
+            <button type="button" class="btn btn-danger" onclick="cancelUpdate()">Cancel</button><br><br>
           </div>
 
     </div>
