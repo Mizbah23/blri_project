@@ -268,7 +268,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
    
         <!-- main content start-->
                         <div class="container">
-                            <img style="margin-left: 300px;margin-top: 50px; height: 520px; width: 800px" src="/images/blrilogo.jpg" alt="">
+                            <img style="margin-left: 300px;margin-top: 50px; " src="/images/blrilogo.jpg" alt=""  class="responsive">
                             
                         </div>
     <!--footer-->

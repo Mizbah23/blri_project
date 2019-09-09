@@ -356,6 +356,8 @@ $( function() {
                                                @endforeach
                                  
                               </select>
+                              <div class="error" style="color: red">
+                                {{$errors->first('name')}}</div>
                          </div><br><br>
 
                            <div class="col-lg-4">
@@ -368,6 +370,7 @@ $( function() {
                                  <option value="{{$product->brand->category->id}}"{{old('categoryName')==$product->brand->category->id ?"selected":""}}>{{$product->brand->category->categoryName}}</option>
                                  @endforeach
                               </select>
+                                <div class="error" style="color: red">{{$errors->first('categoryName')}}</div>
                              </div><br><br>
 
                          <div class="col-lg-4">
@@ -400,7 +403,7 @@ $( function() {
                           <label for="productName">পণ্য</label>
                         </div>
                         <div class="col-lg-8">
-                           <select class="form-control" id="productName" name="productName" required>
+                           <select class="form-control" id="productName" name="productName" required onchange="showProductCode()">
                               <option value="">পণ্য সনাক্তকরণ</option>
                                @foreach ($products->unique('productName')->pluck('productName') as $productName)
                                  <option value="{{$productName}}" @if (old('productName')==$productName)
@@ -408,7 +411,7 @@ $( function() {
                                 @endif>{{$productName}}</option>
                                 @endforeach
                             </select>
-                             <div class="error">{{$errors->first('productName')}}</div>
+                             <div class="error" style="color: red">{{$errors->first('productName')}}</div>
                         </div><br><br>
                       
                         <div class="col-lg-4">
@@ -416,17 +419,21 @@ $( function() {
                         </div>
                         <div class="col-lg-8">
                         
-                             <select id="productCode" name="productCode" class="form-control required" required>
+                             <select id="productCode" name="productCode" class="form-control required" required readonly>
                                <option value="">Select Product Code</option>
                               
+                              @if(old('productName'))
                                 @foreach ($products as $product)
-                               
-                                  <option value="{{$product->id}}" >{{$product->productCode}}</option>
-                                
+                                @if(old('productName')==$product->productName)
+                                  <option value="{{$product->id}}" @if (old('productCode')==$product->id)
+                                      {{"selected"}}
+                                  @endif>{{$product->productCode}}</option>
+                                @endif
                                 @endforeach
+                              @endif
                               
                             </select>
-                            <div class="error">{{$errors->first('productCode')}}</div>
+                            <div class="error" style="color: red">{{$errors->first('productCode')}}</div>
 
                         </div><br><br>
 
@@ -435,6 +442,7 @@ $( function() {
                         </div>
                         <div class="col-lg-8">
                            <input class="form-control" type="text" name="quantity" placeholder="অবশ্যই পূরণ করুন" required>
+                              <div class="error" style="color: red">{{$errors->first('quantity')}}</div>
                         </div><br><br><br>
                        
                          <center>
@@ -452,18 +460,21 @@ $( function() {
                        <table class="table table-responsive table-hover table-striped table-bordered table-condensed">
                          <tr class="row bg-primary">
                            <th class="col-lg-1 text-center">সম্পাদনা</th>
-                           <th class="col-lg-3 text-center">মুছে দিন</th>
-                           <th class="col-lg-6 text-center">পণ্যের নাম</th>
+                           <th class="col-lg-1 text-center">মুছে দিন</th>
+                           <th class="col-lg-2 text-center">Employee Name</th>
+                           <th class="col-lg-3 text-center">পণ্যের নাম</th>
                            <th class="col-lg-2 text-center">পরিমাণ</th>
+                           <th class="col-lg-2 text-center">Date</th>
                          </tr>
                             @foreach ($requisitionlists as $item)
                               <tr class="row"  align="center">
                                  <td ><a ><i class="fa fa-edit" style="font-size:24px"></i></a></td>
                                   <td> <a onclick="deleteItem({{$item->id}})" class="glyphicon glyphicon-trash" style="font-size:24px"></i></a></td>
-                                  <td>{{$item->productInfo->productName}}</td>
-                                  <!--<td>{{$item->productInfo->productCode}}</td>-->
-                                  <td>{{$item->quantity}}</td>
-                                
+                                    <td>{{ $item->employeeinfo->name }}</td>
+                                    <td>{{$item->productInfo->productName}}</td>
+                                    <td>{{$item->quantity}}</td>
+                                    <td>{{$item->requisitionDate}}</td>
+                                  
                               </tr>
                               @endforeach
                        </table>
@@ -979,6 +990,7 @@ $( function() {
       }
       
     }
+
     function showProductName(){
       var selectedProdut=$("#productName").val();//
       console.log(selectedCategory);
@@ -990,6 +1002,28 @@ $( function() {
         });
       }
     }
+
+      function showProductCode() {
+       var selectedProduct=$("#productName").val();
+       $("#productCode").html('<option value="">Select Product Code</option>');
+       if(products!=undefined){
+        var i=0;
+        var productId;
+        products.forEach(product => {
+          if(product.productName==selectedProduct){
+            $('#productCode').append(`<option value="${product.id}">${product.productCode}</option>`);
+            i++;
+            productId=product.id;
+          }
+        });
+        if(i==1){
+          console.log(i);
+          $('#productCode option[value=' +productId + ']').attr('selected','selected');
+
+          // $("#productCode select").val(productId);
+        }
+      }
+     }
   </script>
     
     
