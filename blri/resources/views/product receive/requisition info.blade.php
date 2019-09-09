@@ -980,7 +980,15 @@ $( function() {
       
     }
     function showProductName(){
-
+      var selectedProdut=$("#productName").val();//
+      console.log(selectedCategory);
+      $('#productName').html('<option value="">Select a Product</option>');
+      if(products!=undefined){
+        products.forEach(product => {
+          if(product.brand_id==selectedCategory)
+            $('#productName').append(`<option value="${brand.brandName}">${brand.brandName}</option>`); 
+        });
+      }
     }
   </script>
     
