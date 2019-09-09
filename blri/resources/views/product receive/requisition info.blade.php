@@ -380,11 +380,11 @@ $( function() {
                             <select class="form-control" id="brandName" name="brandName" required onchange="showProductName()">
                               <option value="">ব্র্যান্ড সনাক্তকরণ</option>
                                  
-                            {{--       @foreach($brands as $bra)
+                               @foreach($products as $product)
                                    
                                       <option value="{{$product->brand->brandName}}" {{old('brandName')==$product->brand->brandName?"selected":""}}>{{$product->brand->brandName}}</option>
                                    
-                                  @endforeach --}}
+                                  @endforeach 
                                
                             </select>
                          </div><br><br>

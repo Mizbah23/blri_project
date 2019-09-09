@@ -18,7 +18,7 @@ class brandController extends Controller
     $setuptypes= setuptype::all();
     $categories= Category::all();
     $brands= Brand::all();
-    dd($categories[0]->brands,$categories[0]->brands()->toSql(),$brands[0]->category()->toSql());
+   // dd($categories[0]->brands,$categories[0]->brands()->toSql(),$brands[0]->category()->toSql());
     $securitytypes=SecurityType::all();
     $productreceivetypes=ProductReceiveType::all();
     $productdistributions=ProductDistribution::all();
