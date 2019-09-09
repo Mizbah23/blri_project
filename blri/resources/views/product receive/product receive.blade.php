@@ -486,38 +486,43 @@ $( function() {
                 <div class="row">
                     <div class="col-md-5"></div>
                     <div class="col-md-7">
-                        <table class="table table-responsive table-hover table-striped table-bordered table-condensed">
-                            <tr class="row bg-primary">
-                                <th class="col-lg-1 text-center">Edit</th>
-                                <th class="col-lg-1 text-center">Delete</th>
-                                <th class="col-lg-4 text-center">Product</th>
-                                <th class="col-lg-2 text-center">Code</th>
-                                <th class="col-lg-2 text-center">Quantity</th>
-                                <th class="col-lg-2 text-center">OrderNo</th>
+                      @if (count($productReceiveLists)>0)
+                      <table class="table table-responsive table-hover table-striped table-bordered table-condensed">
+                          <tr class="row bg-primary">
+                              <th class="col-lg-1 text-center">Edit</th>
+                              <th class="col-lg-1 text-center">Delete</th>
+                              <th class="col-lg-4 text-center">Product</th>
+                              <th class="col-lg-2 text-center">Code</th>
+                              <th class="col-lg-2 text-center">Quantity</th>
+                              <th class="col-lg-2 text-center">OrderNo</th>
+                          </tr>
+                          @foreach ($productReceiveLists as $item)
+                            <tr class="row"  align="center">
+                                <td ><a href="#" onclick="handleEdit({{$item->id}})"><i class="fa fa-edit" style="font-size:24px" ></i></a></td>
+                                <td> <a href="#" onclick="deleteItem({{$item->id}})" class="glyphicon glyphicon-trash" style="font-size:24px"></i></a></td>
+                                <td>{{$item->productInfo->productName}}</td>
+                                <td>{{$item->productInfo->productCode}}</td>
+                                <td>{{$item->quantity}}</td>
+                                <td>{{$item->orderNo}}</td>
                             </tr>
-                            @foreach ($productReceiveLists as $item)
-                              <tr class="row"  align="center">
-                                  <td ><a href="#" onclick="handleEdit({{$item->id}})"><i class="fa fa-edit" style="font-size:24px" ></i></a></td>
-                                  <td> <a href="#" onclick="deleteItem({{$item->id}})" class="glyphicon glyphicon-trash" style="font-size:24px"></i></a></td>
-                                  <td>{{$item->productInfo->productName}}</td>
-                                  <td>{{$item->productInfo->productCode}}</td>
-                                  <td>{{$item->quantity}}</td>
-                                  <td>{{$item->orderNo}}</td>
-                              </tr>
-                            @endforeach
-                
-                        </table>
+                          @endforeach
+              
+                      </table>
+                      @endif  
+                        
                     </div>
                 </div>
 
+                @if (count($productReceiveLists)>0)
                 <div class="text-center">
                   <br><br><br>
-                    <button type="button" class=" btn btn-info"> Save</button> 
+                    <button type="button" class=" btn btn-info" onclick="savedata()"> Save</button> 
                         <button type="reset" class="btn btn-danger">Cancel</button>
                         <button type="button" class="btn btn-success">Print Invoice</button>
                 </div>
+                @endif
                       <!--Search option starts-->
-                      <div class="row">
+                      {{-- <div class="row">
                         <div class="col-md-8"></div>
 
 
@@ -531,7 +536,7 @@ $( function() {
                         </div>
 
 
-                      </div>
+                      </div> --}}
 
                       <!--Search option stops-->
 
@@ -1074,6 +1079,25 @@ $( function() {
       location.reload();
     }
      
+   </script>
+
+   <script>
+     function savedata() {
+      $.ajax({
+        url: "{{route("saveAll.product.from.ReceiveList")}}",
+        type:"get",
+        success: function (data) {
+          console.log(data);
+          
+          if(data=="success"){
+            alert("Data saved successfully");
+            location.reload();
+          }else{
+            alert("Something Went Wrong");
+          }
+        }
+      });
+     }
    </script>
 
     
