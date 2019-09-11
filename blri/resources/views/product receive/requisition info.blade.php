@@ -489,8 +489,8 @@ $( function() {
                   <div class="col-lg-12">
                     @if (count($requisitionlists)>0)
                      <center>
-                          <button class="btn btn-info" type="submit" name="tablesave" onclick="savedata()">সংরক্ষণ করুন</button>
-                           <button type="reset" name="tablereset" class="btn">পুনরায় বসান</button>
+                       <button class="btn btn-info" type="submit" name="tablesave" onclick="savedata()">সংরক্ষণ করুন</button>
+                       <button type="reset" name="tablereset" class="btn"  onclick="clearList()">পুনরায় বসান</button>
                        </center>
                     @endif
                   </div>
@@ -1110,6 +1110,25 @@ $( function() {
         }
       });
      }
+
+          function clearList() {
+       if (confirm('Do you really want to delete all the item from List?')) {
+          $.ajax({
+            url: "{{route("clearList.product.from.RequisitionList")}}",
+            type:"get",
+            success: function (data) {
+              console.log(data);
+              
+              if(data=="success"){
+                alert("Data deleted successfully");
+                location.reload();
+              }else{
+                alert("Something Went Wrong");
+              }
+            }
+          });
+        }
+      }
   </script>
     
     

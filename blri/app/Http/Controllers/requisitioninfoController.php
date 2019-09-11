@@ -167,4 +167,20 @@ class requisitioninfoController extends Controller
             }
         }
     }
+
+     public function clearListItemFromRequisitionsList(Request $request)
+    {
+        if (session()->has('user')) {
+           $requisitionlists=RequisitionList::all();
+            $k=0;
+            foreach ($requisitionlists as $key => $item) {
+                $item->delete();
+                $k++;
+            }
+            
+            if (count($requisitionlists)==$k) {
+                return "success";
+            }
+        }
+    }
 }

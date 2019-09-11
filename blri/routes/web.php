@@ -131,6 +131,7 @@ Route::get('/product_requisition/delete/item', 'requisitioninfoController@delete
 Route::get('/product_requisition/edit/item', 'requisitioninfoController@editItemFromRequisitionList')->name('edit.product.from.RequisitionList');
 Route::put('/product_receive/product_requisition', 'requisitioninfoController@updateItemFromRequisitionList')->name('update.product.from.RequisitionList');
 Route::get('/product_receive/product_requisition/saveAll/item', 'requisitioninfoController@saveAllItemFromRequisitionList')->name('saveAll.product.from.RequisitionList');
+Route::get('/product_receive/product_requisition/clearList/item', 'requisitioninfoController@clearListItemFromRequisitionsList')->name('clearList.product.from.RequisitionList');
 
 
 //Serial Info
