@@ -10,6 +10,9 @@
 SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 
+{{-- date-picker link --}}
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+{{-- date-picker link --}}
 <!-- Bootstrap Core CSS -->
 <link href="/css/bootstrap.css" rel='stylesheet' type='text/css' />
 
@@ -55,6 +58,10 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 <!--// For autocomplete Search -->
+{{-- date_picker link --}}
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+{{-- date_picker link --}}
 <style>
 #chartdiv {
   width: 100%;
@@ -377,7 +384,7 @@ $( function() {
                             <label for="" class=" control-label">ওয়ারেন্টি</label>
                             </div>
                             <div class="col-md-7">
-                               <input type="text" class="form-control" id="" name="" placeholder="অবশ্যই পূরণ করুন"required>
+                               <input class="form-control" type="text" id="datepicker">
                             </div><br><br>
 
                         </div>
@@ -875,6 +882,12 @@ $( function() {
     
     
     <!-- Bootstrap Core JavaScript -->
+
+     <script>
+  $( function() {
+    $( "#datepicker" ).datepicker();
+  } );
+  </script>
    <script src="/js/bootstrap.js"> </script>
 
     
