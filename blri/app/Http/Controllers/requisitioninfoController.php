@@ -13,6 +13,8 @@ use App\EmployeeInformation;
 use App\RequisitionList;
 use App\ProductInfo;
 use App\Brand;
+use Validator;
+use Illuminate\Validation\Rule;
 
 class requisitioninfoController extends Controller
 {
@@ -94,7 +96,7 @@ class requisitioninfoController extends Controller
 
      public function editItemFromRequisitionList(Request $request)
     {
-        if ($request->ajax()) {
+        // if ($request->ajax()) {
             $isAvailable= RequisitionList::find($request->id);
             $employeeinformations=EmployeeInformation::all();
             $products=ProductInfo::all();
@@ -103,22 +105,26 @@ class requisitioninfoController extends Controller
                    ->with('employeeinformations', $employeeinformations)
                    ->with('products', $products)
                    ->with('requisitionList', $isAvailable);
-        }
+        // }
     }
 
         public function updateItemFromRequisitionList(Request $request)
     {
-          $this->validate($request, [
+        // return $request->all();
+          $validtor=Validator::make($request->all(), [
             'name'=>'required',
             'categoryName'=>'required',
-            'productCode'=>'required | unique:requisition_lists,product_info_id',
+            'productCode'=>['required', Rule::unique('requisition_lists','product_info_id')->ignore($request->productCode)],
             'productName'=>'required',
             'brandName'=>'required',
             'requisitionDate'=>'required | date| before_or_equal:today',
             'quantity'=>'required|numeric|gt:0'
         ]);
+          if($validtor->fails()){
+            return ["error",$validtor->errors()];
+          }
        $employeeinformations=EmployeeInformation::find($request->name);
-       $product=ProductInfo::find($request->productCode);
+       $products=ProductInfo::find($request->productCode);
         
 
        
@@ -130,6 +136,7 @@ class requisitioninfoController extends Controller
             $requisitionList->requisitionDate=date('Y-m-d', strtotime($request->requisitionDate));
             //dd($requisitionList);
             $requisitionList->save();
+            return ["success"];
      }
  
 

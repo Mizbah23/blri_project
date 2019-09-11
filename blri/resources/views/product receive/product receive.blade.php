@@ -484,20 +484,8 @@ $( function() {
                 </div>
                 <div id="updateFormDiv"></div>
                 <div class="row">
-<<<<<<< HEAD
-                    
-                    <div class="col-md-12">
-                        <table class="table table-responsive table-hover table-striped table-bordered table-condensed">
-                            <tr class="row bg-primary">
-                                <th class="col-lg-1 text-center">Edit</th>
-                                <th class="col-lg-1 text-center">Delete</th>
-                                <th class="col-lg-4 text-center">Product</th>
-                                <th class="col-lg-2 text-center">Code</th>
-                                <th class="col-lg-2 text-center">Quantity</th>
-                                <th class="col-lg-2 text-center">OrderNo</th>
-=======
-                    <div class="col-md-5"></div>
-                    <div class="col-md-7">
+
+                     <div class="col-md-7">
                       @if (count($productReceiveLists)>0)
                       <table class="table table-responsive table-hover table-striped table-bordered table-condensed">
                           <tr class="row bg-primary">
@@ -516,7 +504,7 @@ $( function() {
                                 <td>{{$item->productInfo->productCode}}</td>
                                 <td>{{$item->quantity}}</td>
                                 <td>{{$item->orderNo}}</td>
->>>>>>> 321b2aeccf79f33a2ccb4bce19ceaab12324e6ed
+
                             </tr>
                           @endforeach
               
