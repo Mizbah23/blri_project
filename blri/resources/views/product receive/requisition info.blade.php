@@ -458,6 +458,8 @@ $( function() {
                    </div>
                 </form><!--End Form for grideview-->
               </div>
+              <div id="updateFormDiv"></div>
+              <div class="row">
                      <div class="col-lg-12">
                        <table class="table table-responsive table-hover table-striped table-bordered table-condensed">
                          <tr class="row bg-primary">
@@ -470,7 +472,7 @@ $( function() {
                          </tr>
                             @foreach ($requisitionlists as $item)
                               <tr class="row"  align="center">
-                                 <td ><a onclick="handleEdit({{$item->id}})"><i class="fa fa-edit" style="font-size:24px" ></i></a></td>
+                                 <td ><a href="#" onclick="handleEdit({{$item->id}})"><i class="fa fa-edit" style="font-size:24px" ></i></a></td>
                                   <td> <a onclick="deleteItem({{$item->id}})" class="glyphicon glyphicon-trash" style="font-size:24px"></i></a></td>
                                     <td>{{ $item->employeeinfo->name }}</td>
                                     <td>{{$item->productInfo->productName}}</td>
@@ -485,11 +487,12 @@ $( function() {
                 </div>
                 <div class="row">
                   <div class="col-lg-12">
+                    @if (count($requisitionlists)>0)
                      <center>
-                          <button class="btn btn-info" type="submit" name="tablesave">
-                           <i class="fa fa-folder"style="color:white;"></i>সংরক্ষণ করুন</button>
+                          <button class="btn btn-info" type="submit" name="tablesave" onclick="savedata()">সংরক্ষণ করুন</button>
                            <button type="reset" name="tablereset" class="btn">পুনরায় বসান</button>
                        </center>
+                    @endif
                   </div>
                 </div>
 
@@ -1089,6 +1092,24 @@ $( function() {
     function cancelUpdate() {
       location.reload();
     }
+  </script>
+  <script>
+    function savedata() {
+      $.ajax({
+        url: "{{route("saveAll.product.from.RequisitionList")}}",
+        type:"get",
+        success: function (data) {
+          console.log(data);
+          
+          if(data=="success"){
+            alert("Data saved successfully");
+            location.reload();
+          }else{
+            alert("Something Went Wrong");
+          }
+        }
+      });
+     }
   </script>
     
     

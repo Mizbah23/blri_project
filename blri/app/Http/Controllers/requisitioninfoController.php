@@ -15,6 +15,7 @@ use App\ProductInfo;
 use App\Brand;
 use Validator;
 use Illuminate\Validation\Rule;
+use App\RequisitionSave;
 
 class requisitioninfoController extends Controller
 {
@@ -128,7 +129,7 @@ class requisitioninfoController extends Controller
         
 
        
-              $requisitionList=RequisitionList::find($request->id);
+            $requisitionList=RequisitionList::find($request->id);
             $requisitionList->employee_information_id=$request->name;
             $requisitionList->product_info_id=$request->productCode;
             $requisitionList->quantity=$request->quantity;
@@ -138,6 +139,32 @@ class requisitioninfoController extends Controller
             $requisitionList->save();
             return ["success"];
      }
+     
+
+         public function saveAllItemFromRequisitionList(Request $request)
+    {
+        //return $request->all();
+        if (session()->has('user')) {
+            $requisitionList=RequisitionList::all();
+            $k=0;
+            foreach ($requisitionList as $key => $item) {
+                $saveNewRequisition=new RequisitionSave;
+                $saveNewRequisition->employee_information_id=$item->name;
+                $saveNewRequisition->product_info_id=$item->productCode;
+                $saveNewRequisition->quantity=$item->quantity;
+                $saveNewRequisition->user_id=$item->user_id;
+                $saveNewRequisition->requisitionDate=$item->requisitionDate;
+                $saveNewRequisition->save();
+              
+                $k++;
+
+            }
+            if (count($requisitionList)==$k) {
+                return "success";
+            }
+        }
+    }
+
  
 
   

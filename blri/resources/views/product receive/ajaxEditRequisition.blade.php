@@ -107,15 +107,15 @@
                               <div class="error" style="color: red">{{$errors->first('quantity')}}</div>
                         </div><br><br><br>
                        
-                        <div class="text-center">
-                        <input type="hidden" name="id" value="{{$requisitionList->id}}">
+            <div class="text-center">
+            <input type="hidden" name="id" value="{{$requisitionList->id}}">
             <button type="button" onclick="updateContent()" class="btn btn-success"><i class="glyphicon glyphicon-edit" style="color: white"></i> Update</button> 
             <button type="button" class="btn btn-danger" onclick="cancelUpdate()">Cancel</button><br><br>
           </div>
 
                         
-                      </div>
+          </div>
                 
-                   </div>
-                 </div>
+        </div>
+    </div>
 </form>

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateRequisitionListsTable extends Migration
+class CreateRequisitionSavesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateRequisitionListsTable extends Migration
      */
     public function up()
     {
-        Schema::create('requisition_lists', function (Blueprint $table) {
+        Schema::create('requisition_saves', function (Blueprint $table) {
           $table->bigIncrements('id');
           $table->unsignedBigInteger('employee_information_id');
           $table->unsignedBigInteger('product_info_id');
@@ -25,8 +25,7 @@ class CreateRequisitionListsTable extends Migration
           $table->foreign('employee_information_id')->references('id')->on('employee_information');
           $table->foreign('product_info_id')->references('id')->on('product_infos');
           $table->foreign('user_id')->references('id')->on('users');
-            
-            $table->timestamps();
+          $table->timestamps();
         });
     }
 
@@ -37,6 +36,6 @@ class CreateRequisitionListsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('requisition_lists');
+        Schema::dropIfExists('requisition_saves');
     }
 }
