@@ -115,7 +115,7 @@ class requisitioninfoController extends Controller
           $validtor=Validator::make($request->all(), [
             'name'=>'required',
             'categoryName'=>'required',
-            'productCode'=>['required', Rule::unique('requisition_lists','product_info_id')->ignore($request->productCode)],
+            'productCode'=>['required', Rule::unique('product_info_id')->ignore($request->productCode)],
             'productName'=>'required',
             'brandName'=>'required',
             'requisitionDate'=>'required | date| before_or_equal:today',
@@ -145,9 +145,9 @@ class requisitioninfoController extends Controller
     {
         //return $request->all();
         if (session()->has('user')) {
-            $requisitionList=RequisitionList::all();
+           $requisitionlists=RequisitionList::all();
             $k=0;
-            foreach ($requisitionList as $key => $item) {
+            foreach ($requisitionlists as $key => $item) {
                 $saveNewRequisition=new RequisitionSave;
                 $saveNewRequisition->employee_information_id=$item->name;
                 $saveNewRequisition->product_info_id=$item->productCode;
@@ -159,10 +159,11 @@ class requisitioninfoController extends Controller
                 $k++;
 
             }
-            if (count($requisitionList)==$k) {
-                return "success";
+             //return $saveNewRequisition;
+            if (count($requisitionlists)==$k) {
+                return ["success"];
             }
-        }
+       }
     }
 
  
