@@ -398,7 +398,7 @@ $( function() {
                           <label for="requisitionDate">তারিখ</label>
                         </div>
                         <div class="col-lg-8">
-                           <input type="text" class="form-control datepicker" id="requisitionDate" name="requisitionDate" placeholder="মাস/দিন/বছর" required>
+                           <input type="text" class="form-control datepicker" id="requisitionDate" name="requisitionDate" placeholder="মাস/দিন/বছর" required autocomplete="off">
                         </div><br><br>
                         <div class="col-lg-4">
                           <label for="productName">পণ্য</label>

@@ -466,7 +466,7 @@ $( function() {
                               <label for="" class=" control-label">Date</label>
                               </div>
                               <div class="col-md-9">
-                                <input class="form-control datepicker" type="text" id="receiveDate" name="receiveDate" placeholder="mm/dd/yyyy"  value="{{old('receiveDate')}}"  required><br>
+                                <input class="form-control datepicker" type="text" id="receiveDate" name="receiveDate" placeholder="mm/dd/yyyy"  value="{{old('receiveDate')}}"  required autocomplete="off"><br>
                                 <div class="error">{{$errors->first('receiveDate')}}</div>
                               </div><br><br>
                           

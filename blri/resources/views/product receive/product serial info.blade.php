@@ -257,8 +257,11 @@ $( function() {
                 <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                  <li><a href="forms.html"><i class="fa fa-circle"></i> General Forms</a></li>
-                  <li><a href="validation.html"><i class="fa fa-circle"></i> Form Validations</a></li>
+                  @foreach($productdistributions as $productdistribution)
+                   
+                    <li><a href="{{route('product distribution.'.strtolower($productdistribution->pdType))}}">
+                      <i class="fa fa-circle"></i> {{$productdistribution->pdType}}</a></li>
+                 @endforeach
                 </ul>
               </li>
               <li class="treeview">
@@ -267,7 +270,11 @@ $( function() {
                 <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                  <li><a href="tables.html"><i class="fa fa-circle"></i> Simple tables</a></li>
+                 @foreach($adjustments as $adjustment)
+                   
+                    <li><a href="{{route('adjustment.'.strtolower($adjustment->adjustmentType))}}">
+                      <i class="fa fa-circle"></i> {{$adjustment->adjustmentType}}</a></li>
+                 @endforeach
                 </ul>
               </li>
             
@@ -277,11 +284,11 @@ $( function() {
                 <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                  <li><a href="login.html"><i class="fa fa-circle"></i> Login</a></li>
-                  <li><a href="signup.html"><i class="fa fa-circle"></i> Register</a></li>
-                  <li><a href="404.html"><i class="fa fa-circle"></i> 404 Error</a></li>
-                  <li><a href="500.html"><i class="fa fa-circle"></i> 500 Error</a></li>
-                  <li><a href="blank-page.html"><i class="fa fa-circle"></i> Blank Page</a></li>
+                 @foreach($reportings as $reporting)
+                   
+                    <li><a href="{{route('reporting.'.strtolower($reporting->crType))}}"><!-- route('Folder(from view) Name') &&strtolowere('database table name')-->
+                      <i class="fa fa-circle"></i> {{$reporting->crType}}</a></li>
+                 @endforeach
                 </ul>
               </li>
             
@@ -345,25 +352,29 @@ $( function() {
               </div>
               <div class="form-body">
                 <form class="form-horizontal" method="post"> 
+                  @csrf
                   <div class="form-group"> <!--Form-->
 
                     <div class="row">
                         <div class="col-md-4" >
                             <div class="col-md-5">
-                                 <label for="" class=" control-label">ক্যাটাগরি</label>
+                                 <label for="categoryName" class=" control-label">ক্যাটাগরি</label>
                             </div>
                             <div class="col-md-7">
-                                <select id="" name="" class="form-control required" required>
-                                 <option value="">নির্বাচন করুন</option>
+                                <select id="categoryName" name="categoryName" onchange="showBrand()" class="form-control required" required value="{{old('categoryName')}}">
+                                <option value="" >নির্বাচন করুন</option>
+                                @foreach($categories as $category)
+                                 <option value="{{$category->id}}"{{old('categoryName')==$category->id ?"selected":""}}>{{$category->categoryName}}</option>
+                                 @endforeach
                               </select>
                             </div><br><br>
 
 
                             <div class="col-md-5">
-                                 <label for="" class=" control-label">সিরিয়াল নং</label>
+                                 <label for="serial_no" class=" control-label">সিরিয়াল নং</label>
                             </div>
                             <div class="col-md-7">
-                               <input type="text" class="form-control" id="" name="" placeholder="অবশ্যই পূরণ করুন"required>
+                               <input type="text" class="form-control" id="serial_no" name="serial_no" placeholder="অবশ্যই পূরণ করুন"required>
                             </div><br><br>
 
                        </div>
@@ -372,30 +383,43 @@ $( function() {
                             
 
                             <div class="col-md-5">
-                            <label for="" class=" control-label">ব্রান্ড</label>
+                            <label for="brandName" class=" control-label">ব্র্যান্ড</label>
                             </div>
                             <div class="col-md-7">
-                                <select id="" name="" class="form-control required" required>
-                                 <option value="">নির্বাচন করুন</option>
+                               <select id="brandName" name="brandName" class="form-control required" required onchange="showProduct()">
+                                <option value="">নির্বাচন করুন</option>
+                                @if(old('categoryName'))
+                                  @foreach($brands as $brand)
+                                    @if (old('categoryName') == $brand->category->id)
+                                      <option value="{{$brand->brandName}}" {{old('brandName')==$brand->brandName?"selected":""}}>{{$brand->brandName}}</option>
+                                    @endif
+                                  @endforeach
+                                @endif
+                                
                               </select>
                             </div><br><br>
 
                             <div class="col-md-5">
-                            <label for="" class=" control-label">ওয়ারেন্টি</label>
+                            <label for="warrantyDate" class=" control-label">ওয়ারেন্টি</label>
                             </div>
                             <div class="col-md-7">
-                               <input class="form-control" type="text" id="datepicker">
+                               <input class="form-control" type="text" name="warrantyDate" id="warrantyDate" autocomplete="off" >
                             </div><br><br>
 
                         </div>
 
                         <div class="col-md-4" >
                             <div class="col-md-5">
-                            <label for="" class=" -label">পণ্য</label>
+                            <label for="productName" class=" -label">পণ্য</label>
                             </div>
                             <div class="col-md-7">
-                                <select id="" name="" class="form-control required" required>
+                                <select id="productName" name="productName" class="form-control required" required>
                                  <option value="">নির্বাচন করুন</option>
+                                  @foreach ($products->unique('productName')->pluck('productName') as $productName)
+                                 <option value="{{$productName}}" @if (old('productName')==$productName)
+                                    {{"selected"}}
+                                @endif>{{$productName}}</option>
+                                @endforeach
                               </select>
                             </div><br><br>
                         
@@ -440,14 +464,29 @@ $( function() {
 
              <div class="row">
                         <table class="table table-responsive table-striped table-condenced table-bordered">
+                          <thead>
                           <tr class="bg-primary">
                             <th class="col-lg-1 text-center">#</th>
                             <th class="col-lg-2 text-center">Product</th>
                             <th class="col-lg-2 text-center">Serial No.</th>
-                            <th class="col-lg-2 text-center">Warranty Period</th>
+                            <th class="col-lg-3 text-center">Warranty Period</th>
                             <th class="col-lg-3 text-center">Creator</th>
-                            <th class="col-lg-1 text-center">Edit</th>
+                            <th class="col-lg-2 text-center">Edit</th>
                           </tr>
+                        </thead>
+                        <tbody>
+                        @foreach ($serialInfos as $key=>$serialInfo)
+                                <tr>
+                                    <td class="text-center">{{++$key}}</td>
+                                    <td class="text-center">{{$serialInfo->productInfo->productName}}</td>
+                                    <td class="text-center">{{$serialInfo->serial_no}}</td>
+                                    <td class="text-center">{{$serialInfo->warrantyDate}}</td>
+                                    <td class="text-center">{{$serialInfo->user->employeeinfo->name}}</td>
+                                  <td><a href="#"><i class="fa fa-edit" style="font-size:24px"></i></a></td>
+                                </tr>
+                          @endforeach
+                        </tbody> 
+                       
                         </table>
                     </div>
               
@@ -885,9 +924,40 @@ $( function() {
 
      <script>
   $( function() {
-    $( "#datepicker" ).datepicker();
+    $( "#warrantyDate" ).datepicker();
   } );
   </script>
+<script>
+     var brands;
+     var products;
+     $(function() {
+       brands={!! $brands !!};
+       products={!! $products !!};
+     })
+    function showBrand() {
+      var selectedCategory=$("#categoryName").val();
+      // console.log(brands);
+      $('#brandName').html('<option value="">Select a Brand</option>');
+      if(brands!=undefined){
+        brands.forEach(brand => {
+          if(brand.category_id==selectedCategory)
+            $('#brandName').append(`<option value="${brand.id}">${brand.brandName}</option>`); 
+        });
+      }
+      
+    }
+    function showProduct(){
+      var selectedBrand=$("#brandName").val();
+      $('#productName').html('<option value="">Select a Product</option>');
+      if(products!=undefined){
+        products.forEach(product => {
+          if(product.brand_id==selectedBrand)
+            $('#productName').append(`<option value="${product.id}">${product.productName}</option>`); 
+        });
+      }
+    }
+   </script>
+
    <script src="/js/bootstrap.js"> </script>
 
     
