@@ -137,6 +137,8 @@ Route::get('/product_receive/product_requisition/clearList/item', 'requisitionin
 //Serial Info
 Route::get('/product_receive/product_serial_info', 'productserialinfoController@index')->name('product receive.product serial info');
 Route::post('/product_receive/product_serial_info', 'productserialinfoController@serialPost');
+Route::get('/product_receive/product_serial_info/{id}/edit', 'productserialinfoController@serialEdit')->name('product receive.serialedit');
+Route::post('/product_receive/product_serial_info/{id}/edit', 'productserialinfoController@update');
 
 //Product distribution->
 //

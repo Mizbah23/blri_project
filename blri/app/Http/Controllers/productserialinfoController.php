@@ -40,7 +40,7 @@ class productserialinfoController extends Controller
             'brandName'=>'required',
             'serial_no'=>'required | unique:serial_infos',
             'productName'=>'required',
-            'warrantyDate'=>'required | date| before_or_equal:today',
+            'warrantyDate'=>'required | date',
             
         ]);
         $serialInfo=SerialInfo::all();
@@ -60,5 +60,53 @@ class productserialinfoController extends Controller
         //dd($requisitionList);
 
         return redirect()->route('product receive.product serial info');
+        }
+        public function serialEdit(Request $request,$id){
+            
+        $setuptypes= setuptype::all();
+        $securitytypes=SecurityType::all();
+        $productreceivetypes=ProductReceiveType::all();
+        $productdistributions=ProductDistribution::all();
+        $adjustments=Adjustment::all();
+        $reportings=Reporting::all();
+        $products=ProductInfo::all();
+        $categories=Category::all();
+        $brands=Brand::all();
+        $serialInfos=SerialInfo::find($id);
+          return view('product receive.serialedit')
+          ->with('setuptypes',$setuptypes)
+          ->with('securitytypes',$securitytypes)
+          ->with('productreceivetypes',$productreceivetypes)
+          ->with('productdistributions',$productdistributions)
+          ->with('adjustments',$adjustments)
+          ->with('reportings',$reportings)
+          ->with('products',$products)
+          ->with('categories',$categories)
+          ->with('brands',$brands)
+          ->with('serialInfos',$serialInfos);
+        }
+
+         public function update(Request $request,$id)
+
+         {
+            
+            $this->validate($request, [
+            'categoryName'=>'required',
+            'brandName'=>'required',
+            'serial_no'=>'required | unique:serial_infos',
+            'productName'=>'required',
+            'warrantyDate'=>'required | date',
+            
+        ]);
+            
+            $serialInfo=SerialInfo::find($id); 
+            $serialInfo->product_info_id=$request->id;
+            $serialInfo->serial_no=$request->serial_no;
+            $serialInfo->user_id=$request->session()->get('user')->id;
+            $serialInfo->warrantyDate=date('Y-m-d', strtotime($request->warrantyDate));
+            dd($serialInfo);
+            $serialInfo->save();
+
+            return redirect()->route('product receive.product serial info');
         }
 }

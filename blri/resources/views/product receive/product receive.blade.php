@@ -255,8 +255,11 @@ $( function() {
                 <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                  <li><a href="forms.html"><i class="fa fa-circle"></i> General Forms</a></li>
-                  <li><a href="validation.html"><i class="fa fa-circle"></i> Form Validations</a></li>
+                  @foreach($productdistributions as $productdistribution)
+                   
+                    <li><a href="{{route('product distribution.'.strtolower($productdistribution->pdType))}}">
+                      <i class="fa fa-circle"></i> {{$productdistribution->pdType}}</a></li>
+                 @endforeach
                 </ul>
               </li>
               <li class="treeview">
@@ -265,7 +268,11 @@ $( function() {
                 <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                  <li><a href="tables.html"><i class="fa fa-circle"></i> Simple tables</a></li>
+                 @foreach($adjustments as $adjustment)
+                   
+                    <li><a href="{{route('adjustment.'.strtolower($adjustment->adjustmentType))}}">
+                      <i class="fa fa-circle"></i> {{$adjustment->adjustmentType}}</a></li>
+                 @endforeach
                 </ul>
               </li>
             
@@ -275,11 +282,11 @@ $( function() {
                 <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                  <li><a href="login.html"><i class="fa fa-circle"></i> Login</a></li>
-                  <li><a href="signup.html"><i class="fa fa-circle"></i> Register</a></li>
-                  <li><a href="404.html"><i class="fa fa-circle"></i> 404 Error</a></li>
-                  <li><a href="500.html"><i class="fa fa-circle"></i> 500 Error</a></li>
-                  <li><a href="blank-page.html"><i class="fa fa-circle"></i> Blank Page</a></li>
+                  @foreach($reportings as $reporting)
+                   
+                    <li><a href="{{route('reporting.'.strtolower($reporting->crType))}}"><!-- route('Folder(from view) Name') &&strtolowere('database table name')-->
+                      <i class="fa fa-circle"></i> {{$reporting->crType}}</a></li>
+                  @endforeach
                 </ul>
               </li>
             
@@ -466,7 +473,7 @@ $( function() {
                               <label for="" class=" control-label">Date</label>
                               </div>
                               <div class="col-md-9">
-                                <input class="form-control datepicker" type="text" id="receiveDate" name="receiveDate" placeholder="mm/dd/yyyy"  value="{{old('receiveDate')}}"  required autocomplete="off"><br>
+                                <input class="form-control datepicker" type="text" id="receiveDate" name="receiveDate" placeholder="mm/dd/yyyy"  value="{{old('receiveDate')}}"  required><br>
                                 <div class="error">{{$errors->first('receiveDate')}}</div>
                               </div><br><br>
                           
@@ -485,7 +492,8 @@ $( function() {
                 <div id="updateFormDiv"></div>
                 <div class="row">
 
-                     <div class="col-md-7">
+                    
+                    <div class="col-md-12">
                       @if (count($productReceiveLists)>0)
                       <table class="table table-responsive table-hover table-striped table-bordered table-condensed">
                           <tr class="row bg-primary">

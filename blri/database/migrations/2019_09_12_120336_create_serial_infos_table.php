@@ -18,7 +18,7 @@ class CreateSerialInfosTable extends Migration
             $table->unsignedBigInteger('product_info_id');
             $table->unsignedBigInteger('user_id');// who keep the record of serial information
             
-            $table->integer('serial_no');
+            $table->string('serial_no');
             $table->date('warrantyDate');
 
             $table->foreign('product_info_id')->references('id')->on('product_infos');

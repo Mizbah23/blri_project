@@ -10,6 +10,9 @@ use App\Project;
 use App\ProductInfo;
 use App\Supplier;
 use App\ProductReceiveList;
+use App\ProductDistribution;
+use App\Adjustment;
+use App\Reporting;
 use Validator;
 use Illuminate\Validation\Rule;
 use App\ProductReceiveSave;
@@ -25,7 +28,10 @@ class productreceiveController extends Controller
             $suppliers=Supplier::all('id', 'address', 'mobile', 'supplierName');
             $products=ProductInfo::all();
             $projects=Project::all();
+            $productdistributions=ProductDistribution::all();
+            $adjustments=Adjustment::all();
             $productReceiveLists=ProductReceiveList::all();
+            $reportings=Reporting::all();
             //dd($sections[0]->division);
             return view('product receive.product receive')
                    ->with('setuptypes', $setuptypes)
@@ -34,7 +40,10 @@ class productreceiveController extends Controller
                    ->with('projects', $projects)
                    ->with('products', $products)
                    ->with('productReceiveLists', $productReceiveLists)
-                   ->with('productreceivetypes', $productreceivetypes);
+                   ->with('productreceivetypes', $productreceivetypes)
+                   ->with('adjustments', $adjustments)
+                   ->with('reportings', $reportings)
+                   ->with('productdistributions', $productdistributions);
         }
         else{
             return "<h2>The route you are looking for is not available.</h2>";

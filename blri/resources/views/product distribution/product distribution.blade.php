@@ -230,14 +230,17 @@ $(document).ready(function(){
                 </ul>
               </li>
               
-              <li class="treeview">
+               <li class="treeview">
                 <a href="#">
-                <i class="fa fa-edit"></i> <span>Product Distribution</span>
+                <i class="fa fa-users"></i> <span>Product Distribution</span>
                 <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                  <li><a href="forms.html"><i class="fa fa-circle"></i> General Forms</a></li>
-                  <li><a href="validation.html"><i class="fa fa-circle"></i> Form Validations</a></li>
+                  @foreach($productdistributions as $productdistribution)
+                   
+                    <li><a href="{{route('product distribution.'.strtolower($productdistribution->pdType))}}">
+                      <i class="fa fa-circle"></i> {{$productdistribution->pdType}}</a></li>
+                 @endforeach
                 </ul>
               </li>
               <li class="treeview">
@@ -246,21 +249,25 @@ $(document).ready(function(){
                 <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                  <li><a href="tables.html"><i class="fa fa-circle"></i> Simple tables</a></li>
+                 @foreach($adjustments as $adjustment)
+                   
+                    <li><a href="{{route('adjustment.'.strtolower($adjustment->adjustmentType))}}">
+                      <i class="fa fa-circle"></i> {{$adjustment->adjustmentType}}</a></li>
+                 @endforeach
                 </ul>
               </li>
             
-              <li class="treeview">
+             <li class="treeview">
                 <a href="#">
                 <i class="fa fa-table"></i> <span>Report</span>
                 <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                  <li><a href="login.html"><i class="fa fa-circle"></i> Login</a></li>
-                  <li><a href="signup.html"><i class="fa fa-circle"></i> Register</a></li>
-                  <li><a href="404.html"><i class="fa fa-circle"></i> 404 Error</a></li>
-                  <li><a href="500.html"><i class="fa fa-circle"></i> 500 Error</a></li>
-                  <li><a href="blank-page.html"><i class="fa fa-circle"></i> Blank Page</a></li>
+                  @foreach($reportings as $reporting)
+                   
+                    <li><a href="{{route('reporting.'.strtolower($reporting->crType))}}"><!-- route('Folder(from view) Name') &&strtolowere('database table name')-->
+                      <i class="fa fa-circle"></i> {{$reporting->crType}}</a></li>
+                  @endforeach
                 </ul>
               </li>
             
@@ -325,23 +332,13 @@ $(document).ready(function(){
                   <div class="form-group"> <!--Form-->
 
                     <div class="row" style="border: solid 1px #eee; padding: 20px">
-                        <div class="col-md-2"></div>
 
 
-                        <div class="col-md-4">
+
+                        <div class="text-center">
                             <input type="radio" id="show" name="p" value=""> Distribute to Department
                         </div>
-
-
-                        <div class="col-md-4">
-                            <input type="radio" id="hide" name="p" value=""> Distribute to Employee
-                        </div>
-
-
-
-                        <div class="col-md-2"></div>
-
-                    </div><br>
+                      </div>
 {{-- id show --}}
                     <div class="row" id="por" style="border: solid 1px #eee; padding: 20px">
                         <div class="col-md-4">

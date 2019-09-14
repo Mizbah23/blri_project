@@ -363,8 +363,8 @@ $( function() {
                             <div class="col-md-7">
                                 <select id="categoryName" name="categoryName" onchange="showBrand()" class="form-control required" required value="{{old('categoryName')}}">
                                 <option value="" >নির্বাচন করুন</option>
-                                @foreach($categories as $category)
-                                 <option value="{{$category->id}}"{{old('categoryName',$category->categoryName)==$category->id ?"selected":""}}>{{$category->categoryName}}</option>
+                                 @foreach($products as $product)
+                                 <option value="{{$product->brand->category->id}}"{{old('categoryName',$serialInfos->productInfo->brand->category_id)==$product->brand->category->id ?"selected":""}}>{{$product->brand->category->categoryName}}</option>
                                  @endforeach
                               </select>
                             </div><br><br>
@@ -374,7 +374,7 @@ $( function() {
                                  <label for="serial_no" class=" control-label">সিরিয়াল নং</label>
                             </div>
                             <div class="col-md-7">
-                               <input type="text" class="form-control" id="serial_no" name="serial_no"  placeholder="অবশ্যই পূরণ করুন"required>
+                               <input type="text" class="form-control" id="serial_no" name="serial_no" value="{{$serialInfos->serial_no}}" placeholder="অবশ্যই পূরণ করুন"required>
                             </div><br><br>
 
                        </div>
@@ -388,13 +388,13 @@ $( function() {
                             <div class="col-md-7">
                                <select id="brandName" name="brandName" class="form-control required" required onchange="showProduct()">
                                 <option value="">নির্বাচন করুন</option>
-                                @if(old('categoryName'))
-                                  @foreach($brands as $brand)
-                                    @if (old('categoryName') == $brand->category->id)
-                                      <option value="{{$brand->brandName}}" {{old('brandName')==$brand->brandName?"selected":""}}>{{$brand->brandName}}</option>
-                                    @endif
-                                  @endforeach
-                                @endif
+                               
+                                  @foreach($products as $product)
+                                   
+                                      <option value="{{$product->brand->brandName}}" {{old('brandName',$serialInfos->productInfo->brand->brandName)==$product->brand->brandName?"selected":""}}>{{$product->brand->brandName}}</option>
+                                   
+                                  @endforeach 
+                            
                                 
                               </select>
                             </div><br><br>
@@ -403,7 +403,7 @@ $( function() {
                             <label for="warrantyDate" class=" control-label">ওয়ারেন্টি</label>
                             </div>
                             <div class="col-md-7">
-                               <input class="form-control" type="text" name="warrantyDate" id="warrantyDate" autocomplete="off" >
+                               <input class="form-control" type="text" name="warrantyDate" id="warrantyDate" value="{{ $serialInfos->warrantyDate }}" autocomplete="off" >
                             </div><br><br>
 
                         </div>
@@ -416,7 +416,7 @@ $( function() {
                                 <select id="productName" name="productName" class="form-control required" required>
                                  <option value="">নির্বাচন করুন</option>
                                   @foreach ($products->unique('productName')->pluck('productName') as $productName)
-                                 <option value="{{$productName}}" @if (old('productName')==$productName)
+                                 <option value="{{$productName}}" @if (old('productName',$serialInfos->productInfo->productName)==$productName)
                                     {{"selected"}}
                                 @endif>{{$productName}}</option>
                                 @endforeach
@@ -430,65 +430,18 @@ $( function() {
                  
                   <div class="text-center">
                     <br><br><br>
-                      <button type="submit" class=" btn btn-info"> সংরক্ষণ করুন</button> 
+                      <button type="submit" class=" btn btn-info"> Update করুন</button> 
                           <button type="reset" class="btn btn-danger">বাতিল করুন</button>
                   </div>
                 </div>
               </form>
 
-                      <div class="row">
-                        <div class="col-md-8"></div>
-
-
-                        <div class="col-md-1">
-                          <label for="searchByBrandName"  class="col-md-4  control-label">খুঁজুন</label>
-                          
-                        </div>
-
-                        <div class="col-md-3">
-                          <input type="text" class="form-control" id="searchByBrandName" name="searchByBrandName" placeholder="খুঁজুন...">
-                        </div>
-
-
-                      </div>
+                   
 
                      
                                          
                   </div> 
                </div> 
-
-                
-               <div id="searchedBrandValue">
-                   
-               </div>
-
-             <div class="row">
-                        <table class="table table-responsive table-striped table-condenced table-bordered">
-                          <thead>
-                          <tr class="bg-primary">
-                            <th class="col-lg-1 text-center">#</th>
-                            <th class="col-lg-2 text-center">Product</th>
-                            <th class="col-lg-2 text-center">Serial No.</th>
-                            <th class="col-lg-3 text-center">Warranty Period</th>
-                            <th class="col-lg-3 text-center">Creator</th>
-                            <th class="col-lg-2 text-center">Edit</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                        @foreach ($serialInfos as $key=>$serialInfo)
-                                <tr>
-                                    <td class="text-center">{{++$key}}</td>
-                                    <td class="text-center">{{$serialInfo->productInfo->productName}}</td>
-                                    <td class="text-center">{{$serialInfo->serial_no}}</td>
-                                    <td class="text-center">{{$serialInfo->warrantyDate}}</td>
-                                    <td class="text-center">{{$serialInfo->user->employeeinfo->name}}</td>
-                                  <td><a href="{{route('product receive.serialedit',[$serialInfo->id])}}"><i class="fa fa-edit" style="font-size:24px"></i></a></td>
-                                </tr>
-                          @endforeach
-                        </tbody> 
-                       
-                        </table>
-                    </div>
               
             </div>
           </div>
