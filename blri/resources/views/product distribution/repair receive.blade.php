@@ -340,22 +340,8 @@ $( function() {
 
                     <div class="row">
                         <div class="col-md-6"  style="border: solid 2px #eee; padding: 20px">
-                            <div class="col-md-4">
-                                 <label for="" class=" control-label">Category</label>
-                            </div>
-                            <div class="col-md-8">
-                                <select id="" name="" class="form-control required" required>
-                                 <option value="">Select Category</option>
-                              </select>
-                            </div><br><br>
-                            <div class="col-md-4">
-                                 <label for="" class=" control-label">Brand</label>
-                            </div>
-                            <div class="col-md-8">
-                                <select id="" name="" class="form-control required" required>
-                                 <option value="">Select Brand</option>
-                              </select>
-                            </div><br><br>
+                           
+                            
                             <div class="col-md-4">
                                  <label for="" class=" control-label">Product</label>
                             </div>
@@ -388,26 +374,6 @@ $( function() {
                        </div>
 
                         <div class="col-md-6" style="border: solid 2px #eee; padding: 20px">
-
-
-                          <!--<label class="col-md-6 control-label" >Joinig Date</label>
-                        <div class="col-md-6">
-                          <input class="form-control datepicker" type="text" name="joiningDate" placeholder="mm/dd/yyyy"  value="{{old('joiningDate')}}"  required>
-                          <div class="error">{{$errors->first('joiningDate')}}</div>
-                        </div><br><br>
-
-                        <label class="col-md-6 control-label" >Birth Date</label>
-                        <div class="col-md-6">
-                          <input type="text" class="form-control datepicker" name="birthDate" placeholder="mm/dd/yyyy"  value="{{old('birthDate')}}" required>
-                          <div class="error">{{$errors->first('birthDate')}}</div>
-                        </div><br><br>-->
-                         <div class="col-md-4">
-                                 <label for="" class=" control-label">Sending Date</label>
-                            </div>
-                            <div class="col-md-8">
-                               <input class="form-control datepicker" type="text" name="sendingDate" placeholder="mm/dd/yyyy"  value=""  required>
-                                
-                            </div><br><br>
                             
                             <div class="col-md-4">
                                  <label for="" class=" control-label">Receive date</label>
@@ -432,45 +398,7 @@ $( function() {
                           <button type="reset" class="btn btn-danger">Cancel</button>
                   </div>
               </form>
-<!--                   <div class="row">
-                   <div class="col-lg-6"> Category and brand-->
-                       <!--   <label for="category" class="col-sm-2 control-label">Category</label>
-                          <div class="col-lg-9">
-                              <select id="category" name="categories" class="form-control required" required>
-                                               
-                                               <option value=""></option>
-                                              
-                              </select>
-                          </div><br><br>
 
-                          <label for="brand" class="col-sm-2 control-label">Brand</label>
-                       <div class="col-lg-9">
-                          <input type="text" class="form-control" id="brand" name="brandName" placeholder="Name Can not be empty"required>
-                          </div><br><br><br>
-
-                          <div class="col-lg-6">
-                            <label for="category" class="col-sm-2 control-label">Category</label>
-                          <div class="col-lg-9">
-                              <select id="category" name="categories" class="form-control required" required>
-                                               
-                                               <option value=""></option>
-                                              
-                              </select>
-                          </div><br><br>
-
-                          <label for="brand" class="col-sm-2 control-label">Brand</label>
-                       <div class="col-lg-9">
-                          <input type="text" class="form-control" id="brand" name="brandName" placeholder="Name Can not be empty"required>
-                          </div><br><br><br>
-                          </div>
-
-                        <div class="text-center">
-                          <button type="submit" class="btn btn-info">Save</button> 
-                          <button type="reset" class="btn btn-danger">Cancel</button>
-                        </div>
-                         </form>end form-->
-                      <!--Category and brand-->
-                      <!--Search option starts-->
                       <div class="row">
                         <div class="col-md-8"></div>
 
@@ -496,18 +424,19 @@ $( function() {
                 <div id="allBrands">
                   <table class="table table-responsive table-hover table-striped table-bordered table-condensed">
                       <tr class="row bg-primary">
-                        <th class="col-lg-4 text-center">Project Name</th>
-                        <th class="col-lg-3 text-center">Employee</th>
-                        <th class="col-lg-3 text-center">Product Name</th>
-                        <th class="col-lg-2 text-center">Serial No</th>
+                        <th class="col-lg-2 text-center">Product</th>
+                        <th class="col-lg-3 text-center">Repairer</th>
+                        <th class="col-lg-2 text-center">Receive Date</th>
+                        <th class="col-lg-4 text-center">Remarks</th>
+                         <th class="col-lg-1 text-center">Edit</th>
                       </tr>
                       
                                 <tr class="row">
                                     <td></td>
                                     <td></td>
                                     <td></td>
-                                    
                                     <td></td>
+                                    <td class="text-center"><a href=" "><i class="fa fa-edit" style="color:blue;font-size: 24px"></i></a></td>
                                 </tr>
                            
                   </table>
