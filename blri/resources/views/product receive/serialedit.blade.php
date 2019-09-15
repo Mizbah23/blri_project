@@ -186,15 +186,7 @@ $( function() {
             <span class="icon-bar"></span>
             </button>
 
-            <div style="margin-top: 10px">
-              <div class="col-lg-3">
-                <img style="height: 50px; width: 50px;" src="/images/logo.png" alt="">
-              </div>
-              <div class="col-lg-9">
-                 <h1 style="margin-left: -25px"><a class="navbar-brand" href="index.html">  BLRI<span class="dashboard_text" style="margin-left: -35px">Design dashboard</span></a></h1>
-              </div>
-             </div>
-            </div>
+            <h1 style="margin-top: 5px"><a class="text-white" style="margin-left: 10px;" href="index.html"><span> <img style="height: 50px; width: 50px;" src="/images/logo.png" alt=""></span> BLRI<span class="dashboard_text" style="margin-left: 30px">Design dashboard</span></a></h1>
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="sidebar-menu">
               <li class="header">MAIN NAVIGATION</li>
@@ -228,7 +220,7 @@ $( function() {
                  @foreach($setuptypes as $setuptype)
                    
                     <li><a href="{{route('setup.'.strtolower($setuptype->SType))}}">
-                      <i class="fa fa-circle"></i> {{$setuptype->SType}}</a></li>
+                      <i class="fa fa-circle"></i> {{$setuptype->name}}</a></li>
                  @endforeach
                   
                 </ul>
@@ -239,11 +231,11 @@ $( function() {
               <li class="treeview">
                 <a href="#">
                 <i class="fa fa-laptop"></i>
-                <span>Product Recieve</span>
+                <span>Product Receive</span>
                 <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                   @foreach($productreceivetypes as $productreceivetype)
+                  @foreach($productreceivetypes as $productreceivetype)
                    
                     <li><a href="{{route('product receive.'.strtolower($productreceivetype->prType))}}">
                       <i class="fa fa-circle"></i> {{$productreceivetype->prType}}</a></li>
@@ -270,7 +262,7 @@ $( function() {
                 <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                 @foreach($adjustments as $adjustment)
+                  @foreach($adjustments as $adjustment)
                    
                     <li><a href="{{route('adjustment.'.strtolower($adjustment->adjustmentType))}}">
                       <i class="fa fa-circle"></i> {{$adjustment->adjustmentType}}</a></li>
@@ -280,7 +272,7 @@ $( function() {
             
               <li class="treeview">
                 <a href="#">
-                <i class="fa fa-table"></i> <span>Report</span>
+                <i class="fa fa-table"></i> <span>Reporting</span>
                 <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
@@ -362,6 +354,7 @@ $( function() {
                             </div>
                             <div class="col-md-7">
                                 <select id="categoryName" name="categoryName" onchange="showBrand()" class="form-control required" required value="{{old('categoryName')}}">
+                                <div class="error" style="color:red">{{$errors->first('categoryName')}}</div><br><br>
                                 <option value="" >নির্বাচন করুন</option>
                                  @foreach($products as $product)
                                  <option value="{{$product->brand->category->id}}"{{old('categoryName',$serialInfos->productInfo->brand->category_id)==$product->brand->category->id ?"selected":""}}>{{$product->brand->category->categoryName}}</option>
@@ -375,18 +368,20 @@ $( function() {
                             </div>
                             <div class="col-md-7">
                                <input type="text" class="form-control" id="serial_no" name="serial_no" value="{{$serialInfos->serial_no}}" placeholder="অবশ্যই পূরণ করুন"required>
+                               <div class="error" style="color:red">{{$errors->first('serial_no')}}</div>
+
                             </div><br><br>
 
                        </div>
 
                         <div class="col-md-4" >
                             
-
-                            <div class="col-md-5">
+                             <div class="col-md-5">
                             <label for="brandName" class=" control-label">ব্র্যান্ড</label>
                             </div>
                             <div class="col-md-7">
                                <select id="brandName" name="brandName" class="form-control required" required onchange="showProduct()">
+                                <div class="error" style="color:red">{{$errors->first('brandName')}}</div>
                                 <option value="">নির্বাচন করুন</option>
                                
                                   @foreach($products as $product)
@@ -404,6 +399,7 @@ $( function() {
                             </div>
                             <div class="col-md-7">
                                <input class="form-control" type="text" name="warrantyDate" id="warrantyDate" value="{{ $serialInfos->warrantyDate }}" autocomplete="off" >
+                               <div class="error" style="color:red">{{$errors->first('warrantyDate')}}</div>
                             </div><br><br>
 
                         </div>
@@ -414,6 +410,8 @@ $( function() {
                             </div>
                             <div class="col-md-7">
                                 <select id="productName" name="productName" class="form-control required" required>
+                                <div class="error" style="color:red">{{$errors->first('productName')}}</div>
+
                                  <option value="">নির্বাচন করুন</option>
                                   @foreach ($products->unique('productName')->pluck('productName') as $productName)
                                  <option value="{{$productName}}" @if (old('productName',$serialInfos->productInfo->productName)==$productName)

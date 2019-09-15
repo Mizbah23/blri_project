@@ -59,7 +59,8 @@ class brandController extends Controller
   public function update(Request $request,$id){
 
     $this->validate( $request,[
-      'brandName'=>'required',
+      'categoryName'=>'required',
+      'brandName'=>'required|unique:brands'
     ]);
     
     $brand=Brand::find($id);
