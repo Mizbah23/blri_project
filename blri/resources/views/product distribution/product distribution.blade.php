@@ -133,22 +133,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
   </script>
   
 
-<script>
-$(document).ready(function(){
- $("#dor").hide();
-    $("#por").hide();
-  $("#hide").click(function(){
-    $("#dor").hide();
-    $("#por").show();
-   
-  });
-  $("#show").click(function(){
-    $("#por").hide();
-    $("#dor").show();
-     
-  });
-});
-</script>
+
 
 </head> 
 <body class="cbp-spmenu-push">
@@ -199,7 +184,7 @@ $(document).ready(function(){
 
               <li class="treeview">
                 <a href="#">
-                <i class="fa fa-folder"></i>
+                <i class="fa fa-wrench"></i>
                 <span>Setup</span>
                 <i class="fa fa-angle-left pull-right"></i>
                 </a>
@@ -331,53 +316,18 @@ $(document).ready(function(){
                 <form class="form-horizontal" method="post"> 
                   <div class="form-group"> <!--Form-->
 
-                    <div class="row" style="border: solid 1px #eee; padding: 20px">
+                    {{-- <div class="row" style="border: solid 1px #eee; padding: 20px">
 
 
 
                         <div class="text-center">
                             <input type="radio" id="show" name="p" value=""> Distribute to Department
                         </div>
-                      </div>
+                      </div> --}}
 {{-- id show --}}
-                    <div class="row" id="por" style="border: solid 1px #eee; padding: 20px">
-                        <div class="col-md-4">
-                          <div class="col-md-4">
-                                 <label for="" class=" control-label">Project</label>
-                            </div>
-                            <div class="col-md-8">
-                                <select id="" name="" class="form-control required" required>
-                                 <option value="">Select Project</option>
-                              </select>
-                            </div>
-                        </div>
-
-
-                        <div class="col-md-4">
-                            <div class="col-md-4">
-                                 <label for="" class=" control-label">Employee</label>
-                            </div>
-                            <div class="col-md-8">
-                                <select id="" name="" class="form-control required" required>
-                                 <option value="">Select Employee</option>
-                              </select>
-                            </div>
-                        </div>
-
-
-                        <div class="col-md-4">
-                          <div class="col-md-4">
-                                 <label for="" class=" control-label">Assign Date</label>
-                            </div>
-                            <div class="col-md-8">
-                                <input class="form-control datepicker" type="text" name="date" value="" placeholder="মাস/দিন/বছর" required>
-                            </div>
-                           
-                        </div>
-
-                    </div><br>
+              
 {{-- id hide --}}
-<div class="row" id="dor" style="border: solid 1px #eee; padding: 20px">
+<div class="row"  style="border: solid 1px #eee; padding: 20px">
                         <div class="col-md-3"></div>
 
 
@@ -449,12 +399,12 @@ $(document).ready(function(){
                             <div id="allBrands">
                                  <table class="table table-responsive table-hover table-striped table-bordered table-condensed">
                                     <tr class="row bg-primary">
-                                        <th class="col-lg-1 text-center">ID</th>
-                                        <th class="col-lg-2 text-center">Product ID</th>
-                                        <th class="col-lg-3 text-center">Product</th>
-                                        <th class="col-lg-2 text-center">Code</th>
-                                        <th class="col-lg-1 text-center">Stock</th>
-                                        <th class="col-lg-1 text-center">Sales</th>
+                                        <th class="col-lg-1 text-center">#</th>
+                                        <th class="col-lg-2 text-center">Category</th>
+                                        <th class="col-lg-1 text-center">Brand</th>
+                                        <th class="col-lg-2 text-center">Product</th>
+                                        <th class="col-lg-1 text-center">Product Code</th>
+                                        <th class="col-lg-3 text-center">Remarks</th>
                                         <th class="col-lg-1 text-center">Edit</th>
                                         <th class="col-lg-1 text-center">Delete</th>
                                     </tr>
@@ -466,23 +416,23 @@ $(document).ready(function(){
                                         <td></td>
                                         <td></td>
                                         <td></td>
-                                        <td class="text-center"> <a href=""class="glyphicon glyphicon-edit  " style="font-size:24px; color: #1bc9f5"></i></a></td>
+                                        <td class="text-center"> <a href=""class="glyphicon glyphicon-edit" style="font-size:24px; color: #1bc9f5"></i></a></td>
                                         <td class="text-center"> <a href=""class="glyphicon glyphicon-trash  " style="font-size:24px; color: red"></i></a></td>
 
                                     </tr>
-                           
+                                                 
                                 </table>
-                                
+                                  <div class="text-center">
+                          <button type="submit" class=" btn btn-info"> Save</button> 
+                          <button type="reset" class="btn btn-danger">Cancel</button>
+                                 </div>
                             </div>
                         </div>
                         
                     </div>
 
                   </div>
-                  <div class="text-center">
-                      <button type="submit" class=" btn btn-info"> Save</button> 
-                          <button type="reset" class="btn btn-danger">Cancel</button>
-                  </div>
+                
               </form>
 <!--                   <div class="row">
                    <div class="col-lg-6"> Category and brand-->
@@ -526,15 +476,6 @@ $(document).ready(function(){
                       <div class="row">
                         <div class="col-md-8"></div>
 
-
-                        <div class="col-md-1">
-                          <label for="searchByBrandName"  class="col-md-4  control-label">Search</label>
-                          
-                        </div>
-
-                        <div class="col-md-3">
-                          <input type="text" class="form-control" id="searchByBrandName" name="searchByBrandName" placeholder="Search by brand name">
-                        </div>
 
 
                       </div>
