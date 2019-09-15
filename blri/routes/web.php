@@ -143,6 +143,8 @@ Route::post('/product_receive/product_serial_info/{id}/edit', 'productserialinfo
 //Product distribution->
 //
 Route::get('/product_distribution/product_release', 'productreleaseController@index')->name('product distribution.product release');
+Route::post('/product_distribution/product_release', 'productreleaseController@store');
+Route::post('/show/employee/basedOnProject/Id', 'productreleaseController@showEmployeeBasedOnProject')->name('showEmployeeBasedOnProject');
 Route::get('/product_distribution/product_distribution', 'productdistributiontypeController@index')->name('product distribution.product distribution');
 Route::get('/product_distribution/product_repair', 'productrepairController@index')->name('product distribution.product repair');
 Route::get('/product_distribution/repair_receive', 'repairreceiveController@index')->name('product distribution.repair receive');

@@ -60,6 +60,10 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
   width: 100%;
   height: 295px;
 }
+.error{
+  font-size: 0.9em;
+  color: red;
+}
 </style>
 <!--pie-chart --><!-- index page sales reviews visitors pie chart -->
 <script src="/js/pie-chart.js" type="text/javascript"></script>
@@ -159,7 +163,7 @@ $( function() {
   $(function() {
     $( ".datepicker" ).datepicker({
       format: 'MM/DD/YYYY',
-      maxDate: "+0D",
+      minDate: "+0D",
       ignoreReadonly: true
     });
   });
@@ -204,7 +208,6 @@ $( function() {
                 </a>
                 <ul class="treeview-menu">
                 @foreach($securitytypes as $securitytype)
-                   
                       <li><a href="{{route('security.'.strtolower($securitytype->SecType))}}">
                       <i class="fa fa-circle"></i> {{$securitytype->SecType}}</a></li>
                  @endforeach
@@ -220,7 +223,6 @@ $( function() {
                 </a>
                 <ul class="treeview-menu">
                  @foreach($setuptypes as $setuptype)
-                   
                     <li><a href="{{route('setup.'.strtolower($setuptype->SType))}}">
                       <i class="fa fa-circle"></i> {{$setuptype->SType}}</a></li>
                  @endforeach
@@ -336,35 +338,62 @@ $( function() {
                 <h3 class="">Product Release</h3>
               </div>
               <div class="form-body">
-                <form class="form-horizontal" method="post"> <!--Form for grideview-->
+                <form class="form-horizontal" method="post" autocomplete="off" novalidate> <!--Form for grideview-->
+                  @csrf
                   <div class="form-group">
                       <div class="row" style="border:2px solid #EEE;padding:20px">
 
-                      <div class="col-lg-3"><br>
+                      {{-- <div class="col-lg-3"><br>
                       <input type="radio" name="release"required><b> Relase to Department</b><br>
                       <input type="radio" name="release"required><b> Release To Store</b> 
-                      </div>
+                      </div> --}}
 
-                      <div class="col-lg-3">
-                      <label for="releasedate"><b>Release Date:</b></label>
-                      <input type="text" class="form-control datepicker" name="releasedate" placeholder="mm/dd/yyyy" required>
-                      <label for="deptname"><b>Department Name:</b></label>
-                      <select class="form-control" name="deptname" required>
-                        <option value="">Select Department</option>
-                      </select>
+                      <div class="col-lg-4">
+                        <label for="releasedate"><b>Release Date:</b></label>
+                        <input type="text" class="form-control datepicker" name="releasedate" placeholder="mm/dd/yyyy" required>
+                        <div class="error">{{$errors->first('releasedate')}}</div>
+                        <label for="deptName"><b>Department Name:</b></label>
+                        <select id="deptName" name="deptName" class="form-control required" required>
+                          <option value="">নির্বাচন করুণ</option>
+                          @foreach ($divisions  as $division)
+                         <option value="{{$division->id}}" @if (old('deptName')==$division->id)
+                             {{"selected"}}
+                         @endif >{{$division->divisionName}}</option>
+                          @endforeach
+                       </select>
+                       <div class="error">{{$errors->first('deptName')}}</div>
                       </div>
 
                       <div class="col-lg-1"></div>
 
-                      <div class="col-lg-3">
-                      <label for="project"><b>Project:</b></label><br>
-                      <select class="form-control" name="project" required>
-                        <option value="">Select Project</option>
-                      </select>
-                      <label for="employee"><b>Employee:</b></label><br>
-                      <select class="form-control" name="employee" required>
-                        <option value="">Select Employee</option>
-                      </select>
+                      <div class="col-lg-4">
+                        <label for="project"><b>Project:</b></label><br>
+                        <select id="projectName" name="projectName" onchange="showEmployee()" class="form-control required" required>
+                          <option value="">নির্বাচন করুণ</option>
+                          @foreach ($projects  as $project)
+                         <option value="{{$project->id}}" @if (old('projectName')==$project->id)
+                             {{"selected"}}
+                         @endif >{{$project->projectName}}</option>
+                          @endforeach
+                       </select>
+                       <div class="error">{{$errors->first('projectName')}}</div>
+                        <label for="employee"><b>Employee:</b></label><br>
+                        <select id="employeeName" name="employeeName" class="form-control required" required>
+                          <option value="">নির্বাচন করুণ</option>
+                          @if (old('projectName'))
+                           {{-- @foreach ($employeeInformations  as $employeeInformation)
+                             @if (old('projectDirector')!=$employeeInformation->id)
+                             <option value="{{$employeeInformation->id}}" @if (old('employeeName')==$employeeInformation->id)
+                               {{"selected"}} 
+                               @endif>{{$employeeInformation->name}}
+                             </option>
+                             @endif
+                             
+                           @endforeach --}}
+                          @endif
+                          
+                       </select>
+                       <div class="error">{{$errors->first('employeeName')}}</div>
                       </div>
                       </div>  
                   </div>
@@ -372,10 +401,17 @@ $( function() {
                   <div class="row" style="border:2px solid #EEE;padding:15px;margin: -16px">
 
                      <div class="col-lg-5">
-                     <label for="serialcode"><b>Serial Code:</b></label>
-                     <select class="form-control" name="" required>
-                       <option value="">Select serial No of Product</option>
-                     </select><br>
+                     <label for="serialNo"><b>Serial No:</b></label>
+                     <select id="serialNo" name="serialNo" class="form-control required" required>
+                          <option value="">Select serial No of Product</option>
+                          @foreach ($serialInfo  as $item)
+                         <option value="{{$item->id}}" @if (old('serialNo')==$item->id)
+                             {{"selected"}}
+                         @endif >{{$item->serial_no}}</option>
+                          @endforeach
+                       </select>
+                       <div class="error">{{$errors->first('serialNo')}}</div>
+                     <br>
                      <center>
                       <button type="submit" class="btn btn-info"><i class="glyphicon glyphicon-plus"
                       style="color:white"></i>Add to List</button>
@@ -392,45 +428,8 @@ $( function() {
                          </table>
                      </div>
                   </div>
-                </form><!--End Form for grideview-->
-
-
-                    <!--<div class="row">
-                   <div class="col-lg-6"> Category and brand-->
-                       <!--   <label for="category" class="col-sm-2 control-label">Category</label>
-                          <div class="col-lg-9">
-                              <select id="category" name="categories" class="form-control required" required>
-                              <option value=""></option>
-                                              
-                              </select>
-                          </div><br><br>
-
-                          <label for="brand" class="col-sm-2 control-label">Brand</label>
-                       <div class="col-lg-9">
-                          <input type="text" class="form-control" id="brand" name="brandName" placeholder="Name Can not be empty"required>
-                          </div><br><br><br>
-
-                          <div class="col-lg-6">
-                            <label for="category" class="col-sm-2 control-label">Category</label>
-                          <div class="col-lg-9">
-                              <select id="category" name="categories" class="form-control required" required>
-                              <option value=""></option>
-                              </select>
-                          </div><br><br>
-
-                          <label for="brand" class="col-sm-2 control-label">Brand</label>
-                       <div class="col-lg-9">
-                          <input type="text" class="form-control" id="brand" name="brandName" placeholder="Name Can not be empty"required>
-                          </div><br><br><br>
-                          </div>
-
-                        <div class="text-center">
-                          <button type="submit" class="btn btn-info">Save</button> 
-                          <button type="reset" class="btn btn-danger">Cancel</button>
-                        </div>
-                         </form>end form-->
-                      <!--Category and brand-->
-                      <!--Search option starts-->
+                </form>
+                
                       <div class="row">
                         <div class="col-md-8"></div>
 
@@ -908,7 +907,27 @@ $( function() {
     
     <!-- Bootstrap Core JavaScript -->
    <script src="/js/bootstrap.js"> </script>
-
+   <script>
+    function showEmployee() {
+      var selectedProjectName=$("#projectName").val();
+      $('#employeeName').html('<option value="">Select employee</option>');
+      console.log(selectedProjectName);
+      $.ajax({
+        type:'POST',
+        url:"{{route("showEmployeeBasedOnProject")}}",
+        data: {projectId: selectedProjectName,  _token: '{{csrf_token()}}'},
+        success: function(data) {
+          if(data[0]=="success"){
+            data[1].forEach(employeeInformation => {
+              $('#employeeName').append(`<option value="${employeeInformation.id}">${employeeInformation.name}</option>`); 
+            });
+          }
+        }
+      });
+     
+      
+    }
+   </script>
     
 </body>
 </html>
