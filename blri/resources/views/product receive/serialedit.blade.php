@@ -362,6 +362,7 @@ $( function() {
                             </div>
                             <div class="col-md-7">
                                 <select id="categoryName" name="categoryName" onchange="showBrand()" class="form-control required" required value="{{old('categoryName')}}">
+                                <div class="error" style="color:red">{{$errors->first('categoryName')}}</div><br><br>
                                 <option value="" >নির্বাচন করুন</option>
                                  @foreach($products as $product)
                                  <option value="{{$product->brand->category->id}}"{{old('categoryName',$serialInfos->productInfo->brand->category_id)==$product->brand->category->id ?"selected":""}}>{{$product->brand->category->categoryName}}</option>
@@ -375,18 +376,20 @@ $( function() {
                             </div>
                             <div class="col-md-7">
                                <input type="text" class="form-control" id="serial_no" name="serial_no" value="{{$serialInfos->serial_no}}" placeholder="অবশ্যই পূরণ করুন"required>
+                               <div class="error" style="color:red">{{$errors->first('serial_no')}}</div>
+
                             </div><br><br>
 
                        </div>
 
                         <div class="col-md-4" >
                             
-
-                            <div class="col-md-5">
+                             <div class="col-md-5">
                             <label for="brandName" class=" control-label">ব্র্যান্ড</label>
                             </div>
                             <div class="col-md-7">
                                <select id="brandName" name="brandName" class="form-control required" required onchange="showProduct()">
+                                <div class="error" style="color:red">{{$errors->first('brandName')}}</div>
                                 <option value="">নির্বাচন করুন</option>
                                
                                   @foreach($products as $product)
@@ -404,6 +407,7 @@ $( function() {
                             </div>
                             <div class="col-md-7">
                                <input class="form-control" type="text" name="warrantyDate" id="warrantyDate" value="{{ $serialInfos->warrantyDate }}" autocomplete="off" >
+                               <div class="error" style="color:red">{{$errors->first('warrantyDate')}}</div>
                             </div><br><br>
 
                         </div>
@@ -414,6 +418,8 @@ $( function() {
                             </div>
                             <div class="col-md-7">
                                 <select id="productName" name="productName" class="form-control required" required>
+                                <div class="error" style="color:red">{{$errors->first('productName')}}</div>
+
                                  <option value="">নির্বাচন করুন</option>
                                   @foreach ($products->unique('productName')->pluck('productName') as $productName)
                                  <option value="{{$productName}}" @if (old('productName',$serialInfos->productInfo->productName)==$productName)
