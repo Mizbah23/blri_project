@@ -104,7 +104,7 @@ class productserialinfoController extends Controller
             $serialInfo->serial_no=$request->serial_no;
             $serialInfo->user_id=$request->session()->get('user')->id;
             $serialInfo->warrantyDate=date('Y-m-d', strtotime($request->warrantyDate));
-            dd($serialInfo);
+            //dd($serialInfo);
             $serialInfo->save();
 
             return redirect()->route('product receive.product serial info');
