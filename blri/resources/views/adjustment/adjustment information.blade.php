@@ -372,7 +372,7 @@ $( function() {
                                   
                                 </select>
                               
-                              </div><br><br>
+                              </div><br><br><br>
 
                               <div class="col-md-3">
                                 <label for="productCode" class=" control-label">Reason</label>
