@@ -277,10 +277,10 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                         <li class="dropdown profile_details_drop">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                                 <div class="profile_img">   
-                                    <span class="prfil-img"><img src="/images/2.jpg" alt=""> </span> 
-                                    <div class="user-name">
-                                        <p>Admin Name</p>
-                                        <span>Administrator</span>
+                                   <span class="prfil-img"><img src="/images/{{(Session::get('user')->employeeinfo->profileImage)}}" alt="" style="height: 50px; width:50px"> </span>  
+                                  <div class="user-name">
+                                        <p>{{(Session::get('user')->employeeinfo->name)}}</p>
+                                        <span>{{ (Session::get('user')->userType)}}</span>
                                     </div>
                                     <i class="fa fa-angle-down lnr"></i>
                                     <i class="fa fa-angle-up lnr"></i>
@@ -333,12 +333,15 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 
                         <div class="col-md-6">
                             <div class="col-md-3">
-                                 <label for="" class=" control-label">Department Name</label>
+                                <label for="divisions" class="col-sm-2 control-label">অনুষদ</label>
                             </div>
                             <div class="col-md-9">
-                                <select id="" name="" class="form-control required" required>
-                                 <option value="">Select Department</option>
-                              </select>
+                               <select class="form-control" id="divisions" name="divisions">
+                      <option value="">Select Department</option>
+                      @foreach($divisions as $division)
+                        <option value="{{$division->id}}">{{$division->divisionName}}</option>
+                      @endforeach
+                    </select>
                             </div><br><br>
                         </div>
                         <div class="col-md-3"></div>
@@ -349,47 +352,47 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                     <div class="row">
                         <div class="col-md-4"  style="border: solid 2px #eee; padding: 20px">
                             <div class="col-md-3">
-                                 <label for="" class=" control-label">Category</label>
+                                 <label for="categoryName" class=" control-label">Category</label>
                             </div>
                             <div class="col-md-9">
-                                <select id="" name="" class="form-control required" required>
+                                <select id="categoryName" name="categoryName" class="form-control required" required>
                                  <option value="">Select Category</option>
                               </select>
                             </div><br><br>
                             <div class="col-md-3">
-                                 <label for="" class=" control-label">Brand</label>
+                                 <label for="brandName" class=" control-label">Brand</label>
                             </div>
                             <div class="col-md-9">
-                                <select id="" name="" class="form-control required" required>
+                                <select id="brandName" name="brandName" class="form-control required" required>
                                  <option value="">Select Brand</option>
                               </select>
                             </div><br><br>
                             <div class="col-md-3">
-                                 <label for="" class=" control-label">Product</label>
+                                 <label for="productName" class=" control-label">Product</label>
                             </div>
                             <div class="col-md-9">
-                                <select id="" name="" class="form-control required" required>
+                                <select id="productName" name="productName" class="form-control required" required>
                                  <option value="">Select Product</option>
                               </select>
                             </div><br><br>
                             <div class="col-md-3">
-                                 <label for="" class=" control-label">SL No</label>
+                                 <label for="serial_no" class="control-label">SL No</label>
                             </div>
                             <div class="col-md-9">
-                                <select id="" name="" class="form-control required" required>
+                                <select id="serial_no" name="serial_no" class="form-control required" required>
                                  <option value="">Select Serial Code</option>
                               </select>
                             </div><br><br>
                              <div class="col-md-3">
-                                 <label for="" class=" control-label">Remarks</label>
+                                 <label for="remarks" class=" control-label">Remarks</label>
                             </div>
                             <div class="col-md-9">
-                                <textarea class="form-control" name="remarks" placeholder="Remarks can not be empty"required></textarea><br><br>
+                                <textarea class="form-control" id="remarks" name="remarks" placeholder="Remarks"required></textarea><br><br>
                                 
                             </div><br><br>
                            
                           <div class="text-center">
-                          <button type="submit" class="btn btn-info"><i class="glyphicon glyphicon-plus" style="color: white"></i>Add to lsit</button> 
+                          <button type="submit" class="btn btn-info"><i class="glyphicon glyphicon-plus" style="color: white"></i>Add to list</button> 
                           <button type="reset" class="btn btn-danger">Reset</button>
                           </div>
 
@@ -400,7 +403,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                  <table class="table table-responsive table-hover table-striped table-bordered table-condensed">
                                     <tr class="row bg-primary">
                                         <th class="col-lg-1 text-center">#</th>
-                                        <th class="col-lg-2 text-center">Category</th>
+                                        <th class="col-lg-1 text-center">Category</th>
                                         <th class="col-lg-1 text-center">Brand</th>
                                         <th class="col-lg-2 text-center">Product</th>
                                         <th class="col-lg-1 text-center">Product Code</th>
@@ -941,7 +944,122 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
     
     <!-- Bootstrap Core JavaScript -->
    <script src="/js/bootstrap.js"> </script>
+   
+   <script>
+     var brands;
+     $(function() {
+       brands={!! $brands !!};
+       products={!! $products !!};
+     })
+    function showBrand() {
+      var selectedCategory=$("#categoryName").val();
+      console.log(selectedCategory);
+      $('#brandName').html('<option value="">Select a Brand</option>');
+      if(brands!=undefined){
+        brands.forEach(brand => {
+          if(brand.category_id==selectedCategory)
+            $('#brandName').append(`<option value="${brand.brandName}">${brand.brandName}</option>`); 
+        });
+      }
+      
+    }
 
+    function showProductName(){
+      var selectedProdut=$("#productName").val();//
+      console.log(selectedCategory);
+      $('#productName').html('<option value="">Select a Product</option>');
+      if(products!=undefined){
+        products.forEach(product => {
+          if(product.brand_id==selectedCategory)
+            $('#productName').append(`<option value="${brand.brandName}">${brand.brandName}</option>`); 
+        });
+      }
+    }
+
+      function showProductCode() {
+       var selectedProduct=$("#productName").val();
+       $("#productCode").html('<option value="">Select Product Code</option>');
+       if(products!=undefined){
+        var i=0;
+        var productId;
+        products.forEach(product => {
+          if(product.productName==selectedProduct){
+            $('#productCode').append(`<option value="${product.id}">${product.productCode}</option>`);
+            i++;
+            productId=product.id;
+          }
+        });
+        if(i==1){
+          console.log(i);
+          $('#productCode option[value=' +productId + ']').attr('selected','selected');
+
+          // $("#productCode select").val(productId);
+        }
+      }
+     }
+
+          function deleteItem(id) {
+      if (confirm('Do you really want to delete this item?')) {
+        $.ajax({
+        url: "{{route("delete.product.from.RequisitionList")}}",
+        type:"get",
+        data: { id: id},
+        success: function (data) {
+          console.log(data);
+          if(data=='deleted'){
+            location.reload();
+          }else{
+            alert("Something went wrong! Please Reload the page.");
+          }
+        }
+      });
+      }
+     }
+
+      function handleEdit(id) {
+       $.ajax({
+        url: "{{route("edit.product.from.RequisitionList")}}",
+        type:"get",
+        data: { id: id},
+        success: function (data) {
+          $("#createFormDiv").html(data);
+          $( ".datepicker" ).datepicker({
+            format: 'MM/DD/YYYY',
+            maxDate: "+0D",
+            ignoreReadonly: true
+          });
+          $("#requisitionDate").datepicker();
+          // $("#createFormDiv").hide();
+          // console.log(data);
+        }
+      });
+    }
+
+       function updateContent() {
+      var form=$("#editForm");
+      // console.log(form.serialize());
+      $.ajax({
+        url: "{{route("update.product.from.RequisitionList")}}",
+        type:"put",
+        data: form.serialize(),
+        success: function (data) {
+          console.log(data);
+          if(data[0]=="success"){
+            alert("Successfuly Updated");
+            
+            location.reload();
+          }else{
+           for (const key in data[1]) {
+             alert(data[1][key][0]);
+           }
+          }
+        }
+      });
+    }
+    function cancelUpdate() {
+      location.reload();
+    }
+  </script>
     
 </body>
 </html>

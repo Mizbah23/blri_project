@@ -91,7 +91,7 @@ class createuserController extends Controller
       $user->userType=$request->userType;
       $user->email=$request->email;
       $user->password=$request->password;
-       
+      // dd($user);
     
       $user->save();
       return redirect()->route('security.create user');
