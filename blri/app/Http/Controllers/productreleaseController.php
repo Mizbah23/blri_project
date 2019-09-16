@@ -14,9 +14,21 @@ use App\EmployeeInformation;
 use App\ProductDistribution;
 use Illuminate\Http\Request;
 use App\ProductReleaseInfo;
+use App\Emp_assign;
 
 class productreleaseController extends Controller
 {
+    public function getAllAssignedEmployees($project)
+    {
+        $allAssignedEmployees=[];
+        array_push($allAssignedEmployees, $project->employeeinfo);
+                
+        $assignedEmployees=$project->assignedEmployees;
+        foreach ($assignedEmployees as $key => $item) {
+            array_push($allAssignedEmployees, $item->employeeinfo);
+        }
+        return $allAssignedEmployees;
+    }
     public function index(Request $request)
     {
      if ($request->session()->get('user')) {
@@ -29,7 +41,13 @@ class productreleaseController extends Controller
          $projects= Project::all();
          $divisions=division::all();
          $serialInfo=SerialInfo::all();
-
+         $allAssignedEmployees=[];
+        if(old('projectName')){
+            $project=Project::find(old('projectName'));
+            if($project){
+               $allAssignedEmployees=$this->getAllAssignedEmployees($project);
+            }
+        }
 
          return view('product distribution.product release')
                ->with('setuptypes', $setuptypes)
@@ -40,6 +58,7 @@ class productreleaseController extends Controller
                ->with('divisions', $divisions)
                ->with('projects', $projects)
                ->with('serialInfo', $serialInfo)
+               ->with('assignedEmployees', $allAssignedEmployees)
                ->with('reportings', $reportings);
      }
      else{
@@ -52,7 +71,7 @@ class productreleaseController extends Controller
           //   dd($request->all());
         $this->validate($request,[
           'serialNo'=>'required | unique:product_release_infos,serial_info_id',
-          'releasedate'=>'required | date | after_or_equal: today',
+          'releaseDate'=>'required | date | after_or_equal: today',
           'deptName'=>'required',
           'projectName'=>'required',
           'employeeName'=>'required'
@@ -76,14 +95,8 @@ class productreleaseController extends Controller
         $project=Project::find($request->projectId);
 
         if($project){
-             $allAssignedEmployees=[];
-             array_push($allAssignedEmployees, $project->employeeinfo);
-              
-             $assignedEmployees=$project->assignedEmployees;
-             foreach ($assignedEmployees as $key => $item) {
-                 array_push($allAssignedEmployees, $item->employeeinfo);
-             }
-     
+             $allAssignedEmployees=$this->getAllAssignedEmployees($project);
+             
              return ["success",$allAssignedEmployees];
         }
         else{

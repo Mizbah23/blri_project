@@ -349,9 +349,9 @@ $( function() {
                       </div> --}}
 
                       <div class="col-lg-4">
-                        <label for="releasedate"><b>Release Date:</b></label>
-                        <input type="text" class="form-control datepicker" name="releasedate" placeholder="mm/dd/yyyy" required>
-                        <div class="error">{{$errors->first('releasedate')}}</div>
+                        <label for="releaseDate"><b>Release Date:</b></label>
+                        <input type="text" class="form-control datepicker" name="releaseDate" placeholder="mm/dd/yyyy" required>
+                        <div class="error">{{$errors->first('releaseDate')}}</div>
                         <label for="deptName"><b>Department Name:</b></label>
                         <select id="deptName" name="deptName" class="form-control required" required>
                           <option value="">নির্বাচন করুণ</option>
@@ -381,15 +381,12 @@ $( function() {
                         <select id="employeeName" name="employeeName" class="form-control required" required>
                           <option value="">নির্বাচন করুণ</option>
                           @if (old('projectName'))
-                           {{-- @foreach ($employeeInformations  as $employeeInformation)
-                             @if (old('projectDirector')!=$employeeInformation->id)
-                             <option value="{{$employeeInformation->id}}" @if (old('employeeName')==$employeeInformation->id)
+                           @foreach ($assignedEmployees  as $key=>$assignedEmployee)
+                             <option value="{{$assignedEmployee->id}}" @if (old('employeeName')==$assignedEmployee->id)
                                {{"selected"}} 
-                               @endif>{{$employeeInformation->name}}
+                               @endif>{{$assignedEmployee->name}}
                              </option>
-                             @endif
-                             
-                           @endforeach --}}
+                           @endforeach
                           @endif
                           
                        </select>
