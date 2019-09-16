@@ -355,39 +355,67 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                  <label for="categoryName" class=" control-label">Category</label>
                             </div>
                             <div class="col-md-9">
-                                <select id="categoryName" name="categoryName" class="form-control required" required>
-                                 <option value="">Select Category</option>
+                            <select id="categoryName" name="categoryName" onchange="showBrand()" class="form-control required" required value="{{old('categoryName')}}">
+                                 <div class="error" style="color:red">{{$errors->first('categoryName')}}</div><br><br>
+                                <option value="" >নির্বাচন করুন</option>
+                                @foreach($categories as $category)
+                                 <option value="{{$category->id}}"{{old('categoryName',$category->categoryName)==$category->id ?"selected":""}}>{{$category->categoryName}}</option>
+                                 @endforeach
                               </select>
                             </div><br><br>
                             <div class="col-md-3">
                                  <label for="brandName" class=" control-label">Brand</label>
                             </div>
                             <div class="col-md-9">
-                                <select id="brandName" name="brandName" class="form-control required" required>
-                                 <option value="">Select Brand</option>
+                               <select id="brandName" name="brandName" class="form-control required" required onchange="showProduct()">
+                              <div class="error" style="color:red">{{$errors->first('brandName')}}</div><br><br>
+                                <option value="">নির্বাচন করুন</option>
+                                @if(old('categoryName'))
+                                  @foreach($brands as $brand)
+                                    @if (old('categoryName') == $brand->category->id)
+                                      <option value="{{$brand->brandName}}" {{old('brandName')==$brand->brandName?"selected":""}}>{{$brand->brandName}}</option>
+                                    @endif
+                                  @endforeach
+                                @endif
+                                
                               </select>
                             </div><br><br>
                             <div class="col-md-3">
                                  <label for="productName" class=" control-label">Product</label>
                             </div>
                             <div class="col-md-9">
-                                <select id="productName" name="productName" class="form-control required" required>
-                                 <option value="">Select Product</option>
+                              <select class="form-control" id="productName" name="productName" required onchange="showSerialInfo()" value="{{ old('productName') }}">
+                                <option value="">পণ্য সনাক্তকরণ</option>
+                                 @foreach ($products->unique('productName')->pluck('productName') as $productName)
+                                   <option value="{{$productName}}" @if (old('productName')==$productName)
+                                      {{"selected"}}
+                                  @endif>{{$productName}}</option>
+                                  @endforeach
                               </select>
                             </div><br><br>
                             <div class="col-md-3">
                                  <label for="serial_no" class="control-label">SL No</label>
                             </div>
                             <div class="col-md-9">
-                                <select id="serial_no" name="serial_no" class="form-control required" required>
+                                <select id="serial_no" name="serial_no" class="form-control required" value="{{old('serial_no')}}" required readonly>
                                  <option value="">Select Serial Code</option>
+                                  @if(old('productName'))
+                                  @foreach ($serialInfos as $serialInfo)
+                                  @if(old('productName')==$serialInfo->product->productName)
+                                    <option value="{{$serialInfo->id}}" @if (old('serial_no')==$serialInfo->id)
+                                        {{"selected"}}
+                                    @endif>{{$serialInfo->product->id}}</option>
+                                  @endif
+                                  @endforeach
+                                @endif
+                                
                               </select>
                             </div><br><br>
                              <div class="col-md-3">
                                  <label for="remarks" class=" control-label">Remarks</label>
                             </div>
                             <div class="col-md-9">
-                                <textarea class="form-control" id="remarks" name="remarks" placeholder="Remarks"required></textarea><br><br>
+                                <textarea class="form-control" id="remarks" name="remarks" placeholder="Remarks"></textarea><br><br>
                                 
                             </div><br><br>
                            
@@ -976,22 +1004,22 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
       }
     }
 
-      function showProductCode() {
+      function showSerialInfo() {
        var selectedProduct=$("#productName").val();
-       $("#productCode").html('<option value="">Select Product Code</option>');
-       if(products!=undefined){
+       $("#serial_no").html('<option value="">Select Serial Code</option>');
+       if(serialInfos!=undefined){
         var i=0;
-        var productId;
-        products.forEach(product => {
-          if(product.productName==selectedProduct){
-            $('#productCode').append(`<option value="${product.id}">${product.productCode}</option>`);
+        var serialId;
+        serialInfos.forEach(serialInfo => {
+          if(serialInfo.productName==selectedProduct){
+            $('#serial_no').append(`<option value="${serialInfo.id}">${serialInfo.serial_no}</option>`);
             i++;
-            productId=product.id;
+            serialId=serialInfo.id;
           }
         });
         if(i==1){
           console.log(i);
-          $('#productCode option[value=' +productId + ']').attr('selected','selected');
+          $('#serial_no option[value=' +serialId + ']').attr('selected','selected');
 
           // $("#productCode select").val(productId);
         }

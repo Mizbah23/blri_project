@@ -11,6 +11,9 @@ use App\Adjustment;
 use App\Reporting;
 use App\division;
 use App\SerialInfo;
+use App\Brand;
+use App\ProductInfo;
+use App\Category;
 
 
 class productdistributiontypeController extends Controller
@@ -25,6 +28,9 @@ class productdistributiontypeController extends Controller
     $adjustments=Adjustment::all();
     $reportings=Reporting::all();
     $serialInfos=SerialInfo::all();
+    $brands=Brand::all();
+    $products=ProductInfo::all();
+    $categories=Category::all();
 
 
 
@@ -36,7 +42,10 @@ class productdistributiontypeController extends Controller
     ->with('adjustments',$adjustments)
     ->with('reportings',$reportings)
     ->with('serialInfos',$serialInfos)
-    ->with('divisions',$divisions);
+    ->with('divisions',$divisions)
+    ->with('brands',$brands)
+    ->with('categories',$categories)
+    ->with('products',$products);
 	}
     public function distributionList(){
 
