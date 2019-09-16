@@ -294,6 +294,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                   <div class="col-sm-9">
 
                     <select class="form-control" id="divisions" name="divisions">
+                      <option value="">Select Department</option>
                       @foreach($divisions as $division)
                         <option value="{{$division->id}}">{{$division->divisionName}}</option>
                       @endforeach

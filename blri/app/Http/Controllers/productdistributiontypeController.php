@@ -9,20 +9,36 @@ use App\ProductReceiveType;
 use App\ProductDistribution;
 use App\Adjustment;
 use App\Reporting;
+use App\division;
+use App\SerialInfo;
+
 
 class productdistributiontypeController extends Controller
 {
      public function index()
     {
+    $divisions=division::all();
     $setuptypes= setuptype::all();
     $securitytypes= SecurityType::all();
     $productreceivetypes=ProductReceiveType::all();
     $productdistributions=ProductDistribution::all();
     $adjustments=Adjustment::all();
     $reportings=Reporting::all();
+    $serialInfos=SerialInfo::all();
 
 
 
-    return view('product distribution.product distribution')->with('setuptypes',$setuptypes)->with('securitytypes',$securitytypes)->with('productreceivetypes',$productreceivetypes)->with('productdistributions',$productdistributions)->with('adjustments',$adjustments)->with('reportings',$reportings);
+    return view('product distribution.product distribution')
+    ->with('setuptypes',$setuptypes)
+    ->with('securitytypes',$securitytypes)
+    ->with('productreceivetypes',$productreceivetypes)
+    ->with('productdistributions',$productdistributions)
+    ->with('adjustments',$adjustments)
+    ->with('reportings',$reportings)
+    ->with('serialInfos',$serialInfos)
+    ->with('divisions',$divisions);
 	}
+    public function distributionList(){
+
+    }
 }

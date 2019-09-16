@@ -343,7 +343,9 @@ $( function() {
                            <label for="name" class="col-sm-5 control-label">কর্মকর্তার নাম</label>
                           <div class="col-lg-7">
                               <select id="name" name="name" class="form-control required" required>
+                                <option value="">Select Employee</option>
                                                 @foreach ($employeeInformations  as $employeeInformation)
+
                                                <option value="{{$employeeInformation->id}}">{{$employeeInformation->name}}</option>
                                                @endforeach
                               </select>

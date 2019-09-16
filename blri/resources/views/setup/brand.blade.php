@@ -291,6 +291,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                           <label for="category" class="col-sm-2 control-label">ক্যাটাগরি</label>
                           <div class="col-lg-9">
                               <select id="category" name="categories" class="form-control required" required>
+                                 <option value="">Select Category</option>
                                                 @foreach($categories as $category)
                                                <option value="{{$category->id}}">{{$category->categoryName}}</option>
                                                @endforeach

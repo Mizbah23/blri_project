@@ -334,16 +334,19 @@ $( function() {
 
                            <label for="name" class="col-sm-5 control-label">কর্মকর্তার নাম</label>
                           <div class="col-lg-7">
-                              <select id="name" name="name" class="form-control required" required value="{{$user->employeeinfo->name}}">
+                              <select id="name" name="name" class="form-control required" required >
                                                 @foreach ($employeeInformations  as $employeeInformation)
-                                               <option value="{{$employeeInformation->id}}">{{$employeeInformation->name}}</option>
+                                               <option value="{{$employeeInformation->id}}" @if (old('employeeName',$user->
+                                                employee_information_id)==$employeeInformation->id)
+                                                {{"selected"}}
+                                                @endif>{{$employeeInformation->name}}</option>
                                                @endforeach
                               </select>
                           </div><br><br>
                  
                         <label for="userType" class="col-sm-5 control-label">কর্মকর্তার ভুমিকা</label>
                           <div class="col-lg-7">
-                              <select id="userType" name="userType" class="form-control required" required value="{{$user->userType}}">
+                              <select id="userType" name="userType" class="form-control required"  value="{{$user->userType}}" required>
                                  <option value="">নির্বাচন করুন</option>
                                  <option value="Super admin">Super Admin</option>
                                  <option value="Admin">Admin</option>
@@ -384,8 +387,8 @@ $( function() {
                         <br><br>
                         <div class="col-md-5">
                           <div class="text-center">
-                          <button type="submit" class="btn btn-info">সংরক্ষন করুন</button> 
-                          <button type="reset" class="btn btn-danger">বাতিল করুন</button>
+                          <button type="submit" class="btn btn-info">Update</button> 
+                          <button  onclick="cancelUpdate()" class="btn btn-danger">বাতিল করুন</button>
                           </div>
 
                         </div>
@@ -859,7 +862,11 @@ $( function() {
     
     <!-- Bootstrap Core JavaScript -->
    <script src="/js/bootstrap.js"> </script>
-
+     <script>
+    function cancelUpdate() {
+      document.location.href="{!! route('security.create user'); !!}";
+    }
+  </script>
     
 </body>
 </html>

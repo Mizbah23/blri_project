@@ -146,9 +146,11 @@ Route::get('/product_distribution/product_release', 'productreleaseController@in
 
 //Distribution Info
 Route::get('/product_distribution/product_distribution', 'productdistributiontypeController@index')->name('product distribution.product distribution');
+Route::post('/product_distribution/product_distribution', 'productdistributiontypeController@distributionList');
 
 //Repair Info
 Route::get('/product_distribution/product_repair', 'productrepairController@index')->name('product distribution.product repair');
+Route::get('/product_distribution/product_distribution', 'productdistributiontypeController@index')->name('product distribution.product distribution');
 
 //Repair Receive
 Route::get('/product_distribution/repair_receive', 'repairreceiveController@index')->name('product distribution.repair receive');
