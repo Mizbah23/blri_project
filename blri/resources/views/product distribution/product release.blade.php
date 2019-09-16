@@ -2,7 +2,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>Project</title>
+<title>Product Release</title>
 <link rel="icon" type="image/png" href="/images/logo.png" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -59,6 +59,10 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 #chartdiv {
   width: 100%;
   height: 295px;
+}
+.error{
+  font-size: 0.9em;
+  color: red;
 }
 </style>
 <!--pie-chart --><!-- index page sales reviews visitors pie chart -->
@@ -159,7 +163,7 @@ $( function() {
   $(function() {
     $( ".datepicker" ).datepicker({
       format: 'MM/DD/YYYY',
-      maxDate: "+0D",
+      minDate: "+0D",
       ignoreReadonly: true
     });
   });
@@ -204,7 +208,6 @@ $( function() {
                 </a>
                 <ul class="treeview-menu">
                 @foreach($securitytypes as $securitytype)
-                   
                       <li><a href="{{route('security.'.strtolower($securitytype->SecType))}}">
                       <i class="fa fa-circle"></i> {{$securitytype->SecType}}</a></li>
                  @endforeach
@@ -220,7 +223,6 @@ $( function() {
                 </a>
                 <ul class="treeview-menu">
                  @foreach($setuptypes as $setuptype)
-                   
                     <li><a href="{{route('setup.'.strtolower($setuptype->SType))}}">
                       <i class="fa fa-circle"></i> {{$setuptype->SType}}</a></li>
                  @endforeach
@@ -336,35 +338,59 @@ $( function() {
                 <h3 class="">Product Release</h3>
               </div>
               <div class="form-body">
-                <form class="form-horizontal" method="post"> <!--Form for grideview-->
+                <form class="form-horizontal" method="post" autocomplete="off" > <!--Form for grideview-->
+                  @csrf
                   <div class="form-group">
                       <div class="row" style="border:2px solid #EEE;padding:20px">
 
-                      <div class="col-lg-3"><br>
+                      {{-- <div class="col-lg-3"><br>
                       <input type="radio" name="release"required><b> Relase to Department</b><br>
                       <input type="radio" name="release"required><b> Release To Store</b> 
-                      </div>
+                      </div> --}}
 
-                      <div class="col-lg-3">
-                      <label for="releasedate"><b>Release Date:</b></label>
-                      <input type="text" class="form-control datepicker" name="releasedate" placeholder="mm/dd/yyyy" required>
-                      <label for="deptname"><b>Department Name:</b></label>
-                      <select class="form-control" name="deptname" required>
-                        <option value="">Select Department</option>
-                      </select>
+                      <div class="col-lg-4">
+                        <label for="releaseDate"><b>Release Date:</b></label>
+                        <input type="text" class="form-control datepicker" name="releaseDate" placeholder="mm/dd/yyyy" required>
+                        <div class="error">{{$errors->first('releaseDate')}}</div>
+                        <label for="deptName"><b>Department Name:</b></label>
+                        <select id="deptName" name="deptName" class="form-control required" required>
+                          <option value="">নির্বাচন করুণ</option>
+                          @foreach ($divisions  as $division)
+                         <option value="{{$division->id}}" @if (old('deptName')==$division->id)
+                             {{"selected"}}
+                         @endif >{{$division->divisionName}}</option>
+                          @endforeach
+                       </select>
+                       <div class="error">{{$errors->first('deptName')}}</div>
                       </div>
 
                       <div class="col-lg-1"></div>
 
-                      <div class="col-lg-3">
-                      <label for="project"><b>Project:</b></label><br>
-                      <select class="form-control" name="project" required>
-                        <option value="">Select Project</option>
-                      </select>
-                      <label for="employee"><b>Employee:</b></label><br>
-                      <select class="form-control" name="employee" required>
-                        <option value="">Select Employee</option>
-                      </select>
+                      <div class="col-lg-4">
+                        <label for="project"><b>Project:</b></label><br>
+                        <select id="projectName" name="projectName" onchange="showEmployee()" class="form-control required" required>
+                          <option value="">নির্বাচন করুণ</option>
+                          @foreach ($projects  as $project)
+                         <option value="{{$project->id}}" @if (old('projectName')==$project->id)
+                             {{"selected"}}
+                         @endif >{{$project->projectName}}</option>
+                          @endforeach
+                       </select>
+                       <div class="error">{{$errors->first('projectName')}}</div>
+                        <label for="employee"><b>Employee:</b></label><br>
+                        <select id="employeeName" name="employeeName" class="form-control required" required>
+                          <option value="">নির্বাচন করুণ</option>
+                          @if (old('projectName'))
+                           @foreach ($assignedEmployees  as $key=>$assignedEmployee)
+                             <option value="{{$assignedEmployee->id}}" @if (old('employeeName')==$assignedEmployee->id)
+                               {{"selected"}} 
+                               @endif>{{$assignedEmployee->name}}
+                             </option>
+                           @endforeach
+                          @endif
+                          
+                       </select>
+                       <div class="error">{{$errors->first('employeeName')}}</div>
                       </div>
                       </div>  
                   </div>
@@ -372,10 +398,17 @@ $( function() {
                   <div class="row" style="border:2px solid #EEE;padding:15px;margin: -16px">
 
                      <div class="col-lg-5">
-                     <label for="serialcode"><b>Serial Code:</b></label>
-                     <select class="form-control" name="" required>
-                       <option value="">Select serial No of Product</option>
-                     </select><br>
+                     <label for="serialNo"><b>Serial No:</b></label>
+                     <select id="serialNo" name="serialNo" class="form-control required" required>
+                          <option value="">Select serial No of Product</option>
+                          @foreach ($serialInfo  as $item)
+                         <option value="{{$item->id}}" @if (old('serialNo')==$item->id)
+                             {{"selected"}}
+                         @endif >{{$item->serial_no}}</option>
+                          @endforeach
+                       </select>
+                       <div class="error">{{$errors->first('serialNo')}}</div>
+                     <br>
                      <center>
                       <button type="submit" class="btn btn-info"><i class="glyphicon glyphicon-plus"
                       style="color:white"></i>Add to List</button>
@@ -385,52 +418,38 @@ $( function() {
                        
                      <div class="col-lg-7"><br>
                          <table class="table table-responsive table-hover table-striped table-bordered table-condensed">
-                          <tr class="row bg-primary">
-                             <th class="col-lg-1 text-center">ID</th>
-                             <th class="col-lg-11 text-center">Product Serial No</th>
-                          </tr>
+                            <thead >
+                              <tr class="row bg-primary">
+                              <th class="col-lg-1 text-center">#</th>
+                              <th class="col-lg-2 text-center">Product Name</th>
+                              <th class="col-lg-3 text-center">Serial No</th>
+                              <th class="col-lg-3 text-center">Released By</th>
+                              <th class="col-lg-3 text-center">Department</th>
+                              </tr>
+                            </thead>
+                            <tbody  align="center">
+                              @foreach ($productReleaseInfo as $key=>$item)
+                              @if ($item->status=="pending")
+                              <tr class="row">
+                                <td>{{++$key}}</td>
+                                <td>{{$item->serialInfo->productInfo->productName}}</td>
+                                <td>{{$item->serialInfo->serial_no}}</td>
+                                <td>{{$item->user->employeeinfo->name}}</td>
+                                <td>{{$item->division->divisionName}}</td>
+                              </tr>
+                              @endif
+                              @endforeach
+                            </tbody>
                          </table>
                      </div>
                   </div>
-                </form><!--End Form for grideview-->
-
-
-                    <!--<div class="row">
-                   <div class="col-lg-6"> Category and brand-->
-                       <!--   <label for="category" class="col-sm-2 control-label">Category</label>
-                          <div class="col-lg-9">
-                              <select id="category" name="categories" class="form-control required" required>
-                              <option value=""></option>
-                                              
-                              </select>
-                          </div><br><br>
-
-                          <label for="brand" class="col-sm-2 control-label">Brand</label>
-                       <div class="col-lg-9">
-                          <input type="text" class="form-control" id="brand" name="brandName" placeholder="Name Can not be empty"required>
-                          </div><br><br><br>
-
-                          <div class="col-lg-6">
-                            <label for="category" class="col-sm-2 control-label">Category</label>
-                          <div class="col-lg-9">
-                              <select id="category" name="categories" class="form-control required" required>
-                              <option value=""></option>
-                              </select>
-                          </div><br><br>
-
-                          <label for="brand" class="col-sm-2 control-label">Brand</label>
-                       <div class="col-lg-9">
-                          <input type="text" class="form-control" id="brand" name="brandName" placeholder="Name Can not be empty"required>
-                          </div><br><br><br>
-                          </div>
-
-                        <div class="text-center">
-                          <button type="submit" class="btn btn-info">Save</button> 
-                          <button type="reset" class="btn btn-danger">Cancel</button>
-                        </div>
-                         </form>end form-->
-                      <!--Category and brand-->
-                      <!--Search option starts-->
+                </form>
+                <br>
+                <div class="col-md-12" align="center">
+                    <button type="button" class="btn btn-info" onclick="handleRelease()"><i class="glyphicon glyphicon-floppy-disk"
+                      style="color:white" ></i> Release</button>
+                      <button type="button"class="btn" onclick="handleClear()">Clear</button>
+                </div>
                       <div class="row">
                         <div class="col-md-8"></div>
 
@@ -454,23 +473,30 @@ $( function() {
                </div> 
 
                 <div id="allBrands">
-                  <table class="table table-responsive table-hover table-striped table-bordered table-condensed">
-                      <tr class="row bg-primary">
-                        <th class="col-lg-1 text-center">#</th>
-                        <th class="col-lg-2 text-center">Category</th>
-                        <th class="col-lg-8 text-center">Brand</th>
-                        <th class="col-lg-1 text-center">Edit</th>
-                      </tr>
-                      
-                                <tr class="row">
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    
-                                    <td><a href=""><i class="fa fa-edit" style="font-size:24px"></i></a></td>
-                                </tr>
-                           
-                  </table>
+                    <table class="table table-responsive table-hover table-striped table-bordered table-condensed">
+                        <thead >
+                          <tr class="row bg-primary">
+                          <th class="col-lg-1 text-center">#</th>
+                          <th class="col-lg-3 text-center">Product Name</th>
+                          <th class="col-lg-2 text-center">Serial No</th>
+                          <th class="col-lg-3 text-center">Released By</th>
+                          <th class="col-lg-3 text-center">Department</th>
+                          </tr>
+                        </thead>
+                        <tbody  align="center">
+                          @foreach ($productReleaseInfo as $key=>$item)
+                          @if ($item->status=="released")
+                          <tr class="row">
+                            <td>{{++$key}}</td>
+                            <td>{{$item->serialInfo->productInfo->productName}}</td>
+                            <td>{{$item->serialInfo->serial_no}}</td>
+                            <td>{{$item->user->employeeinfo->name}}</td>
+                            <td>{{$item->division->divisionName}}</td>
+                          </tr>
+                          @endif
+                          @endforeach
+                        </tbody>
+                     </table>
                </div>
                <div id="searchedBrandValue">
                    
@@ -908,7 +934,63 @@ $( function() {
     
     <!-- Bootstrap Core JavaScript -->
    <script src="/js/bootstrap.js"> </script>
-
+   <script>
+    function showEmployee() {
+      var selectedProjectName=$("#projectName").val();
+      $('#employeeName').html('<option value="">Select employee</option>');
+      console.log(selectedProjectName);
+      $.ajax({
+        type:'POST',
+        url:"{{route("showEmployeeBasedOnProject")}}",
+        data: {projectId: selectedProjectName,  _token: '{{csrf_token()}}'},
+        success: function(data) {
+          if(data[0]=="success"){
+            data[1].forEach(employeeInformation => {
+              $('#employeeName').append(`<option value="${employeeInformation.id}">${employeeInformation.name}</option>`); 
+            });
+          }
+        }
+      });
+    }
+    function handleRelease() {
+      var isProductReaselistAvaialable={{count($productReleaseInfo)}};
+      if (isProductReaselistAvaialable>0) {
+        $.ajax({
+          type:'POST',
+          url:"{{route("saveProductRelease")}}",
+          data: {  _token: '{{csrf_token()}}'},
+          success: function(data) {
+            if(data=="success"){
+              alert("Data saved successfully");
+              location.reload();
+            }
+            else{
+              alert("Something went wrong");
+            }
+          }
+        });
+      }
+    }
+    function handleClear() {
+      var isProductReaselistAvaialable={{count($productReleaseInfo)}};
+      if (isProductReaselistAvaialable>0) {
+        $.ajax({
+          type:'POST',
+          url:"{{route("clearProductRelease")}}",
+          data: {_token: '{{csrf_token()}}'},
+          success: function(data) {
+            if(data==1){
+              alert("Data clear successfully");
+              location.reload();
+            }
+            else{
+              alert("Something went wrong");
+            }
+          }
+        });
+        }
+      }
+   </script>
     
 </body>
 </html>

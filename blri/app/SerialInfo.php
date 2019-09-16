@@ -6,12 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class SerialInfo extends Model
 {
-       public function productInfo()
+    public function productInfo()
     {
         return $this->belongsTo('App\ProductInfo');
     }
 
-       public function user()
+    public function user()
     {
         return $this->belongsTo('App\User');
     }
