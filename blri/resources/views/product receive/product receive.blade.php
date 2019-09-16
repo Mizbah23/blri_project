@@ -161,7 +161,7 @@ $( function() {
 <script>
   $(function() {
     $( ".datepicker" ).datepicker({
-      format: 'MM/DD/YYYY',
+      dateFormat: 'dd/mm/yy',
       maxDate: "+0D",
       ignoreReadonly: true
     });
@@ -465,7 +465,7 @@ $( function() {
                               <label for="" class=" control-label">Date</label>
                               </div>
                               <div class="col-md-9">
-                                <input class="form-control datepicker" type="text" id="receiveDate" name="receiveDate" placeholder="mm/dd/yyyy"  value="{{old('receiveDate')}}"  required><br>
+                                <input class="form-control datepicker" type="text" id="receiveDate" name="receiveDate" placeholder="dd/mm/yyyy"  value="{{old('receiveDate')}}"  required><br>
                                 <div class="error">{{$errors->first('receiveDate')}}</div>
                               </div><br><br>
                           

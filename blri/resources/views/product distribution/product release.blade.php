@@ -162,7 +162,7 @@ $( function() {
 <script>
   $(function() {
     $( ".datepicker" ).datepicker({
-      format: 'MM/DD/YYYY',
+      dateFormat: 'dd/mm/yy',
       minDate: "+0D",
       ignoreReadonly: true
     });
@@ -357,7 +357,7 @@ $( function() {
 
                       <div class="col-lg-4">
                         <label for="releaseDate"><b>Release Date:</b></label>
-                        <input type="text" class="form-control datepicker" name="releaseDate" placeholder="mm/dd/yyyy" required>
+                        <input type="text" class="form-control datepicker" name="releaseDate" placeholder="dd/mm/yyyy" value="{{old('releaseDate')}}" required>
                         <div class="error">{{$errors->first('releaseDate')}}</div>
                         <label for="deptName"><b>Department Name:</b></label>
                         <select id="deptName" name="deptName" class="form-control required" required>

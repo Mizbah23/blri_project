@@ -60,7 +60,7 @@ class productreceiveController extends Controller
             'orderNo'=>'required',
             'address'=>'required',
             'contactNo'=>'required',
-            'receiveDate'=>'required | date| before_or_equal:today',
+            'receiveDate'=>'required | date_format:d/m/Y| before_or_equal:today',
             'quantity'=>'required|numeric|gt:0'
         ]);
         $supplier=Supplier::find($request->supplierName);
