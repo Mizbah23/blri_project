@@ -364,7 +364,7 @@ $( function() {
                               </select>
                             </div><br><br>
                             <div class="col-md-4">
-                                 <label for="" class=" control-label">Product Serial</label>
+                                 <label for="" class=" control-label">Serial No.</label>
                             </div>
                             <div class="col-md-8">
                                 <select id="" name="" class="form-control required" required>
@@ -412,7 +412,7 @@ $( function() {
                                  <label for="" class=" control-label">Remarks</label>
                             </div>
                             <div class="col-md-8">
-                                <textarea name="" class="form-control" placeholder="Remarks can not be empty"></textarea>
+                                <textarea name="" class="form-control" placeholder="Remarks"></textarea>
                             </div><br><br>
                             
                         </div>

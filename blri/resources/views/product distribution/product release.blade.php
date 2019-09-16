@@ -253,8 +253,11 @@ $( function() {
                 <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                  <li><a href="forms.html"><i class="fa fa-circle"></i> General Forms</a></li>
-                  <li><a href="validation.html"><i class="fa fa-circle"></i> Form Validations</a></li>
+                     @foreach($productdistributions as $productdistribution)
+                   
+                    <li><a href="{{route('product distribution.'.strtolower($productdistribution->pdType))}}">
+                      <i class="fa fa-circle"></i> {{$productdistribution->pdType}}</a></li>
+                 @endforeach
                 </ul>
               </li>
               <li class="treeview">
@@ -263,7 +266,11 @@ $( function() {
                 <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                  <li><a href="tables.html"><i class="fa fa-circle"></i> Simple tables</a></li>
+                   @foreach($adjustments as $adjustment)
+                   
+                    <li><a href="{{route('adjustment.'.strtolower($adjustment->adjustmentType))}}">
+                      <i class="fa fa-circle"></i> {{$adjustment->adjustmentType}}</a></li>
+                 @endforeach
                 </ul>
               </li>
             
@@ -273,11 +280,11 @@ $( function() {
                 <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                  <li><a href="login.html"><i class="fa fa-circle"></i> Login</a></li>
-                  <li><a href="signup.html"><i class="fa fa-circle"></i> Register</a></li>
-                  <li><a href="404.html"><i class="fa fa-circle"></i> 404 Error</a></li>
-                  <li><a href="500.html"><i class="fa fa-circle"></i> 500 Error</a></li>
-                  <li><a href="blank-page.html"><i class="fa fa-circle"></i> Blank Page</a></li>
+                          @foreach($reportings as $reporting)
+                   
+                    <li><a href="{{route('reporting.'.strtolower($reporting->crType))}}"><!-- route('Folder(from view) Name') &&strtolowere('database table name')-->
+                      <i class="fa fa-circle"></i> {{$reporting->crType}}</a></li>
+                  @endforeach
                 </ul>
               </li>
             
@@ -420,22 +427,26 @@ $( function() {
                          <table class="table table-responsive table-hover table-striped table-bordered table-condensed">
                             <thead >
                               <tr class="row bg-primary">
-                              <th class="col-lg-1 text-center">#</th>
+                              
                               <th class="col-lg-2 text-center">Product Name</th>
                               <th class="col-lg-3 text-center">Serial No</th>
                               <th class="col-lg-3 text-center">Released By</th>
                               <th class="col-lg-3 text-center">Department</th>
+                              <th class="col-lg-3 text-center">Edit</th>
+                              <th class="col-lg-3 text-center">Delete</th>
                               </tr>
                             </thead>
                             <tbody  align="center">
                               @foreach ($productReleaseInfo as $key=>$item)
                               @if ($item->status=="pending")
                               <tr class="row">
-                                <td>{{++$key}}</td>
+                                
                                 <td>{{$item->serialInfo->productInfo->productName}}</td>
                                 <td>{{$item->serialInfo->serial_no}}</td>
                                 <td>{{$item->user->employeeinfo->name}}</td>
                                 <td>{{$item->division->divisionName}}</td>
+                                 <td class="text-center"> <a href=""class="glyphicon glyphicon-edit" style="font-size:24px; color: #1bc9f5"></i></a></td>
+                                        <td class="text-center"> <a href=""class="glyphicon glyphicon-trash  " style="font-size:24px; color: red"></i></a></td>
                               </tr>
                               @endif
                               @endforeach

@@ -125,7 +125,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 <script>
   $(function() {
     $( ".datepicker" ).datepicker({
-      format: 'MM/DD/YYYY',
+      format: 'DD/MM/YYYY',
       maxDate: "+0D",
       ignoreReadonly: true
     });
