@@ -2,7 +2,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>Project</title>
+<title>Product Release</title>
 <link rel="icon" type="image/png" href="/images/logo.png" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -338,7 +338,7 @@ $( function() {
                 <h3 class="">Product Release</h3>
               </div>
               <div class="form-body">
-                <form class="form-horizontal" method="post" autocomplete="off" novalidate> <!--Form for grideview-->
+                <form class="form-horizontal" method="post" autocomplete="off" > <!--Form for grideview-->
                   @csrf
                   <div class="form-group">
                       <div class="row" style="border:2px solid #EEE;padding:20px">
@@ -418,15 +418,38 @@ $( function() {
                        
                      <div class="col-lg-7"><br>
                          <table class="table table-responsive table-hover table-striped table-bordered table-condensed">
-                          <tr class="row bg-primary">
-                             <th class="col-lg-1 text-center">ID</th>
-                             <th class="col-lg-11 text-center">Product Serial No</th>
-                          </tr>
+                            <thead >
+                              <tr class="row bg-primary">
+                              <th class="col-lg-1 text-center">#</th>
+                              <th class="col-lg-2 text-center">Product Name</th>
+                              <th class="col-lg-3 text-center">Serial No</th>
+                              <th class="col-lg-3 text-center">Released By</th>
+                              <th class="col-lg-3 text-center">Department</th>
+                              </tr>
+                            </thead>
+                            <tbody  align="center">
+                              @foreach ($productReleaseInfo as $key=>$item)
+                              @if ($item->status=="pending")
+                              <tr class="row">
+                                <td>{{++$key}}</td>
+                                <td>{{$item->serialInfo->productInfo->productName}}</td>
+                                <td>{{$item->serialInfo->serial_no}}</td>
+                                <td>{{$item->user->employeeinfo->name}}</td>
+                                <td>{{$item->division->divisionName}}</td>
+                              </tr>
+                              @endif
+                              @endforeach
+                            </tbody>
                          </table>
                      </div>
                   </div>
                 </form>
-                
+                <br>
+                <div class="col-md-12" align="center">
+                    <button type="button" class="btn btn-info" onclick="handleRelease()"><i class="glyphicon glyphicon-floppy-disk"
+                      style="color:white" ></i> Release</button>
+                      <button type="button"class="btn" onclick="handleClear()">Clear</button>
+                </div>
                       <div class="row">
                         <div class="col-md-8"></div>
 
@@ -450,23 +473,30 @@ $( function() {
                </div> 
 
                 <div id="allBrands">
-                  <table class="table table-responsive table-hover table-striped table-bordered table-condensed">
-                      <tr class="row bg-primary">
-                        <th class="col-lg-1 text-center">#</th>
-                        <th class="col-lg-2 text-center">Category</th>
-                        <th class="col-lg-8 text-center">Brand</th>
-                        <th class="col-lg-1 text-center">Edit</th>
-                      </tr>
-                      
-                                <tr class="row">
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    
-                                    <td><a href=""><i class="fa fa-edit" style="font-size:24px"></i></a></td>
-                                </tr>
-                           
-                  </table>
+                    <table class="table table-responsive table-hover table-striped table-bordered table-condensed">
+                        <thead >
+                          <tr class="row bg-primary">
+                          <th class="col-lg-1 text-center">#</th>
+                          <th class="col-lg-3 text-center">Product Name</th>
+                          <th class="col-lg-2 text-center">Serial No</th>
+                          <th class="col-lg-3 text-center">Released By</th>
+                          <th class="col-lg-3 text-center">Department</th>
+                          </tr>
+                        </thead>
+                        <tbody  align="center">
+                          @foreach ($productReleaseInfo as $key=>$item)
+                          @if ($item->status=="released")
+                          <tr class="row">
+                            <td>{{++$key}}</td>
+                            <td>{{$item->serialInfo->productInfo->productName}}</td>
+                            <td>{{$item->serialInfo->serial_no}}</td>
+                            <td>{{$item->user->employeeinfo->name}}</td>
+                            <td>{{$item->division->divisionName}}</td>
+                          </tr>
+                          @endif
+                          @endforeach
+                        </tbody>
+                     </table>
                </div>
                <div id="searchedBrandValue">
                    
@@ -921,9 +951,45 @@ $( function() {
           }
         }
       });
-     
-      
     }
+    function handleRelease() {
+      var isProductReaselistAvaialable={{count($productReleaseInfo)}};
+      if (isProductReaselistAvaialable>0) {
+        $.ajax({
+          type:'POST',
+          url:"{{route("saveProductRelease")}}",
+          data: {  _token: '{{csrf_token()}}'},
+          success: function(data) {
+            if(data=="success"){
+              alert("Data saved successfully");
+              location.reload();
+            }
+            else{
+              alert("Something went wrong");
+            }
+          }
+        });
+      }
+    }
+    function handleClear() {
+      var isProductReaselistAvaialable={{count($productReleaseInfo)}};
+      if (isProductReaselistAvaialable>0) {
+        $.ajax({
+          type:'POST',
+          url:"{{route("clearProductRelease")}}",
+          data: {_token: '{{csrf_token()}}'},
+          success: function(data) {
+            if(data==1){
+              alert("Data clear successfully");
+              location.reload();
+            }
+            else{
+              alert("Something went wrong");
+            }
+          }
+        });
+        }
+      }
    </script>
     
 </body>

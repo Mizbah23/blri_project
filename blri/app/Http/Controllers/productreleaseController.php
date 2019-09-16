@@ -41,6 +41,7 @@ class productreleaseController extends Controller
          $projects= Project::all();
          $divisions=division::all();
          $serialInfo=SerialInfo::all();
+         $productReleaseInfo= ProductReleaseInfo::all();
          $allAssignedEmployees=[];
         if(old('projectName')){
             $project=Project::find(old('projectName'));
@@ -58,6 +59,7 @@ class productreleaseController extends Controller
                ->with('divisions', $divisions)
                ->with('projects', $projects)
                ->with('serialInfo', $serialInfo)
+               ->with('productReleaseInfo', $productReleaseInfo)
                ->with('assignedEmployees', $allAssignedEmployees)
                ->with('reportings', $reportings);
      }
@@ -96,11 +98,37 @@ class productreleaseController extends Controller
 
         if($project){
              $allAssignedEmployees=$this->getAllAssignedEmployees($project);
-             
              return ["success",$allAssignedEmployees];
         }
         else{
              return ["error"];
         }
+    }
+    public function clearProductRelease()
+    {
+        if(session()->has('user')){
+            $productReleaseInfo=ProductReleaseInfo::where('status','pending')->delete();
+            return($productReleaseInfo);
+            // if (count($productReleaseInfo)>0) {
+            //     foreach ($productReleaseInfo as $key => $item) {
+            //         $item->status="released";
+            //         $item->save();
+            //     }
+            // }
+        }
+    }
+    public function saveProductRelease()
+    {
+        if(session()->has('user')){
+            $productReleaseInfo=ProductReleaseInfo::where('status','pending')->get();
+            if (count($productReleaseInfo)>0) {
+                foreach ($productReleaseInfo as $key => $item) {
+                    $item->status="released";
+                    $item->save();
+                }
+                return "success";
+            }
+        }
+        return "error";
     }
 }
