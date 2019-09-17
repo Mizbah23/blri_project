@@ -44,7 +44,7 @@
                                  
                                @foreach($products as $product)
                                    
-                                      <option value="{{$product->brand->brandName}}" {{old('brandName',$requisitionList->productInfo->brand->brandName)==$product->brand->brandName?"selected":""}}>{{$product->brand->brandName}}</option>
+                                      <option value="{{$product->brand->brandName}}" {{old('brandName',$requisitionList->productInfo->brand->brandName)==$product->brand->brandName?"selected":""}}  >{{$product->brand->brandName}}</option>
                                    
                                   @endforeach 
                                

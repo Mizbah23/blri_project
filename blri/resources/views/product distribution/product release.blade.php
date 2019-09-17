@@ -446,7 +446,7 @@ $( function() {
                                 <td>{{$item->user->employeeinfo->name}}</td>
                                 <td>{{$item->division->divisionName}}</td>
                                  <td class="text-center"> <a href=""class="glyphicon glyphicon-edit" style="font-size:24px; color: #1bc9f5"></i></a></td>
-                                        <td class="text-center"> <a href=""class="glyphicon glyphicon-trash  " style="font-size:24px; color: red"></i></a></td>
+                                   <td> <a href="#" onclick="deleteItem({{$item->id}})" class="glyphicon glyphicon-trash" style="font-size:24px"></i></a></td>
                               </tr>
                               @endif
                               @endforeach
@@ -1001,6 +1001,24 @@ $( function() {
         });
         }
       }
+
+    function deleteItem(id) {
+      if (confirm('Do you really want to delete this item?')) {
+        $.ajax({
+        url: "{{route("delete.product.from.ReleaseList")}}",
+        type:"get",
+        data: { id: id},
+        success: function (data) {
+          console.log(data);
+          if(data=='deleted'){
+            location.reload();
+          }else{
+            alert("Something went wrong! Please Reload the page.");
+          }
+        }
+      });
+      }
+     }
    </script>
     
 </body>

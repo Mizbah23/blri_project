@@ -10,6 +10,9 @@ use App\Brand;
 use App\ProductInfo;
 use Validator;
 use App\ProductReceiveType;
+use App\ProductDistribution;
+use App\Adjustment;
+use App\Reporting;
 
 class productController extends Controller
 {
@@ -20,9 +23,20 @@ class productController extends Controller
     $brands=Brand::all();
     $productinfos=ProductInfo::all();
     $productreceivetypes=ProductReceiveType::all();
+    $productdistributions=ProductDistribution::all();
+    $adjustments=Adjustment::all();
+    $reportings=Reporting::all();
     // dd($productinfos[0]->brand);
     //dd($sections[0]->division);
-    return view('setup.product')->with('setuptypes',$setuptypes)->with('securitytypes',$securitytypes)->with('categories',$categories)->with('brands',$brands)->with('productinfos',$productinfos)->with('productreceivetypes',$productreceivetypes);
+    return view('setup.product')->with('setuptypes',$setuptypes)
+    ->with('securitytypes',$securitytypes)
+    ->with('categories',$categories)
+    ->with('brands',$brands)
+    ->with('productinfos',$productinfos)
+    ->with('productreceivetypes',$productreceivetypes)
+    ->with('productdistributions',$productdistributions)
+    ->with('adjustments',$adjustments)
+    ->with('reportings',$reportings);
   }
 
   public function productPost(Request $request){

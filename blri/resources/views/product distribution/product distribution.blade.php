@@ -384,12 +384,13 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                  <label for="productName" class=" control-label">Product</label>
                             </div>
                             <div class="col-md-9">
-                              <select class="form-control" id="productName" name="productName" required onchange="showSerialInfo()" value="{{ old('productName') }}">
+                              <select class="form-control" id="productName" name="productName" required " onchange="showSerialInfo() ">
                                 <option value="">পণ্য সনাক্তকরণ</option>
-                                 @foreach ($products->unique('productName')->pluck('productName') as $productName)
-                                   <option value="{{$productName}}" @if (old('productName')==$productName)
+                                @foreach($serialInfos as $serialInfo)
+                                 {{--@foreach ($products->unique('productName')->pluck('productName') as $productName)--}}
+                                   <option value="{{$serialInfo->productInfo->productName}}" @if (old('productName')==$serialInfo->productInfo->productName)
                                       {{"selected"}}
-                                  @endif>{{$productName}}</option>
+                                  @endif>{{$serialInfo->productInfo->productName}}</option>
                                   @endforeach
                               </select>
                             </div><br><br>
@@ -397,14 +398,14 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                  <label for="serial_no" class="control-label">SL No</label>
                             </div>
                             <div class="col-md-9">
-                                <select id="serial_no" name="serial_no" class="form-control required" value="{{old('serial_no')}}" required readonly>
+                                <select id="serial_no" name="serial_no" class="form-control required" value="{{old('serial_no')}}"  required readonly>
                                  <option value="">Select Serial Code</option>
                                   @if(old('productName'))
                                   @foreach ($serialInfos as $serialInfo)
-                                  @if(old('productName')==$serialInfo->product->productName)
-                                    <option value="{{$serialInfo->id}}" @if (old('serial_no')==$serialInfo->id)
+                                   @if(old('productName')==$serialInfo->productInfo->productName)
+                                    <option value="{{$serialInfo->id}}" @if (old('id')==$serialInfo->id)
                                         {{"selected"}}
-                                    @endif>{{$serialInfo->product->id}}</option>
+                                    @endif>{{$serialInfo->id}}</option>
                                   @endif
                                   @endforeach
                                 @endif
@@ -978,6 +979,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
      $(function() {
        brands={!! $brands !!};
        products={!! $products !!};
+       serialInfos={!!$serialInfos!!};
      })
     function showBrand() {
       var selectedCategory=$("#categoryName").val();
@@ -1011,7 +1013,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
         var i=0;
         var serialId;
         serialInfos.forEach(serialInfo => {
-          if(serialInfo.productName==selectedProduct){
+          if(serialInfo.productInfo.productName==selectedProduct){
             $('#serial_no').append(`<option value="${serialInfo.id}">${serialInfo.serial_no}</option>`);
             i++;
             serialId=serialInfo.id;

@@ -141,13 +141,13 @@ Route::get('/product_receive/product_serial_info/{id}/edit', 'productserialinfoC
 Route::post('/product_receive/product_serial_info/{id}/edit', 'productserialinfoController@update');
 
 //Product distribution->
-//
+//Release
 Route::get('/product_distribution/product_release', 'productreleaseController@index')->name('product distribution.product release');
 Route::post('/product_distribution/product_release', 'productreleaseController@store');
 Route::post('/show/employee/basedOnProject/Id', 'productreleaseController@showEmployeeBasedOnProject')->name('showEmployeeBasedOnProject');
 Route::post('/product_distribution/product_release/clearList/item', 'productreleaseController@clearProductRelease')->name('clearProductRelease');
 Route::post('/product_distribution/product_release/saveList/item', 'productreleaseController@saveProductRelease')->name('saveProductRelease');
-
+Route::get('/product_distribution/product_release/delete/item', 'productreleaseController@deleteItemFromReleaseList')->name('delete.product.from.ReleaseList');
 //Distribution Info
 Route::get('/product_distribution/product_distribution', 'productdistributiontypeController@index')->name('product distribution.product distribution');
 Route::post('/product_distribution/product_distribution', 'productdistributiontypeController@distributionList');

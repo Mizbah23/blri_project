@@ -131,4 +131,16 @@ class productreleaseController extends Controller
         }
         return "error";
     }
+
+        public function deleteItemFromReleaseList(Request $request)
+    {
+        if ($request->ajax()) {
+            $isAvailable= ProductReleaseInfo::find($request->id);
+            $isDelete=false;
+            if ($isAvailable) {
+                $isDelete= $isAvailable->delete();
+            }
+            return $isDelete ? 'deleted' : 'error';
+        }
+    }
 }
