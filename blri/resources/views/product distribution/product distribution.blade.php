@@ -313,198 +313,187 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                 <h3 class="">Product Distribution</h3>
               </div>
               <div class="form-body">
-                <form class="form-horizontal" method="post"> 
-                  <div class="form-group"> <!--Form-->
-
-                    {{-- <div class="row" style="border: solid 1px #eee; padding: 20px">
-
-
-
-                        <div class="text-center">
-                            <input type="radio" id="show" name="p" value=""> Distribute to Department
-                        </div>
-                      </div> --}}
-{{-- id show --}}
-              
-{{-- id hide --}}
-<div class="row"  style="border: solid 1px #eee; padding: 20px">
-                        <div class="col-md-3"></div>
-
-
-                        <div class="col-md-6">
-                            <div class="col-md-3">
-                                <label for="divisions" class="col-sm-2 control-label">অনুষদ</label>
-                            </div>
-                            <div class="col-md-9">
-                               <select class="form-control" id="divisions" name="divisions">
-                      <option value="">Select Department</option>
-                      @foreach($divisions as $division)
-                        <option value="{{$division->id}}">{{$division->divisionName}}</option>
-                      @endforeach
-                    </select>
-                            </div><br><br>
-                        </div>
-                        <div class="col-md-3"></div>
-
-                    </div><br>
-
-
-                    <div class="row">
-                        <div class="col-md-4"  style="border: solid 2px #eee; padding: 20px">
-                            <div class="col-md-3">
-                                 <label for="categoryName" class=" control-label">Category</label>
-                            </div>
-                            <div class="col-md-9">
-                            <select id="categoryName" name="categoryName" onchange="showBrand()" class="form-control required" required value="{{old('categoryName')}}">
-                                 <div class="error" style="color:red">{{$errors->first('categoryName')}}</div><br><br>
-                                <option value="" >নির্বাচন করুন</option>
-                                @foreach($categories as $category)
-                                 <option value="{{$category->id}}"{{old('categoryName',$category->categoryName)==$category->id ?"selected":""}}>{{$category->categoryName}}</option>
-                                 @endforeach
-                              </select>
-                            </div><br><br>
-                            <div class="col-md-3">
-                                 <label for="brandName" class=" control-label">Brand</label>
-                            </div>
-                            <div class="col-md-9">
-                               <select id="brandName" name="brandName" class="form-control required" required onchange="showProduct()">
-                              <div class="error" style="color:red">{{$errors->first('brandName')}}</div><br><br>
-                                <option value="">নির্বাচন করুন</option>
-                                @if(old('categoryName'))
-                                  @foreach($brands as $brand)
-                                    @if (old('categoryName') == $brand->category->id)
-                                      <option value="{{$brand->brandName}}" {{old('brandName')==$brand->brandName?"selected":""}}>{{$brand->brandName}}</option>
-                                    @endif
-                                  @endforeach
-                                @endif
-                                
-                              </select>
-                            </div><br><br>
-                            <div class="col-md-3">
-                                 <label for="productName" class=" control-label">Product</label>
-                            </div>
-                            <div class="col-md-9">
-                              <select class="form-control" id="productName" name="productName" required " onchange="showSerialInfo() ">
-                                <option value="">পণ্য সনাক্তকরণ</option>
-                                @foreach($serialInfos as $serialInfo)
-                                 {{--@foreach ($products->unique('productName')->pluck('productName') as $productName)--}}
-                                   <option value="{{$serialInfo->productInfo->productName}}" @if (old('productName')==$serialInfo->productInfo->productName)
-                                      {{"selected"}}
-                                  @endif>{{$serialInfo->productInfo->productName}}</option>
-                                  @endforeach
-                              </select>
-                            </div><br><br>
-                            <div class="col-md-3">
-                                 <label for="serial_no" class="control-label">SL No</label>
-                            </div>
-                            <div class="col-md-9">
-                                <select id="serial_no" name="serial_no" class="form-control required" value="{{old('serial_no')}}"  required readonly>
-                                 <option value="">Select Serial Code</option>
-                                  @if(old('productName'))
-                                  @foreach ($serialInfos as $serialInfo)
-                                   @if(old('productName')==$serialInfo->productInfo->productName)
-                                    <option value="{{$serialInfo->id}}" @if (old('id')==$serialInfo->id)
-                                        {{"selected"}}
-                                    @endif>{{$serialInfo->id}}</option>
-                                  @endif
-                                  @endforeach
-                                @endif
-                                
-                              </select>
-                            </div><br><br>
-                             <div class="col-md-3">
-                                 <label for="remarks" class=" control-label">Remarks</label>
-                            </div>
-                            <div class="col-md-9">
-                                <textarea class="form-control" id="remarks" name="remarks" placeholder="Remarks"></textarea><br><br>
-                                
-                            </div><br><br>
-                           
-                          <div class="text-center">
-                          <button type="submit" class="btn btn-info"><i class="glyphicon glyphicon-plus" style="color: white"></i>Add to list</button> 
-                          <button type="reset" class="btn btn-danger">Reset</button>
-                          </div>
-
-                       </div>
-
-                        <div class="col-md-8" style="border: solid 2px #eee; padding: 20px">
-                            <div id="allBrands">
-                                 <table class="table table-responsive table-hover table-striped table-bordered table-condensed">
-                                    <tr class="row bg-primary">
-                                        <th class="col-lg-1 text-center">#</th>
-                                        <th class="col-lg-1 text-center">Category</th>
-                                        <th class="col-lg-1 text-center">Brand</th>
-                                        <th class="col-lg-2 text-center">Product</th>
-                                        <th class="col-lg-1 text-center">Product Code</th>
-                                        <th class="col-lg-3 text-center">Remarks</th>
-                                        <th class="col-lg-1 text-center">Edit</th>
-                                        <th class="col-lg-1 text-center">Delete</th>
-                                    </tr>
-                      
-                                    <tr class="row">
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td class="text-center"> <a href=""class="glyphicon glyphicon-edit" style="font-size:24px; color: #1bc9f5"></i></a></td>
-                                        <td class="text-center"> <a href=""class="glyphicon glyphicon-trash  " style="font-size:24px; color: red"></i></a></td>
-
-                                    </tr>
-                                                 
-                                </table>
+                  <form class="form-horizontal" method="post" novalidate>
+                      @csrf
+                      <div class="form-group">
+                          <!--Form-->
+                  
+                          {{-- <div class="row" style="border: solid 1px #eee; padding: 20px">
+                  
+                  
+                  
+                                          <div class="text-center">
+                                              <input type="radio" id="show" name="p" value=""> Distribute to Department
+                                          </div>
+                                        </div> --}}
+                          {{-- id show --}}
+                  
+                          {{-- id hide --}}
+                          <div class="row" style="border: solid 1px #eee; padding: 20px">
+                              <div class="col-md-3"></div>
+                  
+                  
+                              <div class="col-md-6">
+                                  <div class="col-md-3">
+                                      <label for="divisions" class="col-sm-2 control-label">অনুষদ</label>
+                                  </div>
+                                  <div class="col-md-9">
+                                      <select class="form-control" id="divisions" name="divisions">
+                                          <option value="">Select Department</option>
+                                          @foreach($divisions as $division)
+                                          <option value="{{$division->id}}">{{$division->divisionName}}</option>
+                                          @endforeach
+                                      </select>
+                                  </div><br><br>
+                              </div>
+                              <div class="col-md-3"></div>
+                  
+                          </div><br>
+                  
+                  
+                          <div class="row">
+                              <div class="col-md-5" style="border: solid 2px #eee; padding: 20px">
+                                  <div class="col-md-4">
+                                      <label for="categoryName" class=" control-label">Category</label>
+                                  </div>
+                                  <div class="col-md-8">
+                                      <select id="categoryName" name="categoryName" onchange="showBrand()" class="form-control required"
+                                          required value="{{old('categoryName')}}">
+                                          <div class="error" style="color:red">{{$errors->first('categoryName')}}</div><br><br>
+                                          <option value="">নির্বাচন করুন</option>
+                                          @foreach($categories as $category)
+                                          <option value="{{$category->id}}"
+                                              {{old('categoryName',$category->categoryName)==$category->id ?"selected":""}}>
+                                              {{$category->categoryName}}</option>
+                                          @endforeach
+                                      </select>
+                                  </div><br><br>
+                                  <div class="col-md-4">
+                                      <label for="brandName" class=" control-label">Brand</label>
+                                  </div>
+                                  <div class="col-md-8">
+                                      <select id="brandName" name="brandName" class="form-control required" required
+                                          onchange="showProductName()">
+                                          <div class="error" style="color:red">{{$errors->first('brandName')}}</div><br><br>
+                                          <option value="">নির্বাচন করুন</option>
+                                          @if(old('categoryName'))
+                                          @foreach($brands as $brand)
+                                          @if (old('categoryName') == $brand->category->id)
+                                          <option value="{{$brand->brandName}}" {{old('brandName')==$brand->brandName?"selected":""}}>
+                                              {{$brand->brandName}}</option>
+                                          @endif
+                                          @endforeach
+                                          @endif
+                  
+                                      </select>
+                                  </div><br><br>
+                                  <div class="col-md-4">
+                                      <label for="productName" class=" control-label">Product</label>
+                                  </div>
+                                  <div class="col-md-8">
+                                      <select class="form-control" id="productName" name="productName" required " onchange="showProductCode() ">
+                                        <option value="">পণ্য সনাক্তকরণ</option>
+                                        {{-- @foreach($serialInfos as $serialInfo)=
+                                            <option value=" {{$serialInfo->productInfo->id}}" @if(old('productName')==$serialInfo->productInfo->productName)
+                                          {{"selected"}}
+                                          @endif>{{$serialInfo->productInfo->productName}}</option>
+                                        @endforeach --}}
+                                      </select>
+                                  </div><br><br>
+                                  <div class="col-md-4">
+                                    <label for="productCode" class=" control-label">Product Code</label>
+                                  </div>
+                                  <div class="col-md-8">
+                                      <select id="productCode" name="productCode" class="form-control required" onchange="showSerialInfo()" required>
+                                      <option value="">Select Product Code</option>
+                                      @if(old('productName'))
+                                        @foreach ($products as $product)
+                                        @if(old('productName')==$product->productName)
+                                          <option value="{{$product->id}}" @if (old('productCode')==$product->id)
+                                              {{"selected"}}
+                                          @endif>{{$product->productCode}}</option>
+                                        @endif
+                                        @endforeach
+                                      @endif
+                                    </select>
+                                    <div class="error">{{$errors->first('productCode')}}</div>
+                                  </div><br><br>
+                                  <div class="col-md-4">
+                                      <label for="serial_no" class="control-label">SL No</label>
+                                  </div>
+                                  <div class="col-md-8">
+                                      <select id="serial_no" name="serial_no" class="form-control required" value="{{old('serial_no')}}"
+                                          required readonly>
+                                          <option value="">Select Serial Code</option>
+                                          {{-- @if(old('productName'))
+                                                    @foreach ($serialInfos as $serialInfo)
+                                                     @if(old('productName')==$serialInfo->productInfo->productName)
+                                                      <option value="{{$serialInfo->id}}" @if (old('id')==$serialInfo->id)
+                                          {{"selected"}}
+                                          @endif>{{$serialInfo->id}}</option>
+                                          @endif
+                                          @endforeach
+                                          @endif --}}
+                  
+                                      </select>
+                                  </div><br><br>
+                                  <div class="col-md-4">
+                                      <label for="remarks" class=" control-label">Remarks</label>
+                                  </div>
+                                  <div class="col-md-8">
+                                      <textarea class="form-control" id="remarks" name="remarks" placeholder="Remarks"></textarea><br><br>
+                  
+                                  </div><br><br>
+                  
                                   <div class="text-center">
-                          <button type="submit" class=" btn btn-info"> Save</button> 
-                          <button type="reset" class="btn btn-danger">Cancel</button>
-                                 </div>
-                            </div>
-                        </div>
-                        
-                    </div>
-
-                  </div>
-                
-              </form>
-<!--                   <div class="row">
-                   <div class="col-lg-6"> Category and brand-->
-                       <!--   <label for="category" class="col-sm-2 control-label">Category</label>
-                          <div class="col-lg-9">
-                              <select id="category" name="categories" class="form-control required" required>
-                                               
-                                               <option value=""></option>
-                                              
-                              </select>
-                          </div><br><br>
-
-                          <label for="brand" class="col-sm-2 control-label">Brand</label>
-                       <div class="col-lg-9">
-                          <input type="text" class="form-control" id="brand" name="brandName" placeholder="Name Can not be empty"required>
-                          </div><br><br><br>
-
-                          <div class="col-lg-6">
-                            <label for="category" class="col-sm-2 control-label">Category</label>
-                          <div class="col-lg-9">
-                              <select id="category" name="categories" class="form-control required" required>
-                                               
-                                               <option value=""></option>
-                                              
-                              </select>
-                          </div><br><br>
-
-                          <label for="brand" class="col-sm-2 control-label">Brand</label>
-                       <div class="col-lg-9">
-                          <input type="text" class="form-control" id="brand" name="brandName" placeholder="Name Can not be empty"required>
-                          </div><br><br><br>
+                                      <button type="submit" class="btn btn-info"><i class="glyphicon glyphicon-plus"
+                                              style="color: white"></i>Add to list</button>
+                                      <button type="reset" class="btn btn-danger">Reset</button>
+                                  </div>
+                  
+                              </div>
+                  
+                              <div class="col-md-7" style="border: solid 2px #eee; padding: 20px">
+                                  <div id="allBrands">
+                                      <table class="table table-responsive table-hover table-striped table-bordered table-condensed">
+                                          <tr class="row bg-primary">
+                                              <th class="col-lg-1 text-center">#</th>
+                                              <th class="col-lg-1 text-center">Category</th>
+                                              <th class="col-lg-1 text-center">Brand</th>
+                                              <th class="col-lg-2 text-center">Product</th>
+                                              <th class="col-lg-1 text-center">Product Code</th>
+                                              <th class="col-lg-3 text-center">Remarks</th>
+                                              <th class="col-lg-1 text-center">Edit</th>
+                                              <th class="col-lg-1 text-center">Delete</th>
+                                          </tr>
+                  
+                                          <tr class="row">
+                                              <td></td>
+                                              <td></td>
+                                              <td></td>
+                                              <td></td>
+                                              <td></td>
+                                              <td></td>
+                                              <td class="text-center"> <a href="" class="glyphicon glyphicon-edit"
+                                                      style="font-size:24px; color: #1bc9f5"></i></a></td>
+                                              <td class="text-center"> <a href="" class="glyphicon glyphicon-trash  "
+                                                      style="font-size:24px; color: red"></i></a></td>
+                  
+                                          </tr>
+                  
+                                      </table>
+                                      <div class="text-center">
+                                          <button type="submit" class=" btn btn-info"> Save</button>
+                                          <button type="reset" class="btn btn-danger">Cancel</button>
+                                      </div>
+                                  </div>
+                              </div>
+                  
                           </div>
-
-                        <div class="text-center">
-                          <button type="submit" class="btn btn-info">Save</button> 
-                          <button type="reset" class="btn btn-danger">Cancel</button>
-                        </div>
-                         </form>end form-->
-                      <!--Category and brand-->
-                      <!--Search option starts-->
+                  
+                      </div>
+                  
+                  </form>
                       <div class="row">
                         <div class="col-md-8"></div>
 
@@ -515,8 +504,8 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                       <!--Search option stops-->
 
                      
-                  </div> 
-               </div> 
+              </div> 
+             </div> 
 
                 <div id="allBrands">
                   <table class="table table-responsive table-hover table-striped table-bordered table-condensed">
@@ -542,10 +531,10 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                </div>
               
             </div>
-          </div>
+      </div>
       
-          </div>
-        </div>
+     </div>
+  </div>
      
    
     <!--footer-->
@@ -988,43 +977,66 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
       if(brands!=undefined){
         brands.forEach(brand => {
           if(brand.category_id==selectedCategory)
-            $('#brandName').append(`<option value="${brand.brandName}">${brand.brandName}</option>`); 
+            $('#brandName').append(`<option value="${brand.id}">${brand.brandName}</option>`); 
         });
       }
       
     }
 
-    function showProductName(){
-      var selectedProdut=$("#productName").val();//
-      console.log(selectedCategory);
+    function showProductName() {
+      var selectedBrandName=$("#brandName").val();
       $('#productName').html('<option value="">Select a Product</option>');
-      if(products!=undefined){
-        products.forEach(product => {
-          if(product.brand_id==selectedCategory)
-            $('#productName').append(`<option value="${brand.brandName}">${brand.brandName}</option>`); 
-        });
-      }
+      $.ajax({
+        type:'POST',
+        url:"{{route("showProductBasedOnBrand")}}",
+        data: {brandId: selectedBrandName,  _token: '{{csrf_token()}}'},
+        success: function(data) {
+          console.log(data);
+          if (data.length>0) {
+            data.forEach(productName => {
+              $('#productName').append(`<option value="${productName}">${productName}</option>`); 
+            });
+          }
+          else{
+            $('#productName').html('<option value="">Please choose a brand which has product</option>');
+          }
+
+        }
+      });
     }
 
-      function showSerialInfo() {
-       var selectedProduct=$("#productName").val();
-       $("#serial_no").html('<option value="">Select Serial Code</option>');
-       if(serialInfos!=undefined){
+    function showProductCode(){
+      var selectedProduct=$("#productName").val();
+      $("#productCode").html('<option value="">Select Product Code</option>');
+      if(products!=undefined){
         var i=0;
-        var serialId;
-        serialInfos.forEach(serialInfo => {
-          if(serialInfo.productInfo.productName==selectedProduct){
-            $('#serial_no').append(`<option value="${serialInfo.id}">${serialInfo.serial_no}</option>`);
+        var productId;
+        products.forEach(product => {
+          if(product.productName==selectedProduct){
+            $('#productCode').append(`<option value="${product.id}">${product.productCode}</option>`);
             i++;
-            serialId=serialInfo.id;
+            productId=product.id;
           }
         });
         if(i==1){
           console.log(i);
-          $('#serial_no option[value=' +serialId + ']').attr('selected','selected');
+          $('#productCode option[value=' +productId + ']').attr('selected','selected');
 
           // $("#productCode select").val(productId);
         }
+      }
+    }
+
+      function showSerialInfo() {
+       var selectedProduct=$("#productCode").val();
+       
+       $("#serial_no").html('<option value="">Select Serial Code</option>');
+       if(serialInfos!=undefined){
+        serialInfos.forEach(serialInfo => {
+          if(serialInfo.product_info_id==selectedProduct){
+            $('#serial_no').append(`<option value="${serialInfo.id}">${serialInfo.serial_no}</option>`);
+          }
+        });
       }
      }
 

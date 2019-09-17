@@ -148,9 +148,12 @@ Route::post('/show/employee/basedOnProject/Id', 'productreleaseController@showEm
 Route::post('/product_distribution/product_release/clearList/item', 'productreleaseController@clearProductRelease')->name('clearProductRelease');
 Route::post('/product_distribution/product_release/saveList/item', 'productreleaseController@saveProductRelease')->name('saveProductRelease');
 Route::get('/product_distribution/product_release/delete/item', 'productreleaseController@deleteItemFromReleaseList')->name('delete.product.from.ReleaseList');
+
 //Distribution Info
 Route::get('/product_distribution/product_distribution', 'productdistributiontypeController@index')->name('product distribution.product distribution');
 Route::post('/product_distribution/product_distribution', 'productdistributiontypeController@distributionList');
+Route::post('/show/product/basedOnBrand/Id', 'productdistributiontypeController@showProductBasedOnBrand')->name('showProductBasedOnBrand');
+
 
 //Repair Info
 Route::get('/product_distribution/product_repair', 'productrepairController@index')->name('product distribution.product repair');
