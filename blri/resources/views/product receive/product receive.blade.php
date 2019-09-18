@@ -1101,6 +1101,7 @@ $( function() {
               
               if(data=="success"){
                 alert("Data deleted successfully");
+                console.log(data);
                 location.reload();
               }else{
                 alert("Something Went Wrong");
