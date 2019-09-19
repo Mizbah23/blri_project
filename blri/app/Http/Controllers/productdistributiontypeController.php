@@ -33,9 +33,13 @@ class productdistributiontypeController extends Controller
         $reportings=Reporting::all();
         $serialInfos=SerialInfo::all();
         $brands=Brand::all();
-        $products=ProductInfo::all();
         $categories=Category::all();
         $distributionLists=DistributionList::all();
+        $selectedProductBasedOnBrand=[];
+
+        if(old('brandName')){
+            $selectedProductBasedOnBrand=ProductInfo::where('brand_id',old('brandName'))->get();
+        }
 
 
 
@@ -47,11 +51,11 @@ class productdistributiontypeController extends Controller
             ->with('productdistributions', $productdistributions)
             ->with('adjustments', $adjustments)
             ->with('reportings', $reportings)
+            ->with('selectedProductBasedOnBrand', $selectedProductBasedOnBrand)
             ->with('serialInfos', $serialInfos)
             ->with('divisions', $divisions)
             ->with('brands', $brands)
-            ->with('categories', $categories)
-            ->with('products', $products);
+            ->with('categories', $categories);
     }
     public function showProductBasedOnBrand(Request $request)
     {
@@ -68,6 +72,7 @@ class productdistributiontypeController extends Controller
             'productName'=>'required',
             'serial_no'=>'required|unique:distribution_lists,serial_id',
             'brandName'=>'required',
+            'remarks'=>'required'
             
            
         ]);
@@ -136,6 +141,7 @@ class productdistributiontypeController extends Controller
             'productName'=>'required',
             'serial_no'=>'required|unique:distribution_lists,serial_id,'.$request->productDistributionListId,
             'brandName'=>'required',
+            'remarks'=>'required'
             
         ]);
         if ($validator->fails()) {      

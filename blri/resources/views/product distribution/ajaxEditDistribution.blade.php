@@ -67,7 +67,7 @@
                                       <label for="productName" class=" control-label">Product</label>
                                   </div>
                                   <div class="col-md-8">
-                                      <select class="form-control" id="productName" name="productName" required onchange="showProductCode()">
+                                      <select class="form-control" id="productName" name="productName" required onchange="showSerialInfo()">
                                         <option value="">পণ্য সনাক্তকরণ</option>
                                         @if (old('brandName',$productDistributionList->serialInfo->productInfo->brand_id))
                                         @foreach($selectedProductBasedOnBrand->unique('productName') as $product)

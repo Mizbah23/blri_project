@@ -314,7 +314,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
               </div>
               <div class="form-body">
                 <div id="createFormDiv">
-                  <form class="form-horizontal" method="post" novalidate>
+                  <form class="form-horizontal" method="post">
                       @csrf
                       <div class="form-group">
                           
@@ -330,9 +330,12 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                       <select class="form-control" id="divisionName" name="divisionName">
                                           <option value="">Select Department</option>
                                           @foreach($divisions as $division)
-                                          <option value="{{$division->id}}">{{$division->divisionName}}</option>
+                                            <option value="{{$division->id}}" @if (old('divisionName')==$division->id)
+                                              {{"selected"}}
+                                            @endif>{{$division->divisionName}}</option>
                                           @endforeach
-                                      </select>
+                                        </select>
+                                        <div class="error">{{$errors->first('divisionName')}}</div>
                                   </div><br><br>
                               </div>
                               <div class="col-md-3"></div>
@@ -346,16 +349,16 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                       <label for="categoryName" class=" control-label">Category</label>
                                   </div>
                                   <div class="col-md-8">
-                                      <select id="categoryName" name="categoryName" onchange="showBrand()" class="form-control required"
-                                          required value="{{old('categoryName')}}">
+                                      <select id="categoryName" name="categoryName" onchange="showBrand()" class="form-control required" required>
                                           <div class="error" style="color:red">{{$errors->first('categoryName')}}</div><br><br>
                                           <option value="">নির্বাচন করুন</option>
                                           @foreach($categories as $category)
                                           <option value="{{$category->id}}"
-                                              {{old('categoryName',$category->categoryName)==$category->id ?"selected":""}}>
+                                            {{old('categoryName')==$category->id ?"selected":""}}>
                                               {{$category->categoryName}}</option>
                                           @endforeach
                                       </select>
+                                      <div class="error">{{$errors->first('categoryName')}}</div>
                                   </div><br><br>
                                   <div class="col-md-4">
                                       <label for="brandName" class=" control-label">Brand</label>
@@ -366,15 +369,16 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                           <div class="error" style="color:red">{{$errors->first('brandName')}}</div><br><br>
                                           <option value="">নির্বাচন করুন</option>
                                           @if(old('categoryName'))
-                                          @foreach($brands as $brand)
-                                          @if (old('categoryName') == $brand->category->id)
-                                          <option value="{{$brand->id}}" {{old('brandName')==$brand->id?"selected":""}}>
-                                              {{$brand->brandName}}</option>
-                                          @endif
-                                          @endforeach
+                                            @foreach($brands as $brand)
+                                              @if (old('categoryName') == $brand->category->id)
+                                              <option value="{{$brand->id}}" {{old('brandName')==$brand->id?"selected":""}}>
+                                                  {{$brand->brandName}}</option>
+                                              @endif
+                                            @endforeach
                                           @endif
                   
                                       </select>
+                                      <div class="error">{{$errors->first('brandName')}}</div>
                                   </div><br><br>
                                   <div class="col-md-4">
                                       <label for="productName" class=" control-label">Product</label>
@@ -382,31 +386,17 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                   <div class="col-md-8">
                                       <select class="form-control" id="productName" name="productName" required " onchange="showSerialInfo() ">
                                         <option value="">পণ্য সনাক্তকরণ</option>
-                                        {{-- @foreach($serialInfos as $serialInfo)=
-                                            <option value=" {{$serialInfo->productInfo->id}}" @if(old('productName')==$serialInfo->productInfo->productName)
-                                          {{"selected"}}
-                                          @endif>{{$serialInfo->productInfo->productName}}</option>
-                                        @endforeach --}}
-                                      </select>
-                                  </div><br><br>
-                                  {{-- <div class="col-md-4">
-                                    <label for="productCode" class=" control-label">Product Code</label>
-                                  </div>
-                                  <div class="col-md-8">
-                                      <select id="productCode" name="productCode" class="form-control required" onchange="showSerialInfo()" required>
-                                      <option value="">Select Product Code</option>
-                                      @if(old('productName'))
-                                        @foreach ($products as $product)
-                                        @if(old('productName')==$product->productName)
-                                          <option value="{{$product->id}}" @if (old('productCode')==$product->id)
-                                              {{"selected"}}
-                                          @endif>{{$product->productCode}}</option>
-                                        @endif
+                                        @if (old('brandName'))
+                                        @foreach($selectedProductBasedOnBrand->unique('productName') as $product)
+                                            <option value="{{$product->id}}" @if(old('productName')==$product->id)
+                                            {{"selected"}}
+                                            @endif>{{$product->productName}}</option>
                                         @endforeach
-                                      @endif
-                                    </select>
-                                    <div class="error">{{$errors->first('productCode')}}</div>
-                                  </div><br><br> --}}
+                                        @endif
+                                      </select>
+                                      <div class="error">{{$errors->first('productName')}}</div>
+                                  </div><br><br>
+                                 
                                   <div class="col-md-4">
                                       <label for="serial_no" class="control-label">SL No</label>
                                   </div>
@@ -414,24 +404,26 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                       <select id="serial_no" name="serial_no" class="form-control required" value="{{old('serial_no')}}"
                                           required readonly>
                                           <option value="">Select Serial Code</option>
-                                          {{-- @if(old('productName'))
-                                                    @foreach ($serialInfos as $serialInfo)
-                                                     @if(old('productName')==$serialInfo->productInfo->productName)
-                                                      <option value="{{$serialInfo->id}}" @if (old('id')==$serialInfo->id)
-                                          {{"selected"}}
-                                          @endif>{{$serialInfo->id}}</option>
+                                          @if(old('productName'))
+                                            @foreach ($serialInfos as $serialInfo)
+                                                @if(old('productName')==$serialInfo->product_info_id)
+                                                <option value="{{$serialInfo->id}}" @if (old('serial_no')==$serialInfo->id)
+                                                {{"selected"}}
+                                                @endif>{{$serialInfo->serial_no}}</option>
+                                                @endif
+                                            @endforeach
                                           @endif
-                                          @endforeach
-                                          @endif --}}
                   
                                       </select>
+                                      <div class="error">{{$errors->first('serial_no')}}</div>
                                   </div><br><br>
                                   <div class="col-md-4">
                                       <label for="remarks" class=" control-label">Remarks</label>
                                   </div>
                                   <div class="col-md-8">
-                                      <textarea class="form-control" id="remarks" name="remarks" placeholder="Remarks"></textarea><br><br>
-                  
+                                      <textarea class="form-control" id="remarks" name="remarks" placeholder="Remarks">{{old('remarks')}}</textarea>
+                                      <div class="error">{{$errors->first('remarks')}}</div>
+                                      <br><br>
                                   </div><br><br>
                   
                                   <div class="text-center">
@@ -956,11 +948,12 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
      var brands;
      $(function() {
        brands={!! $brands !!};
-       products={!! $products !!};
        serialInfos={!!$serialInfos!!};
      })
     function showBrand() {
       var selectedCategory=$("#categoryName").val();
+      $('#productName').html('<option value="">Select a Product</option>');
+       $("#serial_no").html('<option value="">Select Serial Code</option>');
       console.log(selectedCategory);
       $('#brandName').html('<option value="">Select a Brand</option>');
       if(brands!=undefined){
@@ -975,6 +968,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
     function showProductName() {
       var selectedBrandName=$("#brandName").val();
       $('#productName').html('<option value="">Select a Product</option>');
+      $("#serial_no").html('<option value="">Select Serial Code</option>');
       $.ajax({
         type:'POST',
         url:"{{route("showProductBasedOnBrand")}}",
@@ -993,28 +987,6 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
         }
       });
     }
-
-    // function showProductCode(){
-    //   var selectedProduct=$("#productName").val();
-    //   $("#productCode").html('<option value="">Select Product Code</option>');
-    //   if(products!=undefined){
-    //     var i=0;
-    //     var productId;
-    //     products.forEach(product => {
-    //       if(product.productName==selectedProduct){
-    //         $('#productCode').append(`<option value="${product.id}">${product.productCode}</option>`);
-    //         i++;
-    //         productId=product.id;
-    //       }
-    //     });
-    //     if(i==1){
-    //       console.log(i);
-    //       $('#productCode option[value=' +productId + ']').attr('selected','selected');
-
-    //       // $("#productCode select").val(productId);
-    //     }
-    //   }
-    // }
 
       function showSerialInfo() {
        var selectedProduct=$("#productName").val();
