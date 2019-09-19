@@ -56,7 +56,7 @@ class productdistributiontypeController extends Controller
     public function showProductBasedOnBrand(Request $request)
     {
         $products=ProductInfo::where('brand_id',$request->brandId)->get();
-        return $products->unique('productName')->pluck('productName');
+        return $products->unique('productName');
     }
     public function distributionList(Request $request)
     {
@@ -64,7 +64,7 @@ class productdistributiontypeController extends Controller
         $this->validate($request, [
             'divisionName'=>'required',
             'categoryName'=>'required',
-            'productCode'=>'required ',
+            // 'productCode'=>'required ',
             'productName'=>'required',
             'serial_no'=>'required|unique:distribution_lists,serial_id',
             'brandName'=>'required',
@@ -79,7 +79,7 @@ class productdistributiontypeController extends Controller
        
         $distributionList=new DistributionList;
        
-        $distributionList->product_info_id=$request->productCode;
+        // $distributionList->product_info_id=$request->productCode;
         $distributionList->division_id=$request->divisionName;
         $distributionList->serial_id=$request->serial_no;
         $distributionList->remarks=$request->remarks;
@@ -108,20 +108,22 @@ class productdistributiontypeController extends Controller
     public function editItemFromDistributionList(Request $request)
     {
        // if ($request->ajax()) {
-            //dd($request->all());
             $isAvailable= DistributionList::find($request->id);
-            $divisions=division::all();
-            $products=ProductInfo::all();
-            $serialInfos=SerialInfo::all();
-            $categories=Category::all();
-            $brands=Brand::all();
-            return view('product distribution.ajaxEditDistribution')
-                   ->with('divisions', $divisions)
-                   ->with('serialInfos', $serialInfos)
-                   ->with('products', $products)
-                   ->with('categories',$categories)
-                   ->with('brands',$brands)
-                   ->with('productDistributionList', $isAvailable);
+            if($isAvailable){
+                $divisions=division::all();
+                $showProductBasedOnBrand=ProductInfo::where('brand_id',$isAvailable->serialInfo->productInfo->brand_id)->get();
+                // dd($showProductBasedOnBrand);
+                $serialInfos=SerialInfo::all();
+                $categories=Category::all();
+                $brands=Brand::all();
+                return view('product distribution.ajaxEditDistribution')
+                       ->with('divisions', $divisions)
+                       ->with('serialInfos', $serialInfos)
+                       ->with('selectedProductBasedOnBrand', $showProductBasedOnBrand)
+                       ->with('categories',$categories)
+                       ->with('brands',$brands)
+                       ->with('productDistributionList', $isAvailable);
+            }
        // }
     }
 
@@ -131,9 +133,8 @@ class productdistributiontypeController extends Controller
         $validator = Validator::make($request->all(),[
             'divisionName'=>'required',
             'categoryName'=>'required',
-            'productCode'=>'required ',
             'productName'=>'required',
-            'serial_no'=>'required|unique:distribution_lists,serial_id',
+            'serial_no'=>'required|unique:distribution_lists,serial_id,'.$request->productDistributionListId,
             'brandName'=>'required',
             
         ]);
@@ -144,7 +145,6 @@ class productdistributiontypeController extends Controller
          
     
        
-            $isProductInProductDistributionList->product_info_id=$request->productCode;
             $isProductInProductDistributionList->division_id=$request->divisionName;
             $isProductInProductDistributionList->serial_id=$request->serial_no;
             $isProductInProductDistributionList->remarks=$request->remarks;

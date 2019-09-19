@@ -15,7 +15,9 @@
                                       <select class="form-control" id="divisionName" name="divisionName">
                                           <option value="">Select Department</option>
                                           @foreach($divisions as $division)
-                                          <option value="{{$division->id}}">{{$division->divisionName}}</option>
+                                          <option value="{{$division->id}}" @if (old('divisionName',$productDistributionList->division_id)==$division->id)
+                                              {{"selected"}}
+                                          @endif>{{$division->divisionName}}</option>
                                           @endforeach
                                       </select>
                                   </div><br><br>
@@ -32,12 +34,12 @@
                                   </div>
                                   <div class="col-md-8">
                                       <select id="categoryName" name="categoryName" onchange="showBrand()" class="form-control required"
-                                          required value="{{old('categoryName')}}">
+                                          required >
                                           <div class="error" style="color:red">{{$errors->first('categoryName')}}</div><br><br>
                                           <option value="">নির্বাচন করুন</option>
                                           @foreach($categories as $category)
                                           <option value="{{$category->id}}"
-                                              {{old('categoryName',$category->categoryName)==$category->id ?"selected":""}}>
+                                              {{old('categoryName',$productDistributionList->serialInfo->productInfo->brand->category->id)==$category->id ?"selected":""}}>
                                               {{$category->categoryName}}</option>
                                           @endforeach
                                       </select>
@@ -50,13 +52,13 @@
                                           onchange="showProductName()">
                                           <div class="error" style="color:red">{{$errors->first('brandName')}}</div><br><br>
                                           <option value="">নির্বাচন করুন</option>
-                                          @if(old('categoryName'))
-                                          @foreach($brands as $brand)
-                                          @if (old('categoryName') == $brand->category->id)
-                                          <option value="{{$brand->brandName}}" {{old('brandName')==$brand->brandName?"selected":""}}>
-                                              {{$brand->brandName}}</option>
-                                          @endif
-                                          @endforeach
+                                          @if(old('categoryName',$productDistributionList->serialInfo->productInfo->brand->category->id))
+                                            @foreach($brands as $brand)
+                                                @if (old('categoryName',$productDistributionList->serialInfo->productInfo->brand->category->id) == $brand->category->id)
+                                                <option value="{{$brand->id}}" {{old('brandName',$productDistributionList->serialInfo->productInfo->brand_id)==$brand->id?"selected":""}}>
+                                                    {{$brand->brandName}}</option>
+                                                @endif
+                                            @endforeach
                                           @endif
                   
                                       </select>
@@ -65,49 +67,33 @@
                                       <label for="productName" class=" control-label">Product</label>
                                   </div>
                                   <div class="col-md-8">
-                                      <select class="form-control" id="productName" name="productName" required " onchange="showProductCode() ">
+                                      <select class="form-control" id="productName" name="productName" required onchange="showProductCode()">
                                         <option value="">পণ্য সনাক্তকরণ</option>
-                                        {{-- @foreach($serialInfos as $serialInfo)=
-                                            <option value=" {{$serialInfo->productInfo->id}}" @if(old('productName')==$serialInfo->productInfo->productName)
-                                          {{"selected"}}
-                                          @endif>{{$serialInfo->productInfo->productName}}</option>
-                                        @endforeach --}}
+                                        @if (old('brandName',$productDistributionList->serialInfo->productInfo->brand_id))
+                                        @foreach($selectedProductBasedOnBrand->unique('productName') as $product)
+                                            <option value="{{$product->id}}" @if(old('productName',$productDistributionList->serialInfo->product_info_id)==$product->id)
+                                            {{"selected"}}
+                                            @endif>{{$product->productName}}</option>
+                                        @endforeach
+                                        @endif
                                       </select>
                                   </div><br><br>
-                                  <div class="col-md-4">
-                                    <label for="productCode" class=" control-label">Product Code</label>
-                                  </div>
-                                  <div class="col-md-8">
-                                      <select id="productCode" name="productCode" class="form-control required" onchange="showSerialInfo()" required>
-                                      <option value="">Select Product Code</option>
-                                      @if(old('productName'))
-                                        @foreach ($products as $product)
-                                        @if(old('productName')==$product->productName)
-                                          <option value="{{$product->id}}" @if (old('productCode')==$product->id)
-                                              {{"selected"}}
-                                          @endif>{{$product->productCode}}</option>
-                                        @endif
-                                        @endforeach
-                                      @endif
-                                    </select>
-                                    <div class="error">{{$errors->first('productCode')}}</div>
-                                  </div><br><br>
+
                                   <div class="col-md-4">
                                       <label for="serial_no" class="control-label">SL No</label>
                                   </div>
                                   <div class="col-md-8">
-                                      <select id="serial_no" name="serial_no" class="form-control required" value="{{old('serial_no')}}"
-                                          required readonly>
-                                          <option value="">Select Serial Code</option>
-                                          {{-- @if(old('productName'))
-                                                    @foreach ($serialInfos as $serialInfo)
-                                                     @if(old('productName')==$serialInfo->productInfo->productName)
-                                                      <option value="{{$serialInfo->id}}" @if (old('id')==$serialInfo->id)
-                                          {{"selected"}}
-                                          @endif>{{$serialInfo->id}}</option>
-                                          @endif
-                                          @endforeach
-                                          @endif --}}
+                                      <select id="serial_no" name="serial_no" class="form-control required" value="{{old('serial_no')}}"required readonly>
+                                        <option value="">Select Serial Code</option>
+                                        @if(old('productName',$productDistributionList->serialInfo->product_info_id))
+                                            @foreach ($serialInfos as $serialInfo)
+                                                @if(old('productName',$productDistributionList->serialInfo->product_info_id)==$serialInfo->product_info_id)
+                                                <option value="{{$serialInfo->id}}" @if (old('serial_no',$productDistributionList->serial_id)==$serialInfo->id)
+                                                {{"selected"}}
+                                                @endif>{{$serialInfo->serial_no}}</option>
+                                                @endif
+                                            @endforeach
+                                        @endif
                   
                                       </select>
                                   </div><br><br>
@@ -115,7 +101,7 @@
                                       <label for="remarks" class=" control-label">Remarks</label>
                                   </div>
                                   <div class="col-md-8">
-                                      <textarea class="form-control" id="remarks" name="remarks" placeholder="Remarks"></textarea><br><br>
+                                      <textarea class="form-control" id="remarks" name="remarks" placeholder="Remarks">{{old('remarks',$productDistributionList->remarks)}}</textarea><br><br>
                   
                                   </div><br><br>
           <div class="text-center">

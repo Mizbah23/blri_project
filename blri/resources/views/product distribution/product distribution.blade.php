@@ -368,7 +368,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                           @if(old('categoryName'))
                                           @foreach($brands as $brand)
                                           @if (old('categoryName') == $brand->category->id)
-                                          <option value="{{$brand->brandName}}" {{old('brandName')==$brand->brandName?"selected":""}}>
+                                          <option value="{{$brand->id}}" {{old('brandName')==$brand->id?"selected":""}}>
                                               {{$brand->brandName}}</option>
                                           @endif
                                           @endforeach
@@ -380,7 +380,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                       <label for="productName" class=" control-label">Product</label>
                                   </div>
                                   <div class="col-md-8">
-                                      <select class="form-control" id="productName" name="productName" required " onchange="showProductCode() ">
+                                      <select class="form-control" id="productName" name="productName" required " onchange="showSerialInfo() ">
                                         <option value="">পণ্য সনাক্তকরণ</option>
                                         {{-- @foreach($serialInfos as $serialInfo)=
                                             <option value=" {{$serialInfo->productInfo->id}}" @if(old('productName')==$serialInfo->productInfo->productName)
@@ -389,7 +389,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                         @endforeach --}}
                                       </select>
                                   </div><br><br>
-                                  <div class="col-md-4">
+                                  {{-- <div class="col-md-4">
                                     <label for="productCode" class=" control-label">Product Code</label>
                                   </div>
                                   <div class="col-md-8">
@@ -406,7 +406,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                       @endif
                                     </select>
                                     <div class="error">{{$errors->first('productCode')}}</div>
-                                  </div><br><br>
+                                  </div><br><br> --}}
                                   <div class="col-md-4">
                                       <label for="serial_no" class="control-label">SL No</label>
                                   </div>
@@ -461,7 +461,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                           <tr class="row">
                                               <td>{{++$key}}</td>
                                               <td>{{$item->division->divisionName}}</td>
-                                              <td>{{$item->productInfo->productName}}</td>
+                                              <td>{{$item->serialInfo->productInfo->productName}}</td>
                                               <td>{{$item->serialInfo->serial_no}}</td>
                                               <td>{{$item->remarks}}</td>
                                         
@@ -982,8 +982,8 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
         success: function(data) {
           console.log(data);
           if (data.length>0) {
-            data.forEach(productName => {
-              $('#productName').append(`<option value="${productName}">${productName}</option>`); 
+            data.forEach(product => {
+              $('#productName').append(`<option value="${product.id}">${product.productName}</option>`); 
             });
           }
           else{
@@ -994,30 +994,30 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
       });
     }
 
-    function showProductCode(){
-      var selectedProduct=$("#productName").val();
-      $("#productCode").html('<option value="">Select Product Code</option>');
-      if(products!=undefined){
-        var i=0;
-        var productId;
-        products.forEach(product => {
-          if(product.productName==selectedProduct){
-            $('#productCode').append(`<option value="${product.id}">${product.productCode}</option>`);
-            i++;
-            productId=product.id;
-          }
-        });
-        if(i==1){
-          console.log(i);
-          $('#productCode option[value=' +productId + ']').attr('selected','selected');
+    // function showProductCode(){
+    //   var selectedProduct=$("#productName").val();
+    //   $("#productCode").html('<option value="">Select Product Code</option>');
+    //   if(products!=undefined){
+    //     var i=0;
+    //     var productId;
+    //     products.forEach(product => {
+    //       if(product.productName==selectedProduct){
+    //         $('#productCode').append(`<option value="${product.id}">${product.productCode}</option>`);
+    //         i++;
+    //         productId=product.id;
+    //       }
+    //     });
+    //     if(i==1){
+    //       console.log(i);
+    //       $('#productCode option[value=' +productId + ']').attr('selected','selected');
 
-          // $("#productCode select").val(productId);
-        }
-      }
-    }
+    //       // $("#productCode select").val(productId);
+    //     }
+    //   }
+    // }
 
       function showSerialInfo() {
-       var selectedProduct=$("#productCode").val();
+       var selectedProduct=$("#productName").val();
        
        $("#serial_no").html('<option value="">Select Serial Code</option>');
        if(serialInfos!=undefined){
