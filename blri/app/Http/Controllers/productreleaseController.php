@@ -7,14 +7,16 @@ use App\division;
 use App\Reporting;
 use App\setuptype;
 use App\Adjustment;
+use App\Emp_assign;
 use App\SerialInfo;
 use App\SecurityType;
 use App\ProductReceiveType;
+use App\ProductReleaseInfo;
 use App\EmployeeInformation;
 use App\ProductDistribution;
 use Illuminate\Http\Request;
-use App\ProductReleaseInfo;
-use App\Emp_assign;
+use Illuminate\Validation\Rule;
+use Validator;
 
 class productreleaseController extends Controller
 {
@@ -68,6 +70,18 @@ class productreleaseController extends Controller
       }
     }
 
+    public function saveContent(Request $request,ProductReleaseInfo $productReleaseInfo)
+    {
+        $productReleaseInfo->releaseDate=date('Y-m-d',strtotime(str_replace('/','-',$request->releaseDate)));
+        $productReleaseInfo->division_id=$request->deptName;
+        $productReleaseInfo->project_id=$request->projectName;
+        $productReleaseInfo->employee_information_id=$request->employeeName;
+        $productReleaseInfo->serial_info_id=$request->serialNo;
+        $productReleaseInfo->receiveBy=$request->session()->get('user')->id;
+        $productReleaseInfo->save();
+        // return true;
+    }
+
     public function store(Request $request)
     {
             // dd($request->all());
@@ -78,17 +92,55 @@ class productreleaseController extends Controller
           'projectName'=>'required',
           'employeeName'=>'required'
         ]);
-
-        $newProductReleaseInfo=new ProductReleaseInfo;
-        $newProductReleaseInfo->releaseDate=date('Y-m-d',strtotime($request->releaseDate));
-        $newProductReleaseInfo->division_id=$request->deptName;
-        $newProductReleaseInfo->project_id=$request->projectName;
-        $newProductReleaseInfo->employee_information_id=$request->employeeName;
-        $newProductReleaseInfo->serial_info_id=$request->serialNo;
-        $newProductReleaseInfo->receiveBy=$request->session()->get('user')->id;
-        $newProductReleaseInfo->save();
+        
+        $this->saveContent($request,new ProductReleaseInfo);
+        
 
         return redirect()->route('product distribution.product release');
+
+    }
+    public function editItemFromReleaseList(Request $request)
+    {
+        $isProductReleaseInfoAvailable = ProductReleaseInfo::find($request->productReleaseId);
+        if($isProductReleaseInfoAvailable){
+            $projects= Project::all();
+            $divisions=division::all();
+            $serialInfo=SerialInfo::all();
+            $productReleaseInfo= ProductReleaseInfo::all();
+            $project=Project::find($isProductReleaseInfoAvailable->project_id);
+            $allAssignedEmployees=[];
+            if($project){
+               $allAssignedEmployees=$this->getAllAssignedEmployees($project);
+            }
+
+            return view('product distribution.ajaxEditProductRelease')
+                ->with('divisions', $divisions)
+                ->with('projects', $projects)
+                ->with('serialInfo', $serialInfo)
+                ->with('productReleaseInfo', $productReleaseInfo)
+               ->with('assignedEmployees', $allAssignedEmployees)
+                ->with('availableProductReleaseInfo', $isProductReleaseInfoAvailable);
+        }
+    }
+    public function updateItemFromReleaseList(Request $request)
+    {
+        
+            // dd($request->all());
+        $validator = Validator::make($request->all(),[
+          'serialNo'=>['required',Rule::unique('product_release_infos','serial_info_id')->ignore($request->productReleaseInfoId)],
+          'releaseDate'=>'required | date_format:d/m/Y| after_or_equal: today',
+          'deptName'=>'required',
+          'projectName'=>'required',
+          'employeeName'=>'required'
+        ]);
+        
+        if ($validator->fails()) {      
+            return ["error",$validator->errors()];
+        }
+        $isProductReleaseInfoAvailable = ProductReleaseInfo::find($request->productReleaseInfoId);
+        $this->saveContent($request, $isProductReleaseInfoAvailable);
+
+        return ["success"];
 
     }
 
@@ -132,7 +184,7 @@ class productreleaseController extends Controller
         return "error";
     }
 
-        public function deleteItemFromReleaseList(Request $request)
+    public function deleteItemFromReleaseList(Request $request)
     {
         if ($request->ajax()) {
             $isAvailable= ProductReleaseInfo::find($request->id);

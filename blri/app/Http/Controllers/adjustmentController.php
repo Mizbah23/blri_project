@@ -10,7 +10,6 @@ use App\ProductDistribution;
 use App\Adjustment;
 use App\Reporting;//model name;
 use App\User;
-use App\Adjustment;
 
 
 class adjustmentController extends Controller

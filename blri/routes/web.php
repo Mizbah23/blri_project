@@ -144,10 +144,12 @@ Route::post('/product_receive/product_serial_info/{id}/edit', 'productserialinfo
 //Release
 Route::get('/product_distribution/product_release', 'productreleaseController@index')->name('product distribution.product release');
 Route::post('/product_distribution/product_release', 'productreleaseController@store');
+Route::put('/product_distribution/product_release/get', 'productreleaseController@updateItemFromReleaseList')->name('update.product.from.ReleaseList');
 Route::post('/show/employee/basedOnProject/Id', 'productreleaseController@showEmployeeBasedOnProject')->name('showEmployeeBasedOnProject');
 Route::post('/product_distribution/product_release/clearList/item', 'productreleaseController@clearProductRelease')->name('clearProductRelease');
 Route::post('/product_distribution/product_release/saveList/item', 'productreleaseController@saveProductRelease')->name('saveProductRelease');
 Route::get('/product_distribution/product_release/delete/item', 'productreleaseController@deleteItemFromReleaseList')->name('delete.product.from.ReleaseList');
+Route::get('/product_distribution/product_release/edit/item', 'productreleaseController@editItemFromReleaseList')->name('edit.product.from.ReleaseList');
 
 //Distribution Info
 Route::get('/product_distribution/product_distribution', 'productdistributiontypeController@index')->name('product distribution.product distribution');

@@ -171,128 +171,127 @@ $( function() {
 
 </head> 
 <body class="cbp-spmenu-push">
-    <div class="main-content">
-    <div class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">
-        <!--left-fixed -navigation-->
+  <div class="main-content">
+      <div class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">
         <aside class="sidebar-left">
-      <nav class="navbar navbar-inverse">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".collapse" aria-expanded="false">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            </button>
+          <nav class="navbar navbar-inverse">
+              <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".collapse" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                </button>
 
-            <div style="margin-top: 10px">
-              <div class="col-lg-3">
-                <img style="height: 50px; width: 50px;" src="/images/logo.png" alt="">
-              </div>
-              <div class="col-lg-9">
-                 <h1 style="margin-left: -25px"><a class="navbar-brand" href="index.html">  BLRI<span class="dashboard_text" style="margin-left: -35px">Design dashboard</span></a></h1>
-              </div>
-             </div>
-            </div>
-          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="sidebar-menu">
-              <li class="header">MAIN NAVIGATION</li>
-              <li class="treeview">
-                <a href="{{route('home.index')}}">
-                <i class="fa fa-dashboard"></i> <span>Dashboard</span>
-                </a>
-              </li>
-              <li class="treeview">
-                <a href="#">
-                <i class="fa fa-shield"></i> <span>Security</span>
-                <i class="fa fa-angle-left pull-right"></i>
-                </a>
-                <ul class="treeview-menu">
-                @foreach($securitytypes as $securitytype)
-                      <li><a href="{{route('security.'.strtolower($securitytype->SecType))}}">
-                      <i class="fa fa-circle"></i> {{$securitytype->SecType}}</a></li>
-                 @endforeach
-                </ul>
-              </li>
-             
+                <div style="margin-top: 10px">
+                  <div class="col-lg-3">
+                    <img style="height: 50px; width: 50px;" src="/images/logo.png" alt="">
+                  </div>
+                  <div class="col-lg-9">
+                    <h1 style="margin-left: -25px"><a class="navbar-brand" href="index.html">  BLRI<span class="dashboard_text" style="margin-left: -35px">Design dashboard</span></a></h1>
+                  </div>
+                </div>
+                </div>
+              <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="sidebar-menu">
+                  <li class="header">MAIN NAVIGATION</li>
+                  <li class="treeview">
+                    <a href="{{route('home.index')}}">
+                    <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+                    </a>
+                  </li>
+                  <li class="treeview">
+                    <a href="#">
+                    <i class="fa fa-shield"></i> <span>Security</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                    @foreach($securitytypes as $securitytype)
+                          <li><a href="{{route('security.'.strtolower($securitytype->SecType))}}">
+                          <i class="fa fa-circle"></i> {{$securitytype->SecType}}</a></li>
+                    @endforeach
+                    </ul>
+                  </li>
+                
 
-              <li class="treeview">
-                <a href="#">
-                <i class="fa fa-folder"></i>
-                <span>Setup</span>
-                <i class="fa fa-angle-left pull-right"></i>
-                </a>
-                <ul class="treeview-menu">
-                 @foreach($setuptypes as $setuptype)
-                    <li><a href="{{route('setup.'.strtolower($setuptype->SType))}}">
-                      <i class="fa fa-circle"></i> {{$setuptype->SType}}</a></li>
-                 @endforeach
-                  
-                </ul>
-              </li>
-           
-             
-              <li class="treeview">
-              <li class="treeview">
-                <a href="#">
-                <i class="fa fa-laptop"></i>
-                <span>Product Recieve</span>
-                <i class="fa fa-angle-left pull-right"></i>
-                </a>
-                <ul class="treeview-menu">
-                   @foreach($productreceivetypes as $productreceivetype)
-                   
-                    <li><a href="{{route('product receive.'.strtolower($productreceivetype->prType))}}">
-                      <i class="fa fa-circle"></i> {{$productreceivetype->prType}}</a></li>
-                 @endforeach
-                </ul>
-              </li>
+                  <li class="treeview">
+                    <a href="#">
+                    <i class="fa fa-folder"></i>
+                    <span>Setup</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                    @foreach($setuptypes as $setuptype)
+                        <li><a href="{{route('setup.'.strtolower($setuptype->SType))}}">
+                          <i class="fa fa-circle"></i> {{$setuptype->SType}}</a></li>
+                    @endforeach
+                      
+                    </ul>
+                  </li>
               
-              <li class="treeview">
-                <a href="#">
-                <i class="fa fa-edit"></i> <span>Product Distribution</span>
-                <i class="fa fa-angle-left pull-right"></i>
-                </a>
-                <ul class="treeview-menu">
-                     @foreach($productdistributions as $productdistribution)
-                   
-                    <li><a href="{{route('product distribution.'.strtolower($productdistribution->pdType))}}">
-                      <i class="fa fa-circle"></i> {{$productdistribution->pdType}}</a></li>
-                 @endforeach
-                </ul>
-              </li>
-              <li class="treeview">
-                <a href="#">
-                <i class="fa fa-adjust"></i> <span>Adjustment</span>
-                <i class="fa fa-angle-left pull-right"></i>
-                </a>
-                <ul class="treeview-menu">
-                   @foreach($adjustments as $adjustment)
-                   
-                    <li><a href="{{route('adjustment.'.strtolower($adjustment->adjustmentType))}}">
-                      <i class="fa fa-circle"></i> {{$adjustment->adjustmentType}}</a></li>
-                 @endforeach
-                </ul>
-              </li>
-            
-              <li class="treeview">
-                <a href="#">
-                <i class="fa fa-table"></i> <span>Report</span>
-                <i class="fa fa-angle-left pull-right"></i>
-                </a>
-                <ul class="treeview-menu">
-                          @foreach($reportings as $reporting)
-                   
-                    <li><a href="{{route('reporting.'.strtolower($reporting->crType))}}"><!-- route('Folder(from view) Name') &&strtolowere('database table name')-->
-                      <i class="fa fa-circle"></i> {{$reporting->crType}}</a></li>
-                  @endforeach
-                </ul>
-              </li>
-            
-          </div>
-          <!-- /.navbar-collapse -->
-      </nav>
-    </aside>
-    </div>
+                
+                  <li class="treeview">
+                  <li class="treeview">
+                    <a href="#">
+                    <i class="fa fa-laptop"></i>
+                    <span>Product Recieve</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                      @foreach($productreceivetypes as $productreceivetype)
+                      
+                        <li><a href="{{route('product receive.'.strtolower($productreceivetype->prType))}}">
+                          <i class="fa fa-circle"></i> {{$productreceivetype->prType}}</a></li>
+                    @endforeach
+                    </ul>
+                  </li>
+                  
+                  <li class="treeview">
+                    <a href="#">
+                    <i class="fa fa-edit"></i> <span>Product Distribution</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                        @foreach($productdistributions as $productdistribution)
+                      
+                        <li><a href="{{route('product distribution.'.strtolower($productdistribution->pdType))}}">
+                          <i class="fa fa-circle"></i> {{$productdistribution->pdType}}</a></li>
+                    @endforeach
+                    </ul>
+                  </li>
+                  <li class="treeview">
+                    <a href="#">
+                    <i class="fa fa-adjust"></i> <span>Adjustment</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                      @foreach($adjustments as $adjustment)
+                      
+                        <li><a href="{{route('adjustment.'.strtolower($adjustment->adjustmentType))}}">
+                          <i class="fa fa-circle"></i> {{$adjustment->adjustmentType}}</a></li>
+                    @endforeach
+                    </ul>
+                  </li>
+                
+                  <li class="treeview">
+                    <a href="#">
+                    <i class="fa fa-table"></i> <span>Report</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                              @foreach($reportings as $reporting)
+                      
+                        <li><a href="{{route('reporting.'.strtolower($reporting->crType))}}"><!-- route('Folder(from view) Name') &&strtolowere('database table name')-->
+                          <i class="fa fa-circle"></i> {{$reporting->crType}}</a></li>
+                      @endforeach
+                    </ul>
+                  </li>
+                
+              </div>
+              <!-- /.navbar-collapse -->
+          </nav>
+        </aside>
+      </div>
         <!--left-fixed -navigation-->
         
                <!-- header-starts -->
@@ -344,7 +343,7 @@ $( function() {
               <div class="form-title bg-primary text-white">
                 <h3 class="">Product Release</h3>
               </div>
-              <div class="form-body">
+              <div class="form-body" id="hideForm">
                 <form class="form-horizontal" method="post" autocomplete="off" > <!--Form for grideview-->
                   @csrf
                   <div class="form-group">
@@ -403,25 +402,24 @@ $( function() {
                   </div>
                   
                   <div class="row" style="border:2px solid #EEE;padding:15px;margin: -16px">
-
-                     <div class="col-lg-5">
-                     <label for="serialNo"><b>Serial No:</b></label>
-                     <select id="serialNo" name="serialNo" class="form-control required" required>
-                          <option value="">Select serial No of Product</option>
-                          @foreach ($serialInfo  as $item)
-                         <option value="{{$item->id}}" @if (old('serialNo')==$item->id)
-                             {{"selected"}}
-                         @endif >{{$item->serial_no}}</option>
-                          @endforeach
-                       </select>
-                       <div class="error">{{$errors->first('serialNo')}}</div>
-                     <br>
-                     <center>
+                    <div class="col-lg-5">
+                    <label for="serialNo"><b>Serial No:</b></label>
+                    <select id="serialNo" name="serialNo" class="form-control required" required>
+                        <option value="">Select serial No of Product</option>
+                        @foreach ($serialInfo  as $item)
+                        <option value="{{$item->id}}" @if (old('serialNo')==$item->id)
+                            {{"selected"}}
+                        @endif >{{$item->serial_no}}</option>
+                        @endforeach
+                      </select>
+                      <div class="error">{{$errors->first('serialNo')}}</div>
+                    <br>
+                    <center>
                       <button type="submit" class="btn btn-info"><i class="glyphicon glyphicon-plus"
                       style="color:white"></i>Add to List</button>
                       <button type="reset"class="btn">Reset</button>
-                     </center>
-                     </div>
+                    </center>
+                    </div>
                        
                      <div class="col-lg-7"><br>
                          <table class="table table-responsive table-hover table-striped table-bordered table-condensed">
@@ -443,9 +441,9 @@ $( function() {
                                 
                                 <td>{{$item->serialInfo->productInfo->productName}}</td>
                                 <td>{{$item->serialInfo->serial_no}}</td>
-                                <td>{{$item->user->employeeinfo->name}}</td>
+                                <td>{{$item->employeeinfo->name}}</td>
                                 <td>{{$item->division->divisionName}}</td>
-                                 <td class="text-center"> <a href=""class="glyphicon glyphicon-edit" style="font-size:24px; color: #1bc9f5"></i></a></td>
+                                 <td class="text-center"> <a href="#"class="glyphicon glyphicon-edit" onclick="handleEdit({{$item->id}})" style="font-size:24px; color: #1bc9f5"></i></a></td>
                                    <td> <a href="#" onclick="deleteItem({{$item->id}})" class="glyphicon glyphicon-trash" style="font-size:24px"></i></a></td>
                               </tr>
                               @endif
@@ -461,6 +459,7 @@ $( function() {
                       style="color:white" ></i> Release</button>
                       <button type="button"class="btn" onclick="handleClear()">Clear</button>
                 </div>
+                
                       <div class="row">
                         <div class="col-md-8"></div>
 
@@ -501,7 +500,7 @@ $( function() {
                             <td>{{++$key}}</td>
                             <td>{{$item->serialInfo->productInfo->productName}}</td>
                             <td>{{$item->serialInfo->serial_no}}</td>
-                            <td>{{$item->user->employeeinfo->name}}</td>
+                            <td>{{$item->employeeinfo->name}}</td>
                             <td>{{$item->division->divisionName}}</td>
                           </tr>
                           @endif
@@ -999,8 +998,8 @@ $( function() {
             }
           }
         });
-        }
       }
+    }
 
     function deleteItem(id) {
       if (confirm('Do you really want to delete this item?')) {
@@ -1019,6 +1018,45 @@ $( function() {
       });
       }
      }
+     function handleEdit(id) {
+       console.log(id);
+       
+       $.ajax({
+        type:'Get',
+        url:'{{route("edit.product.from.ReleaseList")}}',
+        data:{productReleaseId: id},
+        success: function(data) {
+          
+          $("#hideForm").html(data);
+          $( ".datepicker" ).datepicker({
+            dateFormat: 'dd/mm/yy',
+            minDate: "+0D",
+            ignoreReadonly: true
+          });
+        }
+       });
+     }
+     function updateContent() {
+      var form=$("#editForm");
+      // console.log(form.serialize());
+      $.ajax({
+        url: "{{route("update.product.from.ReleaseList")}}",
+        type:"put",
+        data: form.serialize(),
+        success: function (data) {
+          console.log(data);
+          if(data[0]=="success"){
+            alert("Successfuly Updated");
+            
+            location.reload();
+          }else{
+           for (const key in data[1]) {
+             alert(data[1][key][0]);
+           }
+          }
+        }
+      });
+    }
    </script>
     
 </body>

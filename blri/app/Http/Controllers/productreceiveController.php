@@ -176,16 +176,17 @@ class productreceiveController extends Controller
     public function clearListItemFromReceiveList(Request $request)
     {
         if (session()->has('user')) {
-            $productReceiveLists=ProductReceiveList::all();
-            $k=0;
-            foreach ($productReceiveLists as $key => $item) {
-                $item->delete();
-                $k++;
-            }
+            $productReceiveLists=ProductReceiveList::all()->each->delete();
+            // dd($productReceiveLists);
+            // $k=0;
+            // foreach ($productReceiveLists as $key => $item) {
+            //     $item->delete();
+            //     $k++;
+            // }
             
-            if (count($productReceiveLists)==$k) {
-                return "success";
-            }
+            // if (count($productReceiveLists)==$k) {
+                // }
+            return "success";
         }
     }
 }
