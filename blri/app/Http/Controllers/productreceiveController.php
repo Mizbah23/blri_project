@@ -75,7 +75,7 @@ class productreceiveController extends Controller
             $newProductAddedToList->orderNo=$request->orderNo;
             $newProductAddedToList->quantity=$request->quantity;
             $newProductAddedToList->user_id=$request->session()->get('user')->id;
-            $newProductAddedToList->receiveDate=date('Y-m-d', strtotime($request->receiveDate));
+            $newProductAddedToList->receiveDate=date('Y-m-d',  strtotime(str_replace('/','-',$request->receiveDate)));
             $newProductAddedToList->save();
             
         }
@@ -119,7 +119,7 @@ class productreceiveController extends Controller
             'orderNo'=>'required',
             'address'=>'required',
             'contactNo'=>'required',
-            'receiveDate'=>'required | date| before_or_equal:today',
+            'receiveDate'=>'required | date_format:d/m/Y| before_or_equal:today',
             'quantity'=>'required|numeric|gt:0'
         ]);
         if ($validator->fails()) {      
@@ -137,7 +137,7 @@ class productreceiveController extends Controller
                 $isProductInProductReceiveList->orderNo=$request->orderNo;
                 $isProductInProductReceiveList->quantity=$request->quantity;
                 $isProductInProductReceiveList->user_id=$request->session()->get('user')->id;
-                $isProductInProductReceiveList->receiveDate=date('Y-m-d', strtotime($request->receiveDate));
+                $isProductInProductReceiveList->receiveDate=date('Y-m-d',  strtotime(str_replace('/','-',$request->receiveDate)));
                 $isProductInProductReceiveList->save();
             }
             return ["success"];

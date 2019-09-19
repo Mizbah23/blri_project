@@ -119,7 +119,7 @@
               <label for="" class=" control-label">Date</label>
               </div>
               <div class="col-md-9">
-                <input class="form-control datepicker" type="text" id="receiveDate" name="receiveDate" placeholder="mm/dd/yyyy"  value="{{old('receiveDate',date('m/d/Y',strtotime($productReceiveList->receiveDate)))}}"  required><br>
+                <input class="form-control datepicker" type="text" id="receiveDate" name="receiveDate" placeholder="mm/dd/yyyy"  value="{{old('receiveDate',date('d/m/Y',strtotime($productReceiveList->receiveDate)))}}"  required><br>
                 <div class="error">{{$errors->first('receiveDate')}}</div>
               </div><br><br>
           

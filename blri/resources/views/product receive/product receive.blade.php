@@ -342,7 +342,7 @@ $( function() {
               </div>
               <div class="form-body" >
                 <div id="createFormDiv">
-                  <form class="form-horizontal" method="post" autocomplete="off"> 
+                  <form class="form-horizontal" method="post" autocomplete="off" novalidate> 
                     @csrf
                     <div class="form-group"> <!--Form-->
 
@@ -1035,7 +1035,7 @@ $( function() {
         success: function (data) {
           $("#createFormDiv").html(data);
           $( ".datepicker" ).datepicker({
-            format: 'MM/DD/YYYY',
+            dateFormat: 'dd/mm/yy',
             maxDate: "+0D",
             ignoreReadonly: true
           });
