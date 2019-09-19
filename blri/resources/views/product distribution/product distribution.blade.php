@@ -313,32 +313,21 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                 <h3 class="">Product Distribution</h3>
               </div>
               <div class="form-body">
+                <div id="createFormDiv">
                   <form class="form-horizontal" method="post" novalidate>
                       @csrf
                       <div class="form-group">
-                          <!--Form-->
-                  
-                          {{-- <div class="row" style="border: solid 1px #eee; padding: 20px">
-                  
-                  
-                  
-                                          <div class="text-center">
-                                              <input type="radio" id="show" name="p" value=""> Distribute to Department
-                                          </div>
-                                        </div> --}}
-                          {{-- id show --}}
-                  
-                          {{-- id hide --}}
+                          
                           <div class="row" style="border: solid 1px #eee; padding: 20px">
                               <div class="col-md-3"></div>
                   
                   
                               <div class="col-md-6">
                                   <div class="col-md-3">
-                                      <label for="divisions" class="col-sm-2 control-label">অনুষদ</label>
+                                      <label for="divisionName" class="col-sm-2 control-label">অনুষদ</label>
                                   </div>
                                   <div class="col-md-9">
-                                      <select class="form-control" id="divisions" name="divisions">
+                                      <select class="form-control" id="divisionName" name="divisionName">
                                           <option value="">Select Department</option>
                                           @foreach($divisions as $division)
                                           <option value="{{$division->id}}">{{$division->divisionName}}</option>
@@ -452,48 +441,48 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                   </div>
                   
                               </div>
+                            
                   
                               <div class="col-md-7" style="border: solid 2px #eee; padding: 20px">
                                   <div id="allBrands">
                                       <table class="table table-responsive table-hover table-striped table-bordered table-condensed">
                                           <tr class="row bg-primary">
                                               <th class="col-lg-1 text-center">#</th>
-                                              <th class="col-lg-1 text-center">Category</th>
-                                              <th class="col-lg-1 text-center">Brand</th>
+                                              <th class="col-lg-2 text-center">অনুষদ</th>
+                                             
                                               <th class="col-lg-2 text-center">Product</th>
-                                              <th class="col-lg-1 text-center">Product Code</th>
+                                          
+                                              <th class="col-lg-1 text-center">Serial No.</th>
                                               <th class="col-lg-3 text-center">Remarks</th>
                                               <th class="col-lg-1 text-center">Edit</th>
                                               <th class="col-lg-1 text-center">Delete</th>
                                           </tr>
-                  
+                                              @foreach ($distributionLists as $key=>$item)
                                           <tr class="row">
-                                              <td></td>
-                                              <td></td>
-                                              <td></td>
-                                              <td></td>
-                                              <td></td>
-                                              <td></td>
-                                              <td class="text-center"> <a href="" class="glyphicon glyphicon-edit"
+                                              <td>{{++$key}}</td>
+                                              <td>{{$item->division->divisionName}}</td>
+                                              <td>{{$item->productInfo->productName}}</td>
+                                              <td>{{$item->serialInfo->serial_no}}</td>
+                                              <td>{{$item->remarks}}</td>
+                                        
+                                              <td class="text-center"> <a href="#" onclick="handleEdit({{$item->id}})" class="glyphicon glyphicon-edit"
                                                       style="font-size:24px; color: #1bc9f5"></i></a></td>
-                                              <td class="text-center"> <a href="" class="glyphicon glyphicon-trash  "
+                                              <td class="text-center"> <a href="#" onclick="deleteItem({{$item->id}})" class="glyphicon glyphicon-trash  "
                                                       style="font-size:24px; color: red"></i></a></td>
                   
                                           </tr>
+                                          @endforeach
                   
                                       </table>
+
                                       <div class="text-center">
-                                          <button type="submit" class=" btn btn-info"> Save</button>
+                                          <button type="submit" class=" btn btn-info"> ADD List</button>
                                           <button type="reset" class="btn btn-danger">Cancel</button>
                                       </div>
+                                    </form>
                                   </div>
-                              </div>
-                  
-                          </div>
-                  
-                      </div>
-                  
-                  </form>
+                
+                 <div id="updateFormDiv"></div>
                       <div class="row">
                         <div class="col-md-8"></div>
 
@@ -1040,10 +1029,10 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
       }
      }
 
-          function deleteItem(id) {
+    function deleteItem(id) {
       if (confirm('Do you really want to delete this item?')) {
         $.ajax({
-        url: "{{route("delete.product.from.RequisitionList")}}",
+        url: "{{route("delete.product.from.DistributionList")}}",
         type:"get",
         data: { id: id},
         success: function (data) {
@@ -1060,19 +1049,12 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 
       function handleEdit(id) {
        $.ajax({
-        url: "{{route("edit.product.from.RequisitionList")}}",
+        url: "{{route("edit.product.from.DistributionList")}}",
         type:"get",
         data: { id: id},
         success: function (data) {
           $("#createFormDiv").html(data);
-          $( ".datepicker" ).datepicker({
-            format: 'MM/DD/YYYY',
-            maxDate: "+0D",
-            ignoreReadonly: true
-          });
-          $("#requisitionDate").datepicker();
-          // $("#createFormDiv").hide();
-          // console.log(data);
+       
         }
       });
     }
@@ -1081,7 +1063,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
       var form=$("#editForm");
       // console.log(form.serialize());
       $.ajax({
-        url: "{{route("update.product.from.RequisitionList")}}",
+        url: "{{route("update.product.from.DistributionList")}}",
         type:"put",
         data: form.serialize(),
         success: function (data) {

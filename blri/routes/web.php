@@ -153,11 +153,13 @@ Route::get('/product_distribution/product_release/delete/item', 'productreleaseC
 Route::get('/product_distribution/product_distribution', 'productdistributiontypeController@index')->name('product distribution.product distribution');
 Route::post('/product_distribution/product_distribution', 'productdistributiontypeController@distributionList');
 Route::post('/show/product/basedOnBrand/Id', 'productdistributiontypeController@showProductBasedOnBrand')->name('showProductBasedOnBrand');
-
+Route::get('/product_distribution/product_distribution/delete/item', 'productdistributiontypeController@deleteItemFromDistributionList')->name('delete.product.from.DistributionList');
+Route::get('/product_distribution/product_distribution/edit/item', 'productdistributiontypeController@editItemFromDistributionList')->name('edit.product.from.DistributionList');
+Route::put('/product_distribution/product_distribution', 'productdistributiontypeController@updateItemFromDistributionList')->name('update.product.from.DistributionList');
 
 //Repair Info
 Route::get('/product_distribution/product_repair', 'productrepairController@index')->name('product distribution.product repair');
-Route::get('/product_distribution/product_distribution', 'productdistributiontypeController@index')->name('product distribution.product distribution');
+
 
 //Repair Receive
 Route::get('/product_distribution/repair_receive', 'repairreceiveController@index')->name('product distribution.repair receive');

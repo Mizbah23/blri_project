@@ -342,7 +342,7 @@ $( function() {
               </div>
               <div class="form-body" >
                 <div id="createFormDiv">
-                  <form class="form-horizontal" method="post" autocomplete="off" novalidate> 
+                  <form class="form-horizontal" method="post" autocomplete="off"> 
                     @csrf
                     <div class="form-group"> <!--Form-->
 
@@ -1035,7 +1035,7 @@ $( function() {
         success: function (data) {
           $("#createFormDiv").html(data);
           $( ".datepicker" ).datepicker({
-            dateFormat: 'dd/mm/yy',
+            format: 'MM/DD/YYYY',
             maxDate: "+0D",
             ignoreReadonly: true
           });
@@ -1101,7 +1101,7 @@ $( function() {
               
               if(data=="success"){
                 alert("Data deleted successfully");
-                console.log(data);
+               // console.log(data);
                 location.reload();
               }else{
                 alert("Something Went Wrong");

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDistributionListsTable extends Migration
+class CreateDistributionSavesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateDistributionListsTable extends Migration
      */
     public function up()
     {
-        Schema::create('distribution_lists', function (Blueprint $table) {
+        Schema::create('distribution_saves', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('product_info_id');
+             $table->unsignedBigInteger('product_info_id');
             $table->unsignedBigInteger('serial_id');
-            $table->unsignedBigInteger('user_id');// who keep the record of release information
-            $table->unsignedBigInteger('division_id');// who keep the record of release information
+            $table->unsignedBigInteger('user_id');// who keep the record of distribution information
+            $table->unsignedBigInteger('division_id');// record of division information
 
             $table->string('remarks');
             
@@ -37,6 +37,6 @@ class CreateDistributionListsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('distribution_lists');
+        Schema::dropIfExists('distribution_saves');
     }
 }
