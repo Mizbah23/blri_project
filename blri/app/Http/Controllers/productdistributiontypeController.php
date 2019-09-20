@@ -18,7 +18,7 @@ use App\DistributionList;
 use Validator;
 use Illuminate\Validation\Rule;
 use App\DistributionSave;
-
+use App\User;
 
 class productdistributiontypeController extends Controller
 {
@@ -34,6 +34,7 @@ class productdistributiontypeController extends Controller
         $serialInfos=SerialInfo::all();
         $brands=Brand::all();
         $categories=Category::all();
+        $users=User::all();
         $distributionLists=DistributionList::all();
         $selectedProductBasedOnBrand=[];
 
@@ -55,6 +56,7 @@ class productdistributiontypeController extends Controller
             ->with('serialInfos', $serialInfos)
             ->with('divisions', $divisions)
             ->with('brands', $brands)
+            ->with('users',$users)
             ->with('categories', $categories);
     }
     public function showProductBasedOnBrand(Request $request)
@@ -158,6 +160,45 @@ class productdistributiontypeController extends Controller
             $isProductInProductDistributionList->save();
            
             return ["success"];
+        }
+    }
+
+        public function saveAllItemFromDistributionList(Request $request)
+    {
+        //return $request->all();
+        if (session()->has('user')) {
+            $distributionLists=DistributionList::all();
+            $k=0;
+            foreach ($distributionlists as $key => $item) {
+                $saveNewDistribution=new DistributionSave;
+                $saveNewDistribution->division_id=$item->divisionName;
+                $saveNewDistribution->serial_id=$item->serial_no;
+                $saveNewDistribution->remarks=$item->remarks;
+                $saveNewDistribution->user_id=$item->user_id;
+                $saveNewDistribution->save();
+            
+            $k++;
+            }
+            //return $saveNewRequisition;
+            if (count($distributionLists)==$k) {
+                return ["success"];
+            }
+        }
+    }
+
+         public function clearListItemFromDistributionList(Request $request)
+    {
+        if (session()->has('user')) {
+           $requisitionlists=RequisitionList::all();
+            $k=0;
+            foreach ($requisitionlists as $key => $item) {
+                $item->delete();
+                $k++;
+            }
+            
+            if (count($requisitionlists)==$k) {
+                return "success";
+            }
         }
     }
 }

@@ -163,7 +163,7 @@ $( function() {
   $(function() {
     $( ".datepicker" ).datepicker({
       dateFormat: 'dd/mm/yy',
-      minDate: "+0D",
+      //minDate: "+0D",
       ignoreReadonly: true
     });
   });

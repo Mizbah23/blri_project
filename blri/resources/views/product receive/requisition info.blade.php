@@ -1115,7 +1115,7 @@ $( function() {
      }
 
           function clearList() {
-       if (confirm('Do you really want to delete all the item from List?')) {
+       if (confirm('Do you really want to clear all the item from List?')) {
           $.ajax({
             url: "{{route("clearList.product.from.RequisitionList")}}",
             type:"get",

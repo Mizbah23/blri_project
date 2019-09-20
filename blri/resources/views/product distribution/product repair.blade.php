@@ -2,7 +2,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>Repair receive</title>
+<title>Product Repair</title>
 <link rel="icon" type="image/png" href="/images/logo.png" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -154,12 +154,13 @@ $( function() {
     }
   } );
   </script>
-<!--date picker-->
+
+  <!--date picker-->
 <script>
   $(function() {
     $( ".datepicker" ).datepicker({
-      format: 'MM/DD/YYYY',
-      maxDate: "+0D",
+      dateFormat: 'dd/mm/yy',
+      maxDate: "+1d",
       ignoreReadonly: true
     });
   });
@@ -340,28 +341,45 @@ $( function() {
                     <div class="row">
                         <div class="col-md-6"  style="border: solid 2px #eee; padding: 20px">
                             <div class="col-md-4">
-                                 <label for="" class=" control-label">Category</label>
+                                 <label for="categoryName" class=" control-label">Category</label>
                             </div>
                             <div class="col-md-8">
-                                <select id="" name="" class="form-control required" required>
+                                <select id="categoryName" name="categoryName" onchange="showBrand()" class="form-control required" required>
+                                <div class="error" style="color:red">{{$errors->first('categoryName')}}</div><br><br>
                                  <option value="">Select Category</option>
+                                 @foreach($categories as $category)
+                                          <option value="{{$category->id}}"
+                                            {{old('categoryName')==$category->id ?"selected":""}}>
+                                              {{$category->categoryName}}</option>
+                                          @endforeach
                               </select>
                             </div><br><br>
                             <div class="col-md-4">
-                                 <label for="" class=" control-label">Brand</label>
+                                 <label for="brandName" class=" control-label">Brand</label>
                             </div>
                             <div class="col-md-8">
-                                <select id="" name="" class="form-control required" required>
+                                <select id="brandName" name="brandName" class="form-control required" onchange="showProductName()" required>
+                                <div class="error" style="color:red">
+                                  {{$errors->first('brandName')}}</div><br><br>
                                  <option value="">Select Brand</option>
+                                  @if(old('categoryName'))
+                                            @foreach($brands as $brand)
+                                              @if (old('categoryName') == $brand->category->id)
+                                              <option value="{{$brand->id}}" {{old('brandName')==$brand->id?"selected":""}}>
+                                                  {{$brand->brandName}}</option>
+                                              @endif
+                                            @endforeach
+                                          @endif
                               </select>
                             </div><br><br>
                             <div class="col-md-4">
-                                 <label for="" class=" control-label">Product</label>
+                                 <label for="productName" class=" control-label">Product</label>
                             </div>
                             <div class="col-md-8">
-                                <select id="" name="" class="form-control required" required>
+                                <select id="productName" name="productName" class="form-control required" required>
                                  <option value="">Select Product</option>
                               </select>
+                              
                             </div><br><br>
                             <div class="col-md-4">
                                  <label for="" class=" control-label">Serial No.</label>
@@ -388,23 +406,11 @@ $( function() {
 
                         <div class="col-md-6" style="border: solid 2px #eee; padding: 20px">
 
-
-                          <!--<label class="col-md-6 control-label" >Joinig Date</label>
-                        <div class="col-md-6">
-                          <input class="form-control datepicker" type="text" name="joiningDate" placeholder="mm/dd/yyyy"  value="{{old('joiningDate')}}"  required>
-                          <div class="error">{{$errors->first('joiningDate')}}</div>
-                        </div><br><br>
-
-                        <label class="col-md-6 control-label" >Birth Date</label>
-                        <div class="col-md-6">
-                          <input type="text" class="form-control datepicker" name="birthDate" placeholder="mm/dd/yyyy"  value="{{old('birthDate')}}" required>
-                          <div class="error">{{$errors->first('birthDate')}}</div>
-                        </div><br><br>-->
                          <div class="col-md-4">
                                  <label for="" class=" control-label">Sending Date</label>
                             </div>
                             <div class="col-md-8">
-                               <input class="form-control datepicker" type="text" name="sendingDate" placeholder="mm/dd/yyyy"  value=""  required>
+                               <input class="form-control datepicker" type="text" name="sendingDate" placeholder="dd/mm/yyyy"  value=""  autocomplete="off" required>
                                 
                             </div><br><br>
                             
