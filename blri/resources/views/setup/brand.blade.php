@@ -301,7 +301,10 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                           <label for="brand" class="col-sm-2 control-label">ব্রান্ড</label>
                        <div class="col-lg-9">
                           <input type="text" class="form-control" id="brand" name="brandName" placeholder="অবশ্যই পুরণ করুণ"required>
+                         <div class="error text-danger ">{{$errors->first('brandName')}}</div>
+                          <br><br>
                           </div><br><br><br>
+
                         <div class="text-center">
                           <button type="submit" class="btn btn-info">সংরক্ষণ করুন</button> 
                           <button type="reset" class="btn btn-danger">বাতিল করুন</button>
