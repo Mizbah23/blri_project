@@ -261,7 +261,7 @@ $( function() {
                 <ul class="treeview-menu">
                  @foreach($reportings as $reporting)
                    
-                    <li><a href="{{route('reporting.'.strtolower($reporting->crType))}}"><!-- route('Folder(from view) Name') &&strtolowere('database table name')-->
+                    <li><a href="{{route('reporting.'.strtolower($reporting->crType))}}">
                       <i class="fa fa-circle"></i> {{$reporting->crType}}</a></li>
                  @endforeach
                 </ul>
@@ -333,14 +333,14 @@ $( function() {
 
                         <label for="supplierName" class="col-sm-5 control-label">সরবরাহকারীর নাম</label>
                        <div class="col-lg-7">
-                          <input type="text" class="form-control" id="supplierName" name="supplierName" placeholder="অবশ্যই পুরণ করুণ"
+                          <input type="text" class="form-control" id="supplierName" name="supplierName" placeholder="অবশ্যই পুরণ করুণ" value="{{old('supplierName')}}" 
                           required>
                           <div class="error">{{$errors->first('supplierName')}}</div>
                         </div><br><br>
 
                           <label for="supplierType" class="col-sm-5 control-label">সরবরাহকারীর ধরণ</label>
                           <div class="col-lg-7">
-                              <select id="supplierType" name="supplierType" class="form-control required" required>
+                              <select id="supplierType" name="supplierType" class="form-control required" value="{{old('supplierType')}}" required>
                                  <option value="">নির্বাচন করুন</option>
                                  <option value="Local">Local</option>
                                  <option value="Foreign">Foreign</option>
@@ -351,7 +351,7 @@ $( function() {
 
                           <label for="contactName" class="col-sm-5 control-label">যোগাযোগের ব্যক্তি</label>
                        <div class="col-lg-7">
-                          <input type="text" class="form-control" id="contactName" name="contactName" placeholder="অবশ্যই পুরণ করুণ"required>
+                          <input type="text" class="form-control" id="contactName" name="contactName" placeholder="অবশ্যই পুরণ করুণ" value="{{old('contactName')}}" required>
                           <div class="error">{{$errors->first('contactName')}}</div>
 
                           </div><br><br>
