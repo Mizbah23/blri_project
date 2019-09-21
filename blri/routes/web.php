@@ -175,6 +175,8 @@ Route::post('/adjustment/adjustment_information', 'adjustmentinformationControll
 Route::put('/adjustment/adjustment_information', 'adjustmentinformationController@updateItem')->name('adjustment.update.adjustment information');
 Route::get('/adjustment/adjustment_information/edit/item', 'adjustmentinformationController@editItem')->name('adjustment.edit.adjustment information');
 Route::get('/adjustment/adjustment_information/delete/item', 'adjustmentinformationController@deleteItem')->name('adjustment.delete.adjustment information');
+Route::get('/adjustment/adjustment_information/clear/allItem', 'adjustmentinformationController@clearAllItem')->name('adjustment.clearAll.adjustment information');
+Route::get('/adjustment/adjustment_information/save/allItem', 'adjustmentinformationController@saveAllItem')->name('adjustment.saveAll.adjustment information');
 
 
 //reportings

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use Validator;
 use App\setuptype;
 use App\Adjustment;
 use App\ProductInfo;
@@ -12,7 +13,7 @@ use App\ProductDistribution;
 use Illuminate\Http\Request;
 use App\Reporting;//model name;
 use App\AdjustmentInformationList;
-use Validator;
+use App\AdjustmentInformationSave;
 
 
 class adjustmentinformationController extends Controller
@@ -26,7 +27,7 @@ class adjustmentinformationController extends Controller
       $products = ProductInfo::all();
       $adjustments=Adjustment::all();
       $reportings=Reporting::all();
-      $adjustmentInfoList=AdjustmentInformationList::all();
+      $adjustmentInfoLists=AdjustmentInformationList::all();
 
       
       //dd($sections[0]->division);
@@ -37,7 +38,7 @@ class adjustmentinformationController extends Controller
           ->with('productdistributions', $productdistributions)
           ->with('reportings', $reportings)
           ->with('products', $products)
-          ->with('adjustmentInfoList', $adjustmentInfoList)
+          ->with('adjustmentInfoLists', $adjustmentInfoLists)
           ->with('adjustments', $adjustments);
     }
 
@@ -72,9 +73,9 @@ class adjustmentinformationController extends Controller
         'adjustmentDate'=>'required | date_format:d/m/Y| before_or_equal:today',
         'quantity'=>'required|numeric|gt:0'.$quantityErrorCheck,
         'stock'=>'required|numeric'
-    ], [
-      'quantity.lte'=>'Please check the stock of the product'
-    ]);
+      ], [
+        'quantity.lte'=>'Please check the stock of the product'
+      ]);
 
       if ($selectedProduct) {
         $this->saveContent($request,new AdjustmentInformationList);
@@ -82,29 +83,32 @@ class adjustmentinformationController extends Controller
 
       return redirect()->route('adjustment.adjustment information');
     }
+
     public function deleteItem(Request $request)
     {
-        if ($request->ajax()) {
-            $isAvailable= AdjustmentInformationList::find($request->id);
-            $isDelete=false;
-            if ($isAvailable) {
-                $isDelete= $isAvailable->delete();
-            }
-            return $isDelete ? 'deleted' : 'error';
-        }
+      if ($request->ajax()) {
+          $isAvailable= AdjustmentInformationList::find($request->id);
+          $isDelete=false;
+          if ($isAvailable) {
+              $isDelete= $isAvailable->delete();
+          }
+          return $isDelete ? 'deleted' : 'error';
+      }
     }
+
     public function editItem(Request $request)
     {
-        if ($request->ajax()) {
-          $isAvailable= AdjustmentInformationList::find($request->id);
-          if($isAvailable){
-            $products=ProductInfo::all();
-            return view('adjustment.ajaxEditAdjustmentInfo')
-                    ->with('selectedAdjustmentInfo', $isAvailable)
-                    ->with('products', $products);
-          }
+      if ($request->ajax()) {
+        $isAvailable= AdjustmentInformationList::find($request->id);
+        if($isAvailable){
+          $products=ProductInfo::all();
+          return view('adjustment.ajaxEditAdjustmentInfo')
+                  ->with('selectedAdjustmentInfo', $isAvailable)
+                  ->with('products', $products);
         }
+      }
     }
+
     public function updateItem(Request $request)
     {
       $isAvailable= AdjustmentInformationList::find($request->adjustmentId);
@@ -140,4 +144,47 @@ class adjustmentinformationController extends Controller
         }
       }
     }
+
+  public function clearAllItem(Request $request)
+  {
+    if (session()->has('user')) {
+        $productReceiveLists=AdjustmentInformationList::all()->each->delete();
+        return "success";
+    }
+  }
+  public function saveAllItem(Request $request)
+  {
+    if (session()->has('user')) {
+        $adjustmentInfoLists=AdjustmentInformationList::all();
+        $k=0;
+        foreach ($adjustmentInfoLists as $key => $item) {
+            $adjustmentInfoSave=new AdjustmentInformationSave;
+            $adjustmentInfoSave->product_info_id=$item->product_info_id;
+            $adjustmentInfoSave->user_id=$request->session()->get('user')->id;
+            $adjustmentInfoSave->quantity=$item->quantity;
+            $adjustmentInfoSave->adjustmentDate=$item->adjustmentDate;
+            $adjustmentInfoSave->adjustmentType=$item->adjustmentType;
+            $adjustmentInfoSave->reason=$item->reason;
+            $adjustmentInfoSave->save();
+            
+            $findProduct=ProductInfo::find($item->product_info_id);
+            if ($findProduct) {
+              if($item->adjustmentType=='found'){
+                $findProduct->stock=$findProduct->stock + $item->quantity;
+              }
+              else{
+                $findProduct->stock=$findProduct->stock - $item->quantity;
+              }
+              $findProduct->save();
+              $item->delete();
+            }
+            $k++;
+
+        }
+        if (count($adjustmentInfoLists)==$k) {
+            return "success";
+        }
+    }
+  }
+
 }

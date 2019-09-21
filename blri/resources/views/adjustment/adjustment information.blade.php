@@ -472,8 +472,8 @@ $( function() {
                               <th class="col-lg-2 text-center">Quantity</th>
                               <th class="col-lg-2 text-center">Adjustment Type</th>
                             </tr>
-                            @if (count($adjustmentInfoList)>0)
-                              @foreach ($adjustmentInfoList as $item)
+                            @if (count($adjustmentInfoLists)>0)
+                              @foreach ($adjustmentInfoLists as $item)
                               <tr class="row" align="center">
                                 <td><a href="#" onclick="handleEdit({{$item->id}})"><i class="fa fa-edit" style="font-size:24px;"></i></a></td>
                                 <td> <a href="#" onclick="deleteItem({{$item->id}})" class="glyphicon glyphicon-trash"style="font-size:24px; color: red"></i></a></td>
@@ -504,8 +504,8 @@ $( function() {
 
                 <div class="text-center" id="saveButton">
                   <br><br><br>
-                    <button type="button" class=" btn btn-info" onclick=""> Save</button> 
-                        <button type="reset" class="btn btn-danger" onclick="">Clear</button>
+                    <button type="button" class=" btn btn-info" onclick="savedata()"> Save</button> 
+                        <button type="reset" class="btn btn-danger" onclick="clearList()">Clear</button>
                         <button type="button" class="btn btn-success">Print Invoice</button>
                 </div>
                
@@ -1050,32 +1050,34 @@ $( function() {
       location.reload();
     }
      function savedata() {
-      $.ajax({
-        url: "{{route("saveAll.product.from.ReceiveList")}}",
-        type:"get",
-        success: function (data) {
-          console.log(data);
-          
-          if(data=="success"){
-            alert("Data saved successfully");
-            location.reload();
-          }else{
-            alert("Something Went Wrong");
-          }
+       if (confirm('Do you want to save all the data?')) {
+         $.ajax({
+           url: "{{route("adjustment.saveAll.adjustment information")}}",
+           type:"get",
+           success: function (data) {
+             console.log(data);
+             
+             if(data=="success"){
+               alert("Data saved successfully");
+               location.reload();
+             }else{
+               alert("Something Went Wrong");
+             }
+           }
+         });
         }
-      });
-     }
+      }
 
      function clearList() {
-       if (confirm('Do you really want to delete all the item from List?')) {
+       if (confirm('Do you really want to clear all the item from List?')) {
           $.ajax({
-            url: "{{route("clearList.product.from.ReceiveList")}}",
+            url: "{{route("adjustment.clearAll.adjustment information")}}",
             type:"get",
             success: function (data) {
               console.log(data);
               
               if(data=="success"){
-                alert("Data deleted successfully");
+                alert("All data cleared");
                 location.reload();
               }else{
                 alert("Something Went Wrong");
