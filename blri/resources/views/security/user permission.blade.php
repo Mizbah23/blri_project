@@ -422,22 +422,8 @@ $( function() {
                         </div>
                          </form>end form-->
                       <!--Category and brand-->
-                      <!--Search option starts-->
-                      <div class="row">
-                        <div class="col-md-8"></div>
-
-
-                        <div class="col-md-1">
-                          <label for="searchByBrandName"  class="col-md-4  control-label">Search</label>
-                          
-                        </div>
-
-                        <div class="col-md-3">
-                          <input type="text" class="form-control" id="searchByBrandName" name="searchByBrandName" placeholder="Search by brand name">
-                        </div>
-
-
-                      </div>
+                     <!--Search option starts-->
+                      
 
                       <!--Search option stops-->
 
