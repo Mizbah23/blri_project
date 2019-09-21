@@ -158,6 +158,9 @@ Route::post('/show/product/basedOnBrand/Id', 'productdistributiontypeController@
 Route::get('/product_distribution/product_distribution/delete/item', 'productdistributiontypeController@deleteItemFromDistributionList')->name('delete.product.from.DistributionList');
 Route::get('/product_distribution/product_distribution/edit/item', 'productdistributiontypeController@editItemFromDistributionList')->name('edit.product.from.DistributionList');
 Route::put('/product_distribution/product_distribution', 'productdistributiontypeController@updateItemFromDistributionList')->name('update.product.from.DistributionList');
+Route::get('/product_distribution/product_distribution/saveAll/item', 'productdistributiontypeController@saveAllItemFromDistributionList')->name('saveAll.product.from.DistributionList');
+Route::get('/product_distribution/product_distribution/clearList/item', 'productdistributiontypeController@clearListItemFromDistributionList')->name('clearList.product.from.DistributionList');
+
 
 //Repair Info
 Route::get('/product_distribution/product_repair', 'productrepairController@index')->name('product distribution.product repair');
