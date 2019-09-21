@@ -172,6 +172,10 @@ Route::get('/product_distribution/repair_receive', 'repairreceiveController@inde
 //adjustment
 Route::get('/adjustment/adjustment_information', 'adjustmentinformationController@index')->name('adjustment.adjustment information');
 Route::post('/adjustment/adjustment_information', 'adjustmentinformationController@store');
+Route::put('/adjustment/adjustment_information', 'adjustmentinformationController@updateItem')->name('adjustment.update.adjustment information');
+Route::get('/adjustment/adjustment_information/edit/item', 'adjustmentinformationController@editItem')->name('adjustment.edit.adjustment information');
+Route::get('/adjustment/adjustment_information/delete/item', 'adjustmentinformationController@deleteItem')->name('adjustment.delete.adjustment information');
+
 
 //reportings
 Route::get('/reporting/product_receive_report', 'productreceivereportController@index')->name('reporting.product receive report');//->name('folder name.blade name')

@@ -405,7 +405,7 @@ $( function() {
                                 <label for="productCode" class=" control-label">Code</label>
                               </div>
                               <div class="col-md-9">
-                                <select id="productCode" name="productCode" class="form-control required" required>
+                                <select id="productCode" name="productCode" class="form-control required" required onchange="showStock()">
                                 <option value="">Select Product Code</option>
                                 @if(old('productName'))
                                   @foreach ($products as $product)
@@ -472,17 +472,29 @@ $( function() {
                               <th class="col-lg-2 text-center">Quantity</th>
                               <th class="col-lg-2 text-center">Adjustment Type</th>
                             </tr>
-                            
-                            @foreach ($adjustmentInfoList as $item)
+                            @if (count($adjustmentInfoList)>0)
+                              @foreach ($adjustmentInfoList as $item)
+                              <tr class="row" align="center">
+                                <td><a href="#" onclick="handleEdit({{$item->id}})"><i class="fa fa-edit" style="font-size:24px;"></i></a></td>
+                                <td> <a href="#" onclick="deleteItem({{$item->id}})" class="glyphicon glyphicon-trash"style="font-size:24px; color: red"></i></a></td>
+                                <td>{{$item->productInfo->productName}}</td>
+                                <td>{{$item->productInfo->productCode}}</td>
+                                <td>{{$item->quantity}}</td>
+                                <td>{{strtoupper($item->adjustmentType)}}</td>
+                              </tr>
+                              @endforeach
+                            @else
                             <tr class="row" align="center">
-                              <td><a href="#" onclick=""><i class="fa fa-edit" style="font-size:24px;"></i></a></td>
-                              <td> <a href="#" onclick="" class="glyphicon glyphicon-trash"style="font-size:24px; color: red"></i></a></td>
-                              <td>{{$item->productInfo->productName}}</td>
-                              <td>{{$item->productInfo->productCode}}</td>
-                              <td>{{$item->quantity}}</td>
-                              <td>{{strtoupper($item->adjustmentType)}}</td>
-                            </tr>
-                            @endforeach
+                                <td><a href="#" onclick=""><i class="fa fa-edit" style="font-size:24px;"></i></a></td>
+                                <td> <a href="#" onclick="" class="glyphicon glyphicon-trash"style="font-size:24px; color: red"></i></a></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                              </tr>
+                            @endif
+
+
                 
                         </table>
                 
@@ -490,10 +502,10 @@ $( function() {
                     </div>
                 </div>
 
-                <div class="text-center">
+                <div class="text-center" id="saveButton">
                   <br><br><br>
                     <button type="button" class=" btn btn-info" onclick=""> Save</button> 
-                        <button type="reset" class="btn btn-danger" onclick="">Cancel</button>
+                        <button type="reset" class="btn btn-danger" onclick="">Clear</button>
                         <button type="button" class="btn btn-success">Print Invoice</button>
                 </div>
                
@@ -979,6 +991,64 @@ $( function() {
   </script>
 
    <script>
+      function deleteItem(id) {
+      if (confirm('Do you really want to delete this item?')) {
+        $.ajax({
+        url: "{{route("adjustment.delete.adjustment information")}}",
+        type:"get",
+        data: { id: id},
+        success: function (data) {
+          console.log(data);
+          if(data=='deleted'){
+            location.reload();
+          }else{
+            alert("Something went wrong! Please Reload the page.");
+          }
+        }
+      });
+      }
+     }
+     function handleEdit(id) {
+       $.ajax({
+        url: "{{route("adjustment.edit.adjustment information")}}",
+        type:"get",
+        data: { id: id},
+        success: function (data) {
+          $("#createFormDiv").html(data);
+          $("#saveButton").html("");
+          $( ".datepicker" ).datepicker({
+            format: 'MM/DD/YYYY',
+            maxDate: "+0D",
+            ignoreReadonly: true
+          });
+          $("#adjustmentDate").datepicker();
+        }
+      });
+    }
+    
+    function updateContent() {
+      var form=$("#editForm");
+      $.ajax({
+        url: "{{route("adjustment.update.adjustment information")}}",
+        type:"put",
+        data: form.serialize(),
+        success: function (data) {
+          console.log(data);
+          if(data[0]=="success"){
+            alert("Successfuly Updated");
+            
+            location.reload();
+          }else{
+           for (const key in data[1]) {
+             alert(data[1][key][0]);
+           }
+          }
+        }
+      });
+    }
+    function cancelUpdate() {
+      location.reload();
+    }
      function savedata() {
       $.ajax({
         url: "{{route("saveAll.product.from.ReceiveList")}}",
