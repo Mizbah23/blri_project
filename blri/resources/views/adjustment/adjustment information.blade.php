@@ -361,12 +361,12 @@ $( function() {
                               <div class="col-md-9">
                                   <select id="type" name="type" class="form-control required" required onchange="">
                                   <option value="">Select Adjustment type</option>
-                                  <option value="found">Found</option>
-                                  <option value="lost">Lost</option>
-                                  <option value="gift">Gift</option>
-                                  <option value="damage">Damage</option>
-                                  <option value="waste">Waste</option>
-                                  <option value="garbage">Garbage</option>
+                                  <option value="found" {{old("type")=='found'?"selected":""}}>Found</option>
+                                  <option value="lost" {{old("type")=='lost'?"selected":""}}>Lost</option>
+                                  <option value="gift" {{old("type")=='gift'?"selected":""}}>Gift</option>
+                                  <option value="damage" {{old("type")=='damage'?"selected":""}}>Damage</option>
+                                  <option value="waste" {{old("type")=='waste'?"selected":""}}>Waste</option>
+                                  <option value="garbage" {{old("type")=='garbage'?"selected":""}}>Garbage</option>
                                 </select>
                               <div class="error">{{$errors->first('type')}}</div>
                               </div><br><br><br>
@@ -450,9 +450,6 @@ $( function() {
                     <div class="text-center">
                       <button type="submit" class="btn btn-info"><i class="glyphicon glyphicon-plus" style="color: white"></i>Add to lsit</button> 
                       <button type="reset" class="btn btn-danger">Reset</button><br><br>
-                      @foreach ($errors->all() as $item)
-                          {{$item}}
-                      @endforeach
                     </div>
 
 
@@ -463,33 +460,33 @@ $( function() {
                 <div id="updateFormDiv"></div>
                 <div class="row">
 
-                    
+
                     <div class="col-md-12">
-                      
-                      <table class="table table-responsive table-hover table-striped table-bordered table-condensed">
-                          <tr class="row bg-primary">
+                
+                        <table class="table table-responsive table-hover table-striped table-bordered table-condensed">
+                            <tr class="row bg-primary">
                               <th class="col-lg-1 text-center">Edit</th>
                               <th class="col-lg-1 text-center">Delete</th>
                               <th class="col-lg-4 text-center">Product</th>
                               <th class="col-lg-2 text-center">Code</th>
                               <th class="col-lg-2 text-center">Quantity</th>
-                              <th class="col-lg-2 text-center">Total</th>
-                          </tr>
-                      
-                            <tr class="row"  align="center">
-                                <td ><a href="#" onclick=""><i class="fa fa-edit" style="font-size:24px;" ></i></a></td>
-                                <td> <a href="#" onclick="" class="glyphicon glyphicon-trash" style="font-size:24px; color: red"></i></a></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-
+                              <th class="col-lg-2 text-center">Adjustment Type</th>
                             </tr>
-                         
-              
-                      </table>
-                       
-                        
+                            
+                            @foreach ($adjustmentInfoList as $item)
+                            <tr class="row" align="center">
+                              <td><a href="#" onclick=""><i class="fa fa-edit" style="font-size:24px;"></i></a></td>
+                              <td> <a href="#" onclick="" class="glyphicon glyphicon-trash"style="font-size:24px; color: red"></i></a></td>
+                              <td>{{$item->productInfo->productName}}</td>
+                              <td>{{$item->productInfo->productCode}}</td>
+                              <td>{{$item->quantity}}</td>
+                              <td>{{strtoupper($item->adjustmentType)}}</td>
+                            </tr>
+                            @endforeach
+                
+                        </table>
+                
+                
                     </div>
                 </div>
 
