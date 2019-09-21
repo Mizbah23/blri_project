@@ -161,11 +161,11 @@ $( function() {
 <script>
   $(function() {
     $( ".datepicker" ).datepicker({
-      format: 'MM/DD/YYYY',
+      dateFormat: 'dd/mm/yy',
       maxDate: "+0D",
       ignoreReadonly: true
     });
-    $("#receiveDate").datepicker( "setDate" , new Date());
+    $("#adjustmentDate").datepicker( "setDate" , new Date());
   });
   </script>
 
@@ -216,7 +216,6 @@ $( function() {
                 </a>
                 <ul class="treeview-menu">
                  @foreach($setuptypes as $setuptype)
-                   
                     <li><a href="{{route('setup.'.strtolower($setuptype->SType))}}">
                       <i class="fa fa-circle"></i> {{$setuptype->name}}</a></li>
                  @endforeach
@@ -342,35 +341,42 @@ $( function() {
               </div>
               <div class="form-body" >
                 <div id="createFormDiv">
-                  <form class="form-horizontal" method="post" autocomplete="off"> 
+                  <form class="form-horizontal" method="post" autocomplete="off" novalidate> 
                     @csrf
                     <div class="form-group"> <!--Form-->
 
                       <div class="row">
                           <div class="col-md-4" >
                               <div class="col-md-3">
-                                  <label for="supplierName" class=" control-label">Date</label>
+                                  <label for="adjustmentDate" class=" control-label">Date</label>
                               </div>
                               <div class="col-md-9">
-                                <input class="form-control datepicker" type="text" id="receiveDate" name="receiveDate" placeholder="mm/dd/yyyy"  value=""  required><br>
+                                <input class="form-control datepicker" type="text" id="adjustmentDate" name="adjustmentDate" placeholder="mm/dd/yyyy"  value="{{old('adjustmentDate')}}"  required><br>
+                                <div class="error">{{$errors->first('adjustmentDate')}}</div>                              
                               </div><br><br>
 
                               <div class="col-md-3">
                                   <label for="type" class=" control-label">Type</label>
                               </div>
                               <div class="col-md-9">
-                                  <select id="productName" name="type" class="form-control required" required onchange="">
-                                  <option value="">Select type</option>
-                                  
+                                  <select id="type" name="type" class="form-control required" required onchange="">
+                                  <option value="">Select Adjustment type</option>
+                                  <option value="found">Found</option>
+                                  <option value="lost">Lost</option>
+                                  <option value="gift">Gift</option>
+                                  <option value="damage">Damage</option>
+                                  <option value="waste">Waste</option>
+                                  <option value="garbage">Garbage</option>
                                 </select>
-                              
+                              <div class="error">{{$errors->first('type')}}</div>
                               </div><br><br><br>
 
                               <div class="col-md-3">
-                                <label for="productCode" class=" control-label">Reason</label>
+                                <label for="reason" class=" control-label">Reason</label>
                               </div>
                               <div class="col-md-9">
-                                <textarea class="form-control" name=""></textarea>
+                                <textarea class="form-control" name="reason" required>{{old('reason')}}</textarea>
+                                <div class="error">{{$errors->first('reason')}}</div>
                             </div><br><br>
 
                               
@@ -378,30 +384,50 @@ $( function() {
 
                           <div class="col-md-4" >
                               
-                          <div class="col-md-3">
-                              <label for="code" class=" control-label">Code</label>
-                              </div>
-                              <div class="col-md-9">
-                                <input type="text" class="form-control" name="code" value="" placeholder="" required>
-                                
-                              </div><br><br>
+                          
 
                               <div class="col-md-3">
-                                <label for="product" class=" control-label">Product</label>
+                                <label for="productName" class=" control-label">Product</label>
                               </div>
                               <div class="col-md-9">
-                                <select id="productName" name="product" class="form-control required" required onchange="">
-                                  <option value="">Select type</option>
-                                  
-                                </select>
-                              </div><br><br>
+                                <select id="productName" name="productName" class="form-control required" required onchange="showProductCode()">
+                                <option value="">Select Product</option>
+                                @foreach ($products->unique('productName')->pluck('productName') as $productName)
+                                <option value="{{$productName}}" @if (old('productName')==$productName)
+                                    {{"selected"}}
+                                @endif>{{$productName}}</option>
+                                @endforeach
+                              </select>
+                              <div class="error">{{$errors->first('productName')}}</div>
+                            </div><br><br>
+                              
+                              <div class="col-md-3">
+                                <label for="productCode" class=" control-label">Code</label>
+                              </div>
+                              <div class="col-md-9">
+                                <select id="productCode" name="productCode" class="form-control required" required>
+                                <option value="">Select Product Code</option>
+                                @if(old('productName'))
+                                  @foreach ($products as $product)
+                                  @if(old('productName')==$product->productName)
+                                    <option value="{{$product->id}}" @if (old('productCode')==$product->id)
+                                        {{"selected"}}
+                                    @endif>{{$product->productCode}}</option>
+                                  @endif
+                                  @endforeach
+                                @endif
+                              </select>
+                              <div class="error">{{$errors->first('productCode')}}</div>
+                            </div><br><br>
 
 
                               <div class="col-md-3">
-                              <label for="stock" class=" control-label">Stock</label>
+                                <label for="stock" class=" control-label">Stock</label>
                               </div>
                               <div class="col-md-9">
-                                  <input type="text" class="form-control" name="stock" value="" placeholder="0" required readonly>
+                                <input type="text" class="form-control" id="stock" name="stock" value="{{old('stock')}}" placeholder="0" required readonly>
+                                <div class="error">{{$errors->first('stock')}}</div>
+
                               </div><br><br>
 
                           </div>
@@ -411,19 +437,24 @@ $( function() {
                               <label for="contactNo" class=" control-label">Quantity</label>
                               </div>
                               <div class="col-md-9">
-                                <input type="number" class="form-control"  name="quantity" value="" placeholder="0" required>
-                                
+                                <input type="number" class="form-control"  name="quantity" value="{{old('quantity')}}" placeholder="0" required>
+                                <div class="error">{{$errors->first('quantity')}}</div>
+
                               </div><br><br><br><br>
 
                              
                           
                           </div>
-                          <div class="text-center">
-                            <button type="submit" class="btn btn-info"><i class="glyphicon glyphicon-plus" style="color: white"></i>Add to lsit</button> 
-                            <button type="reset" class="btn btn-danger">Reset</button><br><br>
-                          </div>
-
+                        
                     </div>
+                    <div class="text-center">
+                      <button type="submit" class="btn btn-info"><i class="glyphicon glyphicon-plus" style="color: white"></i>Add to lsit</button> 
+                      <button type="reset" class="btn btn-danger">Reset</button><br><br>
+                      @foreach ($errors->all() as $item)
+                          {{$item}}
+                      @endforeach
+                    </div>
+
 
                     
                     </div>
@@ -915,7 +946,40 @@ $( function() {
     <!-- Bootstrap Core JavaScript -->
    <script src="/js/bootstrap.js"> </script>
   
-  
+  <script>
+     var products;
+     $(function () {
+      products={!! $products !!};
+     });
+     function showProductCode() {
+       var selectedProduct=$("#productName").val();
+       $("#productCode").html('<option value="">Select Product Code</option>');
+       $("#stock").val(0);
+
+       if(products!=undefined){
+        var i=0;
+        var productId;
+        products.forEach(product => {
+          if(product.productName==selectedProduct){
+            $('#productCode').append(`<option value="${product.id}" data-stock="${product.stock}" >${product.productCode}</option>`);
+            i++;
+            productId=product.id;
+          }
+        });
+        if(i==1){
+          console.log(i);
+          $('#productCode option[value=' +productId + ']').attr('selected','selected');
+          var selectedStock=$("#productCode").find('option:selected').attr('data-stock');
+          $("#stock").val(selectedStock);
+          // $("#productCode select").val(productId);
+        }
+      }
+     }
+     function showStock() {
+      var selectedStock=$("#productCode").find('option:selected').attr('data-stock');
+        $("#stock").val(selectedStock);
+      }
+  </script>
 
    <script>
      function savedata() {
