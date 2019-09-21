@@ -513,15 +513,16 @@ $( function() {
                         
                     </div>
                 </div>
-
-                @if (count($productReceiveLists)>0)
-                <div class="text-center">
-                  <br><br><br>
-                    <button type="button" class=" btn btn-info" onclick="savedata()"> Save</button> 
-                        <button type="reset" class="btn btn-danger" onclick="clearList()">Cancel</button>
-                        <button type="button" class="btn btn-success">Print Invoice</button>
+                <div  id="saveButton">
+                  @if (count($productReceiveLists)>0)
+                  <div class="text-center">
+                    <br><br><br>
+                      <button type="button" class=" btn btn-info" onclick="savedata()"> Save</button> 
+                          <button type="reset" class="btn btn-danger" onclick="clearList()">Cancel</button>
+                          <button type="button" class="btn btn-success">Print Invoice</button>
+                  </div>
+                  @endif
                 </div>
-                @endif
                       <!--Search option starts-->
                       {{-- <div class="row">
                         <div class="col-md-8"></div>
@@ -1034,6 +1035,7 @@ $( function() {
         data: { id: id},
         success: function (data) {
           $("#createFormDiv").html(data);
+          $("#saveButton").html("");
           $( ".datepicker" ).datepicker({
             format: 'MM/DD/YYYY',
             maxDate: "+0D",
