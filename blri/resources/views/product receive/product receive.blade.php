@@ -499,7 +499,7 @@ $( function() {
                           @foreach ($productReceiveLists as $item)
                             <tr class="row"  align="center">
                                 <td ><a href="#" onclick="handleEdit({{$item->id}})"><i class="fa fa-edit" style="font-size:24px" ></i></a></td>
-                                <td> <a href="#" onclick="deleteItem({{$item->id}})" class="glyphicon glyphicon-trash" style="font-size:24px"></i></a></td>
+                                <td> <a href="#" onclick="deleteItem({{$item->id}})" class="glyphicon glyphicon-trash" style="font-size:24px; color: red"></i></a></td>
                                 <td>{{$item->productInfo->productName}}</td>
                                 <td>{{$item->productInfo->productCode}}</td>
                                 <td>{{$item->quantity}}</td>

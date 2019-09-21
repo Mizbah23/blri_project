@@ -384,7 +384,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                       <label for="productName" class=" control-label">Product</label>
                                   </div>
                                   <div class="col-md-8">
-                                      <select class="form-control" id="productName" name="productName" required " onchange="showSerialInfo() ">
+                                      <select class="form-control" id="productName" name="productName" onchange="showSerialInfo()" required>
                                         <option value="">পণ্য সনাক্তকরণ</option>
                                         @if (old('brandName'))
                                         @foreach($selectedProductBasedOnBrand->unique('productName') as $product)
@@ -402,7 +402,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                   </div>
                                   <div class="col-md-8">
                                       <select id="serial_no" name="serial_no" class="form-control required" value="{{old('serial_no')}}"
-                                          required readonly>
+                                          required>
                                           <option value="">Select Serial Code</option>
                                           @if(old('productName'))
                                             @foreach ($serialInfos as $serialInfo)
@@ -442,7 +442,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                               <th class="col-lg-1 text-center">#</th>
                                               <th class="col-lg-2 text-center">অনুষদ</th>
                                              
-                                              <th class="col-lg-2 text-center">Product</th>
+                                              <th class="col-lg-3 text-center">Product</th>
                                           
                                               <th class="col-lg-1 text-center">Serial No.</th>
                                               <th class="col-lg-3 text-center">Remarks</th>
@@ -450,7 +450,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                               <th class="col-lg-1 text-center">Delete</th>
                                           </tr>
                                               @foreach ($distributionLists as $key=>$item)
-                                          <tr class="row">
+                                          <tr class="row" align="center">
                                               <td>{{++$key}}</td>
                                               <td>{{$item->division->divisionName}}</td>
                                               <td>{{$item->serialInfo->productInfo->productName}}</td>
@@ -467,43 +467,54 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                   
                                       </table>
 
-                                      <div class="text-center">
-                                          <button type="submit" class=" btn btn-info"> ADD List</button>
-                                          <button type="reset" class="btn btn-danger">Cancel</button>
-                                      </div>
-                                    </form>
-                                  </div>
+                 <div class="row">
+                  <div class="col-lg-12">
+                    @if (count($distributionLists)>0)
+                     <center>
+                       <button class="btn btn-info" type="submit" name="tablesave" onclick="savedata()">সংরক্ষণ করুন</button>
+                       <button type="reset" name="tablereset" class="btn"  onclick="clearList()">পুনরায় বসান</button>
+                       </center>
+                    @endif
+                  </div>
+                </div>
+                                   
+
+             </form>
+          </div>
                 
-                 <div id="updateFormDiv"></div>
+                
                       <div class="row">
                         <div class="col-md-8"></div>
 
 
 
                       </div>
-
+                 
                       <!--Search option stops-->
 
                      
               </div> 
              </div> 
-
+                   <div id="updateFormDiv"></div>
                 <div id="allBrands">
                   <table class="table table-responsive table-hover table-striped table-bordered table-condensed">
                       <tr class="row bg-primary">
-                        <th class="col-lg-4 text-center">Project Name</th>
-                        <th class="col-lg-3 text-center">Employee</th>
-                        <th class="col-lg-3 text-center">Product Name</th>
-                        <th class="col-lg-2 text-center">Serial No</th>
+                        <th class="col-lg-2 text-center">অনুষদ</th>
+                        <th class="col-lg-2 text-center">Product</th>
+                        <th class="col-lg-2 text-center">Serial No.</th>
+                        <th class="col-lg-2 text-center">Entry Creator</th>
+                        <th class="col-lg-4 text-center">Remarks</th>
                       </tr>
+                       @foreach ($distributionLists as $key=>$item)
                       
-                                <tr class="row">
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    
-                                    <td></td>
-                                </tr>
+                          <tr class="row" align="center">
+                            <td>{{$item->division->divisionName}}</td>
+                            <td>{{$item->serialInfo->productInfo->productName}}</td>
+                            <td>{{$item->serialInfo->serial_no}}</td>
+                            <td>{{(Session::get('user')->employeeinfo->name)}}</td>
+                            <td>{{$item->remarks}}</td>
+                          </tr>
+                      @endforeach
                            
                   </table>
                </div>
@@ -1055,6 +1066,43 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
     function cancelUpdate() {
       location.reload();
     }
+  </script>
+  <script>
+    function savedata() {
+      $.ajax({
+        url: "{{route("saveAll.product.from.DistributionList")}}",
+        type:"get",
+        success: function (data) {
+          console.log(data);
+          
+          if(data=="success"){
+            alert("Data saved successfully");
+            location.reload();
+          }else{
+            alert("Something Went Wrong");
+          }
+        }
+      });
+     }
+
+    function clearList() {
+       if (confirm('Do you really want to clear all the item from List?')) {
+          $.ajax({
+            url: "{{route("clearList.product.from.DistributionList")}}",
+            type:"get",
+            success: function (data) {
+              console.log(data);
+              
+              if(data=="success"){
+                alert("Data deleted successfully");
+                location.reload();
+              }else{
+                alert("Something Went Wrong");
+              }
+            }
+          });
+        }
+      } */
   </script>
     
 </body>

@@ -344,8 +344,8 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                   <label for="brand" class="col-sm-2 control-label">ব্রান্ড</label>
                        <div class="col-lg-9">
                           <input type="text" class="form-control" id="brand" name="brandName"  value="{{$brand->brandName}}"placeholder="অবশ্যই পুরণ করুণ"required>
-                                   @foreach ($errors->get('sectionName') as $error)
-                                   <p style="color: red">{{ $error}}</p>
+                                   @foreach ($errors->get('brandName') as $error)
+                                   <p class="text-danger">{{ $error}}</p>
                                    @endforeach
                           </div><br><br><br>
                         <div class="text-center">

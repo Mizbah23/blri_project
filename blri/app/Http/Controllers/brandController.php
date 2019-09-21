@@ -37,6 +37,10 @@ class brandController extends Controller
     ->with('reportings',$reportings);
   }
   public function brandPost(Request $request){
+      $this->validate( $request,[
+      'categoryName'=>'required',
+      'brandName'=>'required|unique:brands'
+      ]);
       $brand=new Brand;
       $brand->brandName=$request->brandName;
       $brand->category_id=$request->categories;
