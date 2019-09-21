@@ -926,6 +926,119 @@ $( function() {
     <!-- Bootstrap Core JavaScript -->
    <script src="/js/bootstrap.js"> </script>
 
+      <script>
+     var brands;
+     $(function() {
+       brands={!! $brands !!};
+       serialInfos={!!$serialInfos!!};
+     })
+    function showBrand() {
+      var selectedCategory=$("#categoryName").val();
+      $('#productName').html('<option value="">Select a Product</option>');
+       $("#serial_no").html('<option value="">Select Serial Code</option>');
+      console.log(selectedCategory);
+      $('#brandName').html('<option value="">Select a Brand</option>');
+      if(brands!=undefined){
+        brands.forEach(brand => {
+          if(brand.category_id==selectedCategory)
+            $('#brandName').append(`<option value="${brand.id}">${brand.brandName}</option>`); 
+        });
+      }
+      
+    }
+
+    function showProductName() {
+      var selectedBrandName=$("#brandName").val();
+      $('#productName').html('<option value="">Select a Product</option>');
+      $("#serial_no").html('<option value="">Select Serial Code</option>');
+      $.ajax({
+        type:'POST',
+        url:"{{route("showProductBasedOnBrand")}}",
+        data: {brandId: selectedBrandName,  _token: '{{csrf_token()}}'},
+        success: function(data) {
+          console.log(data);
+          if (data.length>0) {
+            data.forEach(product => {
+              $('#productName').append(`<option value="${product.id}">${product.productName}</option>`); 
+            });
+          }
+          else{
+            $('#productName').html('<option value="">Please choose a brand which has product</option>');
+          }
+
+        }
+      });
+    }
+
+      function showSerialInfo() {
+       var selectedProduct=$("#productName").val();
+       
+       $("#serial_no").html('<option value="">Select Serial Code</option>');
+       if(serialInfos!=undefined){
+        serialInfos.forEach(serialInfo => {
+          if(serialInfo.product_info_id==selectedProduct){
+            $('#serial_no').append(`<option value="${serialInfo.id}">${serialInfo.serial_no}</option>`);
+          }
+        });
+      }
+     }
+
+    function deleteItem(id) {
+      if (confirm('Do you really want to delete this item?')) {
+        $.ajax({
+        url: "{{route("delete.product.from.DistributionList")}}",
+        type:"get",
+        data: { id: id},
+        success: function (data) {
+          console.log(data);
+          if(data=='deleted'){
+            location.reload();
+          }else{
+            alert("Something went wrong! Please Reload the page.");
+          }
+        }
+      });
+      }
+     }
+
+      function handleEdit(id) {
+       $.ajax({
+        url: "{{route("edit.product.from.DistributionList")}}",
+        type:"get",
+        data: { id: id},
+        success: function (data) {
+          $("#createFormDiv").html(data);
+       
+        }
+      });
+    }
+
+       function updateContent() {
+      var form=$("#editForm");
+      // console.log(form.serialize());
+      $.ajax({
+        url: "{{route("update.product.from.DistributionList")}}",
+        type:"put",
+        data: form.serialize(),
+        success: function (data) {
+          console.log(data);
+          if(data[0]=="success"){
+            alert("Successfuly Updated");
+            
+            location.reload();
+          }else{
+           for (const key in data[1]) {
+             alert(data[1][key][0]);
+           }
+          }
+        }
+      });
+    }
+    function cancelUpdate() {
+      location.reload();
+    }
+  </script>
+
     
 </body>
 </html>

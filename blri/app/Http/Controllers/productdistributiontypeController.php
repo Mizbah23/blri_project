@@ -191,14 +191,14 @@ class productdistributiontypeController extends Controller
          public function clearListItemFromDistributionList(Request $request)
     {
         if (session()->has('user')) {
-           $requisitionlists=RequisitionList::all();
+           $distributionLists=RequisitionList::all();
             $k=0;
-            foreach ($requisitionlists as $key => $item) {
+            foreach ($distributionLists as $key => $item) {
                 $item->delete();
                 $k++;
             }
             
-            if (count($requisitionlists)==$k) {
+            if (count($distributionLists)==$k) {
                 return "success";
             }
         }

@@ -439,11 +439,11 @@ $( function() {
                               @if ($item->status=="pending")
                               <tr class="row">
                                 
-                                <td>{{$item->serialInfo->productInfo->productName}}</td>
-                                <td>{{$item->serialInfo->serial_no}}</td>
-                                <td>{{$item->employeeinfo->name}}</td>
-                                <td>{{$item->division->divisionName}}</td>
-                                 <td class="text-center"> <a href="#"class="glyphicon glyphicon-edit" onclick="handleEdit({{$item->id}})" style="font-size:24px; color: #1bc9f5"></i></a></td>
+                            <td>{{$item->serialInfo->productInfo->productName}}</td>
+                            <td>{{$item->serialInfo->serial_no}}</td>
+                            <td>{{$item->employeeinfo->name}}</td>
+                            <td>{{$item->division->divisionName}}</td>
+                            <td class="text-center"> <a href="#"class="glyphicon glyphicon-edit" onclick="handleEdit({{$item->id}})" style="font-size:24px; color: #1bc9f5"></i></a></td>
                                    <td> <a href="#" onclick="deleteItem({{$item->id}})" class="glyphicon glyphicon-trash" style="font-size:24px"></i></a></td>
                               </tr>
                               @endif

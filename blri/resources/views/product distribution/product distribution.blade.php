@@ -502,7 +502,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                         <th class="col-lg-2 text-center">অনুষদ</th>
                         <th class="col-lg-2 text-center">Product</th>
                         <th class="col-lg-2 text-center">Serial No.</th>
-                        <th class="col-lg-2 text-center">Entry Creator</th>
+                        <th class="col-lg-2 text-center">Distributed By</th>
                         <th class="col-lg-4 text-center">Remarks</th>
                       </tr>
                        @foreach ($distributionSave as $key=>$item)
