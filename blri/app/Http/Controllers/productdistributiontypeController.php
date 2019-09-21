@@ -176,7 +176,7 @@ class productdistributiontypeController extends Controller
                 $saveNewDistribution->remarks=$item->remarks;
                 $saveNewDistribution->user_id=$item->user_id;
                 $saveNewDistribution->save();
-            
+                $item->delete();
             $k++;
             }
             //return $saveNewRequisition;
@@ -189,14 +189,14 @@ class productdistributiontypeController extends Controller
          public function clearListItemFromDistributionList(Request $request)
     {
         if (session()->has('user')) {
-           $requisitionlists=RequisitionList::all();
+           $distributionLists=RequisitionList::all();
             $k=0;
-            foreach ($requisitionlists as $key => $item) {
+            foreach ($distributionLists as $key => $item) {
                 $item->delete();
                 $k++;
             }
             
-            if (count($requisitionlists)==$k) {
+            if (count($distributionLists)==$k) {
                 return "success";
             }
         }

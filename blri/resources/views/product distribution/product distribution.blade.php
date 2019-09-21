@@ -471,7 +471,8 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                   <div class="col-lg-12">
                     @if (count($distributionLists)>0)
                      <center>
-                       <button class="btn btn-info" type="submit" name="tablesave" onclick="savedata()">সংরক্ষণ করুন</button>
+                       <button class="btn btn-info" type="submit" name="tablesave" 
+                       onclick="savedata()">সংরক্ষণ করুন</button>
                        <button type="reset" name="tablereset" class="btn"  onclick="clearList()">পুনরায় বসান</button>
                        </center>
                     @endif
@@ -502,7 +503,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                         <th class="col-lg-2 text-center">অনুষদ</th>
                         <th class="col-lg-2 text-center">Product</th>
                         <th class="col-lg-2 text-center">Serial No.</th>
-                        <th class="col-lg-2 text-center">Entry Creator</th>
+                        <th class="col-lg-2 text-center">Distributed By</th>
                         <th class="col-lg-4 text-center">Remarks</th>
                       </tr>
                        @foreach ($distributionLists as $key=>$item)
