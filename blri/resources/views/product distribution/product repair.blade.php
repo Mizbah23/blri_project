@@ -332,7 +332,7 @@ $( function() {
         <div class=" form-grids row form-grids-right">
             <div class="widget-shadow " data-example-id="basic-forms"> 
               <div class="form-title bg-primary text-white">
-                <h3 class="">Repair Receive</h3>
+                <h3 class="">Product Repair</h3>
               </div>
               <div class="form-body">
                 <form class="form-horizontal" method="post"> 
@@ -371,54 +371,71 @@ $( function() {
                                             @endforeach
                                           @endif
                               </select>
+                               <div class="error">{{$errors->first('brandName')}}</div>
                             </div><br><br>
                             <div class="col-md-4">
                                  <label for="productName" class=" control-label">Product</label>
                             </div>
                             <div class="col-md-8">
-                                <select id="productName" name="productName" class="form-control required" required>
+                                <select id="productName" name="productName" class="form-control required" onchange="showSerialInfo()" required>
                                  <option value="">Select Product</option>
+                                 @if (old('brandName'))
+                                  @foreach($selectedProductBasedOnBrand->unique('productName') as $product)
+                                            <option value="{{$product->id}}" @if(old('productName')==$product->id)
+                                            {{"selected"}}
+                                            @endif>{{$product->productName}}</option>
+                                  @endforeach
+                                 @endif
                               </select>
-                              
+                              <div class="error">{{$errors->first('productName')}}</div>
                             </div><br><br>
                             <div class="col-md-4">
-                                 <label for="" class=" control-label">Serial No.</label>
+                                 <label for="serial_no" class=" control-label">Serial No.</label>
                             </div>
                             <div class="col-md-8">
-                                <select id="" name="" class="form-control required" required>
+                                <select id="serial_no" name="serial_no" class="form-control required" value="{{old('serial_no')}}" required>
                                  <option value="">Select Product Serial</option>
+                                 @if(old('productName'))
+                                  @foreach ($serialInfos as $serialInfo)
+                                    @if(old('productName')==$serialInfo->product_info_id)
+                                      <option value="{{$serialInfo->id}}" @if (old('serial_no')==$serialInfo->id)
+                                                {{"selected"}}
+                                    @endif>{{$serialInfo->serial_no}}</option>
+                                    @endif
+                                  @endforeach
+                                @endif
                               </select>
+                            <div class="error">{{$errors->first('serial_no')}}</div>
                             </div><br><br>
                              <div class="col-md-4">
-                                 <label for="" class=" control-label">Repairer Name</label>
+                                 <label for="repairerName" class=" control-label">Repairer Name</label>
                             </div>
                             <div class="col-md-8">
-                                <select id="" name="" class="form-control required" required>
+                                <select id="repairerName" name="repairerName" class="form-control required" required>
                                  <option value="">Select Repairer Name</option>
+                                  @foreach($repairers as $repairer)
+                                  <option value="{{$repairer->id}}">{{$repairer->repairerName}}</option>
+                                  @endforeach
                               </select>
+                               <div class="error">{{$errors->first('repairerName')}}</div>
                             </div><br><br>
-                           
-                             
-                           
-                          
-
-                       </div>
+                           </div>
 
                         <div class="col-md-6" style="border: solid 2px #eee; padding: 20px">
 
                          <div class="col-md-4">
-                                 <label for="" class=" control-label">Sending Date</label>
+                                 <label for="sendingDate" class=" control-label">Sending Date</label>
                             </div>
                             <div class="col-md-8">
-                               <input class="form-control datepicker" type="text" name="sendingDate" placeholder="dd/mm/yyyy"  value=""  autocomplete="off" required>
+                               <input class="form-control datepicker" type="text" name="sendingDate" placeholder="dd/mm/yyyy" id="sendingDate" value=""  autocomplete="off" required>
                                 
                             </div><br><br>
                             
                             <div class="col-md-4">
-                                 <label for="" class=" control-label">Remarks</label>
+                                 <label for="remarks" class=" control-label">Remarks</label>
                             </div>
                             <div class="col-md-8">
-                                <textarea name="" class="form-control" placeholder="Remarks"></textarea>
+                                <textarea name="remarks" id="remarks" class="form-control" placeholder="Remarks"></textarea>
                             </div><br><br>
                             
                         </div>

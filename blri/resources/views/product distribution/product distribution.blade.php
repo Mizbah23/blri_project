@@ -384,7 +384,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                       <label for="productName" class=" control-label">Product</label>
                                   </div>
                                   <div class="col-md-8">
-                                      <select class="form-control" id="productName" name="productName" required " onchange="showSerialInfo() ">
+                                      <select class="form-control" id="productName" name="productName" onchange="showSerialInfo()" required>
                                         <option value="">পণ্য সনাক্তকরণ</option>
                                         @if (old('brandName'))
                                         @foreach($selectedProductBasedOnBrand->unique('productName') as $product)
@@ -402,7 +402,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                   </div>
                                   <div class="col-md-8">
                                       <select id="serial_no" name="serial_no" class="form-control required" value="{{old('serial_no')}}"
-                                          required readonly>
+                                          required>
                                           <option value="">Select Serial Code</option>
                                           @if(old('productName'))
                                             @foreach ($serialInfos as $serialInfo)
