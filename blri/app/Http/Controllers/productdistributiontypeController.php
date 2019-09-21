@@ -37,6 +37,7 @@ class productdistributiontypeController extends Controller
         $users=User::all();
         $distributionLists=DistributionList::all();
         $selectedProductBasedOnBrand=[];
+        $distributionSave=DistributionSave::all();
 
         if(old('brandName')){
             $selectedProductBasedOnBrand=ProductInfo::where('brand_id',old('brandName'))->get();
@@ -46,6 +47,7 @@ class productdistributiontypeController extends Controller
 
         return view('product distribution.product distribution')
             ->with('distributionLists',$distributionLists)
+            ->with('distributionSave',$distributionSave)
             ->with('setuptypes', $setuptypes)
             ->with('securitytypes', $securitytypes)
             ->with('productreceivetypes', $productreceivetypes)
@@ -169,14 +171,14 @@ class productdistributiontypeController extends Controller
         if (session()->has('user')) {
             $distributionLists=DistributionList::all();
             $k=0;
-            foreach ($distributionlists as $key => $item) {
+            foreach ($distributionLists as $key => $item) {
                 $saveNewDistribution=new DistributionSave;
-                $saveNewDistribution->division_id=$item->divisionName;
-                $saveNewDistribution->serial_id=$item->serial_no;
+                $saveNewDistribution->division_id=$item->division_id;
+                $saveNewDistribution->serial_id=$item->serial_id;
                 $saveNewDistribution->remarks=$item->remarks;
                 $saveNewDistribution->user_id=$item->user_id;
                 $saveNewDistribution->save();
-            
+                $item->delete();
             $k++;
             }
             //return $saveNewRequisition;
