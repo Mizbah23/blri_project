@@ -382,7 +382,9 @@ $( function() {
 
                         <label  class="col-sm-6 control-label"><br><br></label>
                           <div class="col-lg-6">
-                              <input  type="checkbox" name="isActive" value=""> সক্রিয়?<br><br><br><br>
+                              <input  type="checkbox" name="isActive" @if (old('isActive'))
+                                checked
+                            @endif>সক্রিয়?<br><br><br><br>
                           </div><br><br>
                           
                       </div>

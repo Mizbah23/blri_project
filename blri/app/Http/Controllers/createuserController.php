@@ -42,12 +42,14 @@ class createuserController extends Controller
           'userType'=>'required',
           'email'=>'required|unique:users',
           'password' =>'required',
+          
         ]);
       $user=new User;
       $user->employee_information_id=$request->name;
       $user->userType=$request->userType;
       $user->email=$request->email;
       $user->password=$request->password;
+      $request->isActive? $user->isActive=1 :  $user->isActive=0;
        
     
       $user->save();
@@ -79,7 +81,7 @@ class createuserController extends Controller
       }
 
       public function update(Request $request,$id){
-
+            //dd($request->all());
           $this->validate($request,[
           'name'=>'required',
           'userType'=>'required',
@@ -88,12 +90,15 @@ class createuserController extends Controller
         ]);
       
       $user=User::find($id);
+
       $user->employee_information_id=$request->name;
       $user->userType=$request->userType;
       $user->email=$request->email;
       $user->password=$request->password;
-      dd($request->all());
+     
+      dd($user->all());
       $user->save();
+      
       return redirect()->route('security.create user');
     
       }
