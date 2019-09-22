@@ -9,6 +9,7 @@ use App\Supplier;
 use App\ProductReceiveType;
 use App\ProductDistribution;
 use App\Adjustment;
+use App\EmployeeInfo;
 use App\Reporting;
 
 class supplierController extends Controller
