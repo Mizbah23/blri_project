@@ -458,7 +458,7 @@ $( function() {
                         </div>
 
                         <div class="col-md-3">
-                          <input type="text" class="form-control" id="searchByBrandName" name="searchByBrandName" placeholder="Search by brand name">
+                          <input type="text" class="form-control" id="searchByBrandName" name="searchByBrandName" placeholder="Search...">
                         </div>
 
 
