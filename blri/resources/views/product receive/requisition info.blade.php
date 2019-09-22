@@ -488,16 +488,16 @@ $( function() {
                      </div>
                    </div> 
                 </div>
-                <div class="row">
-                  <div class="col-lg-12">
-                    @if (count($requisitionlists)>0)
-                     <center>
-                       <button class="btn btn-info" type="submit" name="tablesave" onclick="savedata()">সংরক্ষণ করুন</button>
-                       <button type="reset" name="tablereset" class="btn"  onclick="clearList()">পুনরায় বসান</button>
+            <div class="row">
+             <div class="col-lg-12">
+                @if (count($requisitionlists)>0)
+                  <center>
+                  <button class="btn btn-info" type="submit" name="tablesave" onclick="savedata()">সংরক্ষণ করুন</button>
+                       <button type="reset" name="tablereset" class="btn" onclick="clearList()">পুনরায় বসান</button>
                        </center>
-                    @endif
-                  </div>
-                </div>
+                @endif
+            </div>
+          </div>
 
 
 

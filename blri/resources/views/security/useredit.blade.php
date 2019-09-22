@@ -367,13 +367,13 @@ $( function() {
 
                            <label for="password" class="col-sm-5 control-label">পাসওয়ার্ড</label>
                        <div class="col-lg-7">
-                          <input type="password" class="form-control" id="password" name="password" required>
+                          <input type="password" class="form-control" id="password" name="password" value="{{$user->password}}" required>
                           </div><br><br>
                             
 
                         <label  class="col-sm-6 control-label"><br><br></label>
                           <div class="col-lg-6">
-                              <input  type="checkbox" name="isActive" value=""> সক্রিয়?<br><br><br><br>
+                              <input  type="checkbox" name="isActive" value="{{$user->isActive}}"> সক্রিয়?<br><br><br><br>
                           </div><br><br>
                           
                       </div>

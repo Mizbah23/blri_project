@@ -400,7 +400,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                         <div class="col-md-5">
                           <div class="text-center">
                           <input type="hidden" value="{{$employeeInformation->id}}" name="employeeId">
-                          <button type="submit" class="btn btn-info">Save</button> 
+                          <button type="submit" class="btn btn-info">Update</button> 
                           <button onclick="cancelUpdate" class="btn btn-danger">Cancel</button>
                           </div>
 

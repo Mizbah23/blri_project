@@ -336,6 +336,7 @@ $( function() {
               </div>
               <div class="form-body">
                 <form class="form-horizontal" method="post"> 
+                  @csrf
                   <div class="form-group"> <!--Form-->
 
                     <div class="row">
@@ -379,13 +380,13 @@ $( function() {
                             <div class="col-md-8">
                                 <select id="productName" name="productName" class="form-control required" onchange="showSerialInfo()" required>
                                  <option value="">Select Product</option>
-                                 @if (old('brandName'))
+                               {{--@if (old('brandName'))
                                   @foreach($selectedProductBasedOnBrand->unique('productName') as $product)
                                             <option value="{{$product->id}}" @if(old('productName')==$product->id)
                                             {{"selected"}}
                                             @endif>{{$product->productName}}</option>
                                   @endforeach
-                                 @endif
+                                 @endif--}}
                               </select>
                               <div class="error">{{$errors->first('productName')}}</div>
                             </div><br><br>
@@ -473,19 +474,26 @@ $( function() {
                 <div id="allBrands">
                   <table class="table table-responsive table-hover table-striped table-bordered table-condensed">
                       <tr class="row bg-primary">
-                        <th class="col-lg-4 text-center">Project Name</th>
-                        <th class="col-lg-3 text-center">Employee</th>
-                        <th class="col-lg-3 text-center">Product Name</th>
-                        <th class="col-lg-2 text-center">Serial No</th>
+                        <th class="col-lg-2 text-center">Product Name</th>
+                        <th class="col-lg-1 text-center">Serial No</th>
+                        <th class="col-lg-2 text-center">Repairer Name</th>
+                        <th class="col-lg-2 text-center">Sending Date</th>
+                        <th class="col-lg-4 text-center">Remarks</th>
+                        <th class="col-lg-1 text-center">Edit</th>
+                        <th class="col-lg-1 text-center">Delete</th>
                       </tr>
+                      @foreach ($productrepairs as $key=>$item)
                       
                                 <tr class="row">
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    
-                                    <td></td>
+                                  <td style="text-align: center">{{$item->serialInfo->productInfo->productName}}</td>
+                                  <td style="text-align: center">{{$item->serialInfo->serial_no}}</td>
+                                  <td style="text-align: center">{{$item->repairer->repairerName}}</td>
+                                  <td style="text-align: center">{{$item->sendingDate}}</td>
+                                  <td style="text-align: center">{{$item->remarks}}</td>
+                                  <td class="text-center"> <a href="#" onclick=""<i class="fa fa-edit" style="font-size:24px"></i></a></td>
+                                  <td class="text-center"> <a href="#" onclick=""<i class="fa fa-trash" style="font-size:24px"></i></a></td>
                                 </tr>
+                       @endforeach
                            
                   </table>
                </div>
@@ -926,7 +934,7 @@ $( function() {
     <!-- Bootstrap Core JavaScript -->
    <script src="/js/bootstrap.js"> </script>
 
-      <script>
+  <script>
      var brands;
      $(function() {
        brands={!! $brands !!};
@@ -1037,6 +1045,43 @@ $( function() {
     function cancelUpdate() {
       location.reload();
     }
+  </script>
+  <script>
+    function savedata() {
+      $.ajax({
+        url: "{{route("saveAll.product.from.DistributionList")}}",
+        type:"get",
+        success: function (data) {
+          console.log(data);
+          
+          if(data=="success"){
+            alert("Data saved successfully");
+            location.reload();
+          }else{
+            alert("Something Went Wrong");
+          }
+        }
+      });
+     }
+
+    function clearList() {
+       if (confirm('Do you really want to clear all the item from List?')) {
+          $.ajax({
+            url: "{{route("clearList.product.from.DistributionList")}}",
+            type:"get",
+            success: function (data) {
+              console.log(data);
+              
+              if(data=="success"){
+                alert("Data deleted successfully");
+                location.reload();
+              }else{
+                alert("Something Went Wrong");
+              }
+            }
+          });
+        }
+      } 
   </script>
 
     

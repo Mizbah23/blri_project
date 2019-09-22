@@ -164,7 +164,9 @@ Route::get('/product_distribution/product_distribution/clearList/item', 'product
 
 //Repair Info
 Route::get('/product_distribution/product_repair', 'productrepairController@index')->name('product distribution.product repair');
-
+Route::post('/product_distribution/product_repair', 'productrepairController@repairSendPost');
+Route::post('/show/product/basedOnBrand/Id', 'productrepairController@showProductBasedOnBrand')->name('showProductBasedOnBrand');
+Route::get('/product_distribution/product_repair/delete/item', 'productrepairController@deleteItemFromRepair')->name('delete.product.from.repair');
 
 //Repair Receive
 Route::get('/product_distribution/repair_receive', 'repairreceiveController@index')->name('product distribution.repair receive');

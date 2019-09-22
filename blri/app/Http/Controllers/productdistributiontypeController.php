@@ -76,7 +76,7 @@ class productdistributiontypeController extends Controller
             'productName'=>'required',
             'serial_no'=>'required|unique:distribution_lists,serial_id',
             'brandName'=>'required',
-            'remarks'=>'required'
+            
             
            
         ]);

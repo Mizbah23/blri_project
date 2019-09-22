@@ -518,8 +518,8 @@ $( function() {
                   <div class="text-center">
                     <br><br><br>
                       <button type="button" class=" btn btn-info" onclick="savedata()"> Save</button> 
-                          <button type="reset" class="btn btn-danger" onclick="clearList()">Cancel</button>
-                          <button type="button" class="btn btn-success">Print Invoice</button>
+                      <button type="reset" class="btn btn-danger" onclick="clearList()">Cancel</button>
+                      <button type="button" class="btn btn-success">Print Invoice</button>
                   </div>
                   @endif
                 </div>

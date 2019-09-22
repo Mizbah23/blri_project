@@ -79,6 +79,7 @@ class createuserController extends Controller
       }
 
       public function update(Request $request,$id){
+
           $this->validate($request,[
           'name'=>'required',
           'userType'=>'required',
@@ -91,8 +92,7 @@ class createuserController extends Controller
       $user->userType=$request->userType;
       $user->email=$request->email;
       $user->password=$request->password;
-      // dd($user);
-    
+      dd($request->all());
       $user->save();
       return redirect()->route('security.create user');
     
