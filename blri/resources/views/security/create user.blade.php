@@ -349,6 +349,9 @@ $( function() {
                                                <option value="{{$employeeInformation->id}}">{{$employeeInformation->name}}</option>
                                                @endforeach
                               </select>
+                                  @foreach ($errors->get('name') as $error)
+                                   <p style="color: red">{{ $error}}</p>
+                                   @endforeach
                           </div><br><br>
                  
                         <label for="userType" class="col-sm-5 control-label">কর্মকর্তার ভুমিকা</label>
@@ -385,6 +388,8 @@ $( function() {
                               <input  type="checkbox" name="isActive" @if (old('isActive'))
                                 checked
                             @endif>সক্রিয়?<br><br><br><br>
+                             <div class="error" style="color: red">{{$errors->first('isActive')}}</div>
+
                           </div><br><br>
                           
                       </div>

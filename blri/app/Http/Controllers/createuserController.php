@@ -48,7 +48,7 @@ class createuserController extends Controller
       $user->userType=$request->userType;
       $user->email=$request->email;
       $user->password=$request->password;
-       
+      $request->isActive? $user->isActive=1 :  $user->isActive=0;
     
       $user->save();
       return redirect()->route('security.create user');
@@ -79,11 +79,11 @@ class createuserController extends Controller
       }
 
       public function update(Request $request,$id){
-         
-          $this->validate($request,[
+         //dd($request->all());
+         $this->validate($request,[
           'name'=>'required',
           'userType'=>'required',
-          'email'=>'required|unique:users',
+          'email'=>'required|unique:users,email,'.$id,
           'password' =>'required',
         ]);
       $user=User::find($id);
@@ -91,9 +91,10 @@ class createuserController extends Controller
       $user->userType=$request->userType;
       $user->email=$request->email;
       $user->password=$request->password;
+      //dd($user);
       
       $user->save();
-      return view('security.');
+      return redirect()->route('security.create user');
     
       }
 }

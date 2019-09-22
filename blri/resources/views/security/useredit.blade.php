@@ -334,6 +334,7 @@ $( function() {
                            <label for="name" class="col-sm-5 control-label">কর্মকর্তার নাম</label>
                           <div class="col-lg-7">
                               <select id="name" name="name" class="form-control required" required >
+                                  <div class="error" style="color: red">{{$errors->first('password')}}</div><br><br>
                                                 @foreach ($employeeInformations  as $employeeInformation)
                                                <option value="{{$employeeInformation->id}}" @if (old('employeeName',$user->
                                                 employee_information_id)==$employeeInformation->id)
@@ -346,12 +347,14 @@ $( function() {
                         <label for="userType" class="col-sm-5 control-label">কর্মকর্তার ভুমিকা</label>
                           <div class="col-lg-7">
                               <select id="userType" name="userType" class="form-control required"  value="{{$user->userType}}" required>
+                                <div class="error" style="color: red">{{$errors->first('password')}}</div><br><br>
                                  <option value="">নির্বাচন করুন</option>
                                  <option value="Super admin">Super Admin</option>
                                  <option value="Admin">Admin</option>
                                  <option value="User">User</option>
                               </select>
                           </div><br><br>
+
                       </div>
                       <!--End left side-->
 
@@ -362,11 +365,13 @@ $( function() {
                         <label for="email" class="col-sm-5 control-label">ই-মেইল</label>
                        <div class="col-lg-7">
                           <input type="email" class="form-control" id="email" name="email" placeholder="অবশ্যই পূরণ করুন" value="{{$user->email}}" >
+                            <div class="error" style="color: red">{{$errors->first('password')}}</div>
                           </div><br><br>
 
                            <label for="password" class="col-sm-5 control-label">পাসওয়ার্ড</label>
                        <div class="col-lg-7">
                           <input type="password" class="form-control" id="password" name="password" value="{{$user->password}}" required>
+                           <div class="error" style="color: red">{{$errors->first('password')}}</div>
                           </div><br><br>
                             
 
@@ -375,6 +380,7 @@ $( function() {
                               <input  type="checkbox" name="isActive" @if (old('isActive',$user->isActive))
                                 checked
                             @endif"> সক্রিয়?<br><br><br><br>
+                            <div class="error" style="color: red">{{$errors->first('isActive')}}</div>
                           </div><br><br>
                           
                       </div>
