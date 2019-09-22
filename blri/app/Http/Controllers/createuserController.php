@@ -93,7 +93,7 @@ class createuserController extends Controller
       $user->password=$request->password;
       
       $user->save();
-      return view('security.create user');
+      return view('security.');
     
       }
 }
