@@ -54,6 +54,7 @@ class repairerController extends Controller
                                                ->with('setuptypes',$setuptypes)
                                                ->with('securitytypes',$securitytypes)
                                                ->with('adjustments',$adjustments)
+                                               ->with('productdistributions',$productdistributions)
                                                ->with('reportings',$reportings);
                  }
     public function update(Request $request,$id){

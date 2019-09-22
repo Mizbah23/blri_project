@@ -190,7 +190,6 @@ $( function() {
                 </ul>
               </li>
              
-
               <li class="treeview">
                 <a href="#">
                 <i class="fa fa-wrench"></i>

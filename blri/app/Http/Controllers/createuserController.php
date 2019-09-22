@@ -79,22 +79,21 @@ class createuserController extends Controller
       }
 
       public function update(Request $request,$id){
-
+         
           $this->validate($request,[
           'name'=>'required',
           'userType'=>'required',
           'email'=>'required|unique:users',
           'password' =>'required',
         ]);
-      
       $user=User::find($id);
       $user->employee_information_id=$request->name;
       $user->userType=$request->userType;
       $user->email=$request->email;
       $user->password=$request->password;
-      dd($request->all());
+      
       $user->save();
-      return redirect()->route('security.create user');
+      return view('security.create user');
     
       }
 }
