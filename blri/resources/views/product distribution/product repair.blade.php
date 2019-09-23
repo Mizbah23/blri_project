@@ -380,13 +380,13 @@ $( function() {
                             <div class="col-md-8">
                                 <select id="productName" name="productName" class="form-control required" onchange="showSerialInfo()" required>
                                  <option value="">Select Product</option>
-                               {{--@if (old('brandName'))
+                               @if (old('brandName'))
                                   @foreach($selectedProductBasedOnBrand->unique('productName') as $product)
                                             <option value="{{$product->id}}" @if(old('productName')==$product->id)
                                             {{"selected"}}
                                             @endif>{{$product->productName}}</option>
                                   @endforeach
-                                 @endif--}}
+                                 @endif
                               </select>
                               <div class="error">{{$errors->first('productName')}}</div>
                             </div><br><br>

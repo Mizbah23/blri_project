@@ -59,7 +59,7 @@ class productserialinfoController extends Controller
         
         //dd($requisitionList);
 
-        return redirect()->route('product receive.product serial info');
+        return redirect()->route('product receive.product serial info')->with('response','Successfully Created');
         }
         public function serialEdit(Request $request,$id){
             
