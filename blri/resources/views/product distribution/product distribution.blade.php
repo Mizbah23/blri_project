@@ -433,9 +433,6 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                   </div>
                   
                               </div>
-
-                              
-                              @foreach ($errors->all() as $error) {{ $error }} @endforeach
                             
                   
                               <div class="col-md-7" style="border: solid 2px #eee; padding: 20px">
@@ -469,7 +466,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                           @endforeach
                   
                                       </table>
-                 
+
                  <div class="row">
                   <div class="col-lg-12">
                     @if (count($distributionLists)>0)

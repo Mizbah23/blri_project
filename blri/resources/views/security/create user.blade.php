@@ -358,9 +358,9 @@ $( function() {
                           <div class="col-lg-7">
                               <select id="userType" name="userType" class="form-control required" required>
                                  <option value="">নির্বাচন করুন</option>
-                                <option value="Super Admin" {{old("userType")=='Super Admin'?"selected":""}}>Super Admin </option>
-                                <option value="Admin" {{old("userType")=='Admin'?"selected":""}}>Admin </option>
-                                <option value="User" {{old("userType")=='User'?"selected":""}}>User</option>
+                                 <option value="Super admin">Super Admin</option>
+                                 <option value="Admin">Admin</option>
+                                 <option value="User">User</option>
                               </select>
                                <div class="error" style="color: red">{{$errors->first('userType')}}</div>
                           </div><br><br>
