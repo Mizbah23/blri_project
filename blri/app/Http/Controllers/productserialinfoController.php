@@ -34,13 +34,13 @@ class productserialinfoController extends Controller
     }
 
         public function serialPost(Request $request){
-        	
+        	//dd($request->all());
         	$this->validate($request, [
             'categoryName'=>'required',
             'brandName'=>'required',
             'serial_no'=>'required | unique:serial_infos',
             'productName'=>'required',
-            'warrantyDate'=>'required | date',
+            'warrantyDate'=>'required|date_format:d/m/Y| before_or_equal:today',
             
         ]);
         $serialInfo=SerialInfo::all();
@@ -52,7 +52,7 @@ class productserialinfoController extends Controller
         $serialInfo->product_info_id=$request->productName;
         $serialInfo->serial_no=$request->serial_no;
         $serialInfo->user_id=$request->session()->get('user')->id;
-        $serialInfo->warrantyDate=date('Y-m-d', strtotime($request->warrantyDate));
+        $serialInfo->warrantyDate=date('Y-m-d', strtotime(str_replace('/','-',$request->warrantyDate)));
         //dd($requisitionList);
         $serialInfo->save();
 
@@ -93,9 +93,9 @@ class productserialinfoController extends Controller
             $this->validate($request, [
             'categoryName'=>'required',
             'brandName'=>'required',
-            'serial_no'=>'required | unique:serial_infos',
+            'serial_no'=>'required | unique:serial_infos,serial_no,'.$id,
             'productName'=>'required',
-            'warrantyDate'=>'required | date',
+            'warrantyDate'=>'required | date_format:d/m/Y| before_or_equal:today',
             
         ]);
             
@@ -103,7 +103,7 @@ class productserialinfoController extends Controller
             $serialInfo->product_info_id=$request->id;
             $serialInfo->serial_no=$request->serial_no;
             $serialInfo->user_id=$request->session()->get('user')->id;
-            $serialInfo->warrantyDate=date('Y-m-d', strtotime($request->warrantyDate));
+            $serialInfo->warrantyDate=date('Y-m-d', strtotime(str_replace('/','-',$request->warrantyDate)));
             //dd($serialInfo);
             $serialInfo->save();
 

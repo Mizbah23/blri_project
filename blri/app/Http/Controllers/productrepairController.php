@@ -36,7 +36,11 @@ class productrepairController extends Controller
         $brands=Brand::all();
         $serialInfos=SerialInfo::all();
         $productrepairs=ProductRepair::all();
+        $selectedProductBasedOnBrand=[];
         $users=User::all();
+        if(old('brandName')){
+            $selectedProductBasedOnBrand=ProductInfo::where('brand_id',old('brandName'))->get();
+        }
 
     return view('product distribution.product repair')->with('setuptypes',$setuptypes)
         ->with('securitytypes',$securitytypes)
@@ -49,6 +53,7 @@ class productrepairController extends Controller
         ->with('brands',$brands)
         ->with('serialInfos',$serialInfos)
         ->with('productrepairs',$productrepairs)
+        ->with('selectedProductBasedOnBrand', $selectedProductBasedOnBrand)
         ->with('reportings',$reportings)->with('users',$users);
 	}
 
@@ -61,15 +66,15 @@ class productrepairController extends Controller
 
         public function repairSendPost(Request $request){
         //dd($request->all());
-         /*   $this->validate($request, [
+           $this->validate($request, [
             'repairerName'=>'required',
             'categoryName'=>'required',
             'productName'=>'required',
             'serial_no'=>'required',
             'brandName'=>'required',
-            'sendingDate'=>'required|date_format:d-m-Y| before_or_equal:today'
+            'sendingDate'=>'required|date_format:d/m/Y| before_or_equal:today'
         ]);
-        */
+       
         //dd($request->all());
         $productrepair=new ProductRepair;
         
@@ -78,6 +83,7 @@ class productrepairController extends Controller
         $productrepair->user_id=$request->session()->get('user')->id;
         $productrepair->sendingDate=date('Y-m-d', strtotime(str_replace('/','-',$request->sendingDate)));
         $productrepair->remarks=$request->remarks;
+        dd($productrepair);
         
         $productrepair->save();
 

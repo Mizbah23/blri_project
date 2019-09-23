@@ -335,7 +335,7 @@ $( function() {
                 <h3 class="">Product Repair</h3>
               </div>
               <div class="form-body">
-                <form class="form-horizontal" method="post"> 
+                <form class="form-horizontal" method="post" novalidate> 
                   @csrf
                   <div class="form-group"> <!--Form-->
 
@@ -380,15 +380,16 @@ $( function() {
                             <div class="col-md-8">
                                 <select id="productName" name="productName" class="form-control required" onchange="showSerialInfo()" required>
                                  <option value="">Select Product</option>
-                               {{--@if (old('brandName'))
+                                 <div class="error">{{$errors->first('productName')}}</div>
+                               @if (old('brandName'))
                                   @foreach($selectedProductBasedOnBrand->unique('productName') as $product)
                                             <option value="{{$product->id}}" @if(old('productName')==$product->id)
                                             {{"selected"}}
                                             @endif>{{$product->productName}}</option>
                                   @endforeach
-                                 @endif--}}
+                                 @endif
                               </select>
-                              <div class="error">{{$errors->first('productName')}}</div>
+                              
                             </div><br><br>
                             <div class="col-md-4">
                                  <label for="serial_no" class=" control-label">Serial No.</label>
@@ -409,6 +410,7 @@ $( function() {
                             <div class="error">{{$errors->first('serial_no')}}</div>
                             </div><br><br>
                              <div class="col-md-4">
+
                                  <label for="repairerName" class=" control-label">Repairer Name</label>
                             </div>
                             <div class="col-md-8">
@@ -444,6 +446,7 @@ $( function() {
                     </div>
 
                   </div>
+                  @foreach ($errors->all() as $error) {{ $error }} @endforeach
                   <div class="text-center">
                       <button type="submit" class=" btn btn-info"> Save</button> 
                           <button type="reset" class="btn btn-danger">Cancel</button>
@@ -488,7 +491,7 @@ $( function() {
                                   <td style="text-align: center">{{$item->serialInfo->productInfo->productName}}</td>
                                   <td style="text-align: center">{{$item->serialInfo->serial_no}}</td>
                                   <td style="text-align: center">{{$item->repairer->repairerName}}</td>
-                                  <td style="text-align: center">{{$item->sendingDate}}</td>
+                                  <td style="text-align: center">{{date('d/m/Y', strtotime(str_replace('-', '/',$item->sendingDate))) }}</td>
                                   <td style="text-align: center">{{$item->remarks}}</td>
                                   <td class="text-center"> <a href="#" onclick=""<i class="fa fa-edit" style="font-size:24px"></i></a></td>
                                   <td class="text-center"> <a href="#" onclick=""<i class="fa fa-trash" style="font-size:24px"></i></a></td>
