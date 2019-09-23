@@ -376,9 +376,9 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                           <div class="error">{{$errors->first('address')}}</div>
                         </div><br><br><br>
 
-                        <label  class="col-sm-6 control-label">যোগাযোগ</label>
+                        <label  class="col-sm-6 control-label">যোগাযোগ নং</label>
                         <div class="col-lg-6">
-                          <input type="tel" class="form-control" id="contactNo" name="contactNo"  value="{{old('contactNo')}}" placeholder="অবশ্যই পূরণ করুন" required minlength='11' maxlength='11' pattern="(01)[0-9]{9}" >
+                          <input type="tel" class="form-control" id="contactNo" name="contactNo"  value="{{old('contactNo')}}" placeholder="অবশ্যই পূরণ করুন" required maxlength='14'>
                           <div class="error">{{$errors->first('contactNo')}}</div>
                         </div><br><br>
 
@@ -390,7 +390,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                       <div class="col-md-5">
                         <label  class="col-sm-6 control-label">জাতীয় পরিচয়পত্র</label>
                         <div class="col-lg-6">
-                          <input type="text" class="form-control" id="nidNo" name="nidNo"  value="{{old('nidNo')}}" placeholder="অবশ্যই পূরণ করুন" required minlength="10">
+                          <input type="text" class="form-control" id="nidNo" name="nidNo"  value="{{old('nidNo')}}" placeholder="অবশ্যই পূরণ করুন" required minlength='13' maxlength='17'>
                           <div class="error">{{$errors->first('nidNo')}}</div>
                         </div><br><br>
 

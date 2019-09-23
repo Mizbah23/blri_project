@@ -488,7 +488,7 @@ $( function() {
                                   <td style="text-align: center">{{$item->serialInfo->productInfo->productName}}</td>
                                   <td style="text-align: center">{{$item->serialInfo->serial_no}}</td>
                                   <td style="text-align: center">{{$item->repairer->repairerName}}</td>
-                                  <td style="text-align: center">{{$item->sendingDate}}</td>
+                                  <td style="text-align: center">{{date('d/m/Y', strtotime(str_replace('-', '/',$item->sendingDate))) }}</td>
                                   <td style="text-align: center">{{$item->remarks}}</td>
                                   <td class="text-center"> <a href="#" onclick=""<i class="fa fa-edit" style="font-size:24px"></i></a></td>
                                   <td class="text-center"> <a href="#" onclick=""<i class="fa fa-trash" style="font-size:24px"></i></a></td>

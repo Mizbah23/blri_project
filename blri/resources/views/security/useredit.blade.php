@@ -349,9 +349,9 @@ $( function() {
                               <select id="userType" name="userType" class="form-control required"  value="{{$user->userType}}" required>
                                 <div class="error" style="color: red">{{$errors->first('password')}}</div><br><br>
                                  <option value="">নির্বাচন করুন</option>
-                                 <option value="Super admin">Super Admin</option>
-                                 <option value="Admin">Admin</option>
-                                 <option value="User">User</option>
+                                 <option value="Super Admin" {{old("userType",$user->userType)=='Super Admin'?"selected":""}}>Super Admin</option>
+                                 <option value="Admin" {{old("userType",$user->userType)=='Admin'?"selected":""}}>Admin</option>
+                                 <option value="User" {{old("userType",$user->userType)=='User'?"selected":""}}>User</option>
                               </select>
                           </div><br><br>
 
