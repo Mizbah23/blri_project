@@ -37,16 +37,18 @@ class brandController extends Controller
     ->with('reportings',$reportings);
   }
   public function brandPost(Request $request){
-      $this->validate( $request,[
-      'categoryName'=>'required',
-      'brandName'=>'required|unique:brands'
+         
+       $this->validate( $request,[
+      'categories'=>'required',
+      'brandName'=>'required|unique:brands,brandName'
       ]);
+      
       $brand=new Brand;
       $brand->brandName=$request->brandName;
       $brand->category_id=$request->categories;
-    
+      
       $brand->save();
-      return redirect()->route('setup.brand');
+      return redirect()->route('setup.brand')->with('response','Successfully Created');
   }
   public function brandedit(Request $request,$id){
     $securitytypes=SecurityType::all();
@@ -64,7 +66,7 @@ class brandController extends Controller
 
     $this->validate( $request,[
       'categoryName'=>'required',
-      'brandName'=>'required|unique:brands'
+      'brandName'=>'required|unique:brands,brandName,'.$id
     ]);
     
     $brand=Brand::find($id);
@@ -72,7 +74,8 @@ class brandController extends Controller
     $brand->brandName=$request->brandName;
     $brand->category_id=$request->categoryName;
     $brand->save();
-    return redirect()->route('setup.brand');
+      return redirect()->route('setup.brand')->with('response','Successfully Edited');
+    
   }
 
   public function searchByBrandName(Request $request){

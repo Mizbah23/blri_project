@@ -85,6 +85,6 @@ class productrepairController extends Controller
         
         dd($productrepair);
 
-        return redirect()->route('product distribution.product repair');
+        return redirect()->route('product distribution.product repair')->('response','Product Successfully Added to Repair');
         }
 }

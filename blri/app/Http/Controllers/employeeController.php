@@ -58,8 +58,8 @@ class employeeController extends Controller
         'districtName'=>'required',
         'contactNo'=>'required | regex:/(01)[0-9]{9}/|size:11',
         'nidNo'=>'required',
-        'joiningDate'=>'required | date | before_or_equal: today',
-        'birthDate'=>'required | date| before_or_equal: today',
+        'joiningDate'=>'required|date_format:d/m/Y| before_or_equal:today',
+        'birthDate'=>'required|date_format:d/m/Y| before_or_equal:today',
         'workingPlace'=>'required',
         'remarks'=>'required',
         'profileImage'=>'required | image | mimes:jpeg,jpg,png' ,
@@ -95,7 +95,7 @@ class employeeController extends Controller
         $newEmployee->address=$request->address;
         $newEmployee->contactNo=$request->contactNo;
         $newEmployee->nidNo=$request->nidNo;
-        $newEmployee->joiningDate=date('Y-m-d', strtotime(str_replace('-', '/', $request['joiningDate'])));
+        $newEmployee->joiningDate=date('Y-m-d', strtotime(str_replace('/','-',$request->joiningDate)));
         $newEmployee->birthDate=date('Y-m-d', strtotime(str_replace('-', '/', $request['birthDate'])));
         $newEmployee->workingPlace=$request->workingPlace;
         $request->isRevenue? $newEmployee->isRevenue=1 :  $newEmployee->isRevenue=0;
@@ -104,7 +104,7 @@ class employeeController extends Controller
         $newEmployee->save();
       }
       
-      return redirect()->route('setup.employee');
+      return redirect()->route('setup.employee')->with('response','Successfully Created');
     }
     public function employeeEdit($id){
       $securitytypes=SecurityType::all();
@@ -196,6 +196,6 @@ class employeeController extends Controller
       }
       
 
-      return redirect()->route('setup.employee');
+      return redirect()->route('setup.employee')->with('response','Successfully Updated');
     }
 }

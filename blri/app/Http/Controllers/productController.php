@@ -57,7 +57,7 @@ class productController extends Controller
       $productinfo->save();
       $productinfos=ProductInfo::all();
     }
-    return redirect()->route('setup.product');
+    return redirect()->route('setup.product')->with('response','Successfully Created');;
   }
 
   public function checkIfProductExist(Request $request)
@@ -133,7 +133,7 @@ class productController extends Controller
         $productinfos=ProductInfo::all();
       }
     }
-    return redirect()->route('setup.product');
+    return redirect()->route('setup.product')->with('response','Successfully Updated');;
   }
 
 }

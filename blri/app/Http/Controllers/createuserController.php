@@ -91,6 +91,7 @@ class createuserController extends Controller
       $user->userType=$request->userType;
       $user->email=$request->email;
       $user->password=$request->password;
+      $request->isActive? $user->isActive=1 :  $user->isActive=0;
       //dd($user);
       
       $user->save();
