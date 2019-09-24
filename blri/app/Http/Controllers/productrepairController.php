@@ -61,17 +61,7 @@ class productrepairController extends Controller
 
 
         public function repairSendPost(Request $request){
-        //dd($request->all());
-         /*   $this->validate($request, [
-            'repairerName'=>'required',
-            'categoryName'=>'required',
-            'productName'=>'required',
-            'serial_no'=>'required',
-            'brandName'=>'required',
-            'sendingDate'=>'required|date_format:d-m-Y| before_or_equal:today'
-        ]);
-        */
-        //dd($request->all());
+      
         $productrepair=new ProductRepair;
         
         $productrepair->serial_id=$request->serial_no;
