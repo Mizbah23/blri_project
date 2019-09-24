@@ -124,6 +124,7 @@ $( function() {
       from = $( "#from" )
         .datepicker({
           defaultDate: "+1w",
+           dateFormat: 'dd/mm/yy',
           changeMonth: true,
           changeYear: true,
           numberOfMonths: 1
@@ -133,6 +134,7 @@ $( function() {
         }),
       to = $( "#to" ).datepicker({
         defaultDate: "+1w",
+         dateFormat: 'dd/mm/yy',
         changeMonth: true,
         changeYear: true,
         numberOfMonths: 1
@@ -158,7 +160,7 @@ $( function() {
 <script>
   $(function() {
     $( ".datepicker" ).datepicker({
-      format: 'MM/DD/YYYY',
+      dateFormat: 'dd/mm/yy',
       maxDate: "+0D",
       ignoreReadonly: true
     });

@@ -160,12 +160,13 @@ $( function() {
     }
   } );
   </script>
+
   <!--date picker-->
 <script>
   $(function() {
     $( ".datepicker" ).datepicker({
-      format: 'MM/DD/YYYY',
-      maxDate: "+0D",
+      dateFormat: 'dd/mm/yy',
+      maxDate: "+1d",
       ignoreReadonly: true
     });
   });
@@ -336,6 +337,11 @@ $( function() {
    
  <!-- main content start-->
     <div id="page-wrapper">
+      @if(session('response'))
+      <div class="col-mid-2 alert alert-success">
+        {{@session('response')}}
+      </div>
+      @endif
       <div class="main-page">
         <div class=" form-grids row form-grids-right">
             <div class="widget-shadow " data-example-id="basic-forms"> 
@@ -400,7 +406,7 @@ $( function() {
                             <label for="warrantyDate" class=" control-label">ওয়ারেন্টি</label>
                             </div>
                             <div class="col-md-7">
-                               <input class="form-control" type="text" name="warrantyDate" id="warrantyDate" autocomplete="off" >
+                                <input class="form-control datepicker" type="text" name="warrantyDate" placeholder="dd/mm/YYYY" id="warrantyDate" autocomplete="off" >
                                 <div class="error" style="color:red">{{$errors->first('warrantyDate')}}</div><br><br>
 
                             </div><br><br>
@@ -480,7 +486,7 @@ $( function() {
                                     <td class="text-center">{{++$key}}</td>
                                     <td class="text-center">{{$serialInfo->productInfo->productName}}</td>
                                     <td class="text-center">{{$serialInfo->serial_no}}</td>
-                                    <td class="text-center">{{$serialInfo->warrantyDate}}</td>
+                                    <td class="text-center">{{date('d/m/Y', strtotime(str_replace('-', '/',$serialInfo->warrantyDate))) }}</td>
                                     <td class="text-center">{{$serialInfo->user->employeeinfo->name}}</td>
                                   <td><a href="{{route('product receive.serialedit',[$serialInfo->id])}}"><i class="fa fa-edit" style="font-size:24px"></i></a></td>
                                 </tr>
