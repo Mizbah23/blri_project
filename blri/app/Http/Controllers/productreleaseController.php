@@ -87,7 +87,7 @@ class productreleaseController extends Controller
             // dd($request->all());
         $this->validate($request,[
           'serialNo'=>'required | unique:product_release_infos,serial_info_id',
-          'releaseDate'=>'required | date_format:d/m/Y| after_or_equal: today',
+          'releaseDate'=>'required | date_format:d/m/Y| before_or_equal: today',
           'deptName'=>'required',
           'projectName'=>'required',
           'employeeName'=>'required'

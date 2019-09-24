@@ -166,7 +166,7 @@ $( function() {
   $(function() {
     $( ".datepicker" ).datepicker({
       dateFormat: 'dd/mm/yy',
-      maxDate: "+1d",
+      //maxDate: "+1d",
       ignoreReadonly: true
     });
   });
