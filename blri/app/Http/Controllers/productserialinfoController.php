@@ -40,7 +40,7 @@ class productserialinfoController extends Controller
             'brandName'=>'required',
             'serial_no'=>'required | unique:serial_infos',
             'productName'=>'required',
-            'warrantyDate'=>'required|date_format:d/m/Y| before_or_equal:today',
+            'warrantyDate'=>'required | date',
             
         ]);
         $serialInfo=SerialInfo::all();
@@ -52,14 +52,14 @@ class productserialinfoController extends Controller
         $serialInfo->product_info_id=$request->productName;
         $serialInfo->serial_no=$request->serial_no;
         $serialInfo->user_id=$request->session()->get('user')->id;
-         $serialInfo->warrantyDate=date('Y-m-d', strtotime(str_replace('/','-',$request->warrantyDate)));
+        $serialInfo->warrantyDate=date('Y-m-d', strtotime($request->warrantyDate));
         //dd($requisitionList);
         $serialInfo->save();
 
         
         //dd($requisitionList);
 
-        return redirect()->route('product receive.product serial info')->with('response','Successfully Created');
+        return redirect()->route('product receive.product serial info');
         }
         public function serialEdit(Request $request,$id){
             
@@ -93,9 +93,9 @@ class productserialinfoController extends Controller
             $this->validate($request, [
             'categoryName'=>'required',
             'brandName'=>'required',
-            'serial_no'=>'required | unique:serial_infos,serial_no,'.$id,
+            'serial_no'=>'required | unique:serial_infos',
             'productName'=>'required',
-             'warrantyDate'=>'required|date_format:d/m/Y| before_or_equal:today',
+            'warrantyDate'=>'required | date',
             
         ]);
             
@@ -103,10 +103,10 @@ class productserialinfoController extends Controller
             $serialInfo->product_info_id=$request->id;
             $serialInfo->serial_no=$request->serial_no;
             $serialInfo->user_id=$request->session()->get('user')->id;
-            $serialInfo->warrantyDate=date('Y-m-d', strtotime(str_replace('/','-',$request->warrantyDate)));
+            $serialInfo->warrantyDate=date('Y-m-d', strtotime($request->warrantyDate));
             //dd($serialInfo);
             $serialInfo->save();
 
-            return redirect()->route('product receive.product serial info')->with('response','Successfully Edited');
+            return redirect()->route('product receive.product serial info');
         }
 }

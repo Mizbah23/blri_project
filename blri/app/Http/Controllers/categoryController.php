@@ -47,7 +47,7 @@ class categoryController extends Controller
                $categories=Category::all();
                
 
-               return redirect()->route('setup.category')->with('response','Successfully Created');
+               return redirect()->route('setup.category');
           }
            public function catedit(Request $request,$id)
      {  
@@ -80,7 +80,7 @@ class categoryController extends Controller
     	$category=Category::find($id);
     	$category->categoryName=$request->categoryName;
     	$category->save();
-      return redirect()->route('setup.category')->with('response','Successfully Updated');
+      return redirect()->route('setup.category');
     	
     }       
 

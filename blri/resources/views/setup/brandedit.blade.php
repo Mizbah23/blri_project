@@ -304,7 +304,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
         </div>
         <!-- //header-ends -->
         <!-- main content start-->
-
+<div class="jumbotron">
   @if(session('response'))
       <div class="col-mid-8 alert alert-success">
         {{@session('response')}}

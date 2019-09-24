@@ -342,9 +342,8 @@ $( function() {
                                    
                               <select id="supplierType" name="supplierType" value=" {{$supplier->supplierType}}" class="form-control required" required>
                                  <option value="">Select type</option>
-                                 <option value="Local" {{old("supplierType",$supplier->supplierType)=='Local'?"selected":""}}>Local</option>
-                                 <option value="Foreign" {{old("supplierType",$supplier->supplierType)=='Foreign'?"selected":""}}>Foreign</option>
-                                
+                                 <option value="Local">Local</option>
+                                 <option value="Foreign">Foreign</option>
                               </select>
                           <div class="error">{{$errors->first('supplierType')}}</div>
 

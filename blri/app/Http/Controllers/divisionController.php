@@ -49,7 +49,7 @@ class divisionController extends Controller
                $division->divisionName=$request->divisionName;
                $division->save();  
 
-            return redirect()->route('setup.division')->with('response','Successfully Created');
+              return redirect()->route('setup.division');
           }
         public function divedit(Request $request,$id)
         {
@@ -75,13 +75,13 @@ class divisionController extends Controller
     	//dd('success');
     	          $this->validate( $request,[
                 
-                'divisionName'=>'required|unique:divisions,divisionName,'.$id,
+                'divisionName'=>'required|unique:divisions',
               
                ]);
     	$division=division::find($id);
     	$division->divisionName=$request->divisionName;
     	$division->save();
-      return redirect()->route('setup.division')->with('response','Successfully Edited');;
+      return redirect()->route('setup.division');
     	
     }          
        

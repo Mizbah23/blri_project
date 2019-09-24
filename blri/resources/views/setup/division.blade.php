@@ -261,21 +261,21 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                     </ul>
                 </div>
 
-     <div class="clearfix"> </div>            
+
+                <div class="clearfix"> </div>               
             </div>
-            <div class="clearfix"> </div>
-
+            <div class="clearfix"> </div> 
         <!-- main content start-->
-
-     <div id="page-wrapper">
-    {{--<div class="jumbotron">--}}
-       @if(session('response'))
-      <div class="col-mid-2 alert alert-success">
+{{-- <div class="jumbotron">
+  @if(session('response'))
+      <div class="col-mid-8 alert alert-success">
         {{@session('response')}}
       </div>
-      @endif
- {{--</div>--}}
-   <div class="main-page">
+      @endif --}}
+                        
+
+    <div id="page-wrapper">
+      <div class="main-page">
         <div class=" form-grids row form-grids-right">
             <div class="widget-shadow " data-example-id="basic-forms"> 
               <div class="form-title bg-primary">

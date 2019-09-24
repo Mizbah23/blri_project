@@ -36,7 +36,6 @@ class productrepairController extends Controller
         $brands=Brand::all();
         $serialInfos=SerialInfo::all();
         $productrepairs=ProductRepair::all();
-        $selectedProductBasedOnBrand=[];
         $users=User::all();
 
     return view('product distribution.product repair')->with('setuptypes',$setuptypes)

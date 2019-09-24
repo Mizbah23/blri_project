@@ -313,21 +313,20 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                   <button type="submit" class="btn btn-info">সংরক্ষণ করুন</button>
                   <button type="reset" class="btn btn-danger">বাতিল করুন</button></div> </form> 
               </div>
-          
+          </div>
           <div class="col-sm-4"></div>
           
-        {{-- </div> --}}
+        </div>
               <div class="row">
-              <div class="col-sm-8"></div><br><br>
+              <div class="col-sm-8"></div>
 
                     <div class="form-group" >
                         <label for="searchBySectionName" class="col-lg-9  control-label" style="text-align: right; ">খুঁজুন</label>
                         <div class="col-lg-3">
                             <input type="text" class="form-control" name="searchBySectionName" id="searchBySectionName" placeholder="শাখা খুঁজুন...">
-                        </div><br>
+                        </div>
                      </div> 
-              </div>
-              </div>
+              </div><br><br>
 
                <div id="allSections">
                 <table class="table table-responsive table-hover table-striped table-bordered table-condensed">
@@ -356,7 +355,6 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                     </tbody>
                     @endif
                 </table>
-                
                </div>
 
                <div id="searchedSectionValue">

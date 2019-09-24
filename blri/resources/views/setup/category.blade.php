@@ -1,4 +1,4 @@
-  
+
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -230,11 +230,6 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
        
       <!-- main content start-->
     <div id="page-wrapper">
-      @if(session('response'))
-      <div class="col-mid-2 alert alert-success">
-        {{@session('response')}}
-      </div>
-      @endif
       <div class="main-page">
         <div class=" form-grids row form-grids-right">
             <div class="widget-shadow " data-example-id="basic-forms"> 

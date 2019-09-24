@@ -161,8 +161,7 @@ $( function() {
   <script>
   $( function() {
     $( ".datepicker" ).datepicker({
-       dateFormat: 'dd/mm/yy',
-      maxDate: "+0D"
+      minDate: "+0D"
       });
   });
   </script>
