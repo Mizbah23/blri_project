@@ -380,13 +380,13 @@ $( function() {
                             <div class="col-md-8">
                                 <select id="productName" name="productName" class="form-control required" onchange="showSerialInfo()" required>
                                  <option value="">Select Product</option>
-                               {{--@if (old('brandName'))
+                               @if (old('brandName'))
                                   @foreach($selectedProductBasedOnBrand->unique('productName') as $product)
                                             <option value="{{$product->id}}" @if(old('productName')==$product->id)
                                             {{"selected"}}
                                             @endif>{{$product->productName}}</option>
                                   @endforeach
-                                 @endif--}}
+                                 @endif
                               </select>
                               <div class="error">{{$errors->first('productName')}}</div>
                             </div><br><br>
@@ -488,7 +488,7 @@ $( function() {
                                   <td style="text-align: center">{{$item->serialInfo->productInfo->productName}}</td>
                                   <td style="text-align: center">{{$item->serialInfo->serial_no}}</td>
                                   <td style="text-align: center">{{$item->repairer->repairerName}}</td>
-                                  <td style="text-align: center">{{$item->sendingDate}}</td>
+                                  <td style="text-align: center">{{date('d/m/Y', strtotime(str_replace('-', '/',$item->sendingDate))) }}</td>
                                   <td style="text-align: center">{{$item->remarks}}</td>
                                   <td class="text-center"> <a href="#" onclick=""<i class="fa fa-edit" style="font-size:24px"></i></a></td>
                                   <td class="text-center"> <a href="#" onclick=""<i class="fa fa-trash" style="font-size:24px"></i></a></td>
