@@ -40,7 +40,7 @@ class productserialinfoController extends Controller
             'brandName'=>'required',
             'serial_no'=>'required | unique:serial_infos',
             'productName'=>'required',
-            'warrantyDate'=>'required|date_format:d/m/Y| before_or_equal:today',
+            'warrantyDate'=>'required|date_format:d/m/Y',
             
         ]);
         $serialInfo=SerialInfo::all();
