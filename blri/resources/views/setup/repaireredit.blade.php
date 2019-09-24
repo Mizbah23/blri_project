@@ -314,6 +314,10 @@ $( function() {
    
  <!-- main content start-->
     <div id="page-wrapper">
+      @if(session('response'))
+      <div class="col-mid-2 alert alert-success">
+        {{@session('response')}}
+      </div>
       <div class="main-page">
         <div class=" form-grids row form-grids-right">
             <div class="widget-shadow " data-example-id="basic-forms"> 
@@ -341,7 +345,9 @@ $( function() {
                           </div><br><br>
                         <label for="address" class="col-sm-6 control-label">ঠিকানা</label>
                        <div class="col-lg-6">
-                        <textarea name="address" id="address" class="form-control" placeholder="অবশ্যই পুরণ করুণ" value="{{$repairer->address}}" required></textarea>
+                        <textarea name="address" id="address" class="form-control" placeholder="অবশ্যই পুরণ করুণ" value="{{$repairer->address}}" required>
+                         
+                        </textarea>
                           <div class="error">{{$errors->first('address')}}</div>
 
                           </div><br><br><br>

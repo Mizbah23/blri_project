@@ -124,6 +124,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                             });
                         </script>
                     <!-- //requried-jsfiles-for owl -->
+
 <!--date picker-->
   <script>
 $( function() {
@@ -160,12 +161,13 @@ $( function() {
     }
   } );
   </script>
+
   <!--date picker-->
 <script>
   $(function() {
     $( ".datepicker" ).datepicker({
-      format: 'MM/DD/YYYY',
-      maxDate: "+0D",
+      dateFormat: 'dd/mm/yy',
+      maxDate: "+1d",
       ignoreReadonly: true
     });
   });
@@ -336,6 +338,11 @@ $( function() {
    
  <!-- main content start-->
     <div id="page-wrapper">
+      @if(session('response'))
+      <div class="col-mid-2 alert alert-success">
+        {{@session('response')}}
+      </div>
+      @endif
       <div class="main-page">
         <div class=" form-grids row form-grids-right">
             <div class="widget-shadow " data-example-id="basic-forms"> 
@@ -398,7 +405,7 @@ $( function() {
                             <label for="warrantyDate" class=" control-label">ওয়ারেন্টি</label>
                             </div>
                             <div class="col-md-7">
-                               <input class="form-control" type="text" name="warrantyDate" id="warrantyDate" value="{{ $serialInfos->warrantyDate }}" autocomplete="off" >
+                               <input class="form-control datepicker" type="text" name="warrantyDate" placeholder="dd/mm/YYYY" id="warrantyDate" autocomplete="off" value="{{date('d/m/Y', strtotime(str_replace('-', '/',$serialInfos->warrantyDate))) }}">
                                <div class="error" style="color:red">{{$errors->first('warrantyDate')}}</div>
                             </div><br><br>
 
@@ -429,7 +436,7 @@ $( function() {
                   <div class="text-center">
                     <br><br><br>
                       <button type="submit" class=" btn btn-info"> Update করুন</button> 
-                          <button type="reset" class="btn btn-danger">বাতিল করুন</button>
+                      <button  onclick="cancelUpdate()" class="btn btn-danger">বাতিল করুন</button>
                   </div>
                 </div>
               </form>
@@ -910,6 +917,11 @@ $( function() {
    </script>
 
    <script src="/js/bootstrap.js"> </script>
+     <script>
+    function cancelUpdate() {
+      document.location.href="{!! route('product receive.product serial info'); !!}";
+    }
+  </script>
 
     
 </body>
