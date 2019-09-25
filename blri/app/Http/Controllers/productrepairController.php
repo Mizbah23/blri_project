@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Validator; 
 use App\setuptype;
 use App\SecurityType;
 use App\ProductReceiveType;
@@ -38,7 +39,7 @@ class productrepairController extends Controller
         $productrepairs=ProductRepair::all();
         $selectedProductBasedOnBrand=[];
         $users=User::all();
-
+   //dd($productrepairs);
     return view('product distribution.product repair')->with('setuptypes',$setuptypes)
         ->with('securitytypes',$securitytypes)
         ->with('productreceivetypes',$productreceivetypes)
@@ -50,6 +51,7 @@ class productrepairController extends Controller
         ->with('brands',$brands)
         ->with('serialInfos',$serialInfos)
         ->with('productrepairs',$productrepairs)
+        ->with('selectedProductBasedOnBrand', $selectedProductBasedOnBrand)
         ->with('reportings',$reportings)->with('users',$users);
 	}
 
@@ -61,20 +63,30 @@ class productrepairController extends Controller
 
 
         public function repairSendPost(Request $request){
+       //dd($request->all());
+      $this->validate($request,[
+            'repairerName'=>'required',
+            'categoryName'=>'required',
+            'productName'=>'required',
+            'serial_no'=>'required',
+            'brandName'=>'required',
+            'sendingDate'=>'required|date_format:d/m/Y| before_or_equal: today'
+        ]);
+            
       
         $productrepair=new ProductRepair;
         
         $productrepair->serial_id=$request->serial_no;
         $productrepair->repairer_id=$request->repairerName;
         $productrepair->user_id=$request->session()->get('user')->id;
-        $productrepair->sendingDate=date('Y-m-d', strtotime(str_replace('/','-',$request->sendingDate)));
+        $productrepair->sendingDate=date('Y-m-d',strtotime(str_replace('/','-',$request->sendingDate)));
         $productrepair->remarks=$request->remarks;
         
         $productrepair->save();
 
         
-        dd($productrepair);
+        //dd($productrepair);
 
-        return redirect()->route('product distribution.product repair')->('response','Product Successfully Added to Repair');
+        return redirect()->route('product distribution.product repair')->with('response','Product Successfully Added to Repair');
         }
 }
