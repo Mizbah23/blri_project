@@ -60,6 +60,10 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
   width: 100%;
   height: 295px;
 }
+.error{
+  font-size: 0.9em;
+  color: red;
+}
 </style>
 <!--pie-chart --><!-- index page sales reviews visitors pie chart -->
 <script src="/js/pie-chart.js" type="text/javascript"></script>
@@ -381,11 +385,14 @@ $( function() {
                                 <select id="productName" name="productName" class="form-control required" onchange="showSerialInfo()" required>
                                  <option value="">Select Product</option>
                              @if (old('brandName'))
+                                @if (count($selectedProductBasedOnBrand)>0)
                                   @foreach($selectedProductBasedOnBrand->unique('productName') as $product)
-                                            <option value="{{$product->id}}" @if(old('productName')==$product->id)
-                                            {{"selected"}}
-                                            @endif>{{$product->productName}}</option>
+                                      <option value="{{$product->id}}" @if(old('productName')==$product->id)
+                                      {{"selected"}}
+                                      @endif>{{$product->productName}}</option>
                                   @endforeach
+                                @endif  
+
                              @endif
                               </select>
                               <div class="error">{{$errors->first('productName')}}</div>
@@ -415,7 +422,9 @@ $( function() {
                                 <select id="repairerName" name="repairerName" class="form-control required" required>
                                  <option value="">Select Repairer Name</option>
                                   @foreach($repairers as $repairer)
-                                  <option value="{{$repairer->id}}">{{$repairer->repairerName}}</option>
+                                  <option value="{{$repairer->id}}" @if (old('repairerName')==$repairer->id)
+                                      {{"selected"}}
+                                  @endif>{{$repairer->repairerName}}</option>
                                   @endforeach
                               </select>
                                <div class="error">{{$errors->first('repairerName')}}</div>
@@ -428,7 +437,7 @@ $( function() {
                                  <label for="sendingDate" class=" control-label">Sending Date</label>
                             </div>
                             <div class="col-md-8">
-                               <input class="form-control datepicker" type="text" name="sendingDate" placeholder="dd/mm/yyyy" id="sendingDate" value=""  autocomplete="off" required>
+                               <input class="form-control datepicker" type="text" name="sendingDate" placeholder="dd/mm/yyyy" id="sendingDate" value="{{old('sendingDate')}}"  autocomplete="off" required>
                                 
                             </div><br><br>
                             
@@ -436,19 +445,19 @@ $( function() {
                                  <label for="remarks" class=" control-label">Remarks</label>
                             </div>
                             <div class="col-md-8">
-                                <textarea name="remarks" id="remarks" class="form-control" placeholder="Remarks"></textarea>
+                                <textarea name="remarks" id="remarks" class="form-control" placeholder="Remarks">{{old('remarks')}}</textarea>
                             </div><br><br>
                             
                         </div>
                         
                     </div>
-                    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
+                    {{-- <div class="alert alert-danger">
+                      <ul>
+                          @foreach ($errors->all() as $error)
+                              <li>{{ $error }}</li>
+                          @endforeach
+                      </ul>
+                    </div> --}}
 
                   </div>
                   <div class="text-center">
