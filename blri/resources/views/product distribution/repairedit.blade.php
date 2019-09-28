@@ -2,7 +2,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>Product Repair</title>
+<title>Repair Edit</title>
 <link rel="icon" type="image/png" href="/images/logo.png" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -328,11 +328,6 @@ $( function() {
    
  <!-- main content start-->
     <div id="page-wrapper">
-     @if(session('response'))
-      <div class="col-mid-2 alert alert-success">
-        {{@session('response')}}
-      </div>
-      @endif
       <div class="main-page">
         <div class=" form-grids row form-grids-right">
             <div class="widget-shadow " data-example-id="basic-forms"> 
@@ -353,9 +348,9 @@ $( function() {
                                 <select id="categoryName" name="categoryName" onchange="showBrand()" class="form-control required" required>
                                 <div class="error" style="color:red">{{$errors->first('categoryName')}}</div><br><br>
                                  <option value="">Select Category</option>
-                                 @foreach($categories as $category)
+                                          @foreach($categories as $category)
                                           <option value="{{$category->id}}"
-                                            {{old('categoryName')==$category->id ?"selected":""}}>
+                                              {{old('categoryName',$productrepairs->serialInfo->productInfo->productName)==$category->id ?"selected":""}}>
                                               {{$category->categoryName}}</option>
                                           @endforeach
                               </select>
@@ -368,12 +363,12 @@ $( function() {
                                 <div class="error" style="color:red">
                                   {{$errors->first('brandName')}}</div><br><br>
                                  <option value="">Select Brand</option>
-                                  @if(old('categoryName'))
+                                 @if(old('categoryName',$productrepairs->serialInfo->productInfo->brand->category->id))
                                             @foreach($brands as $brand)
-                                              @if (old('categoryName') == $brand->category->id)
-                                              <option value="{{$brand->id}}" {{old('brandName')==$brand->id?"selected":""}}>
-                                                  {{$brand->brandName}}</option>
-                                              @endif
+                                                @if (old('categoryName',$productrepairs->serialInfo->productInfo->brand->category->id) == $brand->category->id)
+                                                <option value="{{$brand->id}}" {{old('brandName',$productrepairs->serialInfo->productInfo->brand_id)==$brand->id?"selected":""}}>
+                                                    {{$brand->brandName}}</option>
+                                                @endif
                                             @endforeach
                                           @endif
                               </select>
@@ -385,13 +380,13 @@ $( function() {
                             <div class="col-md-8">
                                 <select id="productName" name="productName" class="form-control required" onchange="showSerialInfo()" required>
                                  <option value="">Select Product</option>
-                               @if (old('brandName'))
-                                  @foreach($selectedProductBasedOnBrand->unique('productName') as $product)
-                                            <option value="{{$product->id}}" @if(old('productName')==$product->id)
+                               @if (old('brandName',$productrepairs->serialInfo->productInfo->brand_id))
+                                        @foreach($selectedProductBasedOnBrand->unique('productName') as $product)
+                                            <option value="{{$product->id}}" @if(old('productName',$productrepairs->serialInfo->product_info_id)==$product->id)
                                             {{"selected"}}
                                             @endif>{{$product->productName}}</option>
-                                  @endforeach
-                                 @endif
+                                        @endforeach
+                               @endif
                               </select>
                               <div class="error">{{$errors->first('productName')}}</div>
                             </div><br><br>
@@ -463,11 +458,6 @@ $( function() {
                           
                         </div>
 
-                        <div class="col-md-3">
-                          <input type="text" class="form-control" id="searchByBrandName" name="searchByBrandName" placeholder="Search...">
-                        </div>
-
-
                       </div>
 
                       <!--Search option stops-->
@@ -476,32 +466,7 @@ $( function() {
                   </div> 
                </div> 
 
-                <div id="allBrands">
-                  <table class="table table-responsive table-hover table-striped table-bordered table-condensed">
-                      <tr class="row bg-primary">
-                        <th class="col-lg-2 text-center">Product Name</th>
-                        <th class="col-lg-1 text-center">Serial No</th>
-                        <th class="col-lg-2 text-center">Repairer Name</th>
-                        <th class="col-lg-2 text-center">Sending Date</th>
-                        <th class="col-lg-4 text-center">Remarks</th>
-                        <th class="col-lg-1 text-center">Edit</th>
-                        <th class="col-lg-1 text-center">Delete</th>
-                      </tr>
-                      @foreach ($productrepairs as $key=>$item)
-                      
-                                <tr class="row">
-                                  <td style="text-align: center">{{$item->serialInfo->productInfo->productName}}</td>
-                                  <td style="text-align: center">{{$item->serialInfo->serial_no}}</td>
-                                  <td style="text-align: center">{{$item->repairer->repairerName}}</td>
-                                  <td style="text-align: center">{{date('d/m/Y', strtotime(str_replace('-', '/',$item->sendingDate))) }}</td>
-                                  <td style="text-align: center">{{$item->remarks}}</td>
-                                  <td class="text-center"> <a href="{{route('product distribution.repairedit',[$item->id])}}" onclick=""<i class="fa fa-edit" style="font-size:24px"></i></a></td>
-                                  <td class="text-center"> <a href="#" onclick=""<i class="fa fa-trash" style="font-size:24px"></i></a></td>
-                                </tr>
-                       @endforeach
-                           
-                  </table>
-               </div>
+               
                <div id="searchedBrandValue">
                    
                </div>

@@ -75,6 +75,41 @@ class productrepairController extends Controller
         
         dd($productrepair);
 
-        return redirect()->route('product distribution.product repair')->('response','Product Successfully Added to Repair');
+        return redirect()->route('product distribution.product repair')->with('response','Product Successfully Added to Repair');
         }
+       public function repairedit(Request $request,$id){
+        $isAvailable= ProductRepair::find($request->id);
+         if($isAvailable){ 
+        $showProductBasedOnBrand=ProductInfo::where('brand_id',$isAvailable->serialInfo->productInfo->brand_id)->get();
+        $setuptypes= setuptype::all();
+        $securitytypes=SecurityType::all();
+        $productreceivetypes=ProductReceiveType::all();
+        $productdistributions=ProductDistribution::all();
+        $adjustments=Adjustment::all();
+        $reportings=Reporting::all();
+        $categories=Category::all();
+        $productinfos=ProductInfo::all();
+        $repairers=Repairer::all();
+        $brands=Brand::all();
+        $serialInfos=SerialInfo::all();
+        $productrepairs=ProductRepair::all();
+        $selectedProductBasedOnBrand=[];
+        $users=User::all();
+
+    return view('product distribution.repairedit')->with('setuptypes',$setuptypes)
+        ->with('securitytypes',$securitytypes)
+        ->with('productreceivetypes',$productreceivetypes)
+        ->with('productdistributions',$productdistributions)
+        ->with('adjustments',$adjustments)
+        ->with('categories',$categories)
+        ->with('productinfos',$productinfos)
+        ->with('selectedProductBasedOnBrand', $showProductBasedOnBrand)
+        ->with('repairers',$repairers)
+        ->with('brands',$brands)
+        ->with('serialInfos',$serialInfos)
+        ->with('productrepairs',$isAvailable)
+        ->with('reportings',$reportings)->with('users',$users);
+        
+        }
+    }
 }
