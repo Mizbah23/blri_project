@@ -350,7 +350,7 @@ $( function() {
                                  <option value="">Select Category</option>
                                           @foreach($categories as $category)
                                           <option value="{{$category->id}}"
-                                              {{old('categoryName',$productrepairs->serialInfo->productInfo->productName)==$category->id ?"selected":""}}>
+                                            {{old('categoryName')==$category->id ?"selected":""}}>
                                               {{$category->categoryName}}</option>
                                           @endforeach
                               </select>
@@ -445,7 +445,7 @@ $( function() {
 
                   </div>
                   <div class="text-center">
-                      <button type="submit" class=" btn btn-info"> Save</button> 
+                      <button type="submit" class=" btn btn-info">Update</button> 
                           <button type="reset" class="btn btn-danger">Cancel</button>
                   </div>
               </form>
