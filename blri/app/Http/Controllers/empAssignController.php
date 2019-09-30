@@ -56,7 +56,7 @@ class empAssignController extends Controller
 				}),
 			],
 			'projectName'=>'required',
-			'assignDate'=>'required | date',
+			'assignDate'=>'required | date_format:d/m/Y',
 			'remarks'=>'required'
 		],[
 			'employee_information_id.required'=>'Employee name is required',
@@ -77,7 +77,7 @@ class empAssignController extends Controller
 		$newEmployeeAssign=new Emp_assign;
 		$newEmployeeAssign->project_id=$request->projectName;
 		$newEmployeeAssign->employee_information_id=$request->employeeName;
-		$newEmployeeAssign->date=date('Y-m-d', strtotime(str_replace('-', '/', $request['date'])));
+		$newEmployeeAssign->date=date('Y-m-d',  strtotime(str_replace('/','-',$request->date)));
 		$newEmployeeAssign->remarks=$request->remarks;
 		if($request->isActive){
 			$newEmployeeAssign->isActive=1;
@@ -132,7 +132,7 @@ class empAssignController extends Controller
 					}),
 				],
 				'projectName'=>'required',
-				'assignDate'=>'required | date',
+				'assignDate'=>'required|date_format:d/m/Y',
 				'remarks'=>'required'
 			],[
 				'employee_information_id.required'=>'Employee name is required',
@@ -152,7 +152,7 @@ class empAssignController extends Controller
 			// dd($request->all());
 			$isEmployeeExistInAssignTable->project_id=$request->projectName;
 			$isEmployeeExistInAssignTable->employee_information_id=$request->employeeName;
-			$isEmployeeExistInAssignTable->date=date('Y-m-d', strtotime(str_replace('-', '/', $request['date'])));
+			$isEmployeeExistInAssignTable->date=date('Y-m-d',  strtotime(str_replace('/','-',$request->date)));
 			$isEmployeeExistInAssignTable->remarks=$request->remarks;
 			if($request->isActive){
 				$isEmployeeExistInAssignTable->isActive=1;

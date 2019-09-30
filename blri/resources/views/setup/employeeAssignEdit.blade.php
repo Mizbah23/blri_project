@@ -125,10 +125,12 @@ $( function() {
   <script>
   $( function() {
     $( ".datepicker" ).datepicker({
-      minDate: "+0D"
+       dateFormat: 'dd/mm/yy',
+      maxDate: "+0D"
       });
   });
   </script>
+{{-- datepicker ends --}}
 </head> 
 <body class="cbp-spmenu-push">
   <div class="main-content">
@@ -340,13 +342,11 @@ $( function() {
 
                                     </div><br><br>
 
-                                    <label class="col-md-5 control-label">নিয়োগের তারিখ</label>
-                                    <div class="col-md-7">
-                                        <input class="form-control datepicker" type="text" name="date"
-                                            value="{{old('date',$assignedEmployee->date)}}" placeholder="মাস/দিন/বছর"
-                                            required>
-                                        <div class="error">{{$errors->first('assignDate')}}</div>
-                                    </div>
+                          <label class="col-md-5 control-label" >নিয়োগের তারিখ</label>
+                          <div class="col-md-7">
+                            <input class="form-control datepicker" type="text" name="date" value="{{old('date',date('d/m/Y', strtotime(str_replace('-', '/',$assignedEmployee->date))))}}" placeholder="মাস/দিন/বছর" required>
+                            <div class="error">{{$errors->first('assignDate')}}</div>
+                          </div>
                                     <br><br>
                                 </div>
                                 <!--End left side-->

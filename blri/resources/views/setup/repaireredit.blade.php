@@ -318,6 +318,7 @@ $( function() {
       <div class="col-mid-2 alert alert-success">
         {{@session('response')}}
       </div>
+      @endif
       <div class="main-page">
         <div class=" form-grids row form-grids-right">
             <div class="widget-shadow " data-example-id="basic-forms"> 
@@ -345,7 +346,7 @@ $( function() {
                           </div><br><br>
                         <label for="address" class="col-sm-6 control-label">ঠিকানা</label>
                        <div class="col-lg-6">
-                        <textarea name="address" id="address" class="form-control" placeholder="অবশ্যই পুরণ করুণ" value="{{$repairer->address}}" required>
+                        <textarea name="address" id="address" class="form-control" placeholder="অবশ্যই পুরণ করুণ" required>{{old('address',$repairer->address)}}
                          
                         </textarea>
                           <div class="error">{{$errors->first('address')}}</div>
@@ -385,8 +386,10 @@ $( function() {
                         <br><br>
                         <div class="col-md-5">
                           <div class="text-center">
-                          <button style="margin-left: -200px" type="submit" class="btn btn-info">হালনাগাদ করুন</button> 
-                          <input type="button" onclick="cancelUpdate()" class="btn btn-danger" value=""/>
+                          <div class="text-center">
+                          <button type="submit" class="btn btn-info">Update</button> 
+                          <input type="button" onclick="cancelUpdate()" class="btn btn-danger" value="বাতিল করুণ"/>
+                          </div>
                           </div>
 
                         </div>
@@ -405,17 +408,6 @@ $( function() {
                       <!--Search option starts-->
                       <div class="row">
                         <div class="col-md-8"></div>
-
-
-                        <div class="col-md-1">
-                          <label for="searchByBrandName"  class="col-md-4  control-label">খুঁজুন</label>
-                          
-                        </div>
-
-                        <div class="col-md-3">
-                          <input type="text" class="form-control" id="searchByBrandName" name="searchByBrandName" placeholder="খুঁজুন...">
-                        </div>
-
 
                       </div>
 

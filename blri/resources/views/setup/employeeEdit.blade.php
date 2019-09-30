@@ -64,15 +64,51 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 <!--pie-chart --><!-- index page sales reviews visitors pie chart -->
 
 <!--date picker-->
-<script>
-  $(function() {
+  <script>
+$( function() {
+    var dateFormat = "dd/mm/yy",
+      from = $( "#from" )
+        .datepicker({
+          defaultDate: "+1w",
+          changeMonth: true,
+          changeYear: true,
+          numberOfMonths: 1
+        })
+        .on( "change", function() {
+          to.datepicker( "option", "minDate", getDate( this ) );
+        }),
+      to = $( "#to" ).datepicker({
+        defaultDate: "+1w",
+        changeMonth: true,
+        changeYear: true,
+        numberOfMonths: 1
+      })
+      .on( "change", function() {
+        from.datepicker( "option", "maxDate", getDate( this ) );
+      });
+ 
+    function getDate( element ) {
+      var date;
+      try {
+        date = $.datepicker.parseDate( dateFormat, element.value );
+      } catch( error ) {
+        date = null;
+      }
+ 
+      return date;
+    }
+  } );
+  </script>
+<!--date picker-->
+  <script>
+  $( function() {
     $( ".datepicker" ).datepicker({
-      format: 'MM/DD/YYYY',
-      maxDate: "+0D",
-      ignoreReadonly: true
-    });
+       dateFormat: 'dd/mm/yy',
+      maxDate: "+0D"
+      });
   });
   </script>
+{{-- datepicker ends --}}
   
 </head> 
 <body class="cbp-spmenu-push">

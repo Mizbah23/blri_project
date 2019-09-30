@@ -166,6 +166,7 @@ $( function() {
       });
   });
   </script>
+{{-- datepicker ends --}}
 </head> 
 <body class="cbp-spmenu-push">
     <div class="main-content">
