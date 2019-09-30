@@ -386,7 +386,7 @@ $( function() {
                         <div class="col-md-5">
                           <div class="text-center">
                           <button style="margin-left: -200px" type="submit" class="btn btn-info">হালনাগাদ করুন</button> 
-                          <input type="button" onclick="cancelUpdate()" class="btn btn-danger" value="বাতিল করুন"/>
+                          <input type="button" onclick="cancelUpdate()" class="btn btn-danger" value=""/>
                           </div>
 
                         </div>

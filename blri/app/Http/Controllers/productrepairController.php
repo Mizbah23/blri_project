@@ -130,4 +130,36 @@ class productrepairController extends Controller
 
 
     }
+
+        public function update(Request $request,$id){
+
+             $this->validate($request, [
+            'repairerName'=>'required',
+            'categoryName'=>'required',
+            'productName'=>'required',
+            'serial_no'=>'required|unique:product_repairs,serial_id,'.$id,
+            'brandName'=>'required',
+            'sendingDate'=>'required|date_format:d/m/Y| before_or_equal: today'
+        ]);
+            
+        //find($id);
+        $productrepair=ProductRepair::find($id);
+        $productrepair->serial_id=$request->serial_no;
+        $productrepair->repairer_id=$request->repairerName;
+        $productrepair->user_id=$request->session()->get('user')->id;
+        $productrepair->sendingDate=date('Y-m-d', strtotime(str_replace('/', '-', $request->sendingDate)));
+        $productrepair->remarks=$request->remarks;
+
+        // dd($productrepair);
+        
+        $productrepair->save();
+
+        
+   
+
+        return redirect()->route('product distribution.product repair')->with('response','Successfully Editted');
+
+  }
+   
+
 }
