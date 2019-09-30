@@ -52,6 +52,14 @@
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 <!--// For autocomplete Search -->
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css"/>
+
+
+ <script src=" https://code.jquery.com/jquery-3.3.1.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
 <style>
 #chartdiv {
   width: 100%;
@@ -408,30 +416,10 @@ $( function() {
 
                   </div>
               </form>
-                      <div class="row">
-                        <div class="col-md-8"></div>
-
-
-                        <div class="col-md-1">
-                          <label for="searchByBrandName"  class="col-md-4  control-label">খুঁজুন</label>
-                          
-                        </div>
-
-                        <div class="col-md-3">
-                          <input type="text" class="form-control" id="searchByBrandName" name="searchByBrandName" placeholder="খুঁজুন...">
-                        </div>
-
-
-                      </div>
-
-                      <!--Search option stops-->
-
-                     
-                  </div> 
-               </div> 
+ 
 
                 <div id="allBrands">
-                <table class="table table-responsive table-hover table-striped table-bordered table-condensed">
+                <table id="example" class="table table-striped table-bordered" style="width:100%">
                 <thead class="bg-primary">
                 <tr>
                   <th>#</th>
@@ -931,6 +919,11 @@ $( function() {
         }
       });
     } 
+   </script>
+       <script>
+       $(document).ready(function() {
+       $('#example').DataTable();
+       } );
    </script>
 
     
