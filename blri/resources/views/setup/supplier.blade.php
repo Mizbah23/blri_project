@@ -55,6 +55,12 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 <!--// For autocomplete Search -->
+{{-- data table --}}
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css"/>
+<script src=" https://code.jquery.com/jquery-3.3.1.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+{{-- data table --}}
 <style>
 #chartdiv {
   width: 100%;
@@ -435,36 +441,15 @@ $( function() {
                   </div>
               </form>
 
-                      <div class="row">
-                        <div class="col-md-8"></div>
-
-
-                        <div class="col-md-1">
-                          <label for="searchByBrandName"  class="col-md-4  control-label">খুঁজুন</label>
-                          
-                        </div>
-
-                        <div class="col-md-3">
-                          <input type="text" class="form-control" id="searchByBrandName" name="searchByBrandName" placeholder="খুঁজুন...">
-                        </div>
-
-
-                      </div>
-
-                      <!--Search option stops-->
-
-                     
-                  </div> 
-               </div> 
 
                 <div id="allBrands">
-                  <table class="table table-responsive table-hover table-striped table-bordered table-condensed">
+<table id="example" class="table table-striped table-bordered" style="width:100%">
                    <thead class="bg-primary">
                       <tr class="row bg-primary">
                         <th class="col-lg-1 text-center">#</th>
                         <th class="col-lg-1 text-center">সরবরাহকারীর নাম</th>
                         <th class="col-lg-1 text-center">যোগাযোগের ব্যক্তি</th>
-                        <th class="col-lg-3 text-center">ঠিকানা</th>
+                        <th class="col-lg-2 text-center">ঠিকানা</th>
                         <th class="col-lg-1 text-center">ফোন</th>
                         <th class="col-lg-1 text-center">মোবাইল</th>
                         <th class="col-lg-1 text-center">ইমেইল</th>
@@ -473,7 +458,7 @@ $( function() {
                         <th class="col-lg-1 text-center">ভ্যাট নিবন্ধন নং.</th>
                         <th class="col-lg-1 text-center">সম্পাদনা</th>
                       </tr>
-                      </thead>
+                    </thead>
                       @if(isset($suppliers))
                       <tbody>
                         @foreach ($suppliers as $key=>$supplier)
@@ -495,6 +480,9 @@ $( function() {
                        </tbody>    
                   </table>
                </div>
+             </div>
+           </div>
+         </div>
                <div id="searchedBrandValue">
                    
                </div>
@@ -931,7 +919,12 @@ $( function() {
     
     <!-- Bootstrap Core JavaScript -->
    <script src="/js/bootstrap.js"> </script>
-
+   </script>
+       <script>
+       $(document).ready(function() {
+       $('#example').DataTable();
+       } );
+   </script>
     
 </body>
 </html>

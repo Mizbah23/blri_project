@@ -39,6 +39,14 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 <!-- Metis Menu -->
 <script src="/js/metisMenu.min.js"></script>
 <script src="/js/custom.js"></script>
+ <script src=" https://code.jquery.com/jquery-3.3.1.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css"/>
+
 <link href="/css/custom.css" rel="stylesheet">
 <!--//Metis Menu -->
 <style>
@@ -304,19 +312,9 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
           <div class="col-sm-4"></div>
           
         </div>
-              <div class="row">
-              <div class="col-sm-8"></div>
 
-                    <div class="form-group" >
-                        <label for="searchoption" class="col-lg-9  control-label" style="text-align: right; ">খুঁজুন
-                        </label>
-                        <div class="col-lg-3">
-                            <input type="text" class="form-control" placeholder="খুঁজুন...">
-                        </div>
-                     </div> 
-              </div><br><br>
 
-               <table class="table table-responsive table-hover table-striped table-bordered table-condensed">
+<table id="example" class="table table-striped table-bordered" style="width:100%">
                 <thead>
                 <tr class=" bg-primary">
                   <th>#</th>
@@ -779,6 +777,11 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
     
     <!-- Bootstrap Core JavaScript -->
    <script src="/js/bootstrap.js"> </script>
+   <script>
+       $(document).ready(function() {
+       $('#example').DataTable();
+       } );
+   </script>
     <!-- //Bootstrap Core JavaScript -->
     
 </body>
