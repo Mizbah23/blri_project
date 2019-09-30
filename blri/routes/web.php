@@ -168,7 +168,8 @@ Route::group(['middleware'=>'userNameExistenceCheck'], function () {
     Route::post('/show/product/basedOnBrand/Id', 'productrepairController@showProductBasedOnBrand')->name('showProductBasedOnBrand');
     Route::get('/product_distribution/product_repair/delete/item', 'productrepairController@deleteItemFromRepair')->name('delete.product.from.repair');
     Route::get('/product_distribution/repair/{id}/edit', 'productrepairController@repairedit')->name('product distribution.repairedit');
-    Route::post('/product_distribution/repair/{id}/edit', 'productrepairController@repairedit');
+    Route::post('/product_distribution/repair/{id}/edit', 'productrepairController@update');
+   
 
     //Repair Receive
     Route::get('/product_distribution/repair_receive', 'repairReceiveController@index')->name('product distribution.repair receive');

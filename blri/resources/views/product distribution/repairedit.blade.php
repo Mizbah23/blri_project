@@ -350,7 +350,7 @@ $( function() {
                                  <option value="">Select Category</option>
                                           @foreach($categories as $category)
                                           <option value="{{$category->id}}"
-                                            {{old('categoryName')==$category->id ?"selected":""}}>
+                                              {{old('categoryName',$productrepairs->serialInfo->productInfo->brand->category->id)==$category->id ?"selected":""}}>
                                               {{$category->categoryName}}</option>
                                           @endforeach
                               </select>
@@ -386,7 +386,7 @@ $( function() {
                                             {{"selected"}}
                                             @endif>{{$product->productName}}</option>
                                         @endforeach
-                               @endif
+                                        @endif
                               </select>
                               <div class="error">{{$errors->first('productName')}}</div>
                             </div><br><br>
@@ -396,15 +396,15 @@ $( function() {
                             <div class="col-md-8">
                                 <select id="serial_no" name="serial_no" class="form-control required" value="{{old('serial_no')}}" required>
                                  <option value="">Select Product Serial</option>
-                                 @if(old('productName'))
-                                  @foreach ($serialInfos as $serialInfo)
-                                    @if(old('productName')==$serialInfo->product_info_id)
-                                      <option value="{{$serialInfo->id}}" @if (old('serial_no')==$serialInfo->id)
+                                 @if(old('productName',$productrepairs->serialInfo->product_info_id))
+                                            @foreach ($serialInfos as $serialInfo)
+                                                @if(old('productName',$productrepairs->serialInfo->product_info_id)==$serialInfo->product_info_id)
+                                                <option value="{{$serialInfo->id}}" @if (old('serial_no',$productrepairs->serial_id)==$serialInfo->id)
                                                 {{"selected"}}
-                                    @endif>{{$serialInfo->serial_no}}</option>
-                                    @endif
-                                  @endforeach
-                                @endif
+                                                @endif>{{$serialInfo->serial_no}}</option>
+                                                @endif
+                                            @endforeach
+                                        @endif
                               </select>
                             <div class="error">{{$errors->first('serial_no')}}</div>
                             </div><br><br>
@@ -414,8 +414,11 @@ $( function() {
                             <div class="col-md-8">
                                 <select id="repairerName" name="repairerName" class="form-control required" required>
                                  <option value="">Select Repairer Name</option>
+
                                   @foreach($repairers as $repairer)
-                                  <option value="{{$repairer->id}}">{{$repairer->repairerName}}</option>
+                                  <option value="{{$repairer->id}}"@if (old('repairerName',$productrepairs->repairer_id)==$repairer->id)
+                                              {{"selected"}}
+                                          @endif>{{$repairer->repairerName}}</option>
                                   @endforeach
                               </select>
                                <div class="error">{{$errors->first('repairerName')}}</div>
@@ -428,7 +431,7 @@ $( function() {
                                  <label for="sendingDate" class=" control-label">Sending Date</label>
                             </div>
                             <div class="col-md-8">
-                               <input class="form-control datepicker" type="text" name="sendingDate" placeholder="dd/mm/yyyy" id="sendingDate" value=""  autocomplete="off" required>
+                               <input class="form-control datepicker" type="text" name="sendingDate" placeholder="dd/mm/yyyy" id="sendingDate" value="{{old('sendingDate',date('d/m/Y', strtotime(str_replace('-', '/',$productrepairs->sendingDate)))) }}"  autocomplete="off" required>
                                 
                             </div><br><br>
                             
@@ -436,7 +439,7 @@ $( function() {
                                  <label for="remarks" class=" control-label">Remarks</label>
                             </div>
                             <div class="col-md-8">
-                                <textarea name="remarks" id="remarks" class="form-control" placeholder="Remarks"></textarea>
+                             <textarea name="remarks" id="remarks" class="form-control" placeholder="Remarks">{{old('remarks',$productrepairs->remarks)}}</textarea>
                             </div><br><br>
                             
                         </div>
@@ -446,19 +449,13 @@ $( function() {
                   </div>
                   <div class="text-center">
                       <button type="submit" class=" btn btn-info">Update</button> 
-                          <button type="reset" class="btn btn-danger">Cancel</button>
+                     <button  onclick="cancelUpdate()" class="btn btn-danger">বাতিল করুন</button>
                   </div>
               </form>
                       <div class="row">
                         <div class="col-md-8"></div>
 
-
-                        <div class="col-md-1">
-                          <label for="searchByBrandName"  class="col-md-4  control-label">Search</label>
-                          
-                        </div>
-
-                      </div>
+                  </div>
 
                       <!--Search option stops-->
 
@@ -1052,6 +1049,11 @@ $( function() {
           });
         }
       } 
+  </script>
+ <script>
+    function cancelUpdate() {
+      document.location.href="{!!route('product distribution.product repair');!!}";
+    }
   </script>
 
     
