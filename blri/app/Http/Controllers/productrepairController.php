@@ -160,6 +160,15 @@ class productrepairController extends Controller
         return redirect()->route('product distribution.product repair')->with('response','Successfully Editted');
 
   }
-   
+   public function deleteItemFromRepair(Request $request){
+          if ($request->ajax()) {
+            $isAvailable= ProductRepair::find($request->id);
+            $isDelete=false;
+            if ($isAvailable) {
+                $isDelete= $isAvailable->delete();
+            }
+            return $isDelete ? 'deleted' : 'error';
+        }
+   }
 
 }
