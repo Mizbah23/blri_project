@@ -36,14 +36,12 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 <script src="/js/Chart.js"></script>
 <!-- //chart -->
 
-{{-- // For autocomplete Search  --}}
-
-<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.min.css">
-<link rel="stylesheet" href="https://jqueryui.com/resources/demos/style.css">
-<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
-
-{{-- // For autocomplete Search  --}}
+{{-- data table --}}
+<script src="/js/datatable/jquery-3.3.1.js"></script>
+<script src="/js/datatable/jquerydatatables.min.js"></script>
+<script src="/js/datatable/dataTables.bootstrap4.min.js"></script>
+<link rel="stylesheet" href="/css/dataTables.bootstrap4.min.css"/>
+{{-- data table --}}
 
 <!-- Metis Menu -->
 <script src="/js/metisMenu.min.js"></script>
@@ -112,6 +110,12 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                             });
                         </script>
                     <!-- //requried-jsfiles-for owl -->
+   <script>
+       $(document).ready(function() {
+       $('#example').DataTable();
+       } );
+   </script>
+    {{-- datatable --}}
 </head> 
 <body class="cbp-spmenu-push">
     <div class="main-content">
@@ -317,7 +321,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
           <div class="col-sm-4"></div>
           
         {{-- </div> --}}
-              <div class="row">
+              {{-- <div class="row">
               <div class="col-sm-8"></div><br><br>
 
                     <div class="form-group" >
@@ -326,11 +330,10 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                             <input type="text" class="form-control" name="searchBySectionName" id="searchBySectionName" placeholder="শাখা খুঁজুন...">
                         </div><br>
                      </div> 
+              </div> --}}
               </div>
-              </div>
-
-               <div id="allSections">
-                <table class="table table-responsive table-hover table-striped table-bordered table-condensed">
+               <div id="allSections" class="overflow_x_auto_for_table">
+                <table id="example" class="table table-responsive table-hover table-striped table-bordered table-condensed">
                     <thead>
                         <tr class=" bg-primary">
                         <th>#</th>
@@ -347,7 +350,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                             <td scope="row">{{++$key}}</td>
                             <td>{{$section->division->divisionName}}</td>
                             <td>{{$section->sectionName}}</td>
-                            <td>
+                            <td class="text-center">
                                 <a href="{{route('setup.secedit',[$section->id])}}"><i class="fa fa-edit" style="font-size:24px"></i></a>
                             </td>
                             
@@ -356,14 +359,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                     </tbody>
                     @endif
                 </table>
-                
-               </div>
-
-               <div id="searchedSectionValue">
-               </div>
-              
-
-              
+               </div>             
             </div>
           </div>
       

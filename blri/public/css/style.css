@@ -2743,6 +2743,8 @@ header.widget-header h4 {
 .widgettable .table {
     margin-bottom: 0;
 }
+tr:nth-child(even){background-color: #f2f2f2}
+
 .widgettable .table-bordered,.widgettable  .table-bordered>tbody>tr>td,.widgettable  .table-bordered>tbody>tr>th,.widgettable  .table-bordered>tfoot>tr>td,.widgettable  .table-bordered>tfoot>tr>th,.widgettable  .table-bordered>thead>tr>td,.widgettable  .table-bordered>thead>tr>th {
     border: 1px solid #F5F5F5;
 }
@@ -2750,6 +2752,7 @@ header.widget-header h4 {
     width: 100%;
     max-width: 100%;
     margin-bottom: 16px;
+
 }
 .widgettable pre code,.widgettable  table {
     background-color: transparent;
@@ -2802,6 +2805,9 @@ header.widget-header h4 {
 caption, th {
     text-align: left;
 }
+
+.overflow_x_auto_for_table{overflow-x:auto;}
+
 td, th {
     padding: 0;
 }
