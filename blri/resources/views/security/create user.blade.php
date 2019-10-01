@@ -47,12 +47,12 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 <script src="/js/custom.js"></script>
 <link href="/css/custom.css" rel="stylesheet">
 <!--//Metis Menu -->
- <!--For autocomplete Search -->
-<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.min.css">
-<link rel="stylesheet" href="https://jqueryui.com/resources/demos/style.css">
-<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
-<!--// For autocomplete Search -->
+ {{-- data table --}}
+<script src="/js/datatable/jquery-3.3.1.js"></script>
+<script src="/js/datatable/jquerydatatables.min.js"></script>
+<script src="/js/datatable/dataTables.bootstrap4.min.js"></script>
+<link rel="stylesheet" href="/css/dataTables.bootstrap4.min.css"/>
+{{-- data table --}}
 <style>
 #chartdiv {
   width: 100%;
@@ -151,6 +151,13 @@ $( function() {
     }
   } );
   </script>
+
+  <script>
+       $(document).ready(function() {
+       $('#example').DataTable();
+       } );
+  </script>
+    {{-- datatable --}}
 
 </head> 
 <body class="cbp-spmenu-push">
@@ -418,39 +425,22 @@ $( function() {
 
                   </div>
               </form>
-
-                      <div class="row">
-                        <div class="col-md-8"></div>
-
-
-                        <div class="col-md-1">
-                          <label for="searchByBrandName"  class="col-md-4  control-label">খুঁজুন</label>
-                          
-                        </div>
-
-                        <div class="col-md-3">
-                          <input type="text" class="form-control" id="searchByBrandName" name="searchByBrandName" placeholder="খুঁজুন...">
-                        </div>
-
-
-                      </div>
-
-                      <!--Search option stops-->
-
-                     
                   </div> 
-               </div> 
+              
 
-                <div id="allBrands">
-                  <table class="table table-responsive table-hover table-striped table-bordered table-condensed">
-                      <tr class="row bg-primary">
+                <div id="allBrands" class="overflow_x_auto_for_table">
+                  <table id="example" class="table table-responsive table-hover table-striped table-bordered table-condensed">
+                      <thead>
+                        <tr class="row bg-primary">
                         <th class="col-lg-1 text-center">#</th>
                         <th class="col-lg-3 text-center">কর্মকর্তার নাম</th>
                         <th class="col-lg-2 text-center">কর্মকর্তার ভুমিকা</th>
                         <th class="col-lg-3 text-center">ই-মেইল</th>
                         <th class="col-lg-3 text-center">সম্পাদনা</th>
                       </tr>
-                      @if(isset($users))
+                      </thead>
+                      <tbody>
+                          @if(isset($users))
                         @foreach ($users as $key=>$user)
                       
                                 <tr class="row">
@@ -461,13 +451,11 @@ $( function() {
                             <td><a href="{{route('security.useredit',[$user->id])}}"><i class="fa fa-edit" style="font-size:24px"></i></a></td>
                                 </tr>
                             @endforeach
-                        @endif    
+                        @endif  
+                        </tbody>  
                   </table>
                </div>
-               <div id="searchedBrandValue">
-                   
-               </div>
-              
+                </div> 
             </div>
           </div>
       

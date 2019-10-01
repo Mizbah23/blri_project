@@ -51,18 +51,12 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 <script src="/js/custom.js"></script>
 <link href="/css/custom.css" rel="stylesheet">
 <!--//Metis Menu -->
- <!--For autocomplete Search -->
-<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.min.css">
-<link rel="stylesheet" href="https://jqueryui.com/resources/demos/style.css">
-<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+
 {{-- data table --}}
- <script src=" https://code.jquery.com/jquery-3.3.1.js"></script>
-
-<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-
-<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
-  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css"/>
+<script src="/js/datatable/jquery-3.3.1.js"></script>
+<script src="/js/datatable/jquerydatatables.min.js"></script>
+<script src="/js/datatable/dataTables.bootstrap4.min.js"></script>
+<link rel="stylesheet" href="/css/dataTables.bootstrap4.min.css"/>
 {{-- data table --}}
 <!--// For autocomplete Search -->
 <style>
@@ -417,8 +411,8 @@ $( function() {
 
                </div> 
 
-                <div id="allBrands">
-                  <table id="example" class="table table-striped table-bordered" style="width:100%">
+                <div id="allBrands" class="overflow_x_auto_for_table">
+                  <table id="example" class="table table-responsive table-striped table-bordered" style="width:100%">
                     <thead>
                       <tr class="row bg-primary">
                         <th class="col-lg-1 text-center">#</th>
@@ -445,7 +439,7 @@ $( function() {
                                     <td>{{date("d/m/Y", strtotime($project->endDate))}}</td>
                                     <td>{{ $project->description }}</td>
                                     
-                                    <td><a href="{{route('setup.projectEdit',[$project->id])}}"><i class="fa fa-edit" style="font-size:24px"></i></a></td>
+                                    <td class="text-center"><a href="{{route('setup.projectEdit',[$project->id])}}"><i class="fa fa-edit" style="font-size:24px"></i></a></td>
                                 </tr>
                               @endforeach
                               @endif

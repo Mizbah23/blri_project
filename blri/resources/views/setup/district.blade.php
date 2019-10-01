@@ -39,13 +39,13 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 <!-- Metis Menu -->
 <script src="/js/metisMenu.min.js"></script>
 <script src="/js/custom.js"></script>
- <script src=" https://code.jquery.com/jquery-3.3.1.js"></script>
 
-<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-
-<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
-
-<link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css"/>
+{{-- data table --}}
+<script src="/js/datatable/jquery-3.3.1.js"></script>
+<script src="/js/datatable/jquerydatatables.min.js"></script>
+<script src="/js/datatable/dataTables.bootstrap4.min.js"></script>
+<link rel="stylesheet" href="/css/dataTables.bootstrap4.min.css"/>
+{{-- data table --}}
 
 <link href="/css/custom.css" rel="stylesheet">
 <!--//Metis Menu -->
@@ -110,7 +110,13 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                 });
                             });
                         </script>
-                    <!-- //requried-jsfiles-for owl -->
+          <!-- //requried-jsfiles-for owl -->
+<script>
+       $(document).ready(function() {
+       $('#example').DataTable();
+       } );
+</script>
+    {{-- datatable --}}
 </head> 
 <body class="cbp-spmenu-push">
     <div class="main-content">
@@ -313,38 +319,36 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
           
         </div>
 
-
-<table id="example" class="table table-striped table-bordered" style="width:100%">
+        <div id="allBrands" class="overflow_x_auto_for_table">
+          <table id="example" class="table table-striped table-bordered" style="width:100%">
                 <thead>
                 <tr class=" bg-primary">
-                  <th>#</th>
-                  <th>বিভাগ</th>
-                  <th>শাখা</th>
-                  <th>সম্পাদনা</th>
-                 
+                  <th class="text-center">#</th>
+                  <th class="text-center">বিভাগ</th>
+                  <th class="text-center">শাখা</th>
+                  <th class="text-center">সম্পাদনা</th>
                 </tr>
               </thead>
               @php $i=0 @endphp
                @if(isset($districts))
-                  @foreach ($districts as $district)
-                  @php $i++ @endphp
+                  
               <tbody>
+                @foreach ($districts as $district)
+                  @php $i++ @endphp
                 <tr>
-                  <th scope="row">{{$i}}</th>
+                  <td>{{$i}}</th>
                   <td>{{$district->division}}</td>
                   <td>{{$district->district}}</td>
-                  <td>
+                  <td class="text-center">
                     <a href="{{route('setup.disedit',[$district->id])}}"><i class="fa fa-edit" style="font-size:24px"></i></a>
                   </td>
-                 
                 </tr>
                 @endforeach
                 @endif
               </tbody>
             </table>
-              
-
-              
+        </div>
+   
             </div>
           </div>
       
