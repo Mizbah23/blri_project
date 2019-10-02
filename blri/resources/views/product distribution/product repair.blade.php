@@ -512,7 +512,7 @@ $( function() {
                                   <td style="text-align: center">{{date('d/m/Y', strtotime(str_replace('-', '/',$item->sendingDate))) }}</td>
                                   <td style="text-align: center">{{$item->remarks}}</td>
                                   <td class="text-center"> <a href="{{route('product distribution.repairedit',[$item->id])}}" onclick=""<i class="fa fa-edit" style="font-size:24px"></i></a></td>
-                                  <td class="text-center"> <a href="deleteItem({{$item->id}})" onclick=""<i class="fa fa-trash" style="font-size:24px"></i></a></td>
+                                  <td class="text-center"> <a href="" onclick="deleteItem({{$item->id}})"<i class="fa fa-trash" style="font-size:24px"></i></a></td>
                                 </tr>
                        @endforeach
                            
