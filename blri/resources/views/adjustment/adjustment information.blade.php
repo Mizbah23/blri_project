@@ -375,7 +375,7 @@ $( function() {
                                 <label for="reason" class=" control-label">Reason</label>
                               </div>
                               <div class="col-md-9">
-                                <textarea class="form-control" name="reason" required>{{old('reason')}}</textarea>
+                                <textarea class="form-control" id="reason" name="reason" required>{{old('reason')}}</textarea>
                                 <div class="error">{{$errors->first('reason')}}</div>
                             </div><br><br>
 
@@ -434,10 +434,10 @@ $( function() {
 
                           <div class="col-md-4" >
                               <div class="col-md-3">
-                              <label for="contactNo" class=" control-label">Quantity</label>
+                              <label for="quantity" class=" control-label">Quantity</label>
                               </div>
                               <div class="col-md-9">
-                                <input type="number" class="form-control"  name="quantity" value="{{old('quantity')}}" placeholder="0" required>
+                                <input type="number" class="form-control"  name="quantity" id="quantity" value="{{old('quantity')}}" placeholder="0" required>
                                 <div class="error">{{$errors->first('quantity')}}</div>
 
                               </div><br><br><br><br>
