@@ -2,7 +2,7 @@
         
         <!-- //header-extentded -->
    
-             @extends('layouts.master')
+     @extends('layouts.master')
        <!-- //This is for title -->
         @section('title') 
           Home 
@@ -11,7 +11,7 @@
         <!-- extended finished-->
            <!-- main content start-->
 
-        @section('content')
+    @section('content')
                         <div class="container">
                             <img style="margin-left: 300px;margin-top: 50px; " src="/images/blrilogo.jpg" alt=""  class="responsive">
                             
