@@ -372,7 +372,7 @@ $( function() {
                                <div class="error" style="color: red">{{$errors->first('userType')}}</div>
                           </div><br><br>
                       </div>
-                      <!--End left side--ন
+                      <!--End left side-->
 
 
                       <!--right side starts-->

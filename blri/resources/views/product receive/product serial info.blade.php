@@ -10,9 +10,7 @@
 SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 
-{{-- date-picker link --}}
-{{-- <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> --}}
-{{-- date-picker link --}}
+
 <!-- Bootstrap Core CSS -->
 <link href="/css/bootstrap.css" rel='stylesheet' type='text/css' />
 
@@ -26,20 +24,12 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 <!-- side nav css file -->
 <link href='/css/SidebarNav.min.css' media='all' rel='stylesheet' type='text/css'/>
 <!-- //side nav css file -->
-
-{{-- <link rel="stylesheet" href="/css/jquery-ui.css" type='text/css'/> --}}
-<!--datepicker-->
-{{-- <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<link rel="stylesheet" href="/resources/demos/style.css"> --}}
- 
  <!-- js-->
-{{-- <script src="/js/jquery-1.11.1.min.js"></script>
-<script src="/js/modernizr.custom.js"></script> --}}
+<script src="/js/jquery-1.11.1.min.js"></script>
+<script src="/js/modernizr.custom.js"></script>
 
-<!--datepicker-->
-{{-- <script src="/js/jquery-1.12.4.js"></script>
-<script src="/js/jquery-ui.js"></script>
- --}}<!--webfonts-->
+
+<!--webfonts-->
 <link href="//fonts.googleapis.com/css?family=PT+Sans:400,400i,700,700i&amp;subset=cyrillic,cyrillic-ext,latin-ext" rel="stylesheet">
 <!--//webfonts--> 
 
@@ -53,17 +43,17 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 <link href="/css/custom.css" rel="stylesheet">
 <!--//Metis Menu -->
 
- {{-- data table --}}
+{{-- datepicker --}}
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.min.css">
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+{{-- datepicker --}}
+
+{{-- data table --}}
 <script src="/js/datatable/jquery-3.3.1.js"></script>
 <script src="/js/datatable/jquerydatatables.min.js"></script>
 <script src="/js/datatable/dataTables.bootstrap4.min.js"></script>
 <link rel="stylesheet" href="/css/dataTables.bootstrap4.min.css"/>
 {{-- data table --}}
-
-{{-- date_picker link --}}
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-{{-- date_picker link --}}
 <style>
 #chartdiv {
   width: 100%;
@@ -125,8 +115,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                 });
                             });
                         </script>
-                <!-- //requried-jsfiles-for owl -->
-
+                    <!-- //requried-jsfiles-for owl -->
 <!--date picker-->
   <script>
 $( function() {
@@ -175,11 +164,11 @@ $( function() {
   });
   </script>
 
- <script>
+<script>
        $(document).ready(function() {
        $('#example').DataTable();
        } );
-  </script>
+   </script>
     {{-- datatable --}}
 
 </head> 
@@ -429,8 +418,8 @@ $( function() {
                             </div>
                             <div class="col-md-7">
                                 <select id="productName" name="productName" class="form-control required" required>
-                                 <div class="error" style="color:red">{{$errors->first('productName')}}</div><br><br>
-                                 <option value=""></option>
+                                 <div class="error" style="color:red">{{$errors->first('productName')}}</div><br><br  
+                                 <option value="">নির্বাচন করুন</option>
                                   @foreach ($products->unique('productName')->pluck('productName') as $productName)
                                  <option value="{{$productName}}" @if (old('productName')==$productName)
                                     {{"selected"}}
@@ -451,11 +440,11 @@ $( function() {
                   </div>
                 </div>
               </form>
-                
-                  </div>  
-
-             <div id="allBrands" class="overflow_x_auto_for_table">
-                  <table id="example" class="table table-responsive table-hover table-striped table-bordered table-condensed">
+               
+                  </div> 
+               
+             <div class="row overflow_x_auto_for_table">
+                        <table id="example" class="table table-responsive table-striped table-condenced table-bordered">
                           <thead>
                           <tr class="bg-primary">
                             <th class="col-lg-1 text-center">#</th>
@@ -474,14 +463,15 @@ $( function() {
                                     <td class="text-center">{{$serialInfo->serial_no}}</td>
                                     <td class="text-center">{{date('d/m/Y', strtotime(str_replace('-', '/',$serialInfo->warrantyDate))) }}</td>
                                     <td class="text-center">{{$serialInfo->user->employeeinfo->name}}</td>
-                                  <td class="text-center"><a href="{{route('product receive.serialedit',[$serialInfo->id])}}"><i class="fa fa-edit" style="font-size:24px"></i></a></td>
+                                  <td><a href="{{route('product receive.serialedit',[$serialInfo->id])}}"><i class="fa fa-edit" style="font-size:24px"></i></a></td>
                                 </tr>
                           @endforeach
                         </tbody> 
                        
                         </table>
+               
                     </div>
-                  </div>
+               </div>
             </div>
           </div>
            
