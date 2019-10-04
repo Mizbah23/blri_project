@@ -50,15 +50,11 @@
 {{-- data table --}}
 
 {{-- datepicker --}}
-{{-- <link rel="stylesheet" href="/css/datetimepicker/basejquery-ui.min.css">
-<link rel="stylesheet" href="/css/datetimepicker/demosstyle.css">
-<script src="/js/datetimepicker/1.12.1jquery-ui.min.js"></script> --}}
-{{-- datepicker --}}
-
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.min.css">
 <link rel="stylesheet" href="https://jqueryui.com/resources/demos/style.css">
  {{-- <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script> --}}
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+{{-- datepicker --}}
 <style>
 #chartdiv {
   width: 100%;
