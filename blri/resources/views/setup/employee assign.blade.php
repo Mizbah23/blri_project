@@ -28,8 +28,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 <!--datepicker-->
 <!--<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">-->
 <!--datepicker ends-->
-<!--<link rel="stylesheet" href="/resources/demos/style.css">
-<!----> 
+<!--<link rel="stylesheet" href="/resources/demos/style.css">--> 
  <!-- js-->
 <script src="/js/jquery-1.11.1.min.js"></script>
 <script src="/js/modernizr.custom.js"></script>
@@ -42,12 +41,6 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 <!-- chart -->
 <script src="/js/Chart.js"></script>
 <!-- //chart -->
-{{-- datepicker starts--}}
-{{-- datepicker --}}
-<link rel="stylesheet" href="/css/datetimepicker/basejquery-ui.min.css">
-<link rel="stylesheet" href="/css/datetimepicker/demosstyle.css">
-<script src="/js/datetimepicker/1.12.1jquery-ui.min.js"></script>
-{{-- datepicker ends --}}
 
 <!-- Metis Menu -->
 <script src="/js/metisMenu.min.js"></script>
@@ -60,6 +53,12 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 <script src="/js/datatable/dataTables.bootstrap4.min.js"></script>
 <link rel="stylesheet" href="/css/dataTables.bootstrap4.min.css"/>
 {{-- data table --}}
+
+{{-- datepicker --}}
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.min.css">
+<link rel="stylesheet" href="https://jqueryui.com/resources/demos/style.css">
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+{{-- datepicker --}}
 <style>
 #chartdiv {
   width: 100%;
@@ -393,7 +392,8 @@ $( function() {
 
                           <label class="col-md-5 control-label" >নিয়োগের তারিখ</label>
                           <div class="col-md-7">
-                            <input class="form-control datepicker" type="text" name="date" value="{{old('date')}}" placeholder="মাস/দিন/বছর" required>
+
+                              <input class="form-control datepicker" type="text" id="" name="date" placeholder="দিন/মাস/বছর"  value="{{old('date')}}"  required  autocomplete="off">
                             <div class="error">{{$errors->first('assignDate')}}</div>
                           </div>
                           <br><br>

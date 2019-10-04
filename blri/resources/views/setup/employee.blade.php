@@ -55,6 +55,12 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 <script src="/js/datatable/dataTables.bootstrap4.min.js"></script>
 <link rel="stylesheet" href="/css/dataTables.bootstrap4.min.css"/>
 {{-- data table --}}
+
+{{-- datepicker --}}
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.min.css">
+<link rel="stylesheet" href="https://jqueryui.com/resources/demos/style.css">
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+{{-- datepicker --}}
 <style>
 #chartdiv {
   width: 100%;
@@ -409,13 +415,15 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 
                         <label class="col-md-6 control-label" >যোগদানের তারিখ</label>
                         <div class="col-md-6">
-                          <input class="form-control datepicker" type="text" name="joiningDate" placeholder="মাস/দিন/বছর"  value="{{old('joiningDate')}}"  required>
+                            <input class="form-control datepicker" type="text" id="" name="joiningDate" placeholder="dd/mm/yyyy"  value="{{old('joiningDate')}}"  required  autocomplete="off">
+
                           <div class="error">{{$errors->first('joiningDate')}}</div>
                         </div><br><br>
 
                         <label class="col-md-6 control-label" >জন্ম তারিখ</label>
                         <div class="col-md-6">
-                          <input type="text" class="form-control datepicker" name="birthDate" placeholder="মাস/দিন/বছর"  value="{{old('birthDate')}}" required>
+
+                           <input class="form-control datepicker" type="text" id="" name="birthDate" placeholder="dd/mm/yyyy"  value="{{old('birthDate')}}"  required  autocomplete="off">
                           <div class="error">{{$errors->first('birthDate')}}</div>
                         </div><br><br>
 

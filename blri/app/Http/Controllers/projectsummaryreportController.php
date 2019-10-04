@@ -20,6 +20,6 @@ public function index()
         $reportings=Reporting::all();
 
         //dd($sections[0]->division);
-        return view('reporting.product summary report')->with('setuptypes',$setuptypes)->with('securitytypes',$securitytypes)->with('productreceivetypes',$productreceivetypes)->with('productdistributions',$productdistributions)->with('reportings',$reportings);
+        return view('reporting.project summary report')->with('setuptypes',$setuptypes)->with('securitytypes',$securitytypes)->with('productreceivetypes',$productreceivetypes)->with('productdistributions',$productdistributions)->with('reportings',$reportings);
     }
 }
