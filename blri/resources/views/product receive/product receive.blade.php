@@ -24,37 +24,37 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 <link href='/css/SidebarNav.min.css' media='all' rel='stylesheet' type='text/css'/>
 <!-- //side nav css file -->
 
-<link rel="stylesheet" href="/css/jquery-ui.css" type='text/css'/>
+{{-- <link rel="stylesheet" href="/css/jquery-ui.css" type='text/css'/> --}}
 <!--datepicker-->
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<link rel="stylesheet" href="/resources/demos/style.css">
+{{-- <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> --}}
+{{-- <link rel="stylesheet" href="/resources/demos/style.css"> --}}
  
  <!-- js-->
-<script src="/js/jquery-1.11.1.min.js"></script>
-<script src="/js/modernizr.custom.js"></script>
+{{-- <script src="/js/jquery-1.11.1.min.js"></script> --}}
+{{-- <script src="/js/modernizr.custom.js"></script> --}}
 
 <!--datepicker-->
-<script src="/js/jquery-1.12.4.js"></script>
-<script src="/js/jquery-ui.js"></script>
+{{-- <script src="/js/jquery-1.12.4.js"></script> --}}
+{{-- <script src="/js/jquery-ui.js"></script> --}}
 <!--webfonts-->
-<link href="//fonts.googleapis.com/css?family=PT+Sans:400,400i,700,700i&amp;subset=cyrillic,cyrillic-ext,latin-ext" rel="stylesheet">
+{{-- <link href="//fonts.googleapis.com/css?family=PT+Sans:400,400i,700,700i&amp;subset=cyrillic,cyrillic-ext,latin-ext" rel="stylesheet"> --}}
 <!--//webfonts--> 
 
 <!-- chart -->
-<script src="/js/Chart.js"></script>
+{{-- <script src="/js/Chart.js"></script> --}}
 <!-- //chart -->
 
-<!-- Metis Menu -->
+<!-- page scrolling -->
 <script src="/js/metisMenu.min.js"></script>
 <script src="/js/custom.js"></script>
 <link href="/css/custom.css" rel="stylesheet">
-<!--//Metis Menu -->
- <!--For autocomplete Search -->
+<!--//page scrolling -->
+ <!--date time picker -->
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.min.css">
 <link rel="stylesheet" href="https://jqueryui.com/resources/demos/style.css">
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
-<!--// For autocomplete Search -->
+<!--// date time picker -->
 <style>
 #chartdiv {
   width: 100%;

@@ -50,10 +50,15 @@
 {{-- data table --}}
 
 {{-- datepicker --}}
-<link rel="stylesheet" href="/css/datetimepicker/basejquery-ui.min.css">
+{{-- <link rel="stylesheet" href="/css/datetimepicker/basejquery-ui.min.css">
 <link rel="stylesheet" href="/css/datetimepicker/demosstyle.css">
-<script src="/js/datetimepicker/1.12.1jquery-ui.min.js"></script>
+<script src="/js/datetimepicker/1.12.1jquery-ui.min.js"></script> --}}
 {{-- datepicker --}}
+
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.min.css">
+<link rel="stylesheet" href="https://jqueryui.com/resources/demos/style.css">
+ {{-- <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script> --}}
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 <style>
 #chartdiv {
   width: 100%;
@@ -380,13 +385,14 @@ $( function() {
 
                         <label class="col-md-5 control-label" >শুরুর তারিখ</label>
                           <div class="col-md-7">
-                            <input class="form-control datepicker" type="text" id="from" name="startDate" autocomplete="off"></p>
+                            <input class="form-control datepicker" type="text" id="" name="startDate" placeholder="dd/mm/yyyy"  value="{{old('startDate')}}"  required  autocomplete="off">
+                        
                           </div><br><br>
 
                           <label class="col-md-5 control-label" >শেষ তারিখ</label>
                           <div class="col-md-7">
-                            
-                          <input class="form-control datepicker" type="text" id="to" name="endDate" autocomplete="off"></p>
+
+                            <input class="form-control datepicker" type="text" id="" name="endDate" placeholder="dd/mm/yyyy"  value="{{old('endDate')}}"  required  autocomplete="off">
                           </div><br><br>
 
 
