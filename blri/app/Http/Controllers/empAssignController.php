@@ -9,6 +9,9 @@ use App\ProductReceiveType;
 use App\EmployeeInformation;
 use App\Project;
 use App\Emp_assign;
+use App\ProductDistribution;
+use App\Adjustment;
+use App\Reporting;
 use Validator;
 use Illuminate\Validation\Rule;
 
@@ -21,6 +24,9 @@ class empAssignController extends Controller
 		$employeeInformations= EmployeeInformation::all();
 		$projects= Project::all();
 		$assignedEmployees=Emp_assign::all();
+		$productdistributions=ProductDistribution::all();
+        $adjustments=Adjustment::all();
+        $reportings=Reporting::all();
 		// dd($empAssign[0]->project);
 		// dd($empAssign[0]->employeeinfo);
 		//dd($sections[0]->division);
@@ -31,7 +37,10 @@ class empAssignController extends Controller
 				->with('productreceivetypes',$productreceivetypes)
 				->with('assignedEmployees',$assignedEmployees)
 				->with('projects',$projects)
-				->with('employeeInformations',$employeeInformations);
+				->with('employeeInformations',$employeeInformations)
+				->with('productdistributions',$productdistributions)
+				->with('adjustments',$adjustments)
+				->with('reportings',$reportings);
 	}
 
 	public function assignEmployeeStore(Request $request)	

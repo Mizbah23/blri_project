@@ -6,8 +6,7 @@
 <link rel="icon" type="image/png" href="/images/logo.png" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="Glance Design Dashboard Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
-SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+<meta name="keywords" content="Glance Design"/>
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 
 <!-- Bootstrap Core CSS -->
@@ -24,18 +23,11 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 <link href='/css/SidebarNav.min.css' media='all' rel='stylesheet' type='text/css'/>
 <!-- //side nav css file -->
 
-<link rel="stylesheet" href="/css/jquery-ui.css" type='text/css'/>
-<!--datepicker-->
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<link rel="stylesheet" href="/resources/demos/style.css">
- 
- <!-- js-->
+ <!-- must keep this js-->
 <script src="/js/jquery-1.11.1.min.js"></script>
-<script src="/js/modernizr.custom.js"></script>
+ <!-- must keep this js-->
 
-<!--datepicker-->
-<script src="/js/jquery-1.12.4.js"></script>
-<script src="/js/jquery-ui.js"></script>
+<script src="/js/modernizr.custom.js"></script>
 <!--webfonts-->
 <link href="//fonts.googleapis.com/css?family=PT+Sans:400,400i,700,700i&amp;subset=cyrillic,cyrillic-ext,latin-ext" rel="stylesheet">
 <!--//webfonts--> 
@@ -43,8 +35,6 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 <!-- chart -->
 <script src="/js/Chart.js"></script>
 <!-- //chart -->
-
-
 
 <!-- Metis Menu -->
 <script src="/js/metisMenu.min.js"></script>
@@ -58,7 +48,12 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 <script src="/js/datatable/dataTables.bootstrap4.min.js"></script>
 <link rel="stylesheet" href="/css/dataTables.bootstrap4.min.css"/>
 {{-- data table --}}
-<!--// For autocomplete Search -->
+
+{{-- datepicker --}}
+<link rel="stylesheet" href="/css/datetimepicker/basejquery-ui.min.css">
+<link rel="stylesheet" href="/css/datetimepicker/demosstyle.css">
+<script src="/js/datetimepicker/1.12.1jquery-ui.min.js"></script>
+{{-- datepicker --}}
 <style>
 #chartdiv {
   width: 100%;
@@ -160,6 +155,24 @@ $( function() {
   } );
   </script>
 
+   <script>
+       $(document).ready(function() {
+       $('#example').DataTable();
+       } );
+  </script>
+    {{-- datatable --}}
+
+{{-- datetimepicker --}}
+ <script>
+  $(function() {
+    $( ".datepicker" ).datepicker({
+       dateFormat: 'dd/mm/yy',
+      maxDate: "+0D",
+      ignoreReadonly: true
+    });
+  });
+  </script>
+{{-- datetimepicker --}}
 </head> 
 <body class="cbp-spmenu-push">
     <div class="main-content">
@@ -367,13 +380,13 @@ $( function() {
 
                         <label class="col-md-5 control-label" >শুরুর তারিখ</label>
                           <div class="col-md-7">
-                            <input class="form-control" type="text" id="from" name="startDate"></p>
+                            <input class="form-control datepicker" type="text" id="from" name="startDate" autocomplete="off"></p>
                           </div><br><br>
 
                           <label class="col-md-5 control-label" >শেষ তারিখ</label>
                           <div class="col-md-7">
                             
-                          <input class="form-control" type="text" id="to" name="endDate"></p>
+                          <input class="form-control datepicker" type="text" id="to" name="endDate" autocomplete="off"></p>
                           </div><br><br>
 
 
@@ -425,9 +438,10 @@ $( function() {
                         <th class="col-lg-3 text-center">সম্পাদনা</th>
                       </tr>
                       </thead>
-                             @if(isset($projects))
-                             @foreach ($projects as $key=>$project)
+                             
                             <tbody>
+                            @if(isset($projects))
+                             @foreach ($projects as $key=>$project)
                                 <tr class="row">
                                     <td>{{++$key}}</td>
                                     <td>{{$project->projectName}}</td>
@@ -442,7 +456,7 @@ $( function() {
                                     <td class="text-center"><a href="{{route('setup.projectEdit',[$project->id])}}"><i class="fa fa-edit" style="font-size:24px"></i></a></td>
                                 </tr>
                               @endforeach
-                              @endif
+                            @endif
                            </tbody>
                   </table>
                </div>
@@ -882,12 +896,5 @@ $( function() {
     
     <!-- Bootstrap Core JavaScript -->
    <script src="/js/bootstrap.js"> </script>
-       <script>
-       $(document).ready(function() {
-       $('#example').DataTable();
-       } );
-   </script>
-
-    
 </body>
 </html>
