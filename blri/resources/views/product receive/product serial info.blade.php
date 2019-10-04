@@ -43,17 +43,18 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 <link href="/css/custom.css" rel="stylesheet">
 <!--//Metis Menu -->
 
-{{-- datepicker --}}
-<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.min.css">
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
-{{-- datepicker --}}
-
 {{-- data table --}}
 <script src="/js/datatable/jquery-3.3.1.js"></script>
 <script src="/js/datatable/jquerydatatables.min.js"></script>
 <script src="/js/datatable/dataTables.bootstrap4.min.js"></script>
 <link rel="stylesheet" href="/css/dataTables.bootstrap4.min.css"/>
 {{-- data table --}}
+
+{{-- datepicker --}}
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.min.css">
+<link rel="stylesheet" href="https://jqueryui.com/resources/demos/style.css">
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+{{-- datepicker --}}
 <style>
 #chartdiv {
   width: 100%;
@@ -405,7 +406,8 @@ $( function() {
                             <label for="warrantyDate" class=" control-label">ওয়ারেন্টি</label>
                             </div>
                             <div class="col-md-7">
-                                <input class="form-control datepicker" type="text" name="warrantyDate" placeholder="dd/mm/YYYY" id="warrantyDate" autocomplete="off" >
+                              <input class="form-control datepicker" type="text" id="" name="warrantyDate" placeholder="দিন/মাস/বছর"  value="{{old('warrantyDate')}}" required  autocomplete="off">
+                          
                                 <div class="error" style="color:red">{{$errors->first('warrantyDate')}}</div><br><br>
 
                             </div><br><br>
@@ -418,7 +420,7 @@ $( function() {
                             </div>
                             <div class="col-md-7">
                                 <select id="productName" name="productName" class="form-control required" required>
-                                 <div class="error" style="color:red">{{$errors->first('productName')}}</div><br><br  
+                                 <div class="error" style="color:red">{{$errors->first('productName')}}</div><br><br>  
                                  <option value="">নির্বাচন করুন</option>
                                   @foreach ($products->unique('productName')->pluck('productName') as $productName)
                                  <option value="{{$productName}}" @if (old('productName')==$productName)
