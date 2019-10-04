@@ -383,7 +383,6 @@ $( function() {
                           <div class="col-md-7">
                             <input class="form-control datepicker" type="text" id="" name="startDate" placeholder="dd/mm/yyyy"  value="{{old('startDate')}}"  required  autocomplete="off">
                         
-                            <input class="form-control datepicker" type="text" id="from" name="startDate" autocomplete="off"></p></p>
                             <div class="error">{{$errors->first('startDate')}}</div>
                           </div><br><br>
 
