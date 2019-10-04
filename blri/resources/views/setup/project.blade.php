@@ -123,7 +123,6 @@ $( function() {
       from = $( "#from" )
         .datepicker({
           defaultDate: "+1w",
-           dateFormat: 'dd/mm/yy',
           changeMonth: true,
           changeYear: true,
           numberOfMonths: 1
@@ -133,7 +132,6 @@ $( function() {
         }),
       to = $( "#to" ).datepicker({
         defaultDate: "+1w",
-         dateFormat: 'dd/mm/yy',
         changeMonth: true,
         changeYear: true,
         numberOfMonths: 1
@@ -154,25 +152,23 @@ $( function() {
     }
   } );
   </script>
+<!--date picker-->
+  <script>
+  $( function() {
+    $( ".datepicker" ).datepicker({
+       dateFormat: 'dd/mm/yy',
+      maxDate: "+0D"
+      });
+  });
+  </script>
+{{-- datepicker ends --}}
 
-   <script>
+<script>
        $(document).ready(function() {
        $('#example').DataTable();
        } );
-  </script>
+</script>
     {{-- datatable --}}
-
-{{-- datetimepicker --}}
- <script>
-  $(function() {
-    $( ".datepicker" ).datepicker({
-       dateFormat: 'dd/mm/yy',
-      maxDate: "+0D",
-      ignoreReadonly: true
-    });
-  });
-  </script>
-{{-- datetimepicker --}}
 </head> 
 <body class="cbp-spmenu-push">
     <div class="main-content">
@@ -380,7 +376,8 @@ $( function() {
 
                         <label class="col-md-5 control-label" >শুরুর তারিখ</label>
                           <div class="col-md-7">
-                            <input class="form-control datepicker" type="text" id="from" name="startDate" autocomplete="off"></p>
+                            <input class="form-control datepicker" type="text" id="from" name="startDate" autocomplete="off"></p></p>
+                            <div class="error">{{$errors->first('startDate')}}</div>
                           </div><br><br>
 
                           <label class="col-md-5 control-label" >শেষ তারিখ</label>
