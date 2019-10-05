@@ -14,6 +14,7 @@ use Illuminate\Http\Request;
 use App\Reporting;//model name;
 use App\AdjustmentInformationList;
 use App\AdjustmentInformationSave;
+use PDF;
 
 
 class adjustmentinformationController extends Controller
@@ -186,5 +187,12 @@ class adjustmentinformationController extends Controller
         }
     }
   }
+
+      public function invoice(){
+
+              $adjustmentInfoLists=AdjustmentInformationList::all();
+                   $pdf = PDF::loadView('adjustment.adjustmentInvoice',['adjustmentInfoLists'=>$adjustmentInfoLists]);
+                   return $pdf->stream('adjustment_invoice.pdf');
+      }
 
 }
