@@ -321,7 +321,7 @@ $( function() {
         <div class=" form-grids row form-grids-right">
             <div class="widget-shadow " data-example-id="basic-forms"> 
               <div class="form-title bg-primary text-white">
-                <h3 class="">Project Information</h3>
+                <h3 class="">প্রকল্প সম্পর্কিত তথ্য</h3>
               </div>
               <div class="form-body">
                 <form class="form-horizontal" method="post" autocomplete="off">
@@ -332,20 +332,20 @@ $( function() {
                        <!--left side starts-->
                       <div class="col-md-6">
 
-                        <label for="projectName" class="col-sm-5 control-label">Project Name</label>
+                        <label for="projectName" class="col-sm-5 control-label">প্রকল্পের নাম</label>
                        <div class="col-lg-7">
-                          <input type="text" class="form-control" id="projectName" name="projectName" value="{{$project->projectName}}" placeholder="Project name can not be empty"required>
+                          <input type="text" class="form-control" id="projectName" name="projectName" value="{{$project->projectName}}" placeholder="অবশ্যই পূরণ করুন"required>
                           </div><br><br>
 
-                          <label for="address" class="col-sm-5 control-label">Address</label>
+                          <label for="address" class="col-sm-5 control-label">ঠিকানা</label>
                        <div class="col-lg-7">
-                        <textarea name="address" value="{{$project->address}}" id="address" class="form-control" placeholder="Address can not be empty"required></textarea>
+                        <textarea name="address" value="{{$project->address}}" id="address" class="form-control" placeholder="অবশ্যই পূরণ করুন"required></textarea>
                           </div><br><br><br>
 
-                        <label for="name" class="col-sm-5 control-label">Project Director</label>
+                        <label for="name" class="col-sm-5 control-label">প্রকল্প পরিচালক</label>
                           <div class="col-lg-7">
                               <select id="name" name="name"  class="form-control required" required>
-                               <option value="">Select Director</option>
+                               <option value="">নির্বাচন করুন</option>
                                 @foreach ($employeeInformations  as $employeeInformation)
                                 <option value="{{$employeeInformation->id}}">{{$employeeInformation->name}}</option>
                                  @endforeach
@@ -358,21 +358,21 @@ $( function() {
                       <!--right side starts-->
                       <div class="col-md-6">
 
-                        <label class="col-md-5 control-label" >Start Date</label>
+                        <label class="col-md-5 control-label" >শুরুর তারিখ</label>
                           <div class="col-md-7">
                             <input class="form-control" type="text" id="from" value="" name="startDate"></p>
                           </div><br><br>
 
-                          <label class="col-md-5 control-label" >End Date</label>
+                          <label class="col-md-5 control-label" >শেষ তারিখ</label>
                           <div class="col-md-7">
                             
                           <input class="form-control" name="endDate" type="text" id="to" value=""></p>
                           </div><br><br>
 
 
-                        <label for="brand" class="col-sm-5 control-label">Description</label>
+                        <label for="brand" class="col-sm-5 control-label">বিবরণ</label>
                        <div class="col-lg-7">
-                        <textarea name="description"class="form-control" value="{{ $project->description }}" placeholder="Description can not be empty"required></textarea><br><br>
+                        <textarea name="description"class="form-control" value="{{ $project->description }}" placeholder=""required></textarea><br><br>
                           </div><br><br>
                           
                       </div>
@@ -386,7 +386,7 @@ $( function() {
                         <br><br>
                         <div class="col-md-5">
                           <div class="text-center">
-                          <button type="submit" class="btn btn-info">Update</button> 
+                          <button type="submit" class="btn btn-info">হালনাগাদ করুন</button> 
                           <input type="button" onclick="cancelUpdate()" class="btn btn-danger" value="বাতিল করুণ"/>
                           </div>
 

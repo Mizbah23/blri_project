@@ -450,11 +450,11 @@ $( function() {
                           <thead>
                           <tr class="bg-primary">
                             <th class="col-lg-1 text-center">#</th>
-                            <th class="col-lg-2 text-center">Product</th>
-                            <th class="col-lg-2 text-center">Serial No.</th>
-                            <th class="col-lg-3 text-center">Warranty Period</th>
-                            <th class="col-lg-3 text-center">Creator</th>
-                            <th class="col-lg-2 text-center">Edit</th>
+                            <th class="col-lg-2 text-center">পণ্য</th>
+                            <th class="col-lg-2 text-center">সিরিয়াল নং</th>
+                            <th class="col-lg-3 text-center">ওয়ারেন্টি</th>
+                            <th class="col-lg-3 text-center">প্রণেতা</th>
+                            <th class="col-lg-2 text-center">সম্পাদনা</th>
                           </tr>
                         </thead>
                         <tbody>

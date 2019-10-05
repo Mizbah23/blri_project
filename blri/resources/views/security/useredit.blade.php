@@ -394,7 +394,7 @@ $( function() {
                         <br><br>
                         <div class="col-md-5">
                           <div class="text-center">
-                          <button type="submit" class="btn btn-info">Update</button> 
+                          <button type="submit" class="btn btn-info">হালনাগাদ করুন</button> 
                           <button  onclick="cancelUpdate()" class="btn btn-danger">বাতিল করুন</button>
                           </div>
 

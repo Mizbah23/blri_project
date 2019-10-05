@@ -336,7 +336,7 @@ $( function() {
         <div class=" form-grids row form-grids-right">
             <div class="widget-shadow " data-example-id="basic-forms"> 
               <div class="form-title bg-primary text-white">
-                <h3 class="">Create User</h3>
+                <h3 class="">ব্যবহারকারী তৈরীকরণ</h3>
               </div>
               <div class="form-body">
                 <form class="form-horizontal" method="post"> 
@@ -350,7 +350,7 @@ $( function() {
                            <label for="name" class="col-sm-5 control-label">কর্মকর্তার নাম</label>
                           <div class="col-lg-7">
                               <select id="name" name="name" class="form-control required" required>
-                                <option value="">Select Employee</option>
+                                <option value="">নির্বাচন করুন</option>
                                                 @foreach ($employeeInformations  as $employeeInformation)
 
                                                <option value="{{$employeeInformation->id}}">{{$employeeInformation->name}}</option>
@@ -361,7 +361,7 @@ $( function() {
                                    @endforeach
                           </div><br><br>
                  
-                        <label for="userType" class="col-sm-5 control-label">কর্মকর্তার ভুমিকা</label>
+                        <label for="userType" class="col-sm-5 control-label">ব্যবহারকারীর ভূমিকা</label>
                           <div class="col-lg-7">
                               <select id="userType" name="userType" class="form-control required" required>
                                  <option value="">নির্বাচন করুন</option>
@@ -434,7 +434,7 @@ $( function() {
                         <tr class="row bg-primary">
                         <th class="col-lg-1 text-center">#</th>
                         <th class="col-lg-3 text-center">কর্মকর্তার নাম</th>
-                        <th class="col-lg-2 text-center">কর্মকর্তার ভুমিকা</th>
+                        <th class="col-lg-2 text-center">ব্যবহারকারীর ভূমিকা</th>
                         <th class="col-lg-3 text-center">ই-মেইল</th>
                         <th class="col-lg-3 text-center">সম্পাদনা</th>
                       </tr>

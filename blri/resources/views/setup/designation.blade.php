@@ -299,7 +299,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                    @endforeach
                           </div><br><br><br>
                         <div class="text-center">
-                          <button type="submit" class="btn btn-info">সেভ করুন</button> 
+                          <button type="submit" class="btn btn-info">সংরক্ষন করুন</button> 
                           <button type="reset" class="btn btn-danger">বাতিল করুন</button>
                         </div>
                          </form><!--end form-->

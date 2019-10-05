@@ -415,7 +415,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 
                         <label class="col-md-6 control-label" >যোগদানের তারিখ</label>
                         <div class="col-md-6">
-                            <input class="form-control datepicker" type="text" id="" name="joiningDate" placeholder="dd/mm/yyyy"  value="{{old('joiningDate')}}"  required  autocomplete="off">
+                            <input class="form-control datepicker" type="text" id="" name="joiningDate" placeholder="দিন/মাস/বছর"  value="{{old('joiningDate')}}"  required  autocomplete="off">
 
                           <div class="error">{{$errors->first('joiningDate')}}</div>
                         </div><br><br>
@@ -423,7 +423,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                         <label class="col-md-6 control-label" >জন্ম তারিখ</label>
                         <div class="col-md-6">
 
-                           <input class="form-control datepicker" type="text" id="" name="birthDate" placeholder="dd/mm/yyyy"  value="{{old('birthDate')}}"  required  autocomplete="off">
+                           <input class="form-control datepicker" type="text" id="" name="birthDate" placeholder="দিন/মাস/বছর"  value="{{old('birthDate')}}"  required  autocomplete="off">
                           <div class="error">{{$errors->first('birthDate')}}</div>
                         </div><br><br>
 

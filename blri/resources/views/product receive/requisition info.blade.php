@@ -418,12 +418,12 @@ $( function() {
                           </div><br><br>
                         
                           <div class="col-lg-4">
-                            <label for="productCode" class=" control-label">Product Code</label>
+                            <label for="productCode" class=" control-label">পণ্য কোড</label>
                           </div>
                           <div class="col-lg-8">
                           
                                <select id="productCode" name="productCode" class="form-control required" value="{{old('productCode')}}" required readonly>
-                                 <option value="">Select Product Code</option>
+                                 <option value="">নির্বাচন করুন</option>
                                 
                                 @if(old('productName'))
                                   @foreach ($products as $product)
@@ -446,18 +446,18 @@ $( function() {
                           <div class="col-lg-8">
                              <input class="form-control" type="number" name="quantity" placeholder="অবশ্যই পূরণ করুন" value="{{old('quantity')}}" required>
                                 <div class="error" style="color: red">{{$errors->first('quantity')}}</div>
-                          </div><br><br><br>
+                          </div><br><br>
                          
                            <center>
                              <button type="submit" name="gridsave" class="btn btn-info">
                               <i class="glyphicon glyphicon-plus"
                               style="color:white"></i>সংযুক্তকরণ</button>
                              <button type="reset" name="gridreset" class="btn">পুনরায় বসান</button>
-                           </center><br>
+                           </center>
                           
                         </div>
                   
-                     </div>
+                     </div><br><br>
                   </form>
                   <!--End Form for grideview-->
                 </div>
@@ -470,15 +470,15 @@ $( function() {
                          <tr class="row bg-primary">
                            <th class="col-lg-1 text-center">সম্পাদনা</th>
                            <th class="col-lg-1 text-center">মুছে দিন</th>
-                           <th class="col-lg-2 text-center">Employee Name</th>
+                           <th class="col-lg-3 text-center">কর্মকর্তার নাম</th>
                            <th class="col-lg-3 text-center">পণ্যের নাম</th>
                            <th class="col-lg-2 text-center">পরিমাণ</th>
-                           <th class="col-lg-2 text-center">Date</th>
+                           <th class="col-lg-2 text-center">তারিখ</th>
                          </tr>
                             @foreach ($requisitionlists as $item)
                               <tr class="row"  align="center">
                                  <td ><a href="#" onclick="handleEdit({{$item->id}})"><i class="fa fa-edit" style="font-size:24px" ></i></a></td>
-                                  <td> <a onclick="deleteItem({{$item->id}})" class="glyphicon glyphicon-trash" style="font-size:24px"></i></a></td>
+                                  <td> <a onclick="deleteItem({{$item->id}})" class="glyphicon glyphicon-trash" style="font-size:24px;color:red;"></i></a></td>
                                     <td>{{ $item->employeeinfo->name }}</td>
                                     <td>{{$item->productInfo->productName}}</td>
                                     <td>{{$item->quantity}}</td>
@@ -495,7 +495,7 @@ $( function() {
                 @if (count($requisitionlists)>0)
                   <center>
                   <button class="btn btn-info" type="submit" name="tablesave" onclick="savedata()">সংরক্ষণ করুন</button>
-                       <button type="reset" name="tablereset" class="btn" onclick="clearList()">পুনরায় বসান</button>
+                       <button type="reset" name="tablereset" class="btn" onclick="clearList()">পুনরায় বসান</button><br><br>
                        </center>
                 @endif
             </div>

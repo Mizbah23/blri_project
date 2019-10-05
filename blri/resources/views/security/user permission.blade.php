@@ -324,7 +324,7 @@ $( function() {
         <div class=" form-grids row form-grids-right">
             <div class="widget-shadow " data-example-id="basic-forms"> 
               <div class="form-title bg-primary text-white">
-                <h3 class="">User Permission</h3>
+                <h3 class="">ব্যবহারকারীর অনুমতি</h3>
               </div>
               <div class="form-body">
                 <form class="form-horizontal" method="post"> 
@@ -338,22 +338,22 @@ $( function() {
                        <!--left side starts-->
                       <div class="col-md-7">
 
-                        <label for="category" class="col-sm-5 control-label">User Name</label>
+                        <label for="category" class="col-sm-5 control-label">ব্যবহারকারীর নাম</label>
                           <div class="col-lg-7">
                               <select id="category" name="categories" class="form-control required" required>
-                                 <option value="">Select User Name</option>
+                                 <option value="">নির্বাচন করুন</option>
                               </select>
                           </div><br><br>
 
-                        <label  class="col-sm-5 control-label">Email</label>
+                        <label  class="col-sm-5 control-label">ই-মেইল</label>
                        <div class="col-lg-7">
-                          <input type="text" class="form-control" id="" name="" placeholder="Email can not be empty"required>
+                          <input type="text" class="form-control" id="" name="" placeholder="অবশ্যই পূরণ করুন"required>
                           </div><br><br>
 
-                          <label for="category" class="col-sm-5 control-label">Menu</label>
+                          <label for="category" class="col-sm-5 control-label">তালিকা</label>
                           <div class="col-lg-7">
                               <select id="category" name="categories" class="form-control required" required>
-                                 <option value="">Select Menu</option>
+                                 <option value="">নির্বাচন করুন</option>
                               </select>
                           </div><br><br><br>
 
@@ -375,8 +375,8 @@ $( function() {
                         <br><br>
                         <div class="col-md-5">
                           <div class="text-center">
-                          <button style="margin-left: -200px" type="submit" class="btn btn-info">Permisson</button> 
-                          <button type="reset" class="btn btn-danger">Cancel</button>
+                          <button style="margin-left: -200px" type="submit" class="btn btn-info">অনুমোদন করুন</button> 
+                          <button type="reset" class="btn btn-danger">বাতিল</button>
                           </div>
 
                         </div>
@@ -448,7 +448,7 @@ $( function() {
                       <tr class="row bg-primary">
                         <th class="col-lg-4 text-center"><input type='checkbox' name='showhide' onchange="checkAll(this)"></th>
 
-                        <th class="col-lg-8 text-center">Main Menu</th>
+                        <th class="col-lg-8 text-center">প্রধান সূচি</th>
                       </tr>
                       
                                 <tr class="row">

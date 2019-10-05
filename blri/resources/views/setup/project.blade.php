@@ -377,12 +377,12 @@ $( function() {
 
                         <label class="col-md-5 control-label" >শুরুর তারিখ</label>
                           <div class="col-md-7">
-                            <input class="form-control datepicker" type="text" id="" name="startDate" placeholder="dd/mm/yyyy"  value="{{old('startDate')}}"  required  autocomplete="off">
+                            <input class="form-control datepicker" type="text" id="" name="startDate" placeholder="দিন/মাস/বছর"  value="{{old('startDate')}}"  required  autocomplete="off">
                         
                             <div class="error">{{$errors->first('startDate')}}</div>
                           </div><br><br>
 
-                          <label class="col-md-5 control-label" >শেষ তারিখ</label>
+                           <label class="col-md-5 control-label" >শেষ তারিখ</label>
                           <div class="col-md-7">
 
                             <input class="form-control datepicker" type="text" id="" name="endDate" placeholder="দিন/মাস/বছর"  value="{{old('endDate')}}"  required  autocomplete="off">

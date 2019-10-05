@@ -338,7 +338,7 @@ $( function() {
         <div class=" form-grids row form-grids-right">
             <div class="widget-shadow " data-example-id="basic-forms"> 
               <div class="form-title bg-primary text-white">
-                <h3 class="">Product Receive Info</h3>
+                <h3 class="">পণ্য প্রাপ্তি তথ্য</h3>
               </div>
               <div class="form-body" >
                 <div id="createFormDiv">
@@ -348,12 +348,12 @@ $( function() {
 
                       <div class="row">
                           <div class="col-md-4" >
-                              <div class="col-md-3">
-                                  <label for="supplierName" class=" control-label">Supplier</label>
+                              <div class="col-md-4">
+                                  <label for="supplierName" class=" control-label">সরবরাহকারী</label>
                               </div>
-                              <div class="col-md-9">
+                              <div class="col-md-8">
                                   <select id="supplierName" name="supplierName" class="form-control required" required onchange="showSupplierOtherInfo()">
-                                  <option value="">Select Supplier</option>
+                                  <option value="">নির্বাচন করুন</option>
                                   @foreach ($suppliers as $supplier)
                                     <option value="{{$supplier->id}}" @if (old('supplierName')==$supplier->id)
                                         {{"selected"}}
@@ -363,12 +363,12 @@ $( function() {
                                 <div class="error">{{$errors->first('supplierName')}}</div>
                               </div><br><br>
 
-                              <div class="col-md-3">
-                                  <label for="productName" class=" control-label">Product</label>
+                              <div class="col-md-4">
+                                  <label for="productName" class="control-label">পণ্য</label>
                               </div>
-                              <div class="col-md-9">
+                              <div class="col-md-8">
                                   <select id="productName" name="productName" class="form-control required" required onchange="showProductCode()">
-                                  <option value="">Select Product</option>
+                                  <option value="">নির্বাচন করুন</option>
                                   @foreach ($products->unique('productName')->pluck('productName') as $productName)
                                   <option value="{{$productName}}" @if (old('productName')==$productName)
                                       {{"selected"}}
@@ -378,12 +378,12 @@ $( function() {
                                 <div class="error">{{$errors->first('productName')}}</div>
                               </div><br><br>
 
-                              <div class="col-md-3">
-                                <label for="productCode" class=" control-label">Product Code</label>
+                              <div class="col-md-4">
+                                <label for="productCode" class=" control-label">কোড</label>
                               </div>
-                              <div class="col-md-9">
+                              <div class="col-md-8">
                                 <select id="productCode" name="productCode" class="form-control required" required>
-                                <option value="">Select Product Code</option>
+                                <option value="">নির্বাচন করুন</option>
                                 @if(old('productName'))
                                   @foreach ($products as $product)
                                   @if(old('productName')==$product->productName)
@@ -402,29 +402,29 @@ $( function() {
 
                           <div class="col-md-4" >
                               
-                          <div class="col-md-3">
-                              <label for="address" class=" control-label">Address</label>
+                          <div class="col-md-4">
+                              <label for="address" class=" control-label">ঠিকানা</label>
                               </div>
-                              <div class="col-md-9">
-                                <input type="text" class="form-control" id="address" name="address" value="{{old('address')}}" placeholder="Address can not be empty" required readonly>
+                              <div class="col-md-8">
+                                <input type="text" class="form-control" id="address" name="address" value="{{old('address')}}" placeholder="অবশ্যই পুরণ করুণ" required readonly>
                                 <div class="error">{{$errors->first('address')}}</div>
                               </div><br><br>
 
-                              <div class="col-md-3">
-                                <label for="orderNo" class=" control-label">OrderNo.</label>
+                              <div class="col-md-4">
+                                <label for="orderNo" class=" control-label">অর্ডার নং.</label>
                               </div>
-                              <div class="col-md-9">
-                                <input type="text" class="form-control" id="orderNo" name="orderNo" value="{{old('orderNo')}}" placeholder="Order no can not be empty"required>
+                              <div class="col-md-8">
+                                <input type="text" class="form-control" id="orderNo" name="orderNo" value="{{old('orderNo')}}" placeholder="অবশ্যই পুরণ করুণ"required>
                                 <div class="error">{{$errors->first('orderNo')}}</div>
                               </div><br><br>
 
 
-                              <div class="col-md-3">
-                              <label for="projectName" class=" control-label">Project</label>
+                              <div class="col-md-4">
+                              <label for="projectName" class=" control-label">প্রকল্প</label>
                               </div>
-                              <div class="col-md-9">
+                              <div class="col-md-8">
                                   <select id="projectName" name="projectName" class="form-control required" required>
-                                  <option value="">Select Project</option>
+                                  <option value="">নির্বাচন করুন</option>
                                   @foreach ($projects as $project)
                                   <option value="{{$project->id}}" @if (old('projectName')==$project->id)
                                       {{"selected"}}
@@ -445,34 +445,34 @@ $( function() {
 
                           <div class="col-md-4" >
                               <div class="col-md-3">
-                              <label for="contactNo" class=" control-label">Mobile</label>
+                              <label for="contactNo" class=" control-label">মোবাইল</label>
                               </div>
                               <div class="col-md-9">
-                                <input type="text" class="form-control" id="contactNo" name="contactNo" value="{{old('contactNo')}}" placeholder="Mobile no can not be empty" required readonly>
+                                <input type="text" class="form-control" id="contactNo" name="contactNo" value="{{old('contactNo')}}" placeholder="অবশ্যই পুরণ করুণ" required readonly>
                                 <div class="error">{{$errors->first('contactNo')}}</div>
                               </div><br><br>
 
                               <div class="col-md-3">
-                              <label for="quantity" class=" control-label">Quantity</label>
+                              <label for="quantity" class=" control-label">পরিমাণ</label>
                               </div>
                               <div class="col-md-9">
-                                <input type="number" class="form-control" id="quantity" name="quantity" value="{{old('quantity')}}" placeholder="Quantity can not be empty" required>
+                                <input type="number" class="form-control" id="quantity" name="quantity" value="{{old('quantity')}}" placeholder="অবশ্যই পুরণ করুণ" required>
                                 <div class="error">{{$errors->first('quantity')}}</div>
                               </div>
                               <br><br>
 
                               <div class="col-md-3">
-                              <label for="" class=" control-label">Date</label>
+                              <label for="" class=" control-label">তারিখ</label>
                               </div>
                               <div class="col-md-9">
-                                <input class="form-control datepicker" type="text" id="receiveDate" name="receiveDate" placeholder="dd/mm/yyyy"  value="{{old('receiveDate')}}"  required><br>
+                                <input class="form-control datepicker" type="text" id="receiveDate" name="receiveDate" placeholder="দিন/মাস/বছর"  value="{{old('receiveDate')}}"  required><br>
                                 <div class="error">{{$errors->first('receiveDate')}}</div>
                               </div><br><br>
                           
                           </div>
                           <div class="text-center">
-                            <button type="submit" class="btn btn-info"><i class="glyphicon glyphicon-plus" style="color: white"></i>Add to lsit</button> 
-                            <button type="reset" class="btn btn-danger">Reset</button><br><br>
+                            <button type="submit" class="btn btn-info"><i class="glyphicon glyphicon-plus" style="color: white"></i>সংযুক্তকরুন</button> 
+                            <button type="reset" class="btn btn-danger">পুনরায় বসান</button><br><br>
                           </div>
 
                     </div>
@@ -489,12 +489,12 @@ $( function() {
                       @if (count($productReceiveLists)>0)
                       <table class="table table-responsive table-hover table-striped table-bordered table-condensed">
                           <tr class="row bg-primary">
-                              <th class="col-lg-1 text-center">Edit</th>
-                              <th class="col-lg-1 text-center">Delete</th>
-                              <th class="col-lg-4 text-center">Product</th>
-                              <th class="col-lg-2 text-center">Code</th>
-                              <th class="col-lg-2 text-center">Quantity</th>
-                              <th class="col-lg-2 text-center">OrderNo</th>
+                              <th class="col-lg-1 text-center">সম্পাদনা</th>
+                              <th class="col-lg-1 text-center">বাদ দিন</th>
+                              <th class="col-lg-4 text-center">পণ্য</th>
+                              <th class="col-lg-2 text-center">কোড</th>
+                              <th class="col-lg-2 text-center">পরিমাণ</th>
+                              <th class="col-lg-2 text-center">অর্ডার নং.</th>
                           </tr>
                           @foreach ($productReceiveLists as $item)
                             <tr class="row"  align="center">
@@ -517,9 +517,9 @@ $( function() {
                   @if (count($productReceiveLists)>0)
                   <div class="text-center">
                     <br><br><br>
-                      <button type="button" class=" btn btn-info" onclick="savedata()"> Save</button> 
-                      <button type="reset" class="btn btn-danger" onclick="clearList()">Cancel</button>
-                      <button type="button" class="btn btn-success">Print Invoice</button>
+                      <button type="button" class=" btn btn-info" onclick="savedata()"> সংরক্ষণ করুন </button> 
+                      <button type="reset" class="btn btn-danger" onclick="clearList()">বাতিল করুন</button>
+                      <button type="button" class="btn btn-success">মুদ্রণ করুন</button>
                   </div>
                   @endif
                 </div>
