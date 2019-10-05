@@ -484,19 +484,17 @@ $( function() {
                               </tr>
                               @endforeach
                             @else
-                            <tr class="row" align="center">
+                            {{--  <tr class="row" align="center">
                                 <td><a href="#" onclick=""><i class="fa fa-edit" style="font-size:24px;"></i></a></td>
                                 <td> <a href="#" onclick="" class="glyphicon glyphicon-trash"style="font-size:24px; color: red"></i></a></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
-                              </tr>
+                              </tr>--}}
                             @endif
 
-
-                
-                        </table>
+                       </table>
                 
                 
                     </div>
@@ -506,7 +504,9 @@ $( function() {
                   <br><br><br>
                     <button type="button" class=" btn btn-info" onclick="savedata()"> Save</button> 
                         <button type="reset" class="btn btn-danger" onclick="clearList()">Clear</button>
-                        <button type="button" class="btn btn-success">Print Invoice</button>
+                        <button type="button" class="btn btn-success" style="">
+                          <a style="color: white" href="{{ route('adjustment.adjustmentInvoice') }}">
+                        Print Invoice</a></button>
                 </div>
                
                       <!--Search option starts-->

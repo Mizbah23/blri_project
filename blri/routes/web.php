@@ -183,7 +183,8 @@ Route::group(['middleware'=>'userNameExistenceCheck'], function () {
     Route::get('/adjustment/adjustment_information/delete/item', 'adjustmentinformationController@deleteItem')->name('adjustment.delete.adjustment information');
     Route::get('/adjustment/adjustment_information/clear/allItem', 'adjustmentinformationController@clearAllItem')->name('adjustment.clearAll.adjustment information');
     Route::get('/adjustment/adjustment_information/save/allItem', 'adjustmentinformationController@saveAllItem')->name('adjustment.saveAll.adjustment information');
-
+    
+    Route::get('/adjustment/invoice','adjustmentinformationController@invoice')->name('adjustment.adjustmentInvoice');
 
     //reportings
 	Route::get('/reporting/product_receive_report', 'productreceivereportController@index')->name('reporting.product receive report');//->name('folder name.blade name')
