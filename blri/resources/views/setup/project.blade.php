@@ -163,6 +163,7 @@ $( function() {
   </script>
 {{-- datepicker ends --}}
 
+{{-- datatable --}}
 <script>
        $(document).ready(function() {
        $('#example').DataTable();

@@ -6,8 +6,7 @@
 <link rel="icon" type="image/png" href="/images/logo.png" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="Glance Design Dashboard Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
-SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+<meta name="keywords"/>
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 
 <!-- Bootstrap Core CSS -->
@@ -49,12 +48,19 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 <script src="/js/custom.js"></script>
 <link href="/css/custom.css" rel="stylesheet">
 <!--//Metis Menu -->
- <!--For autocomplete Search -->
+
+{{-- data table --}}
+<script src="/js/datatable/jquery-3.3.1.js"></script>
+<script src="/js/datatable/jquerydatatables.min.js"></script>
+<script src="/js/datatable/dataTables.bootstrap4.min.js"></script>
+<link rel="stylesheet" href="/css/dataTables.bootstrap4.min.css"/>
+{{-- data table --}}
+
+{{-- datepicker --}}
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.min.css">
 <link rel="stylesheet" href="https://jqueryui.com/resources/demos/style.css">
-<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
-<!--// For autocomplete Search -->
+{{-- datepicker --}}
 <style>
 #chartdiv {
   width: 100%;
@@ -103,10 +109,8 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
            
         });
 
-
     </script>
 <!-- //pie-chart --><!-- index page sales reviews visitors pie chart -->
-
     <!-- requried-jsfiles-for owl -->
                     <link href="/css/owl.carousel.css" rel="stylesheet">
                     <script src="/js/owl.carousel.js"></script>
@@ -159,16 +163,24 @@ $( function() {
   } );
   </script>
 
-  <!--date picker-->
-<script>
-  $(function() {
+<!--date picker-->
+  <script>
+  $( function() {
     $( ".datepicker" ).datepicker({
-      dateFormat: 'dd/mm/yy',
-      maxDate: "+1d",
-      ignoreReadonly: true
-    });
+       dateFormat: 'dd/mm/yy',
+      maxDate: "+0D"
+      });
   });
   </script>
+{{-- datepicker ends --}}
+
+{{-- datatable --}}
+<script>
+       $(document).ready(function() {
+       $('#example').DataTable();
+       } );
+</script>
+    {{-- datatable --}}
 </head> 
 <body class="cbp-spmenu-push">
     <div class="main-content">
@@ -439,21 +451,21 @@ $( function() {
                         <div class="col-md-6" style="border: solid 2px #eee; padding: 20px">
 
                          <div class="col-md-4">
-                                 <label for="sendingDate" class=" control-label">Sending Date</label>
-                            </div>
-                            <div class="col-md-8">
-                               <input class="form-control datepicker" type="text" name="sendingDate" placeholder="dd/mm/yyyy" id="sendingDate" value="{{old('sendingDate')}}"  autocomplete="off" required>
-                                
-                            </div><br><br>
+                            <label for="sendingDate" class=" control-label">Sending Date</label>
+                         </div>
+                         <div class="col-md-8">
+                             <input type="text" class="form-control datepicker" name="sendingDate" placeholder="দিন/মাস/বছর" value="{{old('sendingDate')}}" required>
+                             <div class="error">{{$errors->first('sendingDate')}}</div>
+                         </div><br><br>
                             
-                            <div class="col-md-4">
-                                 <label for="remarks" class=" control-label">Remarks</label>
-                            </div>
-                            <div class="col-md-8">
-                                <textarea name="remarks" id="remarks" class="form-control" placeholder="Remarks">{{old('remarks')}}</textarea>
-                            </div><br><br>
+                         <div class="col-md-4">
+                              <label for="remarks" class=" control-label">Remarks</label>
+                         </div>
+                         <div class="col-md-8">
+                              <textarea name="remarks" id="remarks" class="form-control" placeholder="Remarks">{{old('remarks')}}</textarea>
+                         </div><br><br>
                             
-                        </div>
+                         </div>
                         
                     </div>
                     {{-- <div class="alert alert-danger">
@@ -464,37 +476,19 @@ $( function() {
                       </ul>
                     </div> --}}
 
-                  </div>
                   <div class="text-center">
                       <button type="submit" class=" btn btn-info"> Save</button> 
                           <button type="reset" class="btn btn-danger">Cancel</button>
                   </div>
               </form>
-                      <div class="row">
-                        <div class="col-md-8"></div>
-
-
-                        <div class="col-md-1">
-                          <label for="searchByBrandName"  class="col-md-4  control-label">Search</label>
-                          
-                        </div>
-
-                        <div class="col-md-3">
-                          <input type="text" class="form-control" id="searchByBrandName" name="searchByBrandName" placeholder="Search...">
-                        </div>
-
-
-                      </div>
-
-                      <!--Search option stops-->
-
                      
                   </div> 
                </div> 
 
                 <div id="allBrands">
-                  <table class="table table-responsive table-hover table-striped table-bordered table-condensed">
-                      <tr class="row bg-primary">
+                  <table id="example" class="table table-responsive table-hover table-striped table-bordered table-condensed">
+                    <thead>
+                        <tr class="row bg-primary">
                         <th class="col-lg-2 text-center">Product Name</th>
                         <th class="col-lg-1 text-center">Serial No</th>
                         <th class="col-lg-2 text-center">Repairer Name</th>
@@ -503,26 +497,25 @@ $( function() {
                         <th class="col-lg-1 text-center">Edit</th>
                         <th class="col-lg-1 text-center">Delete</th>
                       </tr>
-                      @foreach ($productrepairs as $key=>$item)
-                      
-                                <tr class="row">
-                                  <td style="text-align: center">{{$item->serialInfo->productInfo->productName}}</td>
-                                  <td style="text-align: center">{{$item->serialInfo->serial_no}}</td>
-                                  <td style="text-align: center">{{$item->repairer->repairerName}}</td>
-                                  <td style="text-align: center">{{date('d/m/Y', strtotime(str_replace('-', '/',$item->sendingDate))) }}</td>
-                                  <td style="text-align: center">{{$item->remarks}}</td>
-                                  <td class="text-center"> <a href="{{route('product distribution.repairedit',[$item->id])}}" onclick=""<i class="fa fa-edit" style="font-size:24px"></i></a></td>
-                                  <td class="text-center"> <a href="" onclick="deleteItem({{$item->id}})"<i class="fa fa-trash" style="font-size:24px"></i></a></td>
+                    </thead>
+                      <tbody>
+                        @foreach ($productrepairs as $key=>$item)
+                         <tr class="row">
+                            <td style="text-align: center">{{$item->serialInfo->productInfo->productName}}</td>
+                             <td style="text-align: center">{{$item->serialInfo->serial_no}}</td>
+                             <td style="text-align: center">{{$item->repairer->repairerName}}</td>
+                             <td style="text-align: center">{{date('d/m/Y', strtotime(str_replace('-', '/',$item->sendingDate))) }}</td>
+                             <td style="text-align: center">{{$item->remarks}}</td>
+                             <td class="text-center"> <a href="{{route('product distribution.repairedit',[$item->id])}}" onclick=""<i class="fa fa-edit" style="font-size:24px"></i></a></td>
+                             <td class="text-center"> <a href="" onclick="deleteItem({{$item->id}})"<i class="fa fa-trash" style="font-size:24px"></i></a></td>
                                 </tr>
                        @endforeach
                            
+                      </tbody>
                   </table>
                </div>
-               <div id="searchedBrandValue">
-                   
-               </div>
-              
-            </div>
+           </div>
+              </div>
           </div>
       
           </div>

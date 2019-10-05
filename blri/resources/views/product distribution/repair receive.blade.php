@@ -23,16 +23,18 @@
 <link href='/css/SidebarNav.min.css' media='all' rel='stylesheet' type='text/css'/>
 <!-- //side nav css file -->
 
-{{-- <link rel="stylesheet" href="/css/jquery-ui.css" type='text/css'/> --}}
+<link rel="stylesheet" href="/css/jquery-ui.css" type='text/css'/>
 <!--datepicker-->
-{{-- <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> --}}
-{{-- <link rel="stylesheet" href="/resources/demos/style.css"> --}}
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
  
- <!-- must keep this js-->
+ <!-- js-->
 <script src="/js/jquery-1.11.1.min.js"></script>
- <!-- must keep this js-->
 <script src="/js/modernizr.custom.js"></script>
 
+<!--datepicker-->
+<script src="/js/jquery-1.12.4.js"></script>
+<script src="/js/jquery-ui.js"></script>
 <!--webfonts-->
 <link href="//fonts.googleapis.com/css?family=PT+Sans:400,400i,700,700i&amp;subset=cyrillic,cyrillic-ext,latin-ext" rel="stylesheet">
 <!--//webfonts--> 
@@ -46,14 +48,27 @@
 <script src="/js/custom.js"></script>
 <link href="/css/custom.css" rel="stylesheet">
 <!--//Metis Menu -->
+
+{{-- data table --}}
+<script src="/js/datatable/jquery-3.3.1.js"></script>
+<script src="/js/datatable/jquerydatatables.min.js"></script>
+<script src="/js/datatable/dataTables.bootstrap4.min.js"></script>
+<link rel="stylesheet" href="/css/dataTables.bootstrap4.min.css"/>
+{{-- data table --}}
+
+{{-- datepicker --}}
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.min.css">
 <link rel="stylesheet" href="https://jqueryui.com/resources/demos/style.css">
-{{-- <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script> --}}
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+{{-- datepicker --}}
 <style>
 #chartdiv {
   width: 100%;
   height: 295px;
+}
+.error{
+  font-size: 0.9em;
+  color: red;
 }
 </style>
 <!--pie-chart --><!-- index page sales reviews visitors pie chart -->
@@ -94,10 +109,8 @@
            
         });
 
-
     </script>
 <!-- //pie-chart --><!-- index page sales reviews visitors pie chart -->
-
     <!-- requried-jsfiles-for owl -->
                     <link href="/css/owl.carousel.css" rel="stylesheet">
                     <script src="/js/owl.carousel.js"></script>
@@ -120,7 +133,6 @@ $( function() {
       from = $( "#from" )
         .datepicker({
           defaultDate: "+1w",
-           dateFormat: 'dd/mm/yy',
           changeMonth: true,
           changeYear: true,
           numberOfMonths: 1
@@ -130,7 +142,6 @@ $( function() {
         }),
       to = $( "#to" ).datepicker({
         defaultDate: "+1w",
-         dateFormat: 'dd/mm/yy',
         changeMonth: true,
         changeYear: true,
         numberOfMonths: 1
@@ -151,16 +162,25 @@ $( function() {
     }
   } );
   </script>
+
 <!--date picker-->
-<script>
-  $(function() {
+  <script>
+  $( function() {
     $( ".datepicker" ).datepicker({
        dateFormat: 'dd/mm/yy',
-      maxDate: "+0D",
-      ignoreReadonly: true
-    });
+      maxDate: "+0D"
+      });
   });
   </script>
+{{-- datepicker ends --}}
+
+{{-- datatable --}}
+<script>
+       $(document).ready(function() {
+       $('#example').DataTable();
+       } );
+</script>
+    {{-- datatable --}}
 </head> 
 <body class="cbp-spmenu-push">
     <div class="main-content">
@@ -375,75 +395,52 @@ $( function() {
                                  <label for="" class=" control-label">Receive date</label>
                             </div>
                             <div class="col-md-8">
-                                <input type="text" class="form-control datepicker" name="birthDate" placeholder="mm/dd/yyyy"  value="" required>
+                              
+                              <input type="text" class="form-control datepicker" name="birthDate" placeholder="দিন/মাস/বছর" value="{{old('birthDate')}}" required>
+                             <div class="error">{{$errors->first('birthDate')}}</div>
                             </div><br><br>
                             <div class="col-md-4">
                                  <label for="" class=" control-label">Remarks</label>
                             </div>
                             <div class="col-md-8">
-                                <textarea name="" class="form-control" placeholder="Remarks can not be empty"></textarea>
+                                <textarea name="" class="form-control" placeholder=""></textarea>
                             </div><br><br>
                             
                         </div>
-                        
-                    </div>
-
                   </div>
                   <div class="text-center">
                       <button type="submit" class=" btn btn-info"> Save</button> 
                           <button type="reset" class="btn btn-danger">Cancel</button>
                   </div>
               </form>
-
-                      <div class="row">
-                        <div class="col-md-8"></div>
-
-
-                        <div class="col-md-1">
-                          <label for="searchByBrandName"  class="col-md-4  control-label">Search</label>
-                          
-                        </div>
-
-                        <div class="col-md-3">
-                          <input type="text" class="form-control" id="searchByBrandName" name="searchByBrandName" placeholder="Search by brand name">
-                        </div>
-
-
-                      </div>
-
-                      <!--Search option stops-->
-
-                     
                   </div> 
                </div> 
 
                 <div id="allBrands">
-                  <table class="table table-responsive table-hover table-striped table-bordered table-condensed">
-                      <tr class="row bg-primary">
+                  <table id="example" class="table table-responsive table-hover table-striped table-bordered table-condensed">
+                     <thead>
+                        <tr class="row bg-primary">
                         <th class="col-lg-2 text-center">Product</th>
                         <th class="col-lg-3 text-center">Repairer</th>
                         <th class="col-lg-2 text-center">Receive Date</th>
                         <th class="col-lg-4 text-center">Remarks</th>
                          <th class="col-lg-1 text-center">Edit</th>
                       </tr>
-                      
-                                <tr class="row">
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td class="text-center"><a href=" "><i class="fa fa-edit" style="color:blue;font-size: 24px"></i></a></td>
-                                </tr>
-                           
+                     </thead>
+                     <tbody>
+                         <tr class="row">
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="text-center"><a href=" "><i class="fa fa-edit" style="color:blue;font-size: 24px"></i></a></td>
+                          </tr>
+                     </tbody>
                   </table>
                </div>
-               <div id="searchedBrandValue">
-                   
-               </div>
-              
             </div>
           </div>
-      
+          </div>
           </div>
         </div>
      

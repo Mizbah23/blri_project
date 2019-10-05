@@ -49,12 +49,19 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 <script src="/js/custom.js"></script>
 <link href="/css/custom.css" rel="stylesheet">
 <!--//Metis Menu -->
- <!--For autocomplete Search -->
+
+{{-- data table --}}
+<script src="/js/datatable/jquery-3.3.1.js"></script>
+<script src="/js/datatable/jquerydatatables.min.js"></script>
+<script src="/js/datatable/dataTables.bootstrap4.min.js"></script>
+<link rel="stylesheet" href="/css/dataTables.bootstrap4.min.css"/>
+{{-- data table --}}
+
+{{-- datepicker --}}
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.min.css">
 <link rel="stylesheet" href="https://jqueryui.com/resources/demos/style.css">
-<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
-<!--// For autocomplete Search -->
+{{-- datepicker --}}
 <style>
 #chartdiv {
   width: 100%;
@@ -105,7 +112,6 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 
     </script>
 <!-- //pie-chart --><!-- index page sales reviews visitors pie chart -->
-
     <!-- requried-jsfiles-for owl -->
                     <link href="/css/owl.carousel.css" rel="stylesheet">
                     <script src="/js/owl.carousel.js"></script>
@@ -158,16 +164,24 @@ $( function() {
   } );
   </script>
 
-  <!--date picker-->
-<script>
-  $(function() {
+<!--date picker-->
+  <script>
+  $( function() {
     $( ".datepicker" ).datepicker({
-      dateFormat: 'dd/mm/yy',
-      maxDate: "+0D",
-      ignoreReadonly: true
-    });
+       dateFormat: 'dd/mm/yy',
+      maxDate: "+0D"
+      });
   });
   </script>
+{{-- datepicker ends --}}
+
+{{-- datatable --}}
+<script>
+       $(document).ready(function() {
+       $('#example').DataTable();
+       } );
+</script>
+    {{-- datatable --}}
 
 </head> 
 <body class="cbp-spmenu-push">
@@ -356,7 +370,7 @@ $( function() {
 
                       <div class="col-lg-4">
                         <label for="releaseDate"><b>Release Date:</b></label>
-                        <input type="text" class="form-control datepicker" name="releaseDate" placeholder="dd/mm/yyyy" value="{{old('releaseDate')}}" required>
+                        <input type="text" class="form-control datepicker" name="releaseDate" placeholder="দিন/মাস/বছর" value="{{old('releaseDate')}}" required>
                         <div class="error">{{$errors->first('releaseDate')}}</div>
                         <label for="deptName"><b>Department Name:</b></label>
                         <select id="deptName" name="deptName" class="form-control required" required>
@@ -451,7 +465,7 @@ $( function() {
                             </tbody>
                          </table>
                      </div>
-                  </div>
+               
                 </form>
                 <br>
                 <div class="col-md-12" align="center">
@@ -459,7 +473,7 @@ $( function() {
                       style="color:white" ></i> Release</button>
                       <button type="button"class="btn" onclick="handleClear()">Clear</button>
                 </div>
-                
+                {{-- 
                       <div class="row">
                         <div class="col-md-8"></div>
 
@@ -475,7 +489,7 @@ $( function() {
 
 
                       </div>
-
+ --}}
                       <!--Search option stops-->
 
                      
@@ -483,7 +497,7 @@ $( function() {
                </div> 
 
                 <div id="allBrands">
-                    <table class="table table-responsive table-hover table-striped table-bordered table-condensed">
+                    <table id="example" class="table table-responsive table-hover table-striped table-bordered table-condensed">
                         <thead >
                           <tr class="row bg-primary">
                           <th class="col-lg-1 text-center">#</th>
@@ -508,10 +522,7 @@ $( function() {
                         </tbody>
                      </table>
                </div>
-               <div id="searchedBrandValue">
-                   
-               </div>
-              
+             </div>
             </div>
           </div>
       
