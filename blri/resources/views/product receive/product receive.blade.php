@@ -361,7 +361,7 @@ $( function() {
                                   @endforeach
                                 </select>
                                 <div class="error">{{$errors->first('supplierName')}}</div>
-                              </div><br><br>
+                              </div><br><br>ab
 
                               <div class="col-md-4">
                                   <label for="productName" class="control-label">পণ্য</label>
