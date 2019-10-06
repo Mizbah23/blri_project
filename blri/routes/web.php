@@ -122,6 +122,7 @@ Route::group(['middleware'=>'userNameExistenceCheck'], function () {
     Route::get('/product_receive/product_receive/edit/item', 'productreceiveController@editItemFromReceiveList')->name('edit.product.from.ReceiveList');
     Route::get('/product_receive/product_receive/saveAll/item', 'productreceiveController@saveAllItemFromReceiveList')->name('saveAll.product.from.ReceiveList');
     Route::get('/product_receive/product_receive/clearList/item', 'productreceiveController@clearListItemFromReceiveList')->name('clearList.product.from.ReceiveList');
+    Route::get('/product_receive/invoice','productreceiveController@invoice')->name('product receive.productReceiveInvoice');
 
 
     //Rquisition
@@ -183,7 +184,6 @@ Route::group(['middleware'=>'userNameExistenceCheck'], function () {
     Route::get('/adjustment/adjustment_information/delete/item', 'adjustmentinformationController@deleteItem')->name('adjustment.delete.adjustment information');
     Route::get('/adjustment/adjustment_information/clear/allItem', 'adjustmentinformationController@clearAllItem')->name('adjustment.clearAll.adjustment information');
     Route::get('/adjustment/adjustment_information/save/allItem', 'adjustmentinformationController@saveAllItem')->name('adjustment.saveAll.adjustment information');
-    
     Route::get('/adjustment/invoice','adjustmentinformationController@invoice')->name('adjustment.adjustmentInvoice');
 
     //reportings

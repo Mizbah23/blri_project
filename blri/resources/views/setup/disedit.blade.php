@@ -2,7 +2,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title> জেলা</title>
+<title> জেলা হালনাগাদ</title>
 <link rel="icon" type="image/png" href="/images/logo.png"/>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -118,15 +118,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
             <span class="icon-bar"></span>
             </button>
 
-            <div style="margin-top: 10px">
-              <div class="col-lg-3">
-                <img style="height: 50px; width: 50px;" src="/images/logo.png" alt="">
-              </div>
-              <div class="col-lg-9">
-                 <h1 style="margin-left: -25px"><a class="navbar-brand" href="index.html">  BLRI<span class="dashboard_text" style="margin-left: -35px">Design dashboard</span></a></h1>
-              </div>
-             </div>
-            </div>
+            <h1 style="margin-top: 5px"><a class="text-white" style="margin-left: 10px;" href="index.html"><span> <img style="height: 50px; width: 50px;" src="/images/logo.png" alt=""></span> BLRI<span class="dashboard_text" style="margin-left: 30px">Design dashboard</span></a></h1>
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="sidebar-menu">
               <li class="header">MAIN NAVIGATION</li>
@@ -178,7 +170,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                   @foreach($productreceivetypes as $productreceivetype)
                    
                     <li><a href="{{route('product receive.'.strtolower($productreceivetype->prType))}}">
-                      <i class="fa fa-circle"></i> {{$productreceivetype->prType}}</a></li>
+                      <i class="fa fa-circle"></i> {{$productreceivetype->name}}</a></li>
                  @endforeach
                 </ul>
               </li>
@@ -192,7 +184,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                  @foreach($productdistributions as $productdistribution)
                    
                     <li><a href="{{route('product distribution.'.strtolower($productdistribution->pdType))}}">
-                      <i class="fa fa-circle"></i> {{$productdistribution->pdType}}</a></li>
+                      <i class="fa fa-circle"></i> {{$productdistribution->name}}</a></li>
                  @endforeach
                 </ul>
               </li>
@@ -205,7 +197,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                     @foreach($adjustments as $adjustment)
                    
                     <li><a href="{{route('adjustment.'.strtolower($adjustment->adjustmentType))}}">
-                      <i class="fa fa-circle"></i> {{$adjustment->adjustmentType}}</a></li>
+                      <i class="fa fa-circle"></i> {{$adjustment->name}}</a></li>
                  @endforeach
                </ul>
               </li>
@@ -219,7 +211,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                  @foreach($reportings as $reporting)
                    
                     <li><a href="{{route('reporting.'.strtolower($reporting->crType))}}"><!-- route('Folder(from view) Name') &&strtolowere('database table name')-->
-                      <i class="fa fa-circle"></i> {{$reporting->crType}}</a></li>
+                      <i class="fa fa-circle"></i> {{$reporting->name}}</a></li>
                  @endforeach
                 </ul>
               </li>

@@ -348,10 +348,10 @@ $( function() {
 
                       <div class="row">
                           <div class="col-md-4" >
-                              <div class="col-md-4">
+                              <div class="col-md-5">
                                   <label for="supplierName" class=" control-label">সরবরাহকারী</label>
                               </div>
-                              <div class="col-md-8">
+                              <div class="col-md-7">
                                   <select id="supplierName" name="supplierName" class="form-control required" required onchange="showSupplierOtherInfo()">
                                   <option value="">নির্বাচন করুন</option>
                                   @foreach ($suppliers as $supplier)
@@ -361,12 +361,12 @@ $( function() {
                                   @endforeach
                                 </select>
                                 <div class="error">{{$errors->first('supplierName')}}</div>
-                              </div><br><br>ab
+                              </div><br><br>
 
-                              <div class="col-md-4">
+                              <div class="col-md-5">
                                   <label for="productName" class="control-label">পণ্য</label>
                               </div>
-                              <div class="col-md-8">
+                              <div class="col-md-7">
                                   <select id="productName" name="productName" class="form-control required" required onchange="showProductCode()">
                                   <option value="">নির্বাচন করুন</option>
                                   @foreach ($products->unique('productName')->pluck('productName') as $productName)
@@ -378,10 +378,10 @@ $( function() {
                                 <div class="error">{{$errors->first('productName')}}</div>
                               </div><br><br>
 
-                              <div class="col-md-4">
+                              <div class="col-md-5">
                                 <label for="productCode" class=" control-label">কোড</label>
                               </div>
-                              <div class="col-md-8">
+                              <div class="col-md-7">
                                 <select id="productCode" name="productCode" class="form-control required" required>
                                 <option value="">নির্বাচন করুন</option>
                                 @if(old('productName'))
@@ -402,27 +402,27 @@ $( function() {
 
                           <div class="col-md-4" >
                               
-                          <div class="col-md-4">
+                          <div class="col-md-5">
                               <label for="address" class=" control-label">ঠিকানা</label>
                               </div>
-                              <div class="col-md-8">
+                              <div class="col-md-7">
                                 <input type="text" class="form-control" id="address" name="address" value="{{old('address')}}" placeholder="অবশ্যই পুরণ করুণ" required readonly>
                                 <div class="error">{{$errors->first('address')}}</div>
                               </div><br><br>
 
-                              <div class="col-md-4">
+                              <div class="col-md-5">
                                 <label for="orderNo" class=" control-label">অর্ডার নং.</label>
                               </div>
-                              <div class="col-md-8">
+                              <div class="col-md-7">
                                 <input type="text" class="form-control" id="orderNo" name="orderNo" value="{{old('orderNo')}}" placeholder="অবশ্যই পুরণ করুণ"required>
                                 <div class="error">{{$errors->first('orderNo')}}</div>
                               </div><br><br>
 
 
-                              <div class="col-md-4">
+                              <div class="col-md-5">
                               <label for="projectName" class=" control-label">প্রকল্প</label>
                               </div>
-                              <div class="col-md-8">
+                              <div class="col-md-7">
                                   <select id="projectName" name="projectName" class="form-control required" required>
                                   <option value="">নির্বাচন করুন</option>
                                   @foreach ($projects as $project)
@@ -519,7 +519,7 @@ $( function() {
                     <br><br><br>
                       <button type="button" class=" btn btn-info" onclick="savedata()"> সংরক্ষণ করুন </button> 
                       <button type="reset" class="btn btn-danger" onclick="clearList()">বাতিল করুন</button>
-                      <button type="button" class="btn btn-success">মুদ্রণ করুন</button>
+                      <button type="button" class="btn btn-success"> <a href="{{route('product receive.productReceiveInvoice') }}" target="_blank" style="color: white">মুদ্রণ করুন</a></button>
                   </div>
                   @endif
                 </div>

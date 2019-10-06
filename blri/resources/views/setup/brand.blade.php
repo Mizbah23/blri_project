@@ -160,8 +160,9 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                 </a>
                 <ul class="treeview-menu">
                  @foreach($setuptypes as $setuptype)
+                   
                     <li><a href="{{route('setup.'.strtolower($setuptype->SType))}}">
-                    <i class="fa fa-circle"></i> {{$setuptype->name}}</a></li>
+                      <i class="fa fa-circle"></i> {{$setuptype->name}}</a></li>
                  @endforeach
                   
                 </ul>
@@ -177,8 +178,9 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                 </a>
                 <ul class="treeview-menu">
                   @foreach($productreceivetypes as $productreceivetype)
+                   
                     <li><a href="{{route('product receive.'.strtolower($productreceivetype->prType))}}">
-                    <i class="fa fa-circle"></i> {{$productreceivetype->prType}}</a></li>
+                      <i class="fa fa-circle"></i> {{$productreceivetype->name}}</a></li>
                  @endforeach
                 </ul>
               </li>
@@ -192,7 +194,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                  @foreach($productdistributions as $productdistribution)
                    
                     <li><a href="{{route('product distribution.'.strtolower($productdistribution->pdType))}}">
-                      <i class="fa fa-circle"></i> {{$productdistribution->pdType}}</a></li>
+                      <i class="fa fa-circle"></i> {{$productdistribution->name}}</a></li>
                  @endforeach
                 </ul>
               </li>
@@ -205,7 +207,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                     @foreach($adjustments as $adjustment)
                    
                     <li><a href="{{route('adjustment.'.strtolower($adjustment->adjustmentType))}}">
-                      <i class="fa fa-circle"></i> {{$adjustment->adjustmentType}}</a></li>
+                      <i class="fa fa-circle"></i> {{$adjustment->name}}</a></li>
                  @endforeach
                </ul>
               </li>
@@ -219,7 +221,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                  @foreach($reportings as $reporting)
                    
                     <li><a href="{{route('reporting.'.strtolower($reporting->crType))}}"><!-- route('Folder(from view) Name') &&strtolowere('database table name')-->
-                      <i class="fa fa-circle"></i> {{$reporting->crType}}</a></li>
+                      <i class="fa fa-circle"></i> {{$reporting->name}}</a></li>
                  @endforeach
                 </ul>
               </li>
