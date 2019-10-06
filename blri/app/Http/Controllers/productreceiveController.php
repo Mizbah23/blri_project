@@ -16,6 +16,7 @@ use App\Reporting;
 use Validator;
 use Illuminate\Validation\Rule;
 use App\ProductReceiveSave;
+use PDF;
 
 class productreceiveController extends Controller
 {
@@ -188,5 +189,11 @@ class productreceiveController extends Controller
                 // }
             return "success";
         }
+    }
+
+    public function invoice(){
+                $productReceiveLists=ProductReceiveList::all();
+                   $pdf = PDF::loadView('product receive.productReceiveInvoice',['productReceiveLists'=>$productReceiveLists]);
+                   return $pdf->stream('product_receive_invoice.pdf');
     }
 }
