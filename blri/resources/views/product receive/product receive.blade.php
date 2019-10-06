@@ -519,7 +519,7 @@ $( function() {
                     <br><br><br>
                       <button type="button" class=" btn btn-info" onclick="savedata()"> সংরক্ষণ করুন </button> 
                       <button type="reset" class="btn btn-danger" onclick="clearList()">বাতিল করুন</button>
-                      <button type="button" class="btn btn-success">মুদ্রণ করুন</button>
+                      <button type="button" class="btn btn-success">প্রিন্ট করুন</button>
                   </div>
                   @endif
                 </div>
