@@ -336,7 +336,9 @@ $( function() {
                        <div class="col-lg-7">
                           <input type="text" class="form-control" id="projectName" name="projectName" value="{{$project->projectName}}" placeholder="অবশ্যই পূরণ করুন"required>
                           </div><br><br>
+  
 
+  
                           <label for="address" class="col-sm-5 control-label">ঠিকানা</label>
                        <div class="col-lg-7">
                         <textarea name="address" value="{{$project->address}}" id="address" class="form-control" placeholder="অবশ্যই পূরণ করুন"required></textarea>
