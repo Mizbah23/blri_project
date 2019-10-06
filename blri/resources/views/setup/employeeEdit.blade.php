@@ -282,7 +282,7 @@ $( function() {
         <div class=" form-grids row form-grids-right">
             <div class="widget-shadow " data-example-id="basic-forms"> 
               <div class="form-title bg-primary text-white">
-                <h3 class="">Employee Information</h3>
+                <h3 class="">কর্মচারীদের তথ্য</h3>
               </div>
               <div class="form-body">
                 <form class="form-horizontal" method="post" enctype="multipart/form-data"  autocomplete="off"> 
@@ -293,16 +293,16 @@ $( function() {
                        <!--left side starts-->
                       <div class="col-md-5">
 
-                        <label  class="col-sm-6 control-label">Employee Name</label>
+                        <label  class="col-sm-6 control-label">কর্মকর্তার নাম</label>
                         <div class="col-lg-6">
                           <input type="text" class="form-control" id="name" name="name" value="{{old('name',$employeeInformation->name)}}" placeholder="Employee name can not be empty"required>
                           <div class="error">{{$errors->first('name')}}</div>
                         </div><br><br>
 
-                        <label  class="col-sm-6 control-label">Division</label>
+                        <label  class="col-sm-6 control-label">অনুষদ</label>
                         <div class="col-lg-6">
                             <select id="divisionName" name="divisionName" onchange="showSection()"  class="form-control required" required>
-                                <option value="">Select Division</option>
+                                <option value="">নির্বাচন করুন</option>
                                 @foreach ($divisions  as $division)
                                   <option value="{{$division->id}}" {{ old('divisionName',$employeeInformation->section->division->id) == $division->id ? "selected" : "" }}>{{$division->divisionName}}</option>
                                 @endforeach
@@ -310,10 +310,10 @@ $( function() {
                             <div class="error">{{$errors->first('divisionName')}}</div>
                         </div><br><br>
 
-                        <label  class="col-sm-6 control-label">Section</label>
+                        <label  class="col-sm-6 control-label">শাখা</label>
                         <div class="col-lg-6">
                           <select id="sectionName"  name="sectionName" class="form-control required" required>
-                              <option value="">Select Section</option>
+                              <option value="">নির্বাচন করুন</option>
                               @if (old('divisionName',$employeeInformation->section->division->id))
                                 @foreach ($sections  as $section)
                                   @if (old('divisionName',$employeeInformation->section->division->id) == $section->division_id){
@@ -327,10 +327,10 @@ $( function() {
                           <div class="error">{{$errors->first('sectionName')}}</div>
                         </div><br><br>
 
-                        <label  class="col-sm-6 control-label">Designation</label>
+                        <label  class="col-sm-6 control-label">পদবি</label>
                         <div class="col-lg-6">
                           <select id="designationName" name="designationName"  value="{{old('designationName',$employeeInformation->designation->designationName)}}" class="form-control required" required>
-                              <option value="">Select Designation</option>
+                              <option value="">নির্বাচন করুন</option>
                               @foreach ($designations  as $designation)
                               <option value="{{$designation->id}}" @if (old('designationName',$employeeInformation->designation->id)==$designation->id)
                                  {{ "selected"}}
@@ -340,10 +340,10 @@ $( function() {
                           <div class="error">{{$errors->first('designationName')}}</div>
                         </div><br><br>
 
-                        <label  class="col-sm-6 control-label">Home District</label>
+                        <label  class="col-sm-6 control-label">স্থায়ী জেলা</label>
                         <div class="col-lg-6">
                           <select name="districtName" id="districtName" class="form-control required" required>
-                            <option value="">Select Home District</option>
+                            <option value="">নির্বাচন করুন</option>
                             @foreach ($districts as $district)
                             <option value="{{$district->id}}" @if (old('districtName',$employeeInformation->district->id)==$district->id)
                                 {{"selected"}}
@@ -353,13 +353,13 @@ $( function() {
                           <div class="error">{{$errors->first('districtName')}}&nbsp;</div>
                         </div><br><br>
 
-                        <label  class="col-sm-6 control-label">Address</label>
+                        <label  class="col-sm-6 control-label">ঠিকানা</label>
                         <div class="col-lg-6">
-                          <input type="text" name="address"class="form-control" placeholder="Address can not be empty"  value="{{old('address',$employeeInformation->address)}}" required>
+                          <input type="text" name="address"class="form-control" placeholder="অবশ্যই পূরণ করুন"  value="{{old('address',$employeeInformation->address)}}" required>
                           <div class="error">{{$errors->first('address')}}</div>
                         </div><br><br><br>
 
-                        <label  class="col-sm-6 control-label">Contact</label>
+                        <label  class="col-sm-6 control-label">যোগাযোগ নং</label>
                         <div class="col-lg-6">
                           <input type="tel" class="form-control" id="contactNo" name="contactNo"  value="{{old('contactNo',$employeeInformation->contactNo)}}" placeholder="Contact no can not be empty" required minlength='11' maxlength='11' pattern="(01)[0-9]{9}" >
                           <div class="error">{{$errors->first('contactNo')}}</div>
@@ -371,27 +371,27 @@ $( function() {
 
                       <!--right side starts-->
                       <div class="col-md-5">
-                        <label  class="col-sm-6 control-label">NID</label>
+                        <label  class="col-sm-6 control-label">জাতীয় পরিচয়পত্র</label>
                         <div class="col-lg-6">
-                          <input type="text" class="form-control" id="nidNo" name="nidNo"  value="{{old('nidNo',$employeeInformation->nidNo)}}" placeholder="NID no can not be empty" required minlength="10">
+                          <input type="text" class="form-control" id="nidNo" name="nidNo"  value="{{old('nidNo',$employeeInformation->nidNo)}}" placeholder="অবশ্যই পূরণ করুন" required minlength="10">
                           <div class="error">{{$errors->first('nidNo')}}</div>
                         </div><br><br>
 
-                        <label class="col-md-6 control-label" >Joinig Date</label>
+                        <label class="col-md-6 control-label" >যোগদানের তারিখ</label>
                         <div class="col-md-6">
-                          <input class="form-control datepicker" type="text" name="joiningDate" placeholder="mm/dd/yyyy"  value="{{old('joiningDate',date('m/d/Y',strtotime($employeeInformation->joiningDate)))}}"  required>
+                          <input class="form-control datepicker" type="text" name="joiningDate" placeholder="দিন/মাস/বছর" value="{{old('joiningDate',date('m/d/Y',strtotime($employeeInformation->joiningDate)))}}"  required>
                           <div class="error">{{$errors->first('joiningDate')}}</div>
                         </div><br><br>
 
-                        <label class="col-md-6 control-label" >Birth Date</label>
+                        <label class="col-md-6 control-label" >জন্ম তারিখ</label>
                         <div class="col-md-6">
-                          <input type="text" class="form-control datepicker" name="birthDate" placeholder="mm/dd/yyyy"  value="{{old('birthDate',date('m/d/Y',strtotime($employeeInformation->birthDate)))}}" required>
+                          <input type="text" class="form-control datepicker" name="birthDate" placeholder="দিন/মাস/বছর" value="{{old('birthDate',date('m/d/Y',strtotime($employeeInformation->birthDate)))}}" required>
                           <div class="error">{{$errors->first('birthDate')}}</div>
                         </div><br><br>
 
-                        <label  class="col-sm-6 control-label">Working Place</label>
+                        <label  class="col-sm-6 control-label">কাজের স্থান</label>
                         <div class="col-lg-6">
-                          <input type="text" class="form-control" id="workingPlace" name="workingPlace"  value="{{old('workingPlace',$employeeInformation->workingPlace)}}" placeholder="Working place can not be empty"required>
+                          <input type="text" class="form-control" id="workingPlace" name="workingPlace"  value="{{old('workingPlace',$employeeInformation->workingPlace)}}" placeholder="অবশ্যই পূরণ করুন"required>
                           <div class="error">{{$errors->first('workingPlace')}}</div>
                         </div><br><br>
 
@@ -406,12 +406,12 @@ $( function() {
                         <div class="col-lg-6">
                             <input  type="checkbox" name="isRevenue" @if (old('isRevenue',$employeeInformation->isRevenue))
                                 checked
-                            @endif> Is Revenue?
+                            @endif> রাজস্ব??
                         </div><br><br>
 
                           
 
-                        <label  class="col-sm-6 control-label">Remarks</label>
+                        <label  class="col-sm-6 control-label">মন্তব্য</label>
                         <div class="col-lg-6">
                           <textarea name="remarks"class="form-control" placeholder="Remarks can not be empty" required>{{old('remarks',$employeeInformation->remarks)}}</textarea>
                           <div class="error">{{$errors->first('remarks')}}</div>
@@ -441,8 +441,8 @@ $( function() {
                         <div class="col-md-5">
                           <div class="text-center">
                           <input type="hidden" value="{{$employeeInformation->id}}" name="employeeId">
-                          <button type="submit" class="btn btn-info">Update</button> 
-                          <button onclick="cancelUpdate" class="btn btn-danger">Cancel</button>
+                          <button type="submit" class="btn btn-info">হালনাগাদ করুন</button> 
+                          <button onclick="cancelUpdate" class="btn btn-danger">বাতিল করুন</button>
                           </div>
 
                         </div>

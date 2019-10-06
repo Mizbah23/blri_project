@@ -485,7 +485,7 @@ $( function() {
                 <div class="row">
 
                     
-                    <div class="col-md-12">
+                    <div class="col-md-12"class="row overflow_x_auto_for_table">
                       @if (count($productReceiveLists)>0)
                       <table class="table table-responsive table-hover table-striped table-bordered table-condensed">
                           <tr class="row bg-primary">

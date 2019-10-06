@@ -320,7 +320,7 @@ $( function() {
         <div class=" form-grids row form-grids-right">
             <div class="widget-shadow " data-example-id="basic-forms"> 
               <div class="form-title bg-primary text-white">
-                <h3 class="">Supplier Information</h3>
+                <h3 class="">সরবরাহকারীর তথ্য</h3>
               </div>
               <div class="form-body">
                 <form class="form-horizontal" method="post">
@@ -331,13 +331,13 @@ $( function() {
                        <!--left side starts-->
                       <div class="col-md-6">
 
-                        <label for="supplierName" class="col-sm-5 control-label">Supplier Name</label>
+                        <label for="supplierName" class="col-sm-5 control-label">সরবরাহকারীর নাম</label>
                        <div class="col-lg-7">
-                          <input type="text" class="form-control" id="supplierName" name="supplierName" value="{{$supplier->supplierName}}" placeholder="Supplier name can not be empty"required>
+                          <input type="text" class="form-control" id="supplierName" name="supplierName" value="{{$supplier->supplierName}}"required>
                           <div class="error">{{$errors->first('supplierName')}}</div>
                           </div><br><br>
 
-                          <label for="supplierType" class="col-sm-5 control-label">Supplier Type</label>
+                          <label for="supplierType" class="col-sm-5 control-label">সরবরাহকারীর ধরণ</label>
                           <div class="col-lg-7">
                                    
                               <select id="supplierType" name="supplierType" value=" {{$supplier->supplierType}}" class="form-control required" required>
@@ -350,17 +350,17 @@ $( function() {
 
                           </div><br><br>
 
-                          <label for="contactName" class="col-sm-5 control-label">Contact Person</label>
+                          <label for="contactName" class="col-sm-5 control-label">যোগাযোগের ব্যক্তি</label>
                        <div class="col-lg-7">
-                          <input type="text" class="form-control" id="contactName" name="contactName" value="{{$supplier->contactName}}" placeholder="Contact name can not be empty"required>
+                          <input type="text" class="form-control" id="contactName" name="contactName" value="{{$supplier->contactName}}" required>
                           <div class="error">{{$errors->first('contactName')}}</div>
 
                           </div><br><br>
 
 
-                          <label for="address" class="col-sm-5 control-label">Address</label>
+                          <label for="address" class="col-sm-5 control-label">ঠিকানা</label>
                        <div class="col-lg-7">
-                        <textarea name="address"class="form-control" placeholder="Address can not be empty" value="{{$supplier->address}}" required></textarea>
+                        <textarea name="address"class="form-control" placeholder="অবশ্যই পুরণ করুণ" value="{{$supplier->address}}" required></textarea>
                           <div class="error">{{$errors->first('address')}}</div>
 
                           </div><br><br><br>
@@ -373,38 +373,38 @@ $( function() {
                       <!--right side starts-->
                       <div class="col-md-6">
 
-                       <label for="phone" class="col-sm-5 control-label">Phone</label>
+                       <label for="phone" class="col-sm-5 control-label">ফোন</label>
                        <div class="col-lg-7">
-                          <input type="text" class="form-control" id="phone" name="phone" placeholder="Phone no can not be empty" value="{{$supplier->phone}}" required>
+                          <input type="text" class="form-control" id="phone" name="phone" placeholder="অবশ্যই পুরণ করুণ" value="{{$supplier->phone}}" required>
                           <div class="error">{{$errors->first('phone')}}</div>
 
                           </div><br><br>
 
-                          <label for="mobile" class="col-sm-5 control-label">Mobile</label>
+                          <label for="mobile" class="col-sm-5 control-label">মোবাইল</label>
                        <div class="col-lg-7">
-                          <input type="text" class="form-control" id="mobile" name="mobile" placeholder="Mobile no can not be empty" value="{{$supplier->moblie}}" required>
+                          <input type="text" class="form-control" id="mobile" name="mobile" placeholder="অবশ্যই পুরণ করুণ" value="{{$supplier->moblie}}" required>
                           <div class="error">{{$errors->first('mobile')}}</div>
 
                           </div><br><br>
 
-                          <label for="email" class="col-sm-5 control-label">Email</label>
+                          <label for="email" class="col-sm-5 control-label">ইমেইল</label>
                        <div class="col-lg-7">
-                          <input type="email" class="form-control" id="email" name="email" placeholder="Email can not be empty" value="{{$supplier->email}}" required>
+                          <input type="email" class="form-control" id="email" name="email" placeholder="অবশ্যই পুরণ করুণ" value="{{$supplier->email}}" required>
                           <div class="error">{{$errors->first('email')}}</div>
 
                           </div><br><br>
 
-                        <label for="country" class="col-sm-5 control-label">Country</label>
+                        <label for="country" class="col-sm-5 control-label">দেশ</label>
                         <div class="col-lg-7">
-                        <input type="text" class="form-control" id="country" name="country" placeholder="Country can not be empty"value="{{$supplier->country}}" required>
+                        <input type="text" class="form-control" id="country" name="country" value="{{$supplier->country}}" required>
                           <div class="error">{{$errors->first('country')}}</div>
 
                         </div><br><br>
 
 
-                          <label for="vatReg" class="col-sm-5 control-label">VAT Reg. no</label>
+                          <label for="vatReg" class="col-sm-5 control-label">ভ্যাট নিবন্ধন নং.</label>
                        <div class="col-lg-7">
-                          <input type="text" class="form-control" id="vatReg" name="vatReg" placeholder="VAT Reg. no can not be empty" value="{{$supplier->vatReg}}" required>
+                          <input type="text" class="form-control" id="vatReg" name="vatReg"  value="{{$supplier->vatReg}}" required>
                           <div class="error">{{$errors->first('vatReg')}}</div>
 
                           </div><br><br>
@@ -420,8 +420,8 @@ $( function() {
                         <br><br>
                         <div class="col-md-5">
                           <div class="text-center">
-                          <button type="submit" class="btn btn-info">Update</button> 
-                          <input type="button" onclick="cancelUpdate()" class="btn btn-danger" value="বাতিল করুণ"/>
+                          <button type="submit" class="btn btn-info">হালনাগাদ করুন</button> 
+                          <input type="button" onclick="cancelUpdate()" class="btn btn-danger" value="বাতিল করুন"/>
                           </div>
 
                         </div>

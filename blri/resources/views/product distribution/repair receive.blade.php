@@ -348,7 +348,7 @@ $( function() {
         <div class=" form-grids row form-grids-right">
             <div class="widget-shadow " data-example-id="basic-forms"> 
               <div class="form-title bg-primary text-white">
-                <h3 class="">Repair Receive</h3>
+                <h3 class="">মেরামত পণ্য প্রাপ্তির তথ্য</h3>
               </div>
               <div class="form-body">
                 <form class="form-horizontal" method="post"> 
@@ -359,27 +359,27 @@ $( function() {
                            
                             
                             <div class="col-md-4">
-                                 <label for="" class=" control-label">Product</label>
+                                 <label for="" class=" control-label">পণ্য</label>
                             </div>
                             <div class="col-md-8">
                                 <select id="" name="" class="form-control required" required>
-                                 <option value="">Select Product</option>
+                                 <option value="">নির্বাচন করুন</option>
                               </select>
                             </div><br><br>
                             <div class="col-md-4">
-                                 <label for="" class=" control-label">Serial No.</label>
+                                 <label for="" class=" control-label">সিরিয়াল নং.</label>
                             </div>
                             <div class="col-md-8">
                                 <select id="" name="" class="form-control required" required>
-                                 <option value="">Select Product Serial</option>
+                                 <option value="">নির্বাচন করুন</option>
                               </select>
                             </div><br><br>
                              <div class="col-md-4">
-                                 <label for="" class=" control-label">Repairer Name</label>
+                                 <label for="" class=" control-label">মেরামতকারী</label>
                             </div>
                             <div class="col-md-8">
                                 <select id="" name="" class="form-control required" required>
-                                 <option value="">Select Repairer Name</option>
+                                 <option value="">নির্বাচন করুন</option>
                               </select>
                             </div><br><br>
                            
@@ -392,7 +392,7 @@ $( function() {
                         <div class="col-md-6" style="border: solid 2px #eee; padding: 20px">
                             
                             <div class="col-md-4">
-                                 <label for="" class=" control-label">Receive date</label>
+                                 <label for="" class=" control-label">গ্রহণের তারিখ</label>
                             </div>
                             <div class="col-md-8">
                               
@@ -400,7 +400,7 @@ $( function() {
                              <div class="error">{{$errors->first('birthDate')}}</div>
                             </div><br><br>
                             <div class="col-md-4">
-                                 <label for="" class=" control-label">Remarks</label>
+                                 <label for="" class=" control-label">মন্তব্য</label>
                             </div>
                             <div class="col-md-8">
                                 <textarea name="" class="form-control" placeholder=""></textarea>
@@ -409,8 +409,8 @@ $( function() {
                         </div>
                   </div>
                   <div class="text-center">
-                      <button type="submit" class=" btn btn-info"> Save</button> 
-                          <button type="reset" class="btn btn-danger">Cancel</button>
+                      <button type="submit" class=" btn btn-info"> সংরক্ষণ করুন</button> 
+                          <button type="reset" class="btn btn-danger">বাতিল করুন</button>
                   </div>
               </form>
                   </div> 
@@ -420,11 +420,11 @@ $( function() {
                   <table id="example" class="table table-responsive table-hover table-striped table-bordered table-condensed">
                      <thead>
                         <tr class="row bg-primary">
-                        <th class="col-lg-2 text-center">Product</th>
-                        <th class="col-lg-3 text-center">Repairer</th>
-                        <th class="col-lg-2 text-center">Receive Date</th>
-                        <th class="col-lg-4 text-center">Remarks</th>
-                         <th class="col-lg-1 text-center">Edit</th>
+                        <th class="col-lg-2 text-center">পণ্য</th>
+                        <th class="col-lg-3 text-center">মেরামতকারী</th>
+                        <th class="col-lg-2 text-center">গ্রহণের তারিখ</th>
+                        <th class="col-lg-4 text-center">মন্তব্য</th>
+                         <th class="col-lg-1 text-center">সম্পাদনা</th>
                       </tr>
                      </thead>
                      <tbody>

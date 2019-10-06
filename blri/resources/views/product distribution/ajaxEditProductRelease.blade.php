@@ -11,12 +11,12 @@
 
       <div class="col-lg-4">
           
-        <label for="releaseDate"><b>Release Date:</b></label>
+        <label for="releaseDate"><b>খালাসের তারিখ:</b></label>
         <input type="text" class="form-control datepicker" name="releaseDate" placeholder="dd/mm/yyyy" value="{{old('releaseDate',date('d/m/Y',strtotime(str_replace('-','/',$availableProductReleaseInfo->releaseDate))))}}" required>
-        <div class="error">{{$errors->first('releaseDate')}}</div>
-        <label for="deptName"><b>Department Name:</b></label>
+        <div class="error">{{$errors->first('releaseDate')}}</div><br>
+        <label for="deptName"><b>বিভাগের নাম:</b></label>
         <select id="deptName" name="deptName" class="form-control required" required>
-          <option value="">নির্বাচন করুণ</option>
+          <option value="">নির্বাচন করুন</option>
           @foreach ($divisions  as $division)
          <option value="{{$division->id}}" @if (old('deptName',$availableProductReleaseInfo->division_id)==$division->id)
              {{"selected"}}
@@ -29,19 +29,19 @@
       <div class="col-lg-1"></div>
 
       <div class="col-lg-4">
-        <label for="project"><b>Project:</b></label><br>
+        <label for="project"><b>প্রকল্প:</b></label><br>
         <select id="projectName" name="projectName" onchange="showEmployee()" class="form-control required" required>
-          <option value="">নির্বাচন করুণ</option>
+          <option value="">নির্বাচন করুন</option>
           @foreach ($projects  as $project)
           <option value="{{$project->id}}" @if (old('projectName',$availableProductReleaseInfo->project_id)==$project->id)
               {{"selected"}}
           @endif >{{$project->projectName}}</option>
           @endforeach
-       </select>
+       </select><br>
        <div class="error">{{$errors->first('projectName')}}</div>
-        <label for="employee"><b>Employee:</b></label><br>
+        <label for="employee"><b>কর্মকর্তা:</b></label><br>
         <select id="employeeName" name="employeeName" class="form-control required" required>
-          <option value="">নির্বাচন করুণ</option>
+          <option value="">নির্বাচন করুন</option>
           @if (old('projectName',$availableProductReleaseInfo->project_id))
            @foreach ($assignedEmployees  as $key=>$assignedEmployee)
              <option value="{{$assignedEmployee->id}}" @if (old('employeeName',$availableProductReleaseInfo->employee_information_id)==$assignedEmployee->id)
@@ -59,7 +59,7 @@
   
   <div class="row" style="border:2px solid #EEE;padding:15px;margin: -16px">
     <div class="col-lg-5">
-    <label for="serialNo"><b>Serial No:</b></label>
+    <label for="serialNo"><b>সিরিয়াল নং</b></label>
     <select id="serialNo" name="serialNo" class="form-control required" required>
         <option value="">Select serial No of Product</option>
         @foreach ($serialInfo  as $item)
@@ -73,8 +73,8 @@
     <center>
       <input type="hidden" name="productReleaseInfoId" value="{{$availableProductReleaseInfo->id}}">
       <button type="button" class="btn btn-success" onclick="updateContent()"><i class="glyphicon glyphicon-edit"
-      style="color:white" ></i>Update</button>
-      <button type="button"class="btn btn-danger">Cancel</button>
+      style="color:white" ></i>হালনাগাদ করুন</button>
+      <button type="button"class="btn btn-danger">বাতিল করুন</button>
     </center>
     </div>
        
@@ -83,12 +83,12 @@
             <thead >
               <tr class="row bg-primary">
               
-              <th class="col-lg-2 text-center">Product Name</th>
-              <th class="col-lg-3 text-center">Serial No</th>
-              <th class="col-lg-3 text-center">Released By</th>
-              <th class="col-lg-3 text-center">Department</th>
-              <th class="col-lg-3 text-center">Edit</th>
-              <th class="col-lg-3 text-center">Delete</th>
+              <th class="col-lg-2 text-center">পণ্যের নাম</th>
+              <th class="col-lg-3 text-center">সিরিয়াল নং</th>
+              <th class="col-lg-3 text-center">কর্মকর্তার নাম</th>
+              <th class="col-lg-3 text-center">বিভাগ</th>
+              <th class="col-lg-3 text-center">সম্পাদনা</th>
+              <th class="col-lg-3 text-center">মুছে ফেলুন</th>
               </tr>
             </thead>
             <tbody  align="center">

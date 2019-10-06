@@ -200,8 +200,6 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                   
                 </ul>
               </li>
-           
-             
               <li class="treeview">
               <li class="treeview">
                 <a href="#">

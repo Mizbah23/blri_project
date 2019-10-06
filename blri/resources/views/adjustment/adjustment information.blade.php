@@ -337,7 +337,7 @@ $( function() {
         <div class=" form-grids row form-grids-right">
             <div class="widget-shadow " data-example-id="basic-forms"> 
               <div class="form-title bg-primary text-white">
-                <h3 class="">Adjustment Information</h3>
+                <h3 class="">সমন্বয় তথ্য</h3>
               </div>
               <div class="form-body" >
                 <div id="createFormDiv">
@@ -348,7 +348,7 @@ $( function() {
                       <div class="row">
                           <div class="col-md-4" >
                               <div class="col-md-3">
-                                  <label for="adjustmentDate" class=" control-label">Date</label>
+                                  <label for="adjustmentDate" class=" control-label">তারিখ</label>
                               </div>
                               <div class="col-md-9">
                                 <input class="form-control datepicker" type="text" id="adjustmentDate" name="adjustmentDate" placeholder="mm/dd/yyyy"  value="{{old('adjustmentDate')}}"  required><br>
@@ -356,23 +356,23 @@ $( function() {
                               </div><br><br>
 
                               <div class="col-md-3">
-                                  <label for="type" class=" control-label">Type</label>
+                                  <label for="type" class=" control-label">ধরন</label>
                               </div>
                               <div class="col-md-9">
                                   <select id="type" name="type" class="form-control required" required onchange="">
-                                  <option value="">Select Adjustment type</option>
-                                  <option value="found" {{old("type")=='found'?"selected":""}}>Found</option>
-                                  <option value="lost" {{old("type")=='lost'?"selected":""}}>Lost</option>
-                                  <option value="gift" {{old("type")=='gift'?"selected":""}}>Gift</option>
-                                  <option value="damage" {{old("type")=='damage'?"selected":""}}>Damage</option>
-                                  <option value="waste" {{old("type")=='waste'?"selected":""}}>Waste</option>
-                                  <option value="garbage" {{old("type")=='garbage'?"selected":""}}>Garbage</option>
+                                  <option value="">সমন্বয়ের ধরন নির্বাচন করুন</option>
+                                  <option value="খুঁজে পাওয়া" {{old("type")=='found'?"selected":""}}>খুঁজে পাওয়া</option>
+                                  <option value="নিখোঁজ" {{old("type")=='lost'?"selected":""}}>নিখোঁজ</option>
+                                  <option value="উপহার" {{old("type")=='gift'?"selected":""}}>উপহার</option>
+                                  <option value="ক্ষতি" {{old("type")=='damage'?"selected":""}}>ক্ষতি</option>
+                                  <option value="waste" {{old("type")=='waste'?"selected":""}}>অপব্যয়</option>
+                                  <option value="আবর্জনা" {{old("type")=='garbage'?"selected":""}}>আবর্জনা</option>
                                 </select>
                               <div class="error">{{$errors->first('type')}}</div>
                               </div><br><br><br>
 
                               <div class="col-md-3">
-                                <label for="reason" class=" control-label">Reason</label>
+                                <label for="reason" class=" control-label">কারণ</label>
                               </div>
                               <div class="col-md-9">
                                 <textarea class="form-control" id="reason" name="reason" required>{{old('reason')}}</textarea>
@@ -387,11 +387,11 @@ $( function() {
                           
 
                               <div class="col-md-3">
-                                <label for="productName" class=" control-label">Product</label>
+                                <label for="productName" class=" control-label">পণ্য</label>
                               </div>
                               <div class="col-md-9">
                                 <select id="productName" name="productName" class="form-control required" required onchange="showProductCode()">
-                                <option value="">Select Product</option>
+                                <option value="">নির্বাচন করুন</option>
                                 @foreach ($products->unique('productName')->pluck('productName') as $productName)
                                 <option value="{{$productName}}" @if (old('productName')==$productName)
                                     {{"selected"}}
@@ -402,11 +402,11 @@ $( function() {
                             </div><br><br>
                               
                               <div class="col-md-3">
-                                <label for="productCode" class=" control-label">Code</label>
+                                <label for="productCode" class=" control-label">কোড</label>
                               </div>
                               <div class="col-md-9">
                                 <select id="productCode" name="productCode" class="form-control required" required onchange="showStock()">
-                                <option value="">Select Product Code</option>
+                                <option value="">নির্বাচন করুন</option>
                                 @if(old('productName'))
                                   @foreach ($products as $product)
                                   @if(old('productName')==$product->productName)
@@ -422,7 +422,7 @@ $( function() {
 
 
                               <div class="col-md-3">
-                                <label for="stock" class=" control-label">Stock</label>
+                                <label for="stock" class=" control-label">স্টক</label>
                               </div>
                               <div class="col-md-9">
                                 <input type="text" class="form-control" id="stock" name="stock" value="{{old('stock')}}" placeholder="0" required readonly>
@@ -434,7 +434,7 @@ $( function() {
 
                           <div class="col-md-4" >
                               <div class="col-md-3">
-                              <label for="quantity" class=" control-label">Quantity</label>
+                              <label for="quantity" class=" control-label">পরিমাণ</label>
                               </div>
                               <div class="col-md-9">
                                 <input type="number" class="form-control"  name="quantity" id="quantity" value="{{old('quantity')}}" placeholder="0" required>
@@ -448,8 +448,8 @@ $( function() {
                         
                     </div>
                     <div class="text-center">
-                      <button type="submit" class="btn btn-info"><i class="glyphicon glyphicon-plus" style="color: white"></i>Add to lsit</button> 
-                      <button type="reset" class="btn btn-danger">Reset</button><br><br>
+                      <button type="submit" class="btn btn-info"><i class="glyphicon glyphicon-plus" style="color: white"></i>সংযুক্তকরুন</button> 
+                      <button type="reset" class="btn btn-danger">পুনরায় বসান</button><br><br>
                     </div>
 
 
@@ -465,12 +465,12 @@ $( function() {
                 
                         <table class="table table-responsive table-hover table-striped table-bordered table-condensed">
                             <tr class="row bg-primary">
-                              <th class="col-lg-1 text-center">Edit</th>
-                              <th class="col-lg-1 text-center">Delete</th>
-                              <th class="col-lg-4 text-center">Product</th>
-                              <th class="col-lg-2 text-center">Code</th>
-                              <th class="col-lg-2 text-center">Quantity</th>
-                              <th class="col-lg-2 text-center">Adjustment Type</th>
+                              <th class="col-lg-1 text-center">সম্পাদনা</th>
+                              <th class="col-lg-1 text-center">মুছে ফেলুন</th>
+                              <th class="col-lg-4 text-center">পণ্য</th>
+                              <th class="col-lg-2 text-center">কোড</th>
+                              <th class="col-lg-2 text-center">পরিমাণ</th>
+                              <th class="col-lg-2 text-center">সমন্বয়ের ধরন</th>
                             </tr>
                             @if (count($adjustmentInfoLists)>0)
                               @foreach ($adjustmentInfoLists as $item)
