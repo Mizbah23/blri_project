@@ -353,7 +353,7 @@ $( function() {
         <div class=" form-grids row form-grids-right">
             <div class="widget-shadow " data-example-id="basic-forms"> 
               <div class="form-title bg-primary text-white">
-                <h3 class="">Product Repair</h3>
+                <h3 class="">পণ্য মেরামতের তথ্য</h3>
               </div>
               <div class="form-body">
                 <form class="form-horizontal" method="post"> 
@@ -363,12 +363,12 @@ $( function() {
                     <div class="row">
                         <div class="col-md-6"  style="border: solid 2px #eee; padding: 20px">
                             <div class="col-md-4">
-                                 <label for="categoryName" class=" control-label">Category</label>
+                                 <label for="categoryName" class=" control-label">ক্যাটাগরী</label>
                             </div>
                             <div class="col-md-8">
                                 <select id="categoryName" name="categoryName" onchange="showBrand()" class="form-control required" required>
                                 <div class="error" style="color:red">{{$errors->first('categoryName')}}</div><br><br>
-                                 <option value="">Select Category</option>
+                                 <option value="">নির্বাচন করুন</option>
                                  @foreach($categories as $category)
                                           <option value="{{$category->id}}"
                                             {{old('categoryName')==$category->id ?"selected":""}}>
@@ -377,13 +377,13 @@ $( function() {
                               </select>
                             </div><br><br>
                             <div class="col-md-4">
-                                 <label for="brandName" class=" control-label">Brand</label>
+                                 <label for="brandName" class=" control-label">ব্র্যান্ড</label>
                             </div>
                             <div class="col-md-8">
                                 <select id="brandName" name="brandName" class="form-control required" onchange="showProductName()" required>
                                 <div class="error" style="color:red">
                                   {{$errors->first('brandName')}}</div><br><br>
-                                 <option value="">Select Brand</option>
+                                 <option value="">নির্বাচন করুন</option>
                                   @if(old('categoryName'))
                                             @foreach($brands as $brand)
                                               @if (old('categoryName') == $brand->category->id)
@@ -396,11 +396,11 @@ $( function() {
                                <div class="error">{{$errors->first('brandName')}}</div>
                             </div><br><br>
                             <div class="col-md-4">
-                                 <label for="productName" class=" control-label">Product</label>
+                                 <label for="productName" class=" control-label">পণ্য</label>
                             </div>
                             <div class="col-md-8">
                                 <select id="productName" name="productName" class="form-control required" onchange="showSerialInfo()" required>
-                                 <option value="">Select Product</option>
+                                 <option value="">নির্বাচন করুন</option>
                              @if (old('brandName'))
                                 @if (count($selectedProductBasedOnBrand)>0)
                                   @foreach($selectedProductBasedOnBrand->unique('productName') as $product)
@@ -415,11 +415,11 @@ $( function() {
                               <div class="error">{{$errors->first('productName')}}</div>
                             </div><br><br>
                             <div class="col-md-4">
-                                 <label for="serial_no" class=" control-label">Serial No.</label>
+                                 <label for="serial_no" class=" control-label">সিরিয়াল নং.</label>
                             </div>
                             <div class="col-md-8">
                                 <select id="serial_no" name="serial_no" class="form-control required" value="{{old('serial_no')}}" required>
-                                 <option value="">Select Product Serial</option>
+                                 <option value="">নির্বাচন করুন</option>
                                  @if(old('productName'))
                                   @foreach ($serialInfos as $serialInfo)
                                     @if(old('productName')==$serialInfo->product_info_id)
@@ -433,11 +433,11 @@ $( function() {
                             <div class="error">{{$errors->first('serial_no')}}</div>
                             </div><br><br>
                              <div class="col-md-4">
-                                 <label for="repairerName" class=" control-label">Repairer Name</label>
+                                 <label for="repairerName" class=" control-label">মেরামতকারী</label>
                             </div>
                             <div class="col-md-8">
                                 <select id="repairerName" name="repairerName" class="form-control required" required>
-                                 <option value="">Select Repairer Name</option>
+                                 <option value="">নির্বাচন করুন</option>
                                   @foreach($repairers as $repairer)
                                   <option value="{{$repairer->id}}" @if (old('repairerName')==$repairer->id)
                                       {{"selected"}}
@@ -451,7 +451,7 @@ $( function() {
                         <div class="col-md-6" style="border: solid 2px #eee; padding: 20px">
 
                          <div class="col-md-4">
-                            <label for="sendingDate" class=" control-label">Sending Date</label>
+                            <label for="sendingDate" class=" control-label">প্রেরণের তারিখ</label>
                          </div>
                          <div class="col-md-8">
                              <input type="text" class="form-control datepicker" name="sendingDate" placeholder="দিন/মাস/বছর" value="{{old('sendingDate')}}" required>
@@ -459,10 +459,10 @@ $( function() {
                          </div><br><br>
                             
                          <div class="col-md-4">
-                              <label for="remarks" class=" control-label">Remarks</label>
+                              <label for="remarks" class=" control-label">মন্তব্য</label>
                          </div>
                          <div class="col-md-8">
-                              <textarea name="remarks" id="remarks" class="form-control" placeholder="Remarks">{{old('remarks')}}</textarea>
+                              <textarea name="remarks" id="remarks" class="form-control" placeholder="">{{old('remarks')}}</textarea>
                          </div><br><br>
                             
                          </div>
@@ -477,25 +477,25 @@ $( function() {
                     </div> --}}
 
                   <div class="text-center">
-                      <button type="submit" class=" btn btn-info"> Save</button> 
-                          <button type="reset" class="btn btn-danger">Cancel</button>
+                      <button type="submit" class=" btn btn-info"> সংরক্ষণ করুন</button> 
+                          <button type="reset" class="btn btn-danger">বাতিল করুন</button>
                   </div>
               </form>
                      
                   </div> 
                </div> 
 
-                <div id="allBrands">
+                <div id="allBrands"class="row overflow_x_auto_for_table">
                   <table id="example" class="table table-responsive table-hover table-striped table-bordered table-condensed">
                     <thead>
                         <tr class="row bg-primary">
-                        <th class="col-lg-2 text-center">Product Name</th>
-                        <th class="col-lg-1 text-center">Serial No</th>
-                        <th class="col-lg-2 text-center">Repairer Name</th>
-                        <th class="col-lg-2 text-center">Sending Date</th>
-                        <th class="col-lg-4 text-center">Remarks</th>
-                        <th class="col-lg-1 text-center">Edit</th>
-                        <th class="col-lg-1 text-center">Delete</th>
+                        <th class="col-lg-2 text-center">পণ্যের নাম</th>
+                        <th class="col-lg-1 text-center">সিরিয়াল নং</th>
+                        <th class="col-lg-2 text-center">মেরামতকারী নাম</th>
+                        <th class="col-lg-2 text-center">প্রেরণের তারিখ</th>
+                        <th class="col-lg-4 text-center">মন্তব্য</th>
+                        <th class="col-lg-1 text-center">সম্পাদনা</th>
+                        <th class="col-lg-1 text-center">মুছে ফেলুন</th>
                       </tr>
                     </thead>
                       <tbody>

@@ -435,7 +435,7 @@ $( function() {
                  
                   <div class="text-center">
                     <br><br><br>
-                      <button type="submit" class=" btn btn-info"> Update করুন</button> 
+                      <button type="submit" class=" btn btn-info"> হালনাগাদ করুন</button> 
                       <button  onclick="cancelUpdate()" class="btn btn-danger">বাতিল করুন</button>
                   </div>
                 </div>

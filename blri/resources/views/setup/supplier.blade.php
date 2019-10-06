@@ -101,22 +101,23 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
         });
 
     </script>
-<!-- //pie-chart --><!-- index page sales reviews visitors pie chart -->
+<!-- //pie-chart -->
+<!-- index page sales reviews visitors pie chart -->
 
     <!-- requried-jsfiles-for owl -->
-                    <link href="/css/owl.carousel.css" rel="stylesheet">
-                    <script src="/js/owl.carousel.js"></script>
-                        <script>
-                            $(document).ready(function() {
-                                $("#owl-demo").owlCarousel({
-                                    items : 3,
-                                    lazyLoad : true,
-                                    autoPlay : true,
-                                    pagination : true,
-                                    nav:true,
-                                });
-                            });
-                        </script>
+          <link href="/css/owl.carousel.css" rel="stylesheet">
+              <script src="/js/owl.carousel.js"></script>
+               <script>
+                  $(document).ready(function() {
+                            $("#owl-demo").owlCarousel({
+                                  items : 3,
+                                  lazyLoad : true,
+                                  autoPlay : true,
+                                  pagination : true,
+                                  nav:true,
+                          });
+                      });
+               </script>
                     <!-- //requried-jsfiles-for owl -->
 <!--date picker-->
   <script>

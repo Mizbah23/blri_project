@@ -24,18 +24,11 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 <link href='/css/SidebarNav.min.css' media='all' rel='stylesheet' type='text/css'/>
 <!-- //side nav css file -->
 
-<link rel="stylesheet" href="/css/jquery-ui.css" type='text/css'/>
-<!--datepicker-->
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<link rel="stylesheet" href="/resources/demos/style.css">
- 
- <!-- js-->
+ <!-- must keep this js-->
 <script src="/js/jquery-1.11.1.min.js"></script>
-<script src="/js/modernizr.custom.js"></script>
+ <!-- must keep this js-->
 
-<!--datepicker-->
-<script src="/js/jquery-1.12.4.js"></script>
-<script src="/js/jquery-ui.js"></script>
+<script src="/js/modernizr.custom.js"></script>
 <!--webfonts-->
 <link href="//fonts.googleapis.com/css?family=PT+Sans:400,400i,700,700i&amp;subset=cyrillic,cyrillic-ext,latin-ext" rel="stylesheet">
 <!--//webfonts--> 
@@ -49,12 +42,19 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 <script src="/js/custom.js"></script>
 <link href="/css/custom.css" rel="stylesheet">
 <!--//Metis Menu -->
- <!--For autocomplete Search -->
+
+{{-- data table --}}
+<script src="/js/datatable/jquery-3.3.1.js"></script>
+<script src="/js/datatable/jquerydatatables.min.js"></script>
+<script src="/js/datatable/dataTables.bootstrap4.min.js"></script>
+<link rel="stylesheet" href="/css/dataTables.bootstrap4.min.css"/>
+{{-- data table --}}
+
+{{-- datepicker --}}
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.min.css">
 <link rel="stylesheet" href="https://jqueryui.com/resources/demos/style.css">
-<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
-<!--// For autocomplete Search -->
+{{-- datepicker --}}
 <style>
 #chartdiv {
   width: 100%;
@@ -153,6 +153,24 @@ $( function() {
     }
   } );
   </script>
+<!--date picker-->
+  <script>
+  $( function() {
+    $( ".datepicker" ).datepicker({
+       dateFormat: 'dd/mm/yy',
+      maxDate: "+0D"
+      });
+  });
+  </script>
+{{-- datepicker ends --}}
+
+{{-- datatable --}}
+<script>
+       $(document).ready(function() {
+       $('#example').DataTable();
+       } );
+</script>
+    {{-- datatable --}}
 
 </head> 
 <body class="cbp-spmenu-push">
@@ -360,15 +378,17 @@ $( function() {
                       <!--right side starts-->
                       <div class="col-md-6">
 
-                        <label class="col-md-5 control-label" >শুরুর তারিখ</label>
+                       <label class="col-md-5 control-label" >শুরুর তারিখ</label>
                           <div class="col-md-7">
-                            <input class="form-control" type="text" id="from" value="" name="startDate"></p>
+                            <input class="form-control datepicker" type="text" id="" name="startDate" placeholder="দিন/মাস/বছর"  value="{{old('startDate')}}"  required  autocomplete="off">
+                        
+                            <div class="error">{{$errors->first('startDate')}}</div>
                           </div><br><br>
 
-                          <label class="col-md-5 control-label" >শেষ তারিখ</label>
+                           <label class="col-md-5 control-label" >শেষ তারিখ</label>
                           <div class="col-md-7">
-                            
-                          <input class="form-control" name="endDate" type="text" id="to" value=""></p>
+
+                            <input class="form-control datepicker" type="text" id="" name="endDate" placeholder="দিন/মাস/বছর"  value="{{old('endDate')}}"  required  autocomplete="off">
                           </div><br><br>
 
 

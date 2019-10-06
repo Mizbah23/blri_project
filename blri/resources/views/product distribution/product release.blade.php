@@ -355,7 +355,7 @@ $( function() {
         <div class=" form-grids row form-grids-right">
             <div class="widget-shadow " data-example-id="basic-forms"> 
               <div class="form-title bg-primary text-white">
-                <h3 class="">Product Release</h3>
+                <h3 class="">পণ্য খালাস তথ্য</h3>
               </div>
               <div class="form-body" id="hideForm">
                 <form class="form-horizontal" method="post" autocomplete="off" > <!--Form for grideview-->
@@ -369,12 +369,12 @@ $( function() {
                       </div> --}}
 
                       <div class="col-lg-4">
-                        <label for="releaseDate"><b>Release Date:</b></label>
+                        <label for="releaseDate"><b>খালাসের তারিখ:</b></label><br>
                         <input type="text" class="form-control datepicker" name="releaseDate" placeholder="দিন/মাস/বছর" value="{{old('releaseDate')}}" required>
-                        <div class="error">{{$errors->first('releaseDate')}}</div>
-                        <label for="deptName"><b>Department Name:</b></label>
+                        <div class="error">{{$errors->first('releaseDate')}}</div><br>
+                        <label for="deptName"><b>বিভাগের নাম:</b></label><br>
                         <select id="deptName" name="deptName" class="form-control required" required>
-                          <option value="">নির্বাচন করুণ</option>
+                          <option value="">নির্বাচন করুন</option>
                           @foreach ($divisions  as $division)
                          <option value="{{$division->id}}" @if (old('deptName')==$division->id)
                              {{"selected"}}
@@ -387,19 +387,19 @@ $( function() {
                       <div class="col-lg-1"></div>
 
                       <div class="col-lg-4">
-                        <label for="project"><b>Project:</b></label><br>
+                        <label for="project"><b>প্রকল্প:</b></label><br>
                         <select id="projectName" name="projectName" onchange="showEmployee()" class="form-control required" required>
-                          <option value="">নির্বাচন করুণ</option>
+                          <option value="">নির্বাচন করুন</option>
                           @foreach ($projects  as $project)
                          <option value="{{$project->id}}" @if (old('projectName')==$project->id)
                              {{"selected"}}
                          @endif >{{$project->projectName}}</option>
                           @endforeach
-                       </select>
+                       </select><br>
                        <div class="error">{{$errors->first('projectName')}}</div>
-                        <label for="employee"><b>Employee:</b></label><br>
+                        <label for="employee"><b>কর্মকর্তা:</b></label><br>
                         <select id="employeeName" name="employeeName" class="form-control required" required>
-                          <option value="">নির্বাচন করুণ</option>
+                          <option value="">নির্বাচন করুন</option>
                           @if (old('projectName'))
                            @foreach ($assignedEmployees  as $key=>$assignedEmployee)
                              <option value="{{$assignedEmployee->id}}" @if (old('employeeName')==$assignedEmployee->id)
@@ -417,9 +417,9 @@ $( function() {
                   
                   <div class="row" style="border:2px solid #EEE;padding:15px;margin: -16px">
                     <div class="col-lg-5">
-                    <label for="serialNo"><b>Serial No:</b></label>
+                    <label for="serialNo"><b>সিরিয়াল নং</b></label>
                     <select id="serialNo" name="serialNo" class="form-control required" required>
-                        <option value="">Select serial No of Product</option>
+                        <option value="">সিরিয়াল নং নির্বাচন করুন</option>
                         @foreach ($serialInfo  as $item)
                         <option value="{{$item->id}}" @if (old('serialNo')==$item->id)
                             {{"selected"}}
@@ -430,22 +430,22 @@ $( function() {
                     <br>
                     <center>
                       <button type="submit" class="btn btn-info"><i class="glyphicon glyphicon-plus"
-                      style="color:white"></i>Add to List</button>
-                      <button type="reset"class="btn">Reset</button>
+                      style="color:white"></i> সংযুক্তকরুন</button>
+                      <button type="reset"class="btn">পুনরায় বসান</button>
                     </center>
                     </div>
                        
-                     <div class="col-lg-7"><br>
+                     <div class="col-lg-7"class="row overflow_x_auto_for_table"><br>
                          <table class="table table-responsive table-hover table-striped table-bordered table-condensed">
                             <thead >
                               <tr class="row bg-primary">
                               
-                              <th class="col-lg-2 text-center">Product Name</th>
-                              <th class="col-lg-3 text-center">Serial No</th>
-                              <th class="col-lg-3 text-center">Released By</th>
-                              <th class="col-lg-3 text-center">Department</th>
-                              <th class="col-lg-3 text-center">Edit</th>
-                              <th class="col-lg-3 text-center">Delete</th>
+                              <th class="col-lg-2 text-center">পণ্যের নাম</th>
+                              <th class="col-lg-3 text-center">সিরিয়াল নং</th>
+                              <th class="col-lg-3 text-center">কর্মকর্তার নাম</th>
+                              <th class="col-lg-3 text-center">বিভাগ</th>
+                              <th class="col-lg-3 text-center">সম্পাদনা </th>
+                              <th class="col-lg-3 text-center">মুছে ফেলুন</th>
                               </tr>
                             </thead>
                             <tbody  align="center">
@@ -470,29 +470,9 @@ $( function() {
                 <br>
                 <div class="col-md-12" align="center">
                     <button type="button" class="btn btn-info" onclick="handleRelease()"><i class="glyphicon glyphicon-floppy-disk"
-                      style="color:white" ></i> Release</button>
-                      <button type="button"class="btn" onclick="handleClear()">Clear</button>
+                      style="color:white" ></i> খালাস করুন</button>
+                      <button type="button"class="btn" onclick="handleClear()">লিস্ট খালি করুন</button>
                 </div>
-                {{-- 
-                      <div class="row">
-                        <div class="col-md-8"></div>
-
-
-                        <div class="col-md-1">
-                          <label for="searchByBrandName"  class="col-md-4  control-label">Search</label>
-                          
-                        </div>
-
-                        <div class="col-md-3">
-                          <input type="text" class="form-control" id="searchByBrandName" name="searchByBrandName" placeholder="Search by brand name">
-                        </div>
-
-
-                      </div>
- --}}
-                      <!--Search option stops-->
-
-                     
                   </div> 
                </div> 
 
@@ -501,10 +481,10 @@ $( function() {
                         <thead >
                           <tr class="row bg-primary">
                           <th class="col-lg-1 text-center">#</th>
-                          <th class="col-lg-3 text-center">Product Name</th>
-                          <th class="col-lg-2 text-center">Serial No</th>
-                          <th class="col-lg-3 text-center">Released By</th>
-                          <th class="col-lg-3 text-center">Department</th>
+                          <th class="col-lg-3 text-center">পণ্যের নাম</th>
+                          <th class="col-lg-2 text-center">সিরিয়াল নং</th>
+                          <th class="col-lg-3 text-center">কর্মকর্তার নাম</th>
+                          <th class="col-lg-3 text-center">বিভাগ</th>
                           </tr>
                         </thead>
                         <tbody  align="center">

@@ -109,8 +109,8 @@
                        
             <div class="text-center">
             <input type="hidden" name="id" value="{{$requisitionList->id}}">
-            <button type="button" onclick="updateContent()" class="btn btn-success"><i class="glyphicon glyphicon-edit" style="color: white"></i> Update</button> 
-            <button type="button" class="btn btn-danger" onclick="cancelUpdate()">Cancel</button><br><br>
+            <button type="button" onclick="updateContent()" class="btn btn-success"><i class="glyphicon glyphicon-edit" style="color: white"></i> হালনাগাদ করুন</button> 
+            <button type="button" class="btn btn-danger" onclick="cancelUpdate()">বাতিল করুন</button><br><br>
           </div>
 
                         

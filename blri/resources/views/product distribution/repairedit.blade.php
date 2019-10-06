@@ -332,7 +332,7 @@ $( function() {
         <div class=" form-grids row form-grids-right">
             <div class="widget-shadow " data-example-id="basic-forms"> 
               <div class="form-title bg-primary text-white">
-                <h3 class="">Product Repair</h3>
+                <h3 class="">পণ্য মেরামতের তথ্য</h3>
               </div>
               <div class="form-body">
                 <form class="form-horizontal" method="post"> 
@@ -342,12 +342,12 @@ $( function() {
                     <div class="row">
                         <div class="col-md-6"  style="border: solid 2px #eee; padding: 20px">
                             <div class="col-md-4">
-                                 <label for="categoryName" class=" control-label">Category</label>
+                                 <label for="categoryName" class=" control-label">ক্যাটাগরী</label>
                             </div>
                             <div class="col-md-8">
                                 <select id="categoryName" name="categoryName" onchange="showBrand()" class="form-control required" required>
                                 <div class="error" style="color:red">{{$errors->first('categoryName')}}</div><br><br>
-                                 <option value="">Select Category</option>
+                                 <option value="">নির্বাচন করুন</option>
                                           @foreach($categories as $category)
                                           <option value="{{$category->id}}"
                                               {{old('categoryName',$productrepairs->serialInfo->productInfo->brand->category->id)==$category->id ?"selected":""}}>
@@ -356,13 +356,13 @@ $( function() {
                               </select>
                             </div><br><br>
                             <div class="col-md-4">
-                                 <label for="brandName" class=" control-label">Brand</label>
+                                 <label for="brandName" class=" control-label">ব্র্যান্ড</label>
                             </div>
                             <div class="col-md-8">
                                 <select id="brandName" name="brandName" class="form-control required" onchange="showProductName()" required>
                                 <div class="error" style="color:red">
                                   {{$errors->first('brandName')}}</div><br><br>
-                                 <option value="">Select Brand</option>
+                                 <option value="">নির্বাচন করুন</option>
                                  @if(old('categoryName',$productrepairs->serialInfo->productInfo->brand->category->id))
                                             @foreach($brands as $brand)
                                                 @if (old('categoryName',$productrepairs->serialInfo->productInfo->brand->category->id) == $brand->category->id)
@@ -375,11 +375,11 @@ $( function() {
                                <div class="error">{{$errors->first('brandName')}}</div>
                             </div><br><br>
                             <div class="col-md-4">
-                                 <label for="productName" class=" control-label">Product</label>
+                                 <label for="productName" class=" control-label">পণ্য</label>
                             </div>
                             <div class="col-md-8">
                                 <select id="productName" name="productName" class="form-control required" onchange="showSerialInfo()" required>
-                                 <option value="">Select Product</option>
+                                 <option value="">নির্বাচন করুন</option>
                                @if (old('brandName',$productrepairs->serialInfo->productInfo->brand_id))
                                         @foreach($selectedProductBasedOnBrand->unique('productName') as $product)
                                             <option value="{{$product->id}}" @if(old('productName',$productrepairs->serialInfo->product_info_id)==$product->id)
@@ -391,11 +391,11 @@ $( function() {
                               <div class="error">{{$errors->first('productName')}}</div>
                             </div><br><br>
                             <div class="col-md-4">
-                                 <label for="serial_no" class=" control-label">Serial No.</label>
+                                 <label for="serial_no" class=" control-label">সিরিয়াল নং.</label>
                             </div>
                             <div class="col-md-8">
                                 <select id="serial_no" name="serial_no" class="form-control required" value="{{old('serial_no')}}" required>
-                                 <option value="">Select Product Serial</option>
+                                 <option value="">নির্বাচন করুন</option>
                                  @if(old('productName',$productrepairs->serialInfo->product_info_id))
                                             @foreach ($serialInfos as $serialInfo)
                                                 @if(old('productName',$productrepairs->serialInfo->product_info_id)==$serialInfo->product_info_id)
@@ -409,11 +409,11 @@ $( function() {
                             <div class="error">{{$errors->first('serial_no')}}</div>
                             </div><br><br>
                              <div class="col-md-4">
-                                 <label for="repairerName" class=" control-label">Repairer Name</label>
+                                 <label for="repairerName" class=" control-label">মেরামতকারী</label>
                             </div>
                             <div class="col-md-8">
                                 <select id="repairerName" name="repairerName" class="form-control required" required>
-                                 <option value="">Select Repairer Name</option>
+                                 <option value="">নির্বাচন করুন</option>
 
                                   @foreach($repairers as $repairer)
                                   <option value="{{$repairer->id}}"@if (old('repairerName',$productrepairs->repairer_id)==$repairer->id)
@@ -428,7 +428,7 @@ $( function() {
                         <div class="col-md-6" style="border: solid 2px #eee; padding: 20px">
 
                          <div class="col-md-4">
-                                 <label for="sendingDate" class=" control-label">Sending Date</label>
+                                 <label for="sendingDate" class=" control-label">প্রেরণের তারিখ</label>
                             </div>
                             <div class="col-md-8">
                                <input class="form-control datepicker" type="text" name="sendingDate" placeholder="dd/mm/yyyy" id="sendingDate" value="{{old('sendingDate',date('d/m/Y', strtotime(str_replace('-', '/',$productrepairs->sendingDate)))) }}"  autocomplete="off" required>
@@ -436,10 +436,10 @@ $( function() {
                             </div><br><br>
                             
                             <div class="col-md-4">
-                                 <label for="remarks" class=" control-label">Remarks</label>
+                                 <label for="remarks" class=" control-label">মন্তব্য</label>
                             </div>
                             <div class="col-md-8">
-                             <textarea name="remarks" id="remarks" class="form-control" placeholder="Remarks">{{old('remarks',$productrepairs->remarks)}}</textarea>
+                             <textarea name="remarks" id="remarks" class="form-control" placeholder="">{{old('remarks',$productrepairs->remarks)}}</textarea>
                             </div><br><br>
                             
                         </div>
@@ -448,7 +448,7 @@ $( function() {
 
                   </div>
                   <div class="text-center">
-                      <button type="submit" class=" btn btn-info">Update</button> 
+                      <button type="submit" class=" btn btn-info">হালনাগাদ করুন</button> 
                      <button  onclick="cancelUpdate()" class="btn btn-danger">বাতিল করুন</button>
                   </div>
               </form>

@@ -310,7 +310,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
         <div class=" form-grids row form-grids-right">
             <div class="widget-shadow " data-example-id="basic-forms"> 
               <div class="form-title bg-primary text-white">
-                <h3 class="">Product Distribution</h3>
+                <h3 class="">পণ্য বিতরণের তথ্য</h3>
               </div>
               <div class="form-body">
                 <div id="createFormDiv">
@@ -328,7 +328,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                   </div>
                                   <div class="col-md-9">
                                       <select class="form-control" id="divisionName" name="divisionName">
-                                          <option value="">Select Department</option>
+                                          <option value="">নির্বাচন করুন</option>
                                           @foreach($divisions as $division)
                                             <option value="{{$division->id}}" @if (old('divisionName')==$division->id)
                                               {{"selected"}}
@@ -346,12 +346,12 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                           <div class="row">
                               <div class="col-md-5" style="border: solid 2px #eee; padding: 20px">
                                   <div class="col-md-4">
-                                      <label for="categoryName" class=" control-label">Category</label>
+                                      <label for="categoryName" class=" control-label">ক্যাটাগরি</label>
                                   </div>
                                   <div class="col-md-8">
                                       <select id="categoryName" name="categoryName" onchange="showBrand()" class="form-control required" required>
                                           <div class="error" style="color:red">{{$errors->first('categoryName')}}</div><br><br>
-                                          <option value="">নির্বাচন করুন</option>
+                                          <option value="">ক্যাটাগরি নির্বাচন করুন</option>
                                           @foreach($categories as $category)
                                           <option value="{{$category->id}}"
                                             {{old('categoryName')==$category->id ?"selected":""}}>
@@ -361,13 +361,13 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                       <div class="error">{{$errors->first('categoryName')}}</div>
                                   </div><br><br>
                                   <div class="col-md-4">
-                                      <label for="brandName" class=" control-label">Brand</label>
+                                      <label for="brandName" class=" control-label">ব্র্যান্ড</label>
                                   </div>
                                   <div class="col-md-8">
                                       <select id="brandName" name="brandName" class="form-control required" required
                                           onchange="showProductName()">
                                           <div class="error" style="color:red">{{$errors->first('brandName')}}</div><br><br>
-                                          <option value="">নির্বাচন করুন</option>
+                                          <option value="">ব্র্যান্ড নির্বাচন করুন</option>
                                           @if(old('categoryName'))
                                             @foreach($brands as $brand)
                                               @if (old('categoryName') == $brand->category->id)
@@ -381,11 +381,11 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                       <div class="error">{{$errors->first('brandName')}}</div>
                                   </div><br><br>
                                   <div class="col-md-4">
-                                      <label for="productName" class=" control-label">Product</label>
+                                      <label for="productName" class=" control-label">পণ্য </label>
                                   </div>
                                   <div class="col-md-8">
                                       <select class="form-control" id="productName" name="productName" onchange="showSerialInfo()" required>
-                                        <option value="">পণ্য সনাক্তকরণ</option>
+                                        <option value="">পণ্য শনাক্ত করুন</option>
                                         @if (old('brandName'))
                                         @foreach($selectedProductBasedOnBrand->unique('productName') as $product)
                                             <option value="{{$product->id}}" @if(old('productName')==$product->id)
@@ -398,12 +398,12 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                   </div><br><br>
                                  
                                   <div class="col-md-4">
-                                      <label for="serial_no" class="control-label">SL No</label>
+                                      <label for="serial_no" class="control-label">সিরিয়াল নং</label>
                                   </div>
                                   <div class="col-md-8">
                                       <select id="serial_no" name="serial_no" class="form-control required" value="{{old('serial_no')}}"
                                           required>
-                                          <option value="">Select Serial Code</option>
+                                          <option value="">সিরিয়াল নং নির্বাচন করুন</option>
                                           @if(old('productName'))
                                             @foreach ($serialInfos as $serialInfo)
                                                 @if(old('productName')==$serialInfo->product_info_id)
@@ -418,18 +418,18 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                       <div class="error">{{$errors->first('serial_no')}}</div>
                                   </div><br><br>
                                   <div class="col-md-4">
-                                      <label for="remarks" class=" control-label">Remarks</label>
+                                      <label for="remarks" class=" control-label">মন্তব্য</label>
                                   </div>
                                   <div class="col-md-8">
-                                      <textarea class="form-control" id="remarks" name="remarks" placeholder="Remarks">{{old('remarks')}}</textarea>
+                                      <textarea class="form-control" id="remarks" name="remarks" placeholder="">{{old('remarks')}}</textarea>
                                       <div class="error">{{$errors->first('remarks')}}</div>
                                       <br><br>
                                   </div><br><br>
                   
                                   <div class="text-center">
                                       <button type="submit" class="btn btn-info"><i class="glyphicon glyphicon-plus"
-                                              style="color: white"></i>Add to list</button>
-                                      <button type="reset" class="btn btn-danger">Reset</button>
+                                              style="color: white"></i>সংযুক্তকরুন</button>
+                                      <button type="reset" class="btn btn-danger">পুনরায় বসান</button>
                                   </div>
                   
                               </div>
@@ -442,12 +442,12 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                               <th class="col-lg-1 text-center">#</th>
                                               <th class="col-lg-2 text-center">অনুষদ</th>
                                              
-                                              <th class="col-lg-3 text-center">Product</th>
+                                              <th class="col-lg-3 text-center">পণ্য</th>
                                           
-                                              <th class="col-lg-1 text-center">Serial No.</th>
-                                              <th class="col-lg-3 text-center">Remarks</th>
-                                              <th class="col-lg-1 text-center">Edit</th>
-                                              <th class="col-lg-1 text-center">Delete</th>
+                                              <th class="col-lg-1 text-center">সিরিয়াল নং</th>
+                                              <th class="col-lg-3 text-center">মন্তব্য</th>
+                                              <th class="col-lg-1 text-center">সম্পাদনা</th>
+                                              <th class="col-lg-1 text-center">মুছে ফেলুন</th>
                                           </tr>
                                               @foreach ($distributionLists as $key=>$item)
                                           <tr class="row" align="center">
@@ -472,7 +472,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                     @if (count($distributionLists)>0)
                      <center>
                        <button class="btn btn-info" type="button" name="tablesave" onclick="savedata()">সংরক্ষণ করুন</button>
-                       <button type="reset" name="tablereset" class="btn"  onclick="clearList()">পুনরায় বসান</button>
+                       <button type="reset" name="tablereset" class="btn"  onclick="clearList()">লিস্ট খালি করুন</button>
                        </center>
                     @endif
                   </div>
@@ -500,10 +500,10 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                   <table class="table table-responsive table-hover table-striped table-bordered table-condensed">
                       <tr class="row bg-primary">
                         <th class="col-lg-2 text-center">অনুষদ</th>
-                        <th class="col-lg-2 text-center">Product</th>
-                        <th class="col-lg-2 text-center">Serial No.</th>
-                        <th class="col-lg-2 text-center">Distributed By</th>
-                        <th class="col-lg-4 text-center">Remarks</th>
+                        <th class="col-lg-2 text-center">পণ্য</th>
+                        <th class="col-lg-2 text-center">সিরিয়াল নং</th>
+                        <th class="col-lg-2 text-center">এন্ট্রিকারীর নাম</th>
+                        <th class="col-lg-4 text-center">মন্তব্য</th>
                       </tr>
                        @foreach ($distributionSave as $key=>$item)
                       
@@ -963,10 +963,10 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
      })
     function showBrand() {
       var selectedCategory=$("#categoryName").val();
-      $('#productName').html('<option value="">Select a Product</option>');
-       $("#serial_no").html('<option value="">Select Serial Code</option>');
+      $('#productName').html('<option value="">পণ্য শনাক্ত করুন</option>');
+       $("#serial_no").html('<option value="">সিরিয়াল নং নির্বাচন করুন</option>');
       console.log(selectedCategory);
-      $('#brandName').html('<option value="">Select a Brand</option>');
+      $('#brandName').html('<option value="">ব্র্যান্ড নির্বাচন করুন</option>');
       if(brands!=undefined){
         brands.forEach(brand => {
           if(brand.category_id==selectedCategory)
@@ -978,8 +978,8 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 
     function showProductName() {
       var selectedBrandName=$("#brandName").val();
-      $('#productName').html('<option value="">Select a Product</option>');
-      $("#serial_no").html('<option value="">Select Serial Code</option>');
+      $('#productName').html('<option value="">পণ্য শনাক্ত করুন</option>');
+      $("#serial_no").html('<option value="">সিরিয়াল নং নির্বাচন করুন</option>');
       $.ajax({
         type:'POST',
         url:"{{route("showProductBasedOnBrand")}}",
@@ -1002,7 +1002,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
       function showSerialInfo() {
        var selectedProduct=$("#productName").val();
        
-       $("#serial_no").html('<option value="">Select Serial Code</option>');
+       $("#serial_no").html('<option value="">সিরিয়াল নং নির্বাচন করুন</option>');
        if(serialInfos!=undefined){
         serialInfos.forEach(serialInfo => {
           if(serialInfo.product_info_id==selectedProduct){

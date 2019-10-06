@@ -464,7 +464,7 @@ $( function() {
 
               </div>
               <div id="updateFormDiv"></div>
-              <div class="row">
+              <div class="row"class="row overflow_x_auto_for_table">
                      <div class="col-lg-12">
                        <table class="table table-responsive table-hover table-striped table-bordered table-condensed">
                          <tr class="row bg-primary">

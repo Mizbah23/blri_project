@@ -13,7 +13,7 @@
                                   </div>
                                   <div class="col-md-9">
                                       <select class="form-control" id="divisionName" name="divisionName">
-                                          <option value="">Select Department</option>
+                                          <option value="">নির্বাচন করুন</option>
                                           @foreach($divisions as $division)
                                           <option value="{{$division->id}}" @if (old('divisionName',$productDistributionList->division_id)==$division->id)
                                               {{"selected"}}
@@ -30,7 +30,7 @@
                           <div class="row">
                               <div class="col-md-5" style="border: solid 2px #eee; padding: 20px">
                                   <div class="col-md-4">
-                                      <label for="categoryName" class=" control-label">Category</label>
+                                      <label for="categoryName" class=" control-label">ক্যাটাগরি</label>
                                   </div>
                                   <div class="col-md-8">
                                       <select id="categoryName" name="categoryName" onchange="showBrand()" class="form-control required"
@@ -45,13 +45,13 @@
                                       </select>
                                   </div><br><br>
                                   <div class="col-md-4">
-                                      <label for="brandName" class=" control-label">Brand</label>
+                                      <label for="brandName" class=" control-label">ব্র্যান্ড</label>
                                   </div>
                                   <div class="col-md-8">
                                       <select id="brandName" name="brandName" class="form-control required" required
                                           onchange="showProductName()">
                                           <div class="error" style="color:red">{{$errors->first('brandName')}}</div><br><br>
-                                          <option value="">নির্বাচন করুন</option>
+                                          <option value="">ব্র্যান্ড নির্বাচন করুন</option>
                                           @if(old('categoryName',$productDistributionList->serialInfo->productInfo->brand->category->id))
                                             @foreach($brands as $brand)
                                                 @if (old('categoryName',$productDistributionList->serialInfo->productInfo->brand->category->id) == $brand->category->id)
@@ -64,11 +64,11 @@
                                       </select>
                                   </div><br><br>
                                   <div class="col-md-4">
-                                      <label for="productName" class=" control-label">Product</label>
+                                      <label for="productName" class=" control-label">পণ্য</label>
                                   </div>
                                   <div class="col-md-8">
                                       <select class="form-control" id="productName" name="productName" required onchange="showSerialInfo()">
-                                        <option value="">পণ্য সনাক্তকরণ</option>
+                                        <option value="">পণ্য শনাক্ত করুন</option>
                                         @if (old('brandName',$productDistributionList->serialInfo->productInfo->brand_id))
                                         @foreach($selectedProductBasedOnBrand->unique('productName') as $product)
                                             <option value="{{$product->id}}" @if(old('productName',$productDistributionList->serialInfo->product_info_id)==$product->id)
@@ -80,11 +80,11 @@
                                   </div><br><br>
 
                                   <div class="col-md-4">
-                                      <label for="serial_no" class="control-label">SL No</label>
+                                      <label for="serial_no" class="control-label">সিরিয়াল নং</label>
                                   </div>
                                   <div class="col-md-8">
                                       <select id="serial_no" name="serial_no" class="form-control required" value="{{old('serial_no')}}"required readonly>
-                                        <option value="">Select Serial Code</option>
+                                        <option value="">সিরিয়াল নং নির্বাচন করুন</option>
                                         @if(old('productName',$productDistributionList->serialInfo->product_info_id))
                                             @foreach ($serialInfos as $serialInfo)
                                                 @if(old('productName',$productDistributionList->serialInfo->product_info_id)==$serialInfo->product_info_id)
@@ -98,16 +98,16 @@
                                       </select>
                                   </div><br><br>
                                   <div class="col-md-4">
-                                      <label for="remarks" class=" control-label">Remarks</label>
+                                      <label for="remarks" class=" control-label">মন্তব্য</label>
                                   </div>
                                   <div class="col-md-8">
-                                      <textarea class="form-control" id="remarks" name="remarks" placeholder="Remarks">{{old('remarks',$productDistributionList->remarks)}}</textarea><br><br>
+                                      <textarea class="form-control" id="remarks" name="remarks" placeholder="">{{old('remarks',$productDistributionList->remarks)}}</textarea><br><br>
                   
                                   </div><br><br>
           <div class="text-center">
             <input type="hidden" name="productDistributionListId" value="{{$productDistributionList->id}}">
-            <button type="button" onclick="updateContent()" class="btn btn-success"><i class="glyphicon glyphicon-edit" style="color: white"></i> Update</button> 
-            <button type="button" class="btn btn-danger" onclick="cancelUpdate()">Cancel</button><br><br>
+            <button type="button" onclick="updateContent()" class="btn btn-success"><i class="glyphicon glyphicon-edit" style="color: white"></i> হালনাগাদ করুন</button> 
+            <button type="button" class="btn btn-danger" onclick="cancelUpdate()">বাতিল করুন</button><br><br>
           </div>
 
     </div>
