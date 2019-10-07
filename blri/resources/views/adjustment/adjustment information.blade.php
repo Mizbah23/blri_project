@@ -361,12 +361,12 @@ $( function() {
                               <div class="col-md-9">
                                   <select id="type" name="type" class="form-control required" required onchange="">
                                   <option value="">সমন্বয়ের ধরন নির্বাচন করুন</option>
-                                  <option value="খুঁজে পাওয়া" {{old("type")=='found'?"selected":""}}>খুঁজে পাওয়া</option>
-                                  <option value="নিখোঁজ" {{old("type")=='lost'?"selected":""}}>নিখোঁজ</option>
-                                  <option value="উপহার" {{old("type")=='gift'?"selected":""}}>উপহার</option>
-                                  <option value="ক্ষতি" {{old("type")=='damage'?"selected":""}}>ক্ষতি</option>
+                                  <option value="found" {{old("type")=='found'?"selected":""}}>খুঁজে পাওয়া</option>
+                                  <option value="lost" {{old("type")=='lost'?"selected":""}}>নিখোঁজ</option>
+                                  <option value="gift" {{old("type")=='gift'?"selected":""}}>উপহার</option>
+                                  <option value="damage" {{old("type")=='damage'?"selected":""}}>ক্ষতি</option>
                                   <option value="waste" {{old("type")=='waste'?"selected":""}}>অপব্যয়</option>
-                                  <option value="আবর্জনা" {{old("type")=='garbage'?"selected":""}}>আবর্জনা</option>
+                                  <option value="garbage" {{old("type")=='garbage'?"selected":""}}>আবর্জনা</option>
                                 </select>
                               <div class="error">{{$errors->first('type')}}</div>
                               </div><br><br><br>

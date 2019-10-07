@@ -3,6 +3,7 @@
 <head>
 	<title>Adjustment Invoice</title>
 	<style type="text/css">
+
 	 table{
         width: 70%;
         margin: 0 auto;
@@ -15,7 +16,7 @@
    <table>
    	   <thead>
    	   	<tr>
-   	   	<th>Date</th>
+   	   	<th>পি্প</th>
    	   	<th>Product Code</th>
    	   	<th>Product Name</th>
    	   	<th>Adjustment Type</th>
