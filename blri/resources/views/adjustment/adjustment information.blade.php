@@ -64,6 +64,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
   font-size: 0.9em;
   color: red;
 }
+
 </style>
 <!--pie-chart --><!-- index page sales reviews visitors pie chart -->
 <script src="/js/pie-chart.js" type="text/javascript"></script>
@@ -361,12 +362,12 @@ $( function() {
                               <div class="col-md-9">
                                   <select id="type" name="type" class="form-control required" required onchange="">
                                   <option value="">সমন্বয়ের ধরন নির্বাচন করুন</option>
-                                  <option value="found" {{old("type")=='found'?"selected":""}}>খুঁজে পাওয়া</option>
-                                  <option value="lost" {{old("type")=='lost'?"selected":""}}>নিখোঁজ</option>
-                                  <option value="gift" {{old("type")=='gift'?"selected":""}}>উপহার</option>
-                                  <option value="damage" {{old("type")=='damage'?"selected":""}}>ক্ষতি</option>
-                                  <option value="waste" {{old("type")=='waste'?"selected":""}}>অপব্যয়</option>
-                                  <option value="garbage" {{old("type")=='garbage'?"selected":""}}>আবর্জনা</option>
+                                  <option value="খুঁজে পাওয়া" {{old("type")=='খুঁজে পাওয়া'?"selected":""}}>খুঁজে পাওয়া</option>
+                                  <option value="নিখোঁজ" {{old("type")=='নিখোঁজ'?"selected":""}}>নিখোঁজ</option>
+                                  <option value="উপহার" {{old("type")=='উপহার'?"selected":""}}>উপহার</option>
+                                  <option value="ক্ষতি" {{old("type")=='ক্ষতি'?"selected":""}}>ক্ষতি</option>
+                                  <option value="অপব্যয়" {{old("type")=='অপব্যয়'?"selected":""}}>অপব্যয়</option>
+                                  <option value="আবর্জনা" {{old("type")=='আবর্জনা'?"selected":""}}>আবর্জনা</option>
                                 </select>
                               <div class="error">{{$errors->first('type')}}</div>
                               </div><br><br><br>
@@ -480,7 +481,7 @@ $( function() {
                                 <td>{{$item->productInfo->productName}}</td>
                                 <td>{{$item->productInfo->productCode}}</td>
                                 <td>{{$item->quantity}}</td>
-                                <td>{{strtoupper($item->adjustmentType)}}</td>
+                                <td>{{$item->adjustmentType}}</td>
                               </tr>
                               @endforeach
                             @else
@@ -507,12 +508,7 @@ $( function() {
                           <a href="{{route('adjustment.adjustmentInvoice') }}" target="_blank" style="color: white">
                         Print Invoice</a></button>
                 </div>
-               
-                      <!--Search option starts-->
-
-                      <!--Search option stops-->
-
-                     
+                                    
                   </div> 
                </div> 
 
