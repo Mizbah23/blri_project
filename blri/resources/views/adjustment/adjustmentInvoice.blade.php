@@ -19,7 +19,7 @@ th,td{
  padding-left: 5px;
 }
 
-	</style>
+</style>
 </head>
 <body>
   <h1 style="margin-left:15%">বাংলাদশে প্রাণসিম্পদ গবষেণা ইনস্টটিউিট</h1>
@@ -40,7 +40,7 @@ th,td{
           <td>{{date('d/m/Y', strtotime(str_replace('-', '/',$item->adjustmentDate))) }}</td>
           <td>{{ $item->productInfo->productCode }}</td>
           <td>{{ $item->productInfo->productName}}</td>
-          <td>{{strtoupper($item->adjustmentType)}}</td>
+          <td>{{$item->adjustmentTypes}}</td>
           <td>{{$item->reason}}</td>
         </tr>
         @endforeach
