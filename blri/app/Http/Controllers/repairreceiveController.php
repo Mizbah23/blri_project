@@ -11,6 +11,9 @@ use App\Adjustment;
 use App\Reporting;//model name;
 use App\User;
 use App\EmployeeInformation;
+use App\ProductInfo;
+use App\SerialInfo;
+
 class repairreceiveController extends Controller
 {
     public function index()
@@ -21,6 +24,8 @@ class repairreceiveController extends Controller
         $productdistributions=ProductDistribution::all();
         $adjustments=Adjustment::all();
         $reportings=Reporting::all();
+        $products=ProductInfo::all();
+        $serialInfos=SerialInfo::all();
         $users=User::all();
 
     return view('product distribution.repair receive')
@@ -30,6 +35,8 @@ class repairreceiveController extends Controller
            ->with('productdistributions',$productdistributions)
            ->with('adjustments',$adjustments)
            ->with('reportings',$reportings)
+           ->with('products',$products)
+           ->with('serialInfos',$serialInfos)
            ->with('users',$users);
 	}
 }

@@ -359,11 +359,16 @@ $( function() {
                            
                             
                             <div class="col-md-4">
-                                 <label for="" class=" control-label">পণ্য</label>
+                                 <label for="productName" class="control-label">পণ্য</label>
                             </div>
                             <div class="col-md-8">
-                                <select id="" name="" class="form-control required" required>
+                                <select id="productName" name="productName" class="form-control required" onchange="showSerialInfo()" required>
                                  <option value="">নির্বাচন করুন</option>
+                                   @foreach($products as $product)
+                                          <option value="{{$product->id}}"
+                                            {{old('productName')==$product->id ?"selected":""}}>
+                                              {{$product->productName}}</option>
+                                  @endforeach
                               </select>
                             </div><br><br>
                             <div class="col-md-4">
@@ -870,6 +875,20 @@ $( function() {
     
     <!-- Bootstrap Core JavaScript -->
    <script src="/js/bootstrap.js"> </script>
+   <script type="text/javascript">
+      function showSerialInfo() {
+       var selectedProduct=$("#productName").val();
+       
+       $("#serial_no").html('<option value="">Select Serial Code</option>');
+       if(serialInfos!=undefined){
+        serialInfos.forEach(serialInfo => {
+          if(serialInfo.product_info_id==selectedProduct){
+            $('#serial_no').append(`<option value="${serialInfo.id}">${serialInfo.serial_no}</option>`);
+          }
+        });
+      }
+     }
+   </script>
 
     
 </body>

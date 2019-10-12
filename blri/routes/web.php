@@ -175,6 +175,7 @@ Route::group(['middleware'=>'userNameExistenceCheck'], function () {
 
     //Repair Receive
     Route::get('/product_distribution/repair_receive', 'repairReceiveController@index')->name('product distribution.repair receive');
+    
 
     //adjustment
     Route::get('/adjustment/adjustment_information', 'adjustmentinformationController@index')->name('adjustment.adjustment information');
