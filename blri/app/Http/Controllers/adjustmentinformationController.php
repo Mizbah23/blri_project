@@ -188,6 +188,9 @@ class adjustmentinformationController extends Controller
   }
 
       public function invoice(){
+              $data = [
+             'foo' => 'bar'
+                ];
 
               $adjustmentInfoLists=AdjustmentInformationList::all();
                    $pdf = PDF::loadView('adjustment.adjustmentInvoice',['adjustmentInfoLists'=>$adjustmentInfoLists]);

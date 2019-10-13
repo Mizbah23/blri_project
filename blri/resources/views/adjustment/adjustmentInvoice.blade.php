@@ -8,7 +8,7 @@
     font-family: 'examplefont', sans-serif;
 }
 
-	 table{
+table{
         width: 70%;
         margin: 0 auto;
         border: 1px solid;
@@ -22,7 +22,7 @@ th,td{
 </style>
 </head>
 <body>
-  <h1 style="margin-left:15%">বাংলাদশে প্রাণসিম্পদ গবষেণা ইনস্টটিউিট</h1>
+  <h1 style="margin-left:15%">বাংলাদেশ প্রাণিসম্পদ গবেষণা ইনস্টিটিউট</h1>
    <center>
      <table>
        <thead>
@@ -40,7 +40,7 @@ th,td{
           <td>{{date('d/m/Y', strtotime(str_replace('-', '/',$item->adjustmentDate))) }}</td>
           <td>{{ $item->productInfo->productCode }}</td>
           <td>{{ $item->productInfo->productName}}</td>
-          <td>{{$item->adjustmentTypes}}</td>
+          <td>{{$item->adjustmentType}}</td>
           <td>{{$item->reason}}</td>
         </tr>
         @endforeach

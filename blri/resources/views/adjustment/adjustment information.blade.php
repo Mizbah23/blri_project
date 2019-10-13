@@ -505,7 +505,7 @@ $( function() {
                     <button type="button" class=" btn btn-info" onclick="savedata()"> Save</button> 
                         <button type="reset" class="btn btn-danger" onclick="clearList()">Clear</button>
                         <button type="button" class="btn btn-success">
-                          <a href="{{route('adjustment.adjustmentInvoice') }}" target="_blank" style="color: white">
+                          <a href="{{route('adjustment.adjustmentInvoice') }}" target="_blank" style="color: white;text-decoration: none;">
                         Print Invoice</a></button>
                 </div>
                                     
