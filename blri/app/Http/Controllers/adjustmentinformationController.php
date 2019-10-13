@@ -169,7 +169,7 @@ class adjustmentinformationController extends Controller
             
             $findProduct=ProductInfo::find($item->product_info_id);
             if ($findProduct) {
-              if($item->adjustmentType=='found'){
+              if($item->adjustmentType=='খুঁজে পাওয়া'){
                 $findProduct->stock=$findProduct->stock + $item->quantity;
               }
               else{

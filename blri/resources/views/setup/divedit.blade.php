@@ -304,15 +304,17 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
           </div>
         </div>
       </div>
-    </div><br><br><br><br>
+    </div><br><br><br><br><br><br><br><br><br><br><br>
               
      
    
 
     <!--footer-->
+     <br>
     <div class="footer">
        <p>&copy; 2019  All Rights Reserved | Design by <a href="https://deshisysltd.com/" target="_blank">Deshi Systems Ltd.</a></p>       
     </div>
+
     <!--//footer-->
 
         
