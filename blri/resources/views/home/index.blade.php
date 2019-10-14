@@ -5,7 +5,7 @@
      @extends('layouts.master')
        <!-- //This is for title -->
         @section('title') 
-          Home 
+          বাংলাদেশ প্রাণিসম্পদ গবেষণা ইনস্টিটিউট 
         @endsection
         <!-- //Title section ends-->
         <!-- extended finished-->

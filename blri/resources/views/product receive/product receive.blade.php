@@ -483,7 +483,7 @@ $( function() {
 
                     
                     <div class="col-md-12"class="row overflow_x_auto_for_table">
-                     
+                     <div id="allBrands">
                       <table class="table table-responsive table-hover table-striped table-bordered table-condensed">
                           <tr class="row bg-primary">
                               <th class="col-lg-1 text-center">সম্পাদনা</th>
@@ -506,9 +506,13 @@ $( function() {
                           @endforeach
               
                       </table>
-                        
+                        </div>
                         
                     </div>
+                  </div>
+                </div>
+              </div>
+            </div>
                 </div>
                 <div  id="saveButton">
                   @if (count($productReceiveLists)>0)
