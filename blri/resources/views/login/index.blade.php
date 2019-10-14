@@ -54,7 +54,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 		<!-- main content start-->
 		<div id="page-wrapper" style="margin-top: -42px">
 			<div class="main-page login-page ">
-				<h2 class="title1 bg-dark"><img style="height: 50px; width: 50px" src="/images/logo.png" alt=""><p> Bangladesh Livestock Research Institute</p>Login</h2>
+				<h2 class="title1 bg-dark"><img style="height: 40px; width: 80px" src="/images/blrilogo.jpg" alt=""><p> Bangladesh Livestock Research Institute</p>Login</h2>
 				<div class="widget-shadow">
 					<div class="login-body">
 						<form action="" method="post">
