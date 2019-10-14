@@ -364,11 +364,11 @@ $( function() {
                             <div class="col-md-8">
                                 <select id="productName" name="productName" class="form-control required" onchange="showSerialInfo()" required>
                                  <option value="">নির্বাচন করুন</option>
-                                   @foreach($products as $product)
+                                    @foreach($products as $product)
                                           <option value="{{$product->id}}"
-                                            {{old('productName')==$product->id ?"selected":""}}>
+                                              {{old('productName',$receives->serialInfo->product->id)==$product->id ?"selected":""}}>
                                               {{$product->productName}}</option>
-                                  @endforeach
+                                          @endforeach
                               </select>
                               <div class="error">{{$errors->first('productName')}}</div>
                             </div><br><br>
