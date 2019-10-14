@@ -182,25 +182,25 @@ $( function() {
             <span class="icon-bar"></span>
             </button>
 
-            <h1 style="margin-top: 5px"><a class="text-white" style="margin-left: 10px;" href="index.html"><span> <img style="height: 50px; width: 50px;" src="/images/logo.png" alt=""></span> BLRI<span class="dashboard_text" style="margin-left: 30px">Design dashboard</span></a></h1>
+            <h1 style="margin-top: 5px"><a class="text-white" style="margin-left: 10px;" href="index.html"><span> <img style="height: 50px; width: 50px;" src="/images/logo.png" alt=""></span> BLRI<span class="dashboard_text" style="margin-left: 30px">ড্যাশবোর্ড ডিজাইন</span></a></h1>
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="sidebar-menu">
               <li class="header">MAIN NAVIGATION</li>
               <li class="treeview">
                 <a href="{{route('home.index')}}">
-                <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+                <i class="fa fa-dashboard"></i> <span>ড্যাশবোর্ড</span>
                 </a>
               </li>
               <li class="treeview">
                 <a href="#">
-                <i class="fa fa-shield"></i> <span>Security</span>
+                <i class="fa fa-shield"></i> <span>নিরাপত্তা</span>
                 <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
                 @foreach($securitytypes as $securitytype)
                    
                       <li><a href="{{route('security.'.strtolower($securitytype->SecType))}}">
-                      <i class="fa fa-circle"></i> {{$securitytype->SecType}}</a></li>
+                      <i class="fa fa-circle"></i> {{$securitytype->name}}</a></li>
                  @endforeach
                 </ul>
               </li>
@@ -209,7 +209,7 @@ $( function() {
               <li class="treeview">
                 <a href="#">
                 <i class="fa fa-wrench"></i>
-                <span>Setup</span>
+                <span>সেটআপ</span>
                 <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
@@ -227,59 +227,58 @@ $( function() {
               <li class="treeview">
                 <a href="#">
                 <i class="fa fa-laptop"></i>
-                <span>Product Receive</span>
+                <span>পণ্য প্রাপ্তি </span>
                 <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
                   @foreach($productreceivetypes as $productreceivetype)
                    
                     <li><a href="{{route('product receive.'.strtolower($productreceivetype->prType))}}">
-                      <i class="fa fa-circle"></i> {{$productreceivetype->prType}}</a></li>
+                      <i class="fa fa-circle"></i> {{$productreceivetype->name}}</a></li>
                  @endforeach
                 </ul>
               </li>
               
               <li class="treeview">
                 <a href="#">
-                <i class="fa fa-users"></i> <span>Product Distribution</span>
+                <i class="fa fa-users"></i> <span>পণ্য বিতরণ </span>
                 <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                  @foreach($productdistributions as $productdistribution)
+                 @foreach($productdistributions as $productdistribution)
                    
                     <li><a href="{{route('product distribution.'.strtolower($productdistribution->pdType))}}">
-                      <i class="fa fa-circle"></i> {{$productdistribution->pdType}}</a></li>
+                      <i class="fa fa-circle"></i> {{$productdistribution->name}}</a></li>
                  @endforeach
                 </ul>
               </li>
               <li class="treeview">
                 <a href="#">
-                <i class="fa fa-adjust"></i> <span>Adjustment</span>
+                <i class="fa fa-adjust"></i> <span>সমন্বয়</span>
                 <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                  @foreach($adjustments as $adjustment)
+                    @foreach($adjustments as $adjustment)
                    
                     <li><a href="{{route('adjustment.'.strtolower($adjustment->adjustmentType))}}">
-                      <i class="fa fa-circle"></i> {{$adjustment->adjustmentType}}</a></li>
+                      <i class="fa fa-circle"></i> {{$adjustment->name}}</a></li>
                  @endforeach
-                </ul>
+               </ul>
               </li>
             
-              <li class="treeview">
+               <li class="treeview">
                 <a href="#">
-                <i class="fa fa-table"></i> <span>Reporting</span>
+                <i class="fa fa-table"></i> <span>প্রতিবেদন</span>
                 <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
                  @foreach($reportings as $reporting)
                    
                     <li><a href="{{route('reporting.'.strtolower($reporting->crType))}}"><!-- route('Folder(from view) Name') &&strtolowere('database table name')-->
-                      <i class="fa fa-circle"></i> {{$reporting->crType}}</a></li>
+                      <i class="fa fa-circle"></i> {{$reporting->name}}</a></li>
                  @endforeach
                 </ul>
               </li>
-            
           </div>
           <!-- /.navbar-collapse -->
       </nav>
@@ -287,7 +286,7 @@ $( function() {
     </div>
         <!--left-fixed -navigation-->
         
-               <!-- header-starts -->
+         <!-- header-starts -->
         <div class="sticky-header header-section ">
             <div class="header-left">
                 <!--toggle button start-->
@@ -301,9 +300,7 @@ $( function() {
                         <li class="dropdown profile_details_drop">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                                 <div class="profile_img">   
-
                                     <span class="prfil-img"><img src="/images/{{(Session::get('user')->employeeinfo->profileImage)}}" alt="" style="height: 50px; width:50px"> </span> 
-
                                     <div class="user-name">
                                         <p>{{(Session::get('user')->employeeinfo->name)}}</p>
                                         <span>{{ (Session::get('user')->userType)}}</span>
@@ -311,13 +308,13 @@ $( function() {
                                     <i class="fa fa-angle-down lnr"></i>
                                     <i class="fa fa-angle-up lnr"></i>
                                     <div class="clearfix"></div>    
-                                </div>   
+                                </div>  
                             </a>
                             <ul class="dropdown-menu drp-mnu">
                                 <li> <a href="#"><i class="fa fa-cog"></i> Settings</a> </li> 
                                 <li> <a href="#"><i class="fa fa-user"></i> My Account</a> </li> 
                                 <li> <a href="#"><i class="fa fa-suitcase"></i> Profile</a> </li> 
-                                <li> <a href="#"><i class="fa fa-sign-out"></i> Logout</a> </li>
+                                <li> <a href="{{route('login.index')}}"><i class="fa fa-sign-out"></i> Logout</a> </li>
                             </ul>
                         </li>
                     </ul>
@@ -326,7 +323,7 @@ $( function() {
 
                 <div class="clearfix"> </div>               
             </div>
-            <div class="clearfix"> </div>   
+            <div class="clearfix"> </div> 
         </div>
         <!-- //header-ends -->
    

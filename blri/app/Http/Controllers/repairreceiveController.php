@@ -75,10 +75,10 @@ class repairreceiveController extends Controller
         return redirect()->route('product distribution.repair receive')->with('response','Product Successfully Received from Repair');
         }
 
-               public function edit(Request $request,$id){
+      public function edit(Request $request,$id){
         $isAvailable= RepairReceive::find($request->id);
          if($isAvailable){ 
-                $setuptypes= setuptype::all();
+        $setuptypes= setuptype::all();
         $securitytypes=SecurityType::all();
         $productreceivetypes=ProductReceiveType::all();
         $productdistributions=ProductDistribution::all();
@@ -107,4 +107,31 @@ class repairreceiveController extends Controller
 
 
     }
+     public function update(Request $request,$id){
+
+        $this->validate($request, [
+            'repairerName'=>'required',
+            'productName'=>'required',
+            'serial_no'=>'required|unique:repair_receives,serial_id,'.$id,
+            'receiveDate'=>'required|date_format:d/m/Y| before_or_equal: today'
+        ]);
+            
+        //find($id);
+        $repairReceive=ProductRepair::find($id);
+        $repairReceive->serial_id=$request->serial_no;
+        $repairReceive->repairer_id=$request->repairerName;
+        $repairReceive->user_id=$request->session()->get('user')->id;
+        $repairReceive->receiveDate=date('Y-m-d', strtotime(str_replace('/', '-', $request->receiveDate)));
+        $repairReceive->comments=$request->comments;
+
+        dd($repairReceive);
+        
+        $repairReceive->save();
+
+        
+   
+
+        return redirect()->route('product distribution.repair receive')->with('response','Successfully Product Received from Repair');
+
+  }
 }

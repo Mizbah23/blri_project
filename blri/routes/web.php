@@ -177,6 +177,8 @@ Route::group(['middleware'=>'userNameExistenceCheck'], function () {
     Route::get('/product_distribution/repair_receive', 'repairReceiveController@index')->name('product distribution.repair receive');
     Route::post('/product_distribution/repair_receive', 'repairReceiveController@repairReceivePost');
     Route::get('/product_distribution/repair_receive/{id}/edit', 'repairReceiveController@edit')->name('product distribution.repairReceiveEdit');
+    Route::post('/product_distribution/repair_receive/{id}/edit', 'repairReceiveController@update');
+    
 
     //adjustment
     Route::get('/adjustment/adjustment_information', 'adjustmentinformationController@index')->name('adjustment.adjustment information');

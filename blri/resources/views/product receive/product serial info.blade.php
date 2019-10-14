@@ -232,7 +232,9 @@ $( function() {
               <li class="treeview">
                 <a href="#">
                 <i class="fa fa-laptop"></i>
-                <span>পণ্য প্রাপ্তি</span>
+
+                <span>পণ্য প্রাপ্তি </span>
+
                 <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
@@ -291,7 +293,7 @@ $( function() {
     </div>
         <!--left-fixed -navigation-->
         
-               <!-- header-starts -->
+         <!-- header-starts -->
         <div class="sticky-header header-section ">
             <div class="header-left">
                 <!--toggle button start-->
@@ -305,9 +307,7 @@ $( function() {
                         <li class="dropdown profile_details_drop">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                                 <div class="profile_img">   
-
                                     <span class="prfil-img"><img src="/images/{{(Session::get('user')->employeeinfo->profileImage)}}" alt="" style="height: 50px; width:50px"> </span> 
-
                                     <div class="user-name">
                                         <p>{{(Session::get('user')->employeeinfo->name)}}</p>
                                         <span>{{ (Session::get('user')->userType)}}</span>
@@ -315,13 +315,13 @@ $( function() {
                                     <i class="fa fa-angle-down lnr"></i>
                                     <i class="fa fa-angle-up lnr"></i>
                                     <div class="clearfix"></div>    
-                                </div>   
+                                </div>  
                             </a>
                             <ul class="dropdown-menu drp-mnu">
                                 <li> <a href="#"><i class="fa fa-cog"></i> Settings</a> </li> 
                                 <li> <a href="#"><i class="fa fa-user"></i> My Account</a> </li> 
                                 <li> <a href="#"><i class="fa fa-suitcase"></i> Profile</a> </li> 
-                                <li> <a href="#"><i class="fa fa-sign-out"></i> Logout</a> </li>
+                                <li> <a href="{{route('login.index')}}"><i class="fa fa-sign-out"></i> Logout</a> </li>
                             </ul>
                         </li>
                     </ul>
@@ -330,7 +330,7 @@ $( function() {
 
                 <div class="clearfix"> </div>               
             </div>
-            <div class="clearfix"> </div>   
+            <div class="clearfix"> </div> 
         </div>
         <!-- //header-ends -->
    

@@ -2,7 +2,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>Employe information</title>
+<title>কর্মচারীদের তথ্য হালনাগাদ</title>
 <link rel="icon" type="image/png" href="/images/logo.png" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
