@@ -75,10 +75,10 @@ class repairreceiveController extends Controller
         return redirect()->route('product distribution.repair receive')->with('response','Product Successfully Received from Repair');
         }
 
-               public function edit(Request $request,$id){
+      public function edit(Request $request,$id){
         $isAvailable= RepairReceive::find($request->id);
          if($isAvailable){ 
-                $setuptypes= setuptype::all();
+        $setuptypes= setuptype::all();
         $securitytypes=SecurityType::all();
         $productreceivetypes=ProductReceiveType::all();
         $productdistributions=ProductDistribution::all();
