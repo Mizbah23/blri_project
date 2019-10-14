@@ -128,25 +128,25 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
             <span class="icon-bar"></span>
             </button>
 
-            <h1 style="margin-top: 5px"><a class="text-white" style="margin-left: 10px;" href="index.html"><span> <img style="height: 50px; width: 50px;" src="/images/logo.png" alt=""></span> BLRI<span class="dashboard_text" style="margin-left: 30px">Design dashboard</span></a></h1>
+            <h1 style="margin-top: 5px"><a class="text-white" style="margin-left: 10px;" href="index.html"><span> <img style="height: 50px; width: 50px;" src="/images/logo.png" alt=""></span> BLRI<span class="dashboard_text" style="margin-left: 30px">ড্যাশবোর্ড ডিজাইন</span></a></h1>
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="sidebar-menu">
               <li class="header">MAIN NAVIGATION</li>
               <li class="treeview">
                 <a href="{{route('home.index')}}">
-                <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+                <i class="fa fa-dashboard"></i> <span>ড্যাশবোর্ড</span>
                 </a>
               </li>
               <li class="treeview">
                 <a href="#">
-                <i class="fa fa-shield"></i> <span>Security</span>
+                <i class="fa fa-shield"></i> <span>নিরাপত্তা</span>
                 <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
                 @foreach($securitytypes as $securitytype)
                    
                       <li><a href="{{route('security.'.strtolower($securitytype->SecType))}}">
-                      <i class="fa fa-circle"></i> {{$securitytype->SecType}}</a></li>
+                      <i class="fa fa-circle"></i> {{$securitytype->name}}</a></li>
                  @endforeach
                 </ul>
               </li>
@@ -173,7 +173,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
               <li class="treeview">
                 <a href="#">
                 <i class="fa fa-laptop"></i>
-                <span>Product Recieve</span>
+                <span>পণ্য প্রাপ্তি </span>
                 <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
@@ -187,7 +187,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
               
               <li class="treeview">
                 <a href="#">
-                <i class="fa fa-users"></i> <span>Product Distribution</span>
+                <i class="fa fa-users"></i> <span>পণ্য বিতরণ </span>
                 <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
@@ -200,7 +200,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
               </li>
               <li class="treeview">
                 <a href="#">
-                <i class="fa fa-adjust"></i> <span>Adjustment</span>
+                <i class="fa fa-adjust"></i> <span>সমন্বয়</span>
                 <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
@@ -214,7 +214,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
             
                <li class="treeview">
                 <a href="#">
-                <i class="fa fa-table"></i> <span>Reporting</span>
+                <i class="fa fa-table"></i> <span>প্রতিবেদন</span>
                 <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">

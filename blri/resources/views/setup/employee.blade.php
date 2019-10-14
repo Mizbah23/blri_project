@@ -147,7 +147,6 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
     {{-- datatable --}}
 </head> 
 <body class="cbp-spmenu-push">
-
     <div class="main-content">
     <div class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">
         <!--left-fixed -navigation-->
@@ -161,18 +160,18 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
             <span class="icon-bar"></span>
             </button>
 
-            <h1 style="margin-top: 5px"><a class="text-white" style="margin-left: 10px;" href="index.html"><span> <img style="height: 50px; width: 50px;" src="/images/logo.png" alt=""></span> BLRI<span class="dashboard_text" style="margin-left: 30px">Design dashboard</span></a></h1>
+            <h1 style="margin-top: 5px"><a class="text-white" style="margin-left: 10px;" href="index.html"><span> <img style="height: 50px; width: 50px;" src="/images/logo.png" alt=""></span> BLRI<span class="dashboard_text" style="margin-left: 30px">ড্যাশবোর্ড ডিজাইন</span></a></h1>
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="sidebar-menu">
               <li class="header">MAIN NAVIGATION</li>
               <li class="treeview">
                 <a href="{{route('home.index')}}">
-                <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+                <i class="fa fa-dashboard"></i> <span>ড্যাশবোর্ড</span>
                 </a>
               </li>
               <li class="treeview">
                 <a href="#">
-                <i class="fa fa-shield"></i> <span>Security</span>
+                <i class="fa fa-shield"></i> <span>নিরাপত্তা</span>
                 <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
@@ -200,63 +199,64 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                   
                 </ul>
               </li>
+           
+             
               <li class="treeview">
               <li class="treeview">
                 <a href="#">
                 <i class="fa fa-laptop"></i>
-                <span>Product Recieve</span>
+                <span>পণ্য প্রাপ্তি </span>
                 <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                 @foreach($productreceivetypes as $productreceivetype)
+                  @foreach($productreceivetypes as $productreceivetype)
                    
                     <li><a href="{{route('product receive.'.strtolower($productreceivetype->prType))}}">
-                      <i class="fa fa-circle"></i> {{$productreceivetype->prType}}</a></li>
+                      <i class="fa fa-circle"></i> {{$productreceivetype->name}}</a></li>
                  @endforeach
                 </ul>
               </li>
               
               <li class="treeview">
                 <a href="#">
-                <i class="fa fa-users"></i> <span>Product Distribution</span>
+                <i class="fa fa-users"></i> <span>পণ্য বিতরণ </span>
                 <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
                  @foreach($productdistributions as $productdistribution)
                    
                     <li><a href="{{route('product distribution.'.strtolower($productdistribution->pdType))}}">
-                      <i class="fa fa-circle"></i> {{$productdistribution->pdType}}</a></li>
+                      <i class="fa fa-circle"></i> {{$productdistribution->name}}</a></li>
                  @endforeach
                 </ul>
               </li>
               <li class="treeview">
                 <a href="#">
-                <i class="fa fa-adjust"></i> <span>Adjustment</span>
+                <i class="fa fa-adjust"></i> <span>সমন্বয়</span>
                 <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                 @foreach($adjustments as $adjustment)
+                    @foreach($adjustments as $adjustment)
                    
-              <li><a href="{{route('adjustment.'.strtolower($adjustment->adjustmentType))}}">
-                      <i class="fa fa-circle"></i> {{$adjustment->adjustmentType}}</a></li>
+                    <li><a href="{{route('adjustment.'.strtolower($adjustment->adjustmentType))}}">
+                      <i class="fa fa-circle"></i> {{$adjustment->name}}</a></li>
                  @endforeach
-                </ul>
+               </ul>
               </li>
             
-              <li class="treeview">
+               <li class="treeview">
                 <a href="#">
-                <i class="fa fa-table"></i> <span>Report</span>
+                <i class="fa fa-table"></i> <span>প্রতিবেদন</span>
                 <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
                  @foreach($reportings as $reporting)
                    
                     <li><a href="{{route('reporting.'.strtolower($reporting->crType))}}"><!-- route('Folder(from view) Name') &&strtolowere('database table name')-->
-                      <i class="fa fa-circle"></i> {{$reporting->crType}}</a></li>
+                      <i class="fa fa-circle"></i> {{$reporting->name}}</a></li>
                  @endforeach
                 </ul>
               </li>
-            
           </div>
           <!-- /.navbar-collapse -->
       </nav>
@@ -264,7 +264,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
     </div>
         <!--left-fixed -navigation-->
         
-               <!-- header-starts -->
+         <!-- header-starts -->
         <div class="sticky-header header-section ">
             <div class="header-left">
                 <!--toggle button start-->
@@ -301,7 +301,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 
                 <div class="clearfix"> </div>               
             </div>
-            <div class="clearfix"> </div>   
+            <div class="clearfix"> </div> 
         </div>
         <!-- //header-ends -->
    

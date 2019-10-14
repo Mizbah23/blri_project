@@ -102,6 +102,9 @@ class empAssignController extends Controller
 		$productreceivetypes=ProductReceiveType::all();
 		$employeeInformations= EmployeeInformation::all();
 		$projects= Project::all();
+		$productdistributions=ProductDistribution::all();
+        $adjustments=Adjustment::all();
+        $reportings=Reporting::all();
 		$assignedEmployee=Emp_assign::find($id);
 		if($assignedEmployee){
 			return view('setup.employeeAssignEdit')
@@ -110,6 +113,9 @@ class empAssignController extends Controller
 					->with('productreceivetypes',$productreceivetypes)
 					->with('assignedEmployee',$assignedEmployee)
 					->with('projects',$projects)
+					->with('productdistributions',$productdistributions)
+				    ->with('adjustments',$adjustments)
+				    ->with('reportings',$reportings)
 					->with('employeeInformations',$employeeInformations);
 		}
 		else{

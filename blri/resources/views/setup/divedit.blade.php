@@ -2,7 +2,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>অনুষদ হালনাগাদ</title>
+<title>ডিভিশন হালনাগাদ</title>
 <link rel="icon" type="image/png" href="/images/logo.png" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -118,18 +118,18 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
             <span class="icon-bar"></span>
             </button>
 
-            <h1 style="margin-top: 5px"><a class="text-white" style="margin-left: 10px;" href="index.html"><span> <img style="height: 50px; width: 50px;" src="/images/logo.png" alt=""></span> BLRI<span class="dashboard_text" style="margin-left: 30px">Design dashboard</span></a></h1>
+            <h1 style="margin-top: 5px"><a class="text-white" style="margin-left: 10px;" href="index.html"><span> <img style="height: 50px; width: 50px;" src="/images/logo.png" alt=""></span> BLRI<span class="dashboard_text" style="margin-left: 30px">ড্যাশবোর্ড ডিজাইন</span></a></h1>
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="sidebar-menu">
               <li class="header">MAIN NAVIGATION</li>
               <li class="treeview">
                 <a href="{{route('home.index')}}">
-                <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+                <i class="fa fa-dashboard"></i> <span>ড্যাশবোর্ড</span>
                 </a>
               </li>
               <li class="treeview">
                 <a href="#">
-                <i class="fa fa-shield"></i> <span>Security</span>
+                <i class="fa fa-shield"></i> <span>নিরাপত্তা</span>
                 <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
@@ -163,7 +163,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
               <li class="treeview">
                 <a href="#">
                 <i class="fa fa-laptop"></i>
-                <span>Product Recieve</span>
+                <span>পণ্য প্রাপ্তি </span>
                 <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
@@ -177,7 +177,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
               
               <li class="treeview">
                 <a href="#">
-                <i class="fa fa-users"></i> <span>Product Distribution</span>
+                <i class="fa fa-users"></i> <span>পণ্য বিতরণ </span>
                 <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
@@ -190,7 +190,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
               </li>
               <li class="treeview">
                 <a href="#">
-                <i class="fa fa-adjust"></i> <span>Adjustment</span>
+                <i class="fa fa-adjust"></i> <span>সমন্বয়</span>
                 <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
@@ -204,7 +204,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
             
                <li class="treeview">
                 <a href="#">
-                <i class="fa fa-table"></i> <span>Reporting</span>
+                <i class="fa fa-table"></i> <span>প্রতিবেদন</span>
                 <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
@@ -222,7 +222,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
     </div>
         <!--left-fixed -navigation-->
         
-       <!-- header-starts -->
+         <!-- header-starts -->
         <div class="sticky-header header-section ">
             <div class="header-left">
                 <!--toggle button start-->
@@ -259,7 +259,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 
                 <div class="clearfix"> </div>               
             </div>
-            <div class="clearfix"> </div>   
+            <div class="clearfix"> </div>    
         </div>
         <!-- //header-ends -->
         <!-- main content start-->
@@ -274,7 +274,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
         <div class=" form-grids row form-grids-right">
             <div class="widget-shadow " data-example-id="basic-forms"> 
               <div class="form-title bg-primary">
-                <h4>অনুষদ হালনাগাদ</h4>
+                <h4>ডিভিশন হালনাগাদ</h4>
               </div>
               <div class="form-body">
                 <form class="form-horizontal" action="" method="post">
@@ -287,7 +287,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                       </div>
                       <div class="col-lg-6"> <!--Category and brand-->
 
-                          <label for="division" class="col-sm-2 control-label">অনুষদ</label>
+                          <label for="division" class="col-sm-2 control-label">ডিভিশন</label>
                        <div class="col-lg-9">
                           <input type="text" class="form-control" id="divisionName" name="divisionName"  value="{{$division->divisionName}}"placeholder="Name Can not be empty"required>
                                    @foreach ($errors->get('divisionName') as $error)
