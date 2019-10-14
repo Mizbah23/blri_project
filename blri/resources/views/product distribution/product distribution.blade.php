@@ -400,6 +400,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                   <div class="col-md-4">
                                       <label for="serial_no" class="control-label">সিরিয়াল নং</label>
                                   </div>
+                                  
                                   <div class="col-md-8">
                                       <select id="serial_no" name="serial_no" class="form-control required" value="{{old('serial_no')}}"
                                           required>
