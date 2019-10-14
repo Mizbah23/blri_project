@@ -189,7 +189,7 @@ $( function() {
                 @foreach($securitytypes as $securitytype)
                    
                       <li><a href="{{route('security.'.strtolower($securitytype->SecType))}}">
-                      <i class="fa fa-circle"></i> {{$securitytype->SecType}}</a></li>
+                      <i class="fa fa-circle"></i> {{$securitytype->name}}</a></li>
                  @endforeach
                 </ul>
               </li>
