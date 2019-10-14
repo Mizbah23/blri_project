@@ -2,7 +2,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>Product Distribution</title>
+<title>পণ্য বিতরণের তথ্য</title>
 <link rel="icon" type="image/png" href="/images/logo.png" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -400,7 +400,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                   <div class="col-md-4">
                                       <label for="serial_no" class="control-label">সিরিয়াল নং</label>
                                   </div>
-                                  
+
                                   <div class="col-md-8">
                                       <select id="serial_no" name="serial_no" class="form-control required" value="{{old('serial_no')}}"
                                           required>
@@ -437,6 +437,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                             
                   
                               <div class="col-md-7" style="border: solid 2px #eee; padding: 20px">
+                                <div class="row overflow_x_auto_for_table">
                                   <div id="allBrands">
                                       <table class="table table-responsive table-hover table-striped table-bordered table-condensed">
                                           <tr class="row bg-primary">
@@ -467,6 +468,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                           @endforeach
                   
                                       </table>
+                                    </div>
 
                  <div class="row">
                   <div class="col-lg-12">
@@ -497,6 +499,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
               </div> 
              </div> 
                    <div id="updateFormDiv"></div>
+              <div class="row overflow_x_auto_for_table">
                 <div id="allBrands">
                   <table class="table table-responsive table-hover table-striped table-bordered table-condensed">
                       <tr class="row bg-primary">
@@ -519,6 +522,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                            
                   </table>
                </div>
+              </div>
                <div id="searchedBrandValue">
                    
                </div>

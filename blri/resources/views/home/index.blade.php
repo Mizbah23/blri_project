@@ -13,7 +13,7 @@
 
     @section('content')
                         <div class="container">
-                            <img style="margin-left: 300px;margin-top: 50px; " src="/images/blrilogo.jpg" alt=""  class="responsive">
+                            <img style="margin-left: 20%;margin-top: 50px;height: auto;width: 75%" src="/images/blrilogo.jpg" alt=""  class="responsive">
                             
                         </div>
         <!--footer-->
