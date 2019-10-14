@@ -157,7 +157,7 @@ class productrepairController extends Controller
         
    
 
-        return redirect()->route('product distribution.product repair')->with('response','Successfully Editted');
+        return redirect()->route('product distribution.product repair')->with('response','Successfully Edited');
 
   }
    public function deleteItemFromRepair(Request $request){
