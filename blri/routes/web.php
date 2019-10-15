@@ -18,8 +18,12 @@ Route::get('/', function () {
 Route::get('/login', 'loginController@index')->name('login.index');
 Route::post('/login', 'loginController@loginPost');
 
+//Logout
+Route::get('/logout','logoutController@index')->name('logout.index');
 
-Route::group(['middleware'=>'userNameExistenceCheck'], function () {
+Route::group(['middleware'=>'checkUser'],function(){
+
+	
     Route::get('/home', 'homeController@index')->name('home.index');
 
     //Security->
@@ -197,4 +201,8 @@ Route::group(['middleware'=>'userNameExistenceCheck'], function () {
     Route::get('/reporting/stock_report', 'stockreportController@index')->name('reporting.stock report');
     Route::get('/reporting/project_summary_report', 'projectsummaryreportController@index')->name('reporting.project summary report');
     Route::get('/reporting/attendance_report', 'attendancereportController@index')->name('reporting.attendance report');
+
+
 });
+
+
