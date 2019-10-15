@@ -328,7 +328,7 @@ $( function() {
                                 <li> <a href="#"><i class="fa fa-cog"></i> Settings</a> </li> 
                                 <li> <a href="#"><i class="fa fa-user"></i> My Account</a> </li> 
                                 <li> <a href="#"><i class="fa fa-suitcase"></i> Profile</a> </li> 
-                                <li> <a href="{{route('login.index')}}"><i class="fa fa-sign-out"></i> Logout</a> </li>
+                                <li> <a href="{{route('logout.index')}}"><i class="fa fa-sign-out"></i> Logout</a> </li>
                             </ul>
                         </li>
                     </ul>
@@ -365,10 +365,10 @@ $( function() {
                                 <select id="productName" name="productName" class="form-control required" onchange="showSerialInfo()" required>
                                  <option value="">নির্বাচন করুন</option>
                                     @foreach($products as $product)
-                                          <option value="{{$product->id}}"
-                                              {{old('productName',$receives->serialInfo->product->id)==$product->id ?"selected":""}}>
-                                              {{$product->productName}}</option>
-                                          @endforeach
+                                      <option value="{{$product->id}}"
+                                       {{old('productName',$receives->serialInfo->productInfo->productName)==$product->id ?"selected":""}}>
+                                       {{$product->productName}}</option>
+                                    @endforeach
                               </select>
                               <div class="error">{{$errors->first('productName')}}</div>
                             </div><br><br>
