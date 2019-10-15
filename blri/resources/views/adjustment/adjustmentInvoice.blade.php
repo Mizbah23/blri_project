@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+!<DOCTYPE html>
 <html lang="bn">
 <head>
 	<title>সমন্বয় চালানপত্র</title>
