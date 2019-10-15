@@ -5,7 +5,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <style type="text/css">
     body {
-    font-family: 'examplefont', sans-serif;
+    font-family: 'kalpurush', sans-serif;
 }
 
 table{
@@ -28,7 +28,7 @@ th,td{
        <thead>
         <tr>
         <th>তারিখ</th>
-        <th>পণ্যেরনাম</th>
+        <th>পণ্যের কোড</th>
         <th>পণ্যের নাম</th>
         <th>সমন্বয়ের ধরন</th>
         <th>সমন্বয়ের কারণ</th>
