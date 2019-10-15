@@ -282,7 +282,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                 <li> <a href="#"><i class="fa fa-cog"></i> Settings</a> </li> 
                                 <li> <a href="#"><i class="fa fa-user"></i> My Account</a> </li> 
                                 <li> <a href="#"><i class="fa fa-suitcase"></i> Profile</a> </li> 
-                                <li> <a href="{{route('login.index')}}"><i class="fa fa-sign-out"></i> Logout</a> </li>
+                                <li> <a href="{{route('logout.index')}}"><i class="fa fa-sign-out"></i> Logout</a> </li>
                             </ul>
                         </li>
                     </ul>
@@ -427,39 +427,33 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                               </div>
                             
                   
-                              <div class="col-md-7" style="border: solid 2px #eee; padding: 20px">
-                                <div class="row overflow_x_auto_for_table">
-                                  <div id="allBrands">
-                                      <table class="table table-responsive table-hover table-striped table-bordered table-condensed">
-                                          <tr class="row bg-primary">
-                                              <th class="col-lg-1 text-center">#</th>
-                                              <th class="col-lg-2 text-center">অনুষদ</th>
-                                             
-                                              <th class="col-lg-3 text-center">পণ্য</th>
-                                          
-                                              <th class="col-lg-1 text-center">সিরিয়াল নং</th>
-                                              <th class="col-lg-3 text-center">মন্তব্য</th>
-                                              <th class="col-lg-1 text-center">সম্পাদনা</th>
-                                              <th class="col-lg-1 text-center">মুছে ফেলুন</th>
-                                          </tr>
-                                              @foreach ($distributionLists as $key=>$item)
-                                          <tr class="row" align="center">
-                                              <td>{{++$key}}</td>
-                                              <td>{{$item->division->divisionName}}</td>
-                                              <td>{{$item->serialInfo->productInfo->productName}}</td>
-                                              <td>{{$item->serialInfo->serial_no}}</td>
-                                              <td>{{$item->remarks}}</td>
-                                        
-                                              <td class="text-center"> <a href="#" onclick="handleEdit({{$item->id}})" class="glyphicon glyphicon-edit"
-                                                      style="font-size:24px; color: #1bc9f5"></i></a></td>
-                                              <td class="text-center"> <a href="#" onclick="deleteItem({{$item->id}})" class="glyphicon glyphicon-trash  "
-                                                      style="font-size:24px; color: red"></i></a></td>
+           <div class="col-md-7" style="border: solid 2px #eee; padding: 20px">
+              <div class="row overflow_x_auto_for_table">
+                <div id="allBrands">
+                  <table class="table table-responsive table-hover table-striped table-bordered table-condensed">
+                    <tr class="row bg-primary">
+                      <th class="col-lg-1 text-center">#</th>
+                        <th class="col-lg-2 text-center">অনুষদ</th>
+                        <th class="col-lg-3 text-center">পণ্য</th>
+                        <th class="col-lg-1 text-center">সিরিয়াল নং</th>
+                        <th class="col-lg-3 text-center">মন্তব্য</th>
+                        <th class="col-lg-1 text-center">সম্পাদনা</th>
+                        <th class="col-lg-1 text-center">মুছে ফেলুন</th>
+                        </tr>
+                        @foreach ($distributionLists as $key=>$item)
+                          <tr class="row" align="center">
+                            <td>{{++$key}}</td>
+                            <td>{{$item->division->divisionName}}</td>
+                            <td>{{$item->serialInfo->productInfo->productName}}</td>
+                            <td>{{$item->serialInfo->serial_no}}</td>
+                            <td>{{$item->remarks}}</td>
+                            <td class="text-center"> <a href="#" onclick="handleEdit({{$item->id}})" class="glyphicon glyphicon-edit"style="font-size:24px; color:#1bc9f5"></i></a></td>
+                            <td class="text-center"> <a href="#" onclick="deleteItem({{$item->id}})" class="glyphicon glyphicon-trash"style="font-size:24px; color: red"></i></a></td>
                   
-                                          </tr>
-                                          @endforeach
-                  
-                                      </table>
-                                    </div>
+                          </tr>
+                        @endforeach
+                  </table>
+                </div>
 
                  <div class="row">
                   <div class="col-lg-12">

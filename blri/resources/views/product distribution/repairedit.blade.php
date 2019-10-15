@@ -349,8 +349,9 @@ $( function() {
                                  <option value="">নির্বাচন করুন</option>
                                           @foreach($categories as $category)
                                           <option value="{{$category->id}}"
-                                              {{old('categoryName',$productrepairs->serialInfo->productInfo->brand->category->id)==$category->id ?"selected":""}}>
-                                              {{$category->categoryName}}</option>
+                                            {{old('categoryName',$productrepairs->serialInfo->productInfo->brand->category->id)==$category->id ?"selected":""}}>
+                                              {{$category->categoryName}}
+                                          </option>
                                           @endforeach
                               </select>
                             </div><br><br>

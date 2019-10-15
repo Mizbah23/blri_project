@@ -365,8 +365,9 @@ $( function() {
                                 <select id="productName" name="productName" class="form-control required" onchange="showSerialInfo()" required>
                                  <option value="">নির্বাচন করুন</option>
                                     @foreach($products as $product)
-                                      <option value="{{$product->id}}"
-                                       {{old('productName',$receives->serialInfo->productInfo->productName)==$product->id ?"selected":""}}>
+                                      <option value="{{$product->id}}" @if(old('productName',$receives->serialInfo->product_info_id)==$product->id)
+                                            {{"selected"}}
+                                            @endif>
                                        {{$product->productName}}</option>
                                     @endforeach
                               </select>
