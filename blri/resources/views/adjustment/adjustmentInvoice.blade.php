@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="bn">
 <head>
-	<title>Adjustment Invoice</title>
+	<title>সমন্বয় চালানপত্র</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <style type="text/css">
     body {
@@ -23,6 +23,7 @@ th,td{
 </head>
 <body>
   <h1 style="margin-left:15%">বাংলাদেশ প্রাণিসম্পদ গবেষণা ইনস্টিটিউট</h1>
+  
    <center>
      <table>
        <thead>

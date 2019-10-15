@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-md-4" >
                 <div class="col-md-3">
-                    <label for="adjustmentDate" class=" control-label">Date</label>
+                    <label for="adjustmentDate" class=" control-label">তারিখ</label>
                 </div>
                 <div class="col-md-9">
                     <input class="form-control datepicker" type="text" id="adjustmentDate" name="adjustmentDate" placeholder="mm/dd/yyyy"  value="{{old('adjustmentDate',date('d/m/Y',strtotime($selectedAdjustmentInfo->adjustmentDate)))}}"  required><br>
@@ -13,17 +13,17 @@
                 </div><br><br>
 
                 <div class="col-md-3">
-                    <label for="type" class=" control-label">Type</label>
+                    <label for="type" class=" control-label">ধরন</label>
                 </div>
                 <div class="col-md-9">
                     <select id="type" name="type" class="form-control required" required onchange="">
-                        <option value="">Select Adjustment type</option>
-                        <option value="found" {{old("type",$selectedAdjustmentInfo->adjustmentType)=='found'?"selected":""}}>Found</option>
-                        <option value="lost" {{old("type",$selectedAdjustmentInfo->adjustmentType)=='lost'?"selected":""}}>Lost</option>
-                        <option value="gift" {{old("type",$selectedAdjustmentInfo->adjustmentType)=='gift'?"selected":""}}>Gift</option>
-                        <option value="damage" {{old("type",$selectedAdjustmentInfo->adjustmentType)=='damage'?"selected":""}}>Damage</option>
-                        <option value="waste" {{old("type",$selectedAdjustmentInfo->adjustmentType)=='waste'?"selected":""}}>Waste</option>
-                        <option value="garbage" {{old("type",$selectedAdjustmentInfo->adjustmentType)=='garbage'?"selected":""}}>Garbage</option>
+                        <option value="">সমন্বয়ের ধরন নির্বাচন করুন</option>
+                        <option value="খুঁজে পাওয়া" {{old("type",$selectedAdjustmentInfo->adjustmentType)=='খুঁজে পাওয়া'?"selected":""}}>খুঁজে পাওয়া</option>
+                        <option value="নিখোঁজ" {{old("type",$selectedAdjustmentInfo->adjustmentType)=='নিখোঁজ'?"selected":""}}>নিখোঁজ</option>
+                        <option value="উপহার" {{old("type",$selectedAdjustmentInfo->adjustmentType)=='উপহার'?"selected":""}}>উপহার</option>
+                        <option value="ক্ষতি" {{old("type",$selectedAdjustmentInfo->adjustmentType)=='ক্ষতি'?"selected":""}}>ক্ষতি</option>
+                        <option value="অপব্যয়" {{old("type",$selectedAdjustmentInfo->adjustmentType)=='অপব্যয়'?"selected":""}}>অপব্যয়</option>
+                        <option value="পরিত্যক্ত" {{old("type",$selectedAdjustmentInfo->adjustmentType)=='পরিত্যক্ত'?"selected":""}}>পরিত্যক্ত</option>
                     </select>
                     <div class="error">{{$errors->first('type')}}</div>
                 </div><br><br><br>

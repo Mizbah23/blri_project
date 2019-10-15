@@ -117,7 +117,7 @@ class adjustmentinformationController extends Controller
           $selectedProduct=ProductInfo::find($request->productCode);
           if ($selectedProduct) {
               $productStockSize=$selectedProduct->stock;
-              if ($request->type!='found') {
+              if ($request->type!='খুঁজে পাওয়া') {
                   $quantityErrorCheck='|lte:'. $productStockSize;
               }
           }

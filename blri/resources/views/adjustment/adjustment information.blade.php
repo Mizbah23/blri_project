@@ -2,7 +2,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>Adjustment Information</title>
+<title>সমন্বয় তথ্য</title>
 <link rel="icon" type="image/png" href="/images/logo.png" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -365,7 +365,7 @@ $( function() {
                                   <option value="উপহার" {{old("type")=='উপহার'?"selected":""}}>উপহার</option>
                                   <option value="ক্ষতি" {{old("type")=='ক্ষতি'?"selected":""}}>ক্ষতি</option>
                                   <option value="অপব্যয়" {{old("type")=='অপব্যয়'?"selected":""}}>অপব্যয়</option>
-                                  <option value="আবর্জনা" {{old("type")=='আবর্জনা'?"selected":""}}>আবর্জনা</option>
+                                  <option value="পরিত্যক্ত" {{old("type")=='পরিত্যক্ত'?"selected":""}}>পরিত্যক্ত</option>
                                 </select>
                               <div class="error">{{$errors->first('type')}}</div>
                               </div><br><br><br>
