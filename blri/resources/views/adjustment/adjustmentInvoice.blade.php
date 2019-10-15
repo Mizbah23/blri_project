@@ -28,13 +28,13 @@ th,td{
        <thead>
         <tr>
         <th>তারিখ</th>
-        <th>পণ্যের কোড </th>
+        <th>পণ্যেরনাম</th>
         <th>পণ্যের নাম</th>
         <th>সমন্বয়ের ধরন</th>
         <th>সমন্বয়ের কারণ</th>
        </tr>
        </thead>
-       <tbody>
+       <tbody> 
         @foreach($adjustmentInfoLists as $key=>$item)
         <tr>
           <td>{{date('d/m/Y', strtotime(str_replace('-', '/',$item->adjustmentDate))) }}</td>
