@@ -365,7 +365,7 @@ $( function() {
                                 <select id="productName" name="productName" class="form-control required" onchange="showSerialInfo()" required>
                                  <option value="">নির্বাচন করুন</option>
                                     @foreach($products as $product)
-                                      <option value="{{$product->id}}" @if(old('productName',$receives->serialInfo->product_info_id)==$product->id)
+                                      <option value="{{$product->id}}" @if(old('productName',$repairReceiveItem->serialInfo->product_info_id)==$product->id)
                                             {{"selected"}}
                                             @endif>
                                        {{$product->productName}}</option>
@@ -379,10 +379,10 @@ $( function() {
                             <div class="col-md-8">
                                 <select id="serial_no" name="serial_no" class="form-control required" value="{{old('serial_no')}}" required>
                                  <option value="">নির্বাচন করুন</option>
-                                 @if(old('productName'))
+                                 @if(old('productName',$repairReceiveItem->serialInfo->product_info_id))
                                   @foreach ($serialInfos as $serialInfo)
-                                    @if(old('productName')==$serialInfo->product_info_id)
-                                      <option value="{{$serialInfo->id}}" @if (old('serial_no')==$serialInfo->id)
+                                    @if(old('productName',$repairReceiveItem->serialInfo->product_info_id)==$serialInfo->product_info_id)
+                                      <option value="{{$serialInfo->id}}" @if (old('serial_no',$repairReceiveItem->serial_id)==$serialInfo->id)
                                                 {{"selected"}}
                                     @endif>{{$serialInfo->serial_no}}</option>
                                     @endif
@@ -398,7 +398,7 @@ $( function() {
                                 <select id="repairerName" name="repairerName" class="form-control required" required>
                                  <option value="">নির্বাচন করুন</option>
                                   @foreach($repairers as $repairer)
-                                  <option value="{{$repairer->id}}" @if (old('repairerName')==$repairer->id)
+                                  <option value="{{$repairer->id}}" @if (old('repairerName',$repairReceiveItem->repairer_id)==$repairer->id)
                                       {{"selected"}}
                                   @endif>{{$repairer->repairerName}}</option>
                                   @endforeach
@@ -414,14 +414,14 @@ $( function() {
                             </div>
                       <div class="col-md-8">
                               
-                          <input type="text" class="form-control datepicker" id="receiveDate" name="receiveDate" placeholder="দিন/মাস/বছর" value="{{old('receiveDate')}}" autocomplete="off" required>
+                          <input type="text" class="form-control datepicker" id="receiveDate" name="receiveDate" placeholder="দিন/মাস/বছর" value="{{old('receiveDate',date('d/m/Y', strtotime(str_replace('-','/',$repairReceiveItem->receiveDate))))}}" autocomplete="off" required>
                              <div class="error">{{$errors->first('receiveDate')}}</div>
                             </div><br><br>
                             <div class="col-md-4">
                                  <label for="comments" class=" control-label">মন্তব্য</label>
                             </div>
                             <div class="col-md-8">
-                                <textarea name="comments" id="comments" class="form-control" placeholder="মন্তব্য করুন"></textarea>
+                                <textarea name="comments" id="comments" class="form-control" placeholder="মন্তব্য করুন">{{old('comments',$repairReceiveItem->comments)}}</textarea>
                             </div><br><br>
                             
                         </div>

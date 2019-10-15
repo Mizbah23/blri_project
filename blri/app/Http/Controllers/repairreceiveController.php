@@ -77,6 +77,7 @@ class repairreceiveController extends Controller
 
       public function edit(Request $request,$id){
         $isAvailable= RepairReceive::find($request->id);
+        // dd($isAvailable);
          if($isAvailable){ 
         $setuptypes= setuptype::all();
         $securitytypes=SecurityType::all();
@@ -100,7 +101,7 @@ class repairreceiveController extends Controller
            ->with('products',$products)
            ->with('serialInfos',$serialInfos)
            ->with('repairers',$repairers)
-           ->with('receives',$receives)
+           ->with('repairReceiveItem',$isAvailable)
            ->with('users',$users);
         
         }
