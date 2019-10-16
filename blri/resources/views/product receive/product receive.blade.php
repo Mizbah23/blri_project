@@ -1,4 +1,3 @@
-
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -6,8 +5,6 @@
 <link rel="icon" type="image/png" href="/images/logo.png" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="Glance Design Dashboard Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
-SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 
 <!-- Bootstrap Core CSS -->
@@ -23,27 +20,6 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 <!-- side nav css file -->
 <link href='/css/SidebarNav.min.css' media='all' rel='stylesheet' type='text/css'/>
 <!-- //side nav css file -->
-
-{{-- <link rel="stylesheet" href="/css/jquery-ui.css" type='text/css'/> --}}
-<!--datepicker-->
-{{-- <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> --}}
-{{-- <link rel="stylesheet" href="/resources/demos/style.css"> --}}
- 
- <!-- js-->
-{{-- <script src="/js/jquery-1.11.1.min.js"></script> --}}
-{{-- <script src="/js/modernizr.custom.js"></script> --}}
-
-<!--datepicker-->
-{{-- <script src="/js/jquery-1.12.4.js"></script> --}}
-{{-- <script src="/js/jquery-ui.js"></script> --}}
-<!--webfonts-->
-{{-- <link href="//fonts.googleapis.com/css?family=PT+Sans:400,400i,700,700i&amp;subset=cyrillic,cyrillic-ext,latin-ext" rel="stylesheet"> --}}
-<!--//webfonts--> 
-
-<!-- chart -->
-{{-- <script src="/js/Chart.js"></script> --}}
-<!-- //chart -->
-
 <!-- page scrolling -->
 <script src="/js/metisMenu.min.js"></script>
 <script src="/js/custom.js"></script>
@@ -184,10 +160,10 @@ $( function() {
             <span class="icon-bar"></span>
             </button>
 
-            <h1 style="margin-top: 5px"><a class="text-white" style="margin-left: 10px;" href="index.html"><span> <img style="height: 50px; width: 50px;" src="/images/logo.png" alt=""></span> BLRI<span class="dashboard_text" style="margin-left: 30px">ড্যাশবোর্ড ডিজাইন</span></a></h1>
+            <h1 style="margin-top: 5px"><a class="text-white" style="margin-left: 10px;" href="{{route('home.index')}}"><span> <img style="height: 50px; width: 50px;" src="/images/logo.png" alt=""></span> BLRI<span class="dashboard_text" style="margin-left: 30px">ড্যাশবোর্ড ডিজাইন</span></a></h1><br>
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="sidebar-menu">
-              <li class="header">MAIN NAVIGATION</li>
+              <li class="header">মেইন নেভিগেশন</li>
               <li class="treeview">
                 <a href="{{route('home.index')}}">
                 <i class="fa fa-dashboard"></i> <span>ড্যাশবোর্ড</span>
@@ -316,7 +292,7 @@ $( function() {
                                 <li> <a href="#"><i class="fa fa-cog"></i> Settings</a> </li> 
                                 <li> <a href="#"><i class="fa fa-user"></i> My Account</a> </li> 
                                 <li> <a href="#"><i class="fa fa-suitcase"></i> Profile</a> </li> 
-                                <li> <a href="{{route('logout.index')}}"><i class="fa fa-sign-out"></i> Logout</a> </li>
+                                <li> <a href="{{route('login.index')}}"><i class="fa fa-sign-out"></i> Logout</a> </li>
                             </ul>
                         </li>
                     </ul>
@@ -326,8 +302,8 @@ $( function() {
                 <div class="clearfix"> </div>               
             </div>
             <div class="clearfix"> </div> 
-        </div>
-        <!-- //header-ends -->
+        
+        <!-- header-ends -->
    
  <!-- main content start-->
     <div id="page-wrapper">
@@ -507,12 +483,7 @@ $( function() {
               
                       </table>
                         </div>
-                        
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+
                 </div>
                 <div  id="saveButton">
                   @if (count($productReceiveLists)>0)
@@ -520,11 +491,17 @@ $( function() {
                     <br><br><br>
                       <button type="button" class=" btn btn-info" onclick="savedata()"> সংরক্ষণ করুন </button> 
                       <button type="reset" class="btn btn-danger" onclick="clearList()">বাতিল করুন</button>
-                      <button type="button" class="btn btn-success">প্রিন্ট করুন</button>
-                      <button type="button" class="btn btn-success"> <a href="{{route('product receive.productReceiveInvoice') }}" target="_blank" style="color: white">মুদ্রণ করুন</a></button>
+                      <button type="button" class="btn btn-success"><a href="{{route('product receive.productReceiveInvoice') }}" target="_blank" style="color: white;text-decoration: none;">প্রিন্ট করুন</a></button>
+                      {{-- <button type="button" class="btn btn-success"> <a href="{{route('product receive.productReceiveInvoice') }}" target="_blank" style="color: white">মুদ্রণ করুন</a></button> --}}
                   </div>
                   @endif
                 </div>
+                </div>
+
+                  </div>
+                    </div>
+                           </div>
+
                       <!--Search option starts-->
                       {{-- <div class="row">
                         <div class="col-md-8"></div>

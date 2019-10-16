@@ -500,11 +500,11 @@ $( function() {
 
                 <div class="text-center" id="saveButton">
                   <br><br><br>
-                    <button type="button" class=" btn btn-info" onclick="savedata()"> Save</button> 
-                        <button type="reset" class="btn btn-danger" onclick="clearList()">Clear</button>
+                    <button type="button" class=" btn btn-info" onclick="savedata()"> সংরক্ষণ করুন</button> 
+                        <button type="reset" class="btn btn-danger" onclick="clearList()">বাতিল করুন</button>
                         <button type="button" class="btn btn-success">
                           <a href="{{route('adjustment.adjustmentInvoice') }}" target="_blank" style="color: white;text-decoration: none;">
-                        Print Invoice</a></button>
+                        প্রিন্ট করুন</a></button>
                 </div>
                                     
                   </div> 

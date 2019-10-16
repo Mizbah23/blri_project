@@ -5,7 +5,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <style type="text/css">
     body {
-    font-family: 'kalpurush', sans-serif;
+    font-family: 'kalpurush', sans-serif,'ShonarBangla','Bijoy';
 }
 
 table{
