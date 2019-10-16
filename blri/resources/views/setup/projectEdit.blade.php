@@ -355,7 +355,7 @@ $( function() {
   
                           <label for="address" class="col-sm-5 control-label">ঠিকানা</label>
                        <div class="col-lg-7">
-                        <textarea name="address" value="{{$project->address}}" id="address" class="form-control" placeholder="অবশ্যই পূরণ করুন"required></textarea>
+                        <textarea name="address" id="address" class="form-control" placeholder="অবশ্যই পূরণ করুন"required>{{old('address',$project->address)}}</textarea>
                           </div><br><br><br>
 
                         <label for="name" class="col-sm-5 control-label">প্রকল্প পরিচালক</label>
@@ -363,9 +363,11 @@ $( function() {
                               <select id="name" name="name"  class="form-control required" required>
                                <option value="">নির্বাচন করুন</option>
                                 @foreach ($employeeInformations  as $employeeInformation)
-                                <option value="{{$employeeInformation->id}}">{{$employeeInformation->name}}</option>
-                                 @endforeach
-                              </select>
+                              <option value="{{$employeeInformation->id}}" @if (old('name',$project->employee_information_id)==$employeeInformation->id)
+                                {{"selected"}}
+                            @endif>{{$employeeInformation->name}}</option>
+                            @endforeach
+                          </select>
                           </div><br><br>
                       </div>
                       <!--End left side-->
@@ -374,23 +376,23 @@ $( function() {
                       <!--right side starts-->
                       <div class="col-md-6">
 
-                       <label class="col-md-5 control-label" >শুরুর তারিখ</label>
+                       <label for="startDate" class="col-md-5 control-label" >শুরুর তারিখ</label>
                           <div class="col-md-7">
-                            <input class="form-control datepicker" type="text" id="" name="startDate" placeholder="দিন/মাস/বছর"  value="{{old('startDate')}}"  required  autocomplete="off">
-                        
+                            <input class="form-control datepicker" type="text" id="startDate" name="startDate" placeholder="দিন/মাস/বছর"  value="{{old('startDate',date('m/d/Y',strtotime($project->startDate)))}}"  required  autocomplete="off">
+                             
                             <div class="error">{{$errors->first('startDate')}}</div>
                           </div><br><br>
 
-                           <label class="col-md-5 control-label" >শেষ তারিখ</label>
+                           <label for="endDate" class="col-md-5 control-label" >শেষ তারিখ</label>
                           <div class="col-md-7">
 
-                            <input class="form-control datepicker" type="text" id="" name="endDate" placeholder="দিন/মাস/বছর"  value="{{old('endDate')}}"  required  autocomplete="off">
+                            <input class="form-control datepicker" type="text" id="endDate" name="endDate" placeholder="দিন/মাস/বছর"  value="{{old('endDate',date('m/d/Y',strtotime($project->endDate)))}}"  required  autocomplete="off">
                           </div><br><br>
 
 
-                        <label for="brand" class="col-sm-5 control-label">বিবরণ</label>
+                        <label for="description" class="col-sm-5 control-label">বিবরণ</label>
                        <div class="col-lg-7">
-                        <textarea name="description"class="form-control" value="{{ $project->description }}" placeholder=""required></textarea><br><br>
+                        <textarea name="description" id="description"class="form-control" value="{{ $project->description }}" placeholder=""required>{{old('description',$project->description)}}</textarea><br><br>
                           </div><br><br>
                           
                       </div>

@@ -1067,7 +1067,7 @@ $( function() {
       });
     }
 
-       function updateContent() {
+    function updateContent() {
       var form=$("#editForm");
       // console.log(form.serialize());
       $.ajax({
