@@ -117,15 +117,15 @@ class repairreceiveController extends Controller
             'receiveDate'=>'required|date_format:d/m/Y| before_or_equal: today'
         ]);
             
-        //find($id);
-        $repairReceive=ProductRepair::find($id);
+        //$request->all();
+        $repairReceive=RepairReceive::find($id);
         $repairReceive->serial_id=$request->serial_no;
         $repairReceive->repairer_id=$request->repairerName;
         $repairReceive->user_id=$request->session()->get('user')->id;
         $repairReceive->receiveDate=date('Y-m-d', strtotime(str_replace('/', '-', $request->receiveDate)));
         $repairReceive->comments=$request->comments;
 
-        dd($repairReceive);
+        //dd($repairReceive);
         
         $repairReceive->save();
 

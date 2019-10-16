@@ -58,7 +58,7 @@ class requisitioninfoController extends Controller
             'productCode'=>'required | unique:requisition_lists,product_info_id',
             'productName'=>'required',
             'brandName'=>'required',
-            'requisitionDate'=>'required | date| before_or_equal:today',
+            'requisitionDate'=>'required | date_format:d/m/Y| before_or_equal:today',
             'quantity'=>'required|numeric|gt:0'
         ]);
         $employeeinformations=EmployeeInformation::find($request->name);
@@ -71,7 +71,7 @@ class requisitioninfoController extends Controller
         $requisitionList->product_info_id=$request->productCode;
         $requisitionList->quantity=$request->quantity;
         $requisitionList->user_id=$request->session()->get('user')->id;
-        $requisitionList->requisitionDate=date('Y-m-d', strtotime($request->requisitionDate));
+        $requisitionList->requisitionDate=date('Y-m-d',  strtotime(str_replace('/','-',$request->requisitionDate)));
         //dd($requisitionList);
         $requisitionList->save();
 
@@ -115,7 +115,7 @@ class requisitioninfoController extends Controller
             'productCode'=>['required', Rule::unique('product_info_id')->ignore($request->productCode)],
             'productName'=>'required',
             'brandName'=>'required',
-            'requisitionDate'=>'required | date| before_or_equal:today',
+            'requisitionDate'=>'required | date_format:d/m/Y| before_or_equal:today',
             'quantity'=>'required|numeric|gt:0'
         ]);
         if ($validtor->fails()) {
@@ -131,9 +131,10 @@ class requisitioninfoController extends Controller
         $requisitionList->product_info_id=$request->productCode;
         $requisitionList->quantity=$request->quantity;
         $requisitionList->user_id=$request->session()->get('user')->id;
-        $requisitionList->requisitionDate=date('Y-m-d', strtotime($request->requisitionDate));
-        //dd($requisitionList);
+        $requisitionList->requisitionDate=date('Y-m-d',  strtotime(str_replace('/','-',$request->requisitionDate)));
+        //return $request->all();
         $requisitionList->save();
+        return $requisitionList;
         return ["success"];
     }
      
