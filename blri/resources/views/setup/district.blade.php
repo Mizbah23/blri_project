@@ -132,10 +132,10 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
             <span class="icon-bar"></span>
             </button>
 
-            <h1 style="margin-top: 5px"><a class="text-white" style="margin-left: 10px;" href="index.html"><span> <img style="height: 50px; width: 50px;" src="/images/logo.png" alt=""></span> BLRI<span class="dashboard_text" style="margin-left: 30px">ড্যাশবোর্ড ডিজাইন</span></a></h1>
+          <h1 style="margin-top: 5px"><a class="text-white" style="margin-left: 10px;" href="{{route('home.index')}}"><span> <img style="height: 50px; width: 50px;" src="/images/logo.png" alt=""></span> BLRI<span class="dashboard_text" style="margin-left: 30px">ড্যাশবোর্ড ডিজাইন</span></a></h1><br>
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="sidebar-menu">
-              <li class="header">MAIN NAVIGATION</li>
+              <li class="header">মেইন নেভিগেশন</li>
               <li class="treeview">
                 <a href="{{route('home.index')}}">
                 <i class="fa fa-dashboard"></i> <span>ড্যাশবোর্ড</span>
@@ -273,8 +273,8 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 
                 <div class="clearfix"> </div>               
             </div>
-            <div class="clearfix"> </div>  
-        </div>
+            <div class="clearfix"> </div> 
+        
         <!-- //header-ends -->
  
     <!-- main content start-->

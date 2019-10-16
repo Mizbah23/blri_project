@@ -118,10 +118,10 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
             <span class="icon-bar"></span>
             </button>
 
-            <h1 style="margin-top: 5px"><a class="text-white" style="margin-left: 10px;" href="index.html"><span> <img style="height: 50px; width: 50px;" src="/images/logo.png" alt=""></span> BLRI<span class="dashboard_text" style="margin-left: 30px">ড্যাশবোর্ড ডিজাইন</span></a></h1>
+            <h1 style="margin-top: 5px"><a class="text-white" style="margin-left: 10px;" href="{{route('home.index')}}"><span> <img style="height: 50px; width: 50px;" src="/images/logo.png" alt=""></span> BLRI<span class="dashboard_text" style="margin-left: 30px">ড্যাশবোর্ড ডিজাইন</span></a></h1><br>
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="sidebar-menu">
-              <li class="header">MAIN NAVIGATION</li>
+              <li class="header">মেইন নেভিগেশন</li>
               <li class="treeview">
                 <a href="{{route('home.index')}}">
                 <i class="fa fa-dashboard"></i> <span>ড্যাশবোর্ড</span>
@@ -250,7 +250,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                 <li> <a href="#"><i class="fa fa-cog"></i> Settings</a> </li> 
                                 <li> <a href="#"><i class="fa fa-user"></i> My Account</a> </li> 
                                 <li> <a href="#"><i class="fa fa-suitcase"></i> Profile</a> </li> 
-                                <li> <a href="{{route('logout.index')}}"><i class="fa fa-sign-out"></i> Logout</a> </li>
+                                <li> <a href="{{route('login.index')}}"><i class="fa fa-sign-out"></i> Logout</a> </li>
                             </ul>
                         </li>
                     </ul>
@@ -259,8 +259,8 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 
                 <div class="clearfix"> </div>               
             </div>
-            <div class="clearfix"> </div>  
-        </div>
+            <div class="clearfix"> </div> 
+        
         <!-- //header-ends -->
  
     <!-- main content start-->
@@ -284,7 +284,9 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                      <label for="division" class="col-sm-2 control-label">বিভাগ</label>
                      <div class="col-sm-9">
                               <select id="division" name="division" class="form-control required" required>
-                                 <option value=""> বিভাগসমূহ</option>
+                                 <option value="{{ $district->division}}" @if ($district->division==$district->division)
+                                selected
+                        @endif>{{ $district->division}}</option>
                                  <option value="ঢাকা">ঢাকা</option>
                                  <option value="চট্টগ্রাম">চট্টগ্রাম</option>
                                  <option value="সিলেট">সিলেট</option>
@@ -298,7 +300,8 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                   <label for="district" class="col-sm-2 control-label">জেলা</label> 
                   <div class="col-sm-9"> <input type="text" required class="form-control" id="district" name="district" placeholder="অবশ্যই পুরণ করুণ" value="{{$district->district}}"> </div>
                    </div>
-                 <div class="form-group"> <div class="col-sm-offset-4 col-sm-6">  </div> </div><br> <div class="col-sm-offset-4"> <button type="submit" class="btn btn-info">সংরক্ষন করুন</button> <button type="reset" class="btn btn-danger">বাতিল করুন</button></div> </form> 
+                 <div class="form-group"> <div class="col-sm-offset-4 col-sm-6">  </div> </div><br> <div class="col-sm-offset-4"> <button type="submit" class="btn btn-info">হালনাগাদ করুন</button> 
+                <button type="reset" onclick="cancelUpdate()" class="btn btn-danger">বাতিল করুন</button></div> </form> 
               </div>
           </div>
           <div class="col-sm-4"></div>
@@ -743,6 +746,11 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
     <!-- Bootstrap Core JavaScript -->
    <script src="/js/bootstrap.js"> </script>
     <!-- //Bootstrap Core JavaScript -->
-    
+
+      <script>
+    function cancelUpdate() {
+      document.location.href="{!! route('setup.district'); !!}";
+    }
+  </script>
 </body>
 </html>
