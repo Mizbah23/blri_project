@@ -476,7 +476,7 @@ $( function() {
                                     <td>{{ $item->employeeinfo->name }}</td>
                                     <td>{{$item->productInfo->productName}}</td>
                                     <td>{{$item->quantity}}</td>
-                                    <td>{{date('d/m/Y', strtotime(str_replace('-', '/',$serialInfo->requisitionDate))) }}</td>
+                                    <td>{{date('d/m/Y', strtotime(str_replace('-', '/',$item->requisitionDate))) }}</td>
                                   
                               </tr>
                               @endforeach
