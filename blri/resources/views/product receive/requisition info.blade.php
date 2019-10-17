@@ -1056,7 +1056,7 @@ $( function() {
         success: function (data) {
           $("#createFormDiv").html(data);
           $( ".datepicker" ).datepicker({
-            format: 'MM/DD/YYYY',
+            dateFormat: 'dd/mm/yy',
             maxDate: "+0D",
             ignoreReadonly: true
           });
