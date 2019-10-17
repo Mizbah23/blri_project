@@ -121,7 +121,7 @@ class requisitioninfoController extends Controller
         if ($validtor->fails()) {
             return ["error",$validtor->errors()];
         }
-        return $request->all();
+        //return $request->all();
         $employeeinformations=EmployeeInformation::find($request->name);
         $products=ProductInfo::find($request->productCode);
         

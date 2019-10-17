@@ -59,7 +59,7 @@
                           <label for="requisitionDate">তারিখ</label>
                         </div>
                         <div class="col-lg-8">
-                           <input type="text" class="form-control datepicker" id="requisitionDate" name="requisitionDate" placeholder="মাস/দিন/বছর" required value="{{old('requisitionDate',date('m/d/Y',strtotime($requisitionList->requisitionDate)))}}">
+                           <input type="text" class="form-control datepicker" id="requisitionDate" name="requisitionDate" placeholder="মাস/দিন/বছর" required value="{{old('requisitionDate',date('d/m/Y',strtotime($requisitionList->requisitionDate)))}}">
                         </div><br><br>
                         <div class="col-lg-4">
                           <label for="productName">পণ্য</label>
