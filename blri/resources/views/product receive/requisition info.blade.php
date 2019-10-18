@@ -476,7 +476,7 @@ $( function() {
                                     <td>{{ $item->employeeinfo->name }}</td>
                                     <td>{{$item->productInfo->productName}}</td>
                                     <td>{{$item->quantity}}</td>
-                                    <td>{{$item->requisitionDate}}</td>
+                                    <td>{{date('d/m/Y', strtotime(str_replace('-', '/',$item->requisitionDate))) }}</td>
                                   
                               </tr>
                               @endforeach
@@ -1056,7 +1056,7 @@ $( function() {
         success: function (data) {
           $("#createFormDiv").html(data);
           $( ".datepicker" ).datepicker({
-            format: 'MM/DD/YYYY',
+            dateFormat: 'dd/mm/yy',
             maxDate: "+0D",
             ignoreReadonly: true
           });
