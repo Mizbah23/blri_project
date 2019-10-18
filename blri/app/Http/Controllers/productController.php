@@ -93,15 +93,22 @@ class productController extends Controller
     $productreceivetypes=ProductReceiveType::all();
     $brands=Brand::all();
     $productinfo=ProductInfo::find($id);
+    $productdistributions=ProductDistribution::all();
+    $adjustments=Adjustment::all();
+    $reportings=Reporting::all();
 
     return view('setup.productEdit')
           ->with('productinfo',$productinfo)
           ->with('categories',$categories)
           ->with('brands',$brands)
           ->with('setuptypes',$setuptypes)
+          ->with('adjustments',$adjustments)
           ->with('securitytypes',$securitytypes)
           ->with('productinfo',$productinfo)
+          ->with('productdistributions',$productdistributions)
+          ->with('reportings',$reportings)
           ->with('productreceivetypes',$productreceivetypes);
+
   }
   public function productUpdate(Request $request){
     // dd($request->all());

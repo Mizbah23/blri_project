@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title> শাখা বিবরণী</title>
+<title> শ্রেণী বিবরণী</title>
 <link rel="icon" type="image/png" href="/images/logo.png"/>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -279,7 +279,7 @@
         <div class=" form-grids row form-grids-right">
             <div class="widget-shadow " data-example-id="basic-forms"> 
               <div class="form-title bg-primary text-white">
-                <h3 class="">শাখা বিবরণী</h3>
+                <h3 class="">শ্রেণী বিবরণী</h3>
               </div>
               <div class="form-body">
 
