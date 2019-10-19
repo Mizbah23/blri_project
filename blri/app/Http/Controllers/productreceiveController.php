@@ -16,7 +16,10 @@ use App\Reporting;
 use Validator;
 use Illuminate\Validation\Rule;
 use App\ProductReceiveSave;
+use App\Product_receive;
+use APP\Product_receive_detail;
 use PDF;
+use Str;
 
 class productreceiveController extends Controller
 {
@@ -79,6 +82,18 @@ class productreceiveController extends Controller
             $newProductAddedToList->receiveDate=date('Y-m-d',  strtotime(str_replace('/','-',$request->receiveDate)));
             $newProductAddedToList->save();
             
+        }
+        if($newProductAddedToList->save()){
+            $saveNewProductReceive=new Product_receive;
+                $saveNewProductReceive->supplier_id=$item->supplier_id;
+                $saveNewProductReceive->invoiceNo=$item->receiveDate.Str::random(5);
+                $saveNewProductReceive->project_id=$item->project_id;
+                $saveNewProductReceive->product_info_id=$item->product_info_id;
+                $saveNewProductReceive->orderNo=$item->orderNo;
+                $saveNewProductReceive->quantity=$item->quantity;
+                $saveNewProductReceive->user_id=$item->user_id;
+                $saveNewProductReceive->receiveDate=$item->receiveDate;
+                $saveNewProductReceive->save();
         }
 
         return redirect()->route('product receive.product receive');
@@ -146,12 +161,16 @@ class productreceiveController extends Controller
     }
     public function saveAllItemFromReceiveList(Request $request)
     {
+        // return $request->all();
         if (session()->has('user')) {
             $productReceiveLists=ProductReceiveList::all();
+            $productReceives=Product_receive::all();
             $k=0;
             foreach ($productReceiveLists as $key => $item) {
-                $saveNewProductReceive=new ProductReceiveSave;
+                $saveNewProductReceive=new Product_receive_detail;
                 $saveNewProductReceive->supplier_id=$item->supplier_id;
+                $saveNewProductReceive->product_receive_id=$item->product_receive_id;
+                $saveNewProductReceive->invoiceNo=$item->receiveDate.Str::random(5);
                 $saveNewProductReceive->project_id=$item->project_id;
                 $saveNewProductReceive->product_info_id=$item->product_info_id;
                 $saveNewProductReceive->orderNo=$item->orderNo;
