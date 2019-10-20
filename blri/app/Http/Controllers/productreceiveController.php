@@ -72,29 +72,38 @@ class productreceiveController extends Controller
         $project=Project::find($request->projectName);
 
         if ($supplier && $product && $project) {
-            $newProductAddedToList=new ProductReceiveList;
-            $newProductAddedToList->supplier_id=$request->supplierName;
-            $newProductAddedToList->project_id=$request->projectName;
-            $newProductAddedToList->product_info_id=$request->productCode;
-            $newProductAddedToList->orderNo=$request->orderNo;
-            $newProductAddedToList->quantity=$request->quantity;
-            $newProductAddedToList->user_id=$request->session()->get('user')->id;
-            $newProductAddedToList->receiveDate=date('Y-m-d',  strtotime(str_replace('/','-',$request->receiveDate)));
-            $newProductAddedToList->save();
+
+             $newProductAddedToList=new ProductReceiveList;
+             $newProductAddedToList->supplier_id=$request->supplierName;
+             $newProductAddedToList->project_id=$request->projectName;
+             $newProductAddedToList->product_info_id=$request->productCode;
+             $newProductAddedToList->orderNo=$request->orderNo;
+             $newProductAddedToList->quantity=$request->quantity;
+             $newProductAddedToList->user_id=$request->session()->get('user')->id;
+             $newProductAddedToList->receiveDate=date('Y-m-d',  strtotime(str_replace('/','-',$request->receiveDate)));
+
+
+             $request->session()->put('newProductAddedToList', $newProductAddedToList);
+             $newProductAddedToList->save();
+             
+
+             //dd($request->session()->get('newProductAddedToList')->quantity);
+             return redirect()->route("product receive.product receive");
             
         }
-        if($newProductAddedToList->save()){
+
+        /*if($newProductAddedToList->save()){
             $saveNewProductReceive=new Product_receive;
-                $saveNewProductReceive->supplier_id=$item->supplier_id;
-                $saveNewProductReceive->invoiceNo=$item->receiveDate.Str::random(5);
-                $saveNewProductReceive->project_id=$item->project_id;
-                $saveNewProductReceive->product_info_id=$item->product_info_id;
-                $saveNewProductReceive->orderNo=$item->orderNo;
-                $saveNewProductReceive->quantity=$item->quantity;
-                $saveNewProductReceive->user_id=$item->user_id;
-                $saveNewProductReceive->receiveDate=$item->receiveDate;
+                $saveNewProductReceive->supplier_id=$request->supplier_id;
+                $saveNewProductReceive->invoiceNo=$request->receiveDate.Str::random(5);
+                $saveNewProductReceive->project_id=$request->project_id;
+                $saveNewProductReceive->product_info_id=$request->product_info_id;
+                $saveNewProductReceive->orderNo=$request->orderNo;
+                $saveNewProductReceive->quantity=$request->quantity;
+                $saveNewProductReceive->user_id=$request->user_id;
+                $saveNewProductReceive->receiveDate=$request->receiveDate;
                 $saveNewProductReceive->save();
-        }
+        }*/
 
         return redirect()->route('product receive.product receive');
     }

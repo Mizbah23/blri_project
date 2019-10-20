@@ -10,6 +10,7 @@ class logoutController extends Controller
     {
     	//Tasks
     	$request->session()->flush('user');
+    	$request->session()->flush('newProductAddedToList');
     	return redirect()->route('login.index');
     }
 }
