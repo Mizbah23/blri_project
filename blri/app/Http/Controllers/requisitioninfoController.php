@@ -124,8 +124,6 @@ class requisitioninfoController extends Controller
         //return $request->all();
         $employeeinformations=EmployeeInformation::find($request->name);
         $products=ProductInfo::find($request->productCode);
-        
-       
         $requisitionList=RequisitionList::find($request->id);
         $requisitionList->employee_information_id=$request->name;
         $requisitionList->product_info_id=$request->productCode;

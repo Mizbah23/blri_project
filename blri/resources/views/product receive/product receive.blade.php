@@ -469,18 +469,20 @@ $( function() {
                               <th class="col-lg-2 text-center">পরিমাণ</th>
                               <th class="col-lg-2 text-center">অর্ডার নং.</th>
                           </tr>
-                          @foreach ($productReceiveLists as $item)
-                            <tr class="row"  align="center">
-                              <td ><a href="#" onclick="handleEdit({{$item->id}})"><i class="fa fa-edit" style="font-size:24px" ></i></a></td>
-                              <td> <a href="#" onclick="deleteItem({{$item->id}})" class="glyphicon glyphicon-trash" style="font-size:24px; color: red"></i></a></td>
-                              <td>{{$item->productInfo->productName}}</td>
-                              <td>{{$item->productInfo->productCode}}</td>
-                                {{-- <td>{{$item->quantity}}</td> --}}
-                              <td>{{ (Session::get('newProductAddedToList')->quantity)}}</td>
-                              <td>{{$item->orderNo}}</td>
+                          @if(Session::has('newProductAddedToList'))
+                            @foreach ($productReceiveLists as $item)
+                              <tr class="row"  align="center">
+                                <td ><a href="#" onclick="handleEdit({{$item->id}})"><i class="fa fa-edit" style="font-size:24px" ></i></a></td>
+                                <td> <a href="#" onclick="deleteItem({{$item->id}})" class="glyphicon glyphicon-trash" style="font-size:24px; color: red"></i></a></td>
+                                <td>{{$item->productInfo->productName}}</td>
+                                <td>{{$item->productInfo->productCode}}</td>
+                                  {{-- <td>{{$item->quantity}}</td> --}}
+                                <td>{{(Session::get('newProductAddedToList')->quantity)}}</td>
+                                <td>{{$item->orderNo}}</td>
 
-                            </tr>
-                          @endforeach
+                              </tr>
+                            @endforeach
+                          @endif
               
                       </table>
                         </div>

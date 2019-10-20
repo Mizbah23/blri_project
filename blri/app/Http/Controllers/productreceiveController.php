@@ -37,6 +37,8 @@ class productreceiveController extends Controller
             $productReceiveLists=ProductReceiveList::all();
             $reportings=Reporting::all();
             //dd($sections[0]->division);
+             // dd($request->session()->get('newProductAddedToList'));
+
             return view('product receive.product receive')
                    ->with('setuptypes', $setuptypes)
                    ->with('securitytypes', $securitytypes)
@@ -58,7 +60,7 @@ class productreceiveController extends Controller
     {
         $this->validate($request, [
             'supplierName'=>'required',
-            'productCode'=>'required | unique:product_receive_lists,product_info_id',
+            'productCode'=>'required ',
             'productName'=>'required',
             'projectName'=>'required',
             'orderNo'=>'required',
@@ -83,11 +85,11 @@ class productreceiveController extends Controller
              $newProductAddedToList->receiveDate=date('Y-m-d',  strtotime(str_replace('/','-',$request->receiveDate)));
 
 
-             $request->session()->put('newProductAddedToList', $newProductAddedToList);
              $newProductAddedToList->save();
              
+             $request->session()->put('newProductAddedToList', $newProductAddedToList);
 
-             //dd($request->session()->get('newProductAddedToList')->quantity);
+             // dd($request->session()->get('newProductAddedToList'));
              return redirect()->route("product receive.product receive");
             
         }
