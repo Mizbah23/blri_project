@@ -7,7 +7,8 @@ use App\setuptype;
 use App\SecurityType;
 use App\ProductReceiveType;
 use App\ProductDistribution;
-use App\Reporting;//model name;
+use App\Reporting;
+use App\Adjustment;
 
 class productreceivereportController extends Controller
 {
@@ -18,6 +19,7 @@ class productreceivereportController extends Controller
         $productreceivetypes=ProductReceiveType::all();
         $productdistributions=ProductDistribution::all();
         $reportings=Reporting::all();
+        $adjustments=Adjustment::all();
 
         //dd($sections[0]->division);
         return view('reporting.product receive report')
@@ -25,6 +27,7 @@ class productreceivereportController extends Controller
               ->with('securitytypes',$securitytypes)
               ->with('productreceivetypes',$productreceivetypes)
               ->with('productdistributions',$productdistributions)
+              ->with('adjustments',$adjustments)
               ->with('reportings',$reportings);
     }
 }
