@@ -37,7 +37,7 @@ class productreceiveController extends Controller
             $productReceiveLists=ProductReceiveList::all();
             $reportings=Reporting::all();
             //dd($sections[0]->division);
-             // dd($request->session()->get('newProductAddedToList'));
+             //dd($request->session());
 
             return view('product receive.product receive')
                    ->with('setuptypes', $setuptypes)
@@ -86,9 +86,9 @@ class productreceiveController extends Controller
 
 
              $newProductAddedToList->save();
-             
              $request->session()->put('newProductAddedToList', $newProductAddedToList);
-
+        //dd($request->session());
+             
              // dd($request->session()->get('newProductAddedToList'));
              return redirect()->route("product receive.product receive");
             
@@ -175,13 +175,13 @@ class productreceiveController extends Controller
         // return $request->all();
         if (session()->has('user')) {
             $productReceiveLists=ProductReceiveList::all();
-            $productReceives=Product_receive::all();
+           //$productReceives=Product_receive::all();
             $k=0;
             foreach ($productReceiveLists as $key => $item) {
-                $saveNewProductReceive=new Product_receive_detail;
+                $saveNewProductReceive=new ProductReceiveSave;
                 $saveNewProductReceive->supplier_id=$item->supplier_id;
-                $saveNewProductReceive->product_receive_id=$item->product_receive_id;
-                $saveNewProductReceive->invoiceNo=$item->receiveDate.Str::random(5);
+                //$saveNewProductReceive->product_receive_id=$item->product_receive_id;
+                //$saveNewProductReceive->invoiceNo=$item->receiveDate.Str::random(5);
                 $saveNewProductReceive->project_id=$item->project_id;
                 $saveNewProductReceive->product_info_id=$item->product_info_id;
                 $saveNewProductReceive->orderNo=$item->orderNo;
@@ -207,6 +207,7 @@ class productreceiveController extends Controller
     public function clearListItemFromReceiveList(Request $request)
     {
         if (session()->has('user')) {
+            if(session()->has('newProductAddedToList'))
             $productReceiveLists=ProductReceiveList::all()->each->delete();
             // dd($productReceiveLists);
             // $k=0;

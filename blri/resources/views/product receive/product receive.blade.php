@@ -491,7 +491,7 @@ $( function() {
 
                 </div>
                 <div  id="saveButton">
-                  @if (count($productReceiveLists)>0)
+                  @if (Session::has('newProductAddedToList'))
                   <div class="text-center">
                     <br><br><br>
                       <button type="button" class=" btn btn-info" onclick="savedata()"> সংরক্ষণ করুন </button> 
