@@ -1,12 +1,13 @@
- 
+
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>Adjustment Report</title>
-<link rel="icon" type="image/png" href="/images/logo.png" />
+<title>পণ্য সমন্বয়ের প্রতিবেদন</title>
+<link rel="icon" type="image/png" href="/images/logo.png"/>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="Deshi System Ltd." />
+<meta name="keywords" content="Glance Design Dashboard Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 
 <!-- Bootstrap Core CSS -->
@@ -22,21 +23,15 @@
 <!-- side nav css file -->
 <link href='/css/SidebarNav.min.css' media='all' rel='stylesheet' type='text/css'/>
 <!-- //side nav css file -->
-
-<link rel="stylesheet" href="/css/jquery-ui.css" type='text/css'/>
-<!--datepicker-->
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<link rel="stylesheet" href="/resources/demos/style.css">
  
  <!-- js-->
 <script src="/js/jquery-1.11.1.min.js"></script>
 <script src="/js/modernizr.custom.js"></script>
 
-<!--datepicker-->
-<script src="/js/jquery-1.12.4.js"></script>
-<script src="/js/jquery-ui.js"></script>
 <!--webfonts-->
 <link href="//fonts.googleapis.com/css?family=PT+Sans:400,400i,700,700i&amp;subset=cyrillic,cyrillic-ext,latin-ext" rel="stylesheet">
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<script src='https://kit.fontawesome.com/a076d05399.js'></script>
 <!--//webfonts--> 
 
 <!-- chart -->
@@ -48,20 +43,16 @@
 <script src="/js/custom.js"></script>
 <link href="/css/custom.css" rel="stylesheet">
 <!--//Metis Menu -->
- <!--For autocomplete Search -->
+ <!--date time picker -->
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.min.css">
 <link rel="stylesheet" href="https://jqueryui.com/resources/demos/style.css">
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
-<!--// For autocomplete Search -->
+<!--// date time picker -->
 <style>
 #chartdiv {
   width: 100%;
   height: 295px;
-}
-.error{
-  font-size: 0.9em;
-  color: red;
 }
 </style>
 <!--pie-chart --><!-- index page sales reviews visitors pie chart -->
@@ -120,54 +111,16 @@
                             });
                         </script>
                     <!-- //requried-jsfiles-for owl -->
-<!--date picker-->
-  <script>
-$( function() {
-    var dateFormat = "dd/mm/yy",
-      from = $( "#from" )
-        .datepicker({
-          defaultDate: "+1w",
-          changeMonth: true,
-          changeYear: true,
-          numberOfMonths: 1
-        })
-        .on( "change", function() {
-          to.datepicker( "option", "minDate", getDate( this ) );
-        }),
-      to = $( "#to" ).datepicker({
-        defaultDate: "+1w",
-        changeMonth: true,
-        changeYear: true,
-        numberOfMonths: 1
-      })
-      .on( "change", function() {
-        from.datepicker( "option", "maxDate", getDate( this ) );
-      });
- 
-    function getDate( element ) {
-      var date;
-      try {
-        date = $.datepicker.parseDate( dateFormat, element.value );
-      } catch( error ) {
-        date = null;
-      }
- 
-      return date;
-    }
-  } );
-  </script>
-  <!--date picker-->
-<script>
-  $(function() {
-    $( ".datepicker" ).datepicker({
+    <script>
+      $(function() {
+      $( ".datepicker" ).datepicker({
       dateFormat: 'dd/mm/yy',
       maxDate: "+0D",
       ignoreReadonly: true
-    });
-    $("#adjustmentDate").datepicker( "setDate" , new Date());
+      });
   });
   </script>
-
+                    
 </head> 
 <body class="cbp-spmenu-push">
     <div class="main-content">
@@ -183,25 +136,25 @@ $( function() {
             <span class="icon-bar"></span>
             </button>
 
-            <h1 style="margin-top: 5px"><a class="text-white" style="margin-left: 10px;" href="index.html"><span> <img style="height: 50px; width: 50px;" src="/images/logo.png" alt=""></span> BLRI<span class="dashboard_text" style="margin-left: 30px">Design dashboard</span></a></h1>
+            <h1 style="margin-top: 5px"><a class="text-white" style="margin-left: 10px;" href="{{route('home.index')}}"><span> <img style="height: 50px; width: 50px;" src="/images/logo.png" alt=""></span> BLRI<span class="dashboard_text" style="margin-left: 30px">ড্যাশবোর্ড ডিজাইন</span></a></h1><br>
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="sidebar-menu">
-              <li class="header">MAIN NAVIGATION</li>
+              <li class="header">মেইন নেভিগেশন</li>
               <li class="treeview">
                 <a href="{{route('home.index')}}">
-                <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+                <i class="fa fa-dashboard"></i> <span>ড্যাশবোর্ড</span>
                 </a>
               </li>
               <li class="treeview">
                 <a href="#">
-                <i class="fa fa-shield"></i> <span>Security</span>
+                <i class="fa fa-shield"></i> <span>নিরাপত্তা</span>
                 <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
                 @foreach($securitytypes as $securitytype)
                    
                       <li><a href="{{route('security.'.strtolower($securitytype->SecType))}}">
-                      <i class="fa fa-circle"></i> {{$securitytype->SecType}}</a></li>
+                      <i class="fa fa-circle"></i> {{$securitytype->name}}</a></li>
                  @endforeach
                 </ul>
               </li>
@@ -210,11 +163,12 @@ $( function() {
               <li class="treeview">
                 <a href="#">
                 <i class="fa fa-wrench"></i>
-                <span>Setup</span>
+                <span>সেটআপ</span>
                 <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
                  @foreach($setuptypes as $setuptype)
+                   
                     <li><a href="{{route('setup.'.strtolower($setuptype->SType))}}">
                       <i class="fa fa-circle"></i> {{$setuptype->name}}</a></li>
                  @endforeach
@@ -227,59 +181,58 @@ $( function() {
               <li class="treeview">
                 <a href="#">
                 <i class="fa fa-laptop"></i>
-                <span>Product Receive</span>
+                <span>পণ্য প্রাপ্তি </span>
                 <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
                   @foreach($productreceivetypes as $productreceivetype)
                    
                     <li><a href="{{route('product receive.'.strtolower($productreceivetype->prType))}}">
-                      <i class="fa fa-circle"></i> {{$productreceivetype->prType}}</a></li>
+                      <i class="fa fa-circle"></i> {{$productreceivetype->name}}</a></li>
                  @endforeach
                 </ul>
               </li>
               
               <li class="treeview">
                 <a href="#">
-                <i class="fa fa-users"></i> <span>Product Distribution</span>
+                <i class="fa fa-users"></i> <span>পণ্য বিতরণ </span>
                 <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                  @foreach($productdistributions as $productdistribution)
+                 @foreach($productdistributions as $productdistribution)
                    
                     <li><a href="{{route('product distribution.'.strtolower($productdistribution->pdType))}}">
-                      <i class="fa fa-circle"></i> {{$productdistribution->pdType}}</a></li>
+                      <i class="fa fa-circle"></i> {{$productdistribution->name}}</a></li>
                  @endforeach
                 </ul>
               </li>
               <li class="treeview">
                 <a href="#">
-                <i class="fa fa-adjust"></i> <span>Adjustment</span>
+                <i class="fa fa-adjust"></i> <span>সমন্বয়</span>
                 <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                  @foreach($adjustments as $adjustment)
+                    @foreach($adjustments as $adjustment)
                    
                     <li><a href="{{route('adjustment.'.strtolower($adjustment->adjustmentType))}}">
-                      <i class="fa fa-circle"></i> {{$adjustment->adjustmentType}}</a></li>
+                      <i class="fa fa-circle"></i> {{$adjustment->name}}</a></li>
                  @endforeach
-                </ul>
+               </ul>
               </li>
             
-              <li class="treeview">
+               <li class="treeview">
                 <a href="#">
-                <i class="fa fa-table"></i> <span>Reporting</span>
+                <i class="fa fa-table"></i> <span>প্রতিবেদন</span>
                 <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
                  @foreach($reportings as $reporting)
                    
                     <li><a href="{{route('reporting.'.strtolower($reporting->crType))}}"><!-- route('Folder(from view) Name') &&strtolowere('database table name')-->
-                      <i class="fa fa-circle"></i> {{$reporting->crType}}</a></li>
+                      <i class="fa fa-circle"></i> {{$reporting->name}}</a></li>
                  @endforeach
                 </ul>
               </li>
-            
           </div>
           <!-- /.navbar-collapse -->
       </nav>
@@ -287,7 +240,7 @@ $( function() {
     </div>
         <!--left-fixed -navigation-->
         
-               <!-- header-starts -->
+         <!-- header-starts -->
         <div class="sticky-header header-section ">
             <div class="header-left">
                 <!--toggle button start-->
@@ -301,9 +254,7 @@ $( function() {
                         <li class="dropdown profile_details_drop">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                                 <div class="profile_img">   
-
                                     <span class="prfil-img"><img src="/images/{{(Session::get('user')->employeeinfo->profileImage)}}" alt="" style="height: 50px; width:50px"> </span> 
-
                                     <div class="user-name">
                                         <p>{{(Session::get('user')->employeeinfo->name)}}</p>
                                         <span>{{ (Session::get('user')->userType)}}</span>
@@ -317,7 +268,7 @@ $( function() {
                                 <li> <a href="#"><i class="fa fa-cog"></i> Settings</a> </li> 
                                 <li> <a href="#"><i class="fa fa-user"></i> My Account</a> </li> 
                                 <li> <a href="#"><i class="fa fa-suitcase"></i> Profile</a> </li> 
-                                <li> <a href="#"><i class="fa fa-sign-out"></i> Logout</a> </li>
+                                <li> <a href="{{route('login.index')}}"><i class="fa fa-sign-out"></i> Logout</a> </li>
                             </ul>
                         </li>
                     </ul>
@@ -326,29 +277,93 @@ $( function() {
 
                 <div class="clearfix"> </div>               
             </div>
-            <div class="clearfix"> </div>   
-        </div>
+            <div class="clearfix"> </div> 
+        
         <!-- //header-ends -->
-   
- <!-- main content start-->
+ 
+    <!-- main content start-->
     <div id="page-wrapper">
       <div class="main-page">
         <div class=" form-grids row form-grids-right">
             <div class="widget-shadow " data-example-id="basic-forms"> 
               <div class="form-title bg-primary text-white">
-                <h3 class="">Adjustment Reports</h3>
+                <h3 class="">পণ্য সমন্বয়ের প্রতিবেদন</h3>
               </div>
-            </div> 
-        </div> 
-      </div>
-    </div>
+              <div class="form-body">
+
+                <form class="form-horizontal" method="post"> <div class="form-group"> 
+                  @csrf
+                    <div class="row">
+                      {{-- left part --}}
+                      <div class="col-md-6">
+                        <div class="col-md-5">
+                          <label for="" class="col-sm-5 control-label">পণ্য </label>
+                        </div>
+                        <div class="col-md-7">
+                          <select id="" name="" class="form-control required" required>
+                                 <option value=""> নির্বাচন করুন</option>
+                                 
+                              </select>
+                        </div><br><br>
+
+
+                        <div class="col-md-5">
+                          <label class="control-label" for="StartDate">শুরুর তারিখ</label>
+                        </div>
+                        <div class="col-md-7">
+                          <input type="text" class="datepicker form-control" id="StartDate" name="StartDate"/>
+                        </div><br><br>
+                        <div class="col-md-5">
+                          <label class="control-label" for="endDate">শেষের তারিখ</label>
+                        </div>
+                        <div class="col-md-7">
+                          <input type="text" class="datepicker form-control" id="StartDate" name="endDate"/>
+                        </div><br><br><br>
+                      </div>
+
+                      {{-- right part --}}
+                      <div class="col-md-6">
+                        <div>
+                          <label>
+                                 <input type="radio" name="purchasereport" id="rdAllSuppWisePur" value="1" ng-checked="true" ng-click="DateWiseallPurchase()" checked/>
+                                পণ্য অনুসারে সমন্বয়
+                             </label>
+                        </div>
+
+                        <br><br>
+                      </div>
+                      <div class="row">
+                      <button class="btn btn-info" style="margin-left: 40%; font-size:18px" type="button"  id="btnPreview" ng-click="Preview()">
+                      <i class='fas fa-eye-slash' style='font-size:18px'></i> পূর্বরূপ
+                    </button>
+                    </div>
+                      
+                    </div>
+                 </form> 
+              </div>
+          </div>
+          <div class="col-sm-4"></div>
+          
+        </div>
+            
+
+           
+              
+
+              
+            </div>
+          </div>
       
+          </div>
+        </div>
+
+
     <!--footer-->
     <div class="footer">
        <p>&copy; 2019  All Rights Reserved | Design by <a href="https://deshisysltd.com/" target="_blank">Deshi Systems Ltd.</a></p>       
     </div>
     <!--//footer-->
-    </div>
+
         
     <!-- new added graphs chart js-->
     
@@ -761,7 +776,15 @@ $( function() {
                 yaxislabel: 'Profit in $'
             });
         });
+
     </script>
+    <!-- //for index page weekly sales java script -->
+    
+    
+    <!-- Bootstrap Core JavaScript -->
    <script src="/js/bootstrap.js"> </script>
+    <!-- //Bootstrap Core JavaScript -->
+
+    
 </body>
 </html>
