@@ -328,7 +328,7 @@ $( function() {
                                   <select id="supplierName" name="supplierName" class="form-control required" required onchange="showSupplierOtherInfo()">
                                   <option value="">নির্বাচন করুন</option>
                                   @foreach ($suppliers as $supplier)
-                                    <option value="{{$supplier->id}}" @if (old('supplierName')==$supplier->id)
+                                    <option value="{{$supplier->supplierName}}" @if (old('supplierName')==$supplier->supplierName)
                                         {{"selected"}}
                                     @endif>{{$supplier->supplierName}}</option>
                                   @endforeach
@@ -435,19 +435,31 @@ $( function() {
                               <br><br>
 
                               <div class="col-md-3">
-                              <label for="" class=" control-label">তারিখ</label>
+                              <label for="purchaseDate" class=" control-label">তারিখ</label>
                               </div>
                               <div class="col-md-9">
-                                <input class="form-control datepicker" type="text" id="receiveDate" name="receiveDate" placeholder="দিন/মাস/বছর"  value="{{old('receiveDate')}}"  required><br>
-                                <div class="error">{{$errors->first('receiveDate')}}</div>
+                                <input class="form-control datepicker" type="text" id="purchaseDate" name="purchaseDate" placeholder="দিন/মাস/বছর"  value="{{old('purchaseDate')}}"  required><br>
+                                <div class="error">{{$errors->first('purchaseDate')}}</div>
                               </div><br><br>
+                              
+                              <div class="col-md-3">
+                              <label for="isDonate" class=" control-label">ডোনেট</label>
+                              </div>
+                              <div class="col-md-9">
+                              <input  type="checkbox" name="isDonate" @if (old('isDonate'))
+                                checked
+                            @endif>ডোনেট?<br><br><br><br>
+                             <div class="error" style="color: red">{{$errors->first('isDonate')}}</div>
+
+                          </div><br><br>
                           
                           </div>
+                          <div id="addToList">
                           <div class="text-center">
                             <button type="submit" class="btn btn-info"><i class="glyphicon glyphicon-plus" style="color: white"></i>সংযুক্তকরুন</button> 
                             <button type="reset" class="btn btn-danger">পুনরায় বসান</button><br><br>
                           </div>
-
+                          </div>
                     </div>
 
                     
@@ -455,6 +467,7 @@ $( function() {
                   </form>
                 </div>
                 <div id="updateFormDiv"></div>
+
                 <div class="row">
 
                     
@@ -464,26 +477,26 @@ $( function() {
                           <tr class="row bg-primary">
                               <th class="col-lg-1 text-center">সম্পাদনা</th>
                               <th class="col-lg-1 text-center">বাদ দিন</th>
-                              <th class="col-lg-2 text-center">সরবরাহকারী</th>
+                              <th class="col-lg-4 text-center">সরবরাহকারী</th>
                               <th class="col-lg-2 text-center">পণ্য</th>
-                              <th class="col-lg-2 text-center">কোড</th>
+                              {{-- <th class="col-lg-2 text-center">কোড</th> --}}
                               <th class="col-lg-2 text-center">পরিমাণ</th>
                               <th class="col-lg-2 text-center">অর্ডার নং.</th>
                           </tr>
-                          @if(Session::has('newProductAddedToList'))
-                            @foreach ($productReceiveLists as $item)
+                          @if(Session::has('user'))
+                            {{-- @foreach ($productReceiveLists as $item) --}}
                               <tr class="row"  align="center">
-                                <td ><a href="#" onclick="handleEdit({{$item->id}})"><i class="fa fa-edit" style="font-size:24px" ></i></a></td>
-                                <td> <a href="#" onclick="deleteItem({{$item->id}})" class="glyphicon glyphicon-trash" style="font-size:24px; color: red"></i></a></td>
-                                <td>{{Session::get('newProductAddedToList')->supplierInfo->supplierName}}</td>
-                                <td>{{Session::get('newProductAddedToList')->productInfo->productName}}</td>
-                                <td>{{Session::get('newProductAddedToList')->productInfo->productCode}}</td>
-                                  {{-- <td>{{$item->quantity}}</td> --}}
-                                <td>{{(Session::get('newProductAddedToList')->quantity)}}</td>
-                                <td>{{Session::get('newProductAddedToList')->orderNo}}</td>
+                                <td ><a href="#" onclick="handleEdit()"><i class="fa fa-edit" style="font-size:24px" ></i></a></td>
+                                <td> <a href="#" onclick="deleteItem()" class="glyphicon glyphicon-trash" style="font-size:24px; color: red"></i></a></td>
+                                <td>{{(Session::get('supplierName'))}}</td>
+                               
+                                <td>{{@session('productCode')}}</td>
+                                <td>{{@session('quantity')}}</td>
+                                {{-- <td>{{(Session::get('newProductAddedToList')->quantity)}}</td> --}}
+                                <td>{{@session('orderNo')}}</td>
 
                               </tr>
-                            @endforeach
+                            {{-- @endforeach --}}
                           @endif
               
                       </table>
@@ -491,7 +504,7 @@ $( function() {
 
                 </div>
                 <div  id="saveButton">
-                  @if (Session::has('newProductAddedToList'))
+                  @if (Session::has('supplierName'))
                   <div class="text-center">
                     <br><br><br>
                       <button type="button" class=" btn btn-info" onclick="savedata()"> সংরক্ষণ করুন </button> 
@@ -502,7 +515,7 @@ $( function() {
                   @endif
                 </div>
                 </div>
-
+              <div id="addListDiv"></div>
                   </div>
                     </div>
                            </div>
@@ -966,7 +979,7 @@ $( function() {
       products={!! $products !!};
      });
      function showSupplierOtherInfo() {
-      var indexOfSelectedSupplier=suppliers.findIndex(k=>k.id==$("#supplierName").val());
+      var indexOfSelectedSupplier=suppliers.findIndex(k=>k.supplierName==$("#supplierName").val());
       if (indexOfSelectedSupplier>=0) {
         $("#address").val(suppliers[indexOfSelectedSupplier].address);
         $("#contactNo").val(suppliers[indexOfSelectedSupplier].mobile);
@@ -1012,11 +1025,31 @@ $( function() {
       }
      }
 
+     function addToList() {
+       $.ajax({
+        url: "{{route("product.from.AddList")}}",
+        type:"get",
+        data: { id: id},
+        success: function (data) {
+          $("#addListDiv").html(data);
+          $("#addToList").html("");
+          $( ".datepicker" ).datepicker({
+            format: 'MM/DD/YYYY',
+            maxDate: "+0D",
+            ignoreReadonly: true
+          });
+          $("#purchaseDate").datepicker();
+          // $("#createFormDiv").hide();
+          // console.log(data);
+        }
+      });
+    }
+
     function handleEdit(id) {
        $.ajax({
         url: "{{route("edit.product.from.ReceiveList")}}",
         type:"get",
-        data: { id: id},
+        //data: { id: id},
         success: function (data) {
           $("#createFormDiv").html(data);
           $("#saveButton").html("");
@@ -1025,7 +1058,7 @@ $( function() {
             maxDate: "+0D",
             ignoreReadonly: true
           });
-          $("#receiveDate").datepicker();
+          $("#purchaseDate").datepicker();
           // $("#createFormDiv").hide();
           // console.log(data);
         }

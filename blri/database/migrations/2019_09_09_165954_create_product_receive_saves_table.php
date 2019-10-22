@@ -22,7 +22,9 @@ class CreateProductReceiveSavesTable extends Migration
             $table->unsignedBigInteger('product_receive_masters_id');
             $table->unsignedBigInteger('user_id');//Who receive the product//Lets say who put product receive information
             $table->string('orderNo');
+            
             $table->integer('quantity');
+           
             $table->date('receiveDate');
 
             $table->foreign('supplier_id')->references('id')->on('suppliers');
