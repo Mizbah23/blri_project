@@ -34,6 +34,9 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 <script src='https://kit.fontawesome.com/a076d05399.js'></script>
 <!--//webfonts--> 
 
+<!--Hide show--> 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
 <!-- chart -->
 <script src="/js/Chart.js"></script>
 <!-- //chart -->
@@ -115,7 +118,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
       $(function() {
       $( ".datepicker" ).datepicker({
       dateFormat: 'dd/mm/yy',
-      maxDate: "+0D",
+      // maxDate: "+0D",
       ignoreReadonly: true
       });
   });
@@ -294,78 +297,172 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                 <form class="form-horizontal" method="post"> <div class="form-group"> 
                   @csrf
                     <div class="row">
-                       <div class="col-md-5">
+                       <div class="col-md-6">
                           <div class="form-group">
-                             <label class="col-md-5 control-label" for="StartDate">শুরুর তারিখ</label>
-                             <div class="col-md-7 input-group">
-                                <input type="text" class="datepicker form-control" id="StartDate" name="StartDate"/>
+                             <label class="col-md-5 control-label" for="StartDate"id="StartDatelevel">শুরুর তারিখ</label>
+                             <div class="col-md-7">
+                                <input type="text" class="datepicker form-control" id="StartDate" name="StartDate"
+                                 autocomplete="off"/>
                             </div>
                           </div>
 
                           <div class="form-group">
-                             <label class="col-md-5 control-label" for="endDate">শেষের তারিখ</label>
-                             <div class="col-md-7 input-group">
-                                <input type="text" class="datepicker form-control" id="endDate" name="endDate"/>
+                             <label class="col-md-5 control-label" id="endDatelevel" for="endDate">শেষের তারিখ</label>
+                             <div class="col-md-7">
+                                <input type="text" class="datepicker form-control" id="endDate" name="endDate"
+                                autocomplete="off"/>
                             </div>
                           </div>
 
                           <div class="form-group">
-                             <label class="col-md-5 control-label" for="suppliers">সরবরাহকারী</label>
-                             <div class="col-md-7 input-group">
-                                <input type="text" class="form-control" id="suppliers" name="suppliers"/>
-                            </div>
+                            <label class="col-md-5 control-label" id="supplierNamelevel">সরবরাহকারী</label>
+                              <div class="col-md-7">
+                                <select id="supplierName"  name="supplierName" class="form-control">
+                                       <option value="">নির্বাচন করুন</option>
+                                </select>
+                              </div>
                           </div>
 
                           <div class="form-group">
-                             <label class="col-md-5 control-label" for="receiveID">রিসিভ আইডি</label>
-                             <div class="col-md-7 input-group">
-                                <input type="text" class="form-control" id="receiveID" name="receiveID"/>
-                            </div>
+                             <label class="col-md-5 control-label" id="receiveIDlevel" for="receiveID">রিসিভ আইডি</label>
+                             <div class="col-md-7">
+                              <select id="receiveID"  name="receiveID" class="form-control">
+                                       <option value="">নির্বাচন করুন</option>
+                                 </select>
+                              </div>
                           </div>
 
                        </div>
-                       <div class="col-md-7">
-                          <div class="row" style="margin-left: 15%">
-                             <label>
-                                 <input type="radio" name="purchasereport" id="rdAllSuppWisePur" value="1" ng-checked="true" ng-click="DateWiseallPurchase()" checked/>
+                       <div class="col-md-6">
+                             <div class="row" style="margin-left: 15%">
+                                 <input type="radio" name="purchasereport" id="rdAllSuppWisePur2" value="1" ng-checked="true" onclick="datewisereport()"/>
                                  তারিখ অনুসারে সরবরাহকারী 
-                             </label>
+                             
                              </div>
 
+                             <script>
+                                $(document).ready(function(){
+                                    $("#rdAllSuppWisePur2").click(function(){
+                                     $("#receiveIDlevel").hide();
+                                     $("#receiveID").hide();
+                                     $("#supplierNamelevel").hide();
+                                     $("#supplierName").hide();
+                                     $("#endDate").hide();
+                                    });
+                                  });
+                              </script>
+
                              <div class="row" style="margin-left: 15%">
-                             <label>
-                                 <input type="radio" name="purchasereport" id="rdAllSuppWisePur" value="2" ng-checked="true" ng-click="DateWiseallPurchase()"/>
+                             
+                                 <input type="radio" name="purchasereport" id="rdAllSuppWisePur" value="2"  ng-checked="true" onclick="date_supplier_wisereport()" />
                                   তারিখ এবং সরবরাহকারী অনুযায়ী প্রাপ্তি
-                             </label>
-                          </div>
+                            
+                             </div>
+
+                             <script>
+                                $(document).ready(function(){
+                                    $("#rdAllSuppWisePur").click(function(){
+                                      $("#StartDatelevel").show();
+                                     $("#supplierNamelevel").show();
+                                     $("#supplierName").show();
+                                     $("#StartDate").show();
+                                     $("#receiveIDlevel").hide();
+                                     $("#receiveID").hide();
+                                     $("#endDate").hide();
+                                     $("#endDatelevel").hide();
+                                    });
+                                  });
+                              </script>
+
 
                           <div class="row" style="margin-left: 15%">
-                             <label>
-                                 <input type="radio" name="purchasereport" id="rdAllSuppWisePur" value="3" ng-checked="true" ng-click="DateWiseallPurchase()" />
+                             
+                                 <input type="radio"  name="purchasereport" id="rdAllSuppWisePur3" value="3" ng-checked="true" onclick="DateWiseallPurchase()" />
                                  তারিখ থেকে তারিখ অনুযায়ী সকল সরবরাহকারীর প্রাপ্তি
-                             </label>
+                             
                           </div>
 
+                          <script>
+                                $(document).ready(function(){
+                                    $("#rdAllSuppWisePur3").click(function(){
+                                     $("#StartDatelevel").show();
+                                     $("#StartDate").show();
+                                     $("#supplierNamelevel").hide();
+                                     $("#supplierName").hide();
+                                     $("#receiveIDlevel").hide();
+                                     $("#receiveID").hide();
+                                     $("#endDate").show();
+                                     $("#endDatelevel").show();
+                                    });
+                                  });
+                              </script>
+
                           <div class="row" style="margin-left: 15%">
-                             <label>
-                                 <input type="radio" name="purchasereport" id="rdAllSuppWisePur" value="4" ng-checked="true" ng-click="DateWiseallPurchase()" />
+                            
+                                 <input type="radio" name="purchasereport" id="rdAllSuppWisePur4" value="4" ng-checked="true" ng-click="DateWiseallPurchase()" />
                                  তারিখ থেকে তারিখ এবং সরবরাহকারী অনুযায়ী প্রাপ্তি
-                             </label>
+                             
                           </div>
 
+                             <script>
+                                $(document).ready(function(){
+                                    $("#rdAllSuppWisePur4").click(function(){
+                                     $("#StartDatelevel").show();
+                                     $("#StartDate").show();
+                                     $("#supplierNamelevel").show();
+                                     $("#supplierName").show();
+                                     $("#receiveIDlevel").hide();
+                                     $("#receiveID").hide();
+                                     $("#endDate").show();
+                                     $("#endDatelevel").show();
+                                    });
+                                  });
+                              </script>
+
                           <div class="row" style="margin-left: 15%">
-                             <label>
-                                 <input type="radio" name="purchasereport" id="rdAllSuppWisePur" value="5" ng-checked="true" ng-click="DateWiseallPurchase()"/>
+                            
+                                 <input type="radio" name="purchasereport" id="rdAllSuppWisePur5" value="5" ng-checked="true" ng-click="DateWiseallPurchase()"/>
                                 সকল প্রাপ্তি
-                             </label>
+                             
                           </div>
 
+                             <script>
+                                $(document).ready(function(){
+                                    $("#rdAllSuppWisePur5").click(function(){
+                                     $("#StartDatelevel").hide();
+                                     $("#StartDate").hide();
+                                     $("#supplierNamelevel").hide();
+                                     $("#supplierName").hide();
+                                     $("#receiveIDlevel").hide();
+                                     $("#receiveID").hide();
+                                     $("#endDate").hide();
+                                     $("#endDatelevel").hide();
+                                    });
+                                  });
+                              </script>
+
                           <div class="row" style="margin-left: 15%">
-                             <label>
-                                 <input type="radio" name="purchasereport" id="rdAllSuppWisePur" value="6" ng-checked="true" ng-click="DateWiseallPurchase()"/>
+                            
+                                 <input type="radio" name="purchasereport" id="rdAllSuppWisePur6" value="6" ng-checked="true" ng-click="DateWiseallPurchase()"/>
                                  আইডি অনুযায়ী প্রাপ্তি
-                             </label>
-                          </div>                          
+                            
+                          </div>
+
+                          <script>
+                                $(document).ready(function(){
+                                    $("#rdAllSuppWisePur6").click(function(){
+                                     $("#StartDatelevel").hide();
+                                     $("#StartDate").hide();
+                                     $("#supplierNamelevel").hide();
+                                     $("#supplierName").hide();
+                                     $("#receiveIDlevel").show();
+                                     $("#receiveID").show();
+                                     $("#endDate").hide();
+                                     $("#endDatelevel").hide();
+                                    });
+                                  });
+                              </script>
+
                        </div>
                     </div><br>
                     <div class="row">
@@ -376,15 +473,6 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                  </form> 
               </div>
           </div>
-          <div class="col-sm-4"></div>
-          
-        </div>
-            
-
-           
-              
-
-              
             </div>
           </div>
       
@@ -812,8 +900,6 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
         });
 
     </script>
-    <!-- //for index page weekly sales java script -->
-    
     
     <!-- Bootstrap Core JavaScript -->
    <script src="/js/bootstrap.js"> </script>
