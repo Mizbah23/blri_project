@@ -19,6 +19,7 @@ use App\ProductReceiveSave;
 use App\Product_receive;
 //use APP\Product_receive_detail;
 use App\productReceiveMaster;
+use App\tblPurchase;
 
 use PDF;
 use Str;
@@ -37,7 +38,8 @@ class productreceiveController extends Controller
             $productdistributions=ProductDistribution::all();
             $adjustments=Adjustment::all();
             $productReceiveLists=ProductReceiveList::all();
-            $productReceiveMasters=productReceiveMaster::all();
+            // $ctReceiveMasters=productReceiveMaster::all();produ
+            $purchases=tblPurchase::all();
             $reportings=Reporting::all();
             //dd($sections[0]->division);
              //dd($request->session());
@@ -52,7 +54,8 @@ class productreceiveController extends Controller
                    ->with('productreceivetypes', $productreceivetypes)
                    ->with('adjustments', $adjustments)
                    ->with('reportings', $reportings)
-                   ->with('productReceiveMasters',$productReceiveMasters)
+                   // ->with('productReceiveMasters',$productReceiveMasters)
+                   ->with('purchases',$purchases)
                    ->with('productdistributions', $productdistributions);
         }
         else{
@@ -60,38 +63,41 @@ class productreceiveController extends Controller
         }
     }
 
+
     public function store(Request $request)
     {
         //dd($request->all());
-        $this->validate($request, [
-            'supplierName'=>'required',
-            'productCode'=>'required ',
-            'productName'=>'required',
-            'projectName'=>'required',
-            'orderNo'=>'required',
-            'address'=>'required',
-            'contactNo'=>'required',
-            'receiveDate'=>'required | date_format:d/m/Y| before_or_equal:today',
-            'quantity'=>'required|numeric|gt:0'
+       $this->validate($request, [
+               'supplierName'=>'required',
+               'productCode'=>'required ',
+               'productName'=>'required',
+               'projectName'=>'required',
+               'orderNo'=>'required',
+               'address'=>'required',
+               'contactNo'=>'required',
+               'purchaseDate'=>'required | date_format:d/m/Y| before_or_equal:today',
+               'quantity'=>'required|numeric|gt:0',
+               // 'isDonate'=>'required'
         ]);
-        $supplier=Supplier::find($request->supplierName);
-        $product=ProductInfo::find($request->productCode);
-        $project=Project::find($request->projectName);
-
-        if ($supplier && $product && $project) {
-
-                $saveNewProductReceive=new productReceiveMaster;
-                //dd($request);
-                $saveNewProductReceive->supplier_id=$request->supplier_id;
-                dd($saveNewProductReceive);
-                $saveNewProductReceive->invoice_no=$request->created_at.Str::random(5);
-                $saveNewProductReceive->project_id=$request->project_id;
-                $saveNewProductReceive->product_info_id=$request->product_info_id;
-                //$saveNewProductReceive->orderNo=$request->orderNo;
+          //dd($request->all());
+     
+                $request->session()->put('supplierName',$request->input('supplierName'));
+                $request->session()->put('address',$request->input('address'));
+                $request->session()->put('contactNo',$request->input('contactNo'));
+                $request->session()->put('productName',$request->input('productName'));
+                $request->session()->put('productCode',$request->input('productCode'));
+                $request->session()->put('projectName',$request->input('projectName'));
+                $request->session()->put('orderNo',$request->input('orderNo'));
+                $request->session()->put('purchaseDate',$request->input('purchaseDate'));
+                $request->session()->put('quantity',$request->input('quantity'));
+                $request->session()->put('isDonate',$request->input('isDonate'));
+                // dd($request->session()->all());
+         
+                //$saveNewProductReceive->orderNo=$request->orderNo;   
                 //$saveNewProductReceive->quantity=$request->quantity;
                 //$saveNewProductReceive->user_id=$request->user_id;
                // $saveNewProductReceive->receiveDate=$request->receiveDate;
-                $saveNewProductReceive->save();
+                //$saveNewProductReceive->save();
 
             /* $newProductAddedToList=new ProductReceiveList;
              $newProductAddedToList->supplier_id=$request->supplierName;
@@ -111,14 +117,34 @@ class productreceiveController extends Controller
              return redirect()->route("product receive.product receive");
              dd($request->all());
              */
-        }
+         // }
 
-        if($newProductAddedToList->save()){
-            dd($newProductAddedToList);
+      /*  if($saveNewProductReceive->save() > 0){
+                ///max id of master table
+                $Product_receive_detail=new Product_receive_detail;
+                //dd($request);
+                
+                $Product_receive_detail->invoice_no=$request->created_at.Str::random(5);
+                $Product_receive_detail->project_id=$request->project_id;
+                $Product_receive_detail->product_info_id=$request->product_info_id;
+            $newProductAddedToList->save();
+            //dd($newProductAddedToList);
 
-        }
-
-        return redirect()->route('product receive.product receive');
+        }*/
+         
+        return redirect()->route('product receive.product receive')
+        ->with('receive',$request->session()->all());
+        // ->with('supplierName',$request->session()->get('supplierName'))
+        // ->with('address',$request->session()->get('address'))
+        // ->with('contactNo',$request->session()->get('contactNo'))
+        // ->with('productName',$request->session()->get('productName'))
+        // ->with('productCode',$request->session()->get('productCode'))
+        // ->with('projectName',$request->session()->get('projectName'))
+        // ->with('orderNo',$request->session()->get('orderNo'))
+        // ->with('purchaseDate',$request->session()->get('purchaseDate'))
+        // ->with('quantity',$request->session()->get('quantity'))
+        // ->with('isDonate',$request->session()->get('isDonate'));
+        // dd($request->session()->all());
     }
 
     public function deleteItemFromReceiveList(Request $request)
@@ -184,7 +210,7 @@ class productreceiveController extends Controller
     }
     public function saveAllItemFromReceiveList(Request $request)
     {
-        // return $request->all();
+         //return $request->session()->all();
         if (session()->has('user')) {
             $productReceiveLists=ProductReceiveList::all();
            //$productReceives=Product_receive::all();
