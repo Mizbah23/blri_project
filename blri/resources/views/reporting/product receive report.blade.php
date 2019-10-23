@@ -336,18 +336,21 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                        <div class="col-md-6">
                              <div class="row" style="margin-left: 15%">
                                  <input type="radio" name="purchasereport" id="rdAllSuppWisePur2" value="1" ng-checked="true" onclick="datewisereport()"/>
-                                 তারিখ অনুসারে সরবরাহকারী 
+                                 শুরুর তারিখ অনুসারে সরবরাহকারী 
                              
                              </div>
 
                              <script>
                                 $(document).ready(function(){
                                     $("#rdAllSuppWisePur2").click(function(){
-                                     $("#receiveIDlevel").hide();
-                                     $("#receiveID").hide();
+                                     $("#StartDatelevel").show();
+                                     $("#StartDate").show();
                                      $("#supplierNamelevel").hide();
                                      $("#supplierName").hide();
+                                     $("#receiveIDlevel").hide();
+                                     $("#receiveID").hide();
                                      $("#endDate").hide();
+                                     $("#endDatelevel").hide();
                                     });
                                   });
                               </script>
@@ -355,14 +358,14 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                              <div class="row" style="margin-left: 15%">
                              
                                  <input type="radio" name="purchasereport" id="rdAllSuppWisePur" value="2"  ng-checked="true" onclick="date_supplier_wisereport()" />
-                                  তারিখ এবং সরবরাহকারী অনুযায়ী প্রাপ্তি
+                                  শুরুর তারিখ এবং সরবরাহকারী অনুযায়ী প্রাপ্তি
                             
                              </div>
 
                              <script>
                                 $(document).ready(function(){
                                     $("#rdAllSuppWisePur").click(function(){
-                                      $("#StartDatelevel").show();
+                                     $("#StartDatelevel").show();
                                      $("#supplierNamelevel").show();
                                      $("#supplierName").show();
                                      $("#StartDate").show();
@@ -378,7 +381,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                           <div class="row" style="margin-left: 15%">
                              
                                  <input type="radio"  name="purchasereport" id="rdAllSuppWisePur3" value="3" ng-checked="true" onclick="DateWiseallPurchase()" />
-                                 তারিখ থেকে তারিখ অনুযায়ী সকল সরবরাহকারীর প্রাপ্তি
+                                 শুরুর তারিখ ও শেষ তারিখ অনুযায়ী সকল সরবরাহকারীর প্রাপ্তি
                              
                           </div>
 
@@ -400,7 +403,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                           <div class="row" style="margin-left: 15%">
                             
                                  <input type="radio" name="purchasereport" id="rdAllSuppWisePur4" value="4" ng-checked="true" ng-click="DateWiseallPurchase()" />
-                                 তারিখ থেকে তারিখ এবং সরবরাহকারী অনুযায়ী প্রাপ্তি
+                                 শুরুর তারিখ ও শেষ তারিখ এবং সরবরাহকারী অনুযায়ী প্রাপ্তি
                              
                           </div>
 
