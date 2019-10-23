@@ -13,7 +13,7 @@ class CreateTblPurchasesTable extends Migration
      */
     public function up()
     {
-        Schema::create('tbl_purchases', function (Blueprint $table) {
+        Schema::create('tblpurchases', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('supplier_id');
             $table->integer('companyID')->default(1);
@@ -38,6 +38,6 @@ class CreateTblPurchasesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tbl_purchases');
+        Schema::dropIfExists('tblpurchases');
     }
 }
