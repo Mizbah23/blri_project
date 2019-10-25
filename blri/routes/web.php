@@ -197,6 +197,12 @@ Route::group(['middleware'=>'checkUser'],function(){
 
     //reportings
 	Route::get('/reporting/product_receive_report', 'productreceivereportController@index')->name('reporting.product receive report');//->name('folder name.blade name')
+
+ //Start date wise product receive invoice
+    Route::get('/reporting/product_receive_report/invoice', 'productreceivereportController@invoice')->name('reporting.productReceiveReportDateWiseInvoice');
+    //Start date wise product receive invoice 
+
+
 	Route::get('/reporting/product_distribution_report', 'productdistributionreportController@index')->name('reporting.product distribution report');
     Route::get('/reporting/adjustment_report', 'adjustmentreportController@index')->name('reporting.adjustment report');
     Route::get('/reporting/stock_report', 'stockreportController@index')->name('reporting.stock report');
