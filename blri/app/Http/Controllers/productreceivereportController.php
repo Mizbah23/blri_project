@@ -38,7 +38,7 @@ class productreceivereportController extends Controller
                 ];
 
               // $adjustmentInfoLists=AdjustmentInformationList::all();
-                   $pdf = PDF::loadView('reporting.productReceiveReportStartDateWiseInvoice',);
+                   $pdf = PDF::loadView('reporting.product_receive_report.productReceiveReportStartDateWiseInvoice',);
                    return $pdf->stream('Product_Receive_Report_Date_Wise_Invoice.pdf');
       }
 }
