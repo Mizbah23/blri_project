@@ -435,7 +435,7 @@
                             </select>
                         </div><br><br> --}}
 
-                        <label  class="col-sm-6 control-label"></label>
+                        <label for="checkbox" class="col-sm-6 control-label"></label>
                         <div class="col-lg-6">
                             <input  type="checkbox" name="isRevenue" @if (old('isRevenue'))
                                 checked

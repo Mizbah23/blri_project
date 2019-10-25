@@ -4,10 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class tblPurchase extends Model
+class tblpurchase extends Model
 {
-      public function supplierInfo()
-    {
-        return $this->belongsTo('App\Supplier','supplier_id');
-    }
+     /**
+     * The tblpurchase associated with the model.
+     */
+    protected $table = 'tblpurchase';
 }

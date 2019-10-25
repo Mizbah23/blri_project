@@ -14,18 +14,16 @@ class CreateTblpurchasedetailsTable extends Migration
     public function up()
     {
         Schema::create('tblpurchasedetails', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->unsignedBigInteger('purchase_id');
-            $table->unsignedBigInteger('product_info_id');
+            $table->bigIncrements('PurchaseDetailID');
+            $table->unsignedBigInteger('PurchaseID');
+            $table->unsignedBigInteger('ProductID');
             
-            $table->string('note');
-            $table->integer('batch_no');
-            $table->integer('quantity');
+            $table->integer('Quantity');
+            $table->string('Note')->nullable();
+            $table->string('BatchNo')->nullable();
             
-            $table->foreign('purchase_id')->references('id')->on('tbl_purchases');
-            $table->foreign('product_info_id')->references('id')->on('product_infos');
-
-
+            $table->foreign('PurchaseID')->references('PurchaseID')->on('tblpurchase');
+            $table->foreign('ProductID')->references('id')->on('product_infos');
             $table->timestamps();
         });
     }

@@ -20,16 +20,17 @@ class CreateProductReceiveListsTable extends Migration
             $table->unsignedBigInteger('project_id');
             $table->unsignedBigInteger('product_info_id');
             $table->unsignedBigInteger('user_id');//Who receive the product//Lets say who put product receive information
-            $table->unsignedBigInteger('product_receive_masters_id');
+            $table->boolean('IsDonate')->default(0);
+           
             $table->string('orderNo');
             $table->integer('quantity');
-            $table->date('receiveDate');
+            $table->date('Purchase_Date');
 
             $table->foreign('supplier_id')->references('id')->on('suppliers');
             $table->foreign('project_id')->references('id')->on('projects');
             $table->foreign('product_info_id')->references('id')->on('product_infos');
             $table->foreign('user_id')->references('id')->on('users');
-            //$table->foreign('product_receive_masters_id')->references('id')->on('product_receive_masters');
+            
             
             $table->timestamps();
         });
