@@ -470,7 +470,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 
                     </div><br>
                     <div class="row">
-                      <a href="{{route('reporting.productReceiveReportDateWiseInvoice') }}" class="btn btn-info" style="margin-left: 40%; font-size:18px" type="button"  id="btnPreview" ng-click="Preview()">
+                      <a target="_blank" href="{{route('reporting.productReceiveReportDateWiseInvoice') }}" class="btn btn-info" style="margin-left: 40%; font-size:18px" type="button"  id="btnPreview" ng-click="Preview()">
                       <i class='fas fa-eye-slash' style='font-size:18px'></i> পূর্বরূপ
                     </a>
                     </div>
