@@ -60,6 +60,19 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 </style>
 <!--pie-chart --><!-- index page sales reviews visitors pie chart -->
 <script src="/js/pie-chart.js" type="text/javascript"></script>
+
+    <script>
+      $(document).ready(function(){
+           $("#StartDatelevel").show();
+           $("#StartDate").show();
+           $("#supplierNamelevel").hide();
+           $("#supplierName").hide();
+           $("#receiveIDlevel").hide();
+           $("#receiveID").hide();
+           $("#endDate").hide();
+           $("#endDatelevel").hide();
+          });
+    </script>
  <script type="text/javascript">
 
         $(document).ready(function () {
@@ -335,7 +348,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                        </div>
                        <div class="col-md-6">
                              <div class="row" style="margin-left: 15%">
-                                 <input type="radio" name="purchasereport" id="rdAllSuppWisePur2" value="1" ng-checked="true" onclick="datewisereport()"/>
+                                 <input type="radio" name="purchasereport" id="rdAllSuppWisePur2" value="1" onclick="datewisereport()" checked/>
                                  শুরুর তারিখ অনুসারে সমস্ত বিক্রয়
                              
                              </div>
@@ -357,8 +370,8 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 
                              <div class="row" style="margin-left: 15%">
                              
-                                 <input type="radio" name="purchasereport" id="rdAllSuppWisePur" value="2"  ng-checked="true" onclick="date_supplier_wisereport()" />
-                                  শুরুর তারিখ এবং গ্রাহক অনুযায়ী বিক্রয়
+                                 <input type="radio" name="purchasereport" id="rdAllSuppWisePur" value="2"  onclick="date_supplier_wisereport()" />
+                                  শুরুর তারিখ এবং ক্রেতা অনুযায়ী বিক্রয়
                             
                              </div>
 
@@ -380,7 +393,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 
                           <div class="row" style="margin-left: 15%">
                              
-                                 <input type="radio"  name="purchasereport" id="rdAllSuppWisePur3" value="3" ng-checked="true" onclick="DateWiseallPurchase()" />
+                                 <input type="radio"  name="purchasereport" id="rdAllSuppWisePur3" value="3" onclick="DateWiseallPurchase()" />
                                  শুরুর তারিখ ও শেষ তারিখ অনুযায়ী সকল বিক্রয়
                              
                           </div>
@@ -402,7 +415,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 
                           <div class="row" style="margin-left: 15%">
                             
-                                 <input type="radio" name="purchasereport" id="rdAllSuppWisePur4" value="4" ng-checked="true" ng-click="DateWiseallPurchase()" />
+                                 <input type="radio" name="purchasereport" id="rdAllSuppWisePur4" value="4"  ng-click="DateWiseallPurchase()" />
                                  শুরুর তারিখ ও শেষ তারিখ এবং সরবরাহকারী অনুযায়ী সকল বিক্রয়
                              
                           </div>
