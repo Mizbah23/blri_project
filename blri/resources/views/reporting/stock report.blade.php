@@ -293,74 +293,138 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                 <form class="form-horizontal" method="post"> <div class="form-group"> 
                   @csrf
                     <div class="row">
-                      {{-- left part --}}
-                      <div class="col-md-6">
-                        <div class="col-md-5">
-                          <label class="control-label" for="StartDate">শুরুর তারিখ</label>
-                        </div>
-                        <div class="col-md-7">
-                          <input type="text" class="datepicker form-control" id="StartDate" name="StartDate"/>
-                        </div><br><br>
+                       <div class="col-md-6">
+                          <div class="form-group">
+                             <label class="col-md-5 control-label" for="StartDate"id="StartDatelevel">শুরুর তারিখ</label>
+                             <div class="col-md-7">
+                                <input type="text" class="datepicker form-control" id="StartDate" name="StartDate"
+                                 autocomplete="off"/>
+                            </div>
+                          </div>
 
-                        <div class="col-md-5">
-                          <label for="" class="col-sm-5 control-label">পণ্য</label>
-                        </div>
-                        <div class="col-md-7">
-                          <select id="" name="" class="form-control required" required>
-                                 <option value=""> নির্বাচন করুন</option>
-                                 
-                              </select>
-                        </div><br><br>
+                         {{--  <div class="form-group">
+                             <label class="col-md-5 control-label" id="endDatelevel" for="endDate">শেষের তারিখ</label>
+                             <div class="col-md-7">
+                                <input type="text" class="datepicker form-control" id="endDate" name="endDate"
+                                autocomplete="off"/>
+                            </div>
+                          </div>
+ --}}
+                          <div class="form-group">
+                            <label class="col-md-5 control-label" id="ProductLevel">পণ্য</label>
+                              <div class="col-md-7">
+                                <select id="Product"  name="Product" class="form-control">
+                                       <option value="">নির্বাচন করুন</option>
+                                </select>
+                              </div>
+                          </div>
 
-                        <div class="col-md-5">
-                          <label for="" class="col-sm-5 control-label">ক্যাটাগরি</label>
-                        </div>
-                        <div class="col-md-7">
-                          <select id="" name="" class="form-control required" required>
-                                 <option value=""> নির্বাচন করুন</option>
-                                 
-                              </select>
-                        </div><br><br><br>
-                      </div>
+                          <div class="form-group">
+                             <label class="col-md-5 control-label" id="CategoryLevel" for="CategoryLevel">ক্যাটাগরি</label>
+                             <div class="col-md-7">
+                              <select id="Category"  name="CategoryLevel" class="form-control">
+                                       <option value="">নির্বাচন করুন</option>
+                                 </select>
+                              </div>
+                          </div>
 
-                      {{-- right part --}}
-                      <div class="col-md-6">
-                        <div>
-                         <label>
-                                 <input type="radio" name="purchasereport" id="" value="1" ng-checked="true" ng-click="" checked/>
-                                 মজুতের মূল্যনির্ধারণ
-                             </label>
-                        </div><br>
+                       </div>
+                       <div class="col-md-6">
+                             <div class="row" style="margin-left: 15%">
+                                 <input type="radio" name="purchasereport" id="StockValuation" value="1" ng-checked="true" onclick="datewisereport()"/>
+                                 মজুতের মূল্যনির্ধারণ অনুযায়ী
+                             
+                             </div>
 
-                        <div>
-                          <label>
-                                 <input type="radio" name="purchasereport" id="" value="2" ng-checked="true" ng-click=""/>
-                                  মজুতের বর্তমান পণ্য
-                             </label>
-                        </div><br>
+                             <script>
+                                $(document).ready(function(){
+                                    $("#StockValuation").click(function(){
+                                     $("#StartDatelevel").show();
+                                     $("#StartDate").show();
+                                     $("#ProductLevel").hide();
+                                     $("#Product").hide();
+                                     $("#CategoryLevel").hide();
+                                     $("#Category").hide();
+                                     // $("#endDate").hide();
+                                     // $("#endDatelevel").hide();
+                                    });
+                                  });
+                              </script>
 
-                        <div>
-                          <label>
-                                 <input type="radio" name="purchasereport" id="" value="3" ng-checked="true" ng-click="()" />
-                                 ক্যাটাগরি অনুসারে
-                             </label>
-                        </div><br>
+                             <div class="row" style="margin-left: 15%">
+                             
+                                 <input type="radio" name="purchasereport" id="CurrentProductStock" value="2"  ng-checked="true" onclick="date_supplier_wisereport()" />
+                                 মজুতের বর্তমান পণ্য অনুযায়ী
+                            
+                             </div>
 
-                        <div>
-                          <label>
-                                 <input type="radio" name="purchasereport" id="" value="4" ng-checked="true" ng-click="()" />
-                                 সমস্ত মজুত
-                             </label>
-                        </div><br>
+                             <script>
+                                $(document).ready(function(){
+                                    $("#CurrentProductStock").click(function(){
+                                     $("#StartDatelevel").show();
+                                     $("#StartDate").show();
+                                     $("#ProductLevel").show();
+                                     $("#Product").show();
+                                     $("#CategoryLevel").hide();
+                                     $("#Category").hide();
+                                     // $("#endDate").hide();
+                                     // $("#endDatelevel").hide();
+                                    });
+                                  });
+                              </script>
 
-                        <br>
-                      </div>
-                      <div class="row">
+
+                          <div class="row" style="margin-left: 15%">
+                             
+                                 <input type="radio"  name="purchasereport" id="CategoryWise" value="3" ng-checked="true" onclick="DateWiseallPurchase()" />
+                                 ক্যাটাগরি অনুযায়ী
+                             
+                          </div>
+
+                          <script>
+                                $(document).ready(function(){
+                                    $("#CategoryWise").click(function(){
+                                     $("#StartDatelevel").show();
+                                     $("#StartDate").show();
+                                     $("#ProductLevel").hide();
+                                     $("#Product").hide();
+                                     $("#CategoryLevel").show();
+                                     $("#Category").show();
+                                     // $("#endDate").hide();
+                                     // $("#endDatelevel").hide();
+                                    });
+                                  });
+                              </script>
+
+
+                          <div class="row" style="margin-left: 15%">
+                            
+                                 <input type="radio" name="purchasereport" id="AllStock" value="4" ng-checked="true" ng-click="DateWiseallPurchase()" />
+                                 সকল মজুত অনুযায়ী
+                             
+                          </div>
+
+                             <script>
+                                $(document).ready(function(){
+                                    $("#AllStock").click(function(){
+                                     $("#StartDatelevel").show();
+                                     $("#StartDate").show();
+                                     $("#ProductLevel").hide();
+                                     $("#Product").hide();
+                                     $("#CategoryLevel").hide();
+                                     $("#Category").hide();
+                                     // $("#endDate").hide();
+                                     // $("#endDatelevel").hide();
+                                    });
+                                  });
+                              </script>
+
+                       </div>
+                    </div><br>
+                    <div class="row">
                       <button class="btn btn-info" style="margin-left: 40%; font-size:18px" type="button"  id="btnPreview" ng-click="Preview()">
-                      <i class='fas fa-eye-slash' style='font-size:18px'></i> পূর্বরূপ
+                      <i class='fas fa-eye-slash' style='font-size:18px'></i> দেখুন
                     </button>
-                    </div>
-                      
                     </div>
                  </form> 
               </div>
