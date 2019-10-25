@@ -77,7 +77,7 @@ class productreceiveController extends Controller
                'contactNo'=>'required',
                'Purchase_Date'=>'required | date_format:d/m/Y| before_or_equal:today',
                'quantity'=>'required|numeric|gt:0',
-               // 'isDonate'=>'required'
+                // 'isDonate'=>'required'
         ]);
           // dd($request->all());
      
@@ -109,12 +109,9 @@ class productreceiveController extends Controller
              $newProductAddedToList->user_id=$request->session()->get('user')->id;
              $newProductAddedToList->Purchase_Date=date('Y-m-d',  strtotime(str_replace('/','-',$request->Purchase_Date)));
 
-             // dd($newProductAddedToList);
+             dd($newProductAddedToList);
              $newProductAddedToList->save();
-             // $request->session()->put('newProductAddedToList', $newProductAddedToList);
-        //dd($request->session());
-             
-             // dd($request->session()->get('newProductAddedToList'));
+
              return redirect()->route("product receive.product receive");
              // dd($request->all());
              
