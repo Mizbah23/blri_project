@@ -123,6 +123,19 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
       });
   });
   </script>
+          <script>
+            $(document).ready(function(){
+               
+                     $("#StartDatelevel").show();
+                     $("#StartDate").show();
+                     $("#supplierNamelevel").hide();
+                     $("#supplierName").hide();
+                     $("#receiveIDlevel").hide();
+                     $("#receiveID").hide();
+                     $("#endDate").hide();
+                     $("#endDatelevel").hide();
+                  });
+              </script>
                     
 </head> 
 <body class="cbp-spmenu-push">
@@ -327,19 +340,18 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                              <label class="col-md-5 control-label" id="receiveIDlevel" for="receiveID">রিসিভ আইডি</label>
                              <div class="col-md-7">
                               <select id="receiveID"  name="receiveID" class="form-control">
-                                       <option value="">নির্বাচন করুন</option>
-                                 </select>
+                                  <option value="">নির্বাচন করুন</option>
+                              </select>
                               </div>
                           </div>
 
                        </div>
                        <div class="col-md-6">
-                             <div class="row" style="margin-left: 15%">
-                                 <input type="radio" name="purchasereport" id="rdAllSuppWisePur2" value="1" ng-checked="true" onclick="datewisereport()"/>
+                             <div class="row">
+                                 <input type="radio" name="purchasereport" id="rdAllSuppWisePur2" value="1" onclick="datewisereport()"checked/>
                                  শুরুর তারিখ অনুসারে সরবরাহকারী 
-                             
                              </div>
-
+                             
                              <script>
                                 $(document).ready(function(){
                                     $("#rdAllSuppWisePur2").click(function(){
@@ -354,13 +366,10 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                     });
                                   });
                               </script>
-
-                             <div class="row" style="margin-left: 15%">
-                             
-                                 <input type="radio" name="purchasereport" id="rdAllSuppWisePur" value="2"  ng-checked="true" onclick="date_supplier_wisereport()" />
+                              <div class="row">
+                                 <input type="radio" name="purchasereport" id="rdAllSuppWisePur" value="2" onclick="date_supplier_wisereport()" />
                                   শুরুর তারিখ এবং সরবরাহকারী অনুযায়ী প্রাপ্তি
-                            
-                             </div>
+                              </div>
 
                              <script>
                                 $(document).ready(function(){
@@ -377,13 +386,10 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                   });
                               </script>
 
-
-                          <div class="row" style="margin-left: 15%">
-                             
-                                 <input type="radio"  name="purchasereport" id="rdAllSuppWisePur3" value="3" ng-checked="true" onclick="DateWiseallPurchase()" />
-                                 শুরুর তারিখ ও শেষ তারিখ অনুযায়ী সকল সরবরাহকারীর প্রাপ্তি
-                             
-                          </div>
+                              <div class="row">
+                                 <input type="radio"  name="purchasereport" id="rdAllSuppWisePur3" value="3"  onclick="DateWiseallPurchase()" />
+                                 শুরু ও শেষ তারিখ অনুযায়ী সকল সরবরাহকারীর প্রাপ্তি
+                              </div>
 
                           <script>
                                 $(document).ready(function(){
@@ -400,12 +406,10 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                   });
                               </script>
 
-                          <div class="row" style="margin-left: 15%">
-                            
-                                 <input type="radio" name="purchasereport" id="rdAllSuppWisePur4" value="4" ng-checked="true" ng-click="DateWiseallPurchase()" />
-                                 শুরুর তারিখ ও শেষ তারিখ এবং সরবরাহকারী অনুযায়ী প্রাপ্তি
-                             
-                          </div>
+                              <div class="row">
+                                 <input type="radio" name="purchasereport" id="rdAllSuppWisePur4" value="4" ng-click="DateWiseallPurchase()" />
+                                 শুরু ও শেষ তারিখ এবং সরবরাহকারী অনুযায়ী প্রাপ্তি
+                              </div>                         
 
                              <script>
                                 $(document).ready(function(){
@@ -422,12 +426,10 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                   });
                               </script>
 
-                          <div class="row" style="margin-left: 15%">
-                            
-                                 <input type="radio" name="purchasereport" id="rdAllSuppWisePur5" value="5" ng-checked="true" ng-click="DateWiseallPurchase()"/>
+                              <div class="row">
+                                 <input type="radio" name="purchasereport" id="rdAllSuppWisePur5" value="5" ng-click="DateWiseallPurchase()"/>
                                 সকল প্রাপ্তি
-                             
-                          </div>
+                              </div>                    
 
                              <script>
                                 $(document).ready(function(){
@@ -444,12 +446,10 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                   });
                               </script>
 
-                          <div class="row" style="margin-left: 15%">
-                            
-                                 <input type="radio" name="purchasereport" id="rdAllSuppWisePur6" value="6" ng-checked="true" ng-click="DateWiseallPurchase()"/>
+                                <div class="row">          
+                                 <input type="radio" name="purchasereport" id="rdAllSuppWisePur6" value="6" ng-click="DateWiseallPurchase()"/>
                                  আইডি অনুযায়ী প্রাপ্তি
-                            
-                          </div>
+                                </div>                        
 
                           <script>
                                 $(document).ready(function(){
@@ -464,9 +464,10 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                      $("#endDatelevel").hide();
                                     });
                                   });
-                              </script>
-
+                           </script>
+                        
                        </div>
+
                     </div><br>
                     <div class="row">
                       <button class="btn btn-info" style="margin-left: 40%; font-size:18px" type="button"  id="btnPreview" ng-click="Preview()">
