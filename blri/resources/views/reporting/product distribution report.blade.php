@@ -394,7 +394,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                           <div class="row" style="margin-left: 15%">
                              
                                  <input type="radio"  name="purchasereport" id="rdAllSuppWisePur3" value="3" onclick="DateWiseallPurchase()" />
-                                 শুরুর তারিখ ও শেষ তারিখ অনুযায়ী সকল বিক্রয়
+                                 শুরু ও শেষ তারিখ অনুযায়ী সকল বিক্রয়
                              
                           </div>
 
@@ -416,7 +416,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                           <div class="row" style="margin-left: 15%">
                             
                                  <input type="radio" name="purchasereport" id="rdAllSuppWisePur4" value="4"  ng-click="DateWiseallPurchase()" />
-                                 শুরুর তারিখ ও শেষ তারিখ এবং সরবরাহকারী অনুযায়ী সকল বিক্রয়
+                                 শুরু ও শেষ তারিখ এবং সরবরাহকারী অনুযায়ী সকল বিক্রয়
                              
                           </div>
 
