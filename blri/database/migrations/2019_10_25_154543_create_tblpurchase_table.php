@@ -13,6 +13,7 @@ class CreateTblpurchaseTable extends Migration
      */
     public function up()
     {
+        Schema::dropIfExists('tblpurchase');
         Schema::create('tblpurchase', function (Blueprint $table) {
             $table->bigIncrements('PurchaseID');
             $table->unsignedBigInteger('SupplierID');

@@ -105,11 +105,13 @@ class productreceiveController extends Controller
              $newProductAddedToList->product_info_id=$request->productCode;
              $newProductAddedToList->orderNo=$request->orderNo;
              $newProductAddedToList->quantity=$request->quantity;
-             $newProductAddedToList->IsDonate=$request->IsDonate;
+             if($request->IsDonate != null) $newProductAddedToList->IsDonate=1;
+             else $newProductAddedToList->IsDonate=0;
+             
              $newProductAddedToList->user_id=$request->session()->get('user')->id;
              $newProductAddedToList->Purchase_Date=date('Y-m-d',  strtotime(str_replace('/','-',$request->Purchase_Date)));
 
-             dd($newProductAddedToList);
+             //dd($newProductAddedToList);
              $newProductAddedToList->save();
 
              return redirect()->route("product receive.product receive");
