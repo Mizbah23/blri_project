@@ -9,6 +9,7 @@ use App\ProductReceiveType;
 use App\ProductDistribution;
 use App\Reporting;
 use App\Adjustment;
+use PDF;
 
 class productreceivereportController extends Controller
 {
@@ -30,4 +31,14 @@ class productreceivereportController extends Controller
               ->with('adjustments',$adjustments)
               ->with('reportings',$reportings);
     }
+
+    public function invoice(){
+              $data = [
+             'foo' => 'bar'
+                ];
+
+              // $adjustmentInfoLists=AdjustmentInformationList::all();
+                   $pdf = PDF::loadView('reporting.product_receive_report.productReceiveReportStartDateWiseInvoice',);
+                   return $pdf->stream('Product_Receive_Report_Date_Wise_Invoice.pdf');
+      }
 }

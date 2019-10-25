@@ -307,52 +307,204 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                         </div>
                         <div class="col-md-7">
                           <input type="text" class="datepicker form-control" id="StartDate" name="endDate"/>
-                        </div><br><br><br>
+                        </div><br><br>
+                     
+
+                      <div class="col-md-5">
+                             <label class=" control-label" id="ProjectLevel" for="CategoryLevel">প্রকল্পের নাম</label>
                       </div>
+                      <div class="col-md-7">
+                              <select id="Project"  name="CategoryLevel" class="form-control">
+                                       <option value="">নির্বাচন করুন</option>
+                                 </select>
+                      </div>
+                         
+
+                          <div class="col-md-5">
+                             <label class="control-label" id="DivisionLevel" for="CategoryLevel">ডিভিশনের নাম</label>
+                          </div>
+                             <div class="col-md-7">
+                              <select id="Division"  name="CategoryLevel" class="form-control">
+                                       <option value="">নির্বাচন করুন</option>
+                                 </select>
+                              </div>
+
+                          <div class="col-md-5">
+                             <label class="control-label" id="SectionLevel" for="CategoryLevel">শাখার নাম</label>
+                          </div>
+                             <div class="col-md-7">
+                              <select id="Section"  name="CategoryLevel" class="form-control">
+                                       <option value="">নির্বাচন করুন</option>
+                                 </select>
+                              </div>
+                         
+
+                          <div class="col-md-5">
+                             <label class="control-label" id="EmployeeLevel" for="CategoryLevel">কর্মচারীর নাম</label>
+                          </div>
+                             <div class="col-md-7">
+                              <select id="Employee"  name="CategoryLevel" class="form-control">
+                                       <option value="">নির্বাচন করুন</option>
+                                 </select>
+                              </div>
+                            </div>
 
                       {{-- right part --}}
                       <div class="col-md-6">
                         <div>
-                          <label>
-                                 <input type="radio" name="purchasereport" id="rdAllSuppWisePur" value="1" ng-checked="true" ng-click="DateWiseallPurchase()" checked/>
+                          
+                                 <input type="radio" name="purchasereport" id="DatetoDate" value="1" ng-checked="true" ng-click="DateWiseallPurchase()" />
                                 তারিখ থেকে তারিখ সমস্ত কর্মচারী উপস্থিতি রিপোর্ট
-                             </label>
+                            
                         </div><br>
+                        <script>
+                                $(document).ready(function(){
+                                    $("#DatetoDate").click(function(){
+                                     $("#StartDatelevel").show();
+                                     $("#StartDate").show();
+                                     $("#ProjectLevel").hide();
+                                     $("#Project").hide();
+                                     $("#DivisionLevel").hide();
+                                     $("#Division").hide();
+                                     $("#endDate").show();
+                                     $("#endDatelevel").show();
+                                     $("#SectionLevel").hide();
+                                     $("#Section").hide();
+                                     $("#EmployeeLevel").hide();
+                                     $("#Employee").hide();
+                                    });
+                                  });
+                              </script>
 
                         <div>
-                          <label>
-                                 <input type="radio" name="purchasereport" id="rdAllSuppWisePur" value="2" ng-checked="true" ng-click="DateWiseallPurchase()"/>
+                         
+                                 <input type="radio" name="purchasereport" id="ProjectWise" value="2" ng-checked="true" ng-click="DateWiseallPurchase()"/>
                               প্রকল্পের ভিত্তিতে তারিখ থেকে তারিখ সমস্ত কর্মচারী উপস্থিতি রিপোর্ট
                              </label>
                         </div><br>
 
+                        <script>
+                                $(document).ready(function(){
+                                    $("#ProjectWise").click(function(){
+                                     $("#StartDatelevel").show();
+                                     $("#StartDate").show();
+                                     $("#ProjectLevel").show();
+                                     $("#Project").show();
+                                     $("#DivisionLevel").hide();
+                                     $("#Division").hide();
+                                     $("#endDate").show();
+                                     $("#endDatelevel").show();
+                                     $("#SectionLevel").hide();
+                                     $("#Section").hide();
+                                     $("#EmployeeLevel").hide();
+                                     $("#Employee").hide();
+                                    });
+                                  });
+                        </script>
+
                         <div>
-                          <label>
-                                 <input type="radio" name="purchasereport" id="rdAllSuppWisePur" value="3" ng-checked="true" ng-click="DateWiseallPurchase()" />
+                          
+                                 <input type="radio" name="purchasereport" id="DivisionWise" value="3" ng-checked="true" ng-click="DateWiseallPurchase()" />
                                  বিভাগ অনুযায়ী তারিখ থেকে তারিখ সমস্ত কর্মচারী উপস্থিতি রিপোর্ট
-                             </label>
+                             
                         </div><br>
 
+                        <script>
+                                $(document).ready(function(){
+                                    $("#DivisionWise").click(function(){
+                                     $("#StartDatelevel").show();
+                                     $("#StartDate").show();
+                                     $("#ProjectLevel").hide();
+                                     $("#Project").hide();
+                                     $("#DivisionLevel").show();
+                                     $("#Division").show();
+                                     $("#endDate").show();
+                                     $("#endDatelevel").show();
+                                     $("#SectionLevel").hide();
+                                     $("#Section").hide();
+                                     $("#EmployeeLevel").hide();
+                                     $("#Employee").hide();
+                                    });
+                                  });
+                        </script>
+
                         <div>
-                          <label>
-                                 <input type="radio" name="purchasereport" id="rdAllSuppWisePur" value="4" ng-checked="true" ng-click="DateWiseallPurchase()" />
+                          
+                                 <input type="radio" name="purchasereport" id="SectionWise" value="4" ng-checked="true" ng-click="DateWiseallPurchase()" />
                                  শাখা অনুযায়ী তারিখ থেকে তারিখ সমস্ত কর্মচারী উপস্থিতি রিপোর্ট
-                             </label>
+                             
                         </div><br>
 
+                        <script>
+                                $(document).ready(function(){
+                                    $("#SectionWise").click(function(){
+                                     $("#StartDatelevel").show();
+                                     $("#StartDate").show();
+                                     $("#ProjectLevel").hide();
+                                     $("#Project").hide();
+                                     $("#DivisionLevel").hide();
+                                     $("#Division").hide();
+                                     $("#endDate").show();
+                                     $("#endDatelevel").show();
+                                     $("#SectionLevel").show();
+                                     $("#Section").show();
+                                     $("#EmployeeLevel").hide();
+                                     $("#Employee").hide();
+                                    });
+                                  });
+                        </script>
+
                         <div>
-                          <label>
-                                 <input type="radio" name="purchasereport" id="rdAllSuppWisePur" value="5" ng-checked="true" ng-click="DateWiseallPurchase()"/>
+                          
+                                 <input type="radio" name="purchasereport" id="EmployeeWise" value="5" ng-checked="true" ng-click="DateWiseallPurchase()"/>
                                 কর্মচারী অনুযায়ী তারিখ থেকে তারিখ সমস্ত কর্মচারী উপস্থিতি রিপোর্ট
-                             </label>
+                            
                         </div><br>
 
+                        <script>
+                                $(document).ready(function(){
+                                    $("#EmployeeWise").click(function(){
+                                     $("#StartDatelevel").show();
+                                     $("#StartDate").show();
+                                     $("#ProjectLevel").hide();
+                                     $("#Project").hide();
+                                     $("#DivisionLevel").hide();
+                                     $("#Division").hide();
+                                     $("#endDate").show();
+                                     $("#endDatelevel").show();
+                                     $("#SectionLevel").hide();
+                                     $("#Section").hide();
+                                     $("#EmployeeLevel").show();
+                                     $("#Employee").show();
+                                    });
+                                  });
+                        </script>
+
                         <div>
-                          <label>
-                                 <input type="radio" name="purchasereport" id="rdAllSuppWisePur" value="6" ng-checked="true" ng-click="DateWiseallPurchase()"/>
+                         
+                                 <input type="radio" name="purchasereport" id="RevenueWise" value="6" ng-checked="true" ng-click="DateWiseallPurchase()"/>
                                  রাজস্ব অনুযায়ী তারিখ থেকে তারিখ সমস্ত কর্মচারী উপস্থিতি রিপোর্ট
-                             </label>
+                             
                         </div><br><br>
+
+                        <script>
+                                $(document).ready(function(){
+                                    $("#RevenueWise").click(function(){
+                                     $("#StartDatelevel").show();
+                                     $("#StartDate").show();
+                                     $("#ProjectLevel").show();
+                                     $("#Project").show();
+                                     $("#DivisionLevel").hide();
+                                     $("#Division").hide();
+                                     $("#endDate").show();
+                                     $("#endDatelevel").show();
+                                     $("#SectionLevel").hide();
+                                     $("#Section").hide();
+                                     $("#EmployeeLevel").hide();
+                                     $("#Employee").hide();
+                                    });
+                                  });
+                        </script>
                       </div>
                       <div class="row">
                       <button class="btn btn-info" style="margin-left: 40%; font-size:18px" type="button"  id="btnPreview" ng-click="Preview()">
