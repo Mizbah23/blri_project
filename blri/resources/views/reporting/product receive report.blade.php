@@ -120,7 +120,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
       dateFormat: 'dd/mm/yy',
       // maxDate: "+0D",
       ignoreReadonly: true
-      });
+      }).datepicker('setDate','0');
   });
   </script>
           <script>
