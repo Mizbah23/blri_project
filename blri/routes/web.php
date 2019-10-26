@@ -207,10 +207,18 @@ Route::group(['middleware'=>'checkUser'],function(){
     Route::get('/reporting/adjustment_report', 'adjustmentreportController@index')->name('reporting.adjustment report');
     Route::get('/reporting/stock_report', 'stockreportController@index')->name('reporting.stock report');
     Route::get('/reporting/project_summary_report', 'projectsummaryreportController@index')->name('reporting.project summary report');
+
+
     Route::get('/reporting/attendance_report', 'attendancereportController@index')->name('reporting.attendance report');
+
 
     Route::get('/reporting/emloyee_information', 'employeereportController@index')->name('reporting.employee report');
     Route::post('/reporting/emloyee_information', 'employeereportController@invoice')->name('reporting.employee_report_invoice');
+
+// attendance report start
+    Route::post('/reporting/attendance_report', 'attendancereportController@invoice')->name('reporting.attendanceReportInvoice');
+
+//attendance report end
 
 
 });
