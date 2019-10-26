@@ -20,10 +20,10 @@ class CreateTblpurchaseTable extends Migration
             $table->unsignedBigInteger('Job_By');
             
             $table->integer('CompanyID')->default(1);
-            $table->timestamp('Sys_Purchase_Date')->useCurrent();
+            //$table->timestamp('Sys_Purchase_Date')->useCurrent();
             $table->date('Purchase_Date');
             $table->string('InvoiceNo')->nullable();
-            $table->date('InvoiceDate')->timestamps();
+            //$table->date('InvoiceDate')->timestamps();
             $table->boolean('IsDonate')->default(0);
             $table->string('OrderNo');
            

@@ -20,6 +20,7 @@ use App\Product_receive;
 //use APP\Product_receive_detail;
 use App\productReceiveMaster;
 use App\tblpurchase;
+use App\tblpurchasedetails;
 
 use PDF;
 use Str;
@@ -228,16 +229,24 @@ class productreceiveController extends Controller
                 $saveNewProductReceive->IsDonate=$item->IsDonate;
                 $saveNewProductReceive->Job_By=$item->user_id;
                 $saveNewProductReceive->Purchase_Date=date('Y-m-d',  strtotime(str_replace('/','-',$item->Purchase_Date)));
-                $saveNewProductReceive->InvoiceDate=$item->Purchase_Date;
+                //$saveNewProductReceive->InvoiceDate=$item->Purchase_Date;
 
                 $saveNewProductReceive->save();
+                // dd($saveNewProductReceive->id);
+
+                $saveNewProductReceiveDetails = new tblpurchasedetails();
+                $saveNewProductReceiveDetails->PurchaseID = $saveNewProductReceive->id;
+                $saveNewProductReceiveDetails->ProductID = $item->product_info_id;
+                $saveNewProductReceiveDetails->Quantity = $item->quantity;
+                $saveNewProductReceiveDetails->save();
                 
-                // $findProduct=ProductInfo::find($item->product_info_id);
-                // if ($findProduct) {
-                //     $findProduct->stock=$findProduct->stock + $item->quantity;
-                //     $findProduct->save();
-                //     $item->delete();
-                // }
+                $findProduct = ProductInfo::find($item->product_info_id);
+                if ($findProduct) {
+                    $findProduct->stock = $findProduct->stock + $item->quantity;
+                    $findProduct->save();
+                }
+                $item->delete();
+
                 $k++;
 
             }
