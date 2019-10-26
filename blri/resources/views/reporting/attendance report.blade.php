@@ -323,7 +323,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                           <label class="control-label" for="endDate">শেষের তারিখ</label>
                         </div>
                         <div class="col-md-7">
-                          <input type="text" class="datepicker form-control" id="StartDate" name="endDate"/>
+                          <input type="text" class="datepicker form-control" id="endDate" name="endDate"/>
                         </div><br><br>
                      
 
@@ -331,7 +331,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                              <label class=" control-label" id="ProjectLevel" for="CategoryLevel">প্রকল্পের নাম</label>
                       </div>
                       <div class="col-md-7">
-                              <select id="Project"  name="CategoryLevel" class="form-control">
+                              <select id="Project"  name="ProjectName" class="form-control">
                                        <option value="">নির্বাচন করুন</option>
                                  </select>
                       </div>
@@ -341,7 +341,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                              <label class="control-label" id="DivisionLevel" for="CategoryLevel">ডিভিশনের নাম</label>
                           </div>
                              <div class="col-md-7">
-                              <select id="Division"  name="CategoryLevel" class="form-control">
+                              <select id="Division"  name="DivisionName" class="form-control">
                                        <option value="">নির্বাচন করুন</option>
                                  </select>
                               </div>
@@ -350,7 +350,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                              <label class="control-label" id="SectionLevel" for="CategoryLevel">শাখার নাম</label>
                           </div>
                              <div class="col-md-7">
-                              <select id="Section"  name="CategoryLevel" class="form-control">
+                              <select id="Section"  name="SectionName" class="form-control">
                                        <option value="">নির্বাচন করুন</option>
                                  </select>
                               </div>
@@ -360,7 +360,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                              <label class="control-label" id="EmployeeLevel" for="CategoryLevel">কর্মচারীর নাম</label>
                           </div>
                              <div class="col-md-7">
-                              <select id="Employee"  name="CategoryLevel" class="form-control">
+                              <select id="Employee"  name="EmployeeName" class="form-control">
                                        <option value="">নির্বাচন করুন</option>
                                  </select>
                               </div>
@@ -524,9 +524,10 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                         </script>
                       </div>
                       <div class="row">
-                      <button class="btn btn-info" style="margin-left: 40%; font-size:18px" type="button"  id="btnPreview" ng-click="Preview()">
+                     <button formtarget="_blank" href="{{route('reporting.attendanceReportInvoice') }}" class="btn btn-info" style="margin-left: 40%; font-size:18px" type="submit"  id="btnPreview" ng-click="   Preview()">
                       <i class='fas fa-eye-slash' style='font-size:18px'></i> পূর্বরূপ
                     </button>
+                    </div>
                     </div>
                       
                     </div>

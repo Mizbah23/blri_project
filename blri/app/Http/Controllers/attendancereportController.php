@@ -9,6 +9,10 @@ use App\ProductReceiveType;
 use App\ProductDistribution;
 use App\Reporting;
 use App\Adjustment;
+use App\EmployeeAttendanceView;
+use PDF;
+
+
 
 
 class attendancereportController extends Controller
@@ -31,4 +35,42 @@ class attendancereportController extends Controller
               ->with('adjustments',$adjustments)
               ->with('reportings',$reportings);;
     }
+
+    public function invoice(Request $req){
+
+             // dd($req->StartDate);
+              $data = [
+             'foo' => 'bar'
+                ];
+                $EmployeeAttendanceViews=EmployeeAttendanceView::all();
+
+                  if($req->StartDate && $req->endDate && !$req->ProjectName && !$req->DivisionName && !$req->SectionName && !$req->EmployeeName){
+                     $pdf = PDF::loadView('reporting.attendance_report.attendanceReportStartDateToEndDateWiseInvoice',['EmployeeAttendanceViews'=>$EmployeeAttendanceViews]);
+                   return $pdf->stream('Attendance_Report_Invoice.pdf');
+                  }
+                  else if($req->StartDate && $req->endDate && $req->ProjectName && !$req->DivisionName && !$req->SectionName && !$req->EmployeeName){
+                     $pdf = PDF::loadView('reporting.attendance_report.attendanceReportProjectWiseInvoice',);
+                   return $pdf->stream('Attendance_Report_Invoice.pdf');
+                  }
+                  else if($req->StartDate && $req->endDate && !$req->ProjectName && $req->DivisionName && !$req->SectionName && !$req->EmployeeName){
+                     $pdf = PDF::loadView('reporting.attendance_report.attendanceReportDivisionWiseInvoice',);
+                   return $pdf->stream('Attendance_Report_Invoice.pdf');
+                  }
+                  else if($req->StartDate && $req->endDate && !$req->ProjectName && !$req->DivisionName && $req->SectionName && !$req->EmployeeName){
+                     $pdf = PDF::loadView('reporting.attendance_report.attendanceReportSectionWiseInvoice',);
+                   return $pdf->stream('Attendance_Report_Invoice.pdf');
+                  }
+                  else if($req->StartDate && $req->endDate && !$req->ProjectName && !$req->DivisionName && !$req->SectionName && $req->EmployeeName){
+                     $pdf = PDF::loadView('reporting.attendance_report.attendanceReportEmployeeWiseInvoice',);
+                   return $pdf->stream('Attendance_Report_Invoice.pdf');
+                  }
+                  else if($req->StartDate && $req->endDate && $req->ProjectName && !$req->DivisionName && !$req->SectionName && !$req->EmployeeName){
+                     $pdf = PDF::loadView('reporting.attendance_report.attendanceReportRevenueWiseInvoice',);
+                   return $pdf->stream('Attendance_Report_Invoice.pdf');
+                  }
+                  else
+                    {
+                      return 'dfkjldldkskflskdffd';
+                    }
+      }
 }
