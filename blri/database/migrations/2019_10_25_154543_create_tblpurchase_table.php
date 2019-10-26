@@ -20,7 +20,7 @@ class CreateTblpurchaseTable extends Migration
             $table->unsignedBigInteger('Job_By');
             
             $table->integer('CompanyID')->default(1);
-            $table->date('Sys_Purchase_Date')->timestamp('created')->useCurrent();
+            $table->timestamp('Sys_Purchase_Date')->useCurrent();
             $table->date('Purchase_Date');
             $table->string('InvoiceNo')->nullable();
             $table->date('InvoiceDate')->timestamps();
