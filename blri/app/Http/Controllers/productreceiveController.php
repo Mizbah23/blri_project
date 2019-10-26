@@ -217,15 +217,18 @@ class productreceiveController extends Controller
             foreach ($productReceiveLists as $key => $item) {
                 $saveNewProductReceive=new tblpurchase;
                 $saveNewProductReceive->SupplierID=$item->supplier_id;
+
                 //return $request->all();
                 //$saveNewProductReceive->product_receive_id=$item->product_receive_id;
                 //$saveNewProductReceive->invoiceNo=$item->receiveDate.Str::random(5);
                 // $saveNewProductReceive->project_id=$item->project_id;
                 // $saveNewProductReceive->product_info_id=$item->product_info_id;
+                $saveNewProductReceive->InvoiceNo='PUR-'.$item->orderNo.'-'.$item->Purchase_Date;
                 $saveNewProductReceive->OrderNo=$item->orderNo;
                 $saveNewProductReceive->IsDonate=$item->IsDonate;
                 $saveNewProductReceive->Job_By=$item->user_id;
-                $saveNewProductReceive->Purchase_Date=$item->Purchase_Date;
+                $saveNewProductReceive->Purchase_Date=date('Y-m-d',  strtotime(str_replace('/','-',$item->Purchase_Date)));
+                $saveNewProductReceive->InvoiceDate=$item->Purchase_Date;
 
                 $saveNewProductReceive->save();
                 
