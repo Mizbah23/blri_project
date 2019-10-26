@@ -198,8 +198,8 @@ Route::group(['middleware'=>'checkUser'],function(){
     //reportings
 	Route::get('/reporting/product_receive_report', 'productreceivereportController@index')->name('reporting.product receive report');//->name('folder name.blade name')
 
- //Start date wise product receive invoice
-    Route::get('/reporting/product_receive_report/invoice', 'productreceivereportController@invoice')->name('reporting.productReceiveReportDateWiseInvoice');
+    //Start date wise product receive invoice
+    Route::post('/reporting/product_receive_report', 'productreceivereportController@invoice')->name('reporting.productReceiveReportDateWiseInvoice');
     //Start date wise product receive invoice 
 
 
@@ -208,6 +208,7 @@ Route::group(['middleware'=>'checkUser'],function(){
     Route::get('/reporting/stock_report', 'stockreportController@index')->name('reporting.stock report');
     Route::get('/reporting/project_summary_report', 'projectsummaryreportController@index')->name('reporting.project summary report');
     Route::get('/reporting/attendance_report', 'attendancereportController@index')->name('reporting.attendance report');
+    Route::get('/reporting/emloyee_information', 'employeereportController@index')->name('reporting.employee report');
 
 
 });

@@ -1,8 +1,7 @@
-
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>প্রাপ্ত পণ্যের প্রতিবেদন</title>
+<title>কর্মচারীর তথ্য প্রতিবেদন</title>
 <link rel="icon" type="image/png" href="/images/logo.png"/>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -33,9 +32,6 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 <meta name='viewport' content='width=device-width, initial-scale=1'>
 <script src='https://kit.fontawesome.com/a076d05399.js'></script>
 <!--//webfonts--> 
-
-<!--Hide show--> 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 <!-- chart -->
 <script src="/js/Chart.js"></script>
@@ -118,25 +114,11 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
       $(function() {
       $( ".datepicker" ).datepicker({
       dateFormat: 'dd/mm/yy',
-      // maxDate: "+0D",
+      maxDate: "+0D",
       ignoreReadonly: true
       });
-// .datepicker('setDate','0')
   });
   </script>
-          <script>
-            $(document).ready(function(){
-               
-                     $("#StartDatelevel").show();
-                     $("#StartDate").show();
-                     $("#supplierNamelevel").hide();
-                     $("#supplierName").hide();
-                     $("#receiveIDlevel").hide();
-                     $("#receiveID").hide();
-                     $("#endDate").hide();
-                     $("#endDatelevel").hide();
-                  });
-              </script>
                     
 </head> 
 <body class="cbp-spmenu-push">
@@ -304,7 +286,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
         <div class=" form-grids row form-grids-right">
             <div class="widget-shadow " data-example-id="basic-forms"> 
               <div class="form-title bg-primary text-white">
-                <h3 class="">প্রাপ্ত পণ্যের প্রতিবেদন</h3>
+                <h3 class="">কর্মচারীর তথ্য প্রতিবেদন</h3>
               </div>
               <div class="form-body">
 
@@ -313,170 +295,151 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                     <div class="row">
                        <div class="col-md-6">
                           <div class="form-group">
-                             <label class="col-md-5 control-label" for="StartDate"id="StartDatelevel">শুরুর তারিখ</label>
+                             <label class="col-md-5 control-label" for="departmentName"id="departmentlevel">ডিপার্টমেন্টের নাম</label>
                              <div class="col-md-7">
-                                <input type="text" class="datepicker form-control" id="StartDate" name="StartDate"
-                                 autocomplete="off" placeholder="দিন/মাস/বছর" />
+                                <select id="department"  name="departmentName" class="form-control">
+                                       <option value="">নির্বাচন করুন</option>
+                                </select>
+                            </div>
+                          </div>
+
+                         <div class="form-group">
+                             <label class="col-md-5 control-label" id="sectionlevel" for="sectionName">শাখার নাম</label>
+                             <div class="col-md-7">
+                                <select id="section"  name="sectionName" class="form-control">
+                                       <option value="">নির্বাচন করুন</option>
+                                </select>
                             </div>
                           </div>
 
                           <div class="form-group">
-                             <label class="col-md-5 control-label" id="endDatelevel" for="endDate">শেষের তারিখ</label>
-                             <div class="col-md-7">
-                                <input type="text" class="datepicker form-control" id="endDate" name="endDate"
-                                autocomplete="off" placeholder="দিন/মাস/বছর"/>
-                            </div>
-                          </div>
-
-                          <div class="form-group">
-                            <label class="col-md-5 control-label" id="supplierNamelevel">সরবরাহকারী</label>
+                            <label class="col-md-5 control-label" id="projectlevel">প্রকল্পের নাম</label>
                               <div class="col-md-7">
-                                <select id="supplierName"  name="supplierName" class="form-control">
+                                <select id="project"  name="projectName" class="form-control">
                                        <option value="">নির্বাচন করুন</option>
                                 </select>
                               </div>
                           </div>
 
                           <div class="form-group">
-                             <label class="col-md-5 control-label" id="receiveIDlevel" for="receiveID">রিসিভ আইডি</label>
+                             <label class="col-md-5 control-label" id="employeelevel" for="CategoryLevel">কর্মচারীর নাম</label>
                              <div class="col-md-7">
-                              <select id="receiveID"  name="receiveID" class="form-control">
-                                  <option value="">নির্বাচন করুন</option>
-                              </select>
+                              <select id="employeeName"  name="employeeName" class="form-control">
+                                       <option value="">নির্বাচন করুন</option>
+                                 </select>
                               </div>
                           </div>
 
                        </div>
                        <div class="col-md-6">
-                             <div class="row">
-                                 <input type="radio" name="purchasereport" id="rdAllSuppWisePur2" value="1" onclick="datewisereport()"checked/>
-                                 শুরুর তারিখ অনুসারে সরবরাহকারী 
-                             </div>
+                             <div class="row" style="margin-left: 15%">
+                                 <input type="radio" name="purchasereport" id="StockValuation" value="1" ng-checked="true" onclick="datewisereport()"/>
+                                 মজুতের মূল্যনির্ধারণ অনুযায়ী
                              
-                             <script>
-                                $(document).ready(function(){
-                                    $("#rdAllSuppWisePur2").click(function(){
-                                     $("#StartDatelevel").show();
-                                     $("#StartDate").show();
-                                     $("#supplierNamelevel").hide();
-                                     $("#supplierName").hide();
-                                     $("#receiveIDlevel").hide();
-                                     $("#receiveID").hide();
-                                     $("#endDate").hide();
-                                     $("#endDatelevel").hide();
-                                    });
-                                  });
-                              </script>
-                              <div class="row">
-                                 <input type="radio" name="purchasereport" id="rdAllSuppWisePur" value="2" onclick="date_supplier_wisereport()" />
-                                  শুরুর তারিখ এবং সরবরাহকারী অনুযায়ী প্রাপ্তি
-                              </div>
+                             </div>
 
                              <script>
                                 $(document).ready(function(){
-                                    $("#rdAllSuppWisePur").click(function(){
+                                    $("#StockValuation").click(function(){
                                      $("#StartDatelevel").show();
-                                     $("#supplierNamelevel").show();
-                                     $("#supplierName").show();
                                      $("#StartDate").show();
-                                     $("#receiveIDlevel").hide();
-                                     $("#receiveID").hide();
-                                     $("#endDate").hide();
-                                     $("#endDatelevel").hide();
+                                     $("#ProductLevel").hide();
+                                     $("#Product").hide();
+                                     $("#CategoryLevel").hide();
+                                     $("#Category").hide();
+                                     // $("#endDate").hide();
+                                     // $("#endDatelevel").hide();
                                     });
                                   });
                               </script>
 
-                              <div class="row">
-                                 <input type="radio"  name="purchasereport" id="rdAllSuppWisePur3" value="3"  onclick="DateWiseallPurchase()" />
-                                 শুরু ও শেষ তারিখ অনুযায়ী সকল সরবরাহকারীর প্রাপ্তি
-                              </div>
+                             <div class="row" style="margin-left: 15%">
+                             
+                                 <input type="radio" name="purchasereport" id="CurrentProductStock" value="2"  ng-checked="true" onclick="date_supplier_wisereport()" />
+                                 মজুতের বর্তমান পণ্য অনুযায়ী
+                            
+                             </div>
+
+                             <script>
+                                $(document).ready(function(){
+                                    $("#CurrentProductStock").click(function(){
+                                     $("#StartDatelevel").show();
+                                     $("#StartDate").show();
+                                     $("#ProductLevel").show();
+                                     $("#Product").show();
+                                     $("#CategoryLevel").hide();
+                                     $("#Category").hide();
+                                     // $("#endDate").hide();
+                                     // $("#endDatelevel").hide();
+                                    });
+                                  });
+                              </script>
+
+
+                          <div class="row" style="margin-left: 15%">
+                             
+                                 <input type="radio"  name="purchasereport" id="CategoryWise" value="3" ng-checked="true" onclick="DateWiseallPurchase()" />
+                                 ক্যাটাগরি অনুযায়ী
+                             
+                          </div>
 
                           <script>
                                 $(document).ready(function(){
-                                    $("#rdAllSuppWisePur3").click(function(){
+                                    $("#CategoryWise").click(function(){
                                      $("#StartDatelevel").show();
                                      $("#StartDate").show();
-                                     $("#supplierNamelevel").hide();
-                                     $("#supplierName").hide();
-                                     $("#receiveIDlevel").hide();
-                                     $("#receiveID").hide();
-                                     $("#endDate").show();
-                                     $("#endDatelevel").show();
+                                     $("#ProductLevel").hide();
+                                     $("#Product").hide();
+                                     $("#CategoryLevel").show();
+                                     $("#Category").show();
+                                     // $("#endDate").hide();
+                                     // $("#endDatelevel").hide();
                                     });
                                   });
                               </script>
 
-                              <div class="row">
-                                 <input type="radio" name="purchasereport" id="rdAllSuppWisePur4" value="4" ng-click="DateWiseallPurchase()" />
-                                 শুরু ও শেষ তারিখ এবং সরবরাহকারী অনুযায়ী প্রাপ্তি
-                              </div>                         
+
+                          <div class="row" style="margin-left: 15%">
+                            
+                                 <input type="radio" name="purchasereport" id="AllStock" value="4" ng-checked="true" ng-click="DateWiseallPurchase()" />
+                                 সকল মজুত অনুযায়ী
+                             
+                          </div>
 
                              <script>
                                 $(document).ready(function(){
-                                    $("#rdAllSuppWisePur4").click(function(){
+                                    $("#AllStock").click(function(){
                                      $("#StartDatelevel").show();
                                      $("#StartDate").show();
-                                     $("#supplierNamelevel").show();
-                                     $("#supplierName").show();
-                                     $("#receiveIDlevel").hide();
-                                     $("#receiveID").hide();
-                                     $("#endDate").show();
-                                     $("#endDatelevel").show();
+                                     $("#ProductLevel").hide();
+                                     $("#Product").hide();
+                                     $("#CategoryLevel").hide();
+                                     $("#Category").hide();
+                                     // $("#endDate").hide();
+                                     // $("#endDatelevel").hide();
                                     });
                                   });
                               </script>
 
-                              <div class="row">
-                                 <input type="radio" name="purchasereport" id="rdAllSuppWisePur5" value="5" ng-click="DateWiseallPurchase()"/>
-                                সকল প্রাপ্তি
-                              </div>                    
-
-                             <script>
-                                $(document).ready(function(){
-                                    $("#rdAllSuppWisePur5").click(function(){
-                                     $("#StartDatelevel").hide();
-                                     $("#StartDate").hide();
-                                     $("#supplierNamelevel").hide();
-                                     $("#supplierName").hide();
-                                     $("#receiveIDlevel").hide();
-                                     $("#receiveID").hide();
-                                     $("#endDate").hide();
-                                     $("#endDatelevel").hide();
-                                    });
-                                  });
-                              </script>
-
-                                <div class="row">          
-                                 <input type="radio" name="purchasereport" id="rdAllSuppWisePur6" value="6" ng-click="DateWiseallPurchase()"/>
-                                 আইডি অনুযায়ী প্রাপ্তি
-                                </div>                        
-
-                          <script>
-                                $(document).ready(function(){
-                                    $("#rdAllSuppWisePur6").click(function(){
-                                     $("#StartDatelevel").hide();
-                                     $("#StartDate").hide();
-                                     $("#supplierNamelevel").hide();
-                                     $("#supplierName").hide();
-                                     $("#receiveIDlevel").show();
-                                     $("#receiveID").show();
-                                     $("#endDate").hide();
-                                     $("#endDatelevel").hide();
-                                    });
-                                  });
-                           </script>
-                        
                        </div>
                     </div><br>
                     <div class="row">
-                     <button formtarget="_blank" href="{{route('reporting.productReceiveReportDateWiseInvoice') }}" class="btn btn-info" style="margin-left: 40%; font-size:18px" type="submit"  id="btnPreview" ng-click="   Preview()">
-                      <i class='fas fa-eye-slash' style='font-size:18px'></i> পূর্বরূপ
+                      <button class="btn btn-info" style="margin-left: 40%; font-size:18px" type="button"  id="btnPreview" ng-click="Preview()">
+                      <i class='fas fa-eye-slash' style='font-size:18px'></i> দেখুন
                     </button>
                     </div>
                  </form> 
               </div>
           </div>
+          <div class="col-sm-4"></div>
+          
+        </div>
+            
+
+           
+              
+
+              
             </div>
           </div>
       
@@ -904,6 +867,8 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
         });
 
     </script>
+    <!-- //for index page weekly sales java script -->
+    
     
     <!-- Bootstrap Core JavaScript -->
    <script src="/js/bootstrap.js"> </script>
