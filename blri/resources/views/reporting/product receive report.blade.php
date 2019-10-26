@@ -120,7 +120,8 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
       dateFormat: 'dd/mm/yy',
       // maxDate: "+0D",
       ignoreReadonly: true
-      }).datepicker('setDate','0');
+      });
+// .datepicker('setDate','0')
   });
   </script>
           <script>
@@ -315,7 +316,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                              <label class="col-md-5 control-label" for="StartDate"id="StartDatelevel">শুরুর তারিখ</label>
                              <div class="col-md-7">
                                 <input type="text" class="datepicker form-control" id="StartDate" name="StartDate"
-                                 autocomplete="off"/>
+                                 autocomplete="off" placeholder="দিন/মাস/বছর" />
                             </div>
                           </div>
 
@@ -323,7 +324,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                              <label class="col-md-5 control-label" id="endDatelevel" for="endDate">শেষের তারিখ</label>
                              <div class="col-md-7">
                                 <input type="text" class="datepicker form-control" id="endDate" name="endDate"
-                                autocomplete="off"/>
+                                autocomplete="off" placeholder="দিন/মাস/বছর"/>
                             </div>
                           </div>
 
@@ -467,12 +468,11 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                            </script>
                         
                        </div>
-
                     </div><br>
                     <div class="row">
-                      <a target="_blank" href="{{route('reporting.productReceiveReportDateWiseInvoice') }}" class="btn btn-info" style="margin-left: 40%; font-size:18px" type="button"  id="btnPreview" ng-click="Preview()">
+                     <button formtarget="_blank" href="{{route('reporting.productReceiveReportDateWiseInvoice') }}" class="btn btn-info" style="margin-left: 40%; font-size:18px" type="submit"  id="btnPreview" ng-click="   Preview()">
                       <i class='fas fa-eye-slash' style='font-size:18px'></i> পূর্বরূপ
-                    </a>
+                    </button>
                     </div>
                  </form> 
               </div>

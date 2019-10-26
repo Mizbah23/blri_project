@@ -32,13 +32,37 @@ class productreceivereportController extends Controller
               ->with('reportings',$reportings);
     }
 
-    public function invoice(){
+    public function invoice(Request $req){
+
+             // dd($req->StartDate);
               $data = [
              'foo' => 'bar'
                 ];
 
-              // $adjustmentInfoLists=AdjustmentInformationList::all();
-                   $pdf = PDF::loadView('reporting.product_receive_report.productReceiveReportStartDateWiseInvoice',);
-                   return $pdf->stream('Product_Receive_Report_Date_Wise_Invoice.pdf');
+                  if($req->StartDate && !$req->endDate && !$req->supplierName && !$req->receiveID){
+                    $this->validate( $req,[
+                        'StartDate'=>'required'
+                     $pdf = PDF::loadView('reporting.product_receive_report.productReceiveReportStartDateWiseInvoice',);
+                   return $pdf->stream('Product_Receive_Report_Invoice.pdf');
+                  }
+                  else if($req->StartDate && $req->endDate && !$req->supplierName && !$req->receiveID){
+                    $this->validate( $req,[
+                        'StartDate'=>'required'
+                        'StartDate'=>'required'
+                     $pdf = PDF::loadView('reporting.product_receive_report.productReceiveReportStartDateToEndDateWiseInvoice',);
+                   return $pdf->stream('Product_Receive_Report_Invoice.pdf');
+                  }
+                  else if($req->StartDate && !$req->endDate && $req->supplierName && !$req->receiveID){
+                     $pdf = PDF::loadView('reporting.product_receive_report.productReceiveReportStartDateAndSupplierWiseInvoice',);
+                   return $pdf->stream('Product_Receive_Report_Invoice.pdf');
+                  }
+                  else if($req->StartDate && $req->endDate && $req->supplierName && !$req->receiveID){
+                     $pdf = PDF::loadView('reporting.product_receive_report.productReceiveReportStartDateToEndDateAndSupplierWiseInvoice',);
+                   return $pdf->stream('Product_Receive_Report_Invoice.pdf');
+                  }
+                  else
+                    {
+                      return 'dfkjldldkskflskdffd';
+                    }
       }
 }
