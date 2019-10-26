@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ProductRepair extends Model
+class EmployeeInfoView extends Model
 {
-    //
-  protected $table = 'employeeinfoview';
+    protected $table = 'employeeinfoview';
+}

@@ -56,6 +56,18 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 </style>
 <!--pie-chart --><!-- index page sales reviews visitors pie chart -->
 <script src="/js/pie-chart.js" type="text/javascript"></script>
+<script>
+    $(document).ready(function(){
+         $("#departmentlevel").show();
+         $("#departmentName").show();
+         $("#sectionlevel").hide();
+         $("#sectionName").hide();
+         $("#projectlevel").hide();
+         $("#projectName").hide();
+         $("#employeelevel").hide();
+         $("#employeeName").hide();
+        });
+  </script>
  <script type="text/javascript">
 
         $(document).ready(function () {
@@ -297,7 +309,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                           <div class="form-group">
                              <label class="col-md-5 control-label" for="departmentName"id="departmentlevel">ডিপার্টমেন্টের নাম</label>
                              <div class="col-md-7">
-                                <select id="department"  name="departmentName" class="form-control">
+                                <select id="departmentName"  name="departmentName" class="form-control">
                                        <option value="">নির্বাচন করুন</option>
                                 </select>
                             </div>
@@ -306,7 +318,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                          <div class="form-group">
                              <label class="col-md-5 control-label" id="sectionlevel" for="sectionName">শাখার নাম</label>
                              <div class="col-md-7">
-                                <select id="section"  name="sectionName" class="form-control">
+                                <select id="sectionName"  name="sectionName" class="form-control">
                                        <option value="">নির্বাচন করুন</option>
                                 </select>
                             </div>
@@ -315,7 +327,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                           <div class="form-group">
                             <label class="col-md-5 control-label" id="projectlevel">প্রকল্পের নাম</label>
                               <div class="col-md-7">
-                                <select id="project"  name="projectName" class="form-control">
+                                <select id="projectName"  name="projectName" class="form-control">
                                        <option value="">নির্বাচন করুন</option>
                                 </select>
                               </div>
@@ -333,44 +345,44 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                        </div>
                        <div class="col-md-6">
                              <div class="row" style="margin-left: 15%">
-                                 <input type="radio" name="purchasereport" id="StockValuation" value="1" ng-checked="true" onclick="datewisereport()"/>
-                                 মজুতের মূল্যনির্ধারণ অনুযায়ী
+                                 <input type="radio" name="employee_report" id="departmentwise" value="1" onclick="datewisereport()" checked/>
+                                 ডিপার্টমেন্ট অনুযায়ী
                              
                              </div>
 
                              <script>
                                 $(document).ready(function(){
-                                    $("#StockValuation").click(function(){
-                                     $("#StartDatelevel").show();
-                                     $("#StartDate").show();
-                                     $("#ProductLevel").hide();
-                                     $("#Product").hide();
-                                     $("#CategoryLevel").hide();
-                                     $("#Category").hide();
-                                     // $("#endDate").hide();
-                                     // $("#endDatelevel").hide();
+                                    $("#departmentwise").click(function(){
+                                     $("#departmentlevel").show();
+                                     $("#departmentName").show();
+                                     $("#sectionlevel").hide();
+                                     $("#sectionName").hide();
+                                     $("#projectlevel").hide();
+                                     $("#projectName").hide();
+                                     $("#employeelevel").hide();
+                                     $("#employeeName").hide();
                                     });
                                   });
                               </script>
 
                              <div class="row" style="margin-left: 15%">
                              
-                                 <input type="radio" name="purchasereport" id="CurrentProductStock" value="2"  ng-checked="true" onclick="date_supplier_wisereport()" />
-                                 মজুতের বর্তমান পণ্য অনুযায়ী
+                                 <input type="radio" name="employee_report" id="sectionwise" value="2"onclick="date_supplier_wisereport()" />
+                                   শাখা অনুযায়ী
                             
                              </div>
 
                              <script>
                                 $(document).ready(function(){
-                                    $("#CurrentProductStock").click(function(){
-                                     $("#StartDatelevel").show();
-                                     $("#StartDate").show();
-                                     $("#ProductLevel").show();
-                                     $("#Product").show();
-                                     $("#CategoryLevel").hide();
-                                     $("#Category").hide();
-                                     // $("#endDate").hide();
-                                     // $("#endDatelevel").hide();
+                                    $("#sectionwise").click(function(){
+                                     $("#departmentlevel").hide();
+                                     $("#departmentName").hide();
+                                     $("#sectionlevel").show();
+                                     $("#sectionName").show();
+                                     $("#projectlevel").hide();
+                                     $("#projectName").hide();
+                                     $("#employeelevel").hide();
+                                     $("#employeeName").hide();
                                     });
                                   });
                               </script>
@@ -378,22 +390,22 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 
                           <div class="row" style="margin-left: 15%">
                              
-                                 <input type="radio"  name="purchasereport" id="CategoryWise" value="3" ng-checked="true" onclick="DateWiseallPurchase()" />
-                                 ক্যাটাগরি অনুযায়ী
+                                 <input type="radio"  name="employee_report" id="projectwise" value="3" ng-checked="true" onclick="DateWiseallPurchase()" />
+                                 প্রকল্প অনুযায়ী
                              
                           </div>
 
                           <script>
                                 $(document).ready(function(){
-                                    $("#CategoryWise").click(function(){
-                                     $("#StartDatelevel").show();
-                                     $("#StartDate").show();
-                                     $("#ProductLevel").hide();
-                                     $("#Product").hide();
-                                     $("#CategoryLevel").show();
-                                     $("#Category").show();
-                                     // $("#endDate").hide();
-                                     // $("#endDatelevel").hide();
+                                    $("#projectwise").click(function(){
+                                     $("#departmentlevel").hide();
+                                     $("#departmentName").hide();
+                                     $("#sectionlevel").hide();
+                                     $("#sectionName").hide();
+                                     $("#projectlevel").show();
+                                     $("#projectName").show();
+                                     $("#employeelevel").hide();
+                                     $("#employeeName").hide();
                                     });
                                   });
                               </script>
@@ -401,22 +413,22 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 
                           <div class="row" style="margin-left: 15%">
                             
-                                 <input type="radio" name="purchasereport" id="AllStock" value="4" ng-checked="true" ng-click="DateWiseallPurchase()" />
-                                 সকল মজুত অনুযায়ী
+                                 <input type="radio" name="employee_report" id="employeenamewise" value="4" ng-click="DateWiseallPurchase()" />
+                                 কর্মচারী অনুযায়ী
                              
                           </div>
 
                              <script>
                                 $(document).ready(function(){
-                                    $("#AllStock").click(function(){
-                                     $("#StartDatelevel").show();
-                                     $("#StartDate").show();
-                                     $("#ProductLevel").hide();
-                                     $("#Product").hide();
-                                     $("#CategoryLevel").hide();
-                                     $("#Category").hide();
-                                     // $("#endDate").hide();
-                                     // $("#endDatelevel").hide();
+                                    $("#employeenamewise").click(function(){
+                                     $("#departmentlevel").hide();
+                                     $("#departmentName").hide();
+                                     $("#sectionlevel").hide();
+                                     $("#sectionName").hide();
+                                     $("#projectlevel").hide();
+                                     $("#projectName").hide();
+                                     $("#employeelevel").show();
+                                     $("#employeeName").show();
                                     });
                                   });
                               </script>
@@ -424,8 +436,8 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                        </div>
                     </div><br>
                     <div class="row">
-                      <button class="btn btn-info" style="margin-left: 40%; font-size:18px" type="button"  id="btnPreview" ng-click="Preview()">
-                      <i class='fas fa-eye-slash' style='font-size:18px'></i> দেখুন
+                      <button formtarget="_blank" href="{{  route('reporting.employee_report_invoice') }}" class="btn btn-info" style="margin-left: 40%; font-size:18px" type="submit"  id="btnPreview" ng-click="   Preview()">
+                      <i class='fas fa-eye-slash' style='font-size:18px'></i> পূর্বরূপ
                     </button>
                     </div>
                  </form> 
