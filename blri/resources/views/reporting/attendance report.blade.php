@@ -57,6 +57,23 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 </style>
 <!--pie-chart --><!-- index page sales reviews visitors pie chart -->
 <script src="/js/pie-chart.js" type="text/javascript"></script>
+<script>
+                                $(document).ready(function(){
+                                     $("#StartDatelevel").show();
+                                     $("#StartDate").show();
+                                     $("#ProjectLevel").hide();
+                                     $("#Project").hide();
+                                     $("#DivisionLevel").hide();
+                                     $("#Division").hide();
+                                     $("#endDate").show();
+                                     $("#endDatelevel").show();
+                                     $("#SectionLevel").hide();
+                                     $("#Section").hide();
+                                     $("#EmployeeLevel").hide();
+                                     $("#Employee").hide();
+                                  });
+                              </script>
+
  <script type="text/javascript">
 
         $(document).ready(function () {
@@ -353,7 +370,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                       <div class="col-md-6">
                         <div>
                           
-                                 <input type="radio" name="purchasereport" id="DatetoDate" value="1" ng-checked="true" ng-click="DateWiseallPurchase()" />
+                                 <input type="radio" name="purchasereport" id="DatetoDate" value="1" ng-checked="true" ng-click="DateWiseallPurchase()" checked />
                                 তারিখ থেকে তারিখ সমস্ত কর্মচারী উপস্থিতি রিপোর্ট
                             
                         </div><br>

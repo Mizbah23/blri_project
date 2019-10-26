@@ -56,6 +56,19 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 </style>
 <!--pie-chart --><!-- index page sales reviews visitors pie chart -->
 <script src="/js/pie-chart.js" type="text/javascript"></script>
+                              <script>
+                                $(document).ready(function(){
+                                   
+                                     $("#StartDatelevel").show();
+                                     $("#StartDate").show();
+                                     $("#ProductLevel").hide();
+                                     $("#Product").hide();
+                                     $("#CategoryLevel").hide();
+                                     $("#Category").hide();
+                                     // $("#endDate").hide();
+                                     // $("#endDatelevel").hide();
+                                    });
+                              </script>
  <script type="text/javascript">
 
         $(document).ready(function () {
@@ -93,6 +106,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
         });
 
     </script>
+
 <!-- //pie-chart --><!-- index page sales reviews visitors pie chart -->
 
     <!-- requried-jsfiles-for owl -->
@@ -331,7 +345,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                        </div>
                        <div class="col-md-6">
                              <div class="row" style="margin-left: 15%">
-                                 <input type="radio" name="purchasereport" id="StockValuation" value="1" ng-checked="true" onclick="datewisereport()"/>
+                                 <input type="radio" name="purchasereport" id="StockValuation" value="1" ng-checked="true" onclick="datewisereport()" checked/>
                                  মজুতের মূল্যনির্ধারণ অনুযায়ী
                              
                              </div>
