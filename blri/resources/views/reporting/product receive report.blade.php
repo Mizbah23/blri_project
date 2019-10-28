@@ -126,17 +126,12 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
   </script>
           <script>
             $(document).ready(function(){
-               
-                     $("#StartDatelevel").show();
-                     $("#StartDate").show();
-                     $("#supplierNamelevel").hide();
-                     $("#supplierName").hide();
-                     $("#receiveIDlevel").hide();
-                     $("#receiveID").hide();
-                     $("#endDate").hide();
-                     $("#endDatelevel").hide();
-                  });
-              </script>
+                 $("#div_startD").show();
+                 $("#div_supplier").hide();
+                 $("#div_receiveId").hide();
+                 $("#div_endD").hide();
+                });
+          </script>
                     
 </head> 
 <body class="cbp-spmenu-push">
@@ -312,7 +307,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                   @csrf
                     <div class="row">
                        <div class="col-md-6">
-                          <div class="form-group">
+                          <div class="form-group" id="div_startD">
                              <label class="col-md-5 control-label" for="StartDate"id="StartDatelevel">শুরুর তারিখ</label>
                              <div class="col-md-7">
                                 <input type="text" class="datepicker form-control" id="StartDate" name="StartDate"
@@ -320,7 +315,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                             </div>
                           </div>
 
-                          <div class="form-group">
+                          <div class="form-group" id="div_endD">
                              <label class="col-md-5 control-label" id="endDatelevel" for="endDate">শেষের তারিখ</label>
                              <div class="col-md-7">
                                 <input type="text" class="datepicker form-control" id="endDate" name="endDate"
@@ -328,8 +323,8 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                             </div>
                           </div>
 
-                          <div class="form-group">
-                            <label class="col-md-5 control-label" id="supplierNamelevel">সরবরাহকারী</label>
+                          <div class="form-group" id="div_supplier">
+                              <label class="col-md-5 control-label" id="supplierNamelevel">সরবরাহকারী</label>
                               <div class="col-md-7">
                                 <select id="supplierName"  name="supplierName" class="form-control">
                                        <option value="">নির্বাচন করুন</option>
@@ -337,7 +332,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                               </div>
                           </div>
 
-                          <div class="form-group">
+                          <div class="form-group"id="div_receiveId">
                              <label class="col-md-5 control-label" id="receiveIDlevel" for="receiveID">রিসিভ আইডি</label>
                              <div class="col-md-7">
                               <select id="receiveID"  name="receiveID" class="form-control">
@@ -356,14 +351,10 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                              <script>
                                 $(document).ready(function(){
                                     $("#rdAllSuppWisePur2").click(function(){
-                                     $("#StartDatelevel").show();
-                                     $("#StartDate").show();
-                                     $("#supplierNamelevel").hide();
-                                     $("#supplierName").hide();
-                                     $("#receiveIDlevel").hide();
-                                     $("#receiveID").hide();
-                                     $("#endDate").hide();
-                                     $("#endDatelevel").hide();
+                                     $("#div_startD").hide();
+                                     $("#div_endD").hide();
+                                     $("#div_supplier").hide();
+                                     $("#div_receiveId").hide();
                                     });
                                   });
                               </script>
@@ -375,14 +366,10 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                              <script>
                                 $(document).ready(function(){
                                     $("#rdAllSuppWisePur").click(function(){
-                                     $("#StartDatelevel").show();
-                                     $("#supplierNamelevel").show();
-                                     $("#supplierName").show();
-                                     $("#StartDate").show();
-                                     $("#receiveIDlevel").hide();
-                                     $("#receiveID").hide();
-                                     $("#endDate").hide();
-                                     $("#endDatelevel").hide();
+                                     $("#div_startD").show();
+                                     $("#div_endD").hide();
+                                     $("#div_supplier").show();
+                                     $("#div_receiveId").hide();
                                     });
                                   });
                               </script>
@@ -395,14 +382,10 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                           <script>
                                 $(document).ready(function(){
                                     $("#rdAllSuppWisePur3").click(function(){
-                                     $("#StartDatelevel").show();
-                                     $("#StartDate").show();
-                                     $("#supplierNamelevel").hide();
-                                     $("#supplierName").hide();
-                                     $("#receiveIDlevel").hide();
-                                     $("#receiveID").hide();
-                                     $("#endDate").show();
-                                     $("#endDatelevel").show();
+                                     $("#div_startD").show();
+                                     $("#div_endD").show();
+                                     $("#div_supplier").hide();
+                                     $("#div_receiveId").hide();
                                     });
                                   });
                               </script>
@@ -415,14 +398,10 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                              <script>
                                 $(document).ready(function(){
                                     $("#rdAllSuppWisePur4").click(function(){
-                                     $("#StartDatelevel").show();
-                                     $("#StartDate").show();
-                                     $("#supplierNamelevel").show();
-                                     $("#supplierName").show();
-                                     $("#receiveIDlevel").hide();
-                                     $("#receiveID").hide();
-                                     $("#endDate").show();
-                                     $("#endDatelevel").show();
+                                     $("#div_startD").show();
+                                     $("#div_endD").show();
+                                     $("#div_supplier").show();
+                                     $("#div_receiveId").hide();
                                     });
                                   });
                               </script>
@@ -435,14 +414,10 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                              <script>
                                 $(document).ready(function(){
                                     $("#rdAllSuppWisePur5").click(function(){
-                                     $("#StartDatelevel").hide();
-                                     $("#StartDate").hide();
-                                     $("#supplierNamelevel").hide();
-                                     $("#supplierName").hide();
-                                     $("#receiveIDlevel").hide();
-                                     $("#receiveID").hide();
-                                     $("#endDate").hide();
-                                     $("#endDatelevel").hide();
+                                     $("#div_startD").hide();
+                                     $("#div_endD").hide();
+                                     $("#div_supplier").hide();
+                                     $("#div_receiveId").hide();
                                     });
                                   });
                               </script>
@@ -455,14 +430,10 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                           <script>
                                 $(document).ready(function(){
                                     $("#rdAllSuppWisePur6").click(function(){
-                                     $("#StartDatelevel").hide();
-                                     $("#StartDate").hide();
-                                     $("#supplierNamelevel").hide();
-                                     $("#supplierName").hide();
-                                     $("#receiveIDlevel").show();
-                                     $("#receiveID").show();
-                                     $("#endDate").hide();
-                                     $("#endDatelevel").hide();
+                                     $("#div_startD").hide();
+                                     $("#div_endD").hide();
+                                     $("#div_supplier").hide();
+                                     $("#div_receiveId").show();
                                     });
                                   });
                            </script>

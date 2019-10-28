@@ -61,18 +61,14 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 <!--pie-chart --><!-- index page sales reviews visitors pie chart -->
 <script src="/js/pie-chart.js" type="text/javascript"></script>
 
-    <script>
-      $(document).ready(function(){
-           $("#StartDatelevel").show();
-           $("#StartDate").show();
-           $("#supplierNamelevel").hide();
-           $("#supplierName").hide();
-           $("#receiveIDlevel").hide();
-           $("#receiveID").hide();
-           $("#endDate").hide();
-           $("#endDatelevel").hide();
-          });
-    </script>
+   <script>
+    $(document).ready(function(){
+         $("#div_startD").show();
+         $("#div_customer").hide();
+         $("#div_invoice").hide();
+         $("#div_endD").hide();
+        });
+  </script>
  <script type="text/javascript">
 
         $(document).ready(function () {
@@ -312,7 +308,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                   @csrf
                     <div class="row">
                        <div class="col-md-6">
-                          <div class="form-group">
+                          <div class="form-group" id="div_startD">
                              <label class="col-md-5 control-label" for="StartDate"id="StartDatelevel">শুরুর তারিখ</label>
                              <div class="col-md-7">
                                 <input type="text" class="datepicker form-control" id="StartDate" name="StartDate"
@@ -320,7 +316,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                             </div>
                           </div>
 
-                          <div class="form-group">
+                          <div class="form-group" id="div_endD">
                              <label class="col-md-5 control-label" id="endDatelevel" for="endDate">শেষের তারিখ</label>
                              <div class="col-md-7">
                                 <input type="text" class="datepicker form-control" id="endDate" name="endDate"
@@ -328,16 +324,16 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                             </div>
                           </div>
 
-                          <div class="form-group">
+                          <div class="form-group" id="div_customer">
                             <label class="col-md-5 control-label" id="supplierNamelevel">ক্রেতা</label>
                               <div class="col-md-7">
-                                <select id="supplierName"  name="supplierName" class="form-control">
+                                <select id="customer"  name="customerName" class="form-control">
                                        <option value="">নির্বাচন করুন</option>
                                 </select>
                               </div>
                           </div>
 
-                          <div class="form-group">
+                          <div class="form-group" id="div_invoice">
                              <label class="col-md-5 control-label" id="receiveIDlevel" for="receiveID">চালান নং</label>
                              <div class="col-md-7">
                               <select id="receiveID"  name="receiveID" class="form-control">
@@ -357,14 +353,10 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                              <script>
                                 $(document).ready(function(){
                                     $("#rdAllSuppWisePur2").click(function(){
-                                     $("#StartDatelevel").show();
-                                     $("#StartDate").show();
-                                     $("#supplierNamelevel").hide();
-                                     $("#supplierName").hide();
-                                     $("#receiveIDlevel").hide();
-                                     $("#receiveID").hide();
-                                     $("#endDate").hide();
-                                     $("#endDatelevel").hide();
+                                     $("#div_startD").show();
+                                     $("#div_customer").hide();
+                                     $("#div_invoice").hide();
+                                     $("#div_endD").hide();
                                     });
                                   });
                               </script>
@@ -379,14 +371,10 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                              <script>
                                 $(document).ready(function(){
                                     $("#rdAllSuppWisePur").click(function(){
-                                     $("#StartDatelevel").show();
-                                     $("#supplierNamelevel").show();
-                                     $("#supplierName").show();
-                                     $("#StartDate").show();
-                                     $("#receiveIDlevel").hide();
-                                     $("#receiveID").hide();
-                                     $("#endDate").hide();
-                                     $("#endDatelevel").hide();
+                                     $("#div_startD").show();
+                                     $("#div_customer").show();
+                                     $("#div_invoice").hide();
+                                     $("#div_endD").hide();
                                     });
                                   });
                               </script>
@@ -402,14 +390,10 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                           <script>
                                 $(document).ready(function(){
                                     $("#rdAllSuppWisePur3").click(function(){
-                                     $("#StartDatelevel").show();
-                                     $("#StartDate").show();
-                                     $("#supplierNamelevel").hide();
-                                     $("#supplierName").hide();
-                                     $("#receiveIDlevel").hide();
-                                     $("#receiveID").hide();
-                                     $("#endDate").show();
-                                     $("#endDatelevel").show();
+                                     $("#div_startD").show();
+                                     $("#div_customer").hide();
+                                     $("#div_invoice").hide();
+                                     $("#div_endD").show();
                                     });
                                   });
                               </script>
@@ -417,21 +401,17 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                           <div class="row" style="margin-left: 15%">
                             
                                  <input type="radio" name="purchasereport" id="rdAllSuppWisePur4" value="4"  ng-click="DateWiseallPurchase()" />
-                                 শুরু ও শেষ তারিখ এবং সরবরাহকারী অনুযায়ী সকল বিক্রয়
+                                 শুরু ও শেষ তারিখ এবং ক্রেতা অনুযায়ী সকল বিক্রয়
                              
                           </div>
 
                              <script>
                                 $(document).ready(function(){
                                     $("#rdAllSuppWisePur4").click(function(){
-                                     $("#StartDatelevel").show();
-                                     $("#StartDate").show();
-                                     $("#supplierNamelevel").show();
-                                     $("#supplierName").show();
-                                     $("#receiveIDlevel").hide();
-                                     $("#receiveID").hide();
-                                     $("#endDate").show();
-                                     $("#endDatelevel").show();
+                                     $("#div_startD").show();
+                                     $("#div_customer").show();
+                                     $("#div_invoice").hide();
+                                     $("#div_endD").show();;
                                     });
                                   });
                               </script>
@@ -446,14 +426,10 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                              <script>
                                 $(document).ready(function(){
                                     $("#rdAllSuppWisePur5").click(function(){
-                                     $("#StartDatelevel").hide();
-                                     $("#StartDate").hide();
-                                     $("#supplierNamelevel").hide();
-                                     $("#supplierName").hide();
-                                     $("#receiveIDlevel").hide();
-                                     $("#receiveID").hide();
-                                     $("#endDate").hide();
-                                     $("#endDatelevel").hide();
+                                     $("#div_startD").hide();
+                                     $("#div_customer").hide();
+                                     $("#div_invoice").hide();
+                                     $("#div_endD").hide();
                                     });
                                   });
                               </script>
@@ -468,14 +444,10 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                           <script>
                                 $(document).ready(function(){
                                     $("#rdAllSuppWisePur6").click(function(){
-                                     $("#StartDatelevel").hide();
-                                     $("#StartDate").hide();
-                                     $("#supplierNamelevel").hide();
-                                     $("#supplierName").hide();
-                                     $("#receiveIDlevel").show();
-                                     $("#receiveID").show();
-                                     $("#endDate").hide();
-                                     $("#endDatelevel").hide();
+                                     $("#div_startD").hide();
+                                     $("#div_customer").hide();
+                                     $("#div_invoice").show();
+                                     $("#div_endD").hide();
                                     });
                                   });
                               </script>
