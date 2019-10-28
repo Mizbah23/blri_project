@@ -56,16 +56,12 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 </style>
 <!--pie-chart --><!-- index page sales reviews visitors pie chart -->
 <script src="/js/pie-chart.js" type="text/javascript"></script>
-<script>
+ <script>
     $(document).ready(function(){
-         $("#departmentlevel").show();
-         $("#departmentName").show();
-         $("#sectionlevel").hide();
-         $("#sectionName").hide();
-         $("#projectlevel").hide();
-         $("#projectName").hide();
-         $("#employeelevel").hide();
-         $("#employeeName").hide();
+         $("#depart").show();
+         $("#sec").hide();
+         $("#project").hide();
+         $("#emp").hide();
         });
   </script>
  <script type="text/javascript">
@@ -306,25 +302,40 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                   @csrf
                     <div class="row">
                        <div class="col-md-6">
-                          <div class="form-group">
-                             <label class="col-md-5 control-label" for="departmentName"id="departmentlevel">ডিপার্টমেন্টের নাম</label>
+                          <div class="form-group" id="depart">
+                             <label class="col-md-5 control-label" for="departmentName"id="departmentlevel">পদবি</label>
                              <div class="col-md-7">
-                                <select id="departmentName"  name="departmentName" class="form-control">
+                                <select id="division"  name="division" class="form-control">
                                        <option value="">নির্বাচন করুন</option>
+                                       @foreach ($designations as $designation)
+                                        <option value="{{$designation->id}}"
+                                         @if (old('designationName')==$designation->id)
+                                            {{"selected"}}
+                                        @endif>
+                                        {{$designation->designationName}}
+                                      @endforeach
                                 </select>
                             </div>
                           </div>
 
-                         <div class="form-group">
+                         <div class="form-group" id="sec">
                              <label class="col-md-5 control-label" id="sectionlevel" for="sectionName">শাখার নাম</label>
                              <div class="col-md-7">
                                 <select id="sectionName"  name="sectionName" class="form-control">
-                                       <option value="">নির্বাচন করুন</option>
-                                </select>
+                                  <option value="">নির্বাচন করুন</option>
+                                      @foreach ($sections->unique('sectionName') as $section)
+                                        <option value="{{$section->id}}"
+                                         @if (old('sectionName')==$section->id)
+                                            {{"selected"}}
+                                        @endif>
+                                        {{$section->sectionName}}
+                                      @endforeach
+                                  </option>
+                              </select>
                             </div>
                           </div>
 
-                          <div class="form-group">
+                          <div class="form-group" id="project">
                             <label class="col-md-5 control-label" id="projectlevel">প্রকল্পের নাম</label>
                               <div class="col-md-7">
                                 <select id="projectName"  name="projectName" class="form-control">
@@ -333,7 +344,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                               </div>
                           </div>
 
-                          <div class="form-group">
+                          <div class="form-group" id="emp">
                              <label class="col-md-5 control-label" id="employeelevel" for="CategoryLevel">কর্মচারীর নাম</label>
                              <div class="col-md-7">
                               <select id="employeeName"  name="employeeName" class="form-control">
@@ -346,21 +357,17 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                        <div class="col-md-6">
                              <div class="row" style="margin-left: 15%">
                                  <input type="radio" name="employee_report" id="departmentwise" value="1" onclick="datewisereport()" checked/>
-                                 ডিপার্টমেন্ট অনুযায়ী
+                                 পদবি অনুযায়ী
                              
                              </div>
 
                              <script>
                                 $(document).ready(function(){
                                     $("#departmentwise").click(function(){
-                                     $("#departmentlevel").show();
-                                     $("#departmentName").show();
-                                     $("#sectionlevel").hide();
-                                     $("#sectionName").hide();
-                                     $("#projectlevel").hide();
-                                     $("#projectName").hide();
-                                     $("#employeelevel").hide();
-                                     $("#employeeName").hide();
+                                     $("#depart").show();
+                                     $("#sec").hide();
+                                     $("#project").hide();
+                                     $("#emp").hide();
                                     });
                                   });
                               </script>
@@ -372,17 +379,13 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                             
                              </div>
 
-                             <script>
+                              <script>
                                 $(document).ready(function(){
                                     $("#sectionwise").click(function(){
-                                     $("#departmentlevel").hide();
-                                     $("#departmentName").hide();
-                                     $("#sectionlevel").show();
-                                     $("#sectionName").show();
-                                     $("#projectlevel").hide();
-                                     $("#projectName").hide();
-                                     $("#employeelevel").hide();
-                                     $("#employeeName").hide();
+                                     $("#depart").hide();
+                                     $("#sec").show();
+                                     $("#project").hide();
+                                     $("#emp").hide();
                                     });
                                   });
                               </script>
@@ -395,17 +398,13 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                              
                           </div>
 
-                          <script>
+                              <script>
                                 $(document).ready(function(){
                                     $("#projectwise").click(function(){
-                                     $("#departmentlevel").hide();
-                                     $("#departmentName").hide();
-                                     $("#sectionlevel").hide();
-                                     $("#sectionName").hide();
-                                     $("#projectlevel").show();
-                                     $("#projectName").show();
-                                     $("#employeelevel").hide();
-                                     $("#employeeName").hide();
+                                     $("#depart").hide();
+                                     $("#sec").hide();
+                                     $("#project").show();
+                                     $("#emp").hide();
                                     });
                                   });
                               </script>
@@ -418,20 +417,17 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                              
                           </div>
 
-                             <script>
+                            <script>
                                 $(document).ready(function(){
                                     $("#employeenamewise").click(function(){
-                                     $("#departmentlevel").hide();
-                                     $("#departmentName").hide();
-                                     $("#sectionlevel").hide();
-                                     $("#sectionName").hide();
-                                     $("#projectlevel").hide();
-                                     $("#projectName").hide();
-                                     $("#employeelevel").show();
-                                     $("#employeeName").show();
+                                     $("#depart").hide();
+                                     $("#sec").hide();
+                                     $("#project").hide();
+                                     $("#emp").show();
                                     });
                                   });
-                              </script>
+                            </script>
+
 
                        </div>
                     </div><br>

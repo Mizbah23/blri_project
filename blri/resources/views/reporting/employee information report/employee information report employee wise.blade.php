@@ -1,7 +1,7 @@
 !<DOCTYPE html>
 <html lang="bn">
 <head>
-	<title>ডিপার্টমেন্ট অনুযায়ী</title>
+	<title>কর্মচারী অনুযায়ী</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <style type="text/css">
     body {
@@ -30,34 +30,52 @@ th,td{
   </div>
   </div>
   <hr style="margin-top: -2px">
-  
-  
+
+   @foreach($emplyoeeinfo as $key =>$item)
+  <div>
+     <img id="profileImageTag" style="width: 160px; margin-left: 0px; border:solid;"   
+     src="images/{{$item->profileImage}}">
+  </div><br>
+  @endforeach
+
    <center>
      <table style="width: 100%;height: auto;">
        <thead>
-        <tr>
-        <th>কর্মচারীর আইডি</th>
-        <th>কর্মচারীর নাম</th>
-        <th>ঠিকানা</th>
-        <th>যোগাযোগ নং</th>
-        <th>পদবি</th>
-        <th>শাখা</th>
-        {{-- <th>ছবি</th> --}}
-       </tr>
        </thead>
        <tbody> 
       @foreach($emplyoeeinfo as $key =>$item)
         <tr>
+          <td>কর্মচারীর আইডি</td>
           <td>{{ $item->EmployeeID }}</td>
+        </tr>
+
+        <tr>
+          <td>কর্মচারীর নাম</td>
           <td>{{ $item->EmployeeName }}</td>
+        </tr>
+          
+          <tr>
+          <td>ঠিকানা</td>
           <td>{{ $item->address }}</td>
+          </tr>
+
+          <tr>
+          <td>যোগাযোগ নং</td>
           <td>{{ $item->contactNo }}</td>
+          </tr>
+
+          <tr>
+          <td>পদবি</td>
           <td>{{ $item->designationName }}</td>
+          </tr>
+
+          <tr>
+          <td>শাখা</td>
           <td>{{ $item->sectionName }}</td>
+          </tr>
+        @endforeach
           {{-- <td>{{ $item->profileImage }}</td> --}}
           {{-- <td><img src="{{ asset('/images/'.$item->profileImage) }}" ></td> --}}
-        </tr>
-    @endforeach
        </tbody>
    </table>
    </center>

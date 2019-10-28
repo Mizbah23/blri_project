@@ -40,15 +40,12 @@ class productreceivereportController extends Controller
                 ];
 
                   if($req->StartDate && !$req->endDate && !$req->supplierName && !$req->receiveID){
-                    $this->validate( $req,[
-                        'StartDate'=>'required'
+                   
                      $pdf = PDF::loadView('reporting.product_receive_report.productReceiveReportStartDateWiseInvoice',);
                    return $pdf->stream('Product_Receive_Report_Invoice.pdf');
                   }
                   else if($req->StartDate && $req->endDate && !$req->supplierName && !$req->receiveID){
-                    $this->validate( $req,[
-                        'StartDate'=>'required'
-                        'StartDate'=>'required'
+                    
                      $pdf = PDF::loadView('reporting.product_receive_report.productReceiveReportStartDateToEndDateWiseInvoice',);
                    return $pdf->stream('Product_Receive_Report_Invoice.pdf');
                   }

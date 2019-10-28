@@ -1,7 +1,7 @@
 !<DOCTYPE html>
 <html lang="bn">
 <head>
-	<title>ডিপার্টমেন্ট অনুযায়ী</title>
+	<title>প্রকল্প অনুযায়ী</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <style type="text/css">
     body {

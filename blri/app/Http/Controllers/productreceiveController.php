@@ -20,7 +20,6 @@ use App\Product_receive;
 //use APP\Product_receive_detail;
 use App\productReceiveMaster;
 use App\tblpurchase;
-use App\tblpurchasedetails;
 
 use PDF;
 use Str;
@@ -114,25 +113,13 @@ class productreceiveController extends Controller
 
              //dd($newProductAddedToList);
              $newProductAddedToList->save();
-
+              
              return redirect()->route("product receive.product receive");
-             // dd($request->all());
+            
              
          // }
 
-      /*  if($saveNewProductReceive->save() > 0){
-                ///max id of master table
-                $Product_receive_detail=new Product_receive_detail;
-                //dd($request);
-                
-                $Product_receive_detail->invoice_no=$request->created_at.Str::random(5);
-                $Product_receive_detail->project_id=$request->project_id;
-                $Product_receive_detail->product_info_id=$request->product_info_id;
-            $newProductAddedToList->save();
-            //dd($newProductAddedToList);
 
-        }*/
-         
       
         // ->with('supplierName',$request->session()->get('supplierName'))
         // ->with('address',$request->session()->get('address'))
@@ -210,47 +197,42 @@ class productreceiveController extends Controller
     }
     public function saveAllItemFromReceiveList(Request $request)
     {
-         //return $request->session()->all();
+         // return $request->session()->all();
         if (session()->has('user')) {
             $productReceiveLists=ProductReceiveList::all();
            //$productReceives=Product_receive::all();
             $k=0;
-            foreach ($productReceiveLists as $key => $item) {
+             foreach ($productReceiveLists as $key => $item) {
                 $saveNewProductReceive=new tblpurchase;
                 $saveNewProductReceive->SupplierID=$item->supplier_id;
-
-                //return $request->all();
-                //$saveNewProductReceive->product_receive_id=$item->product_receive_id;
-                //$saveNewProductReceive->invoiceNo=$item->receiveDate.Str::random(5);
-                // $saveNewProductReceive->project_id=$item->project_id;
-                // $saveNewProductReceive->product_info_id=$item->product_info_id;
+          
                 $saveNewProductReceive->InvoiceNo='PUR-'.$item->orderNo.'-'.$item->Purchase_Date;
+
                 $saveNewProductReceive->OrderNo=$item->orderNo;
+                $saveNewProductReceive->Purchase_Date=$item->Purchase_Date;
+                $saveNewProductReceive->InvoiceDate=$item->Purchase_Date;
                 $saveNewProductReceive->IsDonate=$item->IsDonate;
                 $saveNewProductReceive->Job_By=$item->user_id;
-                $saveNewProductReceive->Purchase_Date=date('Y-m-d',  strtotime(str_replace('/','-',$item->Purchase_Date)));
-                //$saveNewProductReceive->InvoiceDate=$item->Purchase_Date;
 
                 $saveNewProductReceive->save();
-                // dd($saveNewProductReceive->id);
-
-                $saveNewProductReceiveDetails = new tblpurchasedetails();
-                $saveNewProductReceiveDetails->PurchaseID = $saveNewProductReceive->id;
-                $saveNewProductReceiveDetails->ProductID = $item->product_info_id;
-                $saveNewProductReceiveDetails->Quantity = $item->quantity;
-                $saveNewProductReceiveDetails->save();
-                
+                 // dd($saveNewProductReceive->id);
+                 $saveNewProductReceiveDetails = new tblpurchasedetails();
+                 $saveNewProductReceiveDetails->PurchaseID = $saveNewProductReceive->id;
+                 $saveNewProductReceiveDetails->ProductID = $item->product_info_id;
+                 $saveNewProductReceiveDetails->Quantity = $item->quantity;
+                 $saveNewProductReceiveDetails->Note='0';
+                 $saveNewProductReceiveDetails->BatchNo='0';
+                 $saveNewProductReceiveDetails->save();
+                 
                 $findProduct = ProductInfo::find($item->product_info_id);
                 if ($findProduct) {
                     $findProduct->stock = $findProduct->stock + $item->quantity;
                     $findProduct->save();
                 }
                 $item->delete();
-
-                $k++;
+               $k++;
 
             }
-
 
             if (count($productReceiveLists)==$k) {
                 return "success";
