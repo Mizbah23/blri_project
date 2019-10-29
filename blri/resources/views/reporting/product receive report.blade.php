@@ -351,7 +351,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                              <script>
                                 $(document).ready(function(){
                                     $("#rdAllSuppWisePur2").click(function(){
-                                     $("#div_startD").hide();
+                                     $("#div_startD").show();
                                      $("#div_endD").hide();
                                      $("#div_supplier").hide();
                                      $("#div_receiveId").hide();

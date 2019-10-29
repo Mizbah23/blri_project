@@ -294,7 +294,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
         <div class=" form-grids row form-grids-right">
             <div class="widget-shadow " data-example-id="basic-forms"> 
               <div class="form-title bg-primary text-white">
-                <h3 class="">কর্মচারীর তথ্য প্রতিবেদন</h3>
+                <h3 class="">কর্মকর্তার তথ্য প্রতিবেদন</h3>
               </div>
               <div class="form-body">
 
@@ -305,14 +305,14 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                           <div class="form-group" id="depart">
                              <label class="col-md-5 control-label" for="departmentName"id="departmentlevel">পদবি</label>
                              <div class="col-md-7">
-                                <select id="division"  name="division" class="form-control">
+                                <select id="division"  name="designationName" class="form-control">
                                        <option value="">নির্বাচন করুন</option>
                                        @foreach ($designations as $designation)
                                         <option value="{{$designation->id}}"
                                          @if (old('designationName')==$designation->id)
                                             {{"selected"}}
                                         @endif>
-                                        {{$designation->designationName}}
+                                        {{$designation->designationName}}</option>
                                       @endforeach
                                 </select>
                             </div>
@@ -323,14 +323,13 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                              <div class="col-md-7">
                                 <select id="sectionName"  name="sectionName" class="form-control">
                                   <option value="">নির্বাচন করুন</option>
-                                      @foreach ($sections->unique('sectionName') as $section)
+                                    @foreach ($sections->unique('sectionName') as $section)
                                         <option value="{{$section->id}}"
                                          @if (old('sectionName')==$section->id)
                                             {{"selected"}}
                                         @endif>
-                                        {{$section->sectionName}}
-                                      @endforeach
-                                  </option>
+                                          {{$section->sectionName}}</option>
+                                   @endforeach
                               </select>
                             </div>
                           </div>
@@ -338,17 +337,31 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                           <div class="form-group" id="project">
                             <label class="col-md-5 control-label" id="projectlevel">প্রকল্পের নাম</label>
                               <div class="col-md-7">
-                                <select id="projectName"  name="projectName" class="form-control">
-                                       <option value="">নির্বাচন করুন</option>
+                                <select id="projectName"  name="project" class="form-control">
+                                  <option value="">নির্বাচন করুন</option>
+                                      @foreach ($projects as $project)
+                                        <option value="{{$project->projectName}}"
+                                         @if (old('projectName')==$project->id)
+                                            {{"selected"}}
+                                        @endif>
+                                          {{$project->projectName}}</option>
+                                      @endforeach
                                 </select>
                               </div>
                           </div>
 
                           <div class="form-group" id="emp">
-                             <label class="col-md-5 control-label" id="employeelevel" for="CategoryLevel">কর্মচারীর নাম</label>
+                             <label class="col-md-5 control-label" id="employeelevel" for="CategoryLevel">কর্মকর্তার নাম</label>
                              <div class="col-md-7">
-                              <select id="employeeName"  name="employeeName" class="form-control">
+                              <select id="employeeName"  name="name" class="form-control">
                                        <option value="">নির্বাচন করুন</option>
+                                       @foreach ($emplyoee as $emplyoees)
+                                        <option value="{{$emplyoees->id}}"
+                                         @if (old('name')==$emplyoees->id)
+                                            {{"selected"}}
+                                        @endif>
+                                          {{$emplyoees->name}}</option>
+                                      @endforeach
                                  </select>
                               </div>
                           </div>
@@ -413,7 +426,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                           <div class="row" style="margin-left: 15%">
                             
                                  <input type="radio" name="employee_report" id="employeenamewise" value="4" ng-click="DateWiseallPurchase()" />
-                                 কর্মচারী অনুযায়ী
+                                 কর্মকর্তা অনুযায়ী
                              
                           </div>
 
