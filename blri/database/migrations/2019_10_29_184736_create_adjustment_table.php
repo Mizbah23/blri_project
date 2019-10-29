@@ -31,8 +31,7 @@ class CreateAdjustmentTable extends Migration
             $table->boolean('Active')->default(1);
             
             $table->foreign('Creator')->references('id')->on('users');
-            $table->foreign('AdjustmentTypeID')->references('AdjustmentTypeID')
-             ->on('adjustmenttype');
+            $table->foreign('AdjustmentTypeID')->references('AdjustmentTypeID')->on('adjustmenttype');
 
            
 
