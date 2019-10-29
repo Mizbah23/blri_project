@@ -11,7 +11,8 @@ use App\Reporting;
 use App\Adjustment;
 use App\EmployeeAttendanceView;
 use PDF;
-
+use DB;
+use Input;
 
 
 
@@ -25,6 +26,7 @@ class attendancereportController extends Controller
         $productdistributions=ProductDistribution::all();
         $reportings=Reporting::all();
         $adjustments=Adjustment::all();
+        $EmployeeAttendanceViews=EmployeeAttendanceView::all();
 
         //dd($sections[0]->division);
         return view('reporting.attendance report')
@@ -33,7 +35,8 @@ class attendancereportController extends Controller
               ->with('productreceivetypes',$productreceivetypes)
               ->with('productdistributions',$productdistributions)
               ->with('adjustments',$adjustments)
-              ->with('reportings',$reportings);;
+              ->with('reportings',$reportings)
+              ->with('EmployeeAttendanceViews',$EmployeeAttendanceViews);
     }
 
     public function invoice(Request $req){
@@ -44,33 +47,39 @@ class attendancereportController extends Controller
                 ];
                 $EmployeeAttendanceViews=EmployeeAttendanceView::all();
 
-                  if($req->StartDate && $req->endDate && !$req->ProjectName && !$req->DivisionName && !$req->SectionName && !$req->EmployeeName){
-                     $pdf = PDF::loadView('reporting.attendance_report.attendanceReportStartDateToEndDateWiseInvoice',['EmployeeAttendanceViews'=>$EmployeeAttendanceViews]);
+                  if($req->StartDate && !$req->endDate){
+                    // $users = EmployeeAttendanceView::whereRaw('DATE >= 2019-10-27')->get();
+                    $someVariable = Input::get("StartDate");
+
+                    $results = DB::select( DB::raw("SELECT * FROM `employeeattendenceview` WHERE DATE = '$someVariable'") );
+
+                     $pdf = PDF::loadView('reporting.attendance_report.attendanceReportStartDateToEndDateWiseInvoice',['results'=>$results]);
                    return $pdf->stream('Attendance_Report_Invoice.pdf');
                   }
-                  else if($req->StartDate && $req->endDate && $req->ProjectName && !$req->DivisionName && !$req->SectionName && !$req->EmployeeName){
-                     $pdf = PDF::loadView('reporting.attendance_report.attendanceReportProjectWiseInvoice',);
+                  else if($req->StartDate && $req->endDate ){
+
+                    $StartDate = Input::get("StartDate");
+                    $endDate = Input::get("endDate");
+
+                    $results = DB::select( DB::raw("SELECT * FROM `employeeattendenceview` WHERE DATE BETWEEN '$StartDate' AND '$endDate'") );
+
+                     $pdf = PDF::loadView('reporting.attendance_report.attendanceReportDateToDateWiseInvoice',['results'=>$results]);
                    return $pdf->stream('Attendance_Report_Invoice.pdf');
                   }
-                  else if($req->StartDate && $req->endDate && !$req->ProjectName && $req->DivisionName && !$req->SectionName && !$req->EmployeeName){
-                     $pdf = PDF::loadView('reporting.attendance_report.attendanceReportDivisionWiseInvoice',);
+                  else if($req->StartDate && $req->endDate && $req->EmployeeName ){
+
+                    $StartDate = Input::get("StartDate");
+                    $endDate = Input::get("endDate");
+                    $EmployeeName = Input::get("EmployeeName");
+
+                    $results = DB::select( DB::raw("SELECT * FROM `employeeattendenceview` WHERE EmployeeName =$EmployeeName AND DATE BETWEEN '$StartDate' AND '$endDate'") );
+
+                     $pdf = PDF::loadView('reporting.attendance_report.attendanceReportDateToDateWiseInvoice',['results'=>$results]);
                    return $pdf->stream('Attendance_Report_Invoice.pdf');
                   }
-                  else if($req->StartDate && $req->endDate && !$req->ProjectName && !$req->DivisionName && $req->SectionName && !$req->EmployeeName){
-                     $pdf = PDF::loadView('reporting.attendance_report.attendanceReportSectionWiseInvoice',);
-                   return $pdf->stream('Attendance_Report_Invoice.pdf');
+                  else { 
+                   return redirect('reporting.attendance report');
                   }
-                  else if($req->StartDate && $req->endDate && !$req->ProjectName && !$req->DivisionName && !$req->SectionName && $req->EmployeeName){
-                     $pdf = PDF::loadView('reporting.attendance_report.attendanceReportEmployeeWiseInvoice',);
-                   return $pdf->stream('Attendance_Report_Invoice.pdf');
-                  }
-                  else if($req->StartDate && $req->endDate && $req->ProjectName && !$req->DivisionName && !$req->SectionName && !$req->EmployeeName){
-                     $pdf = PDF::loadView('reporting.attendance_report.attendanceReportRevenueWiseInvoice',);
-                   return $pdf->stream('Attendance_Report_Invoice.pdf');
-                  }
-                  else
-                    {
-                      return 'dfkjldldkskflskdffd';
-                    }
+
       }
 }

@@ -1,8 +1,8 @@
 !<DOCTYPE html>
 <html lang="bn">
 <head>
-	<title>শুরুর তারিখ অনুযায়ী</title>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>শুরুর তারিখ অনুযায়ী</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <style type="text/css">
     body {
     font-family: 'kalpurush', sans-serif,'ShonarBangla','Bijoy';
@@ -13,7 +13,7 @@ table{
         margin: 0 auto;
         border: 1px solid;
         border-collapse: collapse;
-	}
+  }
 th,td{
  border: 1px solid;
  padding-left: 5px;
@@ -33,27 +33,31 @@ th,td{
   
   
    <center>
-     <table>
-       <thead>
+     <table  style="width:90%">
+
         <tr>
+        <th>কর্মচারীর আইডি</th>
+        <th>কর্মচারীর নাম</th>
+        <th>কর্মচারীর পদবী</th>
+        <th>যোগাযোগ</th>
         <th>তারিখ</th>
-        <th>পণ্যের কোড</th>
-        <th>পণ্যের নাম</th>
-        <th>সমন্বয়ের ধরন</th>
-        <th>সমন্বয়ের কারণ</th>
+        <th>প্রবেশ</th>
+        <th>বাহির</th>
        </tr>
-       </thead>
-       <tbody> 
-        {{-- @foreach($adjustmentInfoLists as $key=>$item) --}}
+
+
+        @foreach($results as $item)
         <tr>
-          <td>{{date('d/m/Y', strtotime(str_replace('-', '/',0000))) }}</td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
+          <td>{{$item->EmployeeID}}</td>
+          <td>{{$item->EmployeeName}}</td>
+          <td>{{$item->designationName}}</td>
+          <td>{{$item->contactNo}}</td>
+          <td>{{$item->DATE}}</td>
+          <td>{{$item->EntryTime}}</td>
+          <td>{{$item->ExitTime}}</td>
         </tr>
-       {{--  @endforeach --}}
-       </tbody>
+        @endforeach
+
    </table>
    </center>
 </body>

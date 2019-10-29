@@ -46,7 +46,7 @@ th,td{
        </tr>
 
 
-        @foreach($EmployeeAttendanceViews as $item)
+        @foreach($results as $item)
         <tr>
           <td>{{$item->EmployeeID}}</td>
           <td>{{$item->EmployeeName}}</td>

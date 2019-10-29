@@ -61,14 +61,14 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                 $(document).ready(function(){
                                      $("#StartDatelevel").show();
                                      $("#StartDate").show();
-                                     $("#ProjectLevel").hide();
-                                     $("#Project").hide();
-                                     $("#DivisionLevel").hide();
-                                     $("#Division").hide();
-                                     $("#endDate").show();
-                                     $("#endDatelevel").show();
-                                     $("#SectionLevel").hide();
-                                     $("#Section").hide();
+                                     // $("#ProjectLevel").hide();
+                                     // $("#Project").hide();
+                                     // $("#DivisionLevel").hide();
+                                     // $("#Division").hide();
+                                     $("#endDate").hide();
+                                     $("#endDatelevel").hide();
+                                     // $("#SectionLevel").hide();
+                                     // $("#Section").hide();
                                      $("#EmployeeLevel").hide();
                                      $("#Employee").hide();
                                   });
@@ -131,7 +131,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
     <script>
       $(function() {
       $( ".datepicker" ).datepicker({
-      dateFormat: 'dd/mm/yy',
+      dateFormat: 'yy-mm-dd',
       maxDate: "+0D",
       ignoreReadonly: true
       });
@@ -314,20 +314,20 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                       {{-- left part --}}
                       <div class="col-md-6">
                         <div class="col-md-5">
-                          <label class="control-label" for="StartDate">শুরুর তারিখ</label>
+                          <label class="control-label" id="StartDatelevel" for="StartDate">শুরুর তারিখ</label>
                         </div>
                         <div class="col-md-7">
-                          <input type="text" class="datepicker form-control" id="StartDate" name="StartDate"/>
+                          <input type="text" class="datepicker form-control" id="StartDate" name="StartDate" autocomplete="off" />
                         </div><br><br>
                         <div class="col-md-5">
-                          <label class="control-label" for="endDate">শেষের তারিখ</label>
+                          <label class="control-label" id="endDatelevel" for="endDate">শেষের তারিখ</label>
                         </div>
                         <div class="col-md-7">
-                          <input type="text" class="datepicker form-control" id="endDate" name="endDate"/>
+                          <input type="text" class="datepicker form-control" id="endDate" name="endDate" autocomplete="off"/>
                         </div><br><br>
                      
 
-                      <div class="col-md-5">
+                      {{-- <div class="col-md-5">
                              <label class=" control-label" id="ProjectLevel" for="CategoryLevel">প্রকল্পের নাম</label>
                       </div>
                       <div class="col-md-7">
@@ -353,7 +353,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                               <select id="Section"  name="SectionName" class="form-control">
                                        <option value="">নির্বাচন করুন</option>
                                  </select>
-                              </div>
+                              </div>--}}
                          
 
                           <div class="col-md-5">
@@ -362,8 +362,11 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                              <div class="col-md-7">
                               <select id="Employee"  name="EmployeeName" class="form-control">
                                        <option value="">নির্বাচন করুন</option>
+                                       @foreach($EmployeeAttendanceViews as $item)
+                                               <option value="{{$item->EmployeeName}}">{{$item->EmployeeName}}</option>
+                                               @endforeach
                                  </select>
-                              </div>
+                              </div> 
                             </div>
 
                       {{-- right part --}}
@@ -371,7 +374,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                         <div>
                           
                                  <input type="radio" name="purchasereport" id="DatetoDate" value="1" ng-checked="true" ng-click="DateWiseallPurchase()" checked />
-                                তারিখ থেকে তারিখ সমস্ত কর্মচারী উপস্থিতি রিপোর্ট
+                                তারিখ অনুযায়ী সমস্ত কর্মচারী উপস্থিতি রিপোর্ট
                             
                         </div><br>
                         <script>
@@ -379,14 +382,15 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                     $("#DatetoDate").click(function(){
                                      $("#StartDatelevel").show();
                                      $("#StartDate").show();
-                                     $("#ProjectLevel").hide();
-                                     $("#Project").hide();
-                                     $("#DivisionLevel").hide();
-                                     $("#Division").hide();
-                                     $("#endDate").show();
-                                     $("#endDatelevel").show();
-                                     $("#SectionLevel").hide();
-                                     $("#Section").hide();
+                                     // $("#ProjectLevel").hide();
+                                     // $("#Project").hide();
+                                     // $("#DivisionLevel").hide();
+                                     // $("#Division").hide();
+                                     $("#endDatelevel").hide();
+                                     $("#endDate").hide();
+                                     
+                                     // $("#SectionLevel").hide();
+                                     // $("#Section").hide();
                                      $("#EmployeeLevel").hide();
                                      $("#Employee").hide();
                                     });
@@ -396,7 +400,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                         <div>
                          
                                  <input type="radio" name="purchasereport" id="ProjectWise" value="2" ng-checked="true" ng-click="DateWiseallPurchase()"/>
-                              প্রকল্পের ভিত্তিতে তারিখ থেকে তারিখ সমস্ত কর্মচারী উপস্থিতি রিপোর্ট
+                               তারিখ থেকে তারিখ অনুযায়ী সমস্ত কর্মচারী উপস্থিতি রিপোর্ট
                              </label>
                         </div><br>
 
@@ -405,14 +409,14 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                     $("#ProjectWise").click(function(){
                                      $("#StartDatelevel").show();
                                      $("#StartDate").show();
-                                     $("#ProjectLevel").show();
-                                     $("#Project").show();
-                                     $("#DivisionLevel").hide();
-                                     $("#Division").hide();
+                                     // $("#ProjectLevel").hide();
+                                     // $("#Project").hide();
+                                     // $("#DivisionLevel").hide();
+                                     // $("#Division").hide();
                                      $("#endDate").show();
                                      $("#endDatelevel").show();
-                                     $("#SectionLevel").hide();
-                                     $("#Section").hide();
+                                     // $("#SectionLevel").hide();
+                                     // $("#Section").hide();
                                      $("#EmployeeLevel").hide();
                                      $("#Employee").hide();
                                     });
@@ -422,7 +426,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                         <div>
                           
                                  <input type="radio" name="purchasereport" id="DivisionWise" value="3" ng-checked="true" ng-click="DateWiseallPurchase()" />
-                                 বিভাগ অনুযায়ী তারিখ থেকে তারিখ সমস্ত কর্মচারী উপস্থিতি রিপোর্ট
+                                 তারিখ থেকে তারিখ এবং কর্মচারীর নাম অনুযায়ী সমস্ত কর্মচারী উপস্থিতি রিপোর্ট
                              
                         </div><br>
 
@@ -431,21 +435,21 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                     $("#DivisionWise").click(function(){
                                      $("#StartDatelevel").show();
                                      $("#StartDate").show();
-                                     $("#ProjectLevel").hide();
-                                     $("#Project").hide();
-                                     $("#DivisionLevel").show();
-                                     $("#Division").show();
+                                     // $("#ProjectLevel").hide();
+                                     // $("#Project").hide();
+                                     // $("#DivisionLevel").show();
+                                     // $("#Division").show();
                                      $("#endDate").show();
                                      $("#endDatelevel").show();
-                                     $("#SectionLevel").hide();
-                                     $("#Section").hide();
-                                     $("#EmployeeLevel").hide();
-                                     $("#Employee").hide();
+                                     // $("#SectionLevel").hide();
+                                     // $("#Section").hide();
+                                     $("#EmployeeLevel").show();
+                                     $("#Employee").show();
                                     });
                                   });
                         </script>
 
-                        <div>
+                        {{-- <div>
                           
                                  <input type="radio" name="purchasereport" id="SectionWise" value="4" ng-checked="true" ng-click="DateWiseallPurchase()" />
                                  শাখা অনুযায়ী তারিখ থেকে তারিখ সমস্ত কর্মচারী উপস্থিতি রিপোর্ট
@@ -521,7 +525,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                      $("#Employee").hide();
                                     });
                                   });
-                        </script>
+                        </script> --}}
                       </div>
                       <div class="row">
                      <button formtarget="_blank" href="{{route('reporting.attendanceReportInvoice') }}" class="btn btn-info" style="margin-left: 40%; font-size:18px" type="submit"  id="btnPreview" ng-click="   Preview()">
