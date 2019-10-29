@@ -20,6 +20,7 @@ use App\Product_receive;
 //use APP\Product_receive_detail;
 use App\productReceiveMaster;
 use App\tblpurchase;
+use App\tblpurchasedetails;
 
 use PDF;
 use Str;

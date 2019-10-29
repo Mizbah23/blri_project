@@ -438,7 +438,7 @@ $( function() {
                             <label for="">পরিমাণ</label>
                           </div>
                           <div class="col-lg-8">
-                             <input class="form-control" type="number" name="quantity" placeholder="অবশ্যই পূরণ করুন" value="{{old('quantity')}}" required>
+                             <input class="form-control" type="number" name="quantity" placeholder="অবশ্যই পূরণ করুন" value="{{old('quantity')}}" required autocomplete="off">
                                 <div class="error" style="color: red">{{$errors->first('quantity')}}</div>
                           </div><br><br>
                          
@@ -986,7 +986,7 @@ $( function() {
     function showBrand() {
       var selectedCategory=$("#categoryName").val();
       console.log(selectedCategory);
-      $('#brandName').html('<option value="">Select a Brand</option>');
+      $('#brandName').html('<option value="">নির্বাচন করুন</option>');
       if(brands!=undefined){
         brands.forEach(brand => {
           if(brand.category_id==selectedCategory)
@@ -999,7 +999,7 @@ $( function() {
     function showProductName(){
       var selectedProdut=$("#productName").val();//
       console.log(selectedCategory);
-      $('#productName').html('<option value="">Select a Product</option>');
+      $('#productName').html('<option value="">নির্বাচন করুন</option>');
       if(products!=undefined){
         products.forEach(product => {
           if(product.brand_id==selectedCategory)
@@ -1010,7 +1010,7 @@ $( function() {
 
       function showProductCode() {
        var selectedProduct=$("#productName").val();
-       $("#productCode").html('<option value="">Select Product Code</option>');
+       $("#productCode").html('<option value="">নির্বাচন করুন</option>');
        if(products!=undefined){
         var i=0;
         var productId;

@@ -4,8 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Adjustment extends Model
+class requisitiondetails extends Model
 {
     //
-    protected $table = 'adjustmentsmenu';
 }

@@ -509,16 +509,16 @@
                   <table id="example" class="table table-responsive table-hover table-striped table-bordered table-condensed">
                    <thead>
                       <tr class="row bg-primary">
-                      <th class="col-lg-1 text-center">#</th>
+                      <th class="col-lg-1 text-center">#Sl</th>
                       <th class="col-lg-2 text-center">কর্মকর্তার নাম</th>
-                      <th class="col-lg-2 text-center">পদবি</th>
+                      <th class="col-lg-1 text-center">পদবি</th>
                       <th class="col-lg-1 text-center">অনুষদ</th>
                       <th class="col-lg-1 text-center">ঠিকানা</th>
                       <th class="col-lg-1 text-center">যোগাযোগ</th>
                       <th class="col-lg-1 text-center">যোগদানের তারিখ</th>
                       <th class="col-lg-1 text-center">জন্ম তারিখ</th>
                       <th class="col-lg-1 text-center">মন্তব্য</th>
-                      <th>সম্পাদনা </th>
+                      <th class="col-lg-1 text-center">সম্পাদনা </th>
                     </tr>
                    </thead>
                    <tbody>
