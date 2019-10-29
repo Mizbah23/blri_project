@@ -12,7 +12,11 @@ use App\Adjustment;
 use App\EmployeeInfoView;
 use App\Section;
 use App\Designation;
+use App\Project;
+use App\EmployeeInformation;
 use PDF;
+use Input;
+use DB;
 
 class employeereportController extends Controller
 {
@@ -27,6 +31,8 @@ class employeereportController extends Controller
         $adjustments=Adjustment::all();
         $designations=Designation::all();
         $emplyoeeinfo=EmployeeInfoView::all();
+        $projects=Project::all();
+        $emplyoee=EmployeeInformation::all();
 
         //dd($sections[0]->division);
         return view('reporting.employeeView report')
@@ -38,6 +44,8 @@ class employeereportController extends Controller
               ->with('emplyoeeinfo',$emplyoeeinfo)
               ->with('sections',$sections)
               ->with('designations',$designations)
+              ->with('projects',$projects)
+              ->with('emplyoee',$emplyoee)
               ->with('adjustments',$adjustments);
     }
 
@@ -49,28 +57,55 @@ class employeereportController extends Controller
                 ];
 
  					    if($req->employee_report == 1){
-                  $emplyoeeinfo = EmployeeInfoView::all();
-                  $pdf = PDF::loadView('reporting.employee information report.employee information report department wise',['emplyoeeinfo'=>$emplyoeeinfo]);
+                  $designationId = Input::get('designationName');
+                  $emplyoeeinfo = DB::Select(DB::raw("SELECT * FROM `employeeinfoview` WHERE designation_id = $designationId"));
+                  if($emplyoeeinfo){
+                    $pdf = PDF::loadView('reporting.employee information report.employee information report department wise',['emplyoeeinfo'=>$emplyoeeinfo]);
                   return $pdf->stream('emplyoeeInformation.pdf');
+                  }
+                  else{
+                    return 'There is no data available';
+                  }
               }
 
               elseif ($req->employee_report == 2) {
-                  $emplyoeeinfo = EmployeeInfoView::all();
-                  $pdf = PDF::loadView('reporting.employee information report.employee information report section wise',['emplyoeeinfo'=>$emplyoeeinfo]);
-                  return $pdf->stream('emplyoeeInformation.pdf');
+                  $sectionID = Input::get('sectionName');
+                  $emplyoeeinfo = DB::Select(DB::raw("SELECT * FROM `employeeinfoview` WHERE SectionID = $sectionID"));
+                  if($emplyoeeinfo){
+                    $pdf = PDF::loadView('reporting.employee information report.employee information report section wise',['emplyoeeinfo'=>$emplyoeeinfo]);
+                    return $pdf->stream('emplyoeeInformation.pdf');
+                  }
+                  else{
+                    return 'There is no data available';
+                  }
+
               }
 
               elseif ($req->employee_report == 3) {
-                  $emplyoeeinfo = EmployeeInfoView::all();
-                  $pdf = PDF::loadView('reporting.employee information report.employee information report project wise',['emplyoeeinfo'=>$emplyoeeinfo]);
+                  $project = Input::get('project');
+                  $emplyoeeinfo = DB::Select(DB::raw("SELECT * FROM `employeeinfoview` WHERE projectName = '$project'"));
+
+                  if($emplyoeeinfo){
+                    $pdf = PDF::loadView('reporting.employee information report.employee information report project wise',['emplyoeeinfo'=>$emplyoeeinfo]);
                   return $pdf->stream('emplyoeeInformation.pdf');
+                  }
+                  else{
+                    return 'There is no data available';
+                  }
               }
 
               elseif($req->employee_report == 4) {
-                  $emplyoeeinfo = EmployeeInfoView::all();
-                  // $emplyoeeinfo = EmployeeInfoView::find($id);
-                  $pdf = PDF::loadView('reporting.employee information report.employee information report employee wise',['emplyoeeinfo'=>$emplyoeeinfo]);
-                  return $pdf->stream('emplyoeeInformation.pdf');
+                  $name_id = Input::get('name');
+                  $emplyoeeinfo = DB::Select(DB::raw("SELECT * FROM employeeinfoview WHERE
+                     EmployeeID = $name_id"));
+
+                  if($emplyoeeinfo){
+                    $pdf = PDF::loadView('reporting.employee information report.employee information report employee wise',['emplyoeeinfo'=>$emplyoeeinfo]);
+                     return $pdf->stream('emplyoeeInformation.pdf');
+                  }
+                  else{
+                    return 'There is no data available';
+                  }
               }
 
       }
