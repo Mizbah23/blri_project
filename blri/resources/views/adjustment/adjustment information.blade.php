@@ -471,7 +471,7 @@ $( function() {
                               <th class="col-lg-2 text-center">পরিমাণ</th>
                               <th class="col-lg-2 text-center">সমন্বয়ের ধরন</th>
                             </tr>
-                            @if (count($adjustmentInfoLists)>0)
+                            @if(Session::has('user'))
                               @foreach ($adjustmentInfoLists as $item)
                               <tr class="row" align="center">
                                 <td><a href="#" onclick="handleEdit({{$item->id}})"><i class="fa fa-edit" style="font-size:24px;"></i></a></td>
@@ -497,7 +497,7 @@ $( function() {
                 
                 
                     </div>
-
+                  @if (count($adjustmentInfoLists)>0)
                 <div class="text-center" id="saveButton">
                   <br><br><br>
                     <button type="button" class=" btn btn-info" onclick="savedata()"> সংরক্ষণ করুন</button> 
@@ -505,8 +505,9 @@ $( function() {
                         <button type="button" class="btn btn-success">
                           <a href="{{route('adjustment.adjustmentInvoice') }}" target="_blank" style="color: white;text-decoration: none;">
                         প্রিন্ট করুন</a></button>
+
                 </div>
-                                    
+                    @endif                
                   </div> 
                </div> 
 

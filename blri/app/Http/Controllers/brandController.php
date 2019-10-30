@@ -10,7 +10,7 @@ use App\SecurityType;
 use App\ProductReceiveType;
 use App\ProductDistribution;
 use App\Reporting;
-use App\Adjustment;
+use App\AdjustmentMenu;
 
 class brandController extends Controller
 {
@@ -22,7 +22,7 @@ class brandController extends Controller
     $securitytypes=SecurityType::all();
     $productreceivetypes=ProductReceiveType::all();
     $productdistributions=ProductDistribution::all();
-    $adjustments=Adjustment::all();
+    $adjustments=AdjustmentMenu::all();
     $reportings=Reporting::all();
 
     // $brandNames=$brands->unique('brandName')->pluck('brandName');//Get unique brandName
@@ -56,7 +56,7 @@ class brandController extends Controller
     $categories=Category::all();
     $productreceivetypes=ProductReceiveType::all();
     $productdistributions=ProductDistribution::all();
-    $adjustments=Adjustment::all();
+    $adjustments=AdjustmentMenu::all();
     $reportings=Reporting::all();
     $brand=Brand::find($id);
     return view('setup.brandedit')->with('categories',$categories)->with('setuptypes',$setuptypes)->with('brand',$brand)->with('securitytypes',$securitytypes)->with('productreceivetypes',$productreceivetypes)->with('productdistributions',$productdistributions)->with('adjustments',$adjustments)->with('reportings',$reportings);

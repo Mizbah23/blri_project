@@ -13,27 +13,20 @@ class CreateAdjustmentTable extends Migration
      */
     public function up()
     {
-        Schema::dropIfExists('adjustment');
         Schema::create('adjustment', function (Blueprint $table) {
             $table->bigIncrements('AdjustmentID');
-            
             $table->unsignedBigInteger('Creator');
-            $table->unsignedBigInteger('AdjustmentTypeID');
             
             $table->integer('CompanyID')->default(1);
             $table->integer('AdjustmentNo')->nullable();
             $table->date('AdjustmentDate');
-            $table->timestamp('CreationDate')->useCurrent();
+            $table->string('AdjustmentTypeID');
             $table->string('Reason');
-          
-            $table->string('Modifier')->nullable();
+            $table->timestamp('CreationDate')->useCurrent();
             $table->timestamp('ModificationDate')->useCurrent();
             $table->boolean('Active')->default(1);
             
             $table->foreign('Creator')->references('id')->on('users');
-            $table->foreign('AdjustmentTypeID')->references('AdjustmentTypeID')->on('adjustmenttype');
-
-           
 
             $table->timestamps();
         });

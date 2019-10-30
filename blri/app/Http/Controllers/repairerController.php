@@ -9,7 +9,7 @@ use App\Repairer;
 use App\ProductReceiveType;
 use App\ProductDistribution;
 use App\Reporting;
-use App\Adjustment;
+use App\AdjustmentMenu;
 class repairerController extends Controller
 {
       public function index(){
@@ -19,7 +19,7 @@ class repairerController extends Controller
       $productreceivetypes=ProductReceiveType::all();
       $productdistributions=ProductDistribution::all();
       $reportings=Reporting::all();
-      $adjustments=Adjustment::all();
+      $adjustments=AdjustmentMenu::all();
        
         //dd($sections[0]->division);
         return view('setup.repairer info')->with('setuptypes',$setuptypes)->with('securitytypes',$securitytypes)->with('repairers',$repairers)->with('productreceivetypes',$productreceivetypes)->with('productdistributions',$productdistributions)->with('adjustments', $adjustments)->with('reportings',$reportings);
@@ -47,7 +47,7 @@ class repairerController extends Controller
               $productreceivetypes=ProductReceiveType::all();
               $productdistributions=ProductDistribution::all();
               $reportings=Reporting::all();
-              $adjustments=Adjustment::all();
+              $adjustments=AdjustmentMenu::all();
               $repairer=Repairer::find($id);
               return view('setup.repaireredit')->with('repairer',$repairer)
                                                ->with('productreceivetypes',$productreceivetypes)

@@ -8,7 +8,7 @@ use App\SecurityType;
 use App\Supplier;
 use App\ProductReceiveType;
 use App\ProductDistribution;
-use App\Adjustment;
+use App\AdjustmentMenu;
 
 use App\Reporting;
 
@@ -20,7 +20,7 @@ class supplierController extends Controller
         $suppliers=Supplier::all();
         $productreceivetypes=ProductReceiveType::all();
         $productdistributions=ProductDistribution::all();
-        $adjustments=Adjustment::all();
+        $adjustments=AdjustmentMenu::all();
         $reportings=Reporting::all();
         //dd($sections[0]->division);
         return view('setup.supplier')->with('setuptypes',$setuptypes)
@@ -64,7 +64,7 @@ class supplierController extends Controller
               $suppliers=Supplier::all();
               $productreceivetypes=ProductReceiveType::all();
               $productdistributions=ProductDistribution::all();
-              $adjustments=Adjustment::all();
+              $adjustments=AdjustmentMenu::all();
               $reportings=Reporting::all();
               //$productreceivetypes=ProductReceiveType::all();
               $supplier=Supplier::find($id);

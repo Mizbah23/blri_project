@@ -8,7 +8,7 @@ use App\SecurityType;
 use App\ProductReceiveType;
 use App\ProductDistribution;
 use App\Reporting;
-use App\Adjustment;
+use App\AdjustmentMenu;
 use App\ProductInfo;
 use App\Category;
 use App\Brand;
@@ -23,7 +23,7 @@ class productserialinfoController extends Controller
         $securitytypes=SecurityType::all();
         $productreceivetypes=ProductReceiveType::all();
         $productdistributions=ProductDistribution::all();
-        $adjustments=Adjustment::all();
+        $adjustments=AdjustmentMenu::all();
         $reportings=Reporting::all();
         $products=ProductInfo::all();
         $categories=Category::all();
@@ -67,7 +67,7 @@ class productserialinfoController extends Controller
         $securitytypes=SecurityType::all();
         $productreceivetypes=ProductReceiveType::all();
         $productdistributions=ProductDistribution::all();
-        $adjustments=Adjustment::all();
+        $adjustments=AdjustmentMenu::all();
         $reportings=Reporting::all();
         $products=ProductInfo::all();
         $categories=Category::all();

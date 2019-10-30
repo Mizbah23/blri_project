@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use App\User;
 use Validator;
 use App\setuptype;
-use App\Adjustment;
+use App\AdjustmentMenu;
 use App\ProductInfo;
 use App\SecurityType;
 use App\ProductReceiveType;
@@ -25,7 +25,7 @@ class adjustmentinformationController extends Controller
       $productreceivetypes=ProductReceiveType::all();
       $productdistributions=ProductDistribution::all();
       $products = ProductInfo::all();
-      $adjustments=Adjustment::all();
+      $adjustments=AdjustmentMenu::all();
       $reportings=Reporting::all();
       $adjustmentInfoLists=AdjustmentInformationList::all();
 

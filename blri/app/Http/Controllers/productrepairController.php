@@ -8,7 +8,7 @@ use App\setuptype;
 use App\SecurityType;
 use App\ProductReceiveType;
 use App\ProductDistribution;
-use App\Adjustment;
+use App\AdjustmentMenu;
 use App\Reporting;//model name;
 use App\User;
 use App\EmployeeInformation;
@@ -27,7 +27,7 @@ class productrepairController extends Controller
         $securitytypes=SecurityType::all();
         $productreceivetypes=ProductReceiveType::all();
         $productdistributions=ProductDistribution::all();
-        $adjustments=Adjustment::all();
+        $adjustments=AdjustmentMenu::all();
         $reportings=Reporting::all();
         $categories=Category::all();
         $productinfos=ProductInfo::all();
@@ -101,7 +101,7 @@ class productrepairController extends Controller
         $securitytypes=SecurityType::all();
         $productreceivetypes=ProductReceiveType::all();
         $productdistributions=ProductDistribution::all();
-        $adjustments=Adjustment::all();
+        $adjustments=AdjustmentMenu::all();
         $reportings=Reporting::all();
         $categories=Category::all();
         $productinfos=ProductInfo::all();

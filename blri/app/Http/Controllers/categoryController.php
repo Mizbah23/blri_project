@@ -8,7 +8,7 @@ use App\Category;
 use App\SecurityType;
 use App\ProductReceiveType;
 use App\ProductDistribution;
-use App\Adjustment;
+use App\AdjustmentMenu;
 use App\Reporting;
 
 
@@ -21,7 +21,7 @@ class categoryController extends Controller
    $securitytypes=SecurityType::all();
    $productdistributions=ProductDistribution::all();
    $productreceivetypes=ProductReceiveType::all();
-   $adjustments=Adjustment::all();
+   $adjustments=AdjustmentMenu::all();
    $reportings=Reporting::all();
 
    return view('setup.category')
@@ -56,7 +56,7 @@ class categoryController extends Controller
            $setuptypes= setuptype::all();
            $productdistributions=ProductDistribution::all();
            $productreceivetypes=ProductReceiveType::all();
-           $adjustments=Adjustment::all();
+           $adjustments=AdjustmentMenu::all();
            $reportings=Reporting::all();
     	     $category=Category::find($id);
     	       return view('setup.catedit')

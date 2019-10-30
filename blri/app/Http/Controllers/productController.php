@@ -11,7 +11,7 @@ use App\ProductInfo;
 use Validator;
 use App\ProductReceiveType;
 use App\ProductDistribution;
-use App\Adjustment;
+use App\AdjustmentMenu;
 use App\Reporting;
 
 class productController extends Controller
@@ -24,7 +24,7 @@ class productController extends Controller
     $productinfos=ProductInfo::all();
     $productreceivetypes=ProductReceiveType::all();
     $productdistributions=ProductDistribution::all();
-    $adjustments=Adjustment::all();
+    $adjustments=AdjustmentMenu::all();
     $reportings=Reporting::all();
     // dd($productinfos[0]->brand);
     //dd($sections[0]->division);
@@ -94,7 +94,7 @@ class productController extends Controller
     $brands=Brand::all();
     $productinfo=ProductInfo::find($id);
     $productdistributions=ProductDistribution::all();
-    $adjustments=Adjustment::all();
+    $adjustments=AdjustmentMenu::all();
     $reportings=Reporting::all();
 
     return view('setup.productEdit')

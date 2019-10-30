@@ -368,10 +368,10 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                              <label class="control-label" id="EmployeeLevel" for="CategoryLevel">কর্মচারীর নাম</label>
                           </div>
                              <div class="col-md-7">
-                              <select id="Employee"  name="EmployeeName" class="form-control">
-                                       <option value="">নির্বাচন করুন</option>
+                              <select id="Employee"  name="EmployeeId" class="form-control">
+                                       <option >নির্বাচন করুন</option>
                                        @foreach($EmployeeAttendanceViews as $item)
-                                               <option value="{{$item->EmployeeName}}">{{$item->EmployeeName}}</option>
+                                               <option value="{{ $item->EmployeeID }}">{{$item->EmployeeName}}</option>
                                                @endforeach
                                  </select>
                               </div> 

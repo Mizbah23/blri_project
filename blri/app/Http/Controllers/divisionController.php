@@ -9,7 +9,7 @@ use App\SecurityType;
 use App\ProductReceiveType;
 use App\ProductDistribution;
 use App\Reporting;
-use App\Adjustment;
+use App\AdjustmentMenu;
 use Illuminate\Support\Facades\DB;
 
 
@@ -22,7 +22,7 @@ class divisionController extends Controller
       $productreceivetypes=ProductReceiveType::all();
       $productdistributions=ProductDistribution::all();
       $reportings=Reporting::all();
-      $adjustments=Adjustment::all();
+      $adjustments=AdjustmentMenu::all();
 
 
       return view('setup.division')
@@ -58,7 +58,7 @@ class divisionController extends Controller
               $productreceivetypes=ProductReceiveType::all();
               $productdistributions=ProductDistribution::all();
               $reportings=Reporting::all();
-              $adjustments=Adjustment::all();
+              $adjustments=AdjustmentMenu::all();
               $division=division::find($id);
     	        return view('setup.divedit')
               ->with('setuptypes',$setuptypes)

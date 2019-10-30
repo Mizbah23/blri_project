@@ -7,7 +7,7 @@ use App\setuptype;
 use App\SecurityType;
 use App\ProductReceiveType;
 use App\ProductDistribution;
-use App\Adjustment;
+use App\AdjustmentMenu;
 use App\Reporting;
 
 
@@ -21,7 +21,7 @@ class productdistributionController extends Controller
     $securitytypes= SecurityType::all();
     $productreceivetypes=ProductReceiveType::all();
     $productdistributions=ProductDistribution::all();
-    $adjustments=Adjustment::all();
+    $adjustments=AdjustmentMenu::all();
     $reportings=Reporting::all();
 
 
