@@ -19,15 +19,15 @@ class CreateRequisitioninfoTable extends Migration
           $table->date('RequisitionDate');
           $table->unsignedBigInteger('UserID');
           $table->unsignedBigInteger('DepartmentID');
-          $table->string('Status');
-          $table->string('ApprovedBy')->nullable();
+          $table->string('Status')->nullable();
+          $table->unsignedBigInteger('ApprovedBy')->nullable();
           $table->timestamp('ApprovedDate')->useCurrent();;
           $table->string('CreateBy')->nullable();
           $table->timestamp('CreateDate')->useCurrent();
 
            $table->foreign('UserID')->references('id')->on('users');
            $table->foreign('DepartmentID')->references('id')->on('divisions');
-           
+           $table->foreign('ApprovedBy')->references('id')->on('employee_information');
            $table->timestamps();
         });
     }
