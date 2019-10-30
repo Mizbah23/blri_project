@@ -16,6 +16,9 @@ use App\Brand;
 use Validator;
 use Illuminate\Validation\Rule;
 use App\RequisitionSave;
+use App\requisitioninfo;
+use App\requisitiondetails;
+
 
 class requisitioninfoController extends Controller
 {
@@ -144,13 +147,21 @@ class requisitioninfoController extends Controller
             $requisitionlists=RequisitionList::all();
             $k=0;
             foreach ($requisitionlists as $key => $item) {
-                $saveNewRequisition=new RequisitionSave;
-                $saveNewRequisition->employee_information_id=$item->employee_information_id;
-                $saveNewRequisition->product_info_id=$item->product_info_id;
-                $saveNewRequisition->quantity=$item->quantity;
-                $saveNewRequisition->user_id=$item->user_id;
-                $saveNewRequisition->requisitionDate=$item->requisitionDate;
+                $saveNewRequisition=new requisitioninfo;
+                $saveNewRequisition->ApprovedBy=$item->employee_information_id;
+                //$saveNewRequisition->product_info_id=$item->product_info_id;
+                $saveNewRequisition->DepartmentID='1';
+                //$saveNewRequisition->quantity=$item->quantity;
+                $saveNewRequisition->UserID=$item->user_id;
+                $saveNewRequisition->CreateBy=$item->user_id;
+                $saveNewRequisition->RequisitionDate=$item->requisitionDate;
                 $saveNewRequisition->save();
+
+                $saveNewRequisitionDetails = new requisitiondetails();
+                $saveNewRequisitionDetails->RequisitionId=$saveNewRequisition->id;
+                $saveNewRequisitionDetails->ProductID = $item->product_info_id;                
+                $saveNewRequisitionDetails->RequireQty = $item->quantity;
+                $saveNewRequisitionDetails->save();                                   
                 $findProduct=ProductInfo::find($item->product_info_id);
                 if ($findProduct) {
                     $findProduct->stock=$findProduct->stock + $item->quantity;
