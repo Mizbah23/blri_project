@@ -57,8 +57,8 @@ class employeereportController extends Controller
                 ];
 
  					    if($req->employee_report == 1){
-                  $designationId = Input::get('designationName');
-                  $emplyoeeinfo = DB::Select(DB::raw("SELECT * FROM `employeeinfoview` WHERE designation_id = $designationId"));
+                  $designationName = Input::get('designationName');
+                  $emplyoeeinfo = DB::Select(DB::raw("SELECT * FROM `employeeinfoview` WHERE designationName = '$designationName'"));
                   if($emplyoeeinfo){
                     $pdf = PDF::loadView('reporting.employee information report.employee information report department wise',['emplyoeeinfo'=>$emplyoeeinfo]);
                   return $pdf->stream('emplyoeeInformation.pdf');
@@ -69,8 +69,8 @@ class employeereportController extends Controller
               }
 
               elseif ($req->employee_report == 2) {
-                  $sectionID = Input::get('sectionName');
-                  $emplyoeeinfo = DB::Select(DB::raw("SELECT * FROM `employeeinfoview` WHERE SectionID = $sectionID"));
+                  $sectionName = Input::get('sectionName');
+                  $emplyoeeinfo = DB::Select(DB::raw("SELECT * FROM `employeeinfoview` WHERE sectionName = '$sectionName'"));
                   if($emplyoeeinfo){
                     $pdf = PDF::loadView('reporting.employee information report.employee information report section wise',['emplyoeeinfo'=>$emplyoeeinfo]);
                     return $pdf->stream('emplyoeeInformation.pdf');
@@ -95,9 +95,9 @@ class employeereportController extends Controller
               }
 
               elseif($req->employee_report == 4) {
-                  $name_id = Input::get('name');
+                  $name = Input::get('name');
                   $emplyoeeinfo = DB::Select(DB::raw("SELECT * FROM employeeinfoview WHERE
-                     EmployeeID = $name_id"));
+                     EmployeeName = '$name'"));
 
                   if($emplyoeeinfo){
                     $pdf = PDF::loadView('reporting.employee information report.employee information report employee wise',['emplyoeeinfo'=>$emplyoeeinfo]);
