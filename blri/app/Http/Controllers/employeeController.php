@@ -11,7 +11,7 @@ use App\District;
 use App\EmployeeInformation;
 use App\ProductReceiveType;
 use App\ProductDistribution;
-use App\Adjustment;
+use App\AdjustmentMenu;
 use App\Reporting;
 
 use illuminate\Support\Str;
@@ -30,7 +30,7 @@ class employeeController extends Controller
       $employeeInformations= EmployeeInformation::all();
       $productreceivetypes=ProductReceiveType::all();
       $productdistributions=ProductDistribution::all();
-      $adjustments=Adjustment::all();
+      $adjustments=AdjustmentMenu::all();
       $reportings=Reporting::all();
 
         //dd($divisions);
@@ -116,7 +116,7 @@ class employeeController extends Controller
       $districts= District::all();
       $productreceivetypes=ProductReceiveType::all();
       $productdistributions=ProductDistribution::all();
-      $adjustments=Adjustment::all();
+      $adjustments=AdjustmentMenu::all();
       $reportings=Reporting::all();
         //dd($sections[0]->division);
       return view('setup.employeeEdit')

@@ -8,7 +8,7 @@ use App\SecurityType;
 use App\ProductReceiveType;
 use App\ProductDistribution;
 use App\Reporting;
-use App\Adjustment;
+use App\AdjustmentMenu;
 use App\EmployeeAttendanceView;
 use PDF;
 use DB;
@@ -25,7 +25,7 @@ class attendancereportController extends Controller
         $productreceivetypes=ProductReceiveType::all();
         $productdistributions=ProductDistribution::all();
         $reportings=Reporting::all();
-        $adjustments=Adjustment::all();
+        $adjustments=AdjustmentMenu::all();
         $EmployeeAttendanceViews=EmployeeAttendanceView::all();
 
         //dd($sections[0]->division);
@@ -41,7 +41,7 @@ class attendancereportController extends Controller
 
     public function invoice(Request $req){
 
-             // dd($req->StartDate);
+             // dd($req->all());
               $data = [
              'foo' => 'bar'
                 ];
@@ -63,7 +63,7 @@ class attendancereportController extends Controller
                     $endDate = Input::get("endDate");
  
                     $results = DB::select( DB::raw("SELECT * FROM `employeeattendenceview` WHERE DATE BETWEEN '$StartDate' AND '$endDate'") );
-
+                      dd($reselts->all());
                      $pdf = PDF::loadView('reporting.attendance_report.attendanceReportDateToDateWiseInvoice',['results'=>$results]);
                    return $pdf->stream('Attendance_Report_Invoice.pdf');
                   }
@@ -71,9 +71,10 @@ class attendancereportController extends Controller
 
                     $StartDate = Input::get("StartDate");
                     $endDate = Input::get("endDate");
-                    $EmployeeName = Input::get("EmployeeName");
+                    $EmployeeId = Input::get("EmployeeId");
+                    
 
-                    $results = DB::select( DB::raw("SELECT * FROM `employeeattendenceview` WHERE `EmployeeName` = '$EmployeeName' AND DATE BETWEEN '$StartDate' and '$endDate'") );
+                    $results = DB::select( DB::raw("SELECT * FROM `employeeattendenceview` WHERE `EmployeeID` = '$EmployeeId' and  DATE BETWEEN '$StartDate' AND '$endDate'"));
 
                      $pdf = PDF::loadView('reporting.attendance_report.attendanceReportStartDateToEndDateAndEmployeeWiseInvoice',['results'=>$results]);
                    return $pdf->stream('Attendance_Report_Invoice.pdf');

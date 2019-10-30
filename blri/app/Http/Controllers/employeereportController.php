@@ -8,7 +8,7 @@ use App\SecurityType;
 use App\ProductReceiveType;
 use App\ProductDistribution;
 use App\Reporting;
-use App\Adjustment;
+use App\AdjustmentMenu;
 use App\EmployeeInfoView;
 use App\Section;
 use App\Designation;
@@ -28,7 +28,7 @@ class employeereportController extends Controller
         $productdistributions=ProductDistribution::all();
         $reportings=Reporting::all();
         $sections=Section::all();
-        $adjustments=Adjustment::all();
+        $adjustments=AdjustmentMenu::all();
         $designations=Designation::all();
         $emplyoeeinfo=EmployeeInfoView::all();
         $projects=Project::all();

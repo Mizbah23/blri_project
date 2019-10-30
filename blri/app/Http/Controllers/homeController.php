@@ -7,7 +7,7 @@ use App\setuptype;
 use App\SecurityType;
 use App\ProductReceiveType;
 use App\ProductDistribution;
-use App\Adjustment;
+use App\AdjustmentMenu;
 use App\Reporting;//model name;
 use App\User;
 use App\EmployeeInformation;
@@ -22,7 +22,7 @@ class homeController extends Controller
         $securitytypes=SecurityType::all();
         $productreceivetypes=ProductReceiveType::all();
         $productdistributions=ProductDistribution::all();
-        $adjustments=Adjustment::all();
+        $adjustments=AdjustmentMenu::all();
         $reportings=Reporting::all();
         $users=User::all();
         //$employeeinfo=EmployeeInformation::all();
