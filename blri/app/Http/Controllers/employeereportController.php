@@ -10,6 +10,7 @@ use App\ProductDistribution;
 use App\Reporting;
 use App\AdjustmentMenu;
 use App\EmployeeInfoView;
+use App\Employeeinfoprojectwiseview;
 use App\Section;
 use App\Designation;
 use App\Project;
@@ -83,7 +84,7 @@ class employeereportController extends Controller
 
               elseif ($req->employee_report == 3) {
                   $project = Input::get('project');
-                  $emplyoeeinfo = DB::Select(DB::raw("SELECT * FROM `employeeinfoview` WHERE projectName = '$project'"));
+                  $emplyoeeinfo = DB::Select(DB::raw("SELECT * FROM `employeeinfoprojectwiseview` WHERE projectName = '$project'"));
 
                   if($emplyoeeinfo){
                     $pdf = PDF::loadView('reporting.employee information report.employee information report project wise',['emplyoeeinfo'=>$emplyoeeinfo]);
