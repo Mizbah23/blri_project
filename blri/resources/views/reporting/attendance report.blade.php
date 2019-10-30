@@ -299,17 +299,25 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
         <!-- //header-ends -->
  
     <!-- main content start-->
+
     <div id="page-wrapper">
+      @if(session('response'))
+                <div class="col-mid-2 alert alert-danger">
+                  {{@session('response')}}
+                </div>
+                @endif
       <div class="main-page">
         <div class=" form-grids row form-grids-right">
             <div class="widget-shadow " data-example-id="basic-forms"> 
               <div class="form-title bg-primary text-white">
+                
                 <h3 class="">উপস্থিতি প্রতিবেদন</h3>
               </div>
               <div class="form-body">
 
                 <form class="form-horizontal" method="post"> <div class="form-group"> 
                   @csrf
+
                     <div class="row">
                       {{-- left part --}}
                       <div class="col-md-6">
@@ -373,7 +381,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                       <div class="col-md-6">
                         <div>
                           
-                                 <input type="radio" name="purchasereport" id="DatetoDate" value="1" ng-checked="true" ng-click="DateWiseallPurchase()" checked />
+                                 <input type="radio" name="attendanceReport" id="DatetoDate" value="1" ng-checked="true" ng-click="DateWiseallPurchase()" checked />
                                 তারিখ অনুযায়ী সমস্ত কর্মচারী উপস্থিতি রিপোর্ট
                             
                         </div><br>
@@ -399,7 +407,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 
                         <div>
                          
-                                 <input type="radio" name="purchasereport" id="ProjectWise" value="2" ng-checked="true" ng-click="DateWiseallPurchase()"/>
+                                 <input type="radio" name="attendanceReport" id="ProjectWise" value="2" ng-checked="true" ng-click="DateWiseallPurchase()"/>
                                তারিখ থেকে তারিখ অনুযায়ী সমস্ত কর্মচারী উপস্থিতি রিপোর্ট
                              </label>
                         </div><br>
@@ -425,7 +433,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 
                         <div>
                           
-                                 <input type="radio" name="purchasereport" id="DivisionWise" value="3" ng-checked="true" ng-click="DateWiseallPurchase()" />
+                                 <input type="radio" name="attendanceReport" id="DivisionWise" value="3" ng-checked="true" ng-click="DateWiseallPurchase()" />
                                  তারিখ থেকে তারিখ এবং কর্মচারীর নাম অনুযায়ী সমস্ত কর্মচারী উপস্থিতি রিপোর্ট
                              
                         </div><br>
