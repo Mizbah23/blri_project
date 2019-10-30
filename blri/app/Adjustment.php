@@ -7,5 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 class Adjustment extends Model
 {
     //
-    protected $table = 'adjustmentsmenu';
+    protected $table = 'adjustments';
 }
