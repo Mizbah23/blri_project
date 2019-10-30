@@ -47,38 +47,39 @@ class attendancereportController extends Controller
                 ];
                 $EmployeeAttendanceViews=EmployeeAttendanceView::all();
 
-                  if($req->StartDate && !$req->endDate){
+                  if($req->attendanceReport == 1){
                     // $users = EmployeeAttendanceView::whereRaw('DATE >= 2019-10-27')->get();
-                    $someVariable = Input::get("StartDate");
+                    $StartDate = Input::get("StartDate");
+                    // dd("$StartDate");
 
-                    $results = DB::select( DB::raw("SELECT * FROM `employeeattendenceview` WHERE DATE = '$someVariable'") );
+                    $results = DB::select( DB::raw("SELECT * FROM `employeeattendenceview` WHERE DATE = '$StartDate'") );
 
                      $pdf = PDF::loadView('reporting.attendance_report.attendanceReportStartDateToEndDateWiseInvoice',['results'=>$results]);
                    return $pdf->stream('Attendance_Report_Invoice.pdf');
                   }
-                  else if($req->StartDate && $req->endDate ){
+                  else if($req->attendanceReport == 2){
 
                     $StartDate = Input::get("StartDate");
                     $endDate = Input::get("endDate");
-
+ 
                     $results = DB::select( DB::raw("SELECT * FROM `employeeattendenceview` WHERE DATE BETWEEN '$StartDate' AND '$endDate'") );
 
                      $pdf = PDF::loadView('reporting.attendance_report.attendanceReportDateToDateWiseInvoice',['results'=>$results]);
                    return $pdf->stream('Attendance_Report_Invoice.pdf');
                   }
-                  else if($req->StartDate && $req->endDate && $req->EmployeeName ){
+                  else if($req->attendanceReport == 3 ){
 
                     $StartDate = Input::get("StartDate");
                     $endDate = Input::get("endDate");
                     $EmployeeName = Input::get("EmployeeName");
 
-                    $results = DB::select( DB::raw("SELECT * FROM `employeeattendenceview` WHERE EmployeeName =$EmployeeName AND DATE BETWEEN '$StartDate' AND '$endDate'") );
+                    $results = DB::select( DB::raw("SELECT * FROM `employeeattendenceview` WHERE `EmployeeName` = '$EmployeeName' AND DATE BETWEEN '$StartDate' and '$endDate'") );
 
-                     $pdf = PDF::loadView('reporting.attendance_report.attendanceReportDateToDateWiseInvoice',['results'=>$results]);
+                     $pdf = PDF::loadView('reporting.attendance_report.attendanceReportStartDateToEndDateAndEmployeeWiseInvoice',['results'=>$results]);
                    return $pdf->stream('Attendance_Report_Invoice.pdf');
                   }
                   else { 
-                   return redirect('reporting.attendance report');
+                   return redirect()->route('reporting.attendance report')->with('response','অনুগ্রহপূর্বক কিছু মান প্রদান করুন');
                   }
 
       }
