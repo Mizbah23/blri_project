@@ -308,7 +308,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                 <select id="division"  name="designationName" class="form-control">
                                        <option value="">নির্বাচন করুন</option>
                                        @foreach ($designations as $designation)
-                                        <option value="{{$designation->id}}"
+                                        <option value="{{$designation->designationName}}"
                                          @if (old('designationName')==$designation->id)
                                             {{"selected"}}
                                         @endif>
@@ -324,7 +324,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                 <select id="sectionName"  name="sectionName" class="form-control">
                                   <option value="">নির্বাচন করুন</option>
                                     @foreach ($sections->unique('sectionName') as $section)
-                                        <option value="{{$section->id}}"
+                                        <option value="{{$section->sectionName}}"
                                          @if (old('sectionName')==$section->id)
                                             {{"selected"}}
                                         @endif>
@@ -356,7 +356,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                               <select id="employeeName"  name="name" class="form-control">
                                        <option value="">নির্বাচন করুন</option>
                                        @foreach ($emplyoee as $emplyoees)
-                                        <option value="{{$emplyoees->id}}"
+                                        <option value="{{$emplyoees->name}}"
                                          @if (old('name')==$emplyoees->id)
                                             {{"selected"}}
                                         @endif>
