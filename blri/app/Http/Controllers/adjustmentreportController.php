@@ -8,7 +8,7 @@ use App\SecurityType;
 use App\ProductReceiveType;
 use App\ProductDistribution;
 use App\Reporting;
-use App\Adjustment;
+use App\AdjustmentMenu;
 
 class adjustmentreportController extends Controller
 {
@@ -19,7 +19,7 @@ class adjustmentreportController extends Controller
         $productreceivetypes=ProductReceiveType::all();
         $productdistributions=ProductDistribution::all();
         $reportings=Reporting::all();
-        $adjustments = Adjustment::all();
+        $adjustments = AdjustmentMenu::all();
 
         //dd($sections[0]->division);
         return view('reporting.adjustment report')
