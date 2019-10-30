@@ -9,7 +9,7 @@ use App\Section;
 use App\SecurityType;
 use App\ProductReceiveType;
 use App\ProductDistribution;
-use App\Adjustment;
+use App\AdjustmentMenu;
 use App\Reporting;
 
 
@@ -22,7 +22,7 @@ class sectionController extends Controller
         $securitytypes=SecurityType::all();
         $productreceivetypes=ProductReceiveType::all();
         $productdistributions=ProductDistribution::all();
-        $adjustments=Adjustment::all();
+        $adjustments=AdjustmentMenu::all();
         $reportings=Reporting::all();
         
         //dd($sections[0]->division);
@@ -44,7 +44,7 @@ class sectionController extends Controller
         $divisions=division::all();
         $productreceivetypes=ProductReceiveType::all();
         $productdistributions=ProductDistribution::all();
-        $adjustments=Adjustment::all();
+        $adjustments=AdjustmentMenu::all();
         $reportings=Reporting::all();
 
         $section=Section::find($id);

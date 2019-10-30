@@ -10,7 +10,7 @@ use App\EmployeeInformation;
 use App\Project;
 use App\Emp_assign;
 use App\ProductDistribution;
-use App\Adjustment;
+use App\AdjustmentMenu;
 use App\Reporting;
 use Validator;
 use Illuminate\Validation\Rule;
@@ -25,7 +25,7 @@ class empAssignController extends Controller
 		$projects= Project::all();
 		$assignedEmployees=Emp_assign::all();
 		$productdistributions=ProductDistribution::all();
-        $adjustments=Adjustment::all();
+        $adjustments=AdjustmentMenu::all();
         $reportings=Reporting::all();
 		// dd($empAssign[0]->project);
 		// dd($empAssign[0]->employeeinfo);
@@ -103,7 +103,7 @@ class empAssignController extends Controller
 		$employeeInformations= EmployeeInformation::all();
 		$projects= Project::all();
 		$productdistributions=ProductDistribution::all();
-        $adjustments=Adjustment::all();
+        $adjustments=AdjustmentMenu::all();
         $reportings=Reporting::all();
 		$assignedEmployee=Emp_assign::find($id);
 		if($assignedEmployee){

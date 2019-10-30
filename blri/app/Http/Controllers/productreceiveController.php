@@ -11,7 +11,7 @@ use App\ProductInfo;
 use App\Supplier;
 use App\ProductReceiveList;
 use App\ProductDistribution;
-use App\Adjustment;
+use App\AdjustmentMenu;
 use App\Reporting;
 use Validator;
 use Illuminate\Validation\Rule;
@@ -37,7 +37,7 @@ class productreceiveController extends Controller
             $products=ProductInfo::all();
             $projects=Project::all();
             $productdistributions=ProductDistribution::all();
-            $adjustments=Adjustment::all();
+            $adjustments=AdjustmentMenu::all();
             $productReceiveLists=ProductReceiveList::all();
             // $ctReceiveMasters=productReceiveMaster::all();produ
             $purchases=tblpurchase::all();

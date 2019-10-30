@@ -7,7 +7,7 @@ use App\setuptype;
 use App\SecurityType;
 use App\ProductReceiveType;
 use App\ProductDistribution;
-use App\Adjustment;
+use App\AdjustmentMenu;
 use App\Reporting;
 use App\EmployeeInformation;
 use App\RequisitionList;
@@ -29,7 +29,7 @@ class requisitioninfoController extends Controller
             $securitytypes=SecurityType::all();
             $productreceivetypes=ProductReceiveType::all();
             $productdistributions=ProductDistribution::all();
-            $adjustments=Adjustment::all();
+            $adjustments=AdjustmentMenu::all();
             $reportings=Reporting::all();
             $employeeinformations=EmployeeInformation::all();
             $requisitionlists=RequisitionList::all();

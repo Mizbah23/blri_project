@@ -9,7 +9,7 @@ use App\SecurityType;
 use Illuminate\Support\Facades\DB;
 use App\ProductReceiveType;
 use App\ProductDistribution;
-use App\Adjustment;
+use App\AdjustmentMenu;
 use App\Reporting;
 
 
@@ -21,7 +21,7 @@ class districtController extends Controller
       $productreceivetypes=ProductReceiveType::all();
       $districts=District::all();
       $productdistributions=ProductDistribution::all();
-      $adjustments=Adjustment::all();
+      $adjustments=AdjustmentMenu::all();
       $reportings=Reporting::all();
 
       return view('setup.district')->with('setuptypes',$setuptypes)
@@ -61,7 +61,7 @@ class districtController extends Controller
               $securitytypes=SecurityType::all();
               $productreceivetypes=ProductReceiveType::all();
               $productdistributions=ProductDistribution::all();
-              $adjustments=Adjustment::all();
+              $adjustments=AdjustmentMenu::all();
               $reportings=Reporting::all();
 
               $district=District::find($id);

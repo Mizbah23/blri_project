@@ -8,7 +8,7 @@ use App\SecurityType;
 use App\ProductReceiveType;
 use App\ProductDistribution;
 use App\Reporting;
-use App\Adjustment;
+use App\AdjustmentMenu;
 use App\EmployeeAttendanceView;
 use PDF;
 use DB;
@@ -25,7 +25,7 @@ class attendancereportController extends Controller
         $productreceivetypes=ProductReceiveType::all();
         $productdistributions=ProductDistribution::all();
         $reportings=Reporting::all();
-        $adjustments=Adjustment::all();
+        $adjustments=AdjustmentMenu::all();
         $EmployeeAttendanceViews=EmployeeAttendanceView::all();
 
         //dd($sections[0]->division);

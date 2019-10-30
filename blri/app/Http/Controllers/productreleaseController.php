@@ -6,7 +6,7 @@ use App\Project;
 use App\division;
 use App\Reporting;
 use App\setuptype;
-use App\Adjustment;
+use App\AdjustmentMenu;
 use App\Emp_assign;
 use App\SerialInfo;
 use App\SecurityType;
@@ -38,7 +38,7 @@ class productreleaseController extends Controller
          $securitytypes= SecurityType::all();
          $productreceivetypes=ProductReceiveType::all();
          $productdistributions=ProductDistribution::all();
-         $adjustments=Adjustment::all();
+         $adjustments=AdjustmentMenu::all();
          $reportings=Reporting::all();
          $projects= Project::all();
          $divisions=division::all();

@@ -8,7 +8,7 @@ use App\SecurityType;
 use App\ProductReceiveType;
 use App\ProductDistribution;
 use App\Reporting;
-use App\Adjustment;
+use App\AdjustmentMenu;
 
 use Illuminate\Support\Facades\DB;
 
@@ -21,7 +21,7 @@ class designationController extends Controller
    $productreceivetypes=ProductReceiveType::all();
    $productdistributions=ProductDistribution::all();
    $reportings=Reporting::all();
-   $adjustments=Adjustment::all();
+   $adjustments=AdjustmentMenu::all();
 
    return view('setup.designation')
    ->with('setuptypes',$setuptypes)
@@ -54,7 +54,7 @@ class designationController extends Controller
                        $productreceivetypes=ProductReceiveType::all();
                        $productdistributions=ProductDistribution::all();
                        $reportings=Reporting::all();
-                       $adjustments=Adjustment::all();
+                       $adjustments=AdjustmentMenu::all();
 				    	         $designation=Designation::find($id);
 				    	       return view('setup.desedit')
                      ->with('designation',$designation)

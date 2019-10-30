@@ -9,7 +9,7 @@ use App\ProductReceiveType;
 use App\Project;
 use App\EmployeeInformation;
 use App\ProductDistribution;
-use App\Adjustment;
+use App\AdjustmentMenu;
 use App\Reporting;
 
 class projectController extends Controller
@@ -20,7 +20,7 @@ class projectController extends Controller
         $setuptypes= setuptype::all();
         $productreceivetypes=ProductReceiveType::all();
         $productdistributions=ProductDistribution::all();
-        $adjustments=Adjustment::all();
+        $adjustments=AdjustmentMenu::all();
         $reportings=Reporting::all();
         $projects=Project::all();
         $employeeInformations=EmployeeInformation::all();
@@ -63,7 +63,7 @@ class projectController extends Controller
         $productreceivetypes=ProductReceiveType::all();
         $employeeInformations=EmployeeInformation::all();
         $productdistributions=ProductDistribution::all();
-        $adjustments=Adjustment::all();
+        $adjustments=AdjustmentMenu::all();
         $reportings=Reporting::all();
         $project=Project::find($id);
         return view('setup.projectEdit')
