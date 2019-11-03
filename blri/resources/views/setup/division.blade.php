@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>ডিভিশন </title>
+<title>ডিপার্টমেন্ট </title>
 <link rel="icon" type="image/png" href="/images/logo.png" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -280,7 +280,7 @@
         <div class=" form-grids row form-grids-right">
             <div class="widget-shadow " data-example-id="basic-forms"> 
               <div class="form-title bg-primary">
-                <h4>ডিভিশন বিবরণী</h4>
+                <h4>ডিপার্টমেন্ট বিবরণী</h4>
               </div>
               <div class="form-body">
                 <form class="form-horizontal" action="" method="post">
@@ -293,7 +293,7 @@
                       </div>
                       <div class="col-lg-6"> <!--Category and brand-->
 
-                          <label for="division" class="col-sm-2 control-label">ডিভিশন</label>
+                          <label for="division" class="col-sm-3 control-label">ডিপার্টমেন্ট</label>
                        <div class="col-lg-9">
                           <input type="text" class="form-control" id="divisionName" name="divisionName" placeholder="অবশ্যই পুরণ করুণ"required>
                                    @foreach ($errors->get('divisionName') as $error)
@@ -332,7 +332,7 @@
                 <thead class="bg-primary">
                 <tr>
                   <th>#</th>
-                  <th>ডিভিশন</th>
+                  <th>ডিপার্টমেন্ট</th>
                   <th>সম্পাদনা</th>
                  </tr>
                 </thead>

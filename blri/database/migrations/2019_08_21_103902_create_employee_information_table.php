@@ -28,7 +28,7 @@ class CreateEmployeeInformationTable extends Migration
             // $table->integer('position')->default(0);
             $table->boolean('isRevenue')->default(0);
             $table->string('remarks');
-            $table->string('profileImage');
+            $table->string('profileImage')->default('N/A');
 
             $table->foreign('section_id')->references('id')->on('sections');
             $table->foreign('district_id')->references('id')->on('districts');

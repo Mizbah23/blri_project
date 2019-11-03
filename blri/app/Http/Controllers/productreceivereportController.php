@@ -7,9 +7,13 @@ use App\setuptype;
 use App\SecurityType;
 use App\ProductReceiveType;
 use App\ProductDistribution;
+use App\Supplier;
 use App\Reporting;
+use App\tblpurchase;
 use App\AdjustmentMenu;
 use PDF;
+use Input;
+use DB;
 
 class productreceivereportController extends Controller
 {
@@ -20,6 +24,8 @@ class productreceivereportController extends Controller
         $productreceivetypes=ProductReceiveType::all();
         $productdistributions=ProductDistribution::all();
         $reportings=Reporting::all();
+        $supplier=Supplier::all();
+        $tblpurchases=tblpurchase::all();
         $adjustments=AdjustmentMenu::all();
 
         //dd($sections[0]->division);
@@ -29,6 +35,8 @@ class productreceivereportController extends Controller
               ->with('productreceivetypes',$productreceivetypes)
               ->with('productdistributions',$productdistributions)
               ->with('adjustments',$adjustments)
+              ->with('supplier',$supplier)
+              ->with('tblpurchases',$tblpurchases)
               ->with('reportings',$reportings);
     }
 
@@ -39,27 +47,32 @@ class productreceivereportController extends Controller
              'foo' => 'bar'
                 ];
 
-                  if($req->StartDate && !$req->endDate && !$req->supplierName && !$req->receiveID){
-                   
-                     $pdf = PDF::loadView('reporting.product_receive_report.productReceiveReportStartDateWiseInvoice',);
+                  if($req->purchasereport == 1){
+
+                     $pdf = PDF::loadView('reporting.product_receive_report.productReceiveReportStartDateWise',);
                    return $pdf->stream('Product_Receive_Report_Invoice.pdf');
                   }
-                  else if($req->StartDate && $req->endDate && !$req->supplierName && !$req->receiveID){
-                    
-                     $pdf = PDF::loadView('reporting.product_receive_report.productReceiveReportStartDateToEndDateWiseInvoice',);
+                  else if($req->purchasereport == 2){
+
+                     $pdf = PDF::loadView('reporting.product_receive_report.productReceiveReportStartDateAndSupplierWise',);
                    return $pdf->stream('Product_Receive_Report_Invoice.pdf');
                   }
-                  else if($req->StartDate && !$req->endDate && $req->supplierName && !$req->receiveID){
-                     $pdf = PDF::loadView('reporting.product_receive_report.productReceiveReportStartDateAndSupplierWiseInvoice',);
+                  else if($req->purchasereport == 3){
+                     $pdf = PDF::loadView('reporting.product_receive_report.productReceiveReportStartDateToEndDateWise',);
                    return $pdf->stream('Product_Receive_Report_Invoice.pdf');
                   }
-                  else if($req->StartDate && $req->endDate && $req->supplierName && !$req->receiveID){
-                     $pdf = PDF::loadView('reporting.product_receive_report.productReceiveReportStartDateToEndDateAndSupplierWiseInvoice',);
+                  else if($req->purchasereport = 4){
+                     $pdf = PDF::loadView('reporting.product_receive_report.productReceiveReportStartDateToEndDateAndSupplierWise',);
                    return $pdf->stream('Product_Receive_Report_Invoice.pdf');
                   }
-                  else
-                    {
-                      return 'dfkjldldkskflskdffd';
-                    }
+                  else if($req->purchasereport = 5){
+                      $pdf = PDF::loadView('reporting.product_receive_report.productReceiveReportAll',);
+                      return $pdf->stream('Product_Receive_Report_Invoice.pdf');
+                  }
+                  else if($req->purchasereport = 6){
+                      $pdf = PDF::loadView('reporting.product_receive_report.productReceiveReportIdWise',);
+                      return $pdf->stream('Product_Receive_Report_Invoice.pdf');
+                  }
+
       }
 }

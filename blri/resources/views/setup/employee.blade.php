@@ -455,7 +455,7 @@
                       <div class="col-md-2">
                         <img id="profileImageTag" style="height: 100px; width: 100px; margin-left: 8px; border:solid;" src="/images/profile.png"><br><br>
                       
-                        <input class="form-control" type="file" name="profileImage" id="profileImage" accept="image/*" required>
+                        <input class="form-control" type="file" name="profileImage" id="profileImage" accept="image/*">
                         <div class="error">{{$errors->first('profileImage')}}</div>
                       </div><br><br><br>
                       <!--right side end-->

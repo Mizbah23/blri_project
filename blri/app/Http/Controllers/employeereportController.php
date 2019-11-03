@@ -62,7 +62,7 @@ class employeereportController extends Controller
                   $emplyoeeinfo = DB::Select(DB::raw("SELECT * FROM `employeeinfoview` WHERE designationName = '$designationName'"));
                   if($emplyoeeinfo){
                     $pdf = PDF::loadView('reporting.employee information report.employee information report department wise',['emplyoeeinfo'=>$emplyoeeinfo]);
-                  return $pdf->stream('emplyoeeInformation.pdf');
+                    return $pdf->stream('emplyoeeInformation.pdf');
                   }
                   else{
                     return 'There is no data available';

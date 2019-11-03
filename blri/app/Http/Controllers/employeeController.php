@@ -61,8 +61,8 @@ class employeeController extends Controller
         'joiningDate'=>'required|date_format:d/m/Y| before_or_equal:today',
         'birthDate'=>'required|date_format:d/m/Y| before_or_equal:today',
         'workingPlace'=>'required',
-        'remarks'=>'required',
-        'profileImage'=>'required | image | mimes:jpeg,jpg,png' ,
+        'remarks'=>'',
+        'profileImage'=>'image | mimes:jpeg,jpg,png' ,
       ]
       ,
       [
@@ -75,18 +75,18 @@ class employeeController extends Controller
       $designationId=$request->designationName;
       $designationIsAvailable=Designation::find($designationId);
       if($sectionIsAvailable &&  $designationIsAvailable){
-        if($request->hasFile('profileImage'))
-        {
-          $maxEmployeeId=EmployeeInformation::max('id');
-          $image=$request->file('profileImage');
-          $extension = $image->getClientOriginalExtension();
-          $filenametostore = $request->name.Str::random(16).$maxEmployeeId.".".$extension;
-          $destinationPath = public_path('/images');
-          $img = Image::make($image->getRealPath());
-          $img->resize(480, 480, function ($constraint) {
-            $constraint->aspectRatio();
-          })->save($destinationPath.'/'.$filenametostore);
-        }
+        // if($request->hasFile('profileImage'))
+        // {
+        //   $maxEmployeeId=EmployeeInformation::max('id');
+        //   $image=$request->file('profileImage');
+        //   $extension = $image->getClientOriginalExtension();
+        //   $filenametostore = $request->name.Str::random(16).$maxEmployeeId.".".$extension;
+        //   $destinationPath = public_path('/images');
+        //   $img = Image::make($image->getRealPath());
+        //   $img->resize(480, 480, function ($constraint) {
+        //     $constraint->aspectRatio();
+        //   })->save($destinationPath.'/'.$filenametostore);
+        // }
         $newEmployee=new EmployeeInformation;
         $newEmployee->name=$request->name;
         $newEmployee->section_id=$sectionIsAvailable->id;
@@ -100,7 +100,7 @@ class employeeController extends Controller
         $newEmployee->workingPlace=$request->workingPlace;
         $request->isRevenue? $newEmployee->isRevenue=1 :  $newEmployee->isRevenue=0;
         $newEmployee->remarks=$request->remarks;
-        $newEmployee->profileImage=$filenametostore;
+        // $newEmployee->profileImage=$filenametostore;
         $newEmployee->save();
       }
       

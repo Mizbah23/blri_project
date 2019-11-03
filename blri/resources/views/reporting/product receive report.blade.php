@@ -6,7 +6,7 @@
 <link rel="icon" type="image/png" href="/images/logo.png"/>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="Glance Design Dashboard Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+<meta name="keywords" content="Glance Design Dashboard Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
 SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 
@@ -17,13 +17,13 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 <link href="/css/style.css" rel='stylesheet' type='text/css' />
 
 <!-- font-awesome icons CSS -->
-<link href="/css/font-awesome.css" rel="stylesheet"> 
+<link href="/css/font-awesome.css" rel="stylesheet">
 <!-- //font-awesome icons CSS-->
 
 <!-- side nav css file -->
 <link href='/css/SidebarNav.min.css' media='all' rel='stylesheet' type='text/css'/>
 <!-- //side nav css file -->
- 
+
  <!-- js-->
 <script src="/js/jquery-1.11.1.min.js"></script>
 <script src="/js/modernizr.custom.js"></script>
@@ -32,9 +32,9 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 <link href="//fonts.googleapis.com/css?family=PT+Sans:400,400i,700,700i&amp;subset=cyrillic,cyrillic-ext,latin-ext" rel="stylesheet">
 <meta name='viewport' content='width=device-width, initial-scale=1'>
 <script src='https://kit.fontawesome.com/a076d05399.js'></script>
-<!--//webfonts--> 
+<!--//webfonts-->
 
-<!--Hide show--> 
+<!--Hide show-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 <!-- chart -->
@@ -93,7 +93,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                 }
             });
 
-           
+
         });
 
     </script>
@@ -132,8 +132,8 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                  $("#div_endD").hide();
                 });
           </script>
-                    
-</head> 
+
+</head>
 <body class="cbp-spmenu-push">
     <div class="main-content">
     <div class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">
@@ -164,13 +164,13 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                 </a>
                 <ul class="treeview-menu">
                 @foreach($securitytypes as $securitytype)
-                   
+
                       <li><a href="{{route('security.'.strtolower($securitytype->SecType))}}">
                       <i class="fa fa-circle"></i> {{$securitytype->name}}</a></li>
                  @endforeach
                 </ul>
               </li>
-             
+
 
               <li class="treeview">
                 <a href="#">
@@ -180,15 +180,15 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                 </a>
                 <ul class="treeview-menu">
                  @foreach($setuptypes as $setuptype)
-                   
+
                     <li><a href="{{route('setup.'.strtolower($setuptype->SType))}}">
                       <i class="fa fa-circle"></i> {{$setuptype->name}}</a></li>
                  @endforeach
-                  
+
                 </ul>
               </li>
-           
-             
+
+
               <li class="treeview">
               <li class="treeview">
                 <a href="#">
@@ -198,13 +198,13 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                 </a>
                 <ul class="treeview-menu">
                   @foreach($productreceivetypes as $productreceivetype)
-                   
+
                     <li><a href="{{route('product receive.'.strtolower($productreceivetype->prType))}}">
                       <i class="fa fa-circle"></i> {{$productreceivetype->name}}</a></li>
                  @endforeach
                 </ul>
               </li>
-              
+
               <li class="treeview">
                 <a href="#">
                 <i class="fa fa-users"></i> <span>পণ্য বিতরণ </span>
@@ -212,7 +212,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                 </a>
                 <ul class="treeview-menu">
                  @foreach($productdistributions as $productdistribution)
-                   
+
                     <li><a href="{{route('product distribution.'.strtolower($productdistribution->pdType))}}">
                       <i class="fa fa-circle"></i> {{$productdistribution->name}}</a></li>
                  @endforeach
@@ -225,13 +225,13 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                 </a>
                 <ul class="treeview-menu">
                     @foreach($adjustments as $adjustment)
-                   
+
                     <li><a href="{{route('adjustment.'.strtolower($adjustment->adjustmentType))}}">
                       <i class="fa fa-circle"></i> {{$adjustment->name}}</a></li>
                  @endforeach
                </ul>
               </li>
-            
+
                <li class="treeview">
                 <a href="#">
                 <i class="fa fa-table"></i> <span>প্রতিবেদন</span>
@@ -239,7 +239,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                 </a>
                 <ul class="treeview-menu">
                  @foreach($reportings as $reporting)
-                   
+
                     <li><a href="{{route('reporting.'.strtolower($reporting->crType))}}"><!-- route('Folder(from view) Name') &&strtolowere('database table name')-->
                       <i class="fa fa-circle"></i> {{$reporting->name}}</a></li>
                  @endforeach
@@ -251,7 +251,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
     </aside>
     </div>
         <!--left-fixed -navigation-->
-        
+
          <!-- header-starts -->
         <div class="sticky-header header-section ">
             <div class="header-left">
@@ -260,26 +260,26 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                 <!--toggle button end-->
                 <div class="clearfix"> </div>
             </div>
-            
-                <div class="profile_details">       
+
+                <div class="profile_details">
                     <ul>
                         <li class="dropdown profile_details_drop">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                <div class="profile_img">   
-                                    <span class="prfil-img"><img src="/images/{{(Session::get('user')->employeeinfo->profileImage)}}" alt="" style="height: 50px; width:50px"> </span> 
+                                <div class="profile_img">
+                                    <span class="prfil-img"><img src="/images/{{(Session::get('user')->employeeinfo->profileImage)}}" alt="" style="height: 50px; width:50px"> </span>
                                     <div class="user-name">
                                         <p>{{(Session::get('user')->employeeinfo->name)}}</p>
                                         <span>{{ (Session::get('user')->userType)}}</span>
                                     </div>
                                     <i class="fa fa-angle-down lnr"></i>
                                     <i class="fa fa-angle-up lnr"></i>
-                                    <div class="clearfix"></div>    
-                                </div>  
+                                    <div class="clearfix"></div>
+                                </div>
                             </a>
                             <ul class="dropdown-menu drp-mnu">
-                                <li> <a href="#"><i class="fa fa-cog"></i> Settings</a> </li> 
-                                <li> <a href="#"><i class="fa fa-user"></i> My Account</a> </li> 
-                                <li> <a href="#"><i class="fa fa-suitcase"></i> Profile</a> </li> 
+                                <li> <a href="#"><i class="fa fa-cog"></i> Settings</a> </li>
+                                <li> <a href="#"><i class="fa fa-user"></i> My Account</a> </li>
+                                <li> <a href="#"><i class="fa fa-suitcase"></i> Profile</a> </li>
                                 <li> <a href="{{route('login.index')}}"><i class="fa fa-sign-out"></i> Logout</a> </li>
                             </ul>
                         </li>
@@ -287,23 +287,23 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                 </div>
 
 
-                <div class="clearfix"> </div>               
+                <div class="clearfix"> </div>
             </div>
-            <div class="clearfix"> </div> 
-        
+            <div class="clearfix"> </div>
+
         <!-- //header-ends -->
- 
+
     <!-- main content start-->
     <div id="page-wrapper">
       <div class="main-page">
         <div class=" form-grids row form-grids-right">
-            <div class="widget-shadow " data-example-id="basic-forms"> 
+            <div class="widget-shadow " data-example-id="basic-forms">
               <div class="form-title bg-primary text-white">
                 <h3 class="">প্রাপ্ত পণ্যের প্রতিবেদন</h3>
               </div>
               <div class="form-body">
 
-                <form class="form-horizontal" method="post"> <div class="form-group"> 
+                <form class="form-horizontal" method="post"> <div class="form-group">
                   @csrf
                     <div class="row">
                        <div class="col-md-6">
@@ -328,15 +328,27 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                               <div class="col-md-7">
                                 <select id="supplierName"  name="supplierName" class="form-control">
                                        <option value="">নির্বাচন করুন</option>
+                                    @foreach($supplier as $key=>$suppliers)
+                                        <option value="{{ $suppliers->id }}"
+                                        @if(old('supplierName') == $suppliers->id)
+                                            {{"selected"}}
+                                        @endif>
+                                            {{$suppliers->supplierName}} </option>
+                                    @endforeach
                                 </select>
                               </div>
                           </div>
 
                           <div class="form-group"id="div_receiveId">
-                             <label class="col-md-5 control-label" id="receiveIDlevel" for="receiveID">রিসিভ আইডি</label>
+                             <label class="col-md-5 control-label" id="invoicelevel" for="InvoiceNo">ইনভয়েস নং</label>
                              <div class="col-md-7">
-                              <select id="receiveID"  name="receiveID" class="form-control">
+                              <select id="InvoiceNo"  name="InvoiceNo" class="form-control">
                                   <option value="">নির্বাচন করুন</option>
+                                  @foreach($tblpurchases as $key => $tblpurhase)
+                                      <option value="{{ $tblpurhase->InvoiceNo }}">
+                                          {{ $tblpurhase->InvoiceNo }}
+                                      </option>
+                                  @endforeach
                               </select>
                               </div>
                           </div>
@@ -345,9 +357,9 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                        <div class="col-md-6">
                              <div class="row">
                                  <input type="radio" name="purchasereport" id="rdAllSuppWisePur2" value="1" onclick="datewisereport()"checked/>
-                                 শুরুর তারিখ অনুসারে সরবরাহকারী 
+                                 শুরুর তারিখ অনুসারে সরবরাহকারী
                              </div>
-                             
+
                              <script>
                                 $(document).ready(function(){
                                     $("#rdAllSuppWisePur2").click(function(){
@@ -393,7 +405,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                               <div class="row">
                                  <input type="radio" name="purchasereport" id="rdAllSuppWisePur4" value="4" ng-click="DateWiseallPurchase()" />
                                  শুরু ও শেষ তারিখ এবং সরবরাহকারী অনুযায়ী প্রাপ্তি
-                              </div>                         
+                              </div>
 
                              <script>
                                 $(document).ready(function(){
@@ -409,7 +421,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                               <div class="row">
                                  <input type="radio" name="purchasereport" id="rdAllSuppWisePur5" value="5" ng-click="DateWiseallPurchase()"/>
                                 সকল প্রাপ্তি
-                              </div>                    
+                              </div>
 
                              <script>
                                 $(document).ready(function(){
@@ -422,10 +434,10 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                   });
                               </script>
 
-                                <div class="row">          
+                                <div class="row">
                                  <input type="radio" name="purchasereport" id="rdAllSuppWisePur6" value="6" ng-click="DateWiseallPurchase()"/>
-                                 আইডি অনুযায়ী প্রাপ্তি
-                                </div>                        
+                                    ইনভয়েস নং অনুযায়ী প্রাপ্তি
+                                </div>
 
                           <script>
                                 $(document).ready(function(){
@@ -437,7 +449,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                     });
                                   });
                            </script>
-                        
+
                        </div>
                     </div><br>
                     <div class="row">
@@ -445,28 +457,28 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                       <i class='fas fa-eye-slash' style='font-size:18px'></i> পূর্বরূপ
                     </button>
                     </div>
-                 </form> 
+                 </form>
               </div>
           </div>
             </div>
           </div>
-      
+
           </div>
         </div>
 
 
     <!--footer-->
     <div class="footer">
-       <p>&copy; 2019  All Rights Reserved | Design by <a href="https://deshisysltd.com/" target="_blank">Deshi Systems Ltd.</a></p>       
+       <p>&copy; 2019  All Rights Reserved | Design by <a href="https://deshisysltd.com/" target="_blank">Deshi Systems Ltd.</a></p>
     </div>
     <!--//footer-->
 
-        
+
     <!-- new added graphs chart js-->
-    
+
     <script src="/js/Chart.bundle.js"></script>
     <script src="/js/utils.js"></script>
-    
+
     <script>
         var MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
         var color = Chart.helpers.color;
@@ -584,21 +596,21 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
         });
     </script>
     <!-- new added graphs chart js-->
-    
+
     <!-- Classie --><!-- for toggle left push menu script -->
         <script src="/js/classie.js"></script>
         <script>
             var menuLeft = document.getElementById( 'cbp-spmenu-s1' ),
                 showLeftPush = document.getElementById( 'showLeftPush' ),
                 body = document.body;
-                
+
             showLeftPush.onclick = function() {
                 classie.toggle( this, 'active' );
                 classie.toggle( body, 'cbp-spmenu-push-toright' );
                 classie.toggle( menuLeft, 'cbp-spmenu-open' );
                 disableOther( 'showLeftPush' );
             };
-            
+
 
             function disableOther( button ) {
                 if( button !== 'showLeftPush' ) {
@@ -607,19 +619,19 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
             }
         </script>
     <!-- //Classie --><!-- //for toggle left push menu script -->
-        
+
     <!--scrolling js-->
     <script src="/js/jquery.nicescroll.js"></script>
     <script src="/js/scripts.js"></script>
     <!--//scrolling js-->
-    
+
     <!-- side nav js -->
     <script src='/js/SidebarNav.min.js' type='text/javascript'></script>
     <script>
       $('.sidebar-menu').SidebarNav()
     </script>
     <!-- //side nav js -->
-    
+
     <!-- for index page weekly sales java script -->
     <script src="/js/SimpleChart.js"></script>
     <script>
@@ -875,11 +887,11 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
         });
 
     </script>
-    
+
     <!-- Bootstrap Core JavaScript -->
    <script src="/js/bootstrap.js"> </script>
     <!-- //Bootstrap Core JavaScript -->
 
-    
+
 </body>
 </html>
