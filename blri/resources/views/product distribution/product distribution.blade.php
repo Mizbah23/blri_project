@@ -315,7 +315,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                   
                               <div class="col-md-6">
                                   <div class="col-md-3">
-                                      <label for="divisionName" class="col-sm-2 control-label">অনুষদ</label>
+                                      <label for="divisionName" class="col-sm-2 control-label">ডিপার্টমেন্ট</label>
                                   </div>
                                   <div class="col-md-9">
                                       <select class="form-control" id="divisionName" name="divisionName">
@@ -433,7 +433,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                   <table class="table table-responsive table-hover table-striped table-bordered table-condensed">
                     <tr class="row bg-primary">
                       <th class="col-lg-1 text-center">#</th>
-                        <th class="col-lg-2 text-center">অনুষদ</th>
+                        <th class="col-lg-2 text-center">ডিপার্টমেন্ট</th>
                         <th class="col-lg-3 text-center">পণ্য</th>
                         <th class="col-lg-1 text-center">সিরিয়াল নং</th>
                         <th class="col-lg-3 text-center">মন্তব্য</th>
@@ -488,7 +488,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                 <div id="allBrands">
                   <table class="table table-responsive table-hover table-striped table-bordered table-condensed">
                       <tr class="row bg-primary">
-                        <th class="col-lg-2 text-center">অনুষদ</th>
+                        <th class="col-lg-2 text-center">ডিপার্টমেন্ট</th>
                         <th class="col-lg-2 text-center">পণ্য</th>
                         <th class="col-lg-2 text-center">সিরিয়াল নং</th>
                         <th class="col-lg-2 text-center">এন্ট্রিকারীর নাম</th>

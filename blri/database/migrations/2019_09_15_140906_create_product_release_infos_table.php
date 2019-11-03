@@ -16,7 +16,7 @@ class CreateProductReleaseInfosTable extends Migration
         Schema::create('product_release_infos', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->date('releaseDate');
-            $table->string('status')->default('pending');
+            //$table->string('status')->default('pending');
             $table->unsignedBigInteger('division_id');
             $table->unsignedBigInteger('project_id');
             $table->unsignedBigInteger('employee_information_id');

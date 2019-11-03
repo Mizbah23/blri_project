@@ -13,6 +13,8 @@ use Illuminate\Http\Request;
 use App\Reporting;//model name;
 use App\AdjustmentInformationList;
 use App\AdjustmentInformationSave;
+use App\Adjustment;
+use App\adjustmentdetails;
 use PDF;
 
 
@@ -158,15 +160,21 @@ class adjustmentinformationController extends Controller
         $adjustmentInfoLists=AdjustmentInformationList::all();
         $k=0;
         foreach ($adjustmentInfoLists as $key => $item) {
-            $adjustmentInfoSave=new AdjustmentInformationSave;
-            $adjustmentInfoSave->product_info_id=$item->product_info_id;
-            $adjustmentInfoSave->user_id=$request->session()->get('user')->id;
-            $adjustmentInfoSave->quantity=$item->quantity;
-            $adjustmentInfoSave->adjustmentDate=$item->adjustmentDate;
-            $adjustmentInfoSave->adjustmentType=$item->adjustmentType;
-            $adjustmentInfoSave->reason=$item->reason;
+            $adjustmentInfoSave=new Adjustment;
+            //$adjustmentInfoSave->product_info_id=$item->product_info_id;
+            $adjustmentInfoSave->Creator=$request->session()->get('user')->id;
+            //$adjustmentInfoSave->quantity=$item->quantity;
+            $adjustmentInfoSave->AdjustmentDate=$item->adjustmentDate;
+            $adjustmentInfoSave->AdjustmentTypeID=$item->adjustmentType;
+            $adjustmentInfoSave->Reason=$item->reason;
             $adjustmentInfoSave->save();
             
+            $adjustmentDetailsSave=new adjustmentdetails; 
+            $adjustmentDetailsSave->AdjustmentID= $adjustmentInfoSave->id;
+            $adjustmentDetailsSave->ProductID= $item->product_info_id;
+            $adjustmentDetailsSave->AdjustmentQty= $item->quantity;
+            $adjustmentDetailsSave->save();
+
             $findProduct=ProductInfo::find($item->product_info_id);
             if ($findProduct) {
               if($item->adjustmentType=='খুঁজে পাওয়া'){

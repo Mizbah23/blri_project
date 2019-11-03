@@ -462,10 +462,12 @@ $( function() {
                
                 </form>
                 <br>
-                <div class="col-md-12" align="center">
+                @if (count($productReleaseInfo)>0)
+                <div class="col-md-12" align="right">
                     <button type="button" class="btn btn-info" onclick="handleRelease()"><i class="glyphicon glyphicon-floppy-disk"
                       style="color:white" ></i> খালাস করুন</button>
                       <button type="button"class="btn" onclick="handleClear()">লিস্ট খালি করুন</button>
+                @endif
                 </div>
                   </div> 
                </div> 

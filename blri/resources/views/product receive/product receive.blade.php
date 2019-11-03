@@ -14,7 +14,7 @@
 <link href="/css/style.css" rel='stylesheet' type='text/css' />
 
 <!-- font-awesome icons CSS -->
-<link href="/css/font-awesome.css" rel="stylesheet"> 
+<link href="/css/font-awesome.css" rel="stylesheet">
 <!-- //font-awesome icons CSS-->
 
 <!-- side nav css file -->
@@ -30,6 +30,9 @@
 <link rel="stylesheet" href="https://jqueryui.com/resources/demos/style.css">
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+
+{{--   ajaxs new add--}}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <!--// date time picker -->
 <style>
 #chartdiv {
@@ -76,7 +79,7 @@
                 }
             });
 
-           
+
         });
 
     </script>
@@ -120,7 +123,7 @@ $( function() {
       .on( "change", function() {
         from.datepicker( "option", "maxDate", getDate( this ) );
       });
- 
+
     function getDate( element ) {
       var date;
       try {
@@ -128,7 +131,7 @@ $( function() {
       } catch( error ) {
         date = null;
       }
- 
+
       return date;
     }
   } );
@@ -145,7 +148,7 @@ $( function() {
   });
   </script>
 
-</head> 
+</head>
 <body class="cbp-spmenu-push">
     <div class="main-content">
     <div class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">
@@ -176,13 +179,13 @@ $( function() {
                 </a>
                 <ul class="treeview-menu">
                 @foreach($securitytypes as $securitytype)
-                   
+
                       <li><a href="{{route('security.'.strtolower($securitytype->SecType))}}">
                       <i class="fa fa-circle"></i> {{$securitytype->name}}</a></li>
                  @endforeach
                 </ul>
               </li>
-             
+
 
               <li class="treeview">
                 <a href="#">
@@ -192,15 +195,15 @@ $( function() {
                 </a>
                 <ul class="treeview-menu">
                  @foreach($setuptypes as $setuptype)
-                   
+
                     <li><a href="{{route('setup.'.strtolower($setuptype->SType))}}">
                       <i class="fa fa-circle"></i> {{$setuptype->name}}</a></li>
                  @endforeach
-                  
+
                 </ul>
               </li>
-           
-             
+
+
               <li class="treeview">
               <li class="treeview">
                 <a href="#">
@@ -210,13 +213,13 @@ $( function() {
                 </a>
                 <ul class="treeview-menu">
                   @foreach($productreceivetypes as $productreceivetype)
-                   
+
                     <li><a href="{{route('product receive.'.strtolower($productreceivetype->prType))}}">
                       <i class="fa fa-circle"></i> {{$productreceivetype->name}}</a></li>
                  @endforeach
                 </ul>
               </li>
-              
+
               <li class="treeview">
                 <a href="#">
                 <i class="fa fa-users"></i> <span>পণ্য বিতরণ </span>
@@ -224,7 +227,7 @@ $( function() {
                 </a>
                 <ul class="treeview-menu">
                  @foreach($productdistributions as $productdistribution)
-                   
+
                     <li><a href="{{route('product distribution.'.strtolower($productdistribution->pdType))}}">
                       <i class="fa fa-circle"></i> {{$productdistribution->name}}</a></li>
                  @endforeach
@@ -237,13 +240,13 @@ $( function() {
                 </a>
                 <ul class="treeview-menu">
                     @foreach($adjustments as $adjustment)
-                   
+
                     <li><a href="{{route('adjustment.'.strtolower($adjustment->adjustmentType))}}">
                       <i class="fa fa-circle"></i> {{$adjustment->name}}</a></li>
                  @endforeach
                </ul>
               </li>
-            
+
                <li class="treeview">
                 <a href="#">
                 <i class="fa fa-table"></i> <span>প্রতিবেদন</span>
@@ -251,7 +254,7 @@ $( function() {
                 </a>
                 <ul class="treeview-menu">
                  @foreach($reportings as $reporting)
-                   
+
                     <li><a href="{{route('reporting.'.strtolower($reporting->crType))}}"><!-- route('Folder(from view) Name') &&strtolowere('database table name')-->
                       <i class="fa fa-circle"></i> {{$reporting->name}}</a></li>
                  @endforeach
@@ -263,7 +266,7 @@ $( function() {
     </aside>
     </div>
         <!--left-fixed -navigation-->
-        
+
          <!-- header-starts -->
         <div class="sticky-header header-section ">
             <div class="header-left">
@@ -272,26 +275,26 @@ $( function() {
                 <!--toggle button end-->
                 <div class="clearfix"> </div>
             </div>
-            
-                <div class="profile_details">       
+
+                <div class="profile_details">
                     <ul>
                         <li class="dropdown profile_details_drop">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                <div class="profile_img">   
-                                    <span class="prfil-img"><img src="/images/{{(Session::get('user')->employeeinfo->profileImage)}}" alt="" style="height: 50px; width:50px"> </span> 
+                                <div class="profile_img">
+                                    <span class="prfil-img"><img src="/images/{{(Session::get('user')->employeeinfo->profileImage)}}" alt="" style="height: 50px; width:50px"> </span>
                                     <div class="user-name">
                                         <p>{{(Session::get('user')->employeeinfo->name)}}</p>
                                         <span>{{ (Session::get('user')->userType)}}</span>
                                     </div>
                                     <i class="fa fa-angle-down lnr"></i>
                                     <i class="fa fa-angle-up lnr"></i>
-                                    <div class="clearfix"></div>    
-                                </div>  
+                                    <div class="clearfix"></div>
+                                </div>
                             </a>
                             <ul class="dropdown-menu drp-mnu">
-                                <li> <a href="#"><i class="fa fa-cog"></i> Settings</a> </li> 
-                                <li> <a href="#"><i class="fa fa-user"></i> My Account</a> </li> 
-                                <li> <a href="#"><i class="fa fa-suitcase"></i> Profile</a> </li> 
+                                <li> <a href="#"><i class="fa fa-cog"></i> Settings</a> </li>
+                                <li> <a href="#"><i class="fa fa-user"></i> My Account</a> </li>
+                                <li> <a href="#"><i class="fa fa-suitcase"></i> Profile</a> </li>
                                 <li> <a href="{{route('logout.index')}}"><i class="fa fa-sign-out"></i> Logout</a> </li>
                             </ul>
                         </li>
@@ -299,23 +302,23 @@ $( function() {
                 </div>
 
 
-                <div class="clearfix"> </div>               
+                <div class="clearfix"> </div>
             </div>
-            <div class="clearfix"> </div> 
-        
+            <div class="clearfix"> </div>
+
         <!-- header-ends -->
-   
+
  <!-- main content start-->
     <div id="page-wrapper">
       <div class="main-page">
         <div class=" form-grids row form-grids-right">
-            <div class="widget-shadow " data-example-id="basic-forms"> 
+            <div class="widget-shadow " data-example-id="basic-forms">
               <div class="form-title bg-primary text-white">
                 <h3 class="">পণ্য প্রাপ্তি তথ্য</h3>
               </div>
               <div class="form-body" >
                 <div id="createFormDiv">
-                  <form class="form-horizontal" method="post" autocomplete="off"> 
+                  <form class="form-horizontal" method="post" autocomplete="off">
                     @csrf
                     <div class="form-group"> <!--Form-->
 
@@ -337,6 +340,14 @@ $( function() {
                               </div><br><br>
 
                               <div class="col-md-5">
+                              <label for="Purchase_Date" class=" control-label">তারিখ</label>
+                              </div>
+                              <div class="col-md-7">
+                                <input class="form-control datepicker" type="text" id="Purchase_Date" name="Purchase_Date" placeholder="দিন/মাস/বছর"  value="{{old('Purchase_Date')}}"  required><br>
+                                <div class="error">{{$errors->first('Purchase_Date')}}</div>
+                              </div><br><br>
+
+                              {{-- <div class="col-md-5">
                                   <label for="productName" class="control-label">পণ্য</label>
                               </div>
                               <div class="col-md-7">
@@ -350,8 +361,8 @@ $( function() {
                                 </select>
                                 <div class="error">{{$errors->first('productName')}}</div>
                               </div><br><br>
-
-                              <div class="col-md-5">
+ --}}
+                              {{-- <div class="col-md-5">
                                 <label for="productCode" class=" control-label">কোড</label>
                               </div>
                               <div class="col-md-7">
@@ -368,13 +379,13 @@ $( function() {
                                 @endif
                               </select>
                               <div class="error">{{$errors->first('productCode')}}</div>
-                            </div><br><br>
+                            </div><br><br> --}}
 
-                              
+
                         </div>
 
                           <div class="col-md-4" >
-                              
+
                           <div class="col-md-5">
                               <label for="address" class=" control-label">ঠিকানা</label>
                               </div>
@@ -392,7 +403,7 @@ $( function() {
                               </div><br><br>
 
 
-                              <div class="col-md-5">
+                              {{-- <div class="col-md-5">
                               <label for="projectName" class=" control-label">প্রকল্প</label>
                               </div>
                               <div class="col-md-7">
@@ -405,10 +416,10 @@ $( function() {
                                   @endforeach
                                 </select>
                                 <div class="error">{{$errors->first('projectName')}}</div>
-                              </div><br><br>
+                              </div><br><br> --}}
 
                               <div class="col-md-3">
-                              
+
                               </div>
                               {{-- <div class="col-md-9">
                                   <input type="checkbox" value="">  Other Objects</label>
@@ -425,43 +436,36 @@ $( function() {
                                 <div class="error">{{$errors->first('contactNo')}}</div>
                               </div><br><br>
 
-                              <div class="col-md-3">
+                              {{-- <div class="col-md-3">
                               <label for="quantity" class=" control-label">পরিমাণ</label>
                               </div>
                               <div class="col-md-9">
                                 <input type="number" class="form-control" id="quantity" name="quantity" value="{{old('quantity')}}" placeholder="অবশ্যই পুরণ করুণ" required>
                                 <div class="error">{{$errors->first('quantity')}}</div>
                               </div>
-                              <br><br>
+                              <br><br> --}}
 
-                              <div class="col-md-3">
-                              <label for="Purchase_Date" class=" control-label">তারিখ</label>
-                              </div>
-                              <div class="col-md-9">
-                                <input class="form-control datepicker" type="text" id="Purchase_Date" name="Purchase_Date" placeholder="দিন/মাস/বছর"  value="{{old('Purchase_Date')}}"  required><br>
-                                <div class="error">{{$errors->first('Purchase_Date')}}</div>
-                              </div><br><br>
-                              
+
+
                               <div class="col-md-3">
                               <label for="IsDonate" class=" control-label">ডোনেট</label>
                               </div>
                               <div class="col-md-9">
-                              <input  type="checkbox" name="IsDonate" @if (old('IsDonate'))checked
-                              @endif>ডোনেট?<br><br><br><br>
+                              <input  type="checkbox" name="IsDonate" @if (old('IsDonate'))checked @endif>ডোনেট?<br><br><br><br>
                              <div class="error" style="color: red">{{$errors->first('IsDonate')}}</div>
 
                           </div><br><br>
-                          
+
                           </div>
                           <div id="addToList">
                           <div class="text-center">
-                            <button type="submit" class="btn btn-info"><i class="glyphicon glyphicon-plus" style="color: white"></i>সংযুক্তকরুন</button> 
+                            <button type="submit" class="btn btn-info"><i class="glyphicon glyphicon-plus" style="color: white"></i>সংযুক্তকরুন</button>
                             <button type="reset" class="btn btn-danger">পুনরায় বসান</button><br><br>
                           </div>
                           </div>
                     </div>
 
-                    
+
                     </div>
                   </form>
                 </div>
@@ -469,7 +473,7 @@ $( function() {
 
                 <div class="row">
 
-                    
+
                     <div class="col-md-12"class="row overflow_x_auto_for_table">
                      <div id="allBrands">
                       <table class="table table-responsive table-hover table-striped table-bordered table-condensed">
@@ -483,7 +487,7 @@ $( function() {
                               <th class="col-lg-2 text-center">অর্ডার নং.</th>
                           </tr>
                           @if(Session::has('user'))
-                             @foreach ($productReceiveLists as $item) 
+                             @foreach ($productReceiveLists as $item)
                               <tr class="row"  align="center">
                                 <td ><a href="#" onclick="handleEdit({{$item->id}})"><i class="fa fa-edit" style="font-size:24px" ></i></a></td>
                                 <td> <a href="#" onclick="deleteItem({{$item->id}})" class="glyphicon glyphicon-trash" style="font-size:24px; color: red"></i></a></td>
@@ -496,7 +500,7 @@ $( function() {
                               </tr>
                             @endforeach
                           @endif
-              
+
                       </table>
                         </div>
 
@@ -508,7 +512,7 @@ $( function() {
 
                   <div class="text-center">
                     <br><br><br>
-                      <button type="button" class=" btn btn-info" onclick="savedata()"> সংরক্ষণ করুন </button> 
+                      <button type="button" class=" btn btn-info" onclick="savedata()"> সংরক্ষণ করুন </button>
                       <button type="reset" class="btn btn-danger" onclick="clearList()">বাতিল করুন</button>
                       <button type="button" class="btn btn-success"><a href="{{route('product receive.productReceiveInvoice') }}" target="_blank" style="color: white;text-decoration: none;">প্রিন্ট করুন</a></button>
                       {{-- <button type="button" class="btn btn-success"> <a href="{{route('product receive.productReceiveInvoice') }}" target="_blank" style="color: white">মুদ্রণ করুন</a></button> --}}
@@ -525,40 +529,40 @@ $( function() {
                       {{-- <div class="row">
                         <div class="col-md-8"></div>
 
-               
+
 
                       </div> --}}
 
                       <!--Search option stops-->
 
-                     
-                  </div> 
-               </div> 
 
-                
-               <div id="searchedBrandValue">
-                   
+                  </div>
                </div>
-              
+
+
+               <div id="searchedBrandValue">
+
+               </div>
+
             </div>
           </div>
-      
+
           </div>
         </div>
-     
-   
+
+
     <!--footer-->
     <div class="footer">
-       <p>&copy; 2019  All Rights Reserved | Design by <a href="https://deshisysltd.com/" target="_blank">Deshi Systems Ltd.</a></p>       
+       <p>&copy; 2019  All Rights Reserved | Design by <a href="https://deshisysltd.com/" target="_blank">Deshi Systems Ltd.</a></p>
     </div>
     <!--//footer-->
     </div>
-        
+
     <!-- new added graphs chart js-->
-    
+
     <script src="/js/Chart.bundle.js"></script>
     <script src="/js/utils.js"></script>
-    
+
     <script>
         var MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
         var color = Chart.helpers.color;
@@ -676,21 +680,21 @@ $( function() {
         });
     </script>
     <!-- new added graphs chart js-->
-    
+
     <!-- Classie --><!-- for toggle left push menu script -->
         <script src="/js/classie.js"></script>
         <script>
             var menuLeft = document.getElementById( 'cbp-spmenu-s1' ),
                 showLeftPush = document.getElementById( 'showLeftPush' ),
                 body = document.body;
-                
+
             showLeftPush.onclick = function() {
                 classie.toggle( this, 'active' );
                 classie.toggle( body, 'cbp-spmenu-push-toright' );
                 classie.toggle( menuLeft, 'cbp-spmenu-open' );
                 disableOther( 'showLeftPush' );
             };
-            
+
 
             function disableOther( button ) {
                 if( button !== 'showLeftPush' ) {
@@ -699,19 +703,19 @@ $( function() {
             }
         </script>
     <!-- //Classie --><!-- //for toggle left push menu script -->
-        
+
     <!--scrolling js-->
     <script src="/js/jquery.nicescroll.js"></script>
     <script src="/js/scripts.js"></script>
     <!--//scrolling js-->
-    
+
     <!-- side nav js -->
     <script src='/js/SidebarNav.min.js' type='text/javascript'></script>
     <script>
       $('.sidebar-menu').SidebarNav()
     </script>
     <!-- //side nav js -->
-    
+
     <!-- for index page weekly sales java script -->
     <script src="/js/SimpleChart.js"></script>
     <script>
@@ -968,11 +972,11 @@ $( function() {
 
     </script>
     <!-- //for index page weekly sales java script -->
-    
-    
+
+
     <!-- Bootstrap Core JavaScript -->
    <script src="/js/bootstrap.js"> </script>
-   <script>
+    <script>
      var suppliers;
      var products;
      $(function () {
@@ -1008,70 +1012,70 @@ $( function() {
         }
       }
      }
-     function deleteItem(id) {
-      if (confirm('Do you really want to delete this item?')) {
-        $.ajax({
-        url: "{{route("delete.product.from.ReceiveList")}}",
-        type:"get",
-        data: { id: id},
-        success: function (data) {
-          console.log(data);
-          if(data=='deleted'){
-            location.reload();
-          }else{
-            alert("Something went wrong! Please Reload the page.");
-          }
-        }
-      });
-      }
-     }
+     {{--function deleteItem(id) {--}}
+     {{-- if (confirm('Do you really want to delete this item?')) {--}}
+     {{--   $.ajax({--}}
+     {{--   url: "{{route("delete.product.from.ReceiveList")}}",--}}
+     {{--   type:"get",--}}
+     {{--   data: { id: id},--}}
+     {{--   success: function (data) {--}}
+     {{--     console.log(data);--}}
+     {{--     if(data=='deleted'){--}}
+     {{--       location.reload();--}}
+     {{--     }else{--}}
+     {{--       alert("Something went wrong! Please Reload the page.");--}}
+     {{--     }--}}
+     {{--   }--}}
+     {{-- });--}}
+     {{-- }--}}
+     {{--}--}}
 
 
-    function handleEdit(id) {
-       $.ajax({
-        url: "{{route("edit.product.from.ReceiveList")}}",
-        type:"get",
-        //data: { id: id},
-        success: function (data) {
-          $("#createFormDiv").html(data);
-          $("#saveButton").html("");
-          $( ".datepicker" ).datepicker({
-            format: 'MM/DD/YYYY',
-            maxDate: "+0D",
-            ignoreReadonly: true
-          });
-          $("#purchaseDate").datepicker();
-          // $("#createFormDiv").hide();
-          // console.log(data);
-        }
-      });
-    }
-    
-    function updateContent() {
-      var form=$("#editForm");
-      // console.log(form.serialize());
-      $.ajax({
-        url: "{{route("update.product.from.ReceiveList")}}",
-        type:"put",
-        data: form.serialize(),
-        success: function (data) {
-          console.log(data);
-          if(data[0]=="success"){
-            alert("Successfuly Updated");
-            
-            location.reload();
-          }else{
-           for (const key in data[1]) {
-             alert(data[1][key][0]);
-           }
-          }
-        }
-      });
-    }
-    function cancelUpdate() {
-      location.reload();
-    }
-     
+    {{--function handleEdit(id) {--}}
+    {{--   $.ajax({--}}
+    {{--    url: "{{route("edit.product.from.ReceiveList")}}",--}}
+    {{--    type:"get",--}}
+    {{--    //data: { id: id},--}}
+    {{--    success: function (data) {--}}
+    {{--      $("#createFormDiv").html(data);--}}
+    {{--      $("#saveButton").html("");--}}
+    {{--      $( ".datepicker" ).datepicker({--}}
+    {{--        format: 'MM/DD/YYYY',--}}
+    {{--        maxDate: "+0D",--}}
+    {{--        ignoreReadonly: true--}}
+    {{--      });--}}
+    {{--      $("#purchaseDate").datepicker();--}}
+    {{--      // $("#createFormDiv").hide();--}}
+    {{--      // console.log(data);--}}
+    {{--    }--}}
+    {{--  });--}}
+    {{--}--}}
+
+    {{--function updateContent() {--}}
+    {{--  var form=$("#editForm");--}}
+    {{--  // console.log(form.serialize());--}}
+    {{--  $.ajax({--}}
+    {{--    url: "{{route("update.product.from.ReceiveList")}}",--}}
+    {{--    type:"put",--}}
+    {{--    data: form.serialize(),--}}
+    {{--    success: function (data) {--}}
+    {{--      console.log(data);--}}
+    {{--      if(data[0]=="success"){--}}
+    {{--        alert("Successfuly Updated");--}}
+
+    {{--        location.reload();--}}
+    {{--      }else{--}}
+    {{--       for (const key in data[1]) {--}}
+    {{--         alert(data[1][key][0]);--}}
+    {{--       }--}}
+    {{--      }--}}
+    {{--    }--}}
+    {{--  });--}}
+    {{--}--}}
+    {{--function cancelUpdate() {--}}
+    {{--  location.reload();--}}
+    {{--}--}}
+
    </script>
 
    <script>
@@ -1081,7 +1085,7 @@ $( function() {
         type:"get",
         success: function (data) {
           console.log(data);
-          
+
           if(data=="success"){
             alert("Data saved successfully");
             location.reload();
@@ -1099,7 +1103,7 @@ $( function() {
             type:"get",
             success: function (data) {
               console.log(data);
-              
+
               if(data=="success"){
                 alert("Data deleted successfully");
                // console.log(data);
@@ -1111,10 +1115,146 @@ $( function() {
           });
         }
       }
-      
-     
-   </script>
 
-    
+
+   </script>
+    <script type='text/javascript'>
+        var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+
+        $(document).ready(function(){
+
+            // Fetch records
+            fetchRecords();
+
+            // Add record
+            $('#adduser').click(function(){
+
+                var SupplierID = $('#supplierName').val();
+                var Purchase_Date = $('#Purchase_Date').val();
+                var orderNo = $('#orderNo').val();
+                var IsDonate = $('#IsDonate').val();
+                if(SupplierID != '' && Purchase_Date != '' && orderNo != ''  && IsDonate != ''){
+                    $.ajax({
+                        url: 'addUser',
+                        type: 'post',
+                        data: {_token: CSRF_TOKEN,supplierID: supplierID,Purchase_Date: Purchase_Date,orderNo: orderNo,IsDonate: IsDonate},
+                        success: function(response){
+
+                            // if(response > 0){
+                            //     var id = response;
+                            //     var findnorecord = $('#userTable tr.norecord').length;
+                            //
+                            //     if(findnorecord > 0){
+                            //         $('#userTable tr.norecord').remove();
+                            //     }
+                            //     var tr_str = "<tr>"+
+                            //         "<td align='center'><input type='text' value='" + SupplierID + "' id='SupplierID"+id+"' disabled ></td>" +
+                            //         "<td align='center'><input type='text' value='" + Purchase_Date + "' id='Purchase_Date"+id+"'></td>" +
+                            //         "<td align='center'><input type='text' value='" + orderNo + "' id='orderNo"+id+"'></td>" +
+                            //         "<td align='center'><input type='text' value='" + IsDonate + "' id='IsDonate"+id+"'></td>" +
+                            //         "</tr>";
+                            //
+                            //     $("#userTable tbody").append(tr_str);
+                            // }else if(response == 0){
+                            //     alert('Username already in use.');
+                            // }else{
+                            //     alert(response);
+                            // }
+
+                            // Empty the input fields
+                            $('#SupplierID').val('');
+                            $('#Purchase_Date').val('');
+                            $('#orderNo').val('');
+                            $('#IsDonate').val('');
+                        }
+                    });
+                }else{
+                    alert('Fill all fields');
+                }
+            });
+
+        });
+
+        // Update record
+        $(document).on("click", ".update" , function() {
+            var edit_id = $(this).data('id');
+
+            var name = $('#name_'+edit_id).val();
+            var email = $('#email_'+edit_id).val();
+
+            if(name != '' && email != ''){
+                $.ajax({
+                    url: 'updateUser',
+                    type: 'post',
+                    data: {_token: CSRF_TOKEN,editid: edit_id,name: name,email: email},
+                    success: function(response){
+                        alert(response);
+                    }
+                });
+            }else{
+                alert('Fill all fields');
+            }
+        });
+
+        // Delete record
+        $(document).on("click", ".delete" , function() {
+            var delete_id = $(this).data('id');
+            var el = this;
+            $.ajax({
+                url: 'deleteUser/'+delete_id,
+                type: 'get',
+                success: function(response){
+                    $(el).closest( "tr" ).remove();
+                    alert(response);
+                }
+            });
+        });
+
+        // Fetch records
+        function fetchRecords(){
+            $.ajax({
+                url: 'getUsers',
+                type: 'get',
+                dataType: 'json',
+                success: function(response){
+
+                    var len = 0;
+                    $('#userTable tbody tr:not(:first)').empty(); // Empty <tbody>
+                    if(response['data'] != null){
+                        len = response['data'].length;
+                    }
+
+                    if(len > 0){
+                        for(var i=0; i<len; i++){
+
+                            var id = response['data'][i].id;
+                            var username = response['data'][i].username;
+                            var name = response['data'][i].name;
+                            var email = response['data'][i].email;
+
+                            var tr_str = "<tr>" +
+                                "<td align='center'><input type='text' value='" + username + "' id='username_"+id+"' disabled></td>" +
+                                "<td align='center'><input type='text' value='" + name + "' id='name_"+id+"'></td>" +
+                                "<td align='center'><input type='email' value='" + email + "' id='email_"+id+"'></td>" +
+                                "<td align='center'><input type='email' value='" + IsDonate + "' id='IsDonate"+id+"'></td>" +
+                                "</tr>";
+
+                            $("#userTable tbody").append(tr_str);
+
+                        }
+                    }else{
+                        var tr_str = "<tr class='norecord'>" +
+                            "<td align='center' colspan='4'>No record found.</td>" +
+                            "</tr>";
+
+                        $("#userTable tbody").append(tr_str);
+                    }
+
+                }
+            });
+        }
+    </script>
+
+
 </body>
 </html>

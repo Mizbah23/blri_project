@@ -172,14 +172,16 @@ class productreleaseController extends Controller
     public function saveProductRelease()
     {
         if(session()->has('user')){
-            $productReleaseInfo=ProductReleaseInfo::where('status','pending')->get();
-            if (count($productReleaseInfo)>0) {
+            $productReleaseInfo=ProductReleaseInfo::all();
+            $k=0;
+            //$productReleaseInfo=ProductReleaseInfo::where('status','pending')->get();
+           
                 foreach ($productReleaseInfo as $key => $item) {
                     $item->status="released";
                     $item->save();
                 }
                 return "success";
-            }
+           
         }
         return "error";
     }
