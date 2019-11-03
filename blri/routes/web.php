@@ -23,7 +23,7 @@ Route::get('/logout','logoutController@index')->name('logout.index');
 
 Route::group(['middleware'=>'checkUser'],function(){
 
-	
+
     Route::get('/home', 'homeController@index')->name('home.index');
 
     //Security->
@@ -124,11 +124,14 @@ Route::group(['middleware'=>'checkUser'],function(){
     Route::put('/product_receive/product_receive', 'productreceiveController@updateItemFromReceiveList')->name('update.product.from.ReceiveList');
     Route::get('/product_receive/product_receive/delete/item', 'productreceiveController@deleteItemFromReceiveList')->name('delete.product.from.ReceiveList');
     Route::get('/product_receive/product_receive/edit/item', 'productreceiveController@editItemFromReceiveList')->name('edit.product.from.ReceiveList');
-    //Route::get('/product_receive/product_receive/edit/item', 'productreceiveController@editItemFromReceiveList')->name('product.from.AddList'); 
+   //Route::get('/product_receive/product_receive/edit/item', 'productreceiveController@editItemFromReceiveList')->name('product.from.AddList');
     Route::get('/product_receive/product_receive/saveAll/item', 'productreceiveController@saveAllItemFromReceiveList')->name('saveAll.product.from.ReceiveList');
     Route::get('/product_receive/product_receive/clearList/item', 'productreceiveController@clearListItemFromReceiveList')->name('clearList.product.from.ReceiveList');
     Route::get('/product_receive/invoice','productreceiveController@invoice')->name('product receive.productReceiveInvoice');
-
+    Route::get('/getUsers', 'productreceiveController@getUsers');
+    Route::post('//product_receive/product_receive', 'productreceiveController@addUser');
+    Route::post('/updateUser', 'productreceiveController@updateUser');
+    Route::get('/deleteUser/{id}', 'productreceiveController@deleteUser');
 
     //Rquisition
     Route::get('/product_receive/product_requisition', 'requisitioninfoController@index')->name('product receive.requisition info');
@@ -175,15 +178,15 @@ Route::group(['middleware'=>'checkUser'],function(){
     Route::get('/product_distribution/product_repair/delete/item', 'productrepairController@deleteItemFromRepair')->name('delete.product.from.repair');
     Route::get('/product_distribution/repair/{id}/edit', 'productrepairController@repairedit')->name('product distribution.repairedit');
     Route::post('/product_distribution/repair/{id}/edit', 'productrepairController@update');
-   
-   
+
+
 
     //Repair Receive
     Route::get('/product_distribution/repair_receive', 'repairReceiveController@index')->name('product distribution.repair receive');
     Route::post('/product_distribution/repair_receive', 'repairReceiveController@repairReceivePost');
     Route::get('/product_distribution/repair_receive/{id}/edit', 'repairReceiveController@edit')->name('product distribution.repairReceiveEdit');
     Route::post('/product_distribution/repair_receive/{id}/edit', 'repairReceiveController@update');
-    
+
 
     //adjustment
     Route::get('/adjustment/adjustment_information', 'adjustmentinformationController@index')->name('adjustment.adjustment information');
@@ -200,7 +203,7 @@ Route::group(['middleware'=>'checkUser'],function(){
 
     //Start date wise product receive invoice
     Route::post('/reporting/product_receive_report', 'productreceivereportController@invoice')->name('reporting.productReceiveReportDateWiseInvoice');
-    //Start date wise product receive invoice 
+    //Start date wise product receive invoice
 
 
 	Route::get('/reporting/product_distribution_report', 'productdistributionreportController@index')->name('reporting.product distribution report');
