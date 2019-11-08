@@ -26,33 +26,37 @@ th,td{
     <img style="width: 22%; height: 15%; margin-top: -30px;" src="images/blrilogo.jpg" alt="">
     <div style="margin-top: -15px"><h1>বাংলাদেশ প্রাণিসম্পদ গবেষণা ইনস্টিটিউট</h1></div>
     <div style="margin-top: -30px">মোবাইলঃ +৮৮ ০২ ৭৭৯১৬৭০-৭১, ফোনঃ +৮৮ ০২ ৭৭৯১৬৭০-৭১, ইমেইলঃ infoblri@gmail.com
-    <br>সাভার, ঢাকা-১২৪১ 
+    <br>সাভার, ঢাকা-১২৪১
   </div>
   </div>
   <hr style="margin-top: -2px">
-  
-  
+
+
    <center>
      <table>
        <thead>
         <tr>
+        <th>সিরিয়াল নং</th>
         <th>তারিখ</th>
-        <th>পণ্যের কোড</th>
-        <th>পণ্যের নাম</th>
-        <th>সমন্বয়ের ধরন</th>
-        <th>সমন্বয়ের কারণ</th>
-       </tr>
-       </thead>
-       <tbody> 
-        {{-- @foreach($adjustmentInfoLists as $key=>$item) --}}
-        <tr>
-          <td>{{date('d/m/Y', strtotime(str_replace('-', '/',0000))) }}</td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
+        <th>রিসিভ নং</th>
+        <th>প্রোডাক্ট কোড</th>
+        <th>প্রোডাক্ট নাম</th>
+        <th>পরিমাণ</th>
+        <th>সরবরাহকারীর নাম</th>
+
         </tr>
-       {{--  @endforeach --}}
+       </thead>
+       <tbody>
+       @foreach($result as $key=>$item)
+        <tr>
+          <td>{{ ++$key }}</td>
+          <td>{{ $item->Purchase_Date }}</td>
+          <td>{{ $item->OrderNo }}</td>
+          <td>{{ $item->productName}}</td>
+          <td>{{ $item->Qty }}</td>
+          <td>{{ $item->supplierName }}</td>
+        </tr>
+       @endforeach
        </tbody>
    </table>
    </center>

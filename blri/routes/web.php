@@ -37,11 +37,11 @@ Route::group(['middleware'=>'checkUser'],function(){
     Route::get('/security/user_permission', 'userpermController@index')->name('security.user permission');
 
     // Division
-    Route::get('/setup/Division', 'divisionController@index')->name('setup.division');
-    Route::post('/setup/Division', 'divisionController@divisionPost');
-    Route::get('/setup/Division/{id}/edit', 'divisionController@divedit')->name('setup.divedit');
-    Route::post('/setup/Division/{id}/edit', 'divisionController@update');
-    Route::get('/search/division', 'divisionController@searchByDivisionName')->name('searchByDivisionName');
+    Route::get('/setup/Division', 'departmentController@index')->name('setup.division');
+    Route::post('/setup/Division', 'departmentController@divisionPost');
+    Route::get('/setup/Division/{id}/edit', 'departmentController@divedit')->name('setup.divedit');
+    Route::post('/setup/Division/{id}/edit', 'departmentController@update');
+    Route::get('/search/division', 'departmentController@searchByDivisionName')->name('searchByDivisionName');
 
 
     //Section
@@ -120,10 +120,10 @@ Route::group(['middleware'=>'checkUser'],function(){
     //Product Receive->
     //Product Receive
     Route::get('/product_receive/product_receive', 'productreceiveController@index')->name('product receive.product receive');
-    Route::post('/product_receive/product_receive', 'productreceiveController@store');
-    Route::put('/product_receive/product_receive', 'productreceiveController@updateItemFromReceiveList')->name('update.product.from.ReceiveList');
-    Route::get('/product_receive/product_receive/delete/item', 'productreceiveController@deleteItemFromReceiveList')->name('delete.product.from.ReceiveList');
-    Route::get('/product_receive/product_receive/edit/item', 'productreceiveController@editItemFromReceiveList')->name('edit.product.from.ReceiveList');
+//    Route::post('/product_receive/product_receive', 'productreceiveController@store');
+//    Route::put('/product_receive/product_receive', 'productreceiveController@updateItemFromReceiveList')->name('update.product.from.ReceiveList');
+//    Route::get('/product_receive/product_receive/delete/item', 'productreceiveController@deleteItemFromReceiveList')->name('delete.product.from.ReceiveList');
+//    Route::get('/product_receive/product_receive/edit/item', 'productreceiveController@editItemFromReceiveList')->name('edit.product.from.ReceiveList');
    //Route::get('/product_receive/product_receive/edit/item', 'productreceiveController@editItemFromReceiveList')->name('product.from.AddList');
     Route::get('/product_receive/product_receive/saveAll/item', 'productreceiveController@saveAllItemFromReceiveList')->name('saveAll.product.from.ReceiveList');
     Route::get('/product_receive/product_receive/clearList/item', 'productreceiveController@clearListItemFromReceiveList')->name('clearList.product.from.ReceiveList');

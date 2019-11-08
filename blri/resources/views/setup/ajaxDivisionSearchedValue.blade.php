@@ -4,13 +4,13 @@
         <th>অনুষদ</th>
         <th>সম্পাদনা</th>
     </tr>
-    @if(isset($divisions))
-        @foreach ($divisions as $key=>$division)
+    @if(isset($departments))
+        @foreach ($departments as $key=>$department)
         <tr scope="row">
             <td>{{++$key}}</td>
-            <td>{{$division->divisionName}}</td>
+            <td>{{$department->DepartmentName}}</td>
             <td>
-                <a href="{{route('setup.divedit',[$division->id])}}"><i class="fa fa-edit" style="font-size:24px"></i></a>
+                <a href="{{route('setup.divedit',[$department->DepartmentID])}}"><i class="fa fa-edit" style="font-size:24px"></i></a>
             </td>
         </tr>
         @endforeach

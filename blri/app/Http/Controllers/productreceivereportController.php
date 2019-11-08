@@ -11,6 +11,7 @@ use App\Supplier;
 use App\Reporting;
 use App\tblpurchase;
 use App\AdjustmentMenu;
+use App\ProductreceiveReportView;
 use PDF;
 use Input;
 use DB;
@@ -41,15 +42,15 @@ class productreceivereportController extends Controller
     }
 
     public function invoice(Request $req){
-
-             // dd($req->StartDate);
               $data = [
              'foo' => 'bar'
                 ];
 
                   if($req->purchasereport == 1){
+                      $startdate = $req->input('StartDate');
+                      $result = DB::select(DB::raw("SELECT * FROM `productreceiveview` WHERE `InvoiceDate` = '$startdate'"));
 
-                     $pdf = PDF::loadView('reporting.product_receive_report.productReceiveReportStartDateWise',);
+                     $pdf = PDF::loadView('reporting.product_receive_report.productReceiveReportStartDateWise',['result'=>$result]);
                    return $pdf->stream('Product_Receive_Report_Invoice.pdf');
                   }
                   else if($req->purchasereport == 2){

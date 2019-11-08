@@ -330,7 +330,7 @@
                           <div class="error">{{$errors->first('name')}}</div>
                         </div><br><br>
 
-                        <label  class="col-sm-6 control-label">অনুষদ</label>
+                        <label  class="col-sm-6 control-label">ডিপার্টমেন্ট</label>
                         <div class="col-lg-6">
                             <select id="divisionName" name="divisionName" onchange="showSection()"  class="form-control required" required>
                                 <option value="">নির্বাচন করুন</option>

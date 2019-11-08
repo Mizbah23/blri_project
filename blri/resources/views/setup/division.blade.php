@@ -280,7 +280,7 @@
         <div class=" form-grids row form-grids-right">
             <div class="widget-shadow " data-example-id="basic-forms"> 
               <div class="form-title bg-primary">
-                <h4>ডিপার্টমেন্ট বিবরণী</h4>
+                <h4>ডিপার্টমেন্টের বিবরণী</h4>
               </div>
               <div class="form-body">
                 <form class="form-horizontal" action="" method="post">
@@ -293,10 +293,10 @@
                       </div>
                       <div class="col-lg-6"> <!--Category and brand-->
 
-                          <label for="division" class="col-sm-3 control-label">ডিপার্টমেন্ট</label>
+                          <label for="departmentName" class="col-sm-3 control-label">ডিপার্টমেন্ট</label>
                        <div class="col-lg-9">
-                          <input type="text" class="form-control" id="divisionName" name="divisionName" placeholder="অবশ্যই পুরণ করুণ"required>
-                                   @foreach ($errors->get('divisionName') as $error)
+                          <input type="text" class="form-control" id="departmentName" name="departmentName" placeholder="অবশ্যই পুরণ করুণ"required>
+                                   @foreach ($errors->get('departmentName') as $error)
                                    <p style="color: red"><span>*</span>{{ $error}}</p>
                                    @endforeach
                           </div><br><br><br>
@@ -337,23 +337,19 @@
                  </tr>
                 </thead>
                 @php $i=0 @endphp
-                @if(isset($divisions))
-                  @foreach ($divisions as $division)
+                @if(isset($departments))
+                  @foreach ($departments as $department)
                   @php $i++ @endphp
-               
               <tbody>
                 <tr>
                   <td scope="row">{{$i}}</td>
-                   <td>{{$division->divisionName}}</td>
+                   <td>{{$department->DepartmentName}}</td>
                   <td>
-                    <a href="{{route('setup.divedit',[$division->id])}}"><i class="fa fa-edit" style="font-size:24px"></i></a>
+                    <a href="{{ route('setup.divedit',[$department->DepartmentID]) }}"><i class="fa fa-edit" style="font-size:24px"></i></a>
                   </td>
                 </tr>
-               
-             @endforeach
+                  @endforeach
                 @endif
-
-             
               </tbody>  
             </table> 
           </div> 
@@ -794,7 +790,7 @@
     <!-- //Bootstrap Core JavaScript -->
        <script>
        $( function() {
-           var divisionNameTags={!!$divisions->unique('divisionName')->pluck('divisionName')!!};
+           var divisionNameTags={!!$departments->unique('DepartmentName')->pluck('DepartmentName')!!};
            console.log(divisionNameTags);
            $( "#searchByDivisionName" ).autocomplete({
                 source: divisionNameTags
@@ -806,7 +802,7 @@
                     type:'GET',
                     url: "{{route('searchByDivisionName')}}",
                     data:{
-                        divisionName: ui.item.value
+                        DepartmentName: ui.item.value
                     },
                     success: function(data){
                         // console.log(data);
